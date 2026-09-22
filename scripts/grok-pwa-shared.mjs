@@ -5,6 +5,7 @@
  */
 import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
+import { domainToASCII } from "node:url";
 
 export const DEFAULT_APP_NAME = "Grok App";
 export const OG_SERVICE_URL_DEFAULT = "https://og.grok.me";
@@ -14,6 +15,7 @@ const SHARE_META_KEYS = new Set([
   "og:title",
   "og:description",
   "og:image",
+  "og:image:secure_url",
   "og:image:width",
   "og:image:height",
   "og:type",
@@ -93,12 +95,21 @@ function isVercelSystemHost(host) {
 
 /** Hostname suitable for absolute og:image URLs. Preview guests (X-Forwarded-Host) are allowed. */
 export function publicAppHost(hostHeader) {
-  const host = String(hostHeader ?? "")
+  let host = String(hostHeader ?? "")
     .split(",")[0]
     .trim()
     .split(":")[0]
     .toLowerCase();
-  if (!host || !/^[a-z0-9.-]+$/.test(host) || !host.includes(".")) return "";
+  if (!host) return "";
+  // Kakao and other scrapers may send the unicode IDN Host (아크원푸르지오.site).
+  // Convert to punycode so og:image is still emitted as an ASCII https URL.
+  try {
+    const ascii = domainToASCII(host);
+    if (ascii) host = ascii;
+  } catch {
+    // keep original host
+  }
+  if (!/^[a-z0-9.-]+$/.test(host) || !host.includes(".")) return "";
   if (/^\d{1,3}(?:\.\d{1,3}){3}$/.test(host)) return "";
   if (isVercelSystemHost(host)) return "";
   return host;
@@ -254,6 +265,11 @@ export function readOgSite(cwd = process.cwd()) {
 
 /** Public path of an on-disk share card, or "" if neither file exists. */
 export function ogCardPublicPath(cwd = process.cwd()) {
+  // Never-scraped filename: Kakao caches thumbnails by full image URL.
+  // Replacing bytes at /og.jpg or /og-v2.jpg does not refresh KakaoTalk.
+  if (existsSync(join(cwd, "public/kakaolink-og-18333872-20260922.jpg"))) {
+    return "/kakaolink-og-18333872-20260922.jpg";
+  }
   if (existsSync(join(cwd, "public/og-v2.jpg"))) return "/og-v2.jpg";
   if (existsSync(join(cwd, "public/og.jpg"))) return "/og.jpg";
   if (existsSync(join(cwd, "public/og.png"))) return "/og.png";
@@ -363,6 +379,7 @@ export function grokOgHeadTags({
     const color = !custom ? placeholderCardColor(site) : "";
     if (color) image += `&color=${encodeURIComponent(color)}`;
     tags.push(`<meta property="og:image" content="${escapeHtml(image)}">`);
+    tags.push(`<meta property="og:image:secure_url" content="${escapeHtml(image)}">`);
     tags.push(`<meta property="og:image:width" content="1200">`);
     tags.push(`<meta property="og:image:height" content="630">`);
     tags.push(`<meta name="twitter:image" content="${escapeHtml(image)}">`);

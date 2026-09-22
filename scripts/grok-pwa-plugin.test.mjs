@@ -257,6 +257,26 @@ test("rejects Vercel system hosts as og:image origins", () => {
   assert.equal(publicAppHost("wild-race.grok.me"), "wild-race.grok.me");
 });
 
+test("converts IDN Host to punycode so og:image is still emitted", () => {
+  assert.equal(
+    publicAppHost("www.아크원푸르지오.site"),
+    "www.xn--2w2b19sita0u67iz2mi7g.site",
+  );
+  assert.equal(
+    publicAppHost("www.xn--2w2b19sita0u67iz2mi7g.site"),
+    "www.xn--2w2b19sita0u67iz2mi7g.site",
+  );
+  const out = injectGrokPwaHead("<html><head></head></html>", {
+    host: "www.아크원푸르지오.site",
+    site: { title: "청라 아크원 푸르지오", card: "custom" },
+    cwd: mkdtempSync(join(tmpdir(), "idn-og-")),
+  });
+  assert.match(
+    out,
+    /property="og:image" content="https:\/\/www\.xn--2w2b19sita0u67iz2mi7g\.site\/og\.jpg"/,
+  );
+});
+
 test("published VITE_PUBLIC_HOSTNAME wins over request Host for og:image", () => {
   const prev = process.env.VITE_PUBLIC_HOSTNAME;
   process.env.VITE_PUBLIC_HOSTNAME = "plum-plaza-reef-dream.grok.me";
