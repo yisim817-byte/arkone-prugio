@@ -60,7 +60,7 @@ export function PrivacyModal({ onClose }: { onClose: () => void }) {
               <td>광고 및 이벤트 대행업무 (광고제작, 프로모션, 이벤트 진행)</td>
             </tr>
             <tr>
-              <td>㈜넥스미디어</td>
+              <td>휴메인코리아</td>
               <td>분양 홈페이지 관리, 운영</td>
             </tr>
           </tbody>
