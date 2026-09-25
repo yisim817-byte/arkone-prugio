@@ -51,17 +51,9 @@ export function PrivacyModal({ onClose }: { onClose: () => void }) {
           </thead>
           <tbody>
             <tr>
-              <td>도담에셋㈜</td>
-              <td>분양마케팅 업무대행 (안내, 상담, 기타 서비스 등)</td>
-              <td rowSpan={3}>제공받은 목적 달성 시 혹은 위탁계약 종료 시까지</td>
-            </tr>
-            <tr>
-              <td>㈜애드파워 씨엠씨</td>
-              <td>광고 및 이벤트 대행업무 (광고제작, 프로모션, 이벤트 진행)</td>
-            </tr>
-            <tr>
               <td>휴메인코리아</td>
               <td>분양 홈페이지 관리, 운영</td>
+              <td>제공받은 목적 달성 시 혹은 위탁계약 종료 시까지</td>
             </tr>
           </tbody>
         </table>
