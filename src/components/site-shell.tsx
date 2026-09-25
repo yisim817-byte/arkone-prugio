@@ -1,3 +1,4 @@
+import { Link } from "@tanstack/react-router";
 import { useState, type ReactNode } from "react";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
@@ -22,7 +23,7 @@ export function SiteShell({ children, home, path }: Props) {
       {privacy ? <PrivacyModal onClose={() => setPrivacy(false)} /> : null}
       {home ? (
         <div className="quick-mo">
-          <span>관심고객등록</span>
+          <Link to="/register">관심고객등록</Link>
           <span>
             <b>10월 OPEN</b>&nbsp;예정
           </span>

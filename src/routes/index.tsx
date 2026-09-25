@@ -142,10 +142,10 @@ function Home() {
                   alt="분양가 상한제 적용단지"
                 />
               </a>
-              <span className="hero__quick_item" aria-label="관심고객등록">
+              <Link to="/register" className="hero__quick_item" aria-label="관심고객등록">
                 <HeroOrbit />
                 <img className="hero__quick_content" src="/resources/img/pages/main/hero_circle_register.svg" alt="" />
-              </span>
+              </Link>
             </div>
           </div>
         </section>

@@ -482,7 +482,7 @@
     position: fixed; z-index: 900; left: 0; right: 0; bottom: 0; display: grid; grid-template-columns: 1fr 1fr;
     background: #004b45; color: #fff;
   }
-  .quick-mo span {
+  .quick-mo span, .quick-mo a {
     min-height: 54px; display: flex; align-items: center; justify-content: center; gap: 8px;
     background: none; border: 0; color: #fff; font: inherit; font-weight: 700;
   }
@@ -676,3 +676,29 @@
   .home-popup__list { flex-direction: column; align-items: center; max-height: calc(100vh - 140px); overflow: auto; }
   .home-popup__item { width: min(320px, 88vw); }
 }
+
+/* 관심고객등록 */
+.hero__quick a.hero__quick_item, .quick-mo a { text-decoration: none; }
+.reg { max-width: 640px; margin: 0 auto; }
+.reg__lead { margin: 0 0 32px; text-align: center; font-size: 18px; line-height: 1.6; color: var(--label-strong); }
+.reg__lead b { color: var(--color-primary); }
+.reg__field { margin-bottom: 8px; }
+.reg__field label { display: block; margin-bottom: 8px; font-weight: 700; color: var(--label-strong); }
+.reg__field input[type="text"], .reg__field input[type="tel"] {
+  width: 100%; height: 56px; padding: 0 16px; border: 1px solid var(--line-normal); border-radius: 8px;
+  font: inherit; font-size: 16px; background: #fff; color: var(--label-strong);
+}
+.reg__field input:focus { outline: 2px solid var(--color-primary); }
+.reg__field.is-err input { border-color: #d0342c; }
+.reg__msg { margin: 6px 0 0; min-height: 18px; font-size: 13px; color: #d0342c; }
+.reg__agree { display: flex; align-items: center; gap: 10px; margin: 8px 0 0; }
+.reg__agree input { width: 20px; height: 20px; accent-color: var(--color-primary); }
+.reg__agree button { margin-left: auto; border: 0; background: none; text-decoration: underline; color: var(--label-neutral); font: inherit; font-size: 14px; cursor: pointer; }
+.reg__consent { max-height: 180px; overflow: auto; margin: 12px 0 8px; padding: 16px; border: 1px solid var(--line-neutral); border-radius: 8px; background: var(--background-neutral); font-size: 13px; line-height: 1.7; color: var(--label-normal); }
+.reg__consent ul { margin: 0; padding-left: 18px; }
+.reg__submit { width: 100%; height: 60px; margin-top: 12px; border: 0; border-radius: 8px; background: var(--color-primary); color: #fff; font: inherit; font-size: 18px; font-weight: 700; cursor: pointer; }
+.reg__submit:disabled { opacity: 0.6; cursor: default; }
+.reg__error { margin: 12px 0 0; text-align: center; font-size: 14px; color: #d0342c; }
+.reg__done { padding: 60px 20px; text-align: center; }
+.reg__done h3 { margin: 0 0 12px; font-size: 26px; color: var(--color-primary); }
+.reg__done p { margin: 0; line-height: 1.7; }

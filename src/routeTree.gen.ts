@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as RegisterRouteImport } from './routes/register'
 import { Route as BoardNews_listRouteImport } from './routes/board/news_list'
 import { Route as PagesBrandRouteImport } from './routes/pages/brand'
 import { Route as PagesChangeinfoRouteImport } from './routes/pages/changeinfo'
@@ -24,6 +25,11 @@ import { Route as PagesVideoRouteImport } from './routes/pages/video'
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RegisterRoute = RegisterRouteImport.update({
+  id: '/register',
+  path: '/register',
   getParentRoute: () => rootRouteImport,
 } as any)
 const BoardNews_listRoute = BoardNews_listRouteImport.update({
@@ -79,6 +85,7 @@ const PagesVideoRoute = PagesVideoRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/register': typeof RegisterRoute
   '/board/news_list': typeof BoardNews_listRoute
   '/pages/brand': typeof PagesBrandRoute
   '/pages/changeinfo': typeof PagesChangeinfoRoute
@@ -92,6 +99,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/register': typeof RegisterRoute
   '/board/news_list': typeof BoardNews_listRoute
   '/pages/brand': typeof PagesBrandRoute
   '/pages/changeinfo': typeof PagesChangeinfoRoute
@@ -106,6 +114,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/register': typeof RegisterRoute
   '/board/news_list': typeof BoardNews_listRoute
   '/pages/brand': typeof PagesBrandRoute
   '/pages/changeinfo': typeof PagesChangeinfoRoute
@@ -121,6 +130,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/register'
     | '/board/news_list'
     | '/pages/brand'
     | '/pages/changeinfo'
@@ -134,6 +144,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/register'
     | '/board/news_list'
     | '/pages/brand'
     | '/pages/changeinfo'
@@ -147,6 +158,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/register'
     | '/board/news_list'
     | '/pages/brand'
     | '/pages/changeinfo'
@@ -161,6 +173,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  RegisterRoute: typeof RegisterRoute
   BoardNews_listRoute: typeof BoardNews_listRoute
   PagesBrandRoute: typeof PagesBrandRoute
   PagesChangeinfoRoute: typeof PagesChangeinfoRoute
@@ -180,6 +193,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/register': {
+      id: '/register'
+      path: '/register'
+      fullPath: '/register'
+      preLoaderRoute: typeof RegisterRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/board/news_list': {
@@ -257,6 +277,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  RegisterRoute: RegisterRoute,
   BoardNews_listRoute: BoardNews_listRoute,
   PagesBrandRoute: PagesBrandRoute,
   PagesChangeinfoRoute: PagesChangeinfoRoute,
