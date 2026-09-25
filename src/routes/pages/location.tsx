@@ -4,7 +4,13 @@ import { SubNotice, ZoomButton } from "@/components/notice";
 
 export const Route = createFileRoute("/pages/location")({
   component: LocationPage,
-  head: () => ({ meta: [{ title: "입지환경 | 청라 아크원 푸르지오" }] }),
+  head: () => ({
+    meta: [
+      { title: "입지환경 | 청라 아크원 푸르지오" },
+      { name: "description", content: "청라 아크원 푸르지오 입지환경. 청라국제도시 내 위치와 주변 개발 계획을 안내합니다. 개발 일정은 변경될 수 있습니다." },
+    ],
+    links: [{ rel: "canonical", href: "https://www.arkone-prugio.site/pages/location" }],
+  }),
 });
 
 function LocationPage() {

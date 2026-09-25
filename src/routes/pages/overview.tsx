@@ -4,7 +4,13 @@ import { SubNotice } from "@/components/notice";
 
 export const Route = createFileRoute("/pages/overview")({
   component: OverviewPage,
-  head: () => ({ meta: [{ title: "사업개요 | 청라 아크원 푸르지오" }] }),
+  head: () => ({
+    meta: [
+      { title: "사업개요 | 청라 아크원 푸르지오" },
+      { name: "description", content: "청라 아크원 푸르지오 사업개요. 사업 규모와 구성, 시행·시공 정보를 안내합니다." },
+    ],
+    links: [{ rel: "canonical", href: "https://www.arkone-prugio.site/pages/overview" }],
+  }),
 });
 
 function OverviewPage() {

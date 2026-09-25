@@ -4,7 +4,13 @@ import { SubNotice } from "@/components/notice";
 
 export const Route = createFileRoute("/pages/contact")({
   component: ContactPage,
-  head: () => ({ meta: [{ title: "오시는길 | 청라 아크원 푸르지오" }] }),
+  head: () => ({
+    meta: [
+      { title: "오시는길 | 청라 아크원 푸르지오" },
+      { name: "description", content: "청라 아크원 푸르지오 오시는길. 견본주택·사업지·홍보관 위치와 지도 바로가기, 대표번호 1833-3872를 안내합니다." },
+    ],
+    links: [{ rel: "canonical", href: "https://www.arkone-prugio.site/pages/contact" }],
+  }),
 });
 
 function MapLinks({ naver, kakao, label }: { naver: string; kakao: string; label: string }) {

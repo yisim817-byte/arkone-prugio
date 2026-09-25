@@ -4,7 +4,13 @@ import { ZoomButton } from "@/components/notice";
 
 export const Route = createFileRoute("/pages/docspecial")({
   component: DocSpecialPage,
-  head: () => ({ meta: [{ title: "특별공급 안내 | 청라 아크원 푸르지오" }] }),
+  head: () => ({
+    meta: [
+      { title: "특별공급 안내 | 청라 아크원 푸르지오" },
+      { name: "description", content: "청라 아크원 푸르지오 특별공급 안내. 신청 자격 등 세부 내용은 입주자모집공고를 기준으로 확인하십시오." },
+    ],
+    links: [{ rel: "canonical", href: "https://www.arkone-prugio.site/pages/docspecial" }],
+  }),
 });
 
 function DocSpecialPage() {

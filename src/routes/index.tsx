@@ -12,6 +12,7 @@ export const Route = createFileRoute("/")({
       { title: SITE_NAME },
       { name: "description", content: "공식 홈페이지ㅣ청라의 정점을 빛내는 푸르지오의 완성" },
     ],
+    links: [{ rel: "canonical", href: "https://www.arkone-prugio.site/" }],
   }),
 });
 
