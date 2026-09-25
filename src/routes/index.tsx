@@ -13,6 +13,32 @@ export const Route = createFileRoute("/")({
       { name: "description", content: "공식 홈페이지ㅣ청라의 정점을 빛내는 푸르지오의 완성" },
     ],
     links: [{ rel: "canonical", href: "https://www.arkone-prugio.site/" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "WebSite",
+              "@id": "https://www.arkone-prugio.site/#website",
+              url: "https://www.arkone-prugio.site/",
+              name: SITE_NAME,
+              inLanguage: "ko-KR",
+              publisher: { "@id": "https://www.humanekorea.co.kr/#org" },
+            },
+            {
+              "@type": "WebPage",
+              "@id": "https://www.arkone-prugio.site/#webpage",
+              url: "https://www.arkone-prugio.site/",
+              name: SITE_NAME,
+              inLanguage: "ko-KR",
+              isPartOf: { "@id": "https://www.arkone-prugio.site/#website" },
+            },
+          ],
+        }),
+      },
+    ],
   }),
 });
 
