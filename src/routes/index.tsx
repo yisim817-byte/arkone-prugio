@@ -10,7 +10,7 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: SITE_NAME },
-      { name: "description", content: "공식 홈페이지ㅣ청라의 정점을 빛내는 푸르지오의 완성" },
+      { name: "description", content: "청라 아크원 푸르지오 분양 정보 안내 | 홈페이지운영 휴메인코리아" },
     ],
     links: [{ rel: "canonical", href: "https://www.arkone-prugio.site/" }],
     scripts: [
@@ -299,14 +299,20 @@ function Home() {
               { y: "2026", img: "history_img_2026.v4.jpg", cap: ["청라하늘대교 (개통)", "하나드림타운 (예정)"] },
               { y: "2028", img: "history_img_2028.v4.jpg", cap: ["돔구장&스타필드 청라 (개장 예정)"] },
               { y: "2029", img: "history_img_2029.v4.jpg", cap: ["서울아산청라병원 (예정)"] },
-              { y: "2030", img: "history_img_2030.v4.jpg", cap: ["7호선 국제업무단지역 (예정)"] },
+              { y: "개통 시기 미정", img: "history_img_2030.v4.jpg", cap: ["7호선 국제업무단지역 (예정)"] },
               { y: "2031", img: "history_img_2031.v4.jpg", cap: ["영상문화복합단지 (계획)"] },
               { y: "2031", img: "history_img_ark_one.v4.jpg", cap: ["청라 아크원 푸르지오 (예정)"] },
             ].map((ev) => (
               <article className="history-card" key={ev.img}>
                 <time>
-                  <span>20</span>
-                  {ev.y.slice(2)}
+                  {/^\d{4}$/.test(ev.y) ? (
+                    <>
+                      <span>20</span>
+                      {ev.y.slice(2)}
+                    </>
+                  ) : (
+                    ev.y
+                  )}
                 </time>
                 <figure>
                   <img src={`/resources/img/pages/main/${ev.img}`} alt="" />
