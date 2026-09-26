@@ -189,6 +189,7 @@ function Home() {
           <p className="prereg-confirm">
             사전고객등록 확인은 대표번호 <a href={SITE_TEL_HREF}>1833-3872</a>로 문의해 주세요.
           </p>
+          <p className="prereg-fine">본 등록은 공식 청약 신청이 아닙니다.</p>
         </section>
 
         <section className="hero-define">
