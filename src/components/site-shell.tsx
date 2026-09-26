@@ -4,6 +4,7 @@ import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { PrivacyModal } from "@/components/privacy-modal";
 import { SubVisual } from "@/components/sub-visual";
+import { PreregPopup } from "@/components/prereg-popup";
 
 type Props = {
   children: ReactNode;
@@ -21,9 +22,10 @@ export function SiteShell({ children, home, path }: Props) {
       {children}
       <SiteFooter onPrivacy={() => setPrivacy(true)} />
       {privacy ? <PrivacyModal onClose={() => setPrivacy(false)} /> : null}
+      {path === "/register" ? null : <PreregPopup />}
       {home ? (
         <div className="quick-mo">
-          <Link to="/register">관심고객등록</Link>
+          <Link to="/register">사전고객등록</Link>
           <span>
             <b>10월 OPEN</b>&nbsp;예정
           </span>

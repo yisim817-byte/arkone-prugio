@@ -168,12 +168,27 @@ function Home() {
                   alt="분양가 상한제 적용단지"
                 />
               </a>
-              <Link to="/register" className="hero__quick_item" aria-label="관심고객등록">
+              <Link to="/register" className="hero__quick_item" aria-label="사전고객등록">
                 <HeroOrbit />
                 <img className="hero__quick_content" src="/resources/img/pages/main/hero_circle_register.svg" alt="" />
               </Link>
             </div>
           </div>
+        </section>
+
+        <section className="prereg-band" aria-label="APT 사전고객등록">
+          <p>청라 아크원 푸르지오 APT</p>
+          <h2>청약을 준비하고 계십니까?</h2>
+          <ul>
+            <li>청약 일정 안내</li>
+            <li>모집공고 업데이트</li>
+            <li>타입별 정보</li>
+            <li>청약 일정 알림</li>
+          </ul>
+          <Link className="reg__submit" to="/register">사전고객등록하기</Link>
+          <p className="prereg-confirm">
+            사전고객등록 확인은 대표번호 <a href={SITE_TEL_HREF}>1833-3872</a>로 문의해 주세요.
+          </p>
         </section>
 
         <section className="hero-define">
