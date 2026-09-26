@@ -39,7 +39,7 @@ function LocationPage() {
                 <span className="location_benefit__icon" />
                 <h4>서울-인천-경기를 잇는 쾌속교통망</h4>
                 <p>
-                  강남까지 바로 잇는 서울7호선 청라연장선 <br className="m-only" /> 국제업무단지역<small>(예정·개통 시기 미정)</small>, <br />{" "}
+                  서울7호선 청라연장선 <br className="m-only" /> 국제업무단지역<small>(예정·개통 시기 미정)</small>, <br />{" "}
                   GTX-D·E<small>(계획)</small>, <br className="m-only" /> 청라하늘대교 개통, 제2외곽순환도로 등
                 </p>
               </article>
