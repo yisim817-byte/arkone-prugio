@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useId, useState } from "react";
-import { HomePopups } from "@/components/home-popups";
+import { HomePopups, readScheduleVariant } from "@/components/home-popups";
 import { SiteShell } from "@/components/site-shell";
 import { YoutubeModal } from "@/components/youtube-modal";
 import { SITE_NAME, SITE_PHONE, SITE_TEL_HREF, YOUTUBE_ID } from "@/lib/site-data";
@@ -64,6 +64,7 @@ function Home() {
   const [active, setActive] = useState("hero");
 
   useEffect(() => {
+    if (readScheduleVariant()) setIntro(false);
     const t = window.setTimeout(() => setIntro(false), 3800);
     return () => window.clearTimeout(t);
   }, []);

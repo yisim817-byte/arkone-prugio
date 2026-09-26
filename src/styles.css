@@ -702,3 +702,91 @@
 .reg__done { padding: 60px 20px; text-align: center; }
 .reg__done h3 { margin: 0 0 12px; font-size: 26px; color: var(--color-primary); }
 .reg__done p { margin: 0; line-height: 1.7; }
+
+.home-popup__wrap--sched .home-popup__close { min-height: 44px; min-width: 44px; }
+.sched {
+  pointer-events: auto;
+  width: min(420px, 100%);
+  max-height: calc(100dvh - 148px);
+  overflow: auto;
+  background: #f9f4ee;
+  color: #111;
+  border: 1px solid #c4beb6;
+}
+.sched__band {
+  margin: 0;
+  padding: 8px 16px;
+  background: #004b45;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+.sched--c .sched__band { background: #8b7f71; }
+.sched__title { margin: 12px 16px 0; font-size: 15px; font-weight: 600; color: #303030; }
+.sched__hero, .sched__change span {
+  display: block;
+  margin: 4px 16px 0;
+  font-size: 22px;
+  line-height: 1.25;
+  font-weight: 700;
+  color: #004b45;
+}
+.sched__change { margin: 4px 16px 0; }
+.sched__change s { display: block; color: #707070; font-size: 14px; }
+.sched__place, .sched__later, .sched__who, .sched__note {
+  margin: 6px 16px 0;
+  font-size: 14px;
+  line-height: 1.35;
+  color: #303030;
+}
+.sched__note { color: #707070; font-size: 12px; margin-bottom: 10px; }
+.sched__rows, .sched__time { list-style: none; margin: 8px 16px 0; padding: 0; }
+.sched__rows li, .sched__time li {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  padding: 6px 0;
+  border-top: 1px solid #e6e6e6;
+  font-size: 14px;
+}
+.sched__rows strong, .sched__time strong { font-weight: 650; }
+.sched__time { margin-left: 28px; }
+.sched__time li { position: relative; padding-left: 14px; }
+.sched__time li::before {
+  content: "";
+  position: absolute;
+  left: -16px;
+  top: 12px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #c4beb6;
+}
+.sched__time li.is-main {
+  background: #004b45;
+  color: #fff;
+  margin: 0 -8px;
+  padding: 8px 8px 8px 22px;
+}
+.sched__time li.is-main::before { background: #fff; left: -8px; }
+.sched__phone, .sched__close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  margin: 8px 16px 0;
+  border: 0;
+  font: inherit;
+  font-size: 15px;
+  font-weight: 700;
+}
+.sched__phone { background: #004b45; color: #fff; }
+.sched__close {
+  pointer-events: auto;
+  width: min(420px, 100%);
+  margin-top: 8px;
+  background: #fff;
+  color: #111;
+  border: 1px solid #303030;
+}
