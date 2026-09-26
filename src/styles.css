@@ -458,6 +458,9 @@
 .section-contact { position: relative; color: #111; padding: 90px var(--page-margin); }
 .section-contact img.bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.25; }
 .section-contact h2 { position: relative; font-family: var(--font-en); letter-spacing: 0.14em; font-size: 28px; margin: 0 0 36px; }
+.contact-schedule { position: relative; margin: -16px 0 28px; font-size: 15px; line-height: 1.5; }
+.contact-schedule p { margin: 0 0 4px; }
+.contact-schedule small { display: block; margin-top: 6px; font-size: 12px; color: #707070; }
 .contact-home-grid { position: relative; display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
 .contact-home-card { background: rgba(255,255,255,.92); padding: 24px; }
 .contact-home-card img { width: 100%; margin-bottom: 20px; }

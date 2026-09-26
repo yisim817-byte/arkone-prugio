@@ -1,6 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useId, useState } from "react";
-import { HomePopups } from "@/components/home-popups";
 import { SiteShell } from "@/components/site-shell";
 import { YoutubeModal } from "@/components/youtube-modal";
 import { SITE_NAME, SITE_PHONE, SITE_TEL_HREF, YOUTUBE_ID } from "@/lib/site-data";
@@ -390,6 +389,12 @@ function Home() {
         <section id="contact" className="section-contact">
           <img className="bg" src="/resources/img/pages/main/contact_bg.v4.jpg" alt="" />
           <h2>CONTACT US</h2>
+          <div className="contact-schedule">
+            <p>APT 입주자모집공고: 2026년 10월 15일 (목) 예정</p>
+            <p>GRAND OPEN: 2026년 10월 23일 (금) 예정</p>
+            <p>청약·계약 일정은 재공지 예정</p>
+            <small>일정은 사업주체 사정에 따라 변경될 수 있습니다.</small>
+          </div>
           <div className="contact-home-grid">
             <article className="contact-home-card">
               <img src="/resources/img/pages/main/contact_map_01.v4.png" alt="청라 아크원 푸르지오 현장과 견본주택 약도" />
@@ -447,7 +452,6 @@ function Home() {
         </section>
       </main>
       {video ? <YoutubeModal id={YOUTUBE_ID} onClose={() => setVideo(false)} /> : null}
-      {!intro ? <HomePopups /> : null}
     </SiteShell>
   );
 }
