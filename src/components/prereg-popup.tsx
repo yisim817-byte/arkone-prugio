@@ -69,7 +69,7 @@ export function PreregPopup() {
         <p>청라 아크원 푸르지오 APT 사전고객등록 이벤트</p>
         <h2 id="prereg-pop-title">백화점 상품권 30만원</h2>
         <p>롯데 · 현대 · 신세계 중 선택</p>
-        <p>청약 당첨 및 MGM 인정조건 충족 고객 대상</p>
+        <p>사전고객등록 후 담당자 안내에 따라 MGM 등록을 마치고 청약 당첨 및 MGM 인정조건을 충족한 고객 대상</p>
         <Link className="reg__submit" to="/register">사전고객등록하기</Link>
         <p className="prereg-confirm">사전고객등록 확인은 대표번호 <a href={SITE_TEL_HREF}>{SITE_PHONE}</a>로 문의해 주세요.</p>
         <p className="prereg-fine">※ 사전고객등록은 공식 청약 신청이 아닙니다. 상품권은 지급조건을 모두 충족한 고객에 한해 지급됩니다. <a href="/#event-terms">유의사항 보기</a></p>
