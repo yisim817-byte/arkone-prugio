@@ -57,6 +57,16 @@ export function RegisterForm() {
   const [duplicate, setDuplicate] = useState(false);
 
   useEffect(() => {
+    if (step !== 2) return;
+    const frame = requestAnimationFrame(() => {
+      const section = document.getElementById("additional-information");
+      section?.scrollIntoView({ behavior: "smooth", block: "start" });
+      section?.querySelector<HTMLElement>("select")?.focus({ preventScroll: true });
+    });
+    return () => cancelAnimationFrame(frame);
+  }, [step]);
+
+  useEffect(() => {
     try {
       if (!sessionStorage.getItem("prereg_first_visit_at")) {
         sessionStorage.setItem("prereg_first_visit_at", new Date().toISOString());
@@ -191,8 +201,10 @@ export function RegisterForm() {
     <div className="reg">
       <p className="reg__lead"><b>청라 아크원 푸르지오</b> APT 사전고객등록</p>
       <form onSubmit={step === 1 ? onStep1 : onStep2} noValidate>
-        <p className="prereg-step">[1/2] 기본 정보</p>
+        <p className="prereg-step">[1/2] 기본 정보 · 필수</p>
+        {step === 2 ? <div className="reg__receipt" role="status">{duplicate ? "이미 사전고객등록된 번호입니다." : "사전고객등록이 접수되었습니다."} 접수번호 {receipt} · 접수시각 {formatKst(createdAt)}</div> : null}
         {alert ? <p className="reg__error" role="alert">{alert}</p> : null}
+        <div hidden={step === 2}>
         <div className={`reg__field${errors.name ? " is-err" : ""}`}>
           <label htmlFor="f-name">성명 *</label>
           <input id="f-name" name="name" value={name} maxLength={20} autoComplete="name" disabled={step === 2} onChange={(e) => setName(e.target.value)} />
@@ -207,7 +219,7 @@ export function RegisterForm() {
           <label htmlFor="f-birth">생년월일 6자리 *</label>
           <input id="f-birth" name="birth6" inputMode="numeric" maxLength={6} placeholder="예: 780315" autoComplete="off" value={birth} disabled={step === 2} onChange={(e) => {
             const digits = e.target.value.replace(/\D/g, "");
-            if (digits.length >= 7) { setBirth(""); setBirthWarn(true); return; }
+            if (digits.length >= 13) { setBirth(""); setBirthWarn(true); return; }
             setBirthWarn(false);
             setBirth(digits.slice(0, 6));
           }} />
@@ -227,10 +239,12 @@ export function RegisterForm() {
           <label htmlFor="consent-mkt">[선택] 광고성 정보 수신 동의</label>
         </div>
         {step === 1 ? <button className="reg__submit" type="submit" disabled={busy}>{busy ? "접수 중…" : "사전고객등록하기"}</button> : null}
+        </div>
         <p className="prereg-confirm">사전고객등록 확인은 대표번호 <a href={SITE_TEL_HREF}>1833-3872</a>로 문의해 주세요.</p>
         {step === 2 ? (
           <div>
-            <p className="prereg-step">[2/2] 추가 정보 (선택) {receipt}</p>
+            <div id="additional-information" className="prereg-additional">
+            <p className="prereg-step">[2/2] 추가 정보 · 선택 (접수번호 {receipt})</p>
             <p>입력하지 않으셔도 사전고객등록은 완료되었습니다.</p>
             <p>접수번호 {receipt} · 접수시각 {formatKst(createdAt)}</p>
             <p>주민등록상 주소 (선택)</p>
@@ -243,6 +257,7 @@ export function RegisterForm() {
             <div className="prereg-chips">{["신혼부부","생애최초","신생아","다자녀","노부모","기관추천","해당없음","모름"].map((item) => <label key={item}><input type="radio" name="special_supply" checked={special === item} onChange={() => setSpecial(item)} /><span>{item}</span></label>)}</div>
             <button className="reg__submit" type="submit" disabled={busy}>{busy ? "접수 중…" : "추가 정보 저장"}</button>
             <button className="reg__skip" type="button" onClick={() => setStep("done")}>건너뛰고 완료</button>
+            </div>
           </div>
         ) : null}
       </form>
