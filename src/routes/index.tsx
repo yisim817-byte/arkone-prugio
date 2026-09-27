@@ -1,6 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useId, useState } from "react";
-import { HomePopups } from "@/components/home-popups";
 import { SiteShell } from "@/components/site-shell";
 import { YoutubeModal } from "@/components/youtube-modal";
 import { SITE_NAME, SITE_PHONE, SITE_TEL_HREF, YOUTUBE_ID } from "@/lib/site-data";
@@ -10,7 +9,7 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: SITE_NAME },
-      { name: "description", content: "공식 홈페이지ㅣ청라의 정점을 빛내는 푸르지오의 완성" },
+      { name: "description", content: "청라 아크원 푸르지오 분양 정보 안내 | 홈페이지운영 휴메인코리아" },
     ],
     links: [{ rel: "canonical", href: "https://www.arkone-prugio.site/" }],
     scripts: [
@@ -144,7 +143,7 @@ function Home() {
               <span className="hero__title_ko">청라 아크원 푸르지오</span>
             </h1>
             <span className="hero__open">
-              <strong>10월 OPEN</strong>예정
+              <strong>모집공고</strong> 10.15(목) 예정
             </span>
           </div>
           <div className="hero__ui">
@@ -169,11 +168,37 @@ function Home() {
                   alt="분양가 상한제 적용단지"
                 />
               </a>
-              <Link to="/register" className="hero__quick_item" aria-label="관심고객등록">
+              <Link to="/register" className="hero__quick_item" aria-label="사전고객등록">
                 <HeroOrbit />
                 <img className="hero__quick_content" src="/resources/img/pages/main/hero_circle_register.svg" alt="" />
               </Link>
             </div>
+          </div>
+        </section>
+
+        <section className="event-card" aria-labelledby="event-title">
+          <div className="event-card__inner">
+            <p className="event-card__eyebrow">EVENT · 사전고객등록 고객 혜택</p>
+            <h2 id="event-title">백화점 상품권 30만원</h2>
+            <p className="event-card__brands">롯데 · 현대 · 신세계 중 선택</p>
+            <p className="event-card__basis">홈페이지 사전고객등록 후 담당자 안내에 따라 MGM 등록(개인정보 제3자 제공 동의 포함)을 마치고, 청약 당첨 및 MGM 인정조건을 충족하신 고객께 드립니다.</p>
+            <p className="event-card__payout">지급 시기: 청약 당첨 및 MGM 인정조건 충족 확인 후 계약 당일 지급합니다.</p>
+            <ol className="event-card__steps"><li>① 사전고객등록</li><li>② MGM 등록 확인</li><li>③ 공식 청약</li><li>④ 당첨·인정 확인</li><li>⑤ 상품권 지급</li></ol>
+            <div className="event-card__actions"><Link className="event-card__button" to="/register">사전고객등록하기</Link><a href="#event-terms">이벤트 유의사항 보기</a></div>
+            <p className="event-card__schedule">APT 입주자모집공고 2026.10.15(목) 예정 · GRAND OPEN 2026.10.23(금) 예정</p>
+            <p className="event-card__notice">※ 사전고객등록은 공식 청약 신청이 아닙니다.</p>
+            <p>사전고객등록 확인은 대표번호 <a href={SITE_TEL_HREF}>1833-3872</a>로 문의해 주세요.</p>
+            <details id="event-terms" className="event-card__terms"><summary>청라 아크원 푸르지오 APT 사전고객등록 이벤트 유의사항</summary>
+              <ol>
+                <li>대상: 본 홈페이지에서 사전고객등록을 완료하고 담당자 안내에 따라 MGM 등록(개인정보 제3자 제공 동의 포함)을 마친 고객 중, 청라 아크원 푸르지오 아파트 청약에 당첨되어 MGM 인정조건을 충족한 고객</li>
+                <li>혜택: 백화점 상품권 30만원 (롯데·현대·신세계 중 1종 선택)</li><li>지급 시기: 청약 당첨 및 MGM 인정조건 충족 확인 후 계약 당일 지급합니다.</li>
+                <li>1인(동일인·동일 휴대전화번호) 1회 지급합니다.</li>
+                <li>부적격 당첨, 계약 미체결·취소·해제 시 지급 대상에서 제외됩니다. 지급 후 해당 사유가 발생한 경우의 처리 기준은 담당자가 개별 안내합니다.</li>
+                <li>다른 경로로 먼저 MGM 등록된 고객은 MGM 운영 기준에 따라 대상에서 제외될 수 있습니다.</li><li>제세공과금 처리 기준은 확정 후 담당자가 개별 안내합니다.</li>
+                <li>본 이벤트는 홈페이지운영 휴메인코리아가 진행하며, 시행·시공사가 제공하는 혜택이 아닙니다.</li><li>이벤트 내용은 사전 공지 후 변경 또는 조기 종료될 수 있습니다.</li>
+                <li>사전고객등록은 공식 청약 신청이 아니며, 청약 자격과 일정은 입주자모집공고를 따릅니다.</li>
+              </ol><p>등록 확인 및 문의 1833-3872</p>
+            </details>
           </div>
         </section>
 
@@ -299,14 +324,20 @@ function Home() {
               { y: "2026", img: "history_img_2026.v4.jpg", cap: ["청라하늘대교 (개통)", "하나드림타운 (예정)"] },
               { y: "2028", img: "history_img_2028.v4.jpg", cap: ["돔구장&스타필드 청라 (개장 예정)"] },
               { y: "2029", img: "history_img_2029.v4.jpg", cap: ["서울아산청라병원 (예정)"] },
-              { y: "2030", img: "history_img_2030.v4.jpg", cap: ["7호선 국제업무단지역 (예정)"] },
+              { y: "개통 시기 미정", img: "history_img_2030.v4.jpg", cap: ["7호선 국제업무단지역 (예정)"] },
               { y: "2031", img: "history_img_2031.v4.jpg", cap: ["영상문화복합단지 (계획)"] },
               { y: "2031", img: "history_img_ark_one.v4.jpg", cap: ["청라 아크원 푸르지오 (예정)"] },
             ].map((ev) => (
               <article className="history-card" key={ev.img}>
                 <time>
-                  <span>20</span>
-                  {ev.y.slice(2)}
+                  {/^\d{4}$/.test(ev.y) ? (
+                    <>
+                      <span>20</span>
+                      {ev.y.slice(2)}
+                    </>
+                  ) : (
+                    ev.y
+                  )}
                 </time>
                 <figure>
                   <img src={`/resources/img/pages/main/${ev.img}`} alt="" />
@@ -384,6 +415,12 @@ function Home() {
         <section id="contact" className="section-contact">
           <img className="bg" src="/resources/img/pages/main/contact_bg.v4.jpg" alt="" />
           <h2>CONTACT US</h2>
+          <div className="contact-schedule">
+            <p>APT 입주자모집공고: 2026년 10월 15일 (목) 예정</p>
+            <p>GRAND OPEN: 2026년 10월 23일 (금) 예정</p>
+            <p>특별공급·1순위·2순위·당첨자 발표·계약 일정은 입주자모집공고 확정 후 안내드립니다.</p>
+            <small>일정은 사업주체 사정에 따라 변경될 수 있습니다.</small>
+          </div>
           <div className="contact-home-grid">
             <article className="contact-home-card">
               <img src="/resources/img/pages/main/contact_map_01.v4.png" alt="청라 아크원 푸르지오 현장과 견본주택 약도" />
@@ -441,7 +478,6 @@ function Home() {
         </section>
       </main>
       {video ? <YoutubeModal id={YOUTUBE_ID} onClose={() => setVideo(false)} /> : null}
-      {!intro ? <HomePopups /> : null}
     </SiteShell>
   );
 }

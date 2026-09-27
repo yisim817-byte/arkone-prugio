@@ -10,8 +10,9 @@ export const Route = createRootRoute({
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: SITE_NAME },
-      { name: "description", content: "공식 홈페이지ㅣ청라의 정점을 빛내는 푸르지오의 완성" },
+      { name: "description", content: "청라 아크원 푸르지오 분양 정보 안내 | 홈페이지운영 휴메인코리아" },
       { name: "theme-color", content: "#004B45" },
+      { name: "robots", content: "noindex,follow" },
     ],
     links: [
       { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
