@@ -202,7 +202,7 @@ export function RegisterForm() {
       <p className="reg__lead"><b>청라 아크원 푸르지오</b> APT 사전고객등록</p>
       <form onSubmit={step === 1 ? onStep1 : onStep2} noValidate>
         <p className="prereg-step">[1/2] 기본 정보 · 필수</p>
-        {step === 2 ? <div className="reg__receipt" role="status">{duplicate ? "이미 사전고객등록된 번호입니다." : "사전고객등록이 접수되었습니다."} 접수번호 {receipt} · 접수시각 {formatKst(createdAt)}</div> : null}
+        {step === 2 ? <div className="reg__receipt" role="status">{duplicate ? "이미 사전고객등록된 번호입니다. 최초 접수번호" : "사전고객등록이 접수되었습니다. 접수번호"} {receipt} · 접수시각 {formatKst(createdAt)}<br />성명 {name} · 휴대전화 {phone} · 생년월일 {birth}</div> : null}
         {alert ? <p className="reg__error" role="alert">{alert}</p> : null}
         <div hidden={step === 2}>
         <div className={`reg__field${errors.name ? " is-err" : ""}`}>
@@ -233,11 +233,13 @@ export function RegisterForm() {
           <label htmlFor="consent-collect">[필수] 개인정보 수집·이용 동의</label>
           <button type="button" onClick={() => setOpen(open === "collect" ? "" : "collect")}>보기</button>
         </div>
-        {open === "collect" ? <div className="reg__consent"><p>수집 항목 : [필수] 성명, 휴대전화번호, 생년월일(앞 6자리) [선택] 주민등록상 주소(시·도, 시·군·구, 읍·면·동), 관심타입, 특별공급 관심 여부 (자동 수집) 접속 사이트, 유입 경로, 접수 일시. 이용 목적 : 청라 아크원 푸르지오 청약 일정·모집공고 안내, 청약 해당지역 안내, 사전고객 관리. 보유 기간 : 이벤트 종료 시 지체 없이 파기. 최장 수집일로부터 1년. 보관 위치 : Supabase, Inc. 클라우드 데이터베이스 — 일본(도쿄 리전). 주민등록번호는 수집하지 않습니다. 동의를 거부할 수 있으며, 거부 시 사전고객등록이 제한됩니다.</p></div> : null}
+        {open === "collect" ? <div className="reg__consent"><p>수집 항목 : [필수] 성명, 휴대전화번호, 생년월일(앞 6자리)<br />[선택] 주민등록상 주소(시·도, 시·군·구, 읍·면·동), 관심타입, 특별공급 관심 여부<br />(자동 수집) 접속 사이트, 유입 경로, 접수 일시</p><p>이용 목적 : 청라 아크원 푸르지오 청약 일정·모집공고 안내, 청약 해당지역 안내, 사전고객 관리, 이벤트 시행 시 대상 확인</p><p>보유 기간 : 이벤트 종료 시 지체 없이 파기. 최장 수집일로부터 1년</p><p>보관 위치 : Supabase, Inc. 클라우드 데이터베이스 — 일본(도쿄 리전)</p><p>※ 주민등록번호는 수집하지 않습니다.</p><p>동의를 거부할 수 있으며, 거부 시 사전고객등록이 제한됩니다. 전화 문의(1833-3872)는 동의 없이 이용하실 수 있습니다.</p></div> : null}
         <div className="reg__agree">
           <input id="consent-mkt" type="checkbox" checked={marketing} disabled={step === 2} onChange={(e) => setMarketing(e.target.checked)} />
           <label htmlFor="consent-mkt">[선택] 광고성 정보 수신 동의</label>
+          <button type="button" onClick={() => setOpen(open === "marketing" ? "" : "marketing")}>보기</button>
         </div>
+        {open === "marketing" ? <div className="reg__consent"><p>선택 동의이며, 동의를 거부하셔도 사전고객등록을 진행하실 수 있습니다.</p></div> : null}
         {step === 1 ? <button className="reg__submit" type="submit" disabled={busy}>{busy ? "접수 중…" : "사전고객등록하기"}</button> : null}
         </div>
         <p className="prereg-confirm">사전고객등록 확인은 대표번호 <a href={SITE_TEL_HREF}>1833-3872</a>로 문의해 주세요.</p>
