@@ -19,7 +19,8 @@ function RegisterPage() {
       <div className="page_content">
         <section className="page_container register-layout">
           <aside className="register-layout__summary" aria-label="이벤트 및 일정 안내">
-            <p>사전고객등록 후 청약 당첨 및 MGM 인정조건 충족 시 백화점 상품권 30만원 (롯데·현대·신세계 중 선택)</p>
+            <p>APT 사전고객등록 후 청약 당첨 및 MGM 인정조건 충족 시 백화점 상품권 30만원 (롯데·현대·신세계 중 선택)</p>
+            <p>오피스텔 사전등록은 APT 이벤트와 별도로 접수됩니다.</p>
             <a href="/#event-terms">유의사항 보기</a>
             <div className="register-layout__schedule">
               <h2>모집 일정</h2>

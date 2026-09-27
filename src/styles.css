@@ -715,6 +715,14 @@
 .prereg-chips label { min-height: 44px; padding: 8px 12px; border: 1px solid var(--line-normal); border-radius: 8px; }
 .prereg-chips input { position: absolute; opacity: 0; }
 .prereg-chips input:checked + span { color: var(--color-primary); font-weight: 700; }
+.reg__product { margin: 0 0 20px; padding: 14px; border: 1px solid var(--line-normal); border-radius: 8px; }
+.reg__product legend { padding: 0 6px; font-weight: 700; }
+.reg__product-options { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+.reg__product-options label { display: flex; min-height: 52px; align-items: center; gap: 8px; padding: 10px 12px; border: 1px solid var(--line-normal); border-radius: 8px; cursor: pointer; }
+.reg__product-options input { accent-color: var(--color-primary); }
+.reg__product-options input:checked + span { color: var(--color-primary); font-weight: 700; }
+.reg__product.is-err { border-color: var(--color-primary); }
+@media(max-width:520px) { .reg__product-options { grid-template-columns: 1fr; } }
 .prereg-hidden-hp { position: absolute; left: -9999px; height: 0; overflow: hidden; }
 .prereg-pop { position: fixed; inset: 0; z-index: 1100; }
 .prereg-pop__bg { position: absolute; inset: 0; border: 0; background: color-mix(in srgb, var(--color-primary) 78%, transparent); }

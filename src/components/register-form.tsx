@@ -5,6 +5,7 @@ const ENDPOINT = "https://jzmktahlrwtrtejjflrw.supabase.co/functions/v1/arkone-p
 const CONSENT_VERSION = "2026-09-26-v2";
 const SIDO = ["서울특별시","부산광역시","대구광역시","인천광역시","광주광역시","대전광역시","울산광역시","세종특별자치시","경기도","강원특별자치도","충청북도","충청남도","전북특별자치도","전라남도","경상북도","경상남도","제주특별자치도"];
 const PHRASE = "사전고객등록 확인은 대표번호 1833-3872로 문의해 주세요.";
+type Product = "" | "apt" | "officetel";
 
 function hyphen(raw: string) {
   const digits = raw.replace(/\D/g, "").slice(0, 11);
@@ -37,6 +38,7 @@ function stored(key: string) {
 
 export function RegisterForm() {
   const [step, setStep] = useState<1 | 2 | "done">(1);
+  const [product, setProduct] = useState<Product>("");
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [birth, setBirth] = useState("");
@@ -72,6 +74,11 @@ export function RegisterForm() {
         sessionStorage.setItem("prereg_first_visit_at", new Date().toISOString());
       }
       const params = new URLSearchParams(location.search);
+      const requestedProduct = params.get("product");
+      if (requestedProduct === "apt" || requestedProduct === "officetel") {
+        setProduct(requestedProduct);
+        if (requestedProduct === "officetel") setInterest("오피스텔");
+      }
       ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term"].forEach((key) => {
         const value = params.get(key);
         if (value && !sessionStorage.getItem(key)) sessionStorage.setItem(key, value);
@@ -107,7 +114,7 @@ export function RegisterForm() {
     return {
       consent_version: CONSENT_VERSION,
       site: location.hostname,
-      page: location.pathname,
+      page: `${location.pathname}?product=${product}`,
       utm_source: stored("utm_source"),
       utm_medium: stored("utm_medium"),
       utm_campaign: stored("utm_campaign"),
@@ -122,6 +129,7 @@ export function RegisterForm() {
     event.preventDefault();
     const digits = phone.replace(/\D/g, "");
     const next: Record<string, string> = {};
+    if (!product) next.product = "아파트 또는 오피스텔을 선택해 주세요.";
     if (name.trim().length < 2 || name.trim().length > 20) next.name = "2~20자로 입력해 주세요.";
     if (!(digits.startsWith("010") && digits.length === 11)) next.phone = "010으로 시작하는 11자리를 입력해 주세요.";
     if (!birth) next.birth = "생년월일 6자리를 입력해 주세요.";
@@ -180,16 +188,18 @@ export function RegisterForm() {
     return (
       <div className="reg reg__done" tabIndex={-1}>
         <p>청라 아크원 푸르지오</p>
-        <h3>APT 사전고객등록이 완료되었습니다.</h3>
+        <h3>{product === "officetel" ? "오피스텔 사전등록이 완료되었습니다." : "아파트 사전고객등록이 완료되었습니다."}</h3>
         {duplicate ? <p role="status">이미 사전고객등록된 번호입니다. 최초 접수번호 <b>{receipt}</b></p> : <p>접수번호 <b>{receipt}</b></p>}
         <p>접수시각 {formatKst(createdAt)}</p>
         <p>이 화면을 캡처해 두시면 등록 확인이 빠릅니다.</p>
         <p className="prereg-confirm">{PHRASE.slice(0, 16)}<a href={SITE_TEL_HREF}>1833-3872</a>{PHRASE.slice(25)}</p>
         <p>STEP 1 홈페이지 사전고객등록 완료</p>
-        <p>STEP 2 MGM 등록 확인 (담당자 안내)</p>
-        <p>STEP 3 공식 청약 진행 (입주자모집공고 기준)</p>
-        <p>STEP 4 청약 당첨 및 MGM 인정조건 확인</p>
-        <p>STEP 5 백화점 상품권 선택 및 지급</p>
+        {product === "apt" ? <>
+          <p>STEP 2 MGM 등록 확인 (담당자 안내)</p>
+          <p>STEP 3 공식 청약 진행 (입주자모집공고 기준)</p>
+          <p>STEP 4 청약 당첨 및 MGM 인정조건 확인</p>
+          <p>STEP 5 백화점 상품권 선택 및 지급 (대상 조건 충족 시)</p>
+        </> : <p>선택하신 오피스텔 상품으로 담당자가 안내드립니다.</p>}
         <p><a className="reg__submit" href={SITE_TEL_HREF}>등록 확인 전화하기 1833-3872</a></p>
         <p>일정이 변경되면 담당자가 등록하신 휴대전화로 연락드립니다.</p>
         <p>※ 사전고객등록은 공식 청약 신청이 아닙니다.</p>
@@ -199,12 +209,20 @@ export function RegisterForm() {
 
   return (
     <div className="reg">
-      <p className="reg__lead"><b>청라 아크원 푸르지오</b> APT 사전고객등록</p>
+      <p className="reg__lead"><b>청라 아크원 푸르지오</b> 아파트·오피스텔 사전등록</p>
       <form onSubmit={step === 1 ? onStep1 : onStep2} noValidate>
         <p className="prereg-step">[1/2] 기본 정보 · 필수</p>
-        {step === 2 ? <div className="reg__receipt" role="status">{duplicate ? "이미 사전고객등록된 번호입니다. 최초 접수번호" : "사전고객등록이 접수되었습니다. 접수번호"} {receipt} · 접수시각 {formatKst(createdAt)}<br />성명 {name} · 휴대전화 {phone} · 생년월일 {birth}</div> : null}
+        {step === 2 ? <div className="reg__receipt" role="status">{duplicate ? "이미 사전고객등록된 번호입니다. 최초 접수번호" : "사전고객등록이 접수되었습니다. 접수번호"} {receipt} · 접수시각 {formatKst(createdAt)}<br />등록 상품 {product === "officetel" ? "오피스텔" : "아파트"} · 성명 {name} · 휴대전화 {phone} · 생년월일 {birth}</div> : null}
         {alert ? <p className="reg__error" role="alert">{alert}</p> : null}
         <div hidden={step === 2}>
+        <fieldset className={`reg__product${errors.product ? " is-err" : ""}`} disabled={step === 2}>
+          <legend>등록하실 상품을 선택해 주세요 *</legend>
+          <div className="reg__product-options">
+            <label><input type="radio" name="product" value="apt" checked={product === "apt"} onChange={() => { setProduct("apt"); setInterest(""); setSpecial(""); }} /><span>아파트 사전고객등록</span></label>
+            <label><input type="radio" name="product" value="officetel" checked={product === "officetel"} onChange={() => { setProduct("officetel"); setInterest("오피스텔"); setSpecial(""); }} /><span>오피스텔 사전등록</span></label>
+          </div>
+          {errors.product ? <p className="reg__msg">{errors.product}</p> : null}
+        </fieldset>
         <div className={`reg__field${errors.name ? " is-err" : ""}`}>
           <label htmlFor="f-name">성명 *</label>
           <input id="f-name" name="name" value={name} maxLength={20} autoComplete="name" disabled={step === 2} onChange={(e) => setName(e.target.value)} />
@@ -254,9 +272,9 @@ export function RegisterForm() {
             <div className="reg__field"><label htmlFor="f-sigungu">시·군·구</label><input id="f-sigungu" value={sigungu} maxLength={20} onChange={(e) => setSigungu(e.target.value)} /></div>
             <div className="reg__field"><label htmlFor="f-dong">읍·면·동</label><input id="f-dong" value={dong} maxLength={20} onChange={(e) => setDong(e.target.value)} /></div>
             <p>관심타입</p>
-            <div className="prereg-chips">{["APT 84㎡","APT 103㎡","오피스텔","미정"].map((item) => <label key={item}><input type="radio" name="interest_type" checked={interest === item} onChange={() => setInterest(item)} /><span>{item}</span></label>)}</div>
-            <p>특별공급 관심</p>
-            <div className="prereg-chips">{["신혼부부","생애최초","신생아","다자녀","노부모","기관추천","해당없음","모름"].map((item) => <label key={item}><input type="radio" name="special_supply" checked={special === item} onChange={() => setSpecial(item)} /><span>{item}</span></label>)}</div>
+            <div className="prereg-chips">{(product === "apt" ? ["APT 84㎡","APT 103㎡","미정"] : ["오피스텔"]).map((item) => <label key={item}><input type="radio" name="interest_type" checked={interest === item} onChange={() => setInterest(item)} /><span>{item}</span></label>)}</div>
+            {product === "apt" ? <><p>특별공급 관심</p>
+            <div className="prereg-chips">{["신혼부부","생애최초","신생아","다자녀","노부모","기관추천","해당없음","모름"].map((item) => <label key={item}><input type="radio" name="special_supply" checked={special === item} onChange={() => setSpecial(item)} /><span>{item}</span></label>)}</div></> : null}
             <button className="reg__submit" type="submit" disabled={busy}>{busy ? "접수 중…" : "추가 정보 저장"}</button>
             <button className="reg__skip" type="button" onClick={() => setStep("done")}>건너뛰고 완료</button>
             </div>
