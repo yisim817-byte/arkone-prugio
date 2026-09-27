@@ -728,3 +728,31 @@
 body.prereg-lock { overflow: hidden; }
 @media (max-width: 600px) { .prereg-pop__panel { width: 100%; margin: auto 0 0; border-radius: 8px 8px 0 0; } }
 
+
+
+/* APT event card */
+.event-card { padding: 96px var(--page-margin); background: var(--color-primary); color: #fff; }
+.event-card__inner { max-width: var(--inner-size); margin: 0 auto; }
+.event-card__eyebrow { color: var(--secondary-300); font-size: 16px; letter-spacing: .08em; }
+.event-card h2 { margin: 16px 0 8px; font-size: 52px; line-height: 1.2; font-weight: 800; }
+.event-card__brands { margin: 0 0 20px; font-size: 22px; }
+.event-card__basis { max-width: 740px; font-size: 20px; line-height: 1.6; }
+.event-card__steps { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; padding: 0; margin: 32px 0; list-style: none; }
+.event-card__steps li { padding: 16px 8px; border: 1px solid rgba(255,255,255,.35); text-align: center; }
+.event-card__actions { display: flex; align-items: center; gap: 24px; margin: 24px 0; }
+.event-card__button { display: inline-flex; min-height: 56px; align-items: center; justify-content: center; padding: 0 32px; background: #fff; color: var(--color-primary); font-weight: 700; }
+.event-card__schedule,.event-card__notice { font-size: 16px; }
+.event-card a { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
+.event-card__terms { margin-top: 24px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,.35); }
+.event-card__terms summary { cursor: pointer; font-weight: 700; }
+.event-card__terms ol { max-width: 900px; padding-left: 24px; font-size: 14px; line-height: 1.7; }
+@media (max-width: 1024px) {
+  .event-card { padding: 64px 20px; }
+  .event-card h2 { font-size: 34px; }
+  .event-card__brands { font-size: 18px; }
+  .event-card__basis { font-size: 17px; }
+  .event-card__steps { grid-template-columns: 1fr; margin: 24px 0; }
+  .event-card__steps li { text-align: left; padding: 10px 16px; }
+  .event-card__actions { flex-wrap: wrap; gap: 16px; }
+  .event-card__button { min-height: 52px; }
+}
