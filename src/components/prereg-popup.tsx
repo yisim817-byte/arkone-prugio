@@ -16,7 +16,7 @@ export function PreregPopup() {
       setOpen(true);
       document.body.classList.add("prereg-lock");
       try { sessionStorage.setItem("prereg_popup_seen", "1"); } catch { /* ignore */ }
-    }, 1500);
+    }, 1200);
     return () => window.clearTimeout(timer);
   }, []);
 
@@ -24,8 +24,7 @@ export function PreregPopup() {
     if (today) {
       try {
         const end = new Date();
-        end.setHours(23, 59, 59, 999);
-        localStorage.setItem("prereg_hide_until", String(end.getTime()));
+        localStorage.setItem("prereg_hide_until", String(Date.now() + 24 * 60 * 60 * 1000));
       } catch { /* ignore */ }
     }
     document.body.classList.remove("prereg-lock");
@@ -47,13 +46,14 @@ export function PreregPopup() {
       <button type="button" className="prereg-pop__bg" aria-label="닫기" onClick={() => close()} />
       <div className="prereg-pop__panel">
         <button type="button" className="prereg-pop__x" aria-label="닫기" onClick={() => close()}>✕</button>
-        <p>10월 OPEN 예정</p>
-        <p>청라 아크원 푸르지오 APT</p>
-        <h2 id="prereg-pop-title">사전고객등록</h2>
-        <p>청약 일정과 모집공고 소식을<br />등록하신 순서대로 안내해 드립니다.</p>
+        <p>모집공고 10.15(목) 예정</p>
+        <p>청라 아크원 푸르지오 APT 사전고객등록 이벤트</p>
+        <h2 id="prereg-pop-title">백화점 상품권 30만원</h2>
+        <p>롯데 · 현대 · 신세계 중 선택</p>
+        <p>청약 당첨 및 MGM 인정조건 충족 고객 대상</p>
         <Link className="reg__submit" to="/register">사전고객등록하기</Link>
         <p className="prereg-confirm">사전고객등록 확인은 대표번호 <a href={SITE_TEL_HREF}>{SITE_PHONE}</a>로 문의해 주세요.</p>
-        <p className="prereg-fine">※ 사전고객등록은 공식 청약 신청이 아닙니다.</p>
+        <p className="prereg-fine">※ 사전고객등록은 공식 청약 신청이 아닙니다. 상품권은 지급조건을 모두 충족한 고객에 한해 지급됩니다. <a href="/#event-terms">유의사항 보기</a></p>
         <div className="prereg-pop__actions">
           <button type="button" onClick={() => close(true)}>오늘 하루 보지 않기</button>
           <button type="button" onClick={() => close()}>닫기</button>
