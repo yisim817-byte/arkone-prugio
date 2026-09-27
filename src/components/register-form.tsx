@@ -217,7 +217,7 @@ export function RegisterForm() {
         </div>
         <div className={`reg__field${errors.birth ? " is-err" : ""}`}>
           <label htmlFor="f-birth">생년월일 6자리 *</label>
-          <input id="f-birth" name="birth6" inputMode="numeric" maxLength={6} placeholder="예: 780315" autoComplete="off" value={birth} disabled={step === 2} onChange={(e) => {
+          <input id="f-birth" name="birth6" inputMode="numeric" placeholder="예: 780315" autoComplete="off" value={birth} disabled={step === 2} onChange={(e) => {
             const digits = e.target.value.replace(/\D/g, "");
             if (digits.length >= 13) { setBirth(""); setBirthWarn(true); return; }
             setBirthWarn(false);

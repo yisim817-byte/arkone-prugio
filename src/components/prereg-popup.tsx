@@ -33,11 +33,30 @@ export function PreregPopup() {
 
   useEffect(() => {
     if (!open) return;
+    const panel = document.querySelector<HTMLElement>(".prereg-pop__panel");
+    const first = panel?.querySelector<HTMLElement>("button, a[href]");
+    first?.focus();
     function onKey(event: KeyboardEvent) {
       if (event.key === "Escape") close();
+      if (event.key === "Tab") {
+        const items = panel?.querySelectorAll<HTMLElement>('a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])');
+        if (!items?.length) return;
+        const firstItem = items[0];
+        const lastItem = items[items.length - 1];
+        if (event.shiftKey && document.activeElement === firstItem) {
+          event.preventDefault();
+          lastItem.focus();
+        } else if (!event.shiftKey && document.activeElement === lastItem) {
+          event.preventDefault();
+          firstItem.focus();
+        }
+      }
     }
     document.addEventListener("keydown", onKey);
-    return () => document.removeEventListener("keydown", onKey);
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.body.classList.remove("prereg-lock");
+    };
   }, [open]);
 
   if (!open) return null;
@@ -46,7 +65,7 @@ export function PreregPopup() {
       <button type="button" className="prereg-pop__bg" aria-label="닫기" onClick={() => close()} />
       <div className="prereg-pop__panel">
         <button type="button" className="prereg-pop__x" aria-label="닫기" onClick={() => close()}>✕</button>
-        <p>모집공고 10.15(목) 예정</p>
+        <p>모집공고 10.15(목) 예정 · GRAND OPEN 10.23(금) 예정</p>
         <p>청라 아크원 푸르지오 APT 사전고객등록 이벤트</p>
         <h2 id="prereg-pop-title">백화점 상품권 30만원</h2>
         <p>롯데 · 현대 · 신세계 중 선택</p>

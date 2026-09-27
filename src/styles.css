@@ -733,7 +733,7 @@ body.prereg-lock { overflow: hidden; }
 /* APT event card */
 .event-card { padding: 96px var(--page-margin); background: var(--color-primary); color: #fff; }
 .event-card__inner { max-width: var(--inner-size); margin: 0 auto; }
-.event-card__eyebrow { color: var(--secondary-300); font-size: 16px; letter-spacing: .08em; }
+.event-card__eyebrow { color: var(--secondary-500); font-size: 16px; letter-spacing: .08em; }
 .event-card h2 { margin: 16px 0 8px; font-size: 52px; line-height: 1.2; font-weight: 800; }
 .event-card__brands { margin: 0 0 20px; font-size: 22px; }
 .event-card__basis { max-width: 740px; font-size: 20px; line-height: 1.6; }
@@ -761,12 +761,15 @@ body.prereg-lock { overflow: hidden; }
 /* Campaign and mobile conversion components */
 .event-card { background: transparent; color: var(--color-fg); }
 .event-card__inner { padding: 48px; border-radius: 8px; background: var(--color-primary); color: var(--white); }
-.event-card__eyebrow { color: var(--secondary-300); }
+.event-card__eyebrow { color: var(--secondary-500); }
 .event-card__terms { color: var(--white); }
 .prereg-pop__panel { color: var(--color-fg); }
 .prereg-pop__panel p, .prereg-pop__panel li, .prereg-pop__panel a, .prereg-pop__panel button { color: var(--color-fg); }
 .prereg-pop__panel h2 { color: var(--color-primary); }
+.prereg-pop__panel .reg__submit { color: var(--white); }
 .prereg-pop__bg { background: color-mix(in srgb, var(--color-fg) 55%, transparent); }
+.prereg-pop { display: flex; align-items: center; justify-content: center; }
+.prereg-pop__panel { margin: auto; }
 .quick-mo { display: none; }
 @media (max-width: 1024px) {
   .event-card__inner { padding: 28px 20px; }
@@ -778,7 +781,8 @@ body.prereg-lock { overflow: hidden; }
   .prereg-pop__actions { position: sticky; bottom: -32px; background: var(--white); }
 }
 @media (max-width: 600px) {
-  .prereg-pop__panel { margin: auto 0 0; }
+  .prereg-pop { align-items: flex-end; }
+  .prereg-pop__panel { width: 100%; max-height: 85vh; margin: 0; overflow-y: auto; border-radius: 8px 8px 0 0; }
 }
 
 
