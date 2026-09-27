@@ -54,6 +54,7 @@ export function RegisterForm() {
   const [busy, setBusy] = useState(false);
   const [receipt, setReceipt] = useState("");
   const [createdAt, setCreatedAt] = useState("");
+  const [duplicate, setDuplicate] = useState(false);
 
   useEffect(() => {
     try {
@@ -83,7 +84,7 @@ export function RegisterForm() {
         setAlert(`접수를 확인하지 못했습니다. 입력 내용은 유지됩니다. 잠시 후 다시 시도하시거나 ${SITE_PHONE}로 문의해 주세요.`);
         return null;
       }
-      return data as { receipt_no?: string; created_at?: string };
+      return data as { receipt_no?: string; created_at?: string; duplicate?: boolean };
     } catch {
       setAlert(`접수를 확인하지 못했습니다. 입력 내용은 유지됩니다. 잠시 후 다시 시도하시거나 ${SITE_PHONE}로 문의해 주세요.`);
       return null;
@@ -113,7 +114,8 @@ export function RegisterForm() {
     const next: Record<string, string> = {};
     if (name.trim().length < 2 || name.trim().length > 20) next.name = "2~20자로 입력해 주세요.";
     if (!(digits.startsWith("010") && digits.length === 11)) next.phone = "010으로 시작하는 11자리를 입력해 주세요.";
-    if (!validDate(birth)) next.birth = "생년월일 6자리를 확인해 주세요.";
+    if (!birth) next.birth = "생년월일 6자리를 입력해 주세요.";
+    else if (!validDate(birth)) next.birth = "생년월일 6자리를 확인해 주세요. (예: 850101)";
     if (!collect) next.collect = "개인정보 수집·이용에 동의해 주세요.";
     setErrors(next);
     if (Object.keys(next).length) {
@@ -134,6 +136,7 @@ export function RegisterForm() {
     if (!data) return;
     setReceipt(data.receipt_no || "");
     setCreatedAt(data.created_at || "");
+    setDuplicate(Boolean(data.duplicate));
     setAlert("");
     setStep(2);
   }
@@ -168,13 +171,18 @@ export function RegisterForm() {
       <div className="reg reg__done" tabIndex={-1}>
         <p>청라 아크원 푸르지오</p>
         <h3>APT 사전고객등록이 완료되었습니다.</h3>
-        <p>접수번호 <b>{receipt}</b></p>
+        {duplicate ? <p role="status">이미 사전고객등록된 번호입니다. 최초 접수번호 <b>{receipt}</b></p> : <p>접수번호 <b>{receipt}</b></p>}
         <p>접수시각 {formatKst(createdAt)}</p>
+        <p>이 화면을 캡처해 두시면 등록 확인이 빠릅니다.</p>
         <p className="prereg-confirm">{PHRASE.slice(0, 16)}<a href={SITE_TEL_HREF}>1833-3872</a>{PHRASE.slice(25)}</p>
         <p>STEP 1 홈페이지 사전고객등록 완료</p>
+        <p>STEP 2 MGM 등록 확인 (담당자 안내)</p>
         <p>STEP 3 공식 청약 진행 (입주자모집공고 기준)</p>
+        <p>STEP 4 청약 당첨 및 MGM 인정조건 확인</p>
+        <p>STEP 5 백화점 상품권 선택 및 지급</p>
         <p><a className="reg__submit" href={SITE_TEL_HREF}>등록 확인 전화하기 1833-3872</a></p>
-        <p>등록 확인 시 접수번호를 알려 주세요.</p>
+        <p>일정이 변경되면 담당자가 등록하신 휴대전화로 연락드립니다.</p>
+        <p>※ 사전고객등록은 공식 청약 신청이 아닙니다.</p>
       </div>
     );
   }
@@ -232,7 +240,7 @@ export function RegisterForm() {
             <p>관심타입</p>
             <div className="prereg-chips">{["APT 84㎡","APT 103㎡","오피스텔","미정"].map((item) => <label key={item}><input type="radio" name="interest_type" checked={interest === item} onChange={() => setInterest(item)} /><span>{item}</span></label>)}</div>
             <p>특별공급 관심</p>
-            <div className="prereg-chips">{["신혼부부","생애최초","다자녀","노부모","해당없음","모름"].map((item) => <label key={item}><input type="radio" name="special_supply" checked={special === item} onChange={() => setSpecial(item)} /><span>{item}</span></label>)}</div>
+            <div className="prereg-chips">{["신혼부부","생애최초","신생아","다자녀","노부모","기관추천","해당없음","모름"].map((item) => <label key={item}><input type="radio" name="special_supply" checked={special === item} onChange={() => setSpecial(item)} /><span>{item}</span></label>)}</div>
             <button className="reg__submit" type="submit" disabled={busy}>{busy ? "접수 중…" : "추가 정보 저장"}</button>
             <button className="reg__skip" type="button" onClick={() => setStep("done")}>건너뛰고 완료</button>
           </div>
