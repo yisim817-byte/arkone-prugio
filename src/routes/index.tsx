@@ -143,7 +143,7 @@ function Home() {
               <span className="hero__title_ko">청라 아크원 푸르지오</span>
             </h1>
             <span className="hero__open">
-              <strong>10월 OPEN</strong>예정
+              <strong>모집공고</strong> 10.15(목) 예정
             </span>
           </div>
           <div className="hero__ui">
@@ -417,7 +417,7 @@ function Home() {
           <div className="contact-schedule">
             <p>APT 입주자모집공고: 2026년 10월 15일 (목) 예정</p>
             <p>GRAND OPEN: 2026년 10월 23일 (금) 예정</p>
-            <p>청약·계약 일정은 재공지 예정</p>
+            <p>특별공급·1순위·2순위·당첨자 발표·계약 일정은 입주자모집공고 확정 후 안내드립니다.</p>
             <small>일정은 사업주체 사정에 따라 변경될 수 있습니다.</small>
           </div>
           <div className="contact-home-grid">
