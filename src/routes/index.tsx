@@ -176,6 +176,31 @@ function Home() {
           </div>
         </section>
 
+        <section className="event-card" aria-labelledby="event-title">
+          <div className="event-card__inner">
+            <p className="event-card__eyebrow">EVENT · 사전고객등록 고객 혜택</p>
+            <h2 id="event-title">백화점 상품권 30만원</h2>
+            <p className="event-card__brands">롯데 · 현대 · 신세계 중 선택</p>
+            <p className="event-card__basis">홈페이지 사전고객등록 후 청약 당첨 및 MGM 인정조건을 충족하신 고객께 드립니다.</p>
+            <ol className="event-card__steps"><li>① 사전고객등록</li><li>② MGM 등록 확인</li><li>③ 공식 청약</li><li>④ 당첨·인정 확인</li><li>⑤ 상품권 지급</li></ol>
+            <div className="event-card__actions"><Link className="event-card__button" to="/register">사전고객등록하기</Link><a href="#event-terms">이벤트 유의사항 보기</a></div>
+            <p className="event-card__schedule">APT 입주자모집공고 2026.10.15(목) 예정 · GRAND OPEN 2026.10.23(금) 예정</p>
+            <p className="event-card__notice">※ 사전고객등록은 공식 청약 신청이 아닙니다.</p>
+            <p>사전고객등록 확인은 대표번호 <a href={SITE_TEL_HREF}>1833-3872</a>로 문의해 주세요.</p>
+            <details id="event-terms" className="event-card__terms"><summary>청라 아크원 푸르지오 APT 사전고객등록 이벤트 유의사항</summary>
+              <ol>
+                <li>대상: 본 홈페이지에서 사전고객등록을 완료하고, 담당자 안내에 따라 MGM 등록(개인정보 제3자 제공 동의 포함)을 마친 고객 중 청라 아크원 푸르지오 아파트 청약에 당첨되어 MGM 인정조건을 충족한 고객</li>
+                <li>혜택: 백화점 상품권 30만원 (롯데·현대·신세계 중 1종 선택)</li><li>지급 시기·방법: 확정 후 담당자가 개별 안내합니다.</li>
+                <li>1인(동일인·동일 휴대전화번호) 1회 지급합니다.</li>
+                <li>부적격 당첨, 계약 미체결·취소·해제 시 지급 대상에서 제외됩니다. 지급 후 해당 사유가 발생한 경우의 처리 기준은 담당자가 개별 안내합니다.</li>
+                <li>다른 경로로 먼저 MGM 등록된 고객은 MGM 운영 기준에 따라 대상에서 제외될 수 있습니다.</li><li>제세공과금 처리 기준은 확정 후 담당자가 개별 안내합니다.</li>
+                <li>본 이벤트는 홈페이지운영 휴메인코리아가 진행하며, 시행·시공사가 제공하는 혜택이 아닙니다.</li><li>이벤트 내용은 사전 공지 후 변경 또는 조기 종료될 수 있습니다.</li>
+                <li>사전고객등록은 공식 청약 신청이 아니며, 청약 자격과 일정은 입주자모집공고를 따릅니다.</li>
+              </ol><p>등록 확인 및 문의 1833-3872</p>
+            </details>
+          </div>
+        </section>
+
         <section className="hero-define">
           <img className="hero-define__visual" src="/resources/img/pages/main/hero_brand_img.v4.png" alt="" />
           <div className="hero-define__copy">
