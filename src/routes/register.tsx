@@ -17,7 +17,16 @@ function RegisterPage() {
   return (
     <SiteShell path="/register">
       <div className="page_content">
-        <section className="page_container">
+        <section className="page_container register-layout">
+          <aside className="register-layout__summary" aria-label="이벤트 및 일정 안내">
+            <p>사전고객등록 후 청약 당첨 및 MGM 인정조건 충족 시 백화점 상품권 30만원 (롯데·현대·신세계 중 선택)</p>
+            <a href="/#event-terms">유의사항 보기</a>
+            <div className="register-layout__schedule">
+              <h2>모집 일정</h2>
+              <p>APT 입주자모집공고 2026.10.15(목) 예정 · GRAND OPEN 2026.10.23(금) 예정</p>
+              <p>특별공급·1순위·2순위·당첨자 발표·계약 일정은 입주자모집공고 확정 후 안내드립니다.</p>
+            </div>
+          </aside>
           <RegisterForm />
         </section>
       </div>
