@@ -1,8 +1,11 @@
 import { SITE_PHONE, SITE_TEL_HREF } from "@/lib/site-data";
+import { isKrHost } from "@/lib/seo-host";
 
 type Props = { onPrivacy: () => void };
 
 export function SiteFooter({ onPrivacy }: Props) {
+  // Operator business info (Daum 부동산 업종 요건) — Korean www host only.
+  const showBizInfo = isKrHost();
   return (
     <footer className="footer">
       <div className="footer__container">
@@ -24,9 +27,13 @@ export function SiteFooter({ onPrivacy }: Props) {
             <br className="m-only" /> 사업자등록번호 : 866-88-02497
             <br />
             홈페이지 운영·관리 | 휴메인코리아
-            <br />
-            상호 : 휴메인코리아 | 대표자 : 이종석 | 사업자등록번호 : 320-60-00456
-            <br className="m-only" /> 주소 : 인천시 연수구 송도과학로 56 206호
+            {showBizInfo && (
+              <>
+                <br />
+                상호 : 휴메인코리아 | 대표자 : 이종석 | 사업자등록번호 : 320-60-00456
+                <br className="m-only" /> 주소 : 인천시 연수구 송도과학로 56 206호
+              </>
+            )}
           </p>
           <p className="footer__disclaimer">
             ※ 본 홈페이지의 CG, 이미지컷은 소비자의 이해를 돕기 위해 <br className="m-only" /> 제작된
