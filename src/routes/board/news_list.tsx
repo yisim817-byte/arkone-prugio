@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import { SiteShell } from "@/components/site-shell";
 import { NEWS, type NewsItem } from "@/lib/news";
+import { canonicalLinks } from "@/lib/seo-host";
 
 export const Route = createFileRoute("/board/news_list")({
   component: NewsListPage,
@@ -10,7 +11,7 @@ export const Route = createFileRoute("/board/news_list")({
       { title: "언론보도 | 청라 아크원 푸르지오" },
       { name: "description", content: "청라 아크원 푸르지오 관련 언론보도 목록. 기사 원문은 각 언론사 기준입니다." },
     ],
-    links: [{ rel: "canonical", href: "https://www.arkone-prugio.site/board/news_list" }],
+    links: canonicalLinks("/board/news_list"),
   }),
 });
 

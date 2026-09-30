@@ -14,12 +14,14 @@ import { Route as RegisterRouteImport } from './routes/register'
 import { Route as BoardNews_listRouteImport } from './routes/board/news_list'
 import { Route as PagesBrandRouteImport } from './routes/pages/brand'
 import { Route as PagesChangeinfoRouteImport } from './routes/pages/changeinfo'
+import { Route as PagesCompareRouteImport } from './routes/pages/compare'
 import { Route as PagesContactRouteImport } from './routes/pages/contact'
 import { Route as PagesDocnormalRouteImport } from './routes/pages/docnormal'
 import { Route as PagesDocspecialRouteImport } from './routes/pages/docspecial'
 import { Route as PagesLocationRouteImport } from './routes/pages/location'
 import { Route as PagesOverviewRouteImport } from './routes/pages/overview'
 import { Route as PagesPremiumRouteImport } from './routes/pages/premium'
+import { Route as PagesScheduleRouteImport } from './routes/pages/schedule'
 import { Route as PagesVideoRouteImport } from './routes/pages/video'
 
 const IndexRoute = IndexRouteImport.update({
@@ -45,6 +47,11 @@ const PagesBrandRoute = PagesBrandRouteImport.update({
 const PagesChangeinfoRoute = PagesChangeinfoRouteImport.update({
   id: '/pages/changeinfo',
   path: '/pages/changeinfo',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PagesCompareRoute = PagesCompareRouteImport.update({
+  id: '/pages/compare',
+  path: '/pages/compare',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PagesContactRoute = PagesContactRouteImport.update({
@@ -77,6 +84,11 @@ const PagesPremiumRoute = PagesPremiumRouteImport.update({
   path: '/pages/premium',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PagesScheduleRoute = PagesScheduleRouteImport.update({
+  id: '/pages/schedule',
+  path: '/pages/schedule',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PagesVideoRoute = PagesVideoRouteImport.update({
   id: '/pages/video',
   path: '/pages/video',
@@ -89,12 +101,14 @@ export interface FileRoutesByFullPath {
   '/board/news_list': typeof BoardNews_listRoute
   '/pages/brand': typeof PagesBrandRoute
   '/pages/changeinfo': typeof PagesChangeinfoRoute
+  '/pages/compare': typeof PagesCompareRoute
   '/pages/contact': typeof PagesContactRoute
   '/pages/docnormal': typeof PagesDocnormalRoute
   '/pages/docspecial': typeof PagesDocspecialRoute
   '/pages/location': typeof PagesLocationRoute
   '/pages/overview': typeof PagesOverviewRoute
   '/pages/premium': typeof PagesPremiumRoute
+  '/pages/schedule': typeof PagesScheduleRoute
   '/pages/video': typeof PagesVideoRoute
 }
 export interface FileRoutesByTo {
@@ -103,12 +117,14 @@ export interface FileRoutesByTo {
   '/board/news_list': typeof BoardNews_listRoute
   '/pages/brand': typeof PagesBrandRoute
   '/pages/changeinfo': typeof PagesChangeinfoRoute
+  '/pages/compare': typeof PagesCompareRoute
   '/pages/contact': typeof PagesContactRoute
   '/pages/docnormal': typeof PagesDocnormalRoute
   '/pages/docspecial': typeof PagesDocspecialRoute
   '/pages/location': typeof PagesLocationRoute
   '/pages/overview': typeof PagesOverviewRoute
   '/pages/premium': typeof PagesPremiumRoute
+  '/pages/schedule': typeof PagesScheduleRoute
   '/pages/video': typeof PagesVideoRoute
 }
 export interface FileRoutesById {
@@ -118,12 +134,14 @@ export interface FileRoutesById {
   '/board/news_list': typeof BoardNews_listRoute
   '/pages/brand': typeof PagesBrandRoute
   '/pages/changeinfo': typeof PagesChangeinfoRoute
+  '/pages/compare': typeof PagesCompareRoute
   '/pages/contact': typeof PagesContactRoute
   '/pages/docnormal': typeof PagesDocnormalRoute
   '/pages/docspecial': typeof PagesDocspecialRoute
   '/pages/location': typeof PagesLocationRoute
   '/pages/overview': typeof PagesOverviewRoute
   '/pages/premium': typeof PagesPremiumRoute
+  '/pages/schedule': typeof PagesScheduleRoute
   '/pages/video': typeof PagesVideoRoute
 }
 export interface FileRouteTypes {
@@ -134,12 +152,14 @@ export interface FileRouteTypes {
     | '/board/news_list'
     | '/pages/brand'
     | '/pages/changeinfo'
+    | '/pages/compare'
     | '/pages/contact'
     | '/pages/docnormal'
     | '/pages/docspecial'
     | '/pages/location'
     | '/pages/overview'
     | '/pages/premium'
+    | '/pages/schedule'
     | '/pages/video'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -148,12 +168,14 @@ export interface FileRouteTypes {
     | '/board/news_list'
     | '/pages/brand'
     | '/pages/changeinfo'
+    | '/pages/compare'
     | '/pages/contact'
     | '/pages/docnormal'
     | '/pages/docspecial'
     | '/pages/location'
     | '/pages/overview'
     | '/pages/premium'
+    | '/pages/schedule'
     | '/pages/video'
   id:
     | '__root__'
@@ -162,12 +184,14 @@ export interface FileRouteTypes {
     | '/board/news_list'
     | '/pages/brand'
     | '/pages/changeinfo'
+    | '/pages/compare'
     | '/pages/contact'
     | '/pages/docnormal'
     | '/pages/docspecial'
     | '/pages/location'
     | '/pages/overview'
     | '/pages/premium'
+    | '/pages/schedule'
     | '/pages/video'
   fileRoutesById: FileRoutesById
 }
@@ -177,12 +201,14 @@ export interface RootRouteChildren {
   BoardNews_listRoute: typeof BoardNews_listRoute
   PagesBrandRoute: typeof PagesBrandRoute
   PagesChangeinfoRoute: typeof PagesChangeinfoRoute
+  PagesCompareRoute: typeof PagesCompareRoute
   PagesContactRoute: typeof PagesContactRoute
   PagesDocnormalRoute: typeof PagesDocnormalRoute
   PagesDocspecialRoute: typeof PagesDocspecialRoute
   PagesLocationRoute: typeof PagesLocationRoute
   PagesOverviewRoute: typeof PagesOverviewRoute
   PagesPremiumRoute: typeof PagesPremiumRoute
+  PagesScheduleRoute: typeof PagesScheduleRoute
   PagesVideoRoute: typeof PagesVideoRoute
 }
 
@@ -221,6 +247,13 @@ declare module '@tanstack/react-router' {
       path: '/pages/changeinfo'
       fullPath: '/pages/changeinfo'
       preLoaderRoute: typeof PagesChangeinfoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pages/compare': {
+      id: '/pages/compare'
+      path: '/pages/compare'
+      fullPath: '/pages/compare'
+      preLoaderRoute: typeof PagesCompareRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/pages/contact': {
@@ -265,6 +298,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PagesPremiumRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/pages/schedule': {
+      id: '/pages/schedule'
+      path: '/pages/schedule'
+      fullPath: '/pages/schedule'
+      preLoaderRoute: typeof PagesScheduleRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/pages/video': {
       id: '/pages/video'
       path: '/pages/video'
@@ -281,12 +321,14 @@ const rootRouteChildren: RootRouteChildren = {
   BoardNews_listRoute: BoardNews_listRoute,
   PagesBrandRoute: PagesBrandRoute,
   PagesChangeinfoRoute: PagesChangeinfoRoute,
+  PagesCompareRoute: PagesCompareRoute,
   PagesContactRoute: PagesContactRoute,
   PagesDocnormalRoute: PagesDocnormalRoute,
   PagesDocspecialRoute: PagesDocspecialRoute,
   PagesLocationRoute: PagesLocationRoute,
   PagesOverviewRoute: PagesOverviewRoute,
   PagesPremiumRoute: PagesPremiumRoute,
+  PagesScheduleRoute: PagesScheduleRoute,
   PagesVideoRoute: PagesVideoRoute,
 }
 export const routeTree = rootRouteImport

@@ -28,6 +28,7 @@ export const NAV: NavItem[] = [
       { krName: "사업개요", enName: "Overview", to: "/pages/overview" },
       { krName: "히스토리", enName: "History", to: "/pages/brand" },
       { krName: "오시는길", enName: "Contact", to: "/pages/contact" },
+      { krName: "아파트·오피스텔 비교", enName: "Compare", to: "/pages/compare" },
     ],
   },
   {
@@ -50,6 +51,7 @@ export const NAV: NavItem[] = [
       { krName: "변경된 청약제도", enName: "INFORMATION", to: "/pages/changeinfo" },
       { krName: "특별공급 안내", enName: "INFORMATION", to: "/pages/docspecial" },
       { krName: "일반공급 안내", enName: "INFORMATION", to: "/pages/docnormal" },
+      { krName: "분양 일정·청약 안내", enName: "INFORMATION", to: "/pages/schedule" },
     ],
   },
   {
@@ -76,6 +78,13 @@ export const PAGE_META: Record<
   "/pages/overview": { en: "Overview", kr: "사업개요", parentKr: "사업안내", parentEn: "OVERVIEW" },
   "/pages/brand": { en: "History", kr: "히스토리", parentKr: "사업안내", parentEn: "OVERVIEW" },
   "/pages/contact": { en: "Contact", kr: "오시는길", parentKr: "사업안내", parentEn: "OVERVIEW" },
+  "/pages/compare": { en: "Compare", kr: "아파트·오피스텔 비교", parentKr: "사업안내", parentEn: "OVERVIEW" },
+  "/pages/schedule": {
+    en: "INFORMATION",
+    kr: "분양 일정·청약 안내",
+    parentKr: "청약안내",
+    parentEn: "INFORMATION",
+  },
   "/pages/location": { en: "LOCATION", kr: "입지환경", parentKr: "입지안내", parentEn: "LOCATION" },
   "/pages/premium": { en: "PREMIUM", kr: "프리미엄", parentKr: "프리미엄", parentEn: "PREMIUM" },
   "/pages/changeinfo": {

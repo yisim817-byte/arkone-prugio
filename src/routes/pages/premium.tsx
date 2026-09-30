@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteShell } from "@/components/site-shell";
 import { SubNotice } from "@/components/notice";
+import { canonicalLinks } from "@/lib/seo-host";
 
 export const Route = createFileRoute("/pages/premium")({
   component: PremiumPage,
@@ -9,7 +10,7 @@ export const Route = createFileRoute("/pages/premium")({
       { title: "프리미엄 | 청라 아크원 푸르지오" },
       { name: "description", content: "청라 아크원 푸르지오 프리미엄 안내. 단지 특징과 상품 구성 포인트를 소개합니다. 이미지는 소비자 이해를 돕기 위한 연출컷입니다." },
     ],
-    links: [{ rel: "canonical", href: "https://www.arkone-prugio.site/pages/premium" }],
+    links: canonicalLinks("/pages/premium"),
   }),
 });
 

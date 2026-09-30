@@ -3,16 +3,27 @@ import { AuthProvider } from "@/lib/auth/provider";
 import { PreviewHostBridge } from "@/components/preview-host-bridge";
 import appCss from "../styles.css?url";
 import { SITE_NAME } from "@/lib/site-data";
+import { isIndexablePath, isKrHost } from "@/lib/seo-host";
 
 export const Route = createRootRoute({
-  head: () => ({
+  head: ({ matches }) => ({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: SITE_NAME },
       { name: "description", content: "청라 아크원 푸르지오 분양 정보 안내 | 홈페이지운영 휴메인코리아" },
       { name: "theme-color", content: "#004B45" },
-      { name: "robots", content: "noindex,follow" },
+      {
+        name: "robots",
+        content:
+          isKrHost() &&
+          matches.length > 1 &&
+          matches[matches.length - 1]?.routeId !== "__root__" &&
+          !matches.some((m) => m.status === "notFound" || m.status === "error") &&
+          isIndexablePath(matches[matches.length - 1]?.pathname ?? "")
+            ? "index,follow"
+            : "noindex,follow",
+      },
     ],
     links: [
       { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },

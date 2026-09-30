@@ -807,3 +807,38 @@ body.prereg-lock { overflow: hidden; }
   .register-layout { grid-template-columns: 1fr; gap: 24px; }
   .register-layout__summary { padding: 16px; }
 }
+
+/* SEO guide blocks (text answer, fact table, Q&A) — existing palette only */
+.seo-guide { margin: 0 auto; color: var(--color-fg); font-family: var(--font-sans); line-height: 1.7; }
+.seo-guide-answer { margin-bottom: 60px; padding: 32px 36px; background: var(--color-sand); border-left: 4px solid var(--color-primary); }
+.seo-guide-detail { margin-top: 80px; }
+.seo-guide__title { margin: 0 0 14px; font-size: 24px; font-weight: 700; color: var(--color-primary); }
+.seo-guide__subtitle { margin: 48px 0 16px; font-size: 20px; font-weight: 700; color: var(--color-fg-strong); }
+.seo-guide__answer p { margin: 0 0 8px; font-size: 16px; }
+.seo-guide__table_wrap { overflow-x: auto; }
+.seo-guide__table { width: 100%; border-collapse: collapse; font-size: 15px; border-top: 2px solid var(--color-primary); }
+.seo-guide__table th, .seo-guide__table td { padding: 12px 14px; border-bottom: 1px solid #ddd; text-align: left; vertical-align: top; }
+.seo-guide__table thead th { background: #f4f4f4; font-weight: 700; }
+.seo-guide__table tbody th { width: 22%; font-weight: 600; color: var(--color-primary-strong); }
+.seo-guide__table td:last-child { width: 14%; white-space: nowrap; color: var(--color-secondary); }
+.seo-guide__legend { margin: 10px 0 0; font-size: 12px; color: var(--color-muted); }
+.seo-guide__faq { margin: 0; }
+.seo-guide__faq > div { padding: 16px 0; border-bottom: 1px solid #e5e5e5; }
+.seo-guide__faq dt { font-weight: 700; color: var(--color-fg-strong); }
+.seo-guide__faq dd { margin: 6px 0 0; }
+.seo-guide__links { display: flex; flex-wrap: wrap; gap: 10px; margin: 0; padding: 0; list-style: none; }
+.seo-guide__links a { display: inline-block; padding: 8px 16px; border: 1px solid var(--color-primary); color: var(--color-primary); font-size: 14px; }
+.seo-guide__links a:hover { background: var(--color-primary); color: #fff; }
+.seo-guide__sources { margin-top: 40px; padding: 20px 24px; background: #f4f4f4; font-size: 13px; color: var(--color-muted); }
+.seo-guide__sources ul { margin: 8px 0; padding-left: 18px; }
+.seo-guide__sources a { text-decoration: underline; }
+@media (max-width: 1024px) {
+  .seo-guide-answer { margin-bottom: 36px; padding: 22px 20px; }
+  .seo-guide-detail { margin-top: 48px; }
+  .seo-guide__title { font-size: 19px; }
+  .seo-guide__subtitle { margin-top: 36px; font-size: 17px; }
+  .seo-guide__answer p { font-size: 14px; }
+  .seo-guide__table { font-size: 13px; }
+  .seo-guide__table th, .seo-guide__table td { padding: 10px 8px; }
+  .seo-guide__table td:last-child { white-space: normal; }
+}

@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteShell } from "@/components/site-shell";
 import { SubNotice } from "@/components/notice";
+import { canonicalLinks } from "@/lib/seo-host";
 
 export const Route = createFileRoute("/pages/brand")({
   component: BrandPage,
@@ -9,7 +10,7 @@ export const Route = createFileRoute("/pages/brand")({
       { title: "히스토리 | 청라 아크원 푸르지오" },
       { name: "description", content: "청라 아크원 푸르지오 히스토리. 청라 주변 개발 계획을 연도별로 정리했습니다. 일정은 예정·계획 기준이며 변경될 수 있습니다." },
     ],
-    links: [{ rel: "canonical", href: "https://www.arkone-prugio.site/pages/brand" }],
+    links: canonicalLinks("/pages/brand"),
   }),
 });
 

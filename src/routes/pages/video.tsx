@@ -3,6 +3,7 @@ import { useState } from "react";
 import { SiteShell } from "@/components/site-shell";
 import { YoutubeModal } from "@/components/youtube-modal";
 import { YOUTUBE_ID } from "@/lib/site-data";
+import { canonicalLinks } from "@/lib/seo-host";
 
 export const Route = createFileRoute("/pages/video")({
   component: VideoPage,
@@ -11,7 +12,7 @@ export const Route = createFileRoute("/pages/video")({
       { title: "홍보영상 | 청라 아크원 푸르지오" },
       { name: "description", content: "청라 아크원 푸르지오 홍보영상 모음. 사업 소개 영상을 확인할 수 있습니다." },
     ],
-    links: [{ rel: "canonical", href: "https://www.arkone-prugio.site/pages/video" }],
+    links: canonicalLinks("/pages/video"),
   }),
 });
 

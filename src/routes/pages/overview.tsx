@@ -1,15 +1,38 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteShell } from "@/components/site-shell";
 import { SubNotice } from "@/components/notice";
+import { canonicalLinks, faqJsonLd } from "@/lib/seo-host";
+import { GuideAnswer, GuideDetail, type GuideFaq } from "@/components/seo-guide";
+import { SRC_APPLYHOME, SRC_OFFICIAL, SRC_OFFICIAL_PREMIUM } from "@/lib/arkone-facts";
+
+const FAQ: GuideFaq[] = [
+  {
+    q: "청라 아크원 푸르지오는 몇 세대인가요?",
+    a: "사업주체 공개 사업개요 기준 총 1,855가구로, 아파트 868세대와 오피스텔 987실로 구성됩니다. 지상 1~2층에는 상업시설이 계획되어 있습니다.",
+  },
+  {
+    q: "아파트 전용면적은 어떻게 되나요?",
+    a: "아파트는 전용 84㎡와 103㎡ 두 가지로 공개되어 있습니다. 타입별 세대수와 평면도는 아직 공개되지 않았으며(미정), 입주자모집공고에서 확인하실 수 있습니다.",
+  },
+  {
+    q: "시행사와 시공사는 어디인가요?",
+    a: "시행은 ㈜청라스마트시티, 시공은 대우건설입니다. 이 사이트는 홈페이지운영 휴메인코리아가 운영하는 분양 정보 안내 페이지이며 시행·시공사의 공식 홈페이지가 아닙니다.",
+  },
+  {
+    q: "분양가는 얼마인가요?",
+    a: "분양가는 아직 공개되지 않았습니다(미정). 사업주체는 이 단지를 '분양가 상한제 적용단지'로 표기하고 있으며, 실제 금액은 입주자모집공고에서 확정됩니다.",
+  },
+];
 
 export const Route = createFileRoute("/pages/overview")({
   component: OverviewPage,
   head: () => ({
     meta: [
-      { title: "사업개요 | 청라 아크원 푸르지오" },
-      { name: "description", content: "청라 아크원 푸르지오 사업개요. 사업 규모와 구성, 시행·시공 정보를 안내합니다." },
+      { title: "청라 아크원 푸르지오 분양 사업개요 | 아파트 868세대·오피스텔 987실" },
+      { name: "description", content: "청라 아크원 푸르지오 분양 사업개요. 인천 서해구 청라동 86-1번지 M5BL, 지하 5층~지상 49층 6개동, 아파트 868세대(84·103㎡)·오피스텔 987실 총 1,855가구, 시행 ㈜청라스마트시티·시공 대우건설." },
     ],
-    links: [{ rel: "canonical", href: "https://www.arkone-prugio.site/pages/overview" }],
+    links: canonicalLinks("/pages/overview"),
+    scripts: faqJsonLd(FAQ),
   }),
 });
 
@@ -18,11 +41,25 @@ function OverviewPage() {
     <SiteShell path="/pages/overview">
       <div className="page_content">
         <section className="page_container">
+          <GuideAnswer title="청라 아크원 푸르지오 분양 개요 한눈에 보기">
+            <p>
+              청라 아크원 푸르지오는 인천광역시 서해구 청라동 86-1번지(청라국제도시 주상복합용지 M5BL)에 계획된 주거복합
+              단지입니다.
+            </p>
+            <p>
+              지하 5층~지상 49층 6개동 규모로, 아파트 868세대(전용 84·103㎡)와 오피스텔 987실(전용 105·121·136㎡) 등 총
+              1,855가구와 지상 1~2층 상업시설로 구성됩니다.
+            </p>
+            <p>시행은 ㈜청라스마트시티, 시공은 대우건설이며, 현재는 입주자모집공고 전 단계입니다.</p>
+            <p>
+              APT 입주자모집공고는 2026년 10월 15일(목) 예정이며, 분양가와 청약 일정은 공고에서 확정됩니다(현재 미정).
+            </p>
+          </GuideAnswer>
           <div className="overview_tab__content">
             <figure className="overview_image">
               <picture>
                 <source media="(max-width: 1024px)" srcSet="/resources/img/sub/overview_apt_img_m.v4.jpg" />
-                <img src="/resources/img/sub/overview_apt_img.v4.jpg" alt="" />
+                <img src="/resources/img/sub/overview_apt_img.v4.jpg" alt="청라 아크원 푸르지오 단지 연출 이미지" />
               </picture>
               <span className="overview_image__caption">이미지컷</span>
               <figcaption className="overview_image__text">
@@ -129,6 +166,32 @@ function OverviewPage() {
               </div>
             </dl>
           </div>
+          <GuideDetail
+            tableTitle="청라 아크원 푸르지오 사업 정보 요약"
+            rows={[
+              { label: "단지명", value: "청라 아크원 푸르지오", status: "공개값" },
+              { label: "위치", value: "인천광역시 서해구 청라동 86-1번지 (청라국제도시 주상복합용지 M5BL)", status: "공개값" },
+              { label: "건축규모", value: "지하 5층 ~ 지상 49층, 총 6개동", status: "공개값" },
+              { label: "공급 구성", value: "총 1,855가구 = 아파트 868세대 + 오피스텔 987실, 상업시설 지상 1~2층", status: "공개값" },
+              { label: "아파트 전용면적", value: "84㎡, 103㎡ (타입별 세대수·평면도는 공고 시 공개)", status: "공개값 / 평면 미정" },
+              { label: "오피스텔 전용면적", value: "105㎡, 121㎡, 136㎡", status: "공개값" },
+              { label: "대지면적 · 건축면적", value: "35,306.00㎡ · 12,278.4410㎡", status: "공개값" },
+              { label: "주차대수", value: "총 3,124대 (APT 1,389대 · OT 1,695대 · 상업시설 40대)", status: "공개값" },
+              { label: "시행 · 시공", value: "㈜청라스마트시티 · 대우건설", status: "공개값" },
+              { label: "분양가", value: "미공개 (사업주체 표기: 분양가 상한제 적용단지)", status: "미정" },
+              { label: "APT 입주자모집공고", value: "2026년 10월 15일(목)", status: "예정" },
+              { label: "입주 시기", value: "입주자모집공고에서 확인", status: "미정" },
+            ]}
+            faq={FAQ}
+            links={[
+              { to: "/pages/compare", label: "아파트·오피스텔 비교" },
+              { to: "/pages/schedule", label: "분양 일정·청약 안내" },
+              { to: "/pages/location", label: "입지환경" },
+              { to: "/pages/contact", label: "견본주택·홍보관 오시는길" },
+              { to: "/register", label: "사전고객등록" },
+            ]}
+            sources={[SRC_OFFICIAL, SRC_OFFICIAL_PREMIUM, SRC_APPLYHOME]}
+          />
           <SubNotice
             items={[
               "본 홈페이지에 사용된 CG 및 일러스트, 이미지 등은 소비자의 이해를 돕기 위한 것으로 실제와 다를 수 있습니다.",

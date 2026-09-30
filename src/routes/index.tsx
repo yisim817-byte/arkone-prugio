@@ -3,43 +3,52 @@ import { useEffect, useId, useState } from "react";
 import { SiteShell } from "@/components/site-shell";
 import { YoutubeModal } from "@/components/youtube-modal";
 import { SITE_NAME, SITE_PHONE, SITE_TEL_HREF, YOUTUBE_ID } from "@/lib/site-data";
+import { canonicalLinks, isKrHost, KR_ORIGIN, LEGACY_ORIGIN } from "@/lib/seo-host";
 
 export const Route = createFileRoute("/")({
   component: Home,
   head: () => ({
     meta: [
       { title: SITE_NAME },
-      { name: "description", content: "청라 아크원 푸르지오 분양 정보 안내 | 홈페이지운영 휴메인코리아" },
+      {
+        name: "description",
+        content:
+          "청라 아크원 푸르지오 분양 정보 안내. 인천 서해구 청라동 M5BL 아파트 868세대·오피스텔 987실, APT 입주자모집공고 2026.10.15(목) 예정 | 홈페이지운영 휴메인코리아",
+      },
     ],
-    links: [{ rel: "canonical", href: "https://www.arkone-prugio.site/" }],
+    links: canonicalLinks("/"),
     scripts: [
       {
         type: "application/ld+json",
-        children: JSON.stringify({
-          "@context": "https://schema.org",
-          "@graph": [
-            {
-              "@type": "WebSite",
-              "@id": "https://www.arkone-prugio.site/#website",
-              url: "https://www.arkone-prugio.site/",
-              name: SITE_NAME,
-              inLanguage: "ko-KR",
-              publisher: { "@id": "https://www.humanekorea.co.kr/#org" },
-            },
-            {
-              "@type": "WebPage",
-              "@id": "https://www.arkone-prugio.site/#webpage",
-              url: "https://www.arkone-prugio.site/",
-              name: SITE_NAME,
-              inLanguage: "ko-KR",
-              isPartOf: { "@id": "https://www.arkone-prugio.site/#website" },
-            },
-          ],
-        }),
+        children: homeJsonLd(isKrHost() ? KR_ORIGIN : LEGACY_ORIGIN),
       },
     ],
   }),
 });
+
+function homeJsonLd(origin: string) {
+  return JSON.stringify({
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": `${origin}/#website`,
+        url: `${origin}/`,
+        name: SITE_NAME,
+        inLanguage: "ko-KR",
+        publisher: { "@id": "https://www.humanekorea.co.kr/#org" },
+      },
+      {
+        "@type": "WebPage",
+        "@id": `${origin}/#webpage`,
+        url: `${origin}/`,
+        name: SITE_NAME,
+        inLanguage: "ko-KR",
+        isPartOf: { "@id": `${origin}/#website` },
+      },
+    ],
+  });
+}
 
 const SECTIONS = ["hero", "overview", "location", "history", "premium", "brand", "contact"] as const;
 
