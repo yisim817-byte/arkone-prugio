@@ -225,7 +225,7 @@ export function RegisterForm() {
         </fieldset>
         <div className={`reg__field${errors.name ? " is-err" : ""}`}>
           <label htmlFor="f-name">성명 *</label>
-          <input id="f-name" name="name" value={name} maxLength={20} autoComplete="name" disabled={step === 2} onChange={(e) => setName(e.target.value)} />
+          <input id="f-name" name="name" type="text" placeholder="이름을 입력해 주세요" value={name} maxLength={20} autoComplete="name" disabled={step === 2} onChange={(e) => setName(e.target.value)} />
           <p className="reg__msg">{errors.name}</p>
         </div>
         <div className={`reg__field${errors.phone ? " is-err" : ""}`}>
