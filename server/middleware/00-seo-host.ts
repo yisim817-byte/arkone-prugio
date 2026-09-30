@@ -69,8 +69,13 @@ const TEXT_HEADERS = {
   vary: "Host, X-Forwarded-Host",
 };
 
-function injectOgUrl(response: Response, ogUrl: string): Response {
-  const tag = new TextEncoder().encode(`<meta property="og:url" content="${ogUrl}">`);
+// Naver Search Advisor + Bing Webmaster ownership tags — Korean www host home page only.
+const NAVER_VERIFICATION_TAG =
+  '<meta name="naver-site-verification" content="de62f79902ef13d12123bd871fb74794666efd56" />' +
+  '<meta name="msvalidate.01" content="1CA8C4AC579A0BA4C40BC37CD046AC48" />';
+
+function injectOgUrl(response: Response, ogUrl: string, extra = ""): Response {
+  const tag = new TextEncoder().encode(`<meta property="og:url" content="${ogUrl}">${extra}`);
   const marker = "</head>";
   let done = false;
   let carry = "";
@@ -134,7 +139,7 @@ export default async function seoHostMiddleware(
     String(result.headers.get("content-type") ?? "").includes("text/html") &&
     !result.headers.get("content-encoding")
   ) {
-    return injectOgUrl(result, `${KR_ORIGIN}${path}`);
+    return injectOgUrl(result, `${KR_ORIGIN}${path}`, path === "/" ? NAVER_VERIFICATION_TAG : "");
   }
   return result;
 }
