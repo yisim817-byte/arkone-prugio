@@ -23,7 +23,6 @@ function ChangeInfoPage() {
       <div className="page_content">
         <section className="page_container">
           <GuideAnswer title="청약 전 확인할 청약제도 변경 사항">
-            <p>이 페이지는 청약 전에 확인할 청약제도 변경 사항을 한 장의 안내 이미지로 정리한 것입니다. 이미지를 누르거나 '크게보기'로 확대해 보실 수 있습니다.</p>
             <p>청라 아크원 푸르지오에 적용되는 공급 유형, 자격 요건, 청약 일정은 입주자모집공고에서 확정되며 현재는 미정입니다. APT 입주자모집공고는 2026년 10월 15일(목) 예정입니다.</p>
           </GuideAnswer>
           <figure>

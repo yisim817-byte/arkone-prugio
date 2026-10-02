@@ -23,7 +23,6 @@ function DocSpecialPage() {
       <div className="page_content">
         <section className="page_container">
           <GuideAnswer title="특별공급 안내 요약">
-            <p>이 페이지는 특별공급 관련 안내를 이미지로 정리한 것입니다. 이미지를 확대해 세부 내용을 확인하실 수 있습니다.</p>
             <p>청라 아크원 푸르지오의 특별공급 유형별 공급 물량과 일정은 입주자모집공고에서 확정되며 현재는 미정입니다. 신청 전 청약홈에 게시되는 공고문을 기준으로 확인하시기 바랍니다.</p>
           </GuideAnswer>
           <figure>
