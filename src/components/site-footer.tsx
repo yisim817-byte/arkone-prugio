@@ -1,5 +1,6 @@
 import { SITE_PHONE, SITE_TEL_HREF } from "@/lib/site-data";
 import { isKrHost } from "@/lib/seo-host";
+import { FACT_DATE } from "@/lib/arkone-facts";
 
 type Props = { onPrivacy: () => void };
 
@@ -32,6 +33,9 @@ export function SiteFooter({ onPrivacy }: Props) {
                 <br />
                 상호 : 휴메인코리아 | 대표자 : 이종석 | 사업자등록번호 : 320-60-00456
                 <br className="m-only" /> 주소 : 인천시 연수구 송도과학로 56 206호
+                <br />
+                HUMANE KOREA 현장전략본부 · 정보 기준일 {FACT_DATE.replace(/-/g, ".")} · 시행사·시공사
+                공식 홈페이지 아님
               </>
             )}
           </p>
