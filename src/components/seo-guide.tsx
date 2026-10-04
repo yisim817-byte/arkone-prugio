@@ -17,7 +17,7 @@ export function GuideAnswer({ title, children }: { title: string; children: Reac
 }
 
 export const STATUS_LEGEND =
-  "상태 표기: 공개값 = 사업주체가 공개한 계획 수치(인·허가 과정에서 변경될 수 있음) · 확정 = 완료·공표된 사항 · 예정 = 일정이 안내되었으나 변경될 수 있음 · 미정 = 아직 공개되지 않음";
+  "상태 표기: 공개값 = 사업주체가 공개한 계획 수치(인·허가 과정에서 변경될 수 있음) · 확정 = 완료·공표된 사항 · 예정 = 일정이 안내되었으나 변경될 수 있음 · 미정 = 아직 공개되지 않음 · 분양 자료 기준 = 분양 상담 자료 기준 수치(입주자모집공고에서 변경될 수 있음)";
 
 /** 사실 표 + 고객 Q&A + 관련 링크 + 출처·기준일. */
 export function GuideDetail({
