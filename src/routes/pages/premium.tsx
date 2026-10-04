@@ -121,8 +121,8 @@ function PremiumPage() {
                 </p>
               </div>
               <div className="premium_feature__images premium_feature__images-pair">
-                <Pic src="/resources/img/sub/premium_05_img_1.v4.jpg" m="/resources/img/sub/premium_05_img_1_m.v4.jpg" alt="" />
-                <Pic src="/resources/img/sub/premium_05_img_2.v4.jpg" m="/resources/img/sub/premium_05_img_2_m.v4.jpg" alt="" />
+                <Pic src="/resources/img/sub/premium_05_img_1.v4.jpg" m="/resources/img/sub/premium_05_img_1_m.v4.jpg" alt="멀티 발코니 공간 활용 이미지컷(CG)" />
+                <Pic src="/resources/img/sub/premium_05_img_2.v4.jpg" m="/resources/img/sub/premium_05_img_2_m.v4.jpg" alt="팬트리 수납 공간 이미지컷(CG)" />
               </div>
             </article>
           </div>
