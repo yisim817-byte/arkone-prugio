@@ -241,13 +241,15 @@ function Home() {
               <p className="section-overview__copy_text">
                 청라 약 10년 만의
                 <br />500가구 이상 아파트 공급
+                <br />
+                <small>2017.7 한신더휴 이후 · 부동산R114 집계(아시아경제 2026.09.02 보도 기준)</small>
               </p>
               <h2 className="section-overview__copy_title">청라 아크원 푸르지오 사업 규모</h2>
               <p className="section-overview__copy_brand">ARK-ONE</p>
             </header>
             <article className="overview-panel">
               <h3>
-                총 2,911가구<small>(B1 & M5 블록)</small>
+                총 2,911세대·실<small>(B1 & M5 블록)</small>
                 <br />
                 청라 피크원 푸르지오와 함께하는
                 <br />
@@ -258,7 +260,7 @@ function Home() {
                 <br />
                 M5 블록에 아파트 868세대·오피스텔 987실을 공급합니다.
                 <br />
-                두 블록 합계 2,911가구 규모입니다.
+                두 블록 합계 2,911세대·실 규모입니다.
               </p>
               <dl className="overview-metrics">
                 <div>
@@ -282,9 +284,9 @@ function Home() {
                   </dd>
                 </div>
                 <div>
-                  <dt>세대수</dt>
+                  <dt>공급 규모</dt>
                   <dd>
-                    1,855<span>세대</span>
+                    1,855<span>세대·실</span>
                   </dd>
                 </div>
               </dl>

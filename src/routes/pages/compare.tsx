@@ -3,7 +3,7 @@ import { SiteShell } from "@/components/site-shell";
 import { SubNotice } from "@/components/notice";
 import { canonicalLinks, faqJsonLd } from "@/lib/seo-host";
 import { GuideAnswer, GuideDetail, type GuideFaq } from "@/components/seo-guide";
-import { SRC_APPLYHOME, SRC_OFFICIAL, SRC_OFFICIAL_PREMIUM, SRC_SCHEDULE } from "@/lib/arkone-facts";
+import { SRC_APPLYHOME, SRC_OFFICIAL, SRC_OFFICIAL_PREMIUM } from "@/lib/arkone-facts";
 
 const FAQ: GuideFaq[] = [
   {
@@ -55,7 +55,7 @@ function ComparePage() {
             tableTitle="아파트(APT)와 오피스텔(OT) 비교"
             columns={["구분", "아파트(APT) · 오피스텔(OT)", "상태"]}
             rows={[
-              { label: "공급 규모", value: "APT 868세대 · OT 987실 (총 1,855가구)", status: "공개값" },
+              { label: "공급 규모", value: "APT 868세대 · OT 987실 (총 1,855세대·실)", status: "공개값" },
               { label: "전용면적", value: "APT 84㎡, 103㎡ · OT 105㎡, 121㎡, 136㎡", status: "공개값" },
               { label: "연면적", value: "APT 173,952.7508㎡ · OT 245,645.4826㎡", status: "공개값" },
               { label: "주차대수", value: "APT 1,389대 · OT 1,695대 (총 3,124대 중, 상업시설 40대 별도)", status: "공개값" },
@@ -73,7 +73,7 @@ function ComparePage() {
               { to: "/pages/contact", label: "견본주택·홍보관 오시는길" },
               { to: "/register", label: "사전고객등록" },
             ]}
-            sources={[SRC_OFFICIAL, SRC_OFFICIAL_PREMIUM, SRC_SCHEDULE, SRC_APPLYHOME]}
+            sources={[SRC_OFFICIAL, SRC_OFFICIAL_PREMIUM, SRC_APPLYHOME]}
           />
           <SubNotice
             items={[

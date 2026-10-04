@@ -49,10 +49,10 @@ function PremiumPage() {
               <div className="premium_feature__content">
                 <span className="premium_feature__number">PREMIUM 01</span>
                 <h3>
-                  총 2,911가구 <br className="m-only" /> 푸르지오 브랜드타운
+                  총 2,911세대·실 <br className="m-only" /> 푸르지오 브랜드타운
                 </h3>
                 <p>
-                  최고 49층 총 2,911가구<small>(청라 피크원 푸르지오 포함)</small>로 <br /> 청라국제업무단지 푸르지오
+                  최고 49층 총 2,911세대·실<small>(청라 피크원 푸르지오 포함)</small>로 <br /> 청라국제업무단지 푸르지오
                   대규모 브랜드타운
                 </p>
               </div>

@@ -3,7 +3,7 @@ import { SiteShell } from "@/components/site-shell";
 import { SubNotice } from "@/components/notice";
 import { canonicalLinks, faqJsonLd } from "@/lib/seo-host";
 import { GuideAnswer, GuideDetail, type GuideFaq } from "@/components/seo-guide";
-import { SRC_APPLYHOME, SRC_OFFICIAL, SRC_SCHEDULE } from "@/lib/arkone-facts";
+import { SRC_APPLYHOME, SRC_OFFICIAL } from "@/lib/arkone-facts";
 
 const FAQ: GuideFaq[] = [
   {
@@ -81,7 +81,7 @@ function SchedulePage() {
               { to: "/pages/contact", label: "견본주택·홍보관 오시는길" },
               { to: "/pages/overview", label: "분양 사업개요" },
             ]}
-            sources={[SRC_SCHEDULE, SRC_OFFICIAL, SRC_APPLYHOME]}
+            sources={[SRC_OFFICIAL, SRC_APPLYHOME]}
           >
             <h3 className="seo-guide__subtitle">청약 준비 체크리스트</h3>
             <ul className="seo-guide__answer">
