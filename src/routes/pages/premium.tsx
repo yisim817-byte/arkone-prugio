@@ -97,7 +97,7 @@ function PremiumPage() {
               <div className="premium_feature__content">
                 <span className="premium_feature__number">PREMIUM 04</span>
                 <h3>
-                  높은 희소가치와 <br className="m-only" /> 합리적 분양가
+                  분양가 상한제 <br className="m-only" /> 적용 아파트
                 </h3>
                 <p>
                   청라가 기다려온 신규공급 <br /> 2017년 이후 10년만의 분양가 상한제 공급 아파트 <br />{" "}
