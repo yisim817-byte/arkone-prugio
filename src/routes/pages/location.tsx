@@ -47,8 +47,8 @@ function LocationPage() {
             <p>주변에는 스타필드 청라(2028년 개장 예정), 서울아산청라병원(2029년 예정) 등 개발 계획이 있고 하나드림타운(그룹헤드쿼터 2026.5.21 준공)이 들어서 있으며, 각 일정은 관계 기관 사정에 따라 변경될 수 있습니다.</p>
           </GuideAnswer>
           <header className="location_intro">
-            <p>청라의 기다림이 완성되는 곳,</p>
-            <h3>푸르지오의 품격을 더하다</h3>
+            <p>청라국제업무단지 M5블록</p>
+            <h3>청라 아크원 푸르지오 입지환경</h3>
           </header>
           <div className="location_map">
             <figure className="location_map__image">

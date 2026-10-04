@@ -100,8 +100,8 @@ function Home() {
             <source src="/resources/img/pages/main/intro_video.mp4" type="video/mp4" />
           </video>
           <div className="intro__copy">
-            <p className="intro__phrase">청라의 정점을 빛내는</p>
-            <p className="intro__title">푸르지오의 완성</p>
+            <p className="intro__phrase">청라국제업무단지 M5블록</p>
+            <p className="intro__title">아파트 868세대 · 오피스텔 987실</p>
             <p className="intro__kicker">청라 아크원 푸르지오</p>
             <p className="intro__brand">CHEONG NA ARK-ONE PRUGIO</p>
           </div>
@@ -226,9 +226,9 @@ function Home() {
               <b>ONE</b>
             </strong>
             <p className="hero-define__text">
-              청라의 절대적 기준이 될
+              단지명 ARK-ONE은
               <br />
-              단 하나의 주거명작을 상징
+              ABSOLUTE REMARKABLE ONE의 약칭
             </p>
           </div>
         </section>
@@ -239,26 +239,26 @@ function Home() {
           <div className="section-overview__inner">
             <header>
               <p className="section-overview__copy_text">
-                청라 10년의 기다림,
-                <br />그 모든 프리미엄을 담은
+                청라 약 10년 만의
+                <br />500가구 이상 아파트 공급
               </p>
-              <h2 className="section-overview__copy_title">단 하나의 절대적 명작</h2>
+              <h2 className="section-overview__copy_title">청라 아크원 푸르지오 사업 규모</h2>
               <p className="section-overview__copy_brand">ARK-ONE</p>
             </header>
             <article className="overview-panel">
               <h3>
                 총 2,911가구<small>(B1 & M5 블록)</small>
                 <br />
-                청라를 대표하는
+                청라 피크원 푸르지오와 함께하는
                 <br />
                 푸르지오 대규모 브랜드타운
               </h3>
               <p>
-                국제업무단지 B1 블록의 눈부신 성공에 이어
+                국제업무단지 B1 블록 청라 피크원 푸르지오(1,056실)에 이어
                 <br />
-                M5 블록으로 더 커지는 푸르지오 브랜드타운!
+                M5 블록에 아파트 868세대·오피스텔 987실을 공급합니다.
                 <br />
-                청라를 드높일 위대한 가치를 세웁니다
+                두 블록 합계 2,911가구 규모입니다.
               </p>
               <dl className="overview-metrics">
                 <div>
@@ -301,9 +301,9 @@ function Home() {
           <div className="section-location__info">
             <p className="section-location__eyebrow">CENTRAL LOCATION</p>
             <p className="section-location__desc">
-              모두가 기다려온 프리미엄의 완성,
+              청라국제업무단지 M5블록,
               <br />
-              청라의 중심은 푸르지오.
+              인천 서해구 청라동 86-1번지 일원
             </p>
             <Link to="/pages/location" className="section-location__link">
               <span>view more</span>
@@ -323,9 +323,9 @@ function Home() {
           <div className="section-history__head">
             <p>MASTERPLAN PROGRESS — ARKONE</p>
             <h2>
-              푸르지오가 완성하는
+              청라 아크원 푸르지오
               <br />
-              청라의 클라이맥스
+              주변 개발 일정
             </h2>
           </div>
           <div className="history-track">
@@ -374,18 +374,18 @@ function Home() {
             </div>
             <div className="section-premium__copy">
               <h3>
-                완벽한
+                인테리어
                 <br />
-                라이프스타일
+                이미지컷
               </h3>
               <p>
-                공간의 특별함
+                거실 · 주방 · 침실
                 <br />
-                자부심의 가치
+                발코니 연출 이미지
                 <br />
-                정상을 넘어,
+                실제 설계와
                 <br />
-                새로운 라이프스타일의 기준
+                다를 수 있습니다(CG)
               </p>
               <Link to="/pages/premium" className="section-location__link">
                 view more ›

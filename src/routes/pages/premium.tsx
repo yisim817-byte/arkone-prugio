@@ -40,8 +40,8 @@ function PremiumPage() {
       <div className="page_content">
         <section className="page_container">
           <header className="premium_intro">
-            <p>공간의 특별함도 자부심의 높이도</p>
-            <h3>정점을 넘어 완성된 라이프로</h3>
+            <p>청라 아크원 푸르지오 상품 안내</p>
+            <h3>주요 상품 특징</h3>
             <strong>청라 아크원 푸르지오</strong>
           </header>
           <div className="premium_features">
@@ -52,7 +52,7 @@ function PremiumPage() {
                   총 2,911가구 <br className="m-only" /> 푸르지오 브랜드타운
                 </h3>
                 <p>
-                  최고 49층 총 2,911가구<small>(청라 피크원 푸르지오 포함)</small>로 <br /> 청라를 대표하는 푸르지오
+                  최고 49층 총 2,911가구<small>(청라 피크원 푸르지오 포함)</small>로 <br /> 청라국제업무단지 푸르지오
                   대규모 브랜드타운
                 </p>
               </div>

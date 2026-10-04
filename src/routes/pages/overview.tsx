@@ -64,13 +64,13 @@ function OverviewPage() {
               <span className="overview_image__caption">이미지컷</span>
               <figcaption className="overview_image__text">
                 <p>
-                  압도적인 스케일
+                  아파트 868세대
                   <br />
-                  독보적인 프리미엄
+                  오피스텔 987실
                 </p>
                 <span className="overview_summary__line" />
                 <h3>
-                  청라에 다시없을 <br /> 완벽한 주거중심
+                  청라국제업무단지 <br /> M5블록 주상복합
                 </h3>
               </figcaption>
             </figure>
@@ -180,7 +180,7 @@ function OverviewPage() {
               { label: "시행 · 시공", value: "㈜청라스마트시티 · 대우건설", status: "공개값" },
               { label: "분양가", value: "미공개 (사업주체 표기: 분양가 상한제 적용단지)", status: "미정" },
               { label: "APT 입주자모집공고", value: "2026년 10월 15일(목)", status: "예정" },
-              { label: "입주 시기", value: "입주자모집공고에서 확인", status: "미정" },
+              { label: "입주 시기", value: "2031년 입주 예정", status: "예정" },
             ]}
             faq={FAQ}
             links={[

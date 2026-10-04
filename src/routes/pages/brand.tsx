@@ -61,22 +61,22 @@ function BrandPage() {
               <h3>
                 총 2,911가구<small>(B1 & M5 블록)</small>
                 <br />
-                청라를 대표하는 푸르지오
+                청라국제업무단지 푸르지오
                 <br />
                 대규모 브랜드타운
               </h3>
               <p>
                 국제업무단지 B1 블록의
                 <br />
-                눈부신 성공에 이어
+                청라 피크원 푸르지오에 이어
                 <br />
-                M5 블록으로 더 커지는
+                M5 블록으로 이어지는
                 <br />
-                푸르지오 브랜드타운!
+                푸르지오 브랜드타운
                 <br />
-                청라를 드높일
+                두 블록 합계
                 <br className="pc-only" />
-                위대한 가치를 세웁니다
+                2,911가구 규모입니다
               </p>
             </div>
             <picture className="brand_image__slogan">
@@ -88,7 +88,7 @@ function BrandPage() {
             <header className="brand_history__intro">
               <p className="brand_history__eyebrow">MASTERPLAN PROGRESS</p>
               <h3>
-                푸르지오가 완성하는<strong>청라의 클라이맥스</strong>
+                청라 주변<strong>개발 일정</strong>
               </h3>
             </header>
             <div className="brand_history__timeline">

@@ -63,7 +63,7 @@ function ComparePage() {
               { label: "타입별 세대수·평면도", value: "APT·OT 모두 미공개", status: "미정" },
               { label: "분양가", value: "APT·OT 모두 미공개 (사업주체 표기: 분양가 상한제 적용단지)", status: "미정" },
               { label: "공고 일정", value: "APT 입주자모집공고 2026년 10월 15일(목) · OT 공고 일정 미안내", status: "APT 예정 / OT 미정" },
-              { label: "입주 시기", value: "공고에서 확인", status: "미정" },
+              { label: "입주 시기", value: "2031년 입주 예정", status: "예정" },
             ]}
             faq={FAQ}
             links={[
