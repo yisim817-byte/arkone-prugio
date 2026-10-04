@@ -59,7 +59,7 @@ function BrandPage() {
             </figure>
             <div className="brand_image__txt_wrap">
               <h3>
-                총 2,911가구<small>(B1 & M5 블록)</small>
+                총 2,911세대·실<small>(B1 & M5 블록)</small>
                 <br />
                 청라국제업무단지 푸르지오
                 <br />
@@ -76,7 +76,7 @@ function BrandPage() {
                 <br />
                 두 블록 합계
                 <br className="pc-only" />
-                2,911가구 규모입니다
+                2,911세대·실 규모입니다
               </p>
             </div>
             <picture className="brand_image__slogan">

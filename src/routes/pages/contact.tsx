@@ -3,7 +3,7 @@ import { SiteShell } from "@/components/site-shell";
 import { SubNotice } from "@/components/notice";
 import { canonicalLinks, faqJsonLd } from "@/lib/seo-host";
 import { GuideAnswer, GuideDetail, type GuideFaq } from "@/components/seo-guide";
-import { SRC_OFFICIAL_CONTACT, SRC_SCHEDULE } from "@/lib/arkone-facts";
+import { SRC_OFFICIAL_CONTACT } from "@/lib/arkone-facts";
 
 const FAQ: GuideFaq[] = [
   {
@@ -116,7 +116,7 @@ function ContactPage() {
               { to: "/pages/location", label: "입지환경" },
               { to: "/register", label: "사전고객등록" },
             ]}
-            sources={[SRC_OFFICIAL_CONTACT, SRC_SCHEDULE]}
+            sources={[SRC_OFFICIAL_CONTACT]}
           />
           <SubNotice
             items={[

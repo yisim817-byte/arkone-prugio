@@ -3,7 +3,7 @@ import { SiteShell } from "@/components/site-shell";
 import { ZoomButton } from "@/components/notice";
 import { canonicalLinks } from "@/lib/seo-host";
 import { GuideAnswer, GuideDetail } from "@/components/seo-guide";
-import { SRC_APPLYHOME, SRC_SCHEDULE } from "@/lib/arkone-facts";
+import { SRC_APPLYHOME } from "@/lib/arkone-facts";
 
 export const Route = createFileRoute("/pages/docnormal")({
   component: DocNormalPage,
@@ -37,7 +37,7 @@ function DocNormalPage() {
               { to: "/pages/docnormal", label: "일반공급 안내" },
               { to: "/pages/overview", label: "분양 사업개요" },
             ].filter((l) => l.to !== "/pages/docnormal")}
-            sources={[SRC_APPLYHOME, SRC_SCHEDULE]}
+            sources={[SRC_APPLYHOME]}
           />
         </section>
       </div>
