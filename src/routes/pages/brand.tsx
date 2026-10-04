@@ -17,7 +17,7 @@ export const Route = createFileRoute("/pages/brand")({
 const HISTORY = [
   {
     year: "2026",
-    items: ["청라하늘대교 (개통)", "하나드림타운 (예정)"],
+    items: ["청라하늘대교 (개통)", "하나드림타운 (그룹헤드쿼터 준공)"],
     img: "/resources/img/sub/brand_history_img_1.png",
   },
   {
@@ -101,7 +101,7 @@ function BrandPage() {
                     ))}
                   </ul>
                   <figure className="brand_history__thumb">
-                    <img src={item.img} alt="" />
+                    <img src={item.img} alt={`${item.year} ${item.items.join(", ")} 이미지`} />
                   </figure>
                   {item.badge ? (
                     <p className={`brand_history__badge${item.primary ? " brand_history__badge-primary" : ""}`}>

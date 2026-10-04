@@ -27,16 +27,18 @@ export function SiteHeader({ home = false }: { home?: boolean }) {
   }, []);
 
   const inverted = home && atTop && !menuOpen;
+  // 홈은 히어로 제목이 주 H1이므로 로고는 H2로 내린다(H1 중복 방지). 하위 페이지는 기존대로 H1.
+  const LogoTag = pathname === "/" ? "h2" : "h1";
 
   return (
     <>
       <header className={`header${inverted ? " is-inverted" : ""}${menuOpen ? " is-menu-open" : ""}`}>
         <div className="header__container">
-          <h1 className="header__logo_wrap">
+          <LogoTag className="header__logo_wrap">
             <Link to="/" className="header__btn_home">
               <span className="header__btn_logo">{SITE_NAME}</span>
             </Link>
-          </h1>
+          </LogoTag>
           <nav className="gnb" aria-label="주요 메뉴">
             <ul className="gnb__depth1">
               {NAV.map((item) => (

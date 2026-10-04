@@ -128,7 +128,7 @@ function Home() {
           <div className="hero__media">
             <picture>
               <source media="(max-width: 1024px)" srcSet="/resources/img/pages/main/hero_bg_m.v4.jpg" />
-              <img src="/resources/img/pages/main/hero_bg.v4.jpg" alt="" />
+              <img src="/resources/img/pages/main/hero_bg.v4.jpg" alt="청라 아크원 푸르지오 단지 투시도(CG)" />
             </picture>
             <video className="pc-only" autoPlay muted loop playsInline>
               <source src="/resources/img/pages/main/hero_video.mp4" type="video/mp4" />
@@ -179,7 +179,7 @@ function Home() {
               </a>
               <Link to="/register" className="hero__quick_item" aria-label="사전고객등록">
                 <HeroOrbit />
-                <img className="hero__quick_content" src="/resources/img/pages/main/hero_circle_register.svg" alt="" />
+                <img className="hero__quick_content" src="/resources/img/pages/main/hero_circle_register.svg" alt="사전고객등록" />
               </Link>
             </div>
           </div>
@@ -212,7 +212,7 @@ function Home() {
         </section>
 
         <section className="hero-define">
-          <img className="hero-define__visual" src="/resources/img/pages/main/hero_brand_img.v4.png" alt="" />
+          <img className="hero-define__visual" src="/resources/img/pages/main/hero_brand_img.v4.png" alt="청라 아크원 푸르지오 엠블럼" />
           <div className="hero-define__copy">
             <img src="/resources/img/pages/main/ico_star.svg" alt="" width={28} height={28} />
             <p className="hero-define__title">아크원(ARK-ONE)이란?</p>
@@ -314,7 +314,7 @@ function Home() {
                 src="/resources/img/pages/main/location_map.v4.png"
                 alt="청라 국제도시 내 청라 아크원 푸르지오 위치"
               />
-              <img className="section-location__bubble" src="/resources/img/pages/main/location_bubble.v4.png" alt="" />
+              <img className="section-location__bubble" src="/resources/img/pages/main/location_bubble.v4.png" alt="청라 아크원 푸르지오 위치 표시" />
             </figure>
           </div>
         </section>
@@ -330,7 +330,7 @@ function Home() {
           </div>
           <div className="history-track">
             {[
-              { y: "2026", img: "history_img_2026.v4.jpg", cap: ["청라하늘대교 (개통)", "하나드림타운 (예정)"] },
+              { y: "2026", img: "history_img_2026.v4.jpg", cap: ["청라하늘대교 (개통)", "하나드림타운 (그룹헤드쿼터 준공)"] },
               { y: "2028", img: "history_img_2028.v4.jpg", cap: ["돔구장&스타필드 청라 (개장 예정)"] },
               { y: "2029", img: "history_img_2029.v4.jpg", cap: ["서울아산청라병원 (예정)"] },
               { y: "개통 시기 미정", img: "history_img_2030.v4.jpg", cap: ["7호선 국제업무단지역 (예정)"] },
@@ -349,7 +349,7 @@ function Home() {
                   )}
                 </time>
                 <figure>
-                  <img src={`/resources/img/pages/main/${ev.img}`} alt="" />
+                  <img src={`/resources/img/pages/main/${ev.img}`} alt={`${ev.y} ${ev.cap.join(", ")} 이미지`} />
                   <figcaption>
                     {ev.cap.map((c) => (
                       <span key={c}>
@@ -367,10 +367,10 @@ function Home() {
         <section id="premium" className="section-premium">
           <div className="section-premium__intro">
             <div className="premium-mosaic">
-              <img src="/resources/img/pages/main/premium_visual_img_01.v4.jpg" alt="" />
-              <img src="/resources/img/pages/main/premium_visual_img_02.v4.jpg" alt="" />
-              <img src="/resources/img/pages/main/premium_visual_img_03.v4.jpg" alt="" />
-              <img src="/resources/img/pages/main/premium_visual_img_04.v4.jpg" alt="" />
+              <img src="/resources/img/pages/main/premium_visual_img_01.v4.jpg" alt="거실 인테리어 이미지컷(CG)" />
+              <img src="/resources/img/pages/main/premium_visual_img_02.v4.jpg" alt="주방·다이닝 인테리어 이미지컷(CG)" />
+              <img src="/resources/img/pages/main/premium_visual_img_03.v4.jpg" alt="침실 인테리어 이미지컷(CG)" />
+              <img src="/resources/img/pages/main/premium_visual_img_04.v4.jpg" alt="거실·발코니 인테리어 이미지컷(CG)" />
             </div>
             <div className="section-premium__copy">
               <h3>

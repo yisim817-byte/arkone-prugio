@@ -24,7 +24,7 @@ function VideoPage() {
         <section className="page_container">
           <div className="video-grid">
             <button type="button" className="video-card" onClick={() => setOpen(true)}>
-              <img src={`https://img.youtube.com/vi/${YOUTUBE_ID}/hqdefault.jpg`} alt="" />
+              <img src={`https://img.youtube.com/vi/${YOUTUBE_ID}/hqdefault.jpg`} alt="청라 아크원 푸르지오 홍보영상 썸네일" />
               <p>청라 아크원 푸르지오 홍보영상</p>
             </button>
           </div>
