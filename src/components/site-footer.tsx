@@ -32,7 +32,7 @@ export function SiteFooter({ onPrivacy }: Props) {
               <>
                 <br />
                 상호 : 휴메인코리아 | 대표자 : 이종석 | 사업자등록번호 : 320-60-00456
-                <br className="m-only" /> 주소 : 인천시 연수구 송도과학로 56 206호
+                <br className="m-only" /> 현장 : 인천광역시 서해구 청라동 86-1번지 · 견본주택 : 인천광역시 서해구 청라동 87-1번지
                 <br />
                 HUMANE KOREA 현장전략본부 · 정보 기준일 {FACT_DATE.replace(/-/g, ".")} · 시행사·시공사
                 공식 홈페이지 아님
