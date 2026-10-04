@@ -32,7 +32,7 @@ export const Route = createFileRoute("/pages/compare")({
       {
         name: "description",
         content:
-          "청라 아크원 푸르지오 아파트 868세대(전용 84·103㎡)와 오피스텔 987실(전용 105·121·136㎡) 비교. 연면적·주차대수·공고 일정·평면도 공개 여부를 사업주체 공개자료 기준으로 정리했습니다.",
+          "청라 아크원 푸르지오 아파트 868세대(전용 84·103㎡)와 오피스텔 987실(전용 105·121·136㎡)의 면적·주차·공고 일정·평면도 공개 여부 비교.",
       },
     ],
     links: canonicalLinks("/pages/compare"),

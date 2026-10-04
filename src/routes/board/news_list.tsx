@@ -8,8 +8,8 @@ export const Route = createFileRoute("/board/news_list")({
   component: NewsListPage,
   head: () => ({
     meta: [
-      { title: "언론보도 | 청라 아크원 푸르지오" },
-      { name: "description", content: "청라 아크원 푸르지오 관련 언론보도 목록. 기사 원문은 각 언론사 기준입니다." },
+      { title: "청라 아크원 푸르지오 언론보도 | 분양 관련 기사" },
+      { name: "description", content: "청라 아크원 푸르지오 관련 언론보도 목록. 공급 일정·청라국제업무단지 개발 관련 기사를 언론사 원문 기준으로 정리했습니다." },
     ],
     links: canonicalLinks("/board/news_list"),
   }),

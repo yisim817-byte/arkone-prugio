@@ -40,7 +40,7 @@ export const Route = createFileRoute("/pages/schedule")({
       {
         name: "description",
         content:
-          "청라 아크원 푸르지오 분양 일정: APT 입주자모집공고 2026.10.15(목) 예정, GRAND OPEN 2026.10.23(금) 예정. 청약 일정·분양가는 공고 전 미정, 2031년 입주 예정. 청약 준비사항과 사전고객등록 안내.",
+          "청라 아크원 푸르지오 분양 일정: APT 입주자모집공고 2026.10.15(목) 예정, GRAND OPEN 2026.10.23(금) 예정. 분양가는 공고 전 미정, 2031년 입주 예정.",
       },
     ],
     links: canonicalLinks("/pages/schedule"),

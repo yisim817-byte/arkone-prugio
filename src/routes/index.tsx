@@ -9,11 +9,11 @@ export const Route = createFileRoute("/")({
   component: Home,
   head: () => ({
     meta: [
-      { title: SITE_NAME },
+      { title: "청라 아크원 푸르지오 | 분양 일정·비교·청약 안내" },
       {
         name: "description",
         content:
-          "청라 아크원 푸르지오 분양 정보 안내. 인천 서해구 청라동 M5BL 아파트 868세대·오피스텔 987실, APT 입주자모집공고 2026.10.15(목) 예정 | 홈페이지운영 휴메인코리아",
+          "청라 아크원 푸르지오 분양 일정·청약 안내. APT 입주자모집공고 2026.10.15(목) 예정, GRAND OPEN 2026.10.23(금) 예정, 아파트 868세대·오피스텔 987실.",
       },
     ],
     links: canonicalLinks("/"),
