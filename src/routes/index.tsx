@@ -295,7 +295,7 @@ function Home() {
         <section id="location" className="section-location">
           <div className="section-location__visual">
             <p className="section-location__tag">ABSOLUTE REMARKABLE</p>
-            <img src="/resources/img/pages/main/location_img.v4.png" alt="" />
+            <img src="/resources/img/pages/main/location_img.v4.png" alt="검은 배경에 크기가 다른 흑백 구체들이 세로로 배열된 추상 그래픽" />
             <h2 className="section-location__title">ARK-ONE</h2>
           </div>
           <div className="section-location__info">
