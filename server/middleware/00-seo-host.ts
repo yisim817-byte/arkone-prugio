@@ -49,6 +49,11 @@ const KR_ROBOTS = [
   "Disallow: /api/",
   "Disallow: /auth/",
   "",
+  "User-agent: Yeti",
+  "Allow: /",
+  "Disallow: /api/",
+  "Disallow: /auth/",
+  "",
   "User-agent: Bytespider",
   "Disallow: /",
   "",
@@ -111,6 +116,33 @@ function krPageJsonLd(path: string): string {
   }
   const json = JSON.stringify({ "@context": "https://schema.org", "@graph": graph }).replace(/</g, "\\u003c");
   return `<script type="application/ld+json">${json}</script>`;
+}
+
+/** RSS 2.0 items: path, title, description, pubDate = git last-modified of the route file. */
+const RSS_ITEMS: ReadonlyArray<readonly [string, string, string, string]> = [
+  ["/", "청라 아크원 푸르지오 | 분양 일정·비교·청약 안내", "APT 입주자모집공고 2026.10.15(목) 예정, GRAND OPEN 2026.10.23(금) 예정, 아파트 868세대·오피스텔 987실.", "Sun, 04 Oct 2026 11:07:31 +0900"],
+  ["/pages/schedule", "청라 아크원 푸르지오 분양 일정·청약·분양가 안내 | 사전고객등록", "APT 입주자모집공고 2026.10.15(목) 예정, GRAND OPEN 2026.10.23(금) 예정. 분양가는 공고 전 미정, 2031년 입주 예정.", "Sun, 04 Oct 2026 11:07:31 +0900"],
+  ["/pages/compare", "청라 아크원 푸르지오 아파트·오피스텔 비교 | 전용면적·평면도 안내", "아파트 868세대와 오피스텔 987실의 면적·주차·공고 일정·평면도 공개 여부 비교.", "Sun, 04 Oct 2026 11:07:31 +0900"],
+  ["/pages/overview", "청라 아크원 푸르지오 사업개요 | 868세대·987실", "청라동 86-1번지 M5BL, 지하 5층~지상 49층 6개동, 시행 ㈜청라스마트시티·시공 대우건설.", "Sun, 04 Oct 2026 11:07:31 +0900"],
+  ["/pages/changeinfo", "청라 아크원 푸르지오 청약제도 변경사항 | 청약안내", "청약 전 확인할 청약제도 변경 내용.", "Sun, 04 Oct 2026 11:07:31 +0900"],
+  ["/pages/docspecial", "청라 아크원 푸르지오 특별공급 안내 | 청약 자격", "특별공급 유형별 물량·자격·일정은 입주자모집공고에서 확정됩니다.", "Sun, 04 Oct 2026 11:07:31 +0900"],
+  ["/pages/docnormal", "청라 아크원 푸르지오 일반공급 안내 | 순위·접수", "일반공급 물량·순위별 접수일·당첨자 발표일은 입주자모집공고에서 확정됩니다.", "Sun, 04 Oct 2026 11:07:31 +0900"],
+  ["/pages/contact", "청라 아크원 푸르지오 모델하우스·홍보관 위치 | 오시는길", "견본주택(청라동 87-1번지) GRAND OPEN 2026.10.23(금) 예정.", "Sun, 04 Oct 2026 11:07:31 +0900"],
+  ["/pages/location", "청라 아크원 푸르지오 입지 | 국제업무단지 M5BL", "청라동 86-1번지 국제업무단지 M5BL 교통·생활 환경과 근거 자료.", "Sun, 04 Oct 2026 10:51:35 +0900"],
+  ["/pages/video", "청라 아크원 푸르지오 홍보영상 | 사업 소개", "사업주체가 공개한 단지 소개 영상.", "Sun, 04 Oct 2026 10:11:10 +0900"],
+  ["/board/news_list", "청라 아크원 푸르지오 언론보도 | 분양 관련 기사", "청라 아크원 푸르지오 관련 언론보도 목록.", "Wed, 30 Sep 2026 17:04:45 +0900"],
+];
+
+function xmlEsc(v: string): string {
+  return v.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+}
+
+function rssFeed(): string {
+  const items = RSS_ITEMS.map(
+    ([path, title, desc, date]) =>
+      `<item><title>${xmlEsc(title)}</title><link>${KR_ORIGIN}${path}</link><guid isPermaLink="true">${KR_ORIGIN}${path}</guid><description>${xmlEsc(desc)}</description><pubDate>${date}</pubDate></item>`,
+  ).join("\n");
+  return `<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">\n<channel>\n<title>청라 아크원 푸르지오 분양 일정·청약 안내</title>\n<link>${KR_ORIGIN}/</link>\n<atom:link href="${KR_ORIGIN}/rss.xml" rel="self" type="application/rss+xml"/>\n<description>청라 아크원 푸르지오 분양 일정·비교·청약 안내 페이지 목록</description>\n<language>ko</language>\n<lastBuildDate>Sun, 04 Oct 2026 11:07:31 +0900</lastBuildDate>\n${items}\n</channel>\n</rss>\n`;
 }
 
 function krSitemap(): string {
@@ -188,6 +220,11 @@ export default async function seoHostMiddleware(
     const kr = isKr(event);
     return new Response(method === "HEAD" ? null : kr ? KR_ROBOTS : LEGACY_ROBOTS, {
       headers: { "content-type": "text/plain; charset=utf-8", ...TEXT_HEADERS },
+    });
+  }
+  if (path === "/rss.xml") {
+    return new Response(method === "HEAD" ? null : rssFeed(), {
+      headers: { "content-type": "application/rss+xml; charset=utf-8", ...TEXT_HEADERS },
     });
   }
   if (path === "/sitemap.xml") {

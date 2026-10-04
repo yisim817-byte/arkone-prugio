@@ -9,8 +9,8 @@ export const Route = createFileRoute("/pages/changeinfo")({
   component: ChangeInfoPage,
   head: () => ({
     meta: [
-      { title: "변경된 청약제도 | 청라 아크원 푸르지오" },
-      { name: "description", content: "변경된 청약제도 안내. 청라 아크원 푸르지오 청약 전 확인할 제도 변경 내용을 담았습니다. 세부 내용은 입주자모집공고를 확인하십시오." },
+      { title: "청라 아크원 푸르지오 청약제도 변경사항 | 청약안내" },
+      { name: "description", content: "청라 아크원 푸르지오 청약 전 확인할 청약제도 변경 내용. 공급 유형·자격·청약 일정은 입주자모집공고(2026.10.15 예정)에서 확정됩니다." },
     ],
     links: canonicalLinks("/pages/changeinfo"),
   }),
@@ -22,7 +22,7 @@ function ChangeInfoPage() {
     <SiteShell path="/pages/changeinfo">
       <div className="page_content">
         <section className="page_container">
-          <GuideAnswer title="청약 전 확인할 청약제도 변경 사항">
+          <GuideAnswer title="청라 아크원 푸르지오 청약 전 확인할 청약제도 변경 사항">
             <p>청라 아크원 푸르지오에 적용되는 공급 유형, 자격 요건, 청약 일정은 입주자모집공고에서 확정되며 현재는 미정입니다. APT 입주자모집공고는 2026년 10월 15일(목) 예정입니다.</p>
           </GuideAnswer>
           <figure>

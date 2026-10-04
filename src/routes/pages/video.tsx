@@ -9,8 +9,8 @@ export const Route = createFileRoute("/pages/video")({
   component: VideoPage,
   head: () => ({
     meta: [
-      { title: "홍보영상 | 청라 아크원 푸르지오" },
-      { name: "description", content: "청라 아크원 푸르지오 홍보영상 모음. 사업 소개 영상을 확인할 수 있습니다." },
+      { title: "청라 아크원 푸르지오 홍보영상 | 사업 소개" },
+      { name: "description", content: "청라 아크원 푸르지오 홍보영상 모음. 사업주체가 공개한 단지 소개 영상을 확인할 수 있습니다." },
     ],
     links: canonicalLinks("/pages/video"),
   }),

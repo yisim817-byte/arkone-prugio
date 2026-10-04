@@ -29,7 +29,7 @@ export const Route = createFileRoute("/pages/contact")({
   head: () => ({
     meta: [
       { title: "청라 아크원 푸르지오 모델하우스·홍보관 위치 | 오시는길" },
-      { name: "description", content: "청라 아크원 푸르지오 모델하우스(견본주택) 인천 서해구 청라동 87-1번지, GRAND OPEN 2026.10.23(금) 예정. 현장·홍보관 주소와 지도 바로가기, 대표번호 1833-3872 안내." },
+      { name: "description", content: "청라 아크원 푸르지오 견본주택(청라동 87-1번지) GRAND OPEN 2026.10.23(금) 예정. 현장·홍보관 주소와 지도, 대표번호 1833-3872 안내." },
     ],
     links: canonicalLinks("/pages/contact"),
     scripts: faqJsonLd(FAQ),

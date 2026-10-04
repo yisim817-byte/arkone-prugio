@@ -10,7 +10,7 @@ export type GuideSource = { label: string; href?: string; date: string };
 export function GuideAnswer({ title, children }: { title: string; children: ReactNode }) {
   return (
     <section className="seo-guide seo-guide-answer" aria-label={title}>
-      <h2 className="seo-guide__title">{title}</h2>
+      <h1 className="seo-guide__title">{title}</h1>
       <div className="seo-guide__answer">{children}</div>
     </section>
   );

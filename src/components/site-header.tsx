@@ -2,6 +2,17 @@ import { Link, useRouterState } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { NAV, SITE_NAME, SITE_PHONE, SITE_TEL_HREF, navForPath } from "@/lib/site-data";
 
+const GUIDE_H1_PATHS = new Set([
+  "/pages/overview",
+  "/pages/compare",
+  "/pages/schedule",
+  "/pages/location",
+  "/pages/contact",
+  "/pages/changeinfo",
+  "/pages/docspecial",
+  "/pages/docnormal",
+]);
+
 export function SiteHeader({ home = false }: { home?: boolean }) {
   const pathname = useRouterState({ select: (s) => s.location.pathname });
   const [menuOpen, setMenuOpen] = useState(false);
@@ -28,7 +39,8 @@ export function SiteHeader({ home = false }: { home?: boolean }) {
 
   const inverted = home && atTop && !menuOpen;
   // 홈은 히어로 제목이 주 H1이므로 로고는 H2로 내린다(H1 중복 방지). 하위 페이지는 기존대로 H1.
-  const LogoTag = pathname === "/" ? "h2" : "h1";
+  // 요약 답변(GuideAnswer)이 있는 하위 페이지는 그 제목이 H1이므로 로고는 H2.
+  const LogoTag = pathname === "/" || GUIDE_H1_PATHS.has(pathname) ? "h2" : "h1";
 
   return (
     <>

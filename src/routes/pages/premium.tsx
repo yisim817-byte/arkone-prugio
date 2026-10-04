@@ -7,8 +7,8 @@ export const Route = createFileRoute("/pages/premium")({
   component: PremiumPage,
   head: () => ({
     meta: [
-      { title: "프리미엄 | 청라 아크원 푸르지오" },
-      { name: "description", content: "청라 아크원 푸르지오 프리미엄 안내. 단지 특징과 상품 구성 포인트를 소개합니다. 이미지는 소비자 이해를 돕기 위한 연출컷입니다." },
+      { title: "청라 아크원 푸르지오 프리미엄 | 상품 특징 안내" },
+      { name: "description", content: "청라 아크원 푸르지오 프리미엄. 2,911세대·실 브랜드타운, 오션·시티뷰(일부 세대), 분양가 상한제 적용 등 사업주체 공개 상품 특징을 정리했습니다." },
     ],
     links: canonicalLinks("/pages/premium"),
   }),
