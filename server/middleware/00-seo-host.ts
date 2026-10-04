@@ -85,8 +85,8 @@ function krPageJsonLd(path: string): string {
   const org = {
     "@type": "Organization",
     "@id": "https://www.humanekorea.co.kr/#organization",
-    name: "HUMANE KOREA",
-    alternateName: "휴메인코리아",
+    name: "휴메인코리아",
+    alternateName: "HUMANE KOREA",
   };
   const graph: Record<string, unknown>[] = [org];
   if (path === "/") {
