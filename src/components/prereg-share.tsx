@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 // 카카오 개발자 앱(1564100)의 JavaScript 키. 브라우저 공개용 키이며, 콘솔에 등록된 도메인에서만 동작한다.
-const KAKAO_JS_KEY = "";
+const KAKAO_JS_KEY = "203cb59ee380ba085e5c3076443b93d4";
 const KAKAO_SDK = "https://t1.kakaocdn.net/kakao_js_sdk/2.7.4/kakao.min.js";
 
 type KakaoSdk = {
