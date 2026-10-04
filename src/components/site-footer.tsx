@@ -27,7 +27,7 @@ export function SiteFooter({ onPrivacy }: Props) {
             <br className="m-only" /> 8층 9호(송도동, 송도국제업무단지 C8-2블럭 업무복합시설){" "}
             <br className="m-only" /> 사업자등록번호 : 866-88-02497
             <br />
-            홈페이지 운영·관리 | 휴메인코리아
+            홈페이지운영 휴메인코리아
             {showBizInfo && (
               <>
                 <br />
