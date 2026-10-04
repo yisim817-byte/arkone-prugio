@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 // 카카오 개발자 앱(1564100)의 JavaScript 키. 브라우저 공개용 키이며, 콘솔에 등록된 도메인에서만 동작한다.
 const KAKAO_JS_KEY = "203cb59ee380ba085e5c3076443b93d4";
@@ -54,10 +54,14 @@ export function PreregShare({ receipt, at }: { receipt: string; at: string }) {
   const [note, setNote] = useState("");
   const text = shareText(receipt, at);
 
+  // SDK를 미리 불러 둔다. 클릭 이후 await가 끼면 PC 브라우저가 공유 팝업을 차단한다.
+  useEffect(() => { void loadKakao(); }, []);
+
   async function onShare() {
     setNote("");
     const url = `${window.location.origin}/`;
-    const kakao = await loadKakao();
+    const ready = window.Kakao?.isInitialized?.() ? window.Kakao : null;
+    const kakao = ready ?? (await loadKakao());
     if (kakao) {
       try {
         kakao.Share.sendDefault({
