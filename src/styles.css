@@ -842,3 +842,11 @@ body.prereg-lock { overflow: hidden; }
   .seo-guide__table th, .seo-guide__table td { padding: 10px 8px; }
   .seo-guide__table td:last-child { white-space: normal; }
 }
+
+/* 사전등록 완료 고정 문구 + 카톡 접수확인 저장 (2026-10-04) */
+.reg__receipt--done { display: flex; flex-direction: column; gap: 6px; }
+.reg__done-title { display: block; font-size: 22px; font-weight: 800; color: var(--color-primary); line-height: 1.35; }
+.prereg-share { margin: 14px 0 6px; }
+.prereg-share__btn { width: 100%; min-height: 54px; border: 0; border-radius: 8px; background: #fee500; color: #191919; font: inherit; font-size: 17px; font-weight: 700; cursor: pointer; }
+.prereg-share__hint { margin: 8px 0 0; font-size: 13px; line-height: 1.5; color: var(--label-strong); opacity: 0.8; }
+.prereg-share__note { margin: 8px 0 0; font-size: 14px; font-weight: 600; }

@@ -1,5 +1,6 @@
 import { useEffect, useState, type FormEvent } from "react";
 import { SITE_PHONE, SITE_TEL_HREF } from "@/lib/site-data";
+import { PreregShare } from "@/components/prereg-share";
 
 const ENDPOINT = "https://jzmktahlrwtrtejjflrw.supabase.co/functions/v1/arkone-prereg-submit";
 const CONSENT_VERSION = "2026-09-26-v2";
@@ -188,9 +189,11 @@ export function RegisterForm() {
     return (
       <div className="reg reg__done" tabIndex={-1}>
         <p>청라 아크원 푸르지오</p>
-        <h3>{product === "officetel" ? "오피스텔 사전등록이 완료되었습니다." : "아파트 사전고객등록이 완료되었습니다."}</h3>
-        {duplicate ? <p role="status">이미 사전고객등록된 번호입니다. 최초 접수번호 <b>{receipt}</b></p> : <p>접수번호 <b>{receipt}</b></p>}
+        <h3>사전등록 완료되었습니다.</h3>
+        <p>등록 상품 {product === "officetel" ? "오피스텔" : "아파트"}</p>
+        {duplicate ? <p role="status">이미 사전등록된 번호입니다. 최초 접수번호 <b>{receipt}</b></p> : <p>접수번호 <b>{receipt}</b></p>}
         <p>접수시각 {formatKst(createdAt)}</p>
+        <PreregShare receipt={receipt} at={formatKst(createdAt)} />
         <p>이 화면을 캡처해 두시면 등록 확인이 빠릅니다.</p>
         <p className="prereg-confirm">{PHRASE.slice(0, 16)}<a href={SITE_TEL_HREF}>1833-3872</a>{PHRASE.slice(25)}</p>
         <p>STEP 1 홈페이지 사전고객등록 완료</p>
@@ -212,7 +215,12 @@ export function RegisterForm() {
       <p className="reg__lead"><b>청라 아크원 푸르지오</b> 아파트·오피스텔 사전등록</p>
       <form onSubmit={step === 1 ? onStep1 : onStep2} noValidate>
         <p className="prereg-step">[1/2] 기본 정보 · 필수</p>
-        {step === 2 ? <div className="reg__receipt" role="status">{duplicate ? "이미 사전고객등록된 번호입니다. 최초 접수번호" : "사전고객등록이 접수되었습니다. 접수번호"} {receipt} · 접수시각 {formatKst(createdAt)}<br />등록 상품 {product === "officetel" ? "오피스텔" : "아파트"} · 성명 {name} · 휴대전화 {phone} · 생년월일 {birth}</div> : null}
+        {step === 2 ? <div className="reg__receipt reg__receipt--done" role="status">
+          <strong className="reg__done-title">사전등록 완료되었습니다.</strong>
+          <span>{duplicate ? "이미 사전등록된 번호입니다. 최초 접수번호" : "접수번호"} {receipt} · 접수시각 {formatKst(createdAt)}</span>
+          <span>등록 상품 {product === "officetel" ? "오피스텔" : "아파트"} · 성명 {name} · 휴대전화 {phone} · 생년월일 {birth}</span>
+          <PreregShare receipt={receipt} at={formatKst(createdAt)} />
+        </div> : null}
         {alert ? <p className="reg__error" role="alert">{alert}</p> : null}
         <div hidden={step === 2}>
         <fieldset className={`reg__product${errors.product ? " is-err" : ""}`} disabled={step === 2}>
@@ -265,7 +273,7 @@ export function RegisterForm() {
           <div>
             <div id="additional-information" className="prereg-additional">
             <p className="prereg-step">[2/2] 추가 정보 · 선택 (접수번호 {receipt})</p>
-            <p>입력하지 않으셔도 사전고객등록은 완료되었습니다.</p>
+            <p>입력하지 않으셔도 사전등록은 완료되었습니다.</p>
             <p>접수번호 {receipt} · 접수시각 {formatKst(createdAt)}</p>
             <p>주민등록상 주소 (선택)</p>
             <div className="reg__field"><label htmlFor="f-sido">시·도</label><select id="f-sido" value={sido} onChange={(e) => setSido(e.target.value)}><option value="">선택</option>{SIDO.map((item) => <option key={item}>{item}</option>)}</select></div>
