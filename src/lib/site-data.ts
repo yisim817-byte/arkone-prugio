@@ -2,7 +2,7 @@ export const SITE_NAME = "청라 아크원 푸르지오";
 export const SITE_PHONE = "1833-3872";
 export const SITE_PHONE_DIGITS = SITE_PHONE.replace(/\D/g, "");
 export const SITE_TEL_HREF = `tel:${SITE_PHONE_DIGITS}`;
-export const YOUTUBE_ID = "_wAuOJSTLek";
+export const YOUTUBE_ID = "OPf_5C5WaJY";
 
 export type NavChild = {
   krName: string;
