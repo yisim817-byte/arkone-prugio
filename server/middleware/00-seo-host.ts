@@ -170,8 +170,10 @@ const TEXT_HEADERS = {
 };
 
 // Naver Search Advisor + Bing Webmaster ownership tags — Korean www host home page only.
+// 3c9a81c6… is the older Naver token (rendered by __root.tsx on legacy hosts only); restored here for the KR home.
 const NAVER_VERIFICATION_TAG =
   '<meta name="naver-site-verification" content="de62f79902ef13d12123bd871fb74794666efd56" />' +
+  '<meta name="naver-site-verification" content="3c9a81c691a4cdec3415b6d3e7f832ea0015e2a9" />' +
   '<meta name="msvalidate.01" content="1CA8C4AC579A0BA4C40BC37CD046AC48" />';
 
 function injectOgUrl(response: Response, ogUrl: string, extra = ""): Response {
