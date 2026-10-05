@@ -27,15 +27,14 @@ export function SiteFooter({ onPrivacy }: Props) {
             <br className="m-only" /> 8층 9호(송도동, 송도국제업무단지 C8-2블럭 업무복합시설){" "}
             <br className="m-only" /> 사업자등록번호 : 866-88-02497
             <br />
-            홈페이지 운영·관리 | 휴메인코리아
+            홈페이지운영 휴메인코리아
             {showBizInfo && (
               <>
                 <br />
                 상호 : 휴메인코리아 | 대표자 : 이종석 | 사업자등록번호 : 320-60-00456
-                <br className="m-only" /> 주소 : 인천시 연수구 송도과학로 56 206호
+                <br className="m-only" /> 현장 : 인천광역시 서해구 청라동 86-1번지 · 견본주택 : 인천광역시 서해구 청라동 87-1번지
                 <br />
-                HUMANE KOREA 현장전략본부 · 정보 기준일 {FACT_DATE.replace(/-/g, ".")} · 시행사·시공사
-                공식 홈페이지 아님
+                HUMANE KOREA 현장전략본부 · 정보 기준일 {FACT_DATE.replace(/-/g, ".")}
               </>
             )}
           </p>
@@ -46,7 +45,7 @@ export function SiteFooter({ onPrivacy }: Props) {
             ※ 본 홈페이지에 명시된 모든 개발계획은 관계기관 혹은 <br className="m-only" /> 지자체의
             사정에 의해 변경 또는 취소될 수 있습니다.
             <br />
-            본 사이트는 분양 정보 안내를 위한 홍보 페이지이며, 시행사·시공사의 공식 홈페이지가 아닙니다. 공식
+            본 사이트는 분양 정보 안내를 위한 홍보 페이지입니다. 공식
             정보는 사업주체 공고를 확인하시기 바랍니다. 홈페이지운영 휴메인코리아
           </p>
           <p className="footer__copyright">SITE OPERATED BY HUMANE KOREA.</p>
