@@ -27,6 +27,8 @@ function NewsListPage() {
     <SiteShell path="/board/news_list">
       <div className="page_content">
         <section className="page_container">
+          {/* SEO_PUSH 2026-10-06 P1-1: 페이지 고유 H1 (title 앞부분) */}
+          <h1 className="page-h1">청라 아크원 푸르지오 언론보도</h1>
           <div className="news_list_type">
             <ul>
               {items.map((item) => (

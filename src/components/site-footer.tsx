@@ -1,6 +1,7 @@
 import { SITE_PHONE, SITE_TEL_HREF } from "@/lib/site-data";
 import { isKrHost } from "@/lib/seo-host";
 import { FACT_DATE } from "@/lib/arkone-facts";
+import { Img } from "@/components/img";
 
 type Props = { onPrivacy: () => void };
 
@@ -12,7 +13,7 @@ export function SiteFooter({ onPrivacy }: Props) {
       <div className="footer__container">
         <div className="footer__brand">
           <div className="footer__logo">
-            <img src="/resources/img/common/logotype.svg" alt="PRUGIO" />
+            <Img src="/resources/img/common/logotype.svg" alt="PRUGIO" />
           </div>
           <button type="button" className="footer__privacy-btn" onClick={onPrivacy}>
             개인정보처리방침
@@ -55,7 +56,7 @@ export function SiteFooter({ onPrivacy }: Props) {
             <p>시행 | ㈜청라스마트시티</p>
             <p>
               시공 |{" "}
-              <img
+              <Img
                 src="/resources/img/common/logo_daewoo.svg"
                 className="footer__construction-logo"
                 alt="대우건설"

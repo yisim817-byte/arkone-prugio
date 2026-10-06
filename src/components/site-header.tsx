@@ -11,6 +11,11 @@ const GUIDE_H1_PATHS = new Set([
   "/pages/changeinfo",
   "/pages/docspecial",
   "/pages/docnormal",
+  // SEO_PUSH 2026-10-06 P1-1: 페이지 고유 H1을 둔 하위 페이지 (로고는 H2)
+  "/pages/brand",
+  "/pages/premium",
+  "/pages/video",
+  "/board/news_list",
 ]);
 
 export function SiteHeader({ home = false }: { home?: boolean }) {

@@ -22,6 +22,8 @@ function VideoPage() {
     <SiteShell path="/pages/video">
       <div className="page_content">
         <section className="page_container">
+          {/* SEO_PUSH 2026-10-06 P1-1: 페이지 고유 H1 (title 앞부분) */}
+          <h1 className="page-h1">청라 아크원 푸르지오 홍보영상</h1>
           <div className="video-grid">
             <button type="button" className="video-card" onClick={() => setOpen(true)}>
               <img src={`https://img.youtube.com/vi/${YOUTUBE_ID}/hqdefault.jpg`} alt="청라 아크원 푸르지오 홍보영상 썸네일" />

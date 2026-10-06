@@ -50,6 +50,8 @@ function BrandPage() {
     <SiteShell path="/pages/brand">
       <div className="page_content">
         <section className="page_container">
+          {/* SEO_PUSH 2026-10-06 P1-1: 페이지 고유 H1 (title 앞부분) */}
+          <h1 className="page-h1">청라 아크원 푸르지오 히스토리·주변 개발 일정</h1>
           <div className="brand_image__container">
             <figure className="brand_image__img">
               <picture>
