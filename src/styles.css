@@ -751,6 +751,8 @@ body.prereg-lock { overflow: hidden; }
 .event-card__button { display: inline-flex; min-height: 56px; align-items: center; justify-content: center; padding: 0 32px; background: #fff; color: var(--color-primary); font-weight: 700; }
 .event-card__schedule,.event-card__notice { font-size: 16px; }
 .event-card a { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
+/* 2026-10-06 fix: `.event-card a` (0,1,1) overrode the button colour → white text on white button. */
+.event-card .event-card__button { color: var(--color-primary); text-decoration: none; }
 .event-card__terms { margin-top: 24px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,.35); }
 .event-card__terms summary { cursor: pointer; font-weight: 700; }
 .event-card__terms ol { max-width: 900px; padding-left: 24px; font-size: 14px; line-height: 1.7; }
@@ -850,3 +852,10 @@ body.prereg-lock { overflow: hidden; }
 .prereg-share__btn { width: 100%; min-height: 54px; border: 0; border-radius: 8px; background: #fee500; color: #191919; font: inherit; font-size: 17px; font-weight: 700; cursor: pointer; }
 .prereg-share__hint { margin: 8px 0 0; font-size: 13px; line-height: 1.5; color: var(--label-strong); opacity: 0.8; }
 .prereg-share__note { margin: 8px 0 0; font-size: 14px; font-weight: 600; }
+
+/* SEO_PUSH 2026-10-06 P1-1: 하위 페이지 고유 H1 (seo-guide__title과 같은 표기) */
+.page-h1 { margin: 0 0 24px; font-size: 24px; font-weight: 700; color: var(--color-primary); }
+@media (max-width: 1024px) { .page-h1 { font-size: 19px; } }
+
+/* SEO_PUSH 2026-10-06: <Img> adds intrinsic width/height for aspect-ratio only; existing CSS sizing wins. */
+:where(img[data-dims]) { width: auto; height: auto; }

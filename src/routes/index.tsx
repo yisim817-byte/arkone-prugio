@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useId, useState } from "react";
+import { Img } from "@/components/img";
 import { SiteShell } from "@/components/site-shell";
 import { YoutubeModal } from "@/components/youtube-modal";
 import { SITE_NAME, SITE_PHONE, SITE_TEL_HREF, YOUTUBE_ID } from "@/lib/site-data";
@@ -127,8 +128,8 @@ function Home() {
         <section id="hero" className="hero">
           <div className="hero__media">
             <picture>
-              <source media="(max-width: 1024px)" srcSet="/resources/img/pages/main/hero_bg_m.v4.jpg" />
-              <img src="/resources/img/pages/main/hero_bg.v4.jpg" alt="청라 아크원 푸르지오 단지 투시도(CG)" />
+              <source media="(max-width: 1024px)" srcSet="/resources/img/pages/main/hero_bg_m.v4.webp" />
+              <img src="/resources/img/pages/main/hero_bg.v4.webp" alt="청라 아크원 푸르지오 단지 투시도(CG)" />
             </picture>
             <video className="pc-only" autoPlay muted loop playsInline>
               <source src="/resources/img/pages/main/hero_video.mp4" type="video/mp4" />
@@ -187,34 +188,34 @@ function Home() {
 
         <section className="event-card" aria-labelledby="event-title">
           <div className="event-card__inner">
-            <p className="event-card__eyebrow">EVENT · 사전고객등록 고객 혜택</p>
+            <p className="event-card__eyebrow">사전고객등록 고객 대상 이벤트</p>
             <h2 id="event-title">백화점 상품권 30만원</h2>
-            <p className="event-card__brands">롯데 · 현대 · 신세계 중 선택</p>
-            <p className="event-card__basis">홈페이지 사전고객등록 후 담당자 안내에 따라 MGM 등록(개인정보 제3자 제공 동의 포함)을 마치고, 청약 당첨 및 MGM 인정조건을 충족하신 고객께 드립니다.</p>
-            <p className="event-card__payout">지급 시기: 청약 당첨 및 MGM 인정조건 충족 확인 후 계약 당일 지급합니다.</p>
-            <ol className="event-card__steps"><li>① 사전고객등록</li><li>② MGM 등록 확인</li><li>③ 공식 청약</li><li>④ 당첨·인정 확인</li><li>⑤ 상품권 지급</li></ol>
-            <div className="event-card__actions"><Link className="event-card__button" to="/register">사전고객등록하기</Link><a href="#event-terms">이벤트 유의사항 보기</a></div>
-            <p className="event-card__schedule">APT 입주자모집공고 2026.10.15(목) 예정 · GRAND OPEN 2026.10.23(금) 예정</p>
-            <p className="event-card__notice">※ 사전고객등록은 공식 청약 신청이 아닙니다.</p>
-            <p>사전고객등록 확인은 대표번호 <a href={SITE_TEL_HREF}>1833-3872</a>로 문의해 주세요.</p>
-            <details id="event-terms" className="event-card__terms"><summary>청라 아크원 푸르지오 APT 사전고객등록 이벤트 유의사항</summary>
+            <p className="event-card__brands">상품권 종류: 롯데·현대·신세계 백화점 가운데 1종</p>
+            <p className="event-card__basis">받으실 수 있는 분: 이 홈페이지에서 사전고객등록을 한 뒤 담당자 안내를 받아 MGM 등록(개인정보를 제3자에게 제공하는 데 대한 동의 절차 포함)까지 마치고, 청약에 당첨되어 MGM 인정조건을 충족한 고객입니다.</p>
+            <p className="event-card__payout">상품권은 당첨과 MGM 인정조건 충족이 확인되면 계약하는 날 드립니다.</p>
+            <ol className="event-card__steps"><li>STEP 1 사전고객등록(홈페이지)</li><li>STEP 2 담당자 안내로 MGM 등록</li><li>STEP 3 공고 후 청약 신청</li><li>STEP 4 당첨·MGM 인정 확인</li><li>STEP 5 계약일 상품권 수령</li></ol>
+            <div className="event-card__actions"><Link className="event-card__button" to="/register">사전고객등록하기</Link><a href="#event-terms">유의사항 자세히 보기</a></div>
+            <p className="event-card__schedule">일정: 입주자모집공고(APT) 2026.10.15(목) 예정, 견본주택 GRAND OPEN 2026.10.23(금) 예정</p>
+            <p className="event-card__notice">※ 청약 접수는 별도 절차이며, 사전고객등록만으로 청약이 되지는 않습니다.</p>
+            <p>등록 여부는 <a href={SITE_TEL_HREF}>1833-3872</a>(대표번호)에서 확인하실 수 있습니다.</p>
+            <details id="event-terms" className="event-card__terms"><summary>이벤트 유의사항 (청라 아크원 푸르지오 APT 사전고객등록)</summary>
               <ol>
-                <li>대상: 본 홈페이지에서 사전고객등록을 완료하고 담당자 안내에 따라 MGM 등록(개인정보 제3자 제공 동의 포함)을 마친 고객 중, 청라 아크원 푸르지오 아파트 청약에 당첨되어 MGM 인정조건을 충족한 고객</li>
-                <li>혜택: 백화점 상품권 30만원 (롯데·현대·신세계 중 1종 선택)</li><li>지급 시기: 청약 당첨 및 MGM 인정조건 충족 확인 후 계약 당일 지급합니다.</li>
-                <li>1인(동일인·동일 휴대전화번호) 1회 지급합니다.</li>
-                <li>부적격 당첨, 계약 미체결·취소·해제 시 지급 대상에서 제외됩니다. 지급 후 해당 사유가 발생한 경우의 처리 기준은 담당자가 개별 안내합니다.</li>
-                <li>다른 경로로 먼저 MGM 등록된 고객은 MGM 운영 기준에 따라 대상에서 제외될 수 있습니다.</li><li>제세공과금 처리 기준은 확정 후 담당자가 개별 안내합니다.</li>
-                <li>본 이벤트는 홈페이지운영 휴메인코리아가 진행하며, 시행·시공사가 제공하는 혜택이 아닙니다.</li><li>이벤트 내용은 사전 공지 후 변경 또는 조기 종료될 수 있습니다.</li>
-                <li>사전고객등록은 공식 청약 신청이 아니며, 청약 자격과 일정은 입주자모집공고를 따릅니다.</li>
-              </ol><p>등록 확인 및 문의 1833-3872</p>
+                <li>지급 대상: 이 홈페이지에서 사전고객등록을 하고, 담당자 안내를 받아 MGM 등록(개인정보를 제3자에게 제공하는 데 대한 동의 절차 포함)까지 마친 뒤, 청라 아크원 푸르지오 아파트 청약에 당첨되어 MGM 인정조건을 충족한 고객</li>
+                <li>혜택 내용: 롯데·현대·신세계 백화점 상품권 가운데 1종, 30만원</li><li>지급일: 당첨과 MGM 인정조건 충족을 확인한 뒤 계약 당일</li>
+                <li>한 사람에게 한 번만 지급하며, 같은 사람과 같은 휴대전화번호는 한 사람으로 봅니다.</li>
+                <li>부적격 당첨이거나 계약을 체결하지 않은 경우, 계약이 취소·해제된 경우에는 지급하지 않습니다. 지급 뒤 이런 사유가 생기면 처리 기준을 담당자가 따로 알려 드립니다.</li>
+                <li>다른 경로를 통해 MGM 등록이 먼저 된 고객은 MGM 운영 기준에 따라 제외될 수 있습니다.</li><li>제세공과금은 기준이 정해지면 담당자가 따로 알려 드립니다.</li>
+                <li>이 이벤트의 진행 주체는 홈페이지운영 휴메인코리아이며, 시행사·시공사가 주는 혜택이 아닙니다.</li><li>이벤트 내용은 미리 알린 뒤 바뀌거나 일찍 끝날 수 있습니다.</li>
+                <li>사전고객등록은 청약 신청이 아닙니다. 청약 자격과 일정은 입주자모집공고 기준입니다.</li>
+              </ol><p>등록 확인·문의: 1833-3872</p>
             </details>
           </div>
         </section>
 
         <section className="hero-define">
-          <img className="hero-define__visual" src="/resources/img/pages/main/hero_brand_img.v4.png" alt="청라 아크원 푸르지오 엠블럼" />
+          <Img className="hero-define__visual" src="/resources/img/pages/main/hero_brand_img.v4.webp" alt="청라 아크원 푸르지오 엠블럼" />
           <div className="hero-define__copy">
-            <img src="/resources/img/pages/main/ico_star.svg" alt="" width={28} height={28} />
+            <Img src="/resources/img/pages/main/ico_star.svg" alt="" width={28} height={28} />
             <p className="hero-define__title">아크원(ARK-ONE)이란?</p>
             <strong className="hero-define__keyword">
               <b>A</b>BSOLUTE
@@ -234,7 +235,7 @@ function Home() {
         </section>
 
         <section id="overview" className="section-overview">
-          <img className="bg" src="/resources/img/pages/main/overview_bg.v4.jpg" alt="" />
+          <Img className="bg" src="/resources/img/pages/main/overview_bg.v4.webp" alt="" />
           <span className="dim" />
           <div className="section-overview__inner">
             <header>
@@ -297,7 +298,7 @@ function Home() {
         <section id="location" className="section-location">
           <div className="section-location__visual">
             <p className="section-location__tag">ABSOLUTE REMARKABLE</p>
-            <img src="/resources/img/pages/main/location_img.v4.png" alt="검은 배경에 크기가 다른 흑백 구체들이 세로로 배열된 추상 그래픽" />
+            <Img src="/resources/img/pages/main/location_img.v4.webp" alt="검은 배경에 크기가 다른 흑백 구체들이 세로로 배열된 추상 그래픽" />
             <h2 className="section-location__title">ARK-ONE</h2>
           </div>
           <div className="section-location__info">
@@ -312,11 +313,11 @@ function Home() {
               <span>›</span>
             </Link>
             <figure className="section-location__map">
-              <img
+              <Img
                 src="/resources/img/pages/main/location_map.v4.png"
                 alt="청라 국제도시 내 청라 아크원 푸르지오 위치"
               />
-              <img className="section-location__bubble" src="/resources/img/pages/main/location_bubble.v4.png" alt="청라 아크원 푸르지오 위치 표시" />
+              <Img className="section-location__bubble" src="/resources/img/pages/main/location_bubble.v4.png" alt="청라 아크원 푸르지오 위치 표시" />
             </figure>
           </div>
         </section>
@@ -332,10 +333,10 @@ function Home() {
           </div>
           <div className="history-track">
             {[
-              { y: "2026", img: "history_img_2026.v4.jpg", cap: ["청라하늘대교 (개통)", "하나드림타운 (그룹헤드쿼터 준공)"] },
+              { y: "2026", img: "history_img_2026.v4.webp", cap: ["청라하늘대교 (개통)", "하나드림타운 (그룹헤드쿼터 준공)"] },
               { y: "2028", img: "history_img_2028.v4.jpg", cap: ["돔구장&스타필드 청라 (개장 예정)"] },
               { y: "2029", img: "history_img_2029.v4.jpg", cap: ["서울아산청라병원 (예정)"] },
-              { y: "개통 시기 미정", img: "history_img_2030.v4.jpg", cap: ["7호선 국제업무단지역 (예정)"] },
+              { y: "개통 시기 미정", img: "history_img_2030.v4.webp", cap: ["7호선 국제업무단지역 (예정)"] },
               { y: "2031", img: "history_img_2031.v4.jpg", cap: ["영상문화복합단지 (계획)"] },
               { y: "2031", img: "history_img_ark_one.v4.jpg", cap: ["청라 아크원 푸르지오 (예정)"] },
             ].map((ev) => (
@@ -351,7 +352,7 @@ function Home() {
                   )}
                 </time>
                 <figure>
-                  <img src={`/resources/img/pages/main/${ev.img}`} alt={`${ev.y} ${ev.cap.join(", ")} 이미지`} />
+                  <Img src={`/resources/img/pages/main/${ev.img}`} alt={`${ev.y} ${ev.cap.join(", ")} 이미지`} />
                   <figcaption>
                     {ev.cap.map((c) => (
                       <span key={c}>
@@ -369,10 +370,10 @@ function Home() {
         <section id="premium" className="section-premium">
           <div className="section-premium__intro">
             <div className="premium-mosaic">
-              <img src="/resources/img/pages/main/premium_visual_img_01.v4.jpg" alt="거실 인테리어 이미지컷(CG)" />
-              <img src="/resources/img/pages/main/premium_visual_img_02.v4.jpg" alt="주방·다이닝 인테리어 이미지컷(CG)" />
-              <img src="/resources/img/pages/main/premium_visual_img_03.v4.jpg" alt="침실 인테리어 이미지컷(CG)" />
-              <img src="/resources/img/pages/main/premium_visual_img_04.v4.jpg" alt="거실·발코니 인테리어 이미지컷(CG)" />
+              <Img src="/resources/img/pages/main/premium_visual_img_01.v4.webp" alt="거실 인테리어 이미지컷(CG)" />
+              <Img src="/resources/img/pages/main/premium_visual_img_02.v4.webp" alt="주방·다이닝 인테리어 이미지컷(CG)" />
+              <Img src="/resources/img/pages/main/premium_visual_img_03.v4.webp" alt="침실 인테리어 이미지컷(CG)" />
+              <Img src="/resources/img/pages/main/premium_visual_img_04.v4.webp" alt="거실·발코니 인테리어 이미지컷(CG)" />
             </div>
             <div className="section-premium__copy">
               <h3>
@@ -395,13 +396,13 @@ function Home() {
             </div>
           </div>
           <div className="section-premium__videos">
-            <video poster="/resources/img/pages/main/premium_poster.v4.jpg" muted loop playsInline autoPlay>
+            <video poster="/resources/img/pages/main/premium_poster.v4.webp" muted loop playsInline autoPlay>
               <source src="/resources/img/pages/main/premium_video_01.mp4" type="video/mp4" />
             </video>
-            <video poster="/resources/img/pages/main/premium_poster_02.v4.jpg" muted loop playsInline autoPlay>
+            <video poster="/resources/img/pages/main/premium_poster_02.v4.webp" muted loop playsInline autoPlay>
               <source src="/resources/img/pages/main/premium_video_02.mp4" type="video/mp4" />
             </video>
-            <video poster="/resources/img/pages/main/premium_poster_03.v4.jpg" muted loop playsInline autoPlay>
+            <video poster="/resources/img/pages/main/premium_poster_03.v4.webp" muted loop playsInline autoPlay>
               <source src="/resources/img/pages/main/premium_video_03.mp4" type="video/mp4" />
             </video>
           </div>
@@ -409,8 +410,8 @@ function Home() {
 
         <section id="brand" className="section-brand">
           <picture>
-            <source media="(max-width: 1024px)" srcSet="/resources/img/pages/main/brand_bg_m.v4.jpg" />
-            <img className="bg" src="/resources/img/pages/main/brand_bg.v4.jpg" alt="" />
+            <source media="(max-width: 1024px)" srcSet="/resources/img/pages/main/brand_bg_m.v4.webp" />
+            <Img className="bg" src="/resources/img/pages/main/brand_bg.v4.webp" alt="" />
           </picture>
           <div className="frame">
             <p className="section-brand__eyebrow">THE NATURAL NOBILITY</p>
@@ -419,12 +420,12 @@ function Home() {
               견고한 기본에 더해진 세련된 편안함,
               <br />내 삶의 본연을 집에서 찾다
             </p>
-            <img className="section-brand__logo" src="/resources/img/pages/main/brand_logo.svg" alt="PRUGIO" />
+            <Img className="section-brand__logo" src="/resources/img/pages/main/brand_logo.svg" alt="PRUGIO" />
           </div>
         </section>
 
         <section id="contact" className="section-contact">
-          <img className="bg" src="/resources/img/pages/main/contact_bg.v4.jpg" alt="" />
+          <Img className="bg" src="/resources/img/pages/main/contact_bg.v4.webp" alt="" />
           <h2>CONTACT US</h2>
           <div className="contact-schedule">
             <p>APT 입주자모집공고: 2026년 10월 15일 (목) 예정</p>
@@ -434,7 +435,7 @@ function Home() {
           </div>
           <div className="contact-home-grid">
             <article className="contact-home-card">
-              <img src="/resources/img/pages/main/contact_map_01.v4.png" alt="청라 아크원 푸르지오 현장과 견본주택 약도" />
+              <Img src="/resources/img/pages/main/contact_map_01.v4.png" alt="청라 아크원 푸르지오 현장과 견본주택 약도" />
               <div className="contact-row">
                 <div>
                   <h3>견본주택</h3>
@@ -442,10 +443,10 @@ function Home() {
                 </div>
                 <div className="map-btns">
                   <a href="https://naver.me/xNpQLQ3L" target="_blank" rel="noreferrer">
-                    <img src="/resources/img/common/ico_naver.svg" alt="네이버 지도" />
+                    <Img src="/resources/img/common/ico_naver.svg" alt="네이버 지도" />
                   </a>
                   <a href="https://kko.to/06V9ttVXOK" target="_blank" rel="noreferrer">
-                    <img src="/resources/img/common/ico_kko_map.svg" alt="카카오 지도" />
+                    <Img src="/resources/img/common/ico_kko_map.svg" alt="카카오 지도" />
                   </a>
                 </div>
               </div>
@@ -456,16 +457,16 @@ function Home() {
                 </div>
                 <div className="map-btns">
                   <a href="https://naver.me/xSBYFSR0" target="_blank" rel="noreferrer">
-                    <img src="/resources/img/common/ico_naver.svg" alt="네이버 지도" />
+                    <Img src="/resources/img/common/ico_naver.svg" alt="네이버 지도" />
                   </a>
                   <a href="https://kko.to/27AvJsaNys" target="_blank" rel="noreferrer">
-                    <img src="/resources/img/common/ico_kko_map.svg" alt="카카오 지도" />
+                    <Img src="/resources/img/common/ico_kko_map.svg" alt="카카오 지도" />
                   </a>
                 </div>
               </div>
             </article>
             <article className="contact-home-card">
-              <img src="/resources/img/pages/main/contact_map_02.v4.png" alt="청라 아크원 푸르지오 홍보관 약도" />
+              <Img src="/resources/img/pages/main/contact_map_02.v4.webp" alt="청라 아크원 푸르지오 홍보관 약도" />
               <div className="contact-row">
                 <div>
                   <h3>홍보관</h3>
@@ -477,10 +478,10 @@ function Home() {
                 </div>
                 <div className="map-btns">
                   <a href="https://naver.me/xwmqyGWk" target="_blank" rel="noreferrer">
-                    <img src="/resources/img/common/ico_naver.svg" alt="네이버 지도" />
+                    <Img src="/resources/img/common/ico_naver.svg" alt="네이버 지도" />
                   </a>
                   <a href="https://kko.to/hM9WpE-0fz" target="_blank" rel="noreferrer">
-                    <img src="/resources/img/common/ico_kko_map.svg" alt="카카오 지도" />
+                    <Img src="/resources/img/common/ico_kko_map.svg" alt="카카오 지도" />
                   </a>
                 </div>
               </div>

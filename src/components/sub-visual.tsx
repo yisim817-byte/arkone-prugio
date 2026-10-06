@@ -15,8 +15,8 @@ export function SubVisual({ path }: { path: string }) {
       <section className="sub_visual">
         <div className="sub_visual__image">
           <picture>
-            <source media="(max-width: 1024px)" srcSet="/resources/img/common/sub_visual_img_m.v4.jpg" />
-            <img src="/resources/img/common/sub_visual_img.v4.jpg" alt="" />
+            <source media="(max-width: 1024px)" srcSet="/resources/img/common/sub_visual_img_m.v4.webp" />
+            <img src="/resources/img/common/sub_visual_img.v4.webp" alt="" />
           </picture>
         </div>
         <div className="sub_visual__content">

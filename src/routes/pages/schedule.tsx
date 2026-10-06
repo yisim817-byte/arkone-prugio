@@ -36,7 +36,7 @@ export const Route = createFileRoute("/pages/schedule")({
   component: SchedulePage,
   head: () => ({
     meta: [
-      { title: "청라 아크원 푸르지오 분양 일정·청약·분양가 안내 | 사전고객등록" },
+      { title: "청라 아크원 푸르지오 분양가·분양 일정·청약 안내" },
       {
         name: "description",
         content:
