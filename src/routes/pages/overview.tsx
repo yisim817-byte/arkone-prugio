@@ -52,7 +52,7 @@ function OverviewPage() {
             </p>
             <p>시행은 ㈜청라스마트시티, 시공은 대우건설이며, 현재는 입주자모집공고 전 단계입니다.</p>
             <p>
-              APT 입주자모집공고는 2026년 10월 15일(목) 예정이며, 분양가와 청약 일정은 공고에서 확정됩니다(현재 미정).
+              청라 아크원 푸르지오는 10월 중 OPEN 예정이며, 분양가와 청약 일정은 공고에서 확정됩니다(현재 미정).
             </p>
           </GuideAnswer>
           <div className="overview_tab__content">
@@ -181,7 +181,7 @@ function OverviewPage() {
               { label: "상업시설", value: "피크원 53·아크원 43, 총 96개 점포 · 지상 1~2층 (1층 47 · 2층 49)", status: "분양 자료 기준" },
               { label: "시행 · 시공", value: "㈜청라스마트시티 · 대우건설", status: "공개값" },
               { label: "분양가", value: "미공개 (사업주체 표기: 분양가 상한제 적용단지)", status: "미정" },
-              { label: "APT 입주자모집공고", value: "2026년 10월 15일(목)", status: "예정" },
+              { label: "APT 입주자모집공고", value: "10월 중 OPEN 예정", status: "예정" },
               { label: "입주 시기", value: "2031년 입주 예정", status: "예정" },
             ]}
             faq={FAQ}

@@ -25,7 +25,7 @@ function RegisterPage() {
             <a href="/#event-terms">유의사항 보기</a>
             <div className="register-layout__schedule">
               <h2>모집 일정</h2>
-              <p>APT 입주자모집공고 2026.10.15(목) 예정 · GRAND OPEN 2026.10.23(금) 예정</p>
+              <p>10월 중 OPEN 예정 · 세부 일정 문의 1833-3872</p>
               <p>특별공급·1순위·2순위·당첨자 발표·계약 일정은 입주자모집공고 확정 후 안내드립니다.</p>
             </div>
           </aside>
