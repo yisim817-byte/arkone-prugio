@@ -14,7 +14,7 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "청라 아크원 푸르지오 분양 일정·청약 안내. APT 입주자모집공고 2026.10.15(목) 예정, GRAND OPEN 2026.10.23(금) 예정, 아파트 868세대·오피스텔 987실.",
+          "청라 아크원 푸르지오 분양 일정·청약 안내. 10월 중 OPEN 예정, 아파트 868세대·오피스텔 987실.",
       },
     ],
     links: canonicalLinks("/"),
@@ -153,7 +153,7 @@ function Home() {
               <span className="hero__title_ko">청라 아크원 푸르지오</span>
             </h1>
             <span className="hero__open">
-              <strong>모집공고</strong> 10.15(목) 예정
+              <strong>10월 중</strong> OPEN 예정
             </span>
           </div>
           <div className="hero__ui">
@@ -195,7 +195,7 @@ function Home() {
             <p className="event-card__payout">상품권은 당첨과 MGM 인정조건 충족이 확인되면 계약하는 날 드립니다.</p>
             <ol className="event-card__steps"><li>STEP 1 사전고객등록(홈페이지)</li><li>STEP 2 담당자 안내로 MGM 등록</li><li>STEP 3 공고 후 청약 신청</li><li>STEP 4 당첨·MGM 인정 확인</li><li>STEP 5 계약일 상품권 수령</li></ol>
             <div className="event-card__actions"><Link className="event-card__button" to="/register">사전고객등록하기</Link><a href="#event-terms">유의사항 자세히 보기</a></div>
-            <p className="event-card__schedule">일정: 입주자모집공고(APT) 2026.10.15(목) 예정, 견본주택 GRAND OPEN 2026.10.23(금) 예정</p>
+            <p className="event-card__schedule">일정: 10월 중 OPEN 예정 · 세부 일정은 대표번호 1833-3872로 문의</p>
             <p className="event-card__notice">※ 청약 접수는 별도 절차이며, 사전고객등록만으로 청약이 되지는 않습니다.</p>
             <p>등록 여부는 <a href={SITE_TEL_HREF}>1833-3872</a>(대표번호)에서 확인하실 수 있습니다.</p>
             <details id="event-terms" className="event-card__terms"><summary>이벤트 유의사항 (청라 아크원 푸르지오 APT 사전고객등록)</summary>
@@ -428,8 +428,8 @@ function Home() {
           <Img className="bg" src="/resources/img/pages/main/contact_bg.v4.webp" alt="" />
           <h2>CONTACT US</h2>
           <div className="contact-schedule">
-            <p>APT 입주자모집공고: 2026년 10월 15일 (목) 예정</p>
-            <p>GRAND OPEN: 2026년 10월 23일 (금) 예정</p>
+            <p>10월 중 OPEN 예정</p>
+            <p>세부 일정 문의: 대표번호 1833-3872</p>
             <p>특별공급·1순위·2순위·당첨자 발표·계약 일정은 입주자모집공고 확정 후 안내드립니다.</p>
             <small>일정은 사업주체 사정에 따라 변경될 수 있습니다.</small>
           </div>

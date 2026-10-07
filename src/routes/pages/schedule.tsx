@@ -8,7 +8,7 @@ import { SRC_APPLYHOME, SRC_OFFICIAL } from "@/lib/arkone-facts";
 const FAQ: GuideFaq[] = [
   {
     q: "청라 아크원 푸르지오 분양 일정은 어떻게 되나요?",
-    a: "APT 입주자모집공고는 2026년 10월 15일(목) 예정, GRAND OPEN은 2026년 10월 23일(금) 예정입니다. 특별공급·1순위·2순위·당첨자 발표·계약 일정은 입주자모집공고 확정 후 안내되며 현재는 미정입니다.",
+    a: "청라 아크원 푸르지오는 10월 중 OPEN 예정입니다. 세부 일정은 대표번호 1833-3872로 문의해 주세요. 특별공급·1순위·2순위·당첨자 발표·계약 일정은 입주자모집공고 확정 후 안내되며 현재는 미정입니다.",
   },
   {
     q: "분양가는 얼마인가요?",
@@ -40,7 +40,7 @@ export const Route = createFileRoute("/pages/schedule")({
       {
         name: "description",
         content:
-          "청라 아크원 푸르지오 분양 일정: APT 입주자모집공고 2026.10.15(목) 예정, GRAND OPEN 2026.10.23(금) 예정. 분양가는 공고 전 미정, 2031년 입주 예정.",
+          "청라 아크원 푸르지오 분양 일정: 10월 중 OPEN 예정(세부 일정 문의 1833-3872). 분양가는 공고 전 미정, 2031년 입주 예정.",
       },
     ],
     links: canonicalLinks("/pages/schedule"),
@@ -55,7 +55,7 @@ function SchedulePage() {
         <section className="page_container">
           <GuideAnswer title="청라 아크원 푸르지오 분양 일정·청약 안내">
             <p>청라 아크원 푸르지오는 현재 입주자모집공고 전 단계입니다.</p>
-            <p>APT 입주자모집공고는 2026년 10월 15일(목) 예정이며, GRAND OPEN은 2026년 10월 23일(금) 예정입니다.</p>
+            <p>청라 아크원 푸르지오는 10월 중 OPEN 예정입니다. 세부 일정은 대표번호 1833-3872로 문의해 주세요.</p>
             <p>특별공급·1순위·2순위·당첨자 발표·계약 일정과 분양가는 아직 공개되지 않았으며(미정) 입주자모집공고에서 확정됩니다. 입주는 2031년 예정입니다.</p>
             <p>일정은 사업주체 사정에 따라 변경될 수 있으므로 청약 전 청약홈에 게시되는 공고문을 반드시 확인하시기 바랍니다.</p>
           </GuideAnswer>
@@ -63,8 +63,8 @@ function SchedulePage() {
             tableTitle="분양 일정 및 주요 조건 상태"
             columns={["항목", "내용", "상태"]}
             rows={[
-              { label: "APT 입주자모집공고", value: "2026년 10월 15일(목)", status: "예정" },
-              { label: "GRAND OPEN", value: "2026년 10월 23일(금) · 사업주체 홈페이지 표기 '10월 OPEN 예정'", status: "예정" },
+              { label: "APT 입주자모집공고", value: "세부 일정 문의 1833-3872", status: "예정" },
+              { label: "GRAND OPEN", value: "10월 중 · 사업주체 홈페이지 표기 '10월 OPEN 예정'", status: "예정" },
               { label: "특별공급·1순위·2순위 접수", value: "입주자모집공고 확정 후 안내", status: "미정" },
               { label: "당첨자 발표·계약", value: "입주자모집공고 확정 후 안내", status: "미정" },
               { label: "분양가", value: "미공개 (사업주체 표기: 분양가 상한제 적용단지)", status: "미정" },
