@@ -30,7 +30,7 @@ const HISTORY = [
   {
     year: "2029",
     items: ["서울아산청라병원 (예정)"],
-    img: "/resources/img/sub/brand_history_img_4.png",
+    img: "/resources/img/sub/brand_history_img_4.webp",
     badge: "청라 피크원 푸르지오(예정)",
   },
   {
@@ -64,7 +64,7 @@ function BrandPage() {
             <figure className="brand_image__img">
               <picture>
                 <source media="(max-width: 1024px)" srcSet="/resources/img/sub/brand_content_img_m.v4.jpg" />
-                <img src="/resources/img/sub/brand_content_img.v4.jpg" alt="청라를 잇는 교량과 도심 야경" {...imgDims("/resources/img/sub/brand_content_img.v4.jpg")} data-dims="" />
+                <img src="/resources/img/sub/brand_content_img.v4.webp" alt="청라를 잇는 교량과 도심 야경" {...imgDims("/resources/img/sub/brand_content_img.v4.webp")} data-dims="" />
               </picture>
             </figure>
             <div className="brand_image__txt_wrap">

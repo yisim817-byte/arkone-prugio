@@ -18,7 +18,7 @@ export const Route = createFileRoute("/pages/docnormal")({
 });
 
 function DocNormalPage() {
-  const src = "/resources/img/sub/02_일반공급.v4.jpg";
+  const src = "/resources/img/sub/02_일반공급.v4.webp";
   return (
     <SiteShell path="/pages/docnormal">
       <div className="page_content">

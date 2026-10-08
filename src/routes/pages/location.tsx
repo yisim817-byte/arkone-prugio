@@ -54,9 +54,9 @@ function LocationPage() {
           </header>
           <div className="location_map">
             <figure className="location_map__image">
-              <img src="/resources/img/sub/location_map_img.v4.jpg" alt="청라 아크원 푸르지오 주변 교통 및 생활 인프라 지도" {...imgDims("/resources/img/sub/location_map_img.v4.jpg")} data-dims="" />
+              <img src="/resources/img/sub/location_map_img.v4.webp" alt="청라 아크원 푸르지오 주변 교통 및 생활 인프라 지도" {...imgDims("/resources/img/sub/location_map_img.v4.webp")} data-dims="" />
             </figure>
-            <ZoomButton href="/resources/img/sub/location_map_img.v4.jpg" />
+            <ZoomButton href="/resources/img/sub/location_map_img.v4.webp" />
           </div>
           <section className="location_benefits">
             <h2 className="location_benefits__title">
