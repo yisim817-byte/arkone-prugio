@@ -131,6 +131,12 @@ function BrandPage() {
         </section>
       </div>
           <GuideDetail faq={FAQ} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: FAQ.map(({ q, a }) => ({ "@type": "Question", name: q, acceptedAnswer: { "@type": "Answer", text: a } })),
+      }) }} />
+
     </SiteShell>
   );
 }

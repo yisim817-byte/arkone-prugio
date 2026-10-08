@@ -40,6 +40,12 @@ function VideoPage() {
         </section>
       </div>
             <GuideDetail faq={FAQ} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: FAQ.map(({ q, a }) => ({ "@type": "Question", name: q, acceptedAnswer: { "@type": "Answer", text: a } })),
+      }) }} />
+
       {open ? <YoutubeModal id={YOUTUBE_ID} title="청라 아크원 푸르지오 홍보영상" onClose={() => setOpen(false)} /> : null}
     </SiteShell>
   );
