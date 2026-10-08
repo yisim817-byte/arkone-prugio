@@ -44,16 +44,16 @@ function PremiumPage() {
           <h1 className="page-h1">청라 아크원 푸르지오 프리미엄</h1>
           <header className="premium_intro">
             <p>청라 아크원 푸르지오 상품 안내</p>
-            <h3>주요 상품 특징</h3>
+            <h2>주요 상품 특징</h2>
             <strong>청라 아크원 푸르지오</strong>
           </header>
           <div className="premium_features">
             <article className="premium_feature premium_feature-01">
               <div className="premium_feature__content">
                 <span className="premium_feature__number">PREMIUM 01</span>
-                <h3>
+                <h2>
                   총 2,911세대·실 <br className="m-only" /> 푸르지오 브랜드타운
-                </h3>
+                </h2>
                 <p>
                   최고 49층 총 2,911세대·실<small>(청라 피크원 푸르지오 포함)</small>로 <br /> 청라국제업무단지 푸르지오
                   대규모 브랜드타운
@@ -68,9 +68,9 @@ function PremiumPage() {
             <article className="premium_feature premium_feature-02 premium_feature-reverse">
               <div className="premium_feature__content">
                 <span className="premium_feature__number">PREMIUM 02</span>
-                <h3>
+                <h2>
                   국제업무단지의 <br className="m-only" /> 센트럴 라이프
-                </h3>
+                </h2>
                 <p>
                   청라의 중심으로 완성되는
                   <br />
@@ -85,7 +85,7 @@ function PremiumPage() {
             <article className="premium_feature premium_feature-03">
               <div className="premium_feature__content">
                 <span className="premium_feature__number">PREMIUM 03</span>
-                <h3>오션 ∙ 시티뷰 조망 특화</h3>
+                <h2>오션 ∙ 시티뷰 조망 특화</h2>
                 <p>
                   오션 ∙ 시티뷰를 동시에 누리는 <br /> 2면 or 3면 개방구조<small>(일부세대)</small>
                 </p>
@@ -99,9 +99,9 @@ function PremiumPage() {
             <article className="premium_feature premium_feature-04 premium_feature-reverse">
               <div className="premium_feature__content">
                 <span className="premium_feature__number">PREMIUM 04</span>
-                <h3>
+                <h2>
                   분양가 상한제 <br className="m-only" /> 적용 아파트
-                </h3>
+                </h2>
                 <p>
                   청라가 기다려온 신규공급 <br /> 2017년 이후 10년만의 분양가 상한제 공급 아파트 <br />{" "}
                   <small>※ 500세대 이상 대단지 기준</small>
@@ -116,7 +116,7 @@ function PremiumPage() {
             <article className="premium_feature premium_feature-05">
               <div className="premium_feature__content">
                 <span className="premium_feature__number">PREMIUM 05</span>
-                <h3>멀티 라이프 플랫폼</h3>
+                <h2>멀티 라이프 플랫폼</h2>
                 <p>
                   팬트리 2개소 이상 제공
                   <br />

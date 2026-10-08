@@ -68,14 +68,14 @@ function ContactPage() {
               <div className="contact_map__locations">
                 <article className="contact_location">
                   <div>
-                    <h3>청라 아크원 푸르지오 현장</h3>
+                    <h2>청라 아크원 푸르지오 현장</h2>
                     <address>인천광역시 서해구 청라동 86-1번지</address>
                   </div>
                   <MapLinks naver="https://naver.me/xSBYFSR0" kakao="https://kko.to/27AvJsaNys" label="현장" />
                 </article>
                 <article className="contact_location">
                   <div>
-                    <h3>청라 아크원 푸르지오 견본주택</h3>
+                    <h2>청라 아크원 푸르지오 견본주택</h2>
                     <address>인천광역시 서해구 청라동 87-1번지</address>
                   </div>
                   <MapLinks naver="https://naver.me/xNpQLQ3L" kakao="https://kko.to/06V9ttVXOK" label="견본주택" />
@@ -89,7 +89,7 @@ function ContactPage() {
               <div className="contact_map__locations">
                 <article className="contact_location">
                   <div>
-                    <h3>청라 아크원 푸르지오 홍보관</h3>
+                    <h2>청라 아크원 푸르지오 홍보관</h2>
                     <address>
                       인천광역시 서해구 중봉대로 586번길 19
                       <br />

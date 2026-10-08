@@ -49,7 +49,7 @@ function LocationPage() {
           </GuideAnswer>
           <header className="location_intro">
             <p>청라국제업무단지 M5블록</p>
-            <h3>청라 아크원 푸르지오 입지환경</h3>
+            <h2>청라 아크원 푸르지오 입지환경</h2>
           </header>
           <div className="location_map">
             <figure className="location_map__image">
@@ -58,15 +58,15 @@ function LocationPage() {
             <ZoomButton href="/resources/img/sub/location_map_img.v4.jpg" />
           </div>
           <section className="location_benefits">
-            <h3 className="location_benefits__title">
+            <h2 className="location_benefits__title">
               CENTRAL <br className="m-only" /> LOCATION
               <br />
               PRUGIO
-            </h3>
+            </h2>
             <div className="location_benefits__grid">
               <article className="location_benefit location_benefit-traffic">
                 <span className="location_benefit__icon" />
-                <h4>서울-인천-경기를 잇는 쾌속교통망</h4>
+                <h3>서울-인천-경기를 잇는 쾌속교통망</h3>
                 <p>
                   서울7호선 청라연장선 <br className="m-only" /> 국제업무단지역<small>(예정·개통 시기 미정)</small>, <br />{" "}
                   GTX-D·E<small>(계획 단계·확정 아님)</small>, <br className="m-only" /> 청라하늘대교 개통, 제2외곽순환도로 등
@@ -74,7 +74,7 @@ function LocationPage() {
               </article>
               <article className="location_benefit location_benefit-vision">
                 <span className="location_benefit__icon" />
-                <h4>완성되고 있는 핵심 개발비전</h4>
+                <h3>완성되고 있는 핵심 개발비전</h3>
                 <p>
                   하나드림타운<small>('26.5.21 준공)</small>, <br className="m-only" /> 영상문화복합단지<small>('31년 계획)</small>,{" "}
                   <br />
@@ -83,7 +83,7 @@ function LocationPage() {
               </article>
               <article className="location_benefit location_benefit-living">
                 <span className="location_benefit__icon" />
-                <h4>눈앞에 다가온 트렌디한 생활특권</h4>
+                <h3>눈앞에 다가온 트렌디한 생활특권</h3>
                 <p>
                   복합쇼핑몰+돔구장 형태의 <br className="m-only" /> 스타필드 청라<small>(`28년 개장 예정)</small>,
                   <br /> 서울아산청라병원<small>('29년 예정)</small>, <br className="m-only" /> 코스트코 청라점 등
@@ -91,7 +91,7 @@ function LocationPage() {
               </article>
               <article className="location_benefit location_benefit-edu">
                 <span className="location_benefit__icon" />
-                <h4>단지 앞 안전한 통학길 안심 교육환경</h4>
+                <h3>단지 앞 안전한 통학길 안심 교육환경</h3>
                 <p>
                   초교 신설<small>(예정)</small>, 중교 신설<small>(계획)</small>, <br /> 인근 경연초·중교,{" "}
                   <br className="m-only" />

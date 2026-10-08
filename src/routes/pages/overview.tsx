@@ -70,9 +70,9 @@ function OverviewPage() {
                   오피스텔 987실
                 </p>
                 <span className="overview_summary__line" />
-                <h3>
+                <h2>
                   청라국제업무단지 <br /> M5블록 주상복합
-                </h3>
+                </h2>
               </figcaption>
             </figure>
             <dl className="overview_info">

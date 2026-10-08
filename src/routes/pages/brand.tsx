@@ -61,13 +61,13 @@ function BrandPage() {
               </picture>
             </figure>
             <div className="brand_image__txt_wrap">
-              <h3>
+              <h2>
                 총 2,911세대·실<small>(B1 & M5 블록)</small>
                 <br />
                 청라국제업무단지 푸르지오
                 <br />
                 대규모 브랜드타운
-              </h3>
+              </h2>
               <p>
                 국제업무단지 B1 블록의
                 <br />
@@ -90,14 +90,14 @@ function BrandPage() {
           <section className="brand_history">
             <header className="brand_history__intro">
               <p className="brand_history__eyebrow">MASTERPLAN PROGRESS</p>
-              <h3>
+              <h2>
                 청라 주변<strong>개발 일정</strong>
-              </h3>
+              </h2>
             </header>
             <div className="brand_history__timeline">
               {HISTORY.map((item) => (
                 <article className="brand_history__item" key={item.year + item.img}>
-                  <h4>{item.year}</h4>
+                  <h3>{item.year}</h3>
                   <ul>
                     {item.items.map((li) => (
                       <li key={li}>{li}</li>

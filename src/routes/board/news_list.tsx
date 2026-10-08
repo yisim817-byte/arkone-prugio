@@ -45,7 +45,7 @@ function NewsListPage() {
                       </div>
                     </div>
                     <div className="news_b">
-                      <h3>VIEW</h3>
+                      <h2>VIEW</h2>
                       <span className="date">{item.date}</span>
                     </div>
                   </button>
