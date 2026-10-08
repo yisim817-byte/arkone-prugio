@@ -18,7 +18,7 @@ const KR_SITEMAP: ReadonlyArray<readonly [string, string]> = [
   ["/pages/overview", "2026-10-04"],
   ["/pages/compare", "2026-10-04"],
   ["/pages/schedule", "2026-10-06"],
-  ["/pages/location", "2026-10-08"],
+  ["/pages/location", "2026-10-09"],
   ["/pages/contact", "2026-10-04"],
   ["/pages/changeinfo", "2026-10-04"],
   ["/pages/docspecial", "2026-10-04"],
