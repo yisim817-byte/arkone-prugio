@@ -1,3 +1,4 @@
+import { imgDims } from "@/components/img";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useId, useState } from "react";
 import { Img } from "@/components/img";
@@ -130,7 +131,7 @@ function Home() {
           <div className="hero__media">
             <picture>
               <source media="(max-width: 1024px)" srcSet="/resources/img/pages/main/hero_bg_m.v4.webp" />
-              <img src="/resources/img/pages/main/hero_bg.v4.webp" alt="청라 아크원 푸르지오 단지 투시도(CG)" />
+              <img src="/resources/img/pages/main/hero_bg.v4.webp" alt="청라 아크원 푸르지오 단지 투시도(CG)" {...imgDims("/resources/img/pages/main/hero_bg.v4.webp")} data-dims="" />
             </picture>
             <video className="pc-only" autoPlay muted loop playsInline>
               <source src="/resources/img/pages/main/hero_video.mp4" type="video/mp4" />
@@ -167,7 +168,7 @@ function Home() {
                 <b>청라 아크원</b> <br className="m-only" /> 홍보영상
               </span>
               <span className="hero__video_play">
-                <img src="/resources/img/pages/main/ico_yt.svg" alt="" />
+                <img src="/resources/img/pages/main/ico_yt.svg" alt="" {...imgDims("/resources/img/pages/main/ico_yt.svg")} data-dims="" />
               </span>
             </button>
             <div className="hero__quick">
@@ -177,11 +178,13 @@ function Home() {
                   className="hero__quick_content"
                   src="/resources/img/pages/main/hero_circle_01.svg"
                   alt="분양가 상한제 적용단지"
+                  {...imgDims("/resources/img/pages/main/hero_circle_01.svg")}
+                  data-dims=""
                 />
               </a>
               <Link to="/register" className="hero__quick_item" aria-label="사전고객등록">
                 <HeroOrbit />
-                <img className="hero__quick_content" src="/resources/img/pages/main/hero_circle_register.svg" alt="사전고객등록" />
+                <img className="hero__quick_content" src="/resources/img/pages/main/hero_circle_register.svg" alt="사전고객등록" {...imgDims("/resources/img/pages/main/hero_circle_register.svg")} data-dims="" />
               </Link>
             </div>
           </div>

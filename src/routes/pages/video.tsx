@@ -26,7 +26,7 @@ function VideoPage() {
           <h1 className="page-h1">청라 아크원 푸르지오 홍보영상</h1>
           <div className="video-grid">
             <button type="button" className="video-card" onClick={() => setOpen(true)}>
-              <img src={`https://img.youtube.com/vi/${YOUTUBE_ID}/hqdefault.jpg`} alt="청라 아크원 푸르지오 홍보영상 썸네일" />
+              <img src={`https://img.youtube.com/vi/${YOUTUBE_ID}/hqdefault.jpg`} alt="청라 아크원 푸르지오 홍보영상 썸네일" width={480} height={360} data-dims="" />
               <p>청라 아크원 푸르지오 홍보영상</p>
             </button>
           </div>
