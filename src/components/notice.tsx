@@ -1,3 +1,4 @@
+import { imgDims } from "@/components/img";
 export function SubNotice({ items }: { items: string[] }) {
   return (
     <aside className="sub_notice">
@@ -15,7 +16,7 @@ export function ZoomButton({ href, label = "크게보기" }: { href: string; lab
   return (
     <div className="sub_zoom mflex-only">
       <a className="sub_zoom_button" href={href} target="_blank" rel="noopener noreferrer">
-        <img src="/resources/img/sub/ico_zoom.svg" alt="" />
+        <img src="/resources/img/sub/ico_zoom.svg" alt="" {...imgDims("/resources/img/sub/ico_zoom.svg")} data-dims="" />
         <span>{label}</span>
       </a>
     </div>

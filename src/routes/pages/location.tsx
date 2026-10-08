@@ -4,6 +4,7 @@ import { SubNotice, ZoomButton } from "@/components/notice";
 import { canonicalLinks, faqJsonLd } from "@/lib/seo-host";
 import { GuideAnswer, GuideDetail, type GuideFaq } from "@/components/seo-guide";
 import { SRC_OFFICIAL } from "@/lib/arkone-facts";
+import { imgDims } from "@/components/img";
 
 const FAQ: GuideFaq[] = [
   {
@@ -52,7 +53,7 @@ function LocationPage() {
           </header>
           <div className="location_map">
             <figure className="location_map__image">
-              <img src="/resources/img/sub/location_map_img.v4.jpg" alt="청라 아크원 푸르지오 주변 교통 및 생활 인프라 지도" />
+              <img src="/resources/img/sub/location_map_img.v4.jpg" alt="청라 아크원 푸르지오 주변 교통 및 생활 인프라 지도" {...imgDims("/resources/img/sub/location_map_img.v4.jpg")} data-dims="" />
             </figure>
             <ZoomButton href="/resources/img/sub/location_map_img.v4.jpg" />
           </div>
@@ -68,7 +69,7 @@ function LocationPage() {
                 <h4>서울-인천-경기를 잇는 쾌속교통망</h4>
                 <p>
                   서울7호선 청라연장선 <br className="m-only" /> 국제업무단지역<small>(예정·개통 시기 미정)</small>, <br />{" "}
-                  GTX-D·E<small>(계획)</small>, <br className="m-only" /> 청라하늘대교 개통, 제2외곽순환도로 등
+                  GTX-D·E<small>(계획 · 계획 단계·확정 아님)</small>, <br className="m-only" /> 청라하늘대교 개통, 제2외곽순환도로 등
                 </p>
               </article>
               <article className="location_benefit location_benefit-vision">
@@ -92,7 +93,7 @@ function LocationPage() {
                 <span className="location_benefit__icon" />
                 <h4>단지 앞 안전한 통학길 안심 교육환경</h4>
                 <p>
-                  도보 5분 초교 신설<small>(예정)</small>, 중교 신설<small>(계획)</small>, <br /> 도보거리 경연초·중교,{" "}
+                  초교 신설<small>(예정)</small>, 중교 신설<small>(계획)</small>, <br /> 인근 경연초·중교,{" "}
                   <br className="m-only" />
                   청라달튼외국인학교
                 </p>
@@ -106,7 +107,7 @@ function LocationPage() {
               { label: "위치", value: "인천광역시 서해구 청라동 86-1번지, 청라국제도시 주상복합용지 M5BL", status: "공개값" },
               { label: "청라하늘대교(제3연륙교)", value: "2026년 1월 5일 개통, 1월 14일 명칭 확정 (경향신문 2026-01-14 보도)", status: "확정" },
               { label: "서울 7호선 청라연장선 국제업무단지역", value: "대도시권광역교통위원회 고시 제2022-01호", status: "예정 · 개통 시기 미정" },
-              { label: "GTX-D·E", value: "계획 단계 노선", status: "계획" },
+              { label: "GTX-D·E", value: "계획 단계 노선", status: "계획 · 계획 단계·확정 아님" },
               { label: "스타필드 청라(돔구장 복합)", value: "인천시 보도자료 (2026.1.13)", status: "2028년 개장 예정" },
               { label: "서울아산청라병원", value: "인천경제청 보도자료 (2025.1.2)", status: "2029년 예정" },
               { label: "하나드림타운", value: "인천경제청 보도자료 (2026.5.26)", status: "2026.5.21 준공" },
@@ -137,7 +138,7 @@ function LocationPage() {
               "본 홈페이지의 교통시설, 생활시설, 교육시설 및 주변현황 등은 실제와 다소 다를 수 있으므로 현장을 방문하여 확인하시기 바랍니다.",
               "학교 배정에 관한 자세한 사항은 해당 지역 교육지원청에 문의하여 확인하시기 바랍니다.",
               "서울 지하철 7호선 청라 연장선(예정): 대도시권광역교통위원회 고시 제2022-01호",
-              "9호선 직결(계획): 보도자료: 인천시의회 신성영 의원, 공항철도-9호선 직결 합의 환영 (2023.11.21 행정안전전문위원실 소관)",
+              "9호선 직결(계획 · 계획 단계·확정 아님): 보도자료: 인천시의회 신성영 의원, 공항철도-9호선 직결 합의 환영 (2023.11.21 행정안전전문위원실 소관)",
               "인천로봇랜드(28년 예정): 산업통상자원부고시 제2024-199호",
               "서울아산청라병원(29년 예정): 보도자료: 인천경제청, 서울아산청라병원 건축 허가 승인 (2025.1. 2)",
               "돔구장&스타필드 청라(28년 개장 예정): 보도자료: 인천시, 청라국제도시 스타필드청라 현장 점검 (2026. 1. 13)",

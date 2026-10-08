@@ -41,7 +41,7 @@ export function GuideDetail({
     <section className="seo-guide seo-guide-detail">
       {rows && rows.length > 0 ? (
         <>
-          {tableTitle ? <h3 className="seo-guide__subtitle">{tableTitle}</h3> : null}
+          {tableTitle ? <h2 className="seo-guide__subtitle">{tableTitle}</h2> : null}
           <div className="seo-guide__table_wrap">
             <table className="seo-guide__table">
               <thead>
@@ -68,20 +68,20 @@ export function GuideDetail({
       {children}
       {faq && faq.length > 0 ? (
         <>
-          <h3 className="seo-guide__subtitle">자주 묻는 질문</h3>
-          <dl className="seo-guide__faq">
+          <h2 className="seo-guide__subtitle">자주 묻는 질문</h2>
+          <div className="seo-guide__faq">
             {faq.map((item) => (
               <div key={item.q}>
-                <dt>Q. {item.q}</dt>
-                <dd>A. {item.a}</dd>
+                <h3>Q. {item.q}</h3>
+                <p>A. {item.a}</p>
               </div>
             ))}
-          </dl>
+          </div>
         </>
       ) : null}
       {links && links.length > 0 ? (
         <>
-          <h3 className="seo-guide__subtitle">함께 보면 좋은 안내</h3>
+          <h2 className="seo-guide__subtitle">함께 보면 좋은 안내</h2>
           <ul className="seo-guide__links">
             {links.map((l) => (
               <li key={l.to}>

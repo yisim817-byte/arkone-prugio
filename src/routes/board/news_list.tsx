@@ -29,6 +29,7 @@ function NewsListPage() {
         <section className="page_container">
           {/* SEO_PUSH 2026-10-06 P1-1: 페이지 고유 H1 (title 앞부분) */}
           <h1 className="page-h1">청라 아크원 푸르지오 언론보도</h1>
+          <p className="news-excerpt-note">기사 발췌는 각 언론사 원문 인용이며, 계획·예정 사업은 확정이 아닙니다(7호선 개통 시기 미정).</p>
           <div className="news_list_type">
             <ul>
               {items.map((item) => (

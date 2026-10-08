@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { SiteShell } from "@/components/site-shell";
 import { SubNotice } from "@/components/notice";
 import { canonicalLinks } from "@/lib/seo-host";
+import { imgDims } from "@/components/img";
 
 export const Route = createFileRoute("/pages/premium")({
   component: PremiumPage,
@@ -27,7 +28,7 @@ function Pic({
     <figure className="premium_image">
       <picture>
         <source media="(max-width: 1024px)" srcSet={m} />
-        <img src={src} alt={alt} />
+        <img src={src} alt={alt} {...imgDims(src)} data-dims="" />
       </picture>
       <figcaption>이미지컷</figcaption>
     </figure>

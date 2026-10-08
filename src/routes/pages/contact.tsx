@@ -4,6 +4,7 @@ import { SubNotice } from "@/components/notice";
 import { canonicalLinks, faqJsonLd } from "@/lib/seo-host";
 import { GuideAnswer, GuideDetail, type GuideFaq } from "@/components/seo-guide";
 import { SRC_OFFICIAL_CONTACT } from "@/lib/arkone-facts";
+import { imgDims } from "@/components/img";
 
 const FAQ: GuideFaq[] = [
   {
@@ -40,10 +41,10 @@ function MapLinks({ naver, kakao, label }: { naver: string; kakao: string; label
   return (
     <div className="contact_location__links map-btns" aria-label={`${label} 지도 바로가기`}>
       <a href={naver} target="_blank" rel="noopener noreferrer" aria-label={`네이버 지도에서 ${label} 보기`}>
-        <img src="/resources/img/common/ico_naver.svg" alt="" />
+        <img src="/resources/img/common/ico_naver.svg" alt="" {...imgDims("/resources/img/common/ico_naver.svg")} data-dims="" />
       </a>
       <a href={kakao} target="_blank" rel="noopener noreferrer" aria-label={`카카오 지도에서 ${label} 보기`}>
-        <img src="/resources/img/common/ico_kko_map.svg" alt="" />
+        <img src="/resources/img/common/ico_kko_map.svg" alt="" {...imgDims("/resources/img/common/ico_kko_map.svg")} data-dims="" />
       </a>
     </div>
   );
@@ -62,7 +63,7 @@ function ContactPage() {
           <div className="contact_map">
             <div className="contact_map__box">
               <figure className="contact_map__image">
-                <img src="/resources/img/sub/contact_map_img_1.v4.jpg" alt="청라 아크원 푸르지오 현장과 견본주택 약도" />
+                <img src="/resources/img/sub/contact_map_img_1.v4.jpg" alt="청라 아크원 푸르지오 현장과 견본주택 약도" {...imgDims("/resources/img/sub/contact_map_img_1.v4.jpg")} data-dims="" />
               </figure>
               <div className="contact_map__locations">
                 <article className="contact_location">
@@ -83,7 +84,7 @@ function ContactPage() {
             </div>
             <div className="contact_map__box">
               <figure className="contact_map__image">
-                <img src="/resources/img/sub/contact_map_img_2.v4.jpg" alt="청라 아크원 푸르지오 홍보관 약도" />
+                <img src="/resources/img/sub/contact_map_img_2.v4.jpg" alt="청라 아크원 푸르지오 홍보관 약도" {...imgDims("/resources/img/sub/contact_map_img_2.v4.jpg")} data-dims="" />
               </figure>
               <div className="contact_map__locations">
                 <article className="contact_location">

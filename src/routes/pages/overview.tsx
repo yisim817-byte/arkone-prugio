@@ -4,6 +4,7 @@ import { SubNotice } from "@/components/notice";
 import { canonicalLinks, faqJsonLd } from "@/lib/seo-host";
 import { GuideAnswer, GuideDetail, type GuideFaq } from "@/components/seo-guide";
 import { SRC_APPLYHOME, SRC_OFFICIAL, SRC_OFFICIAL_PREMIUM } from "@/lib/arkone-facts";
+import { imgDims } from "@/components/img";
 
 const FAQ: GuideFaq[] = [
   {
@@ -59,7 +60,7 @@ function OverviewPage() {
             <figure className="overview_image">
               <picture>
                 <source media="(max-width: 1024px)" srcSet="/resources/img/sub/overview_apt_img_m.v4.jpg" />
-                <img src="/resources/img/sub/overview_apt_img.v4.jpg" alt="청라 아크원 푸르지오 단지 연출 이미지" />
+                <img src="/resources/img/sub/overview_apt_img.v4.jpg" alt="청라 아크원 푸르지오 단지 연출 이미지" {...imgDims("/resources/img/sub/overview_apt_img.v4.jpg")} data-dims="" />
               </picture>
               <span className="overview_image__caption">이미지컷</span>
               <figcaption className="overview_image__text">

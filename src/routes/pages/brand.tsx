@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { SiteShell } from "@/components/site-shell";
 import { SubNotice } from "@/components/notice";
 import { canonicalLinks } from "@/lib/seo-host";
+import { imgDims } from "@/components/img";
 
 export const Route = createFileRoute("/pages/brand")({
   component: BrandPage,
@@ -56,7 +57,7 @@ function BrandPage() {
             <figure className="brand_image__img">
               <picture>
                 <source media="(max-width: 1024px)" srcSet="/resources/img/sub/brand_content_img_m.v4.jpg" />
-                <img src="/resources/img/sub/brand_content_img.v4.jpg" alt="청라를 잇는 교량과 도심 야경" />
+                <img src="/resources/img/sub/brand_content_img.v4.jpg" alt="청라를 잇는 교량과 도심 야경" {...imgDims("/resources/img/sub/brand_content_img.v4.jpg")} data-dims="" />
               </picture>
             </figure>
             <div className="brand_image__txt_wrap">
@@ -82,7 +83,7 @@ function BrandPage() {
               </p>
             </div>
             <picture className="brand_image__slogan">
-              <img src="/resources/img/sub/brand_slogan_img.svg" alt="" />
+              <img src="/resources/img/sub/brand_slogan_img.svg" alt="" {...imgDims("/resources/img/sub/brand_slogan_img.svg")} data-dims="" />
             </picture>
           </div>
 
@@ -103,7 +104,7 @@ function BrandPage() {
                     ))}
                   </ul>
                   <figure className="brand_history__thumb">
-                    <img src={item.img} alt={`${item.year} ${item.items.join(", ")} 이미지`} />
+                    <img src={item.img} alt={`${item.year} ${item.items.join(", ")} 이미지`} {...imgDims(item.img)} data-dims="" />
                   </figure>
                   {item.badge ? (
                     <p className={`brand_history__badge${item.primary ? " brand_history__badge-primary" : ""}`}>

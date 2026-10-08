@@ -18,14 +18,14 @@ const KR_SITEMAP: ReadonlyArray<readonly [string, string]> = [
   ["/pages/overview", "2026-10-04"],
   ["/pages/compare", "2026-10-04"],
   ["/pages/schedule", "2026-10-06"],
-  ["/pages/location", "2026-10-04"],
+  ["/pages/location", "2026-10-08"],
   ["/pages/contact", "2026-10-04"],
   ["/pages/changeinfo", "2026-10-04"],
   ["/pages/docspecial", "2026-10-04"],
   ["/pages/docnormal", "2026-10-04"],
   ["/pages/premium", "2026-10-06"],
   ["/pages/brand", "2026-10-06"],
-  ["/board/news_list", "2026-10-06"],
+  ["/board/news_list", "2026-10-08"],
   ["/pages/video", "2026-10-06"],
 ];
 const KR_PATHS = new Set(KR_SITEMAP.map(([p]) => p));
@@ -90,7 +90,14 @@ function krPageJsonLd(path: string): string {
   };
   const graph: Record<string, unknown>[] = [org];
   if (path === "/") {
-    graph.push({ "@type": "WebPage", "@id": `${KR_ORIGIN}/#webpage`, dateModified: lastmod });
+    graph.push({
+      "@type": "WebSite",
+      "@id": `${KR_ORIGIN}/#website`,
+      name: "청라 아크원 푸르지오",
+      url: `${KR_ORIGIN}/`,
+      alternateName: ["아크원푸르지오.site"],
+    });
+    graph.push({ "@type": "WebPage", "@id": `${KR_ORIGIN}/#webpage`, dateModified: lastmod, isPartOf: { "@id": `${KR_ORIGIN}/#website` } });
   } else {
     graph.push(
       {
@@ -157,6 +164,13 @@ interface SeoEvent {
   req: { method: string; headers: Headers };
 }
 
+
+function isStaticAsset(path: string): boolean {
+  if (path.startsWith("/resources/") || path.startsWith("/assets/") || path.startsWith("/_next/")) return true;
+  const last = path.split("/").pop() ?? "";
+  return last.includes(".");
+}
+
 function isKr(event: SeoEvent): boolean {
   const raw =
     event.req.headers.get("x-forwarded-host") ?? event.req.headers.get("host") ?? event.url.host;
@@ -217,6 +231,26 @@ export default async function seoHostMiddleware(
   const method = (event.req.method ?? "GET").toUpperCase();
   if (method !== "GET" && method !== "HEAD") return next();
   const path = event.url.pathname;
+
+  // KR host: trailing-slash HTML paths 308 to the slashless URL. Query preserved.
+  // Root, /api/, and static assets stay as-is (framework 307 must not win on pages).
+  if (
+    (method === "GET" || method === "HEAD") &&
+    isKr(event) &&
+    path.length > 1 &&
+    path.endsWith("/") &&
+    !path.startsWith("/api/") &&
+    !isStaticAsset(path)
+  ) {
+    const bare = path.replace(/\/+$/, "") || "/";
+    return new Response(null, {
+      status: 308,
+      headers: {
+        location: bare + event.url.search,
+        ...TEXT_HEADERS,
+      },
+    });
+  }
 
   if (path === "/robots.txt") {
     const kr = isKr(event);

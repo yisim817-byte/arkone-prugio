@@ -4,6 +4,7 @@ import { ZoomButton } from "@/components/notice";
 import { canonicalLinks } from "@/lib/seo-host";
 import { GuideAnswer, GuideDetail } from "@/components/seo-guide";
 import { SRC_APPLYHOME } from "@/lib/arkone-facts";
+import { imgDims } from "@/components/img";
 
 export const Route = createFileRoute("/pages/changeinfo")({
   component: ChangeInfoPage,
@@ -26,7 +27,7 @@ function ChangeInfoPage() {
             <p>청라 아크원 푸르지오에 적용되는 공급 유형, 자격 요건, 청약 일정은 입주자모집공고에서 확정되며 현재는 미정입니다. 청라 아크원 푸르지오는 10월 중 OPEN 예정입니다. 세부 일정은 대표번호 1833-3872로 문의해 주세요.</p>
           </GuideAnswer>
           <figure>
-            <img src={src} alt="변경된 청약제도 안내" />
+            <img src={src} alt="변경된 청약제도 안내" {...imgDims(src)} data-dims="" />
           </figure>
           <ZoomButton href={src} />
           <GuideDetail

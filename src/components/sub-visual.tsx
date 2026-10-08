@@ -1,6 +1,7 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import { useState } from "react";
 import { NAV, PAGE_META } from "@/lib/site-data";
+import { imgDims } from "@/components/img";
 
 export function SubVisual({ path }: { path: string }) {
   const meta = PAGE_META[path];
@@ -16,7 +17,7 @@ export function SubVisual({ path }: { path: string }) {
         <div className="sub_visual__image">
           <picture>
             <source media="(max-width: 1024px)" srcSet="/resources/img/common/sub_visual_img_m.v4.webp" />
-            <img src="/resources/img/common/sub_visual_img.v4.webp" alt="" />
+            <img src="/resources/img/common/sub_visual_img.v4.webp" alt="" {...imgDims("/resources/img/common/sub_visual_img.v4.webp")} data-dims="" />
           </picture>
         </div>
         <div className="sub_visual__content">
