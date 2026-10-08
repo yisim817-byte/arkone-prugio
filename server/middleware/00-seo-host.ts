@@ -24,9 +24,9 @@ const KR_SITEMAP: ReadonlyArray<readonly [string, string]> = [
   ["/pages/docspecial", "2026-10-04"],
   ["/pages/docnormal", "2026-10-04"],
   ["/pages/premium", "2026-10-06"],
-  ["/pages/brand", "2026-10-06"],
+  ["/pages/brand", "2026-10-09"],
   ["/board/news_list", "2026-10-08"],
-  ["/pages/video", "2026-10-06"],
+  ["/pages/video", "2026-10-09"],
 ];
 const KR_PATHS = new Set(KR_SITEMAP.map(([p]) => p));
 

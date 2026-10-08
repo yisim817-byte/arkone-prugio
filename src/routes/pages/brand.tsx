@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteShell } from "@/components/site-shell";
+import { GuideDetail } from "@/components/seo-guide";
 import { SubNotice } from "@/components/notice";
 import { canonicalLinks } from "@/lib/seo-host";
 import { imgDims } from "@/components/img";
@@ -44,6 +45,12 @@ const HISTORY = [
     badge: "청라 아크원 푸르지오(예정)",
     primary: true,
   },
+];
+
+
+const FAQ = [
+  { q: "이 페이지는 무엇을 정리하나요?", a: "청라 아크원 푸르지오 히스토리. 청라 주변 개발 계획을 연도별로 정리했습니다." },
+  { q: "일정은 어떤 기준인가요?", a: "일정은 예정·계획 기준이며 관계기관 사정에 따라 변경될 수 있습니다." },
 ];
 
 function BrandPage() {
@@ -123,6 +130,7 @@ function BrandPage() {
           />
         </section>
       </div>
+          <GuideDetail faq={FAQ} />
     </SiteShell>
   );
 }

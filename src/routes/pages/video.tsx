@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { SiteShell } from "@/components/site-shell";
+import { GuideDetail } from "@/components/seo-guide";
 import { YoutubeModal } from "@/components/youtube-modal";
 import { YOUTUBE_ID } from "@/lib/site-data";
 import { canonicalLinks } from "@/lib/seo-host";
@@ -15,6 +16,12 @@ export const Route = createFileRoute("/pages/video")({
     links: canonicalLinks("/pages/video"),
   }),
 });
+
+
+const FAQ = [
+  { q: "어떤 영상을 볼 수 있나요?", a: "청라 아크원 푸르지오 홍보영상 모음." },
+  { q: "영상은 어디서 공개된 것인가요?", a: "사업주체가 공개한 단지 소개 영상을 확인할 수 있습니다." },
+];
 
 function VideoPage() {
   const [open, setOpen] = useState(false);
@@ -32,6 +39,7 @@ function VideoPage() {
           </div>
         </section>
       </div>
+            <GuideDetail faq={FAQ} />
       {open ? <YoutubeModal id={YOUTUBE_ID} title="청라 아크원 푸르지오 홍보영상" onClose={() => setOpen(false)} /> : null}
     </SiteShell>
   );
