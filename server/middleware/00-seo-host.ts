@@ -90,13 +90,6 @@ function krPageJsonLd(path: string): string {
   };
   const graph: Record<string, unknown>[] = [org];
   if (path === "/") {
-    graph.push({
-      "@type": "WebSite",
-      "@id": `${KR_ORIGIN}/#website`,
-      name: "청라 아크원 푸르지오",
-      url: `${KR_ORIGIN}/`,
-      alternateName: ["아크원푸르지오.site"],
-    });
     graph.push({ "@type": "WebPage", "@id": `${KR_ORIGIN}/#webpage`, dateModified: lastmod, isPartOf: { "@id": `${KR_ORIGIN}/#website` } });
   } else {
     graph.push(

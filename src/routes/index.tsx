@@ -36,6 +36,7 @@ function homeJsonLd(origin: string) {
         "@id": `${origin}/#website`,
         url: `${origin}/`,
         name: SITE_NAME,
+        alternateName: ["아크원푸르지오.site"],
         inLanguage: "ko-KR",
         publisher: { "@id": "https://www.humanekorea.co.kr/#organization" },
       },
