@@ -45,12 +45,9 @@ export const Route = createRootRoute({
         integrity: "sha384-mMsv9ePXdDSZ5/ow3/9MfU9yh0kB3kl9FhTuYEPbeOmoJWs1mpXtQ2AlPvHVDLqs",
         crossOrigin: "anonymous",
       },
-      {
-        rel: "stylesheet",
-        rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
+      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       { rel: "preload", as: "style", href: "https://fonts.googleapis.com/css2?family=Aboreto&display=swap" },
-      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Aboreto&display=swap",
-      },
+      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Aboreto&display=swap" },
       {
         rel: "stylesheet",
         href: "https://fonts.googleapis.com/earlyaccess/nanummyeongjo.css",
