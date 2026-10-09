@@ -183,7 +183,7 @@ function OverviewPage() {
               { label: "시행 · 시공", value: "㈜청라스마트시티 · 대우건설", status: "공개값" },
               { label: "분양가", value: "미공개 (사업주체 표기: 분양가 상한제 적용단지)", status: "미정" },
               { label: "APT 입주자모집공고", value: "10월 중 OPEN 예정", status: "예정" },
-              { label: "입주 시기", value: "2031년 입주 예정", status: "예정" },
+              { label: "입주 시기", value: "입주 시기는 입주자모집공고 게시 후 공고문으로 확인해야 합니다", status: "예정" },
             ]}
             faq={FAQ}
             links={[

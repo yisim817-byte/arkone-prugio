@@ -65,7 +65,7 @@ function ComparePage() {
               { label: "상업시설", value: "피크원 53·아크원 43, 총 96개 점포 · 지상 1~2층 (1층 47 · 2층 49)", status: "분양 자료 기준" },
               { label: "분양가", value: "APT·OT 모두 미공개 (사업주체 표기: 분양가 상한제 적용단지)", status: "미정" },
               { label: "공고 일정", value: "10월 중 OPEN 예정 · 세부 일정 문의 1833-3872", status: "예정" },
-              { label: "입주 시기", value: "2031년 입주 예정", status: "예정" },
+              { label: "입주 시기", value: "입주 시기는 입주자모집공고 게시 후 공고문으로 확인해야 합니다", status: "예정" },
             ]}
             faq={FAQ}
             links={[
