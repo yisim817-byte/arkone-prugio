@@ -341,8 +341,8 @@ function Home() {
               { y: "2028", img: "history_img_2028.v4.jpg", cap: ["돔구장&스타필드 청라 (개장 예정)"] },
               { y: "2029", img: "history_img_2029.v4.jpg", cap: ["서울아산청라병원 (예정)"] },
               { y: "개통 시기 미정", img: "history_img_2030.v4.webp", cap: ["7호선 국제업무단지역 (예정)"] },
-              { y: "2031", img: "history_img_2031.v4.jpg", cap: ["영상문화복합단지 (계획)"] },
-              { y: "2031", img: "history_img_ark_one.v4.jpg", cap: ["청라 아크원 푸르지오 (예정)"] },
+              { y: "공고 후", img: "history_img_공고 후.v4.jpg", cap: ["영상문화복합단지 (계획)"] },
+              { y: "공고 후", img: "history_img_ark_one.v4.jpg", cap: ["청라 아크원 푸르지오 (입주 시기 공고문 확인)"] },
             ].map((ev) => (
               <article className="history-card" key={ev.img}>
                 <time>
