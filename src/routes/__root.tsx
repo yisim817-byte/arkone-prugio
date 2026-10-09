@@ -28,19 +28,17 @@ export const Route = createRootRoute({
       },
     ],
     links: [
-      { rel: "icon", type: "image/png", sizes: "96x96", href: "/favicon-96.png" },
-      { rel: "icon", type: "image/png", sizes: "32x32", href: "/favicon-32.png" },
-      { rel: "icon", href: "/favicon.ico" },
+      { rel: "icon", type: "image/png", sizes: "144x144", href: "/g-icon-144.png?v=20261009" },
+      { rel: "shortcut icon", href: "/g-icon-144.png?v=20261009" },
       {
         rel: "alternate",
         type: "application/rss+xml",
         title: "청라 아크원 푸르지오 분양 일정·청약 RSS",
         href: "https://www.xn--2w2b19sita0u67iz2mi7g.site/rss.xml",
       },
-      { rel: "icon", href: "/favicon.ico" },
       { rel: "stylesheet", href: appCss },
       { rel: "manifest", href: "/__grok/manifest.webmanifest" },
-      { rel: "apple-touch-icon", href: "/__grok/icon-180.png" },
+      { rel: "apple-touch-icon", href: "/g-icon-180.png" },
       {
         rel: "stylesheet",
         href: "https://cdn.jsdelivr.net/gh/sun-typeface/SUIT@2.0.5/fonts/static/woff2/SUIT.css",
