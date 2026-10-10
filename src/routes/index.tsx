@@ -70,7 +70,7 @@ function HeroOrbit() {
 }
 
 function Home() {
-  const [intro, setIntro] = useState(false);
+  const [intro, setIntro] = useState(true);
   const [video, setVideo] = useState(false);
   const [active, setActive] = useState("hero");
 
