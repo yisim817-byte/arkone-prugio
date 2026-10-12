@@ -860,3 +860,13 @@ body.prereg-lock { overflow: hidden; }
 
 /* SEO_PUSH 2026-10-06: <Img> adds intrinsic width/height for aspect-ratio only; existing CSS sizing wins. */
 :where(img[data-dims]) { width: auto; height: auto; }
+
+/* v14.0 §3 (2026-10-12): 휴대폰 사전고객등록 띠 — 자동 팝업 대신. .quick-mo 바로 위, 높이 44px, 배경 덮개 없음 */
+.prereg-strip { display: none; }
+@media (max-width: 767px) {
+  .prereg-strip { position: fixed; z-index: 1040; left: 0; right: 0; bottom: calc(56px + env(safe-area-inset-bottom)); height: 44px; display: flex; align-items: center; gap: 8px; padding: 0 4px 0 14px; background: #8b7f71; color: var(--white); font-size: 13px; font-weight: 700; }
+  .prereg-strip__txt { flex: 1; min-width: 0; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+  .prereg-strip__more { flex: none; height: 32px; padding: 0 12px; border: 1px solid color-mix(in srgb, var(--white) 60%, transparent); border-radius: 16px; background: transparent; color: var(--white); font: inherit; font-weight: 700; }
+  .prereg-strip__x { flex: none; width: 40px; height: 40px; border: 0; background: transparent; color: var(--white); font-size: 16px; }
+  .home-wrap:has(.intro) .prereg-strip { opacity: 0; visibility: hidden; pointer-events: none; }
+}
