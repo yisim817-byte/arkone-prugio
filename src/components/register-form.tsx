@@ -253,6 +253,7 @@ export function RegisterForm() {
           {birthWarn ? <p>생년월일 6자리만 입력해 주세요. 주민등록번호는 받지 않습니다.</p> : null}
           <p>주민등록번호는 받지 않습니다.</p>
         </div>
+        <p className="prereg-fine">※ 동일 현장의 다른 홈페이지·분양 채널에 중복으로 등록하신 경우, 상품권 지급이 제한될 수 있습니다.</p>
         <div className="prereg-hidden-hp" aria-hidden="true"><label>회사<input name="hp" tabIndex={-1} autoComplete="off" /></label></div>
         <div className={`reg__agree${errors.collect ? " is-err" : ""}`}>
           <input id="consent-collect" type="checkbox" checked={collect} disabled={step === 2} onChange={(e) => setCollect(e.target.checked)} />

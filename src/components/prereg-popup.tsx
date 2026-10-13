@@ -116,6 +116,7 @@ export function PreregPopup() {
         <Link className="reg__submit" to="/register">사전고객등록하기</Link>
         <p className="prereg-confirm">사전고객등록 확인은 대표번호 <a href={SITE_TEL_HREF}>{SITE_PHONE}</a>로 문의해 주세요.</p>
         <p className="prereg-fine">※ 사전고객등록은 공식 청약 신청이 아닙니다. 상품권은 지급조건을 모두 충족한 고객에 한해 지급됩니다. <a href="/#event-terms">유의사항 보기</a></p>
+        <p className="prereg-fine">※ 동일 현장의 다른 홈페이지·분양 채널에 중복으로 등록하신 경우, 상품권 지급이 제한될 수 있습니다.</p>
         <div className="prereg-pop__actions">
           <button type="button" onClick={() => close(true)}>오늘 하루 보지 않기</button>
           <button type="button" onClick={() => close()}>닫기</button>
