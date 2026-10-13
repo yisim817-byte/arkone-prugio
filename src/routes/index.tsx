@@ -155,7 +155,7 @@ function Home() {
               <span className="hero__title_ko">청라 아크원 푸르지오</span>
             </h1>
             <span className="hero__open">
-              <strong>10월 중</strong> OPEN 예정
+              모집공고 <strong>10.22</strong> · GRAND OPEN <strong>10.30</strong> 예정
             </span>
           </div>
           <div className="hero__ui">
