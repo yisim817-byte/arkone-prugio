@@ -3,7 +3,7 @@ import { SiteShell } from "@/components/site-shell";
 import { SubNotice } from "@/components/notice";
 import { canonicalLinks, faqJsonLd } from "@/lib/seo-host";
 import { GuideAnswer, GuideDetail, type GuideFaq } from "@/components/seo-guide";
-import { SRC_APPLYHOME, SRC_OFFICIAL, SRC_OFFICIAL_PREMIUM } from "@/lib/arkone-facts";
+import { SRC_APPLYHOME } from "@/lib/arkone-facts";
 
 const FAQ: GuideFaq[] = [
   {
@@ -75,7 +75,7 @@ function ComparePage() {
               { to: "/pages/contact", label: "견본주택·홍보관 오시는길" },
               { to: "/register", label: "사전고객등록" },
             ]}
-            sources={[SRC_OFFICIAL, SRC_OFFICIAL_PREMIUM, SRC_APPLYHOME]}
+            sources={[SRC_APPLYHOME]}
           />
           <SubNotice
             items={[

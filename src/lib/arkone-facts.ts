@@ -1,21 +1,6 @@
 /** 공개 자료 기준 사실값 (ARKONE_FACT_LEDGER.csv 와 동일 값만 사용). */
 export const FACT_DATE = "2026-09-30";
 
-export const SRC_OFFICIAL = {
-  label: "사업주체 분양 홈페이지 arkone-prugio.com 사업개요·메인",
-  href: "https://www.arkone-prugio.com/pages/overview",
-  date: FACT_DATE,
-};
-export const SRC_OFFICIAL_PREMIUM = {
-  label: "사업주체 분양 홈페이지 arkone-prugio.com 프리미엄",
-  href: "https://www.arkone-prugio.com/pages/premium",
-  date: FACT_DATE,
-};
-export const SRC_OFFICIAL_CONTACT = {
-  label: "사업주체 분양 홈페이지 arkone-prugio.com 오시는길",
-  href: "https://www.arkone-prugio.com/pages/contact",
-  date: FACT_DATE,
-};
 export const SRC_APPLYHOME = {
   label: "청약홈(한국부동산원) — 입주자모집공고 게시처",
   href: "https://www.applyhome.co.kr",
