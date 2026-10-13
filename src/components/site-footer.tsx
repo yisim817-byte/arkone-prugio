@@ -1,12 +1,9 @@
 import { SITE_PHONE, SITE_TEL_HREF } from "@/lib/site-data";
-import { isKrHost } from "@/lib/seo-host";
 import { Img } from "@/components/img";
 
 type Props = { onPrivacy: () => void };
 
 export function SiteFooter({ onPrivacy }: Props) {
-  // Operator business info (Daum 부동산 업종 요건) — Korean www host only.
-  const showBizInfo = isKrHost();
   return (
     <footer className="footer">
       <div className="footer__container">
@@ -26,12 +23,6 @@ export function SiteFooter({ onPrivacy }: Props) {
             (주) 청라스마트시티 : 인천광역시 연수구 센트럴로 263,
             <br className="m-only" /> 8층 9호(송도동, 송도국제업무단지 C8-2블럭 업무복합시설){" "}
             <br className="m-only" /> 사업자등록번호 : 866-88-02497
-            {showBizInfo && (
-              <>
-                <br />
-                현장 : 인천광역시 서해구 청라동 86-1번지 · 견본주택 : 인천광역시 서해구 청라동 87-1번지
-              </>
-            )}
           </p>
           <p className="footer__disclaimer">
             ※ 본 홈페이지의 CG, 이미지컷은 소비자의 이해를 돕기 위해 <br className="m-only" /> 제작된
