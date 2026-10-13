@@ -108,7 +108,7 @@ export function GuideDetail({
               </li>
             ))}
           </ul>
-          <p>본 페이지는 HUMANE KOREA가 공개 자료를 정리한 분양 정보 안내입니다. 계약 전 입주자모집공고 등 사업주체 공고를 반드시 확인하시기 바랍니다.</p>
+          <p>계약 전 입주자모집공고 등 사업주체 공고를 반드시 확인하시기 바랍니다.</p>
         </div>
       ) : null}
     </section>

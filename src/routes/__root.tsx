@@ -13,7 +13,7 @@ export const Route = createRootRoute({
       // 구 네이버 토큰은 레거시 호스트에서만 유지. 한글 도메인은 홈에만 de62f799·msvalidate(미들웨어)를 둔다.
       ...(isKrHost() ? [] : [{ name: "naver-site-verification", content: "3c9a81c691a4cdec3415b6d3e7f832ea0015e2a9" }]),
       { title: SITE_NAME },
-      { name: "description", content: "청라 아크원 푸르지오 분양 정보 안내 | HUMANE KOREA" },
+      { name: "description", content: "청라 아크원 푸르지오 분양 정보 안내" },
       { name: "theme-color", content: "#004B45" },
       {
         name: "robots",

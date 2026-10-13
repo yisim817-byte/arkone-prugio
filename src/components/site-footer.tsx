@@ -1,6 +1,5 @@
 import { SITE_PHONE, SITE_TEL_HREF } from "@/lib/site-data";
 import { isKrHost } from "@/lib/seo-host";
-import { FACT_DATE } from "@/lib/arkone-facts";
 import { Img } from "@/components/img";
 
 type Props = { onPrivacy: () => void };
@@ -27,15 +26,10 @@ export function SiteFooter({ onPrivacy }: Props) {
             (주) 청라스마트시티 : 인천광역시 연수구 센트럴로 263,
             <br className="m-only" /> 8층 9호(송도동, 송도국제업무단지 C8-2블럭 업무복합시설){" "}
             <br className="m-only" /> 사업자등록번호 : 866-88-02497
-            <br />
-            HUMANE KOREA
             {showBizInfo && (
               <>
                 <br />
-                상호 : HUMANE KOREA | 대표자 : 이종석 | 사업자등록번호 : 320-60-00456
-                <br className="m-only" /> 현장 : 인천광역시 서해구 청라동 86-1번지 · 견본주택 : 인천광역시 서해구 청라동 87-1번지
-                <br />
-                HUMANE KOREA 현장전략본부 · 정보 기준일 {FACT_DATE.replace(/-/g, ".")}
+                현장 : 인천광역시 서해구 청라동 86-1번지 · 견본주택 : 인천광역시 서해구 청라동 87-1번지
               </>
             )}
           </p>
@@ -46,9 +40,9 @@ export function SiteFooter({ onPrivacy }: Props) {
             ※ 본 홈페이지에 명시된 모든 개발계획은 관계기관 혹은 <br className="m-only" /> 지자체의
             사정에 의해 변경 또는 취소될 수 있습니다.
             <br />
-            공식 정보는 사업주체 공고를 확인하시기 바랍니다. HUMANE KOREA
+            공식 정보는 사업주체 공고를 확인하시기 바랍니다.
           </p>
-          <p className="footer__copyright">© HUMANE KOREA.</p>
+          <p className="footer__copyright">© HUMANE KOREA</p>
         </div>
         <div className="footer__right">
           <div className="footer__construction">
