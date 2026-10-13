@@ -46,8 +46,7 @@ export function SiteFooter({ onPrivacy }: Props) {
             ※ 본 홈페이지에 명시된 모든 개발계획은 관계기관 혹은 <br className="m-only" /> 지자체의
             사정에 의해 변경 또는 취소될 수 있습니다.
             <br />
-            본 사이트는 분양 정보 안내를 위한 홍보 페이지입니다. 공식
-            정보는 사업주체 공고를 확인하시기 바랍니다. HUMANE KOREA
+            공식 정보는 사업주체 공고를 확인하시기 바랍니다. HUMANE KOREA
           </p>
           <p className="footer__copyright">© HUMANE KOREA.</p>
         </div>
