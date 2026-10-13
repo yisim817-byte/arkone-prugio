@@ -108,7 +108,7 @@ export function PreregPopup() {
       <button type="button" className="prereg-pop__bg" aria-label="닫기" onClick={() => close()} />
       <div className="prereg-pop__panel">
         <button type="button" className="prereg-pop__x" aria-label="닫기" onClick={() => close()}>✕</button>
-        <p>10월 중 OPEN 예정 · 일정 문의 1833-3872</p>
+        <p>모집공고 10.22 · GRAND OPEN 10.30 예정 · 일정 문의 1833-3872</p>
         <p>청라 아크원 푸르지오 APT 사전고객등록 이벤트</p>
         <h2 id="prereg-pop-title">백화점 상품권 30만원</h2>
         <p>롯데 · 현대 · 신세계 중 선택</p>
