@@ -23,17 +23,13 @@ export function PreregPopup() {
     if (location.pathname === "/register") return;
     if (hiddenToday()) return;
     if (isMobileView()) {
-      try { if (sessionStorage.getItem("prereg_strip_closed") === "1") return; } catch { /* ignore */ }
+      try { sessionStorage.removeItem("prereg_strip_closed"); } catch { /* ignore */ }
       setStrip(true);
       return;
     }
-    try {
-      if (sessionStorage.getItem("prereg_popup_seen") === "1") return;
-    } catch { /* ignore */ }
     const timer = window.setTimeout(() => {
       setOpen(true);
       document.body.classList.add("prereg-lock");
-      try { sessionStorage.setItem("prereg_popup_seen", "1"); } catch { /* ignore */ }
     }, 1200);
     return () => window.clearTimeout(timer);
   }, []);
