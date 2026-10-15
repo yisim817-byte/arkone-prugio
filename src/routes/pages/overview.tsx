@@ -3,7 +3,7 @@ import { SiteShell } from "@/components/site-shell";
 import { SubNotice } from "@/components/notice";
 import { canonicalLinks, faqJsonLd } from "@/lib/seo-host"
 import { isEnHost } from "@/lib/seo-host"
-import { EN, EN_BODY } from "@/lib/i18n/en";
+import { EN, EN_BODY, EN_OVERVIEW_TABLE } from "@/lib/i18n/en";
 import { GuideAnswer, GuideDetail, type GuideFaq } from "@/components/seo-guide";
 import { SRC_APPLYHOME, SRC_OFFICIAL, SRC_OFFICIAL_PREMIUM } from "@/lib/arkone-facts";
 import { imgDims } from "@/components/img";
@@ -171,9 +171,9 @@ function OverviewPage() {
           <GuideDetail
             tableTitle="청라 아크원 푸르지오 사업 정보 요약"
             rows={[
-              { label: "단지명", value: "청라 아크원 푸르지오", status: "공개값" },
-              { label: "위치", value: "인천광역시 서해구 청라동 86-1번지 (청라국제도시 주상복합용지 M5BL)", status: "공개값" },
-              { label: "건축규모", value: "지하 5층 ~ 지상 49층, 총 6개동", status: "공개값" },
+              { label: en ? EN_OVERVIEW_TABLE.name : "단지명", value: en ? "Cheongna Ark-One Prugio" : "청라 아크원 푸르지오", status: en ? "published" : "공개값" },
+              { label: en ? EN_OVERVIEW_TABLE.loc : "위치", value: en ? "Cheongna-dong 86-1, Seohae-gu, Incheon (Cheongna International City mixed-use site M5BL)" : "인천광역시 서해구 청라동 86-1번지 (청라국제도시 주상복합용지 M5BL)", status: en ? "published" : "공개값" },
+              { label: en ? EN_OVERVIEW_TABLE.scale : "건축규모", value: en ? "B5 to 49F, total 6 buildings" : "지하 5층 ~ 지상 49층, 총 6개동", status: en ? "published" : "공개값" },
               { label: "공급 구성", value: "총 1,855세대·실 = 아파트 868세대 + 오피스텔 987실, 상업시설 지상 1~2층", status: "공개값" },
               { label: "아파트 전용면적", value: "84㎡, 103㎡ (타입별 세부 면적·평면도는 공고 시 공개)", status: "공개값 / 평면 미정" },
               { label: "아파트 타입별 세대수", value: "84A 248 · 84B 124 · 84C 124 · 84D 124 · 103A 124 · 103B 124 (총 868세대)", status: "분양 자료 기준" },
