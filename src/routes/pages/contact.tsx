@@ -58,6 +58,7 @@ function ContactPage() {
     <SiteShell path="/pages/contact">
       <div className="page_content">
         <section className="page_container">
+          <GuideAnswer title={en ? EN_BODY.contact.h1 : "청라 아크원 푸르지오 모델하우스·홍보관 안내"}>
             <p>{en ? EN_BODY.contact.p1 : "견본주택 GRAND OPEN은 10.30 예정이며, 입주자모집공고는 10.22 예정입니다. 세부 일정은 대표번호 1833-3872로 문의해 주세요. 일정은 사업주체 사정에 따라 변경될 수 있습니다."}</p>            <p>사업 현장은 인천광역시 서해구 청라동 86-1번지이고, 홍보관은 중봉대로 586번길 19 홍익파크 1층 108, 109호(스타벅스 옆)입니다.</p>
             <p>일정과 운영 시간은 사업주체 사정에 따라 변경될 수 있으니 방문 전 대표번호 1833-3872로 확인해 주세요.</p>
           </GuideAnswer>
