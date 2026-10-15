@@ -380,9 +380,9 @@ function Home() {
         <section id="premium" className="section-premium">
           <div className="section-premium__intro">
             <div className="premium-mosaic">
-              <Img src="/resources/img/pages/main/premium_visual_img_01.v4.webp" alt="거실 인테리어 이미지컷(CG)" />
-              <Img src="/resources/img/pages/main/premium_visual_img_02.v4.webp" alt="주방·다이닝 인테리어 이미지컷(CG)" />
-              <Img src="/resources/img/pages/main/premium_visual_img_03.v4.webp" alt="침실 인테리어 이미지컷(CG)" />
+              <Img src="/resources/img/pages/main/premium_visual_img_01.v4.webp" alt="대형 창으로 석양과 강이 보이는 모던 거실 연출" />
+              <Img src="/resources/img/pages/main/premium_visual_img_02.v4.webp" alt="대리석 아일랜드와 원목 의자가 있는 주방 연출" />
+              <Img src="/resources/img/pages/main/premium_visual_img_03.v4.webp" alt="창 너머 나무가 보이는 베이지 침실 연출" />
               <Img src="/resources/img/pages/main/premium_visual_img_04.v4.webp" alt="거실·발코니 인테리어 이미지컷(CG)" />
             </div>
             <div className="section-premium__copy">

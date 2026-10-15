@@ -3,7 +3,7 @@ import { SiteShell } from "@/components/site-shell";
 import { SubNotice } from "@/components/notice";
 import { canonicalLinks, faqJsonLd } from "@/lib/seo-host"
 import { isEnHost } from "@/lib/seo-host"
-import { EN } from "@/lib/i18n/en";
+import { EN, EN_BODY } from "@/lib/i18n/en";
 import { GuideAnswer, GuideDetail, type GuideFaq } from "@/components/seo-guide";
 import { SRC_APPLYHOME, SRC_OFFICIAL, SRC_OFFICIAL_PREMIUM } from "@/lib/arkone-facts";
 import { imgDims } from "@/components/img";
@@ -35,34 +35,33 @@ export const Route = createFileRoute("/pages/overview")({
       { name: "description", content: (() => { try { return isEnHost() ? EN.overview.desc : "청라 아크원 푸르지오 사업개요. 청라동 86-1번지 M5BL, 지하 5층~지상 49층 6개동, 아파트 868세대·오피스텔 987실, 시행 ㈜청라스마트시티·시공 대우건설."; } catch { return "청라 아크원 푸르지오 사업개요. 청라동 86-1번지 M5BL, 지하 5층~지상 49층 6개동, 아파트 868세대·오피스텔 987실, 시행 ㈜청라스마트시티·시공 대우건설."; } })() },
     ],
     links: canonicalLinks("/pages/overview"),
-    scripts: faqJsonLd(FAQ),
+    scripts: faqJsonLd((() => { try { return isEnHost() ? EN_BODY.overview.faq : FAQ; } catch { return FAQ; } })()),
   }),
 });
 
 function OverviewPage() {
+  const en = (() => { try { return isEnHost(); } catch { return false; } })();
   return (
     <SiteShell path="/pages/overview">
       <div className="page_content">
         <section className="page_container">
-          <GuideAnswer title="청라 아크원 푸르지오 분양 개요 한눈에 보기">
+          <GuideAnswer title={en ? EN_BODY.overview.h1 : "청라 아크원 푸르지오 분양 개요 한눈에 보기"}>
             <p>
-              청라 아크원 푸르지오는 인천광역시 서해구 청라동 86-1번지(청라국제도시 주상복합용지 M5BL)에 계획된 주거복합
-              단지입니다.
+              {en ? EN_BODY.overview.p1 : "청라 아크원 푸르지오는 인천광역시 서해구 청라동 86-1번지(청라국제도시 주상복합용지 M5BL)에 계획된 주거복합 단지입니다."}
             </p>
             <p>
-              지하 5층~지상 49층 6개동 규모로, 아파트 868세대(전용 84·103㎡)와 오피스텔 987실(전용 105·121·136㎡) 등 총
-              1,855세대·실와 지상 1~2층 상업시설로 구성됩니다.
+              {en ? EN_BODY.overview.p2 : "지하 5층~지상 49층 6개동 규모로, 아파트 868세대(전용 84·103㎡)와 오피스텔 987실(전용 105·121·136㎡) 등 총 1,855세대·실와 지상 1~2층 상업시설로 구성됩니다."}
             </p>
-            <p>시행은 ㈜청라스마트시티, 시공은 대우건설이며, 현재는 입주자모집공고 전 단계입니다.</p>
+            <p>{en ? EN_BODY.overview.p3 : "시행은 ㈜청라스마트시티, 시공은 대우건설이며, 현재는 입주자모집공고 전 단계입니다."}</p>
             <p>
-              청라 아크원 푸르지오는 10월 중 OPEN 예정이며, 분양가와 청약 일정은 공고에서 확정됩니다(현재 미정).
+              {en ? EN_BODY.overview.p4 : "청라 아크원 푸르지오는 10월 중 OPEN 예정이며, 분양가와 청약 일정은 공고에서 확정됩니다(현재 미정)."}
             </p>
-          </GuideAnswer><p>청라 아크원 푸르지오는 지하 5층~지상 49층, 총 6개동이며 아파트 868세대(전용 84·103㎡)와 오피스텔 987실(전용 105·121·136㎡), 합계 1,855세대·실입니다. 주차대수는 총 3,124대(아파트 1,389대 · 오피스텔 1,695대 · 상업시설 40대)입니다. 시행은 ㈜청라스마트시티, 시공은 대우건설(주)입니다. 푸르지오 브랜드타운 2,911세대·실은 청라 피크원 푸르지오를 포함한 합산 규모이며, 단일 단지가 아닙니다. 청라 아크원 푸르지오는 10월 중 OPEN 예정이며, 세부 일정은 대표번호 1833-3872로 문의할 수 있습니다.</p>
+          </GuideAnswer><p>{en ? EN_BODY.overview.summary : "청라 아크원 푸르지오는 지하 5층~지상 49층, 총 6개동이며 아파트 868세대(전용 84·103㎡)와 오피스텔 987실(전용 105·121·136㎡), 합계 1,855세대·실입니다. 주차대수는 총 3,124대(아파트 1,389대 · 오피스텔 1,695대 · 상업시설 40대)입니다. 시행은 ㈜청라스마트시티, 시공은 대우건설(주)입니다. 푸르지오 브랜드타운 2,911세대·실은 청라 피크원 푸르지오를 포함한 합산 규모이며, 단일 단지가 아닙니다. 청라 아크원 푸르지오는 10월 중 OPEN 예정이며, 세부 일정은 대표번호 1833-3872로 문의할 수 있습니다."}</p>
           <div className="overview_tab__content">
             <figure className="overview_image">
               <picture>
                 <source media="(max-width: 1024px)" srcSet="/resources/img/sub/overview_apt_img_m.v4.jpg" />
-                <img src="/resources/img/sub/overview_apt_img.v4.jpg" alt="청라 아크원 푸르지오 단지 연출 이미지" {...imgDims("/resources/img/sub/overview_apt_img.v4.jpg")} data-dims="" />
+                <img src="/resources/img/sub/overview_apt_img.v4.jpg" alt="고층 주거타워와 도로가 보이는 단지 투시도 CG" {...imgDims("/resources/img/sub/overview_apt_img.v4.jpg")} data-dims="" />
               </picture>
               <span className="overview_image__caption">이미지컷</span>
               <figcaption className="overview_image__text">
@@ -187,7 +186,7 @@ function OverviewPage() {
               { label: "APT 입주자모집공고", value: "10월 중 OPEN 예정", status: "예정" },
               { label: "입주 시기", value: "입주 시기는 입주자모집공고 게시 후 공고문으로 확인해야 합니다", status: "예정" },
             ]}
-            faq={FAQ}
+            faq={en ? EN_BODY.overview.faq : FAQ}
             links={[
               { to: "/pages/compare", label: "아파트·오피스텔 비교" },
               { to: "/pages/schedule", label: "분양 일정·청약 안내" },

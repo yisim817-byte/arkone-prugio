@@ -3,7 +3,7 @@ import { SiteShell } from "@/components/site-shell";
 import { SubNotice } from "@/components/notice";
 import { canonicalLinks, faqJsonLd } from "@/lib/seo-host"
 import { isEnHost } from "@/lib/seo-host"
-import { EN } from "@/lib/i18n/en";
+import { EN, EN_BODY } from "@/lib/i18n/en";
 import { GuideAnswer, GuideDetail, type GuideFaq } from "@/components/seo-guide";
 import { SRC_OFFICIAL_CONTACT } from "@/lib/arkone-facts";
 import { imgDims } from "@/components/img";
@@ -53,11 +53,13 @@ function MapLinks({ naver, kakao, label }: { naver: string; kakao: string; label
 }
 
 function ContactPage() {
+  const en = (() => { try { return isEnHost(); } catch { return false; } })();
+
   return (
     <SiteShell path="/pages/contact">
       <div className="page_content">
         <section className="page_container">
-          <GuideAnswer title="청라 아크원 푸르지오 모델하우스·홍보관 안내">
+          <GuideAnswer title={en ? EN_BODY.contact.h1 : "청라 아크원 푸르지오 모델하우스·홍보관 안내"}>
             <p>청라 아크원 푸르지오 견본주택(모델하우스)은 인천광역시 서해구 청라동 87-1번지에 있으며, 10월 중 OPEN 예정입니다. 세부 일정은 대표번호 1833-3872로 문의해 주세요.</p>
             <p>사업 현장은 인천광역시 서해구 청라동 86-1번지이고, 홍보관은 중봉대로 586번길 19 홍익파크 1층 108, 109호(스타벅스 옆)입니다.</p>
             <p>일정과 운영 시간은 사업주체 사정에 따라 변경될 수 있으니 방문 전 대표번호 1833-3872로 확인해 주세요.</p>
