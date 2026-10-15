@@ -6,7 +6,7 @@ export const EN = {
   siteName: "Cheongna Ark-One Prugio",
   home: {
     title: "Cheongna Ark-One Prugio | Guide",
-    desc: "Cheongna Ark-One Prugio. OPEN mid-October. Apt 868, officetel 987. Call 1833-3872.",
+    desc: "Cheongna Ark-One Prugio. Notice Oct 22 · GRAND OPEN Oct 30 (planned). Apt 868, officetel 987. Call 1833-3872.",
     h1: "Cheongna Ark-One Prugio",
   },
   overview: {
@@ -21,7 +21,7 @@ export const EN = {
   },
   schedule: {
     title: "Ark-One Schedule & Application",
-    desc: "OPEN mid-October. Details 1833-3872. Price TBD. Move-in confirm in notice.",
+    desc: "Notice Oct 22 · GRAND OPEN Oct 30 (planned). Details 1833-3872.",
     h1: "Cheongna Ark-One Prugio Sale Schedule · Application",
   },
   location: {
@@ -31,7 +31,7 @@ export const EN = {
   },
   contact: {
     title: "Ark-One Model House",
-    desc: "Model house (Cheongna-dong 87-1) OPEN expected mid-October. Call 1833-3872.",
+    desc: "Model house. GRAND OPEN Oct 30 · Notice Oct 22 (planned). Call 1833-3872.",
     h1: "Cheongna Ark-One Prugio Model House · Exhibition Hall",
   },
   brand: {
@@ -69,7 +69,7 @@ export const EN = {
     desc: "List of press coverage related to Cheongna Ark-One Prugio.",
     h1: "Cheongna Ark-One Prugio Press",
   },
-  footer: "Site operated by HUMANE KOREA",
+  footer: "",
   line7: "Line 7 (planned; opening date undetermined)",
   skyBridge: "Cheongna Sky Bridge (Cheongna Haneul Bridge)",
 };
@@ -166,13 +166,13 @@ export const EN_VIDEO = { h1: "Cheongna Ark-One Prugio promo video" };
 export const EN_NEWS = { title: "Cheongna Ark-One Prugio News", desc: "News coverage of Cheongna Ark-One Prugio. Confirm from original articles.", h1: "News Coverage" };
 
 export const EN_EVENT = {
-  basis: "Eligible: customers who complete pre-registration on this site, receive agent guidance, finish MGM registration (including consent to provide personal information to a third party), win the application, and meet MGM recognition conditions.",
+  basis: "Eligible: customers who complete pre-registration on this site, win the application, and meet the payout conditions.",
   steps: ["STEP 1 Pre-registration (site)", "STEP 2 Application after notice", "STEP 3 Winner and condition check", "STEP 4 Gift certificate on contract day"],
   termsSummary: "Event notes (Cheongna Ark-One Prugio APT pre-registration)",
   terms: [
-    "Eligible: customers who complete pre-registration on this site, receive agent guidance, finish MGM registration (including consent to provide personal information to a third party), win the Cheongna Ark-One Prugio apartment application, and meet MGM recognition conditions",
+    "Eligible: customers who complete pre-registration on this site, win the application, and meet the payout conditions",
     "Benefit: one of Lotte·Hyundai·Shinsegae department store gift certificates, 300,000 KRW",
-    "Payment day: contract day after confirming win and MGM recognition conditions",
+    "Payment day: contract day after confirming win and payout conditions",
     "Paid once per person; the same person and same mobile number count as one person.",
     "Not paid if disqualified, if no contract is signed, or if the contract is cancelled. If such a reason arises after payment, the agent will separately inform the handling standard.",
     "Pre-registration is not an application. Application eligibility and schedule follow the recruitment notice.",
@@ -181,14 +181,14 @@ export const EN_EVENT = {
 };
 
 export const EN_TERMS = [
-  "Eligible: customers who complete pre-registration on this site, receive agent guidance, finish MGM registration (including consent to provide personal information to a third party), win the Cheongna Ark-One Prugio apartment application, and meet MGM recognition conditions",
+  "Eligible: customers who complete pre-registration on this site, win the application, and meet the payout conditions",
   "Benefit: one of Lotte·Hyundai·Shinsegae department store gift certificates, 300,000 KRW",
-  "Payment day: contract day after confirming win and MGM recognition conditions",
+  "Payment day: contract day after confirming win and payout conditions",
   "Paid once per person; the same person and same mobile number count as one person.",
   "Not paid if disqualified, if no contract is signed, or if the contract is cancelled. If such a reason arises after payment, the agent will separately inform the handling standard.",
-  "Customers who completed MGM registration first through another path may be excluded per MGM operating rules.",
+  "Duplicate pre-registration may limit eligibility.",
   "Tax and public charges will be informed separately by the agent once the standard is set.",
-  "The organizer of this event is the site operator HUMANE KOREA; it is not a benefit from the developer or builder.",
+  "Event content may change. Confirm details in the recruitment notice.",
   "Event content may change or end early after prior notice.",
   "Pre-registration is not an application. Application eligibility and schedule follow the recruitment notice.",
 ];
@@ -228,7 +228,7 @@ export const EN_CONTACT_FAQ = [
 
 export const EN_DESC = {
   video: "Cheongna Ark-One Prugio video. Confirm schedule and details via 1833-3872.",
-  news: "Cheongna Ark-One Prugio news list. Confirm official notices from applyhome and the developer.",
+  news: "Cheongna Ark-One Prugio news list. Confirm notices from applyhome and the developer.",
 };
 
 export const EN_REMAIN = {
