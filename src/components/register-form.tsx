@@ -198,11 +198,11 @@ export function RegisterForm() {
         <p>이 화면을 캡처해 두시면 등록 확인이 빠릅니다.</p>
         <p className="prereg-confirm">{PHRASE.slice(0, 16)}<a href={SITE_TEL_HREF}>1833-3872</a>{PHRASE.slice(25)}</p>
         <p>STEP 1 홈페이지 사전고객등록 완료</p>
-        {product === "apt" && product !== "commercial" ? <>
+        {product === "apt" ? <>
           <p>STEP 2 공식 청약 진행 (입주자모집공고 기준)</p>
           <p>STEP 3 청약 당첨 및 지급 조건 확인</p>
           <p>STEP 4 백화점 상품권 선택 및 지급 (대상 조건 충족 시)</p>
-        </> : <p>선택하신 오피스텔 상품으로 담당자가 안내드립니다.</p>}
+        </> : product === "commercial" ? <p>선택하신 상가 상품으로 담당자가 안내드립니다.</p> : <p>선택하신 오피스텔 상품으로 담당자가 안내드립니다.</p>}
         <p><a className="reg__submit" href={SITE_TEL_HREF}>등록 확인 전화하기 1833-3872</a></p>
         <p>일정이 변경되면 담당자가 등록하신 휴대전화로 연락드립니다.</p>
         <p>※ 사전고객등록은 공식 청약 신청이 아닙니다.</p>
@@ -212,7 +212,7 @@ export function RegisterForm() {
 
   return (
     <div className="reg">
-      <p className="reg__lead"><b>청라 아크원 푸르지오</b> 아파트·오피스텔 사전등록</p>
+      <p className="reg__lead"><b>청라 아크원 푸르지오</b> 아파트·오피스텔·상가 사전등록</p>
       <form onSubmit={step === 1 ? onStep1 : onStep2} noValidate>
         <p className="prereg-step">[1/2] 기본 정보 · 필수</p>
         {step === 2 ? <div className="reg__receipt reg__receipt--done" role="status">
@@ -282,8 +282,8 @@ export function RegisterForm() {
             <div className="reg__field"><label htmlFor="f-sigungu">시·군·구</label><input id="f-sigungu" value={sigungu} maxLength={20} onChange={(e) => setSigungu(e.target.value)} /></div>
             <div className="reg__field"><label htmlFor="f-dong">읍·면·동</label><input id="f-dong" value={dong} maxLength={20} onChange={(e) => setDong(e.target.value)} /></div>
             <p>관심타입</p>
-            <div className="prereg-chips">{(product === "apt" ? ["APT 84㎡","APT 103㎡","미정"] : ["오피스텔"]).map((item) => <label key={item}><input type="radio" name="interest_type" checked={interest === item} onChange={() => setInterest(item)} /><span>{item}</span></label>)}</div>
-            {product === "apt" && product !== "commercial" ? <><p>특별공급 관심</p>
+            <div className="prereg-chips">{(product === "apt" ? ["APT 84㎡","APT 103㎡","미정"] : product === "commercial" ? ["상가"] : ["오피스텔"]).map((item) => <label key={item}><input type="radio" name="interest_type" checked={interest === item} onChange={() => setInterest(item)} /><span>{item}</span></label>)}</div>
+            {product === "apt" ? <><p>특별공급 관심</p>
             <div className="prereg-chips">{["신혼부부","생애최초","신생아","다자녀","노부모","기관추천","해당없음","모름"].map((item) => <label key={item}><input type="radio" name="special_supply" checked={special === item} onChange={() => setSpecial(item)} /><span>{item}</span></label>)}</div></> : null}
             <button className="reg__submit" type="submit" disabled={busy}>{busy ? "접수 중…" : "추가 정보 저장"}</button>
             <button className="reg__skip" type="button" onClick={() => setStep("done")}>건너뛰고 완료</button>
