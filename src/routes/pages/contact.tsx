@@ -64,7 +64,7 @@ function ContactPage() {
           <div className="contact_map">
             <div className="contact_map__box">
               <figure className="contact_map__image">
-                <img src="/resources/img/sub/contact_map_img_1.v4.jpg" alt="청라 아크원 푸르지오 현장과 견본주택 약도" {...imgDims("/resources/img/sub/contact_map_img_1.v4.jpg")} data-dims="" />
+                <img src="/resources/img/sub/contact_map_img_1.v4.jpg" alt={en ? "Map diagram marking site and model house" : "청라 아크원 푸르지오 현장과 견본주택 약도"} {...imgDims("/resources/img/sub/contact_map_img_1.v4.jpg")} data-dims="" />
               </figure>
               <div className="contact_map__locations">
                 <article className="contact_location">
