@@ -122,8 +122,8 @@ export const EN_HOME = {
   priceCap: "Price-cap applicable complex",
   registerAria: "Pre-registration",
   eventEyebrow: "Event for pre-registered customers",
-  eventBasis: "Eligible: customers who complete pre-registration on this site, receive agent guidance, finish MGM registration (including consent to provide personal information to a third party), win the application, and meet MGM recognition conditions.",
-  steps: ["STEP 1 Pre-registration (site)", "STEP 2 MGM registration via agent guidance", "STEP 3 Application after notice", "STEP 4 Winner·MGM recognition check", "STEP 5 Gift certificate on contract day"],
+  eventBasis: "Eligible: customers who complete pre-registration on this site, win the application, and meet the payout conditions.",
+  steps: ["STEP 1 Pre-registration (site)", "STEP 2 Application after notice", "STEP 3 Winner and condition check", "STEP 4 Gift certificate on contract day"],
   registerBtn: "Pre-register",
   termsLink: "View notes",
   schedule: "Schedule: OPEN expected mid-October · details via 1833-3872",
@@ -167,7 +167,7 @@ export const EN_NEWS = { title: "Cheongna Ark-One Prugio News", desc: "News cove
 
 export const EN_EVENT = {
   basis: "Eligible: customers who complete pre-registration on this site, receive agent guidance, finish MGM registration (including consent to provide personal information to a third party), win the application, and meet MGM recognition conditions.",
-  steps: ["STEP 1 Pre-registration (site)", "STEP 2 MGM registration via agent guidance", "STEP 3 Application after notice", "STEP 4 Winner·MGM recognition check", "STEP 5 Gift certificate on contract day"],
+  steps: ["STEP 1 Pre-registration (site)", "STEP 2 Application after notice", "STEP 3 Winner and condition check", "STEP 4 Gift certificate on contract day"],
   termsSummary: "Event notes (Cheongna Ark-One Prugio APT pre-registration)",
   terms: [
     "Eligible: customers who complete pre-registration on this site, receive agent guidance, finish MGM registration (including consent to provide personal information to a third party), win the Cheongna Ark-One Prugio apartment application, and meet MGM recognition conditions",
