@@ -68,7 +68,7 @@ function BrandPage() {
             <figure className="brand_image__img">
               <picture>
                 <source media="(max-width: 1024px)" srcSet="/resources/img/sub/brand_content_img_m.v4.jpg" />
-                <img src="/resources/img/sub/brand_content_img.v4.webp" alt="청라를 잇는 교량과 도심 야경" {...imgDims("/resources/img/sub/brand_content_img.v4.webp")} data-dims="" />
+                <img src="/resources/img/sub/brand_content_img.v4.webp" alt="석양 구름 위로 떠 있는 고층 타워 CG" {...imgDims("/resources/img/sub/brand_content_img.v4.webp")} data-dims="" />
               </picture>
             </figure>
             <div className="brand_image__txt_wrap">

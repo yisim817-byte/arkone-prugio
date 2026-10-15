@@ -121,7 +121,7 @@ function Home() {
         </section>
       ) : null}
 
-      <nav className="indicator" aria-label="메인 섹션 바로가기">
+      <nav className="indicator" aria-label={en ? "Main section shortcuts" : "메인 섹션 바로가기"}>
         {SECTIONS.map((id) => (
           <button
             key={id}
@@ -179,7 +179,7 @@ function Home() {
               </span>
             </button>
             <div className="hero__quick">
-              <a className="hero__quick_item" href={SITE_TEL_HREF} aria-label={`${SITE_PHONE} 전화 연결`}>
+              <a className="hero__quick_item" href={SITE_TEL_HREF} aria-label={en ? `${SITE_PHONE} call` : `${SITE_PHONE} 전화 연결`}>
                 <HeroOrbit />
                 <img
                   className="hero__quick_content"

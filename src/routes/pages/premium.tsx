@@ -64,7 +64,7 @@ function PremiumPage() {
                 </p>
               </div>
               <div className="premium_feature__images premium_feature__images-pair">
-                <Pic src="/resources/img/sub/premium_01_img_1.v4.jpg" m="/resources/img/sub/premium_01_img_1_m.v4.jpg" alt="저녁 도시 전경" />
+                <Pic src="/resources/img/sub/premium_01_img_1.v4.jpg" m="/resources/img/sub/premium_01_img_1_m.v4.jpg" alt="고층 타워 사이 조경 광로가 보이는 단지 전경" />
                 <Pic src="/resources/img/sub/premium_01_img_2.v4.jpg" m="/resources/img/sub/premium_01_img_2_m.v4.jpg" alt="고층 세대에서 바깥을 바라보는 모습" />
               </div>
             </article>
@@ -82,7 +82,7 @@ function PremiumPage() {
                 </p>
               </div>
               <div className="premium_feature__images">
-                <Pic src="/resources/img/sub/premium_02_img_1.v4.jpg" m="/resources/img/sub/premium_02_img_1_m.v4.jpg" alt="도심을 오가는 사람들의 모습" />
+                <Pic src="/resources/img/sub/premium_02_img_1.v4.jpg" m="/resources/img/sub/premium_02_img_1_m.v4.jpg" alt="유리 건물 앞을 걷는 사람들과 서 있는 여성" />
               </div>
             </article>
 
@@ -112,7 +112,7 @@ function PremiumPage() {
                 </p>
               </div>
               <div className="premium_feature__images premium_feature__images-pair">
-                <Pic src="/resources/img/sub/premium_04_img_1.v4.jpg" m="/resources/img/sub/premium_04_img_1_m.v4.jpg" alt="고급스러운 실내 이미지" />
+                <Pic src="/resources/img/sub/premium_04_img_1.v4.jpg" m="/resources/img/sub/premium_04_img_1_m.v4.jpg" alt="햇살이 드는 베이지 석재 계단 연출" />
                 <Pic src="/resources/img/sub/premium_04_img_2.v4.jpg" m="/resources/img/sub/premium_04_img_2_m.v4.jpg" alt="프리미엄 실내 인테리어" />
               </div>
             </article>
@@ -128,8 +128,8 @@ function PremiumPage() {
                 </p>
               </div>
               <div className="premium_feature__images premium_feature__images-pair">
-                <Pic src="/resources/img/sub/premium_05_img_1.v4.jpg" m="/resources/img/sub/premium_05_img_1_m.v4.jpg" alt="멀티 발코니 공간 활용 이미지컷(CG)" />
-                <Pic src="/resources/img/sub/premium_05_img_2.v4.jpg" m="/resources/img/sub/premium_05_img_2_m.v4.jpg" alt="팬트리 수납 공간 이미지컷(CG)" />
+                <Pic src="/resources/img/sub/premium_05_img_1.v4.jpg" m="/resources/img/sub/premium_05_img_1_m.v4.jpg" alt="책장과 녹색 의자가 있는 독서 공간 연출" />
+                <Pic src="/resources/img/sub/premium_05_img_2.v4.jpg" m="/resources/img/sub/premium_05_img_2_m.v4.jpg" alt="유리병과 식재료 바구니가 놓인 팬트리 선반" />
               </div>
             </article>
           </div>
