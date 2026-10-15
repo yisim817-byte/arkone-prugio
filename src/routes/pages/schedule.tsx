@@ -3,7 +3,7 @@ import { SiteShell } from "@/components/site-shell";
 import { SubNotice } from "@/components/notice";
 import { canonicalLinks, faqJsonLd } from "@/lib/seo-host"
 import { isEnHost } from "@/lib/seo-host"
-import { EN, EN_BODY, EN_SCHED_FAQ } from "@/lib/i18n/en";
+import { EN, EN_BODY, EN_SCHED_FAQ , EN_SCHEDULE } from "@/lib/i18n/en";
 import { GuideAnswer, GuideDetail, type GuideFaq } from "@/components/seo-guide";
 import { SRC_APPLYHOME } from "@/lib/arkone-facts";
 
