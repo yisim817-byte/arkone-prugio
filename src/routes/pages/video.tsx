@@ -21,12 +21,12 @@ export const Route = createFileRoute("/pages/video")({
 
 
 const FAQ = [
-  { q: en ? EN_REMAIN.videoQ : "어떤 영상을 볼 수 있나요?", a: en ? EN_REMAIN.videoA : "청라 아크원 푸르지오 홍보영상 모음." },
   { q: "영상은 어디서 공개된 것인가요?", a: "사업주체가 공개한 단지 소개 영상을 확인할 수 있습니다." },
 ];
 
 function VideoPage() {
   const en = (() => { try { return isEnHost(); } catch { return false; } })();
+  const FAQ = [{ q: en ? EN_REMAIN.videoQ : "어떤 영상을 볼 수 있나요?", a: en ? EN_REMAIN.videoA : "청라 아크원 푸르지오 홍보영상 모음." }];
 
   const [open, setOpen] = useState(false);
   return (

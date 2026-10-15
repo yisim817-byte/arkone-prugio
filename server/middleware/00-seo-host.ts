@@ -277,7 +277,7 @@ export default async function seoHostMiddleware(
   }
   if (path === "/sitemap.xml") {
     const kr = isKr(event);
-    return new Response(method === "HEAD" ? null : (isEn(event) ? krSitemap().replace(KR_ORIGIN, EN_ORIGIN) : kr ? krSitemap() : LEGACY_SITEMAP), {
+    return new Response(method === "HEAD" ? null : (isEn(event) ? krSitemap().replaceAll(KR_ORIGIN, EN_ORIGIN) : kr ? krSitemap() : LEGACY_SITEMAP), {
       headers: { "content-type": "application/xml", ...TEXT_HEADERS },
     });
   }
