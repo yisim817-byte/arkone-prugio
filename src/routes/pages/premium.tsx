@@ -95,7 +95,7 @@ function PremiumPage() {
                 </p>
               </div>
               <div className="premium_feature__images premium_feature__images-stack">
-                <Pic src="/resources/img/sub/premium_03_img_1.v4.jpg" m="/resources/img/sub/premium_03_img_1_m.v4.jpg" alt="바다 풍경이 보이는 모습" />
+                <Pic src="/resources/img/sub/premium_03_img_1.v4.jpg" m="/resources/img/sub/premium_03_img_1_m.v4.jpg" alt="창으로 바다가 보이는 소파와 커피 테이블" />
                 <Pic src="/resources/img/sub/premium_03_img_2.v4.jpg" m="/resources/img/sub/premium_03_img_2_m.v4.jpg" alt="노을지는 바다 풍경이 보이는 모습" />
               </div>
             </article>
