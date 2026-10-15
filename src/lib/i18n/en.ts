@@ -179,3 +179,26 @@ export const EN_EVENT = {
   ],
   termsLink: "View notes",
 };
+
+export const EN_TERMS = [
+  "Eligible: customers who complete pre-registration on this site, receive agent guidance, finish MGM registration (including consent to provide personal information to a third party), win the Cheongna Ark-One Prugio apartment application, and meet MGM recognition conditions",
+  "Benefit: one of Lotte·Hyundai·Shinsegae department store gift certificates, 300,000 KRW",
+  "Payment day: contract day after confirming win and MGM recognition conditions",
+  "Paid once per person; the same person and same mobile number count as one person.",
+  "Not paid if disqualified, if no contract is signed, or if the contract is cancelled. If such a reason arises after payment, the agent will separately inform the handling standard.",
+  "Customers who completed MGM registration first through another path may be excluded per MGM operating rules.",
+  "Tax and public charges will be informed separately by the agent once the standard is set.",
+  "The organizer of this event is the site operator HUMANE KOREA; it is not a benefit from the developer or builder.",
+  "Event content may change or end early after prior notice.",
+  "Pre-registration is not an application. Application eligibility and schedule follow the recruitment notice.",
+];
+export const EN_OVERVIEW_TABLE = {
+  name: "Complex name",
+  loc: "Location",
+  scale: "Building scale",
+  supply: "Supply composition",
+  aptArea: "Apt exclusive area",
+  aptTypes: "Apt type unit counts",
+  ofcArea: "Officetel exclusive area",
+  siteArea: "Site area · building area",
+};
