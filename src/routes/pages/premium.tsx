@@ -65,7 +65,7 @@ function PremiumPage() {
               </div>
               <div className="premium_feature__images premium_feature__images-pair">
                 <Pic src="/resources/img/sub/premium_01_img_1.v4.jpg" m="/resources/img/sub/premium_01_img_1_m.v4.jpg" alt="고층 타워 사이 조경 광로가 보이는 단지 전경" />
-                <Pic src="/resources/img/sub/premium_01_img_2.v4.jpg" m="/resources/img/sub/premium_01_img_2_m.v4.jpg" alt="고층 세대에서 바깥을 바라보는 모습" />
+                <Pic src="/resources/img/sub/premium_01_img_2.v4.jpg" m="/resources/img/sub/premium_01_img_2_m.v4.jpg" alt="창 너머 강과 도시가 보이는 거실에서 바라보는 사람" />
               </div>
             </article>
 
