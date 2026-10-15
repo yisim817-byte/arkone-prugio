@@ -9,8 +9,20 @@
  *   built from the hardcoded KR origin + allowlisted path, never from Host.
  */
 
+
+const EN_ORIGIN = "https://www.arkone-prugio.site";
+const EN_HOSTS = new Set(["www.arkone-prugio.site"]);
+const EN_ROBOTS = [
+  "User-agent: *",
+  "Allow: /",
+  "Disallow: /api/",
+  "Disallow: /auth/",
+  "",
+  `Sitemap: ${EN_ORIGIN}/sitemap.xml`,
+].join("\r\n") + "\r\n";
 const KR_ORIGIN = "https://www.xn--2w2b19sita0u67iz2mi7g.site";
 const KR_HOSTS = new Set(["www.xn--2w2b19sita0u67iz2mi7g.site", "www.아크원푸르지오.site"]);
+
 
 /** path -> lastmod (git commit date of the page's last content change). */
 const KR_SITEMAP: ReadonlyArray<readonly [string, string]> = [
@@ -247,7 +259,7 @@ export default async function seoHostMiddleware(
 
   if (path === "/robots.txt") {
     const kr = isKr(event);
-    return new Response(method === "HEAD" ? null : kr ? KR_ROBOTS : LEGACY_ROBOTS, {
+    return new Response(method === "HEAD" ? null : (isEn(event) ? EN_ROBOTS : kr ? KR_ROBOTS : LEGACY_ROBOTS), {
       headers: { "content-type": "text/plain; charset=utf-8", ...TEXT_HEADERS },
     });
   }
@@ -258,7 +270,7 @@ export default async function seoHostMiddleware(
   }
   if (path === "/sitemap.xml") {
     const kr = isKr(event);
-    return new Response(method === "HEAD" ? null : kr ? krSitemap() : LEGACY_SITEMAP, {
+    return new Response(method === "HEAD" ? null : (isEn(event) ? krSitemap().replace(KR_ORIGIN, EN_ORIGIN) : kr ? krSitemap() : LEGACY_SITEMAP), {
       headers: { "content-type": "application/xml", ...TEXT_HEADERS },
     });
   }
