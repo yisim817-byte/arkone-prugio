@@ -6,7 +6,7 @@ import { SiteShell } from "@/components/site-shell";
 import { YoutubeModal } from "@/components/youtube-modal";
 import { SITE_NAME, SITE_PHONE, SITE_TEL_HREF, YOUTUBE_ID } from "@/lib/site-data";
 import { canonicalLinks, isKrHost, isEnHost, KR_ORIGIN, EN_ORIGIN, LEGACY_ORIGIN } from "@/lib/seo-host";
-import { EN, EN_HOME, EN_EVENT, EN_TERMS, EN_HISTORY } from "@/lib/i18n/en";
+import { EN, EN_HOME, EN_EVENT, EN_TERMS, EN_HISTORY, EN_REMAIN } from "@/lib/i18n/en";
 
 export const Route = createFileRoute("/")({
   component: Home,
@@ -211,16 +211,16 @@ function Home() {
             <p>등록 여부는 <a href={SITE_TEL_HREF}>1833-3872</a>(대표번호)에서 확인하실 수 있습니다.</p>
             <details id="event-terms" className="event-card__terms"><summary>{en ? EN_EVENT.termsSummary : "이벤트 유의사항 (청라 아크원 푸르지오 APT 사전고객등록)"}</summary>
               <ol>{(en ? EN_TERMS : [
-                "지급 대상: 이 홈페이지에서 사전고객등록을 하고, 담당자 안내를 받아 MGM 등록(개인정보를 제3자에게 제공하는 데 대한 동의 절차 포함)까지 마친 뒤, 청라 아크원 푸르지오 아파트 청약에 당첨되어 MGM 인정조건을 충족한 고객",
+                en ? "Eligible: customers who pre-register on this site, complete MGM registration (including consent to provide personal information to third parties) after staff guidance, and win the Cheongna Ark-One Prugio apartment application meeting MGM conditions" : "지급 대상: 이 홈페이지에서 사전고객등록을 하고, 담당자 안내를 받아 MGM 등록(개인정보를 제3자에게 제공하는 데 대한 동의 절차 포함)까지 마친 뒤, 청라 아크원 푸르지오 아파트 청약에 당첨되어 MGM 인정조건을 충족한 고객",
                 "혜택 내용: 롯데·현대·신세계 백화점 상품권 가운데 1종, 30만원",
                 "지급일: 당첨과 MGM 인정조건 충족을 확인한 뒤 계약 당일",
-                "한 사람에게 한 번만 지급하며, 같은 사람과 같은 휴대전화번호는 한 사람으로 봅니다.",
+                en ? "Paid once per person; the same person and the same mobile number are treated as one person." : "한 사람에게 한 번만 지급하며, 같은 사람과 같은 휴대전화번호는 한 사람으로 봅니다.",
                 "부적격 당첨이거나 계약을 체결하지 않은 경우, 계약이 취소·해제된 경우에는 지급하지 않습니다. 지급 뒤 이런 사유가 생기면 처리 기준을 담당자가 따로 알려 드립니다.",
                 "다른 경로를 통해 MGM 등록이 먼저 된 고객은 MGM 운영 기준에 따라 제외될 수 있습니다.",
                 "제세공과금은 기준이 정해지면 담당자가 따로 알려 드립니다.",
                 "이 이벤트의 진행 주체는 홈페이지운영 휴메인코리아이며, 시행사·시공사가 주는 혜택이 아닙니다.",
                 "이벤트 내용은 미리 알린 뒤 바뀌거나 일찍 끝날 수 있습니다.",
-                "사전고객등록은 청약 신청이 아닙니다. 청약 자격과 일정은 입주자모집공고 기준입니다.",
+                en ? "Pre-registration is not an application. Application eligibility and schedule follow the recruitment notice." : "사전고객등록은 청약 신청이 아닙니다. 청약 자격과 일정은 입주자모집공고 기준입니다.",
               ]).map((t,i)=><li key={i}>{t}</li>)}</ol><p>등록 확인·문의: 1833-3872</p>
             </details>
           </div>
