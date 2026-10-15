@@ -6,7 +6,7 @@ import { SiteShell } from "@/components/site-shell";
 import { YoutubeModal } from "@/components/youtube-modal";
 import { SITE_NAME, SITE_PHONE, SITE_TEL_HREF, YOUTUBE_ID } from "@/lib/site-data";
 import { canonicalLinks, isKrHost, isEnHost, KR_ORIGIN, EN_ORIGIN, LEGACY_ORIGIN } from "@/lib/seo-host";
-import { EN, EN_HOME, EN_EVENT, EN_TERMS } from "@/lib/i18n/en";
+import { EN, EN_HOME, EN_EVENT, EN_TERMS, EN_HISTORY } from "@/lib/i18n/en";
 
 export const Route = createFileRoute("/")({
   component: Home,
@@ -341,12 +341,12 @@ function Home() {
           </div>
           <div className="history-track">
             {[
-              { y: "2026", img: "history_img_2026.v4.webp", cap: ["청라하늘대교 (개통)", "하나드림타운 (그룹헤드쿼터 준공)"] },
-              { y: "2028", img: "history_img_2028.v4.jpg", cap: ["돔구장&스타필드 청라 (개장 예정)"] },
-              { y: "2029", img: "history_img_2029.v4.jpg", cap: ["서울아산청라병원 (예정)"] },
-              { y: "개통 시기 미정", img: "history_img_2030.v4.webp", cap: ["7호선 국제업무단지역 (예정)"] },
+              { y: "2026", img: "history_img_2026.v4.webp", cap: en ? EN_HISTORY.y2026 : ["청라하늘대교 (개통)", "하나드림타운 (그룹헤드쿼터 준공)"] },
+              { y: "2028", img: "history_img_2028.v4.jpg", cap: en ? EN_HISTORY.y2028 : ["돔구장&스타필드 청라 (개장 예정)"] },
+              { y: "2029", img: "history_img_2029.v4.jpg", cap: en ? EN_HISTORY.y2029 : ["서울아산청라병원 (예정)"] },
+              { y: en ? "opening date undetermined" : "개통 시기 미정", img: "history_img_2030.v4.webp", cap: en ? EN_HISTORY.line7 : ["7호선 국제업무단지역 (예정)"] },
               { y: "공고 후", img: "history_img_공고 후.v4.jpg", cap: ["영상문화복합단지 (계획)"] },
-              { y: "공고 후", img: "history_img_ark_one.v4.jpg", cap: ["청라 아크원 푸르지오 (입주 시기 공고문 확인)"] },
+              { y: en ? "after notice" : "공고 후", img: "history_img_ark_one.v4.jpg", cap: en ? EN_HISTORY.arkone : ["청라 아크원 푸르지오 (입주 시기 공고문 확인)"] },
             ].map((ev) => (
               <article className="history-card" key={ev.img}>
                 <time>
@@ -381,7 +381,7 @@ function Home() {
               <Img src="/resources/img/pages/main/premium_visual_img_01.v4.webp" alt="대형 창으로 석양과 강이 보이는 모던 거실 연출" />
               <Img src="/resources/img/pages/main/premium_visual_img_02.v4.webp" alt="대리석 아일랜드와 원목 의자가 있는 주방 연출" />
               <Img src="/resources/img/pages/main/premium_visual_img_03.v4.webp" alt="창 너머 나무가 보이는 베이지 침실 연출" />
-              <Img src="/resources/img/pages/main/premium_visual_img_04.v4.webp" alt="거실·발코니 인테리어 이미지컷(CG)" />
+              <Img src="/resources/img/pages/main/premium_visual_img_04.v4.webp" alt="루버 너머 바다와 석양이 보이는 거실·발코니 연출" />
             </div>
             <div className="section-premium__copy">
               <h3>
