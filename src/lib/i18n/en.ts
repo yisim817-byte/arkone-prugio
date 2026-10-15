@@ -11,7 +11,7 @@ export const EN = {
   },
   overview: {
     title: "Cheongna Ark-One Prugio Overview",
-    desc: "Cheongna-dong 86-1 M5BL, B5-49F, 6 buildings. Developer Cheongna Smart City. Builder Daewoo E&C.",
+    desc: "Cheongna-dong 86-1 M5BL, B5-49F, 6 buildings. Developer Cheongna Smart City.",
     h1: "Cheongna Ark-One Prugio Project Overview",
   },
   compare: {
@@ -26,7 +26,7 @@ export const EN = {
   },
   location: {
     title: "Cheongna Ark-One Prugio Location | M5BL",
-    desc: "Cheongna-dong 86-1 International Business District M5BL. Transport and living environment with source materials.",
+    desc: "Cheongna-dong 86-1 M5BL. Transport and living environment.",
     h1: "Cheongna Ark-One Prugio Location",
   },
   contact: {
@@ -35,28 +35,28 @@ export const EN = {
     h1: "Cheongna Ark-One Prugio Model House · Exhibition Hall",
   },
   brand: {
-    title: "Cheongna Ark-One Prugio History | Nearby Development",
-    desc: "Nearby development schedule for Cheongna Ark-One Prugio. Line 7 (planned; opening date undetermined).",
+    title: "Nearby Development",
+    desc: "Nearby development schedule. Line 7 planned, opening date undetermined.",
     h1: "Cheongna Ark-One Prugio History",
   },
   premium: {
-    title: "Cheongna Ark-One Prugio Premium | Product Features",
+    title: "Premium Features",
     desc: "Product feature guide for Cheongna Ark-One Prugio. No new claims beyond the Korean source.",
     h1: "Cheongna Ark-One Prugio Premium",
   },
   changeinfo: {
-    title: "Cheongna Ark-One Prugio Application Rule Changes",
+    title: "Application Rule Changes",
     desc: "Application system changes to check before applying. Confirm in the recruitment notice.",
     h1: "Cheongna Ark-One Prugio Application Rule Changes",
   },
   docspecial: {
-    title: "Cheongna Ark-One Prugio Special Supply Guide",
-    desc: "Special supply volumes, eligibility, and schedule are confirmed in the recruitment announcement.",
+    title: "Special Supply Guide",
+    desc: "Special supply volumes and eligibility confirmed in the announcement.",
     h1: "Cheongna Ark-One Prugio Special Supply",
   },
   docnormal: {
-    title: "Cheongna Ark-One Prugio General Supply Guide",
-    desc: "General supply volumes, rank-based application dates, and winner announcement are confirmed in the recruitment announcement.",
+    title: "General Supply Guide",
+    desc: "General supply volumes and dates confirmed in the announcement.",
     h1: "Cheongna Ark-One Prugio General Supply",
   },
   video: {
