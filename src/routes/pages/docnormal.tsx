@@ -28,7 +28,7 @@ function DocNormalPage() {
       <div className="page_content">
         <section className="page_container">
           <GuideAnswer title={en ? EN_DOCNORM.h1 : "청라 아크원 푸르지오 일반공급 안내 요약"}>
-            <p>청라 아크원 푸르지오의 일반공급 물량, 순위별 접수일, 당첨자 발표일은 입주자모집공고에서 확정되며 현재는 미정입니다. 신청 전 청약홈에 게시되는 공고문을 기준으로 확인하시기 바랍니다.</p>
+            <p>{en ? EN_REMAIN.docnormalP : "청라 아크원 푸르지오의 일반공급 물량, 순위별 접수일, 당첨자 발표일은 입주자모집공고에서 확정되며 현재는 미정입니다. 신청 전 청약홈에 게시되는 공고문을 기준으로 확인하시기 바랍니다."}</p>
           </GuideAnswer>
             <p>특별공급은 1세대당 평생 1회로 제한됩니다. 이 단지의 청약 자격·공급 비율·일정은 입주자모집공고 게시 후 청약홈 공고문으로 확인해야 합니다.</p>
           <figure>

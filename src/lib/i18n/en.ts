@@ -230,3 +230,13 @@ export const EN_DESC = {
   video: "Cheongna Ark-One Prugio video. Confirm schedule and details via 1833-3872.",
   news: "Cheongna Ark-One Prugio news list. Confirm official notices from applyhome and the developer.",
 };
+
+export const EN_REMAIN = {
+  changeinfoP: "Supply type, eligibility, and schedule for Cheongna Ark-One Prugio are confirmed in the recruitment notice and are currently TBD. OPEN expected mid-October. Details via 1833-3872.",
+  docnormalP: "General supply volume, rank-based application dates, and winner announcement dates for Cheongna Ark-One Prugio are confirmed in the recruitment notice and are currently TBD. Confirm from the notice posted on applyhome before applying.",
+  videoQ: "What videos can I watch?",
+  videoA: "Cheongna Ark-One Prugio promotional video collection.",
+  videoAlt: "Cheongna Ark-One Prugio promotional video thumbnail",
+  videoP: "Cheongna Ark-One Prugio promotional video",
+  compareReg: "Pre-registration",
+};
