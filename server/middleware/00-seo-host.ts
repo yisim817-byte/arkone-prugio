@@ -91,7 +91,7 @@ const KR_PAGE_NAMES: Record<string, string> = {
 };
 
 /** KR host only: Organization + WebPage(dateModified) + BreadcrumbList JSON-LD. */
-function krPageJsonLd(path: string): string {
+function krPageJsonLd(path: string, en = false): string {
   const url = `${KR_ORIGIN}${path}`;
   const lastmod = KR_SITEMAP.find(([p]) => p === path)?.[1];
   const org = {
@@ -110,7 +110,7 @@ function krPageJsonLd(path: string): string {
         "@id": `${url}#webpage`,
         url,
         name: `${KR_PAGE_NAMES[path]} | 청라 아크원 푸르지오`,
-        inLanguage: isEn(event) ? "en" : "ko-KR",
+        inLanguage: en ? "en" : "ko-KR",
         isPartOf: { "@id": `${KR_ORIGIN}/#website` },
         publisher: { "@id": org["@id"] },
         breadcrumb: { "@id": `${url}#breadcrumb` },
@@ -293,7 +293,7 @@ export default async function seoHostMiddleware(
     !result.headers.get("content-encoding")
   ) {
     const origin = isEn(event) ? EN_ORIGIN : KR_ORIGIN;
-    const jsonld = krPageJsonLd(path).replace(new RegExp(KR_ORIGIN.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "g"), origin);
+    const jsonld = krPageJsonLd(path, isEn(event)).replace(new RegExp(KR_ORIGIN.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "g"), origin);
     // EN host: keep Naver verification meta as ordered
     const naver = path === "/" ? NAVER_VERIFICATION_TAG : "";
     return injectOgUrl(
