@@ -3,7 +3,7 @@ import { SiteShell } from "@/components/site-shell";
 import { SubNotice } from "@/components/notice";
 import { canonicalLinks, faqJsonLd } from "@/lib/seo-host"
 import { isEnHost } from "@/lib/seo-host"
-import { EN } from "@/lib/i18n/en";
+import { EN, EN_BODY } from "@/lib/i18n/en";
 import { GuideAnswer, GuideDetail, type GuideFaq } from "@/components/seo-guide";
 import { SRC_APPLYHOME } from "@/lib/arkone-facts";
 
@@ -49,14 +49,16 @@ export const Route = createFileRoute("/pages/schedule")({
 });
 
 function SchedulePage() {
+  const en = (() => { try { return isEnHost(); } catch { return false; } })();
+
   return (
     <SiteShell path="/pages/schedule">
       <div className="page_content">
         <section className="page_container">
           <GuideAnswer title="청라 아크원 푸르지오 분양 일정·청약 안내">
             <p>청라 아크원 푸르지오는 현재 입주자모집공고 전 단계입니다.</p>
-            <p>청라 아크원 푸르지오는 모집공고 10.22 · GRAND OPEN 10.30 예정입니다. 세부 일정은 대표번호 1833-3872로 문의해 주세요.</p>
-            <p>특별공급·1순위·2순위·당첨자 발표·계약 일정과 분양가는 아직 공개되지 않았으며(미정) 입주자모집공고에서 확정됩니다. 청라 아크원 푸르지오의 입주 시기는 입주자모집공고 게시 후 공고문으로 확인해야 합니다.</p>
+            <p>{en ? EN_BODY.schedule.p1 : "청라 아크원 푸르지오는 모집공고 10.22 · GRAND OPEN 10.30 예정입니다. 세부 일정은 대표번호 1833-3872로 문의해 주세요."}</p>
+            <p>{en ? EN_BODY.schedule.p2 : "특별공급·1순위·2순위·당첨자 발표·계약 일정과 분양가는 아직 공개되지 않았으며(미정) 입주자모집공고에서 확정됩니다. 청라 아크원 푸르지오의 입주 시기는 입주자모집공고 게시 후 공고문으로 확인해야 합니다."}</p>
             <p>일정은 사업주체 사정에 따라 변경될 수 있으므로 청약 전 청약홈에 게시되는 공고문을 반드시 확인하시기 바랍니다.</p>
           </GuideAnswer>
           <GuideDetail
