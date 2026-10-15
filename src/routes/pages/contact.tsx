@@ -31,7 +31,7 @@ export const Route = createFileRoute("/pages/contact")({
   head: () => ({
     meta: [
       { title: (() => { try { return isEnHost() ? EN.contact.title : "청라 아크원 푸르지오 모델하우스·홍보관 위치 | 오시는길"; } catch { return "청라 아크원 푸르지오 모델하우스·홍보관 위치 | 오시는길"; } })() },
-      { name: "description", content: (() => { try { return isEnHost() ? EN.contact.desc : "청라 아크원 푸르지오 견본주택(청라동 87-1번지) GRAND OPEN 10.30 예정 · 모집공고 10.22 예정. 현장·홍보관 주소와 지도, 대표번호 1833-3872 안내."; } catch { return "청라 아크원 푸르지오 견본주택(청라동 87-1번지) GRAND OPEN 10.30 예정 · 모집공고 10.22 예정. 현장·홍보관 주소와 지도, 대표번호 1833-3872 안내."; } })() },
+      { name: "description", content: (() => { try { return isEnHost() ? EN.contact.desc : "청라 아크원 푸르지오 견본주택. GRAND OPEN 10.30 · 모집공고 10.22 예정. 1833-3872."; } catch { return "청라 아크원 푸르지오 견본주택. GRAND OPEN 10.30 · 모집공고 10.22 예정. 1833-3872."; } })() },
     ],
     links: canonicalLinks("/pages/contact"),
     scripts: faqJsonLd((() => { try { return isEnHost() ? EN_CONTACT_FAQ : FAQ; } catch { return FAQ; } })()),
