@@ -10,18 +10,18 @@ export const EN = {
     h1: "Cheongna Ark-One Prugio",
   },
   overview: {
-    title: "Cheongna Ark-One Prugio Overview | 868 units · 987 rooms",
-    desc: "Cheongna-dong 86-1 M5BL, B5 to 49F, 6 buildings. Developer Cheongna Smart City Co., Ltd. Builder Daewoo E&C (PRUGIO).",
+    title: "Cheongna Ark-One Prugio Overview",
+    desc: "Cheongna-dong 86-1 M5BL, B5-49F, 6 buildings. Developer Cheongna Smart City. Builder Daewoo E&C.",
     h1: "Cheongna Ark-One Prugio Project Overview",
   },
   compare: {
-    title: "Cheongna Ark-One Prugio Apt vs Officetel Compare",
-    desc: "Compare Apt 868 units and Officetel 987 rooms: area, parking, announcement schedule, and floor-plan release status.",
+    title: "Ark-One Apt vs Officetel",
+    desc: "Compare Apt 868 units and Officetel 987 rooms: area, parking, and schedule.",
     h1: "Cheongna Ark-One Prugio Apartment · Officetel Compare",
   },
   schedule: {
-    title: "Cheongna Ark-One Prugio Schedule & Application",
-    desc: "OPEN expected mid-October (details 1833-3872). Price TBD before announcement. Move-in expected 2031.",
+    title: "Ark-One Schedule & Application",
+    desc: "OPEN mid-October. Details 1833-3872. Price TBD. Move-in confirm in notice.",
     h1: "Cheongna Ark-One Prugio Sale Schedule · Application",
   },
   location: {
@@ -30,7 +30,7 @@ export const EN = {
     h1: "Cheongna Ark-One Prugio Location",
   },
   contact: {
-    title: "Cheongna Ark-One Prugio Model House | Directions",
+    title: "Ark-One Model House",
     desc: "Model house (Cheongna-dong 87-1) OPEN expected mid-October. Call 1833-3872.",
     h1: "Cheongna Ark-One Prugio Model House · Exhibition Hall",
   },
