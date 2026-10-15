@@ -53,7 +53,6 @@ function SchedulePage() {
   return (
     <SiteShell path="/pages/schedule">
       <div className="page_content">
-        <h1 className="page-h1">{en ? "Schedule & Application" : "청라 아크원 푸르지오 분양 일정·청약 안내"}</h1>
         <section className="page_container">
           <GuideAnswer title="청라 아크원 푸르지오 분양 일정·청약 안내">
             <p>청라 아크원 푸르지오는 현재 입주자모집공고 전 단계입니다.</p>

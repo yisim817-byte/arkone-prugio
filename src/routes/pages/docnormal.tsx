@@ -26,7 +26,6 @@ function DocNormalPage() {
   return (
     <SiteShell path="/pages/docnormal">
       <div className="page_content">
-        <h1 className="page-h1">{en ? "General Supply Guide" : "일반공급 안내"}</h1>
         <section className="page_container">
           <GuideAnswer title={en ? EN_DOCNORM.h1 : "청라 아크원 푸르지오 일반공급 안내 요약"}>
             <p>{en ? EN_REMAIN.docnormalP : "청라 아크원 푸르지오의 일반공급 물량, 순위별 접수일, 당첨자 발표일은 입주자모집공고에서 확정되며 현재는 미정입니다. 신청 전 청약홈에 게시되는 공고문을 기준으로 확인하시기 바랍니다."}</p>
