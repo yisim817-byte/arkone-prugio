@@ -2,15 +2,17 @@ import { createFileRoute } from "@tanstack/react-router";
 import { SiteShell } from "@/components/site-shell";
 import { GuideDetail } from "@/components/seo-guide";
 import { SubNotice } from "@/components/notice";
-import { canonicalLinks } from "@/lib/seo-host";
+import { canonicalLinks } from "@/lib/seo-host"
+import { isEnHost } from "@/lib/seo-host"
+import { EN } from "@/lib/i18n/en";
 import { imgDims } from "@/components/img";
 
 export const Route = createFileRoute("/pages/brand")({
   component: BrandPage,
   head: () => ({
     meta: [
-      { title: "청라 아크원 푸르지오 히스토리 | 주변 개발 일정" },
-      { name: "description", content: "청라 아크원 푸르지오 히스토리. 청라 주변 개발 계획을 연도별로 정리했습니다. 일정은 예정·계획 기준이며 관계기관 사정에 따라 변경될 수 있습니다." },
+      { title: (() => { try { return isEnHost() ? EN.brand.title : "청라 아크원 푸르지오 히스토리 | 주변 개발 일정"; } catch { return "청라 아크원 푸르지오 히스토리 | 주변 개발 일정"; } })() },
+      { name: "description", content: (() => { try { return isEnHost() ? EN.brand.desc : "청라 아크원 푸르지오 히스토리. 청라 주변 개발 계획을 연도별로 정리했습니다. 일정은 예정·계획 기준이며 관계기관 사정에 따라 변경될 수 있습니다."; } catch { return "청라 아크원 푸르지오 히스토리. 청라 주변 개발 계획을 연도별로 정리했습니다. 일정은 예정·계획 기준이며 관계기관 사정에 따라 변경될 수 있습니다."; } })() },
     ],
     links: canonicalLinks("/pages/brand"),
   }),

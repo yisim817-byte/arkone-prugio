@@ -1,7 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteShell } from "@/components/site-shell";
 import { SubNotice } from "@/components/notice";
-import { canonicalLinks, faqJsonLd } from "@/lib/seo-host";
+import { canonicalLinks, faqJsonLd } from "@/lib/seo-host"
+import { isEnHost } from "@/lib/seo-host"
+import { EN } from "@/lib/i18n/en";
 import { GuideAnswer, GuideDetail, type GuideFaq } from "@/components/seo-guide";
 import { SRC_APPLYHOME, SRC_OFFICIAL, SRC_OFFICIAL_PREMIUM } from "@/lib/arkone-facts";
 
@@ -28,11 +30,9 @@ export const Route = createFileRoute("/pages/compare")({
   component: ComparePage,
   head: () => ({
     meta: [
-      { title: "청라 아크원 푸르지오 아파트·오피스텔 비교 | 전용면적·평면도 안내" },
+      { title: (() => { try { return isEnHost() ? EN.compare.title : "청라 아크원 푸르지오 아파트·오피스텔 비교 | 전용면적·평면도 안내"; } catch { return "청라 아크원 푸르지오 아파트·오피스텔 비교 | 전용면적·평면도 안내"; } })() },
       {
-        name: "description",
-        content:
-          "청라 아크원 푸르지오 아파트 868세대(전용 84·103㎡)와 오피스텔 987실(전용 105·121·136㎡)의 면적·주차·공고 일정·평면도 공개 여부 비교.",
+        name: "description", content: (() => { try { return isEnHost() ? EN.compare.desc : "청라 아크원 푸르지오 아파트 868세대(전용 84·103㎡)와 오피스텔 987실(전용 105·121·136㎡)의 면적·주차·공고 일정·평면도 공개 여부 비교."; } catch { return "청라 아크원 푸르지오 아파트 868세대(전용 84·103㎡)와 오피스텔 987실(전용 105·121·136㎡)의 면적·주차·공고 일정·평면도 공개 여부 비교."; } })(),
       },
     ],
     links: canonicalLinks("/pages/compare"),

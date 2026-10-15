@@ -183,6 +183,13 @@ function isKr(event: SeoEvent): boolean {
   return KR_HOSTS.has(host);
 }
 
+function isEn(event: SeoEvent): boolean {
+  const raw =
+    event.req.headers.get("x-forwarded-host") ?? event.req.headers.get("host") ?? event.url.host;
+  const host = String(raw ?? "").split(",")[0].trim().split(":")[0].toLowerCase();
+  return EN_HOSTS.has(host);
+}
+
 const TEXT_HEADERS = {
   "cache-control": "public, max-age=0, must-revalidate",
   vary: "Host, X-Forwarded-Host",
@@ -275,7 +282,7 @@ export default async function seoHostMiddleware(
     });
   }
 
-  if (method !== "GET" || !KR_PATHS.has(path) || !isKr(event)) return next();
+  if (method !== "GET" || !KR_PATHS.has(path) || !(isKr(event) || isEn(event))) return next();
 
   const result = await next();
   if (
@@ -285,10 +292,14 @@ export default async function seoHostMiddleware(
     String(result.headers.get("content-type") ?? "").includes("text/html") &&
     !result.headers.get("content-encoding")
   ) {
+    const origin = isEn(event) ? EN_ORIGIN : KR_ORIGIN;
+    const jsonld = krPageJsonLd(path).replace(new RegExp(KR_ORIGIN.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "g"), origin);
+    // EN host: keep Naver verification meta as ordered
+    const naver = path === "/" ? NAVER_VERIFICATION_TAG : "";
     return injectOgUrl(
       result,
-      `${KR_ORIGIN}${path}`,
-      (path === "/" ? NAVER_VERIFICATION_TAG : "") + krPageJsonLd(path),
+      `${origin}${path}`,
+      naver + jsonld,
     );
   }
   return result;

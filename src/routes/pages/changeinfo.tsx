@@ -1,7 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteShell } from "@/components/site-shell";
 import { ZoomButton } from "@/components/notice";
-import { canonicalLinks } from "@/lib/seo-host";
+import { canonicalLinks } from "@/lib/seo-host"
+import { isEnHost } from "@/lib/seo-host"
+import { EN } from "@/lib/i18n/en";
 import { GuideAnswer, GuideDetail } from "@/components/seo-guide";
 import { SRC_APPLYHOME } from "@/lib/arkone-facts";
 import { imgDims } from "@/components/img";
@@ -10,8 +12,8 @@ export const Route = createFileRoute("/pages/changeinfo")({
   component: ChangeInfoPage,
   head: () => ({
     meta: [
-      { title: "청라 아크원 푸르지오 청약제도 변경사항 | 청약안내" },
-      { name: "description", content: "청라 아크원 푸르지오 청약 전 확인할 청약제도 변경 내용. 공급 유형·자격·청약 일정은 입주자모집공고에서 확정됩니다." },
+      { title: (() => { try { return isEnHost() ? EN.changeinfo.title : "청라 아크원 푸르지오 청약제도 변경사항 | 청약안내"; } catch { return "청라 아크원 푸르지오 청약제도 변경사항 | 청약안내"; } })() },
+      { name: "description", content: (() => { try { return isEnHost() ? EN.changeinfo.desc : "청라 아크원 푸르지오 청약 전 확인할 청약제도 변경 내용. 공급 유형·자격·청약 일정은 입주자모집공고에서 확정됩니다."; } catch { return "청라 아크원 푸르지오 청약 전 확인할 청약제도 변경 내용. 공급 유형·자격·청약 일정은 입주자모집공고에서 확정됩니다."; } })() },
     ],
     links: canonicalLinks("/pages/changeinfo"),
   }),
