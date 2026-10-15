@@ -3,7 +3,7 @@ import { SiteShell } from "@/components/site-shell";
 import { ZoomButton } from "@/components/notice";
 import { canonicalLinks } from "@/lib/seo-host"
 import { isEnHost } from "@/lib/seo-host"
-import { EN } from "@/lib/i18n/en";
+import { EN, EN_DOCSPEC } from "@/lib/i18n/en";
 import { GuideAnswer, GuideDetail } from "@/components/seo-guide";
 import { SRC_APPLYHOME } from "@/lib/arkone-facts";
 import { imgDims } from "@/components/img";
@@ -20,12 +20,14 @@ export const Route = createFileRoute("/pages/docspecial")({
 });
 
 function DocSpecialPage() {
+  const en = (() => { try { return isEnHost(); } catch { return false; } })();
+
   const src = "/resources/img/sub/03_특별공급.v4.jpg";
   return (
     <SiteShell path="/pages/docspecial">
       <div className="page_content">
         <section className="page_container">
-          <GuideAnswer title="청라 아크원 푸르지오 특별공급 안내 요약">
+          <GuideAnswer title={en ? EN_DOCSPEC.h1 : "청라 아크원 푸르지오 특별공급 안내 요약"}>
             <p>청라 아크원 푸르지오의 특별공급 유형별 공급 물량과 일정은 입주자모집공고에서 확정되며 현재는 미정입니다. 신청 전 청약홈에 게시되는 공고문을 기준으로 확인하시기 바랍니다.</p>
           </GuideAnswer>
           <figure>
