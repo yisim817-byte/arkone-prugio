@@ -3,7 +3,7 @@ import { SiteShell } from "@/components/site-shell";
 import { SubNotice } from "@/components/notice";
 import { canonicalLinks, faqJsonLd } from "@/lib/seo-host"
 import { isEnHost } from "@/lib/seo-host"
-import { EN, EN_BODY } from "@/lib/i18n/en";
+import { EN, EN_BODY, EN_CONTACT_FAQ } from "@/lib/i18n/en";
 import { GuideAnswer, GuideDetail, type GuideFaq } from "@/components/seo-guide";
 import { SRC_OFFICIAL_CONTACT } from "@/lib/arkone-facts";
 import { imgDims } from "@/components/img";
@@ -35,7 +35,7 @@ export const Route = createFileRoute("/pages/contact")({
       { name: "description", content: (() => { try { return isEnHost() ? EN.contact.desc : "청라 아크원 푸르지오 견본주택(청라동 87-1번지) 10월 중 OPEN 예정. 현장·홍보관 주소와 지도, 대표번호 1833-3872 안내."; } catch { return "청라 아크원 푸르지오 견본주택(청라동 87-1번지) 10월 중 OPEN 예정. 현장·홍보관 주소와 지도, 대표번호 1833-3872 안내."; } })() },
     ],
     links: canonicalLinks("/pages/contact"),
-    scripts: faqJsonLd(FAQ),
+    scripts: faqJsonLd((() => { try { return isEnHost() ? EN_CONTACT_FAQ : FAQ; } catch { return FAQ; } })()),
   }),
 });
 
@@ -114,7 +114,7 @@ function ContactPage() {
               { label: "홍보관", value: "인천광역시 서해구 중봉대로 586번길 19 홍익파크 1층 108, 109호(스타벅스 옆)", status: "공개값" },
               { label: "운영 시간", value: "방문 전 대표번호 1833-3872로 확인", status: "미정" },
             ]}
-            faq={FAQ}
+            faq={en ? EN_CONTACT_FAQ : FAQ}
             links={[
               { to: "/pages/schedule", label: "분양 일정·청약 안내" },
               { to: "/pages/overview", label: "분양 사업개요" },

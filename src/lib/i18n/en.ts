@@ -202,3 +202,26 @@ export const EN_OVERVIEW_TABLE = {
   ofcArea: "Officetel exclusive area",
   siteArea: "Site area · building area",
 };
+
+export const EN_HISTORY = {
+  y2026: ["Cheongna Sky Bridge (opened)", "Hana Dream Town (Group HQ completed)"],
+  y2028: ["Dome stadium & Starfield Cheongna (opening expected)"],
+  y2029: ["Seoul Asan Cheongna Hospital (expected)"],
+  line7: ["Line 7 International Business District station (planned)"],
+  media: ["Media culture complex (planned)"],
+  arkone: ["Cheongna Ark-One Prugio (move-in timing: confirm in notice)"],
+};
+export const EN_SCHED_FAQ = [
+  { q: "What is the Cheongna Ark-One Prugio sale schedule?", a: "Cheongna Ark-One Prugio is OPEN expected mid-October. Details via 1833-3872. Special supply, 1st rank, 2nd rank, winner announcement, and contract schedule are guided after the recruitment notice is confirmed and are currently TBD." },
+  { q: "What is the sale price?", a: "Sale price is not yet published (TBD). The developer marks it as a 'price-cap applicable complex'; the actual amount and payment terms are confirmed in the recruitment notice." },
+  { q: "When is the price published and where can I confirm it?", a: "As of 2026-10-04 the developer has not published the price; the confirmed amount appears in the recruitment notice. Refer to the schedule on this page for notice and opening plans, and confirm the final schedule and supply amount from the notice original and developer notice. Notices can be confirmed directly at applyhome.co.kr and the developer site arkone-prugio.com. Apartment and officetel supply amounts may be presented by type and floor in the notice. To receive notice news first, use pre-registration; inquiries via 1833-3872." },
+  { q: "Does pre-registration mean the application is submitted?", a: "No. Pre-registration is not an application. Application eligibility and schedule follow the recruitment notice." },
+  { q: "What should I prepare before applying?", a: "Confirm the recruitment notice for eligibility, schedule, and required documents. Inquiries via 1833-3872." },
+  { q: "When is move-in?", a: "Move-in timing must be confirmed from the notice after it is posted." },
+];
+export const EN_CONTACT_FAQ = [
+  { q: "Where is the Cheongna Ark-One Prugio model house?", a: "The model house address is Cheongna-dong 87-1, Seohae-gu, Incheon. The project site address is Cheongna-dong 86-1; route can be confirmed via the Naver·Kakao map buttons on this page." },
+  { q: "When does the model house open?", a: "OPEN expected mid-October. Details via 1833-3872." },
+  { q: "Where can I get guidance before the model house opens?", a: "Guidance is available at the exhibition hall (Hongik Park 1F 108, 109, Jungbong-daero 586beon-gil 19, Seohae-gu, Incheon, next to Starbucks). Confirm operating hours via 1833-3872 before visiting." },
+  { q: "What should I confirm before visiting?", a: "First confirm the address and operating status of the visit place (model house·exhibition hall), and confirm application eligibility and schedule from the applyhome notice after the recruitment notice is posted." },
+];

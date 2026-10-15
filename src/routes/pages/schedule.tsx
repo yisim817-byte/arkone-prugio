@@ -3,7 +3,7 @@ import { SiteShell } from "@/components/site-shell";
 import { SubNotice } from "@/components/notice";
 import { canonicalLinks, faqJsonLd } from "@/lib/seo-host"
 import { isEnHost } from "@/lib/seo-host"
-import { EN, EN_BODY } from "@/lib/i18n/en";
+import { EN, EN_BODY, EN_SCHED_FAQ } from "@/lib/i18n/en";
 import { GuideAnswer, GuideDetail, type GuideFaq } from "@/components/seo-guide";
 import { SRC_APPLYHOME, SRC_OFFICIAL } from "@/lib/arkone-facts";
 
@@ -44,7 +44,7 @@ export const Route = createFileRoute("/pages/schedule")({
       },
     ],
     links: canonicalLinks("/pages/schedule"),
-    scripts: faqJsonLd(FAQ),
+    scripts: faqJsonLd((() => { try { return isEnHost() ? EN_SCHED_FAQ : FAQ; } catch { return FAQ; } })()),
   }),
 });
 
@@ -74,7 +74,7 @@ function SchedulePage() {
               { label: en ? "Officetel notice schedule" : "오피스텔 공고 일정", value: en ? "Not announced" : "미안내", status: en ? "TBD" : "미정" },
               { label: en ? "Move-in timing" : "입주 시기", value: en ? "Move-in timing must be confirmed from the notice after it is posted" : "입주 시기는 입주자모집공고 게시 후 공고문으로 확인해야 합니다", status: en ? "expected" : "예정" },
             ]}
-            faq={FAQ}
+            faq={en ? EN_SCHED_FAQ : FAQ}
             links={[
               { to: "/pages/changeinfo", label: "변경된 청약제도" },
               { to: "/pages/docspecial", label: "특별공급 안내" },
