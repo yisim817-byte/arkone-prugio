@@ -6,7 +6,7 @@ import { SiteShell } from "@/components/site-shell";
 import { YoutubeModal } from "@/components/youtube-modal";
 import { SITE_NAME, SITE_PHONE, SITE_TEL_HREF, YOUTUBE_ID } from "@/lib/site-data";
 import { canonicalLinks, isKrHost, isEnHost, KR_ORIGIN, EN_ORIGIN, LEGACY_ORIGIN } from "@/lib/seo-host";
-import { EN, EN_HOME, EN_EVENT } from "@/lib/i18n/en";
+import { EN, EN_HOME, EN_EVENT, EN_TERMS } from "@/lib/i18n/en";
 
 export const Route = createFileRoute("/")({
   component: Home,
@@ -216,8 +216,7 @@ function Home() {
                 <li>제세공과금은 기준이 정해지면 담당자가 따로 알려 드립니다.</li>
                 <li>이벤트 내용은 미리 알린 뒤 바뀌거나 일찍 끝날 수 있습니다.</li>
                 <li>사전고객등록은 청약 신청이 아닙니다. 청약 자격과 일정은 입주자모집공고 기준입니다.</li>
-              </ol><p>등록 확인·문의: 1833-3872</p>
-            </details>
+              </ol><p>등록 확인·문의: 1833-3872</p>            </details>
           </div>
         </section>
 
