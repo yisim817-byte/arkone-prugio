@@ -5,27 +5,33 @@ import { Img } from "@/components/img";
 import { SiteShell } from "@/components/site-shell";
 import { YoutubeModal } from "@/components/youtube-modal";
 import { SITE_NAME, SITE_PHONE, SITE_TEL_HREF, YOUTUBE_ID } from "@/lib/site-data";
-import { canonicalLinks, isKrHost, KR_ORIGIN, LEGACY_ORIGIN } from "@/lib/seo-host";
+import { canonicalLinks, isKrHost, isEnHost, KR_ORIGIN, EN_ORIGIN, LEGACY_ORIGIN } from "@/lib/seo-host";
+import { EN, EN_HOME, EN_EVENT, EN_TERMS, EN_HISTORY, EN_REMAIN } from "@/lib/i18n/en";
 
 export const Route = createFileRoute("/")({
   component: Home,
-  head: () => ({
-    meta: [
-      { title: "청라 아크원 푸르지오 | 분양 일정·비교·청약 안내" },
-      {
-        name: "description",
-        content:
-          "청라 아크원 푸르지오 분양 일정·청약 안내. 10월 중 OPEN 예정, 아파트 868세대·오피스텔 987실.",
-      },
-    ],
-    links: canonicalLinks("/"),
-    scripts: [
-      {
-        type: "application/ld+json",
-        children: homeJsonLd(isKrHost() ? KR_ORIGIN : LEGACY_ORIGIN),
-      },
-    ],
-  }),
+  head: () => {
+    let en = false;
+    try { en = isEnHost(); } catch { en = false; }
+    return {
+      meta: [
+        { title: en ? EN.home.title : "청라 아크원 푸르지오 | 분양 일정·비교·청약 안내" },
+        {
+          name: "description",
+          content: en
+            ? EN.home.desc
+            : "청라 아크원 푸르지오 분양 일정·청약 안내. 10월 중 OPEN 예정, 아파트 868세대·오피스텔 987실.",
+        },
+      ],
+      links: canonicalLinks("/"),
+      scripts: [
+        {
+          type: "application/ld+json",
+          children: homeJsonLd(en ? EN_ORIGIN : isKrHost() ? KR_ORIGIN : LEGACY_ORIGIN),
+        },
+      ],
+    };
+  },
 });
 
 function homeJsonLd(origin: string) {
@@ -38,7 +44,7 @@ function homeJsonLd(origin: string) {
         url: `${origin}/`,
         name: SITE_NAME,
         alternateName: ["아크원푸르지오.site"],
-        inLanguage: "ko-KR",
+        inLanguage: (() => { try { return isEnHost() ? "en-US" : "ko-KR"; } catch { return "ko-KR"; } })(),
         publisher: { "@id": "https://www.humanekorea.co.kr/#organization" },
       },
       {
@@ -46,7 +52,7 @@ function homeJsonLd(origin: string) {
         "@id": `${origin}/#webpage`,
         url: `${origin}/`,
         name: SITE_NAME,
-        inLanguage: "ko-KR",
+        inLanguage: (() => { try { return isEnHost() ? "en-US" : "ko-KR"; } catch { return "ko-KR"; } })(),
         isPartOf: { "@id": `${origin}/#website` },
       },
     ],
@@ -70,6 +76,7 @@ function HeroOrbit() {
 }
 
 function Home() {
+  const en = (() => { try { return isEnHost(); } catch { return false; } })();
   const [intro, setIntro] = useState(true);
   const [video, setVideo] = useState(false);
   const [active, setActive] = useState("hero");
@@ -98,14 +105,14 @@ function Home() {
   return (
     <SiteShell home>
       {intro ? (
-        <section className="intro" aria-label="청라 아크원 푸르지오 인트로">
+        <section className="intro" aria-label={en ? EN_HOME.introLabel : "청라 아크원 푸르지오 인트로"}>
           <video autoPlay muted loop playsInline>
             <source src="/resources/img/pages/main/intro_video.mp4" type="video/mp4" />
           </video>
           <div className="intro__copy">
-            <p className="intro__phrase">청라국제업무단지 M5블록</p>
-            <p className="intro__title">아파트 868세대 · 오피스텔 987실</p>
-            <p className="intro__kicker">청라 아크원 푸르지오</p>
+            <p className="intro__phrase">{en ? EN_HOME.introPhrase : "청라국제업무단지 M5블록"}</p>
+            <p className="intro__title">{en ? EN_HOME.introTitle : "아파트 868세대 · 오피스텔 987실"}</p>
+            <p className="intro__kicker">{en ? EN.home.h1 : "청라 아크원 푸르지오"}</p>
             <p className="intro__brand">CHEONG NA ARK-ONE PRUGIO</p>
           </div>
           <button type="button" className="intro__skip" onClick={() => setIntro(false)}>
@@ -114,7 +121,7 @@ function Home() {
         </section>
       ) : null}
 
-      <nav className="indicator" aria-label="메인 섹션 바로가기">
+      <nav className="indicator" aria-label={en ? "Main section shortcuts" : "메인 섹션 바로가기"}>
         {SECTIONS.map((id) => (
           <button
             key={id}
@@ -131,7 +138,7 @@ function Home() {
           <div className="hero__media">
             <picture>
               <source media="(max-width: 1024px)" srcSet="/resources/img/pages/main/hero_bg_m.v4.webp" />
-              <img src="/resources/img/pages/main/hero_bg.v4.webp" alt="청라 아크원 푸르지오 단지 투시도(CG)" {...imgDims("/resources/img/pages/main/hero_bg.v4.webp")} data-dims="" />
+              <img src="/resources/img/pages/main/hero_bg.v4.webp" alt="파란 하늘 아래 고층 타워와 강이 보이는 단지 투시도 CG" {...imgDims("/resources/img/pages/main/hero_bg.v4.webp")} data-dims="" />
             </picture>
             <video className="pc-only" autoPlay muted loop playsInline>
               <source src="/resources/img/pages/main/hero_video.mp4" type="video/mp4" />
@@ -152,10 +159,10 @@ function Home() {
               <span className="hero__title_line">ARK-ONE</span>
               <br />
               <span className="hero__title_line">PRUGIO</span>
-              <span className="hero__title_ko">청라 아크원 푸르지오</span>
+              <span className="hero__title_ko">{(() => { try { return isEnHost() ? EN.home.h1 : "청라 아크원 푸르지오"; } catch { return "청라 아크원 푸르지오"; } })()}</span>
             </h1>
             <span className="hero__open">
-              <strong>10월 중</strong> OPEN 예정
+              <strong>{en ? EN_HOME.openStrong : "10월 중"}</strong>{en ? EN_HOME.openRest : " OPEN 예정"}
             </span>
           </div>
           <div className="hero__ui">
@@ -165,26 +172,26 @@ function Home() {
             </a>
             <button type="button" className="hero__video_trigger" onClick={() => setVideo(true)}>
               <span>
-                <b>청라 아크원</b> <br className="m-only" /> 홍보영상
+                <b>{en ? "Cheongna Ark-One" : "청라 아크원"}</b> <br className="m-only" /> {en ? "promo video" : "홍보영상"}
               </span>
               <span className="hero__video_play">
-                <img src="/resources/img/pages/main/ico_yt.svg" alt="" {...imgDims("/resources/img/pages/main/ico_yt.svg")} data-dims="" />
+                <img src="/resources/img/pages/main/ico_yt.svg" alt="" role="presentation" {...imgDims("/resources/img/pages/main/ico_yt.svg")} data-dims="" />
               </span>
             </button>
             <div className="hero__quick">
-              <a className="hero__quick_item" href={SITE_TEL_HREF} aria-label={`${SITE_PHONE} 전화 연결`}>
+              <a className="hero__quick_item" href={SITE_TEL_HREF} aria-label={en ? `${SITE_PHONE} call` : `${SITE_PHONE} 전화 연결`}>
                 <HeroOrbit />
                 <img
                   className="hero__quick_content"
                   src="/resources/img/pages/main/hero_circle_01.svg"
-                  alt="분양가 상한제 적용단지"
+                  alt={en ? EN_HOME.priceCap : "분양가 상한제 적용단지"}
                   {...imgDims("/resources/img/pages/main/hero_circle_01.svg")}
                   data-dims=""
                 />
               </a>
-              <Link to="/register" className="hero__quick_item" aria-label="사전고객등록">
+              <Link to="/register" className="hero__quick_item" aria-label={en ? EN_HOME.registerAria : "사전고객등록"}>
                 <HeroOrbit />
-                <img className="hero__quick_content" src="/resources/img/pages/main/hero_circle_register.svg" alt="사전고객등록" {...imgDims("/resources/img/pages/main/hero_circle_register.svg")} data-dims="" />
+                <img className="hero__quick_content" src="/resources/img/pages/main/hero_circle_register.svg" alt={en ? "Pre-registration shortcut icon" : "사전고객등록 바로가기 아이콘"} {...imgDims("/resources/img/pages/main/hero_circle_register.svg")} data-dims="" />
               </Link>
             </div>
           </div>
@@ -192,34 +199,37 @@ function Home() {
 
         <section className="event-card" aria-labelledby="event-title">
           <div className="event-card__inner">
-            <p className="event-card__eyebrow">사전고객등록 고객 대상 이벤트</p>
+            <p className="event-card__eyebrow">{en ? EN_HOME.eventEyebrow : "사전고객등록 고객 대상 이벤트"}</p>
             <h2 id="event-title">백화점 상품권 30만원</h2>
             <p className="event-card__brands">상품권 종류: 롯데·현대·신세계 백화점 가운데 1종</p>
-            <p className="event-card__basis">받으실 수 있는 분: 이 홈페이지에서 사전고객등록을 한 뒤 담당자 안내를 받아 MGM 등록(개인정보를 제3자에게 제공하는 데 대한 동의 절차 포함)까지 마치고, 청약에 당첨되어 MGM 인정조건을 충족한 고객입니다.</p>
+            <p className="event-card__basis">{en ? EN_EVENT.basis : "받으실 수 있는 분: 이 홈페이지에서 사전고객등록을 한 뒤 담당자 안내를 받아 MGM 등록(개인정보를 제3자에게 제공하는 데 대한 동의 절차 포함)까지 마치고, 청약에 당첨되어 MGM 인정조건을 충족한 고객입니다."}</p>
             <p className="event-card__payout">상품권은 당첨과 MGM 인정조건 충족이 확인되면 계약하는 날 드립니다.</p>
-            <ol className="event-card__steps"><li>STEP 1 사전고객등록(홈페이지)</li><li>STEP 2 담당자 안내로 MGM 등록</li><li>STEP 3 공고 후 청약 신청</li><li>STEP 4 당첨·MGM 인정 확인</li><li>STEP 5 계약일 상품권 수령</li></ol>
-            <div className="event-card__actions"><Link className="event-card__button" to="/register">사전고객등록하기</Link><a href="#event-terms">유의사항 자세히 보기</a></div>
-            <p className="event-card__schedule">일정: 10월 중 OPEN 예정 · 세부 일정은 대표번호 1833-3872로 문의</p>
-            <p className="event-card__notice">※ 청약 접수는 별도 절차이며, 사전고객등록만으로 청약이 되지는 않습니다.</p>
+            <ol className="event-card__steps">{(en ? EN_EVENT.steps : ["STEP 1 사전고객등록(홈페이지)","STEP 2 담당자 안내로 MGM 등록","STEP 3 공고 후 청약 신청","STEP 4 당첨·MGM 인정 확인","STEP 5 계약일 상품권 수령"]).map((t,i)=><li key={i}>{t}</li>)}</ol>
+            <div className="event-card__actions"><Link className="event-card__button" to="/register">{en ? EN_HOME.registerBtn : "사전고객등록하기"}</Link><a href="#event-terms">유의사항 자세히 보기</a></div>
+            <p className="event-card__schedule">{en ? EN_HOME.schedule : "일정: 10월 중 OPEN 예정 · 세부 일정은 대표번호 1833-3872로 문의"}</p>
+            <p className="event-card__notice">{en ? EN_HOME.notice : "※ 청약 접수는 별도 절차이며, 사전고객등록만으로 청약이 되지는 않습니다."}</p>
             <p>등록 여부는 <a href={SITE_TEL_HREF}>1833-3872</a>(대표번호)에서 확인하실 수 있습니다.</p>
-            <details id="event-terms" className="event-card__terms"><summary>이벤트 유의사항 (청라 아크원 푸르지오 APT 사전고객등록)</summary>
-              <ol>
-                <li>지급 대상: 이 홈페이지에서 사전고객등록을 하고, 담당자 안내를 받아 MGM 등록(개인정보를 제3자에게 제공하는 데 대한 동의 절차 포함)까지 마친 뒤, 청라 아크원 푸르지오 아파트 청약에 당첨되어 MGM 인정조건을 충족한 고객</li>
-                <li>혜택 내용: 롯데·현대·신세계 백화점 상품권 가운데 1종, 30만원</li><li>지급일: 당첨과 MGM 인정조건 충족을 확인한 뒤 계약 당일</li>
-                <li>한 사람에게 한 번만 지급하며, 같은 사람과 같은 휴대전화번호는 한 사람으로 봅니다.</li>
-                <li>부적격 당첨이거나 계약을 체결하지 않은 경우, 계약이 취소·해제된 경우에는 지급하지 않습니다. 지급 뒤 이런 사유가 생기면 처리 기준을 담당자가 따로 알려 드립니다.</li>
-                <li>다른 경로를 통해 MGM 등록이 먼저 된 고객은 MGM 운영 기준에 따라 제외될 수 있습니다.</li><li>제세공과금은 기준이 정해지면 담당자가 따로 알려 드립니다.</li>
-                <li>이 이벤트의 진행 주체는 홈페이지운영 휴메인코리아이며, 시행사·시공사가 주는 혜택이 아닙니다.</li><li>이벤트 내용은 미리 알린 뒤 바뀌거나 일찍 끝날 수 있습니다.</li>
-                <li>사전고객등록은 청약 신청이 아닙니다. 청약 자격과 일정은 입주자모집공고 기준입니다.</li>
-              </ol><p>등록 확인·문의: 1833-3872</p>
+            <details id="event-terms" className="event-card__terms"><summary>{en ? EN_EVENT.termsSummary : "이벤트 유의사항 (청라 아크원 푸르지오 APT 사전고객등록)"}</summary>
+              <ol>{(en ? EN_TERMS : [
+                en ? "Eligible: customers who pre-register on this site, complete MGM registration (including consent to provide personal information to third parties) after staff guidance, and win the Cheongna Ark-One Prugio apartment application meeting MGM conditions" : "지급 대상: 이 홈페이지에서 사전고객등록을 하고, 담당자 안내를 받아 MGM 등록(개인정보를 제3자에게 제공하는 데 대한 동의 절차 포함)까지 마친 뒤, 청라 아크원 푸르지오 아파트 청약에 당첨되어 MGM 인정조건을 충족한 고객",
+                "혜택 내용: 롯데·현대·신세계 백화점 상품권 가운데 1종, 30만원",
+                "지급일: 당첨과 MGM 인정조건 충족을 확인한 뒤 계약 당일",
+                en ? "Paid once per person; the same person and the same mobile number are treated as one person." : "한 사람에게 한 번만 지급하며, 같은 사람과 같은 휴대전화번호는 한 사람으로 봅니다.",
+                "부적격 당첨이거나 계약을 체결하지 않은 경우, 계약이 취소·해제된 경우에는 지급하지 않습니다. 지급 뒤 이런 사유가 생기면 처리 기준을 담당자가 따로 알려 드립니다.",
+                "다른 경로를 통해 MGM 등록이 먼저 된 고객은 MGM 운영 기준에 따라 제외될 수 있습니다.",
+                "제세공과금은 기준이 정해지면 담당자가 따로 알려 드립니다.",
+                "이 이벤트의 진행 주체는 홈페이지운영 휴메인코리아이며, 시행사·시공사가 주는 혜택이 아닙니다.",
+                "이벤트 내용은 미리 알린 뒤 바뀌거나 일찍 끝날 수 있습니다.",
+                en ? "Pre-registration is not an application. Application eligibility and schedule follow the recruitment notice." : "사전고객등록은 청약 신청이 아닙니다. 청약 자격과 일정은 입주자모집공고 기준입니다.",
+              ]).map((t,i)=><li key={i}>{t}</li>)}</ol><p>등록 확인·문의: 1833-3872</p>
             </details>
           </div>
         </section>
 
         <section className="hero-define">
-          <Img className="hero-define__visual" src="/resources/img/pages/main/hero_brand_img.v4.webp" alt="청라 아크원 푸르지오 엠블럼" />
+          <Img className="hero-define__visual" src="/resources/img/pages/main/hero_brand_img.v4.webp" alt={en ? "Cheongna Ark-One Prugio emblem" : "청라 아크원 푸르지오 엠블럼"} />
           <div className="hero-define__copy">
-            <Img src="/resources/img/pages/main/ico_star.svg" alt="" width={28} height={28} />
+            <Img src="/resources/img/pages/main/ico_star.svg" alt="" role="presentation" width={28} height={28} />
             <p className="hero-define__title">아크원(ARK-ONE)이란?</p>
             <strong className="hero-define__keyword">
               <b>A</b>BSOLUTE
@@ -239,24 +249,24 @@ function Home() {
         </section>
 
         <section id="overview" className="section-overview">
-          <Img className="bg" src="/resources/img/pages/main/overview_bg.v4.webp" alt="" />
+          <Img className="bg" src="/resources/img/pages/main/overview_bg.v4.webp" alt="" role="presentation" />
           <span className="dim" />
           <div className="section-overview__inner">
             <header>
               <p className="section-overview__copy_text">
-                청라 약 10년 만의
+                {en ? "First in Cheongna in about 10 years" : "청라 약 10년 만의"}
                 <br />500가구 이상 아파트 공급
                 <br />
                 <small>2017.7 한신더휴 이후 · 부동산R114 집계(아시아경제 2026.09.02 보도 기준)</small>
               </p>
-              <h2 className="section-overview__copy_title">청라 아크원 푸르지오 사업 규모</h2>
+              <h2 className="section-overview__copy_title">{en ? EN_HOME.overviewCopy : "청라 아크원 푸르지오 사업 규모"}</h2>
               <p className="section-overview__copy_brand">ARK-ONE</p>
             </header>
             <article className="overview-panel">
               <h3>
                 총 2,911세대·실<small>(B1 & M5 블록)</small>
                 <br />
-                청라 피크원 푸르지오와 함께하는
+                {en ? "Together with Cheongna Peak-One Prugio" : "청라 피크원 푸르지오와 함께하는"}
                 <br />
                 푸르지오 대규모 브랜드타운
               </h3>
@@ -308,9 +318,9 @@ function Home() {
           <div className="section-location__info">
             <p className="section-location__eyebrow">CENTRAL LOCATION</p>
             <p className="section-location__desc">
-              청라국제업무단지 M5블록,
+              {en ? "Cheongna International Business District M5 block," : "청라국제업무단지 M5블록,"}
               <br />
-              인천 서해구 청라동 86-1번지 일원
+              {en ? "Cheongna-dong 86-1, Seohae-gu, Incheon area" : "인천 서해구 청라동 86-1번지 일원"}
             </p>
             <Link to="/pages/location" className="section-location__link">
               <span>view more</span>
@@ -319,9 +329,9 @@ function Home() {
             <figure className="section-location__map">
               <Img
                 src="/resources/img/pages/main/location_map.v4.png"
-                alt="청라 국제도시 내 청라 아크원 푸르지오 위치"
+                alt={en ? "Cheongna Ark-One Prugio location in Cheongna International City" : "청라 국제도시 내 청라 아크원 푸르지오 위치"}
               />
-              <Img className="section-location__bubble" src="/resources/img/pages/main/location_bubble.v4.png" alt="청라 아크원 푸르지오 위치 표시" />
+              <Img className="section-location__bubble" src="/resources/img/pages/main/location_bubble.v4.png" alt={en ? "Cheongna Ark-One Prugio location marker" : "청라 아크원 푸르지오 위치 표시"} />
             </figure>
           </div>
         </section>
@@ -337,12 +347,12 @@ function Home() {
           </div>
           <div className="history-track">
             {[
-              { y: "2026", img: "history_img_2026.v4.webp", cap: ["청라하늘대교 (개통)", "하나드림타운 (그룹헤드쿼터 준공)"] },
-              { y: "2028", img: "history_img_2028.v4.jpg", cap: ["돔구장&스타필드 청라 (개장 예정)"] },
-              { y: "2029", img: "history_img_2029.v4.jpg", cap: ["서울아산청라병원 (예정)"] },
-              { y: "개통 시기 미정", img: "history_img_2030.v4.webp", cap: ["7호선 국제업무단지역 (예정)"] },
+              { y: "2026", img: "history_img_2026.v4.webp", cap: en ? EN_HISTORY.y2026 : ["청라하늘대교 (개통)", "하나드림타운 (그룹헤드쿼터 준공)"] },
+              { y: "2028", img: "history_img_2028.v4.jpg", cap: en ? EN_HISTORY.y2028 : ["돔구장&스타필드 청라 (개장 예정)"] },
+              { y: "2029", img: "history_img_2029.v4.jpg", cap: en ? EN_HISTORY.y2029 : ["서울아산청라병원 (예정)"] },
+              { y: en ? "opening date undetermined" : "개통 시기 미정", img: "history_img_2030.v4.webp", cap: en ? EN_HISTORY.line7 : ["7호선 국제업무단지역 (예정)"] },
               { y: "공고 후", img: "history_img_공고 후.v4.jpg", cap: ["영상문화복합단지 (계획)"] },
-              { y: "공고 후", img: "history_img_ark_one.v4.jpg", cap: ["청라 아크원 푸르지오 (입주 시기 공고문 확인)"] },
+              { y: en ? "after notice" : "공고 후", img: "history_img_ark_one.v4.jpg", cap: en ? EN_HISTORY.arkone : ["청라 아크원 푸르지오 (입주 시기 공고문 확인)"] },
             ].map((ev) => (
               <article className="history-card" key={ev.img}>
                 <time>
@@ -374,10 +384,10 @@ function Home() {
         <section id="premium" className="section-premium">
           <div className="section-premium__intro">
             <div className="premium-mosaic">
-              <Img src="/resources/img/pages/main/premium_visual_img_01.v4.webp" alt="거실 인테리어 이미지컷(CG)" />
-              <Img src="/resources/img/pages/main/premium_visual_img_02.v4.webp" alt="주방·다이닝 인테리어 이미지컷(CG)" />
-              <Img src="/resources/img/pages/main/premium_visual_img_03.v4.webp" alt="침실 인테리어 이미지컷(CG)" />
-              <Img src="/resources/img/pages/main/premium_visual_img_04.v4.webp" alt="거실·발코니 인테리어 이미지컷(CG)" />
+              <Img src="/resources/img/pages/main/premium_visual_img_01.v4.webp" alt="대형 창으로 석양과 강이 보이는 모던 거실 연출" />
+              <Img src="/resources/img/pages/main/premium_visual_img_02.v4.webp" alt="대리석 아일랜드와 원목 의자가 있는 주방 연출" />
+              <Img src="/resources/img/pages/main/premium_visual_img_03.v4.webp" alt="창 너머 나무가 보이는 베이지 침실 연출" />
+              <Img src="/resources/img/pages/main/premium_visual_img_04.v4.webp" alt="루버 너머 바다와 석양이 보이는 거실·발코니 연출" />
             </div>
             <div className="section-premium__copy">
               <h3>
@@ -415,7 +425,7 @@ function Home() {
         <section id="brand" className="section-brand">
           <picture>
             <source media="(max-width: 1024px)" srcSet="/resources/img/pages/main/brand_bg_m.v4.webp" />
-            <Img className="bg" src="/resources/img/pages/main/brand_bg.v4.webp" alt="" />
+            <Img className="bg" src="/resources/img/pages/main/brand_bg.v4.webp" alt="" role="presentation" />
           </picture>
           <div className="frame">
             <p className="section-brand__eyebrow">THE NATURAL NOBILITY</p>
@@ -424,12 +434,12 @@ function Home() {
               견고한 기본에 더해진 세련된 편안함,
               <br />내 삶의 본연을 집에서 찾다
             </p>
-            <Img className="section-brand__logo" src="/resources/img/pages/main/brand_logo.svg" alt="PRUGIO" />
+            <Img className="section-brand__logo" src="/resources/img/pages/main/brand_logo.svg" alt="PRUGIO 브랜드 로고" />
           </div>
         </section>
 
         <section id="contact" className="section-contact">
-          <Img className="bg" src="/resources/img/pages/main/contact_bg.v4.webp" alt="" />
+          <Img className="bg" src="/resources/img/pages/main/contact_bg.v4.webp" alt="" role="presentation" />
           <h2>CONTACT US</h2>
           <div className="contact-schedule">
             <p>10월 중 OPEN 예정</p>
@@ -447,10 +457,10 @@ function Home() {
                 </div>
                 <div className="map-btns">
                   <a href="https://naver.me/xNpQLQ3L" target="_blank" rel="noreferrer">
-                    <Img src="/resources/img/common/ico_naver.svg" alt="네이버 지도" />
+                    <Img src="/resources/img/common/ico_naver.svg" alt="네이버 지도에서 위치 보기" />
                   </a>
                   <a href="https://kko.to/06V9ttVXOK" target="_blank" rel="noreferrer">
-                    <Img src="/resources/img/common/ico_kko_map.svg" alt="카카오 지도" />
+                    <Img src="/resources/img/common/ico_kko_map.svg" alt="카카오맵에서 위치 보기" />
                   </a>
                 </div>
               </div>
@@ -461,10 +471,10 @@ function Home() {
                 </div>
                 <div className="map-btns">
                   <a href="https://naver.me/xSBYFSR0" target="_blank" rel="noreferrer">
-                    <Img src="/resources/img/common/ico_naver.svg" alt="네이버 지도" />
+                    <Img src="/resources/img/common/ico_naver.svg" alt="네이버 지도에서 위치 보기" />
                   </a>
                   <a href="https://kko.to/27AvJsaNys" target="_blank" rel="noreferrer">
-                    <Img src="/resources/img/common/ico_kko_map.svg" alt="카카오 지도" />
+                    <Img src="/resources/img/common/ico_kko_map.svg" alt="카카오맵에서 위치 보기" />
                   </a>
                 </div>
               </div>
@@ -482,10 +492,10 @@ function Home() {
                 </div>
                 <div className="map-btns">
                   <a href="https://naver.me/xwmqyGWk" target="_blank" rel="noreferrer">
-                    <Img src="/resources/img/common/ico_naver.svg" alt="네이버 지도" />
+                    <Img src="/resources/img/common/ico_naver.svg" alt="네이버 지도에서 위치 보기" />
                   </a>
                   <a href="https://kko.to/hM9WpE-0fz" target="_blank" rel="noreferrer">
-                    <Img src="/resources/img/common/ico_kko_map.svg" alt="카카오 지도" />
+                    <Img src="/resources/img/common/ico_kko_map.svg" alt="카카오맵에서 위치 보기" />
                   </a>
                 </div>
               </div>

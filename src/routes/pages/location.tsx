@@ -1,7 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteShell } from "@/components/site-shell";
 import { SubNotice, ZoomButton } from "@/components/notice";
-import { canonicalLinks, faqJsonLd } from "@/lib/seo-host";
+import { canonicalLinks, faqJsonLd } from "@/lib/seo-host"
+import { isEnHost } from "@/lib/seo-host"
+import { EN, EN_LOCATION } from "@/lib/i18n/en";
 import { GuideAnswer, GuideDetail, type GuideFaq } from "@/components/seo-guide";
 import { SRC_OFFICIAL } from "@/lib/arkone-facts";
 import { imgDims } from "@/components/img";
@@ -29,8 +31,8 @@ export const Route = createFileRoute("/pages/location")({
   component: LocationPage,
   head: () => ({
     meta: [
-      { title: "청라 아크원 푸르지오 입지 | 국제업무단지 M5BL" },
-      { name: "description", content: "청라 아크원 푸르지오 입지. 청라동 86-1번지 국제업무단지 M5BL, 청라하늘대교, 7호선 국제업무단지역(예정·개통 시기 미정) 등 교통·생활 환경과 근거 자료." },
+      { title: (() => { try { return isEnHost() ? EN.location.title : "청라 아크원 푸르지오 입지 | 국제업무단지 M5BL"; } catch { return "청라 아크원 푸르지오 입지 | 국제업무단지 M5BL"; } })() },
+      { name: "description", content: (() => { try { return isEnHost() ? EN.location.desc : "청라 아크원 푸르지오 입지. 청라동 86-1번지 국제업무단지 M5BL, 청라하늘대교, 7호선 국제업무단지역(예정·개통 시기 미정) 등 교통·생활 환경과 근거 자료."; } catch { return "청라 아크원 푸르지오 입지. 청라동 86-1번지 국제업무단지 M5BL, 청라하늘대교, 7호선 국제업무단지역(예정·개통 시기 미정) 등 교통·생활 환경과 근거 자료."; } })() },
     ],
     links: canonicalLinks("/pages/location"),
     scripts: faqJsonLd(FAQ),
@@ -38,15 +40,17 @@ export const Route = createFileRoute("/pages/location")({
 });
 
 function LocationPage() {
+  const en = (() => { try { return isEnHost(); } catch { return false; } })();
+
   return (
     <SiteShell path="/pages/location">
       <div className="page_content">
         <section className="page_container">
-          <GuideAnswer title="청라 아크원 푸르지오 입지 요약">
-            <p>청라 아크원 푸르지오는 청라국제도시 국제업무단지 내 주상복합용지 M5BL(인천광역시 서해구 청라동 86-1번지)에 위치합니다.</p>
-            <p>견본주택은 청라동 87-1번지이고, 홍보관은 중봉대로 586번길 19 홍익파크 1층 108·109호입니다. 서로 다른 장소입니다.</p>
+          <GuideAnswer title={en ? EN_LOCATION.h1 : "청라 아크원 푸르지오 입지 요약"}>
+            <p>{en ? EN_LOCATION.p1 : "청라 아크원 푸르지오는 청라국제도시 국제업무단지 내 주상복합용지 M5BL(인천광역시 서해구 청라동 86-1번지)에 위치합니다."}</p>
+            <p>{en ? EN_LOCATION.p2 : "견본주택은 청라동 87-1번지이고, 홍보관은 중봉대로 586번길 19 홍익파크 1층 108·109호입니다. 서로 다른 장소입니다."}</p>
             <p>청라 아크원 푸르지오 견본주택은 인천광역시 서해구 청라동 87-1번지입니다. 홍보관은 인천광역시 서해구 중봉대로 586번길 19 홍익파크 1층 108·109호이며, 견본주택과 다른 장소입니다.</p>
-            <p>서울 7호선 청라국제도시 연장은 공정 지연에 따라 정상화를 추진 중이며, 개통 시기는 공식 발표되지 않았습니다.</p>
+            <p>{en ? EN_LOCATION.p4 : "서울 7호선 청라국제도시 연장은 공정 지연에 따라 정상화를 추진 중이며, 개통 시기는 공식 발표되지 않았습니다."}</p>
             <p>스타필드 청라는 2028년 개장 예정입니다. 서울아산청라병원은 2025년 12월 착공했으며 2029년 준공이 목표입니다. 자료 기준 2026-10-09 · 출처 시행사 홈페이지 arkone-prugio.com/pages/contact, 인천광역시 보도자료 2026-08-12 · 인천광역시 보도자료 2026-07-15(스타필드)·2025-12-30(아산병원)</p>
             <p>교통은 2026년 1월 개통한 청라하늘대교와 제2외곽순환도로를 이용할 수 있고, 서울 지하철 7호선 청라연장선 국제업무단지역은 예정 역으로 개통 시기는 미정입니다.</p>
             <p>주변에는 스타필드 청라(2028년 개장 예정), 서울아산청라병원(2029년 예정) 등 개발 계획이 있고 하나드림타운(그룹헤드쿼터 2026.5.21 준공)이 들어서 있으며, 각 일정은 관계 기관 사정에 따라 변경될 수 있습니다.</p>
@@ -57,7 +61,7 @@ function LocationPage() {
           </header>
           <div className="location_map">
             <figure className="location_map__image">
-              <img src="/resources/img/sub/location_map_img.v4.webp" alt="청라 아크원 푸르지오 주변 교통 및 생활 인프라 지도" {...imgDims("/resources/img/sub/location_map_img.v4.webp")} data-dims="" />
+              <img src="/resources/img/sub/location_map_img.v4.webp" alt={en ? "Map of M5 site, model house, and nearby transport" : "청라 아크원 푸르지오 주변 교통 및 생활 인프라 지도"} {...imgDims("/resources/img/sub/location_map_img.v4.webp")} data-dims="" />
             </figure>
             <ZoomButton href="/resources/img/sub/location_map_img.v4.webp" />
           </div>

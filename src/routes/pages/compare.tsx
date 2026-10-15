@@ -1,7 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteShell } from "@/components/site-shell";
 import { SubNotice } from "@/components/notice";
-import { canonicalLinks, faqJsonLd } from "@/lib/seo-host";
+import { canonicalLinks, faqJsonLd } from "@/lib/seo-host"
+import { isEnHost } from "@/lib/seo-host"
+import { EN, EN_COMPARE, EN_REMAIN } from "@/lib/i18n/en";
 import { GuideAnswer, GuideDetail, type GuideFaq } from "@/components/seo-guide";
 import { SRC_APPLYHOME, SRC_OFFICIAL, SRC_OFFICIAL_PREMIUM } from "@/lib/arkone-facts";
 
@@ -28,11 +30,9 @@ export const Route = createFileRoute("/pages/compare")({
   component: ComparePage,
   head: () => ({
     meta: [
-      { title: "청라 아크원 푸르지오 아파트·오피스텔 비교 | 전용면적·평면도 안내" },
+      { title: (() => { try { return isEnHost() ? EN.compare.title : "청라 아크원 푸르지오 아파트·오피스텔 비교 | 전용면적·평면도 안내"; } catch { return "청라 아크원 푸르지오 아파트·오피스텔 비교 | 전용면적·평면도 안내"; } })() },
       {
-        name: "description",
-        content:
-          "청라 아크원 푸르지오 아파트 868세대(전용 84·103㎡)와 오피스텔 987실(전용 105·121·136㎡)의 면적·주차·공고 일정·평면도 공개 여부 비교.",
+        name: "description", content: (() => { try { return isEnHost() ? EN.compare.desc : "청라 아크원 푸르지오 아파트 868세대(전용 84·103㎡)와 오피스텔 987실(전용 105·121·136㎡)의 면적·주차·공고 일정·평면도 공개 여부 비교."; } catch { return "청라 아크원 푸르지오 아파트 868세대(전용 84·103㎡)와 오피스텔 987실(전용 105·121·136㎡)의 면적·주차·공고 일정·평면도 공개 여부 비교."; } })(),
       },
     ],
     links: canonicalLinks("/pages/compare"),
@@ -41,15 +41,17 @@ export const Route = createFileRoute("/pages/compare")({
 });
 
 function ComparePage() {
+  const en = (() => { try { return isEnHost(); } catch { return false; } })();
+
   return (
     <SiteShell path="/pages/compare">
       <div className="page_content">
         <section className="page_container">
-          <GuideAnswer title="청라 아크원 푸르지오 아파트·오피스텔 한눈에 비교">
-            <p>청라 아크원 푸르지오는 한 단지 안에 아파트 868세대와 오피스텔 987실을 함께 공급하는 주거복합 단지입니다.</p>
-            <p>아파트는 전용 84㎡·103㎡, 오피스텔은 전용 105㎡·121㎡·136㎡로 공개되어 있으며, 오피스텔에는 멀티 발코니가 안내되어 있습니다.</p>
-            <p>주차대수는 총 3,124대 중 아파트 1,389대, 오피스텔 1,695대로 공개되어 있습니다.</p>
-            <p>아파트 타입별 세대수는 84A 248세대, 84B·84C·84D·103A·103B 각 124세대로 총 868세대입니다(분양 자료 기준). 오피스텔 타입별 실수, 평면도, 분양가는 아직 공개되지 않았으며(미정), 입주자모집공고에서 확정됩니다.</p>
+          <GuideAnswer title={en ? EN_COMPARE.h1 : "청라 아크원 푸르지오 아파트·오피스텔 한눈에 비교"}>
+            <p>{en ? EN_COMPARE.p1 : "청라 아크원 푸르지오는 한 단지 안에 아파트 868세대와 오피스텔 987실을 함께 공급하는 주거복합 단지입니다."}</p>
+            <p>{en ? EN_COMPARE.p2 : "아파트는 전용 84㎡·103㎡, 오피스텔은 전용 105㎡·121㎡·136㎡로 공개되어 있으며, 오피스텔에는 멀티 발코니가 안내되어 있습니다."}</p>
+            <p>{en ? EN_COMPARE.p3 : "주차대수는 총 3,124대 중 아파트 1,389대, 오피스텔 1,695대로 공개되어 있습니다."}</p>
+            <p>{en ? EN_COMPARE.p4 : "아파트 타입별 세대수는 84A 248세대, 84B·84C·84D·103A·103B 각 124세대로 총 868세대입니다(분양 자료 기준). 오피스텔 타입별 실수, 평면도, 분양가는 아직 공개되지 않았으며(미정), 입주자모집공고에서 확정됩니다."}</p>
           </GuideAnswer>
           <GuideDetail
             tableTitle="아파트(APT)와 오피스텔(OT) 비교"
@@ -73,7 +75,7 @@ function ComparePage() {
               { to: "/pages/schedule", label: "분양 일정·청약 안내" },
               { to: "/pages/premium", label: "프리미엄" },
               { to: "/pages/contact", label: "견본주택·홍보관 오시는길" },
-              { to: "/register", label: "사전고객등록" },
+              { to: "/register", label: en ? EN_REMAIN.compareReg : "사전고객등록" },
             ]}
             sources={[SRC_OFFICIAL, SRC_OFFICIAL_PREMIUM, SRC_APPLYHOME]}
           />

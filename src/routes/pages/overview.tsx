@@ -1,7 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteShell } from "@/components/site-shell";
 import { SubNotice } from "@/components/notice";
-import { canonicalLinks, faqJsonLd } from "@/lib/seo-host";
+import { canonicalLinks, faqJsonLd } from "@/lib/seo-host"
+import { isEnHost } from "@/lib/seo-host"
+import { EN, EN_BODY, EN_OVERVIEW_TABLE } from "@/lib/i18n/en";
 import { GuideAnswer, GuideDetail, type GuideFaq } from "@/components/seo-guide";
 import { SRC_APPLYHOME, SRC_OFFICIAL, SRC_OFFICIAL_PREMIUM } from "@/lib/arkone-facts";
 import { imgDims } from "@/components/img";
@@ -29,40 +31,39 @@ export const Route = createFileRoute("/pages/overview")({
   component: OverviewPage,
   head: () => ({
     meta: [
-      { title: "청라 아크원 푸르지오 사업개요 | 868세대·987실" },
-      { name: "description", content: "청라 아크원 푸르지오 사업개요. 청라동 86-1번지 M5BL, 지하 5층~지상 49층 6개동, 아파트 868세대·오피스텔 987실, 시행 ㈜청라스마트시티·시공 대우건설." },
+      { title: (() => { try { return isEnHost() ? EN.overview.title : "청라 아크원 푸르지오 사업개요 | 868세대·987실"; } catch { return "청라 아크원 푸르지오 사업개요 | 868세대·987실"; } })() },
+      { name: "description", content: (() => { try { return isEnHost() ? EN.overview.desc : "청라 아크원 푸르지오 사업개요. 청라동 86-1번지 M5BL, 지하 5층~지상 49층 6개동, 아파트 868세대·오피스텔 987실, 시행 ㈜청라스마트시티·시공 대우건설."; } catch { return "청라 아크원 푸르지오 사업개요. 청라동 86-1번지 M5BL, 지하 5층~지상 49층 6개동, 아파트 868세대·오피스텔 987실, 시행 ㈜청라스마트시티·시공 대우건설."; } })() },
     ],
     links: canonicalLinks("/pages/overview"),
-    scripts: faqJsonLd(FAQ),
+    scripts: faqJsonLd((() => { try { return isEnHost() ? EN_BODY.overview.faq : FAQ; } catch { return FAQ; } })()),
   }),
 });
 
 function OverviewPage() {
+  const en = (() => { try { return isEnHost(); } catch { return false; } })();
   return (
     <SiteShell path="/pages/overview">
       <div className="page_content">
         <section className="page_container">
-          <GuideAnswer title="청라 아크원 푸르지오 분양 개요 한눈에 보기">
+          <GuideAnswer title={en ? EN_BODY.overview.h1 : "청라 아크원 푸르지오 분양 개요 한눈에 보기"}>
             <p>
-              청라 아크원 푸르지오는 인천광역시 서해구 청라동 86-1번지(청라국제도시 주상복합용지 M5BL)에 계획된 주거복합
-              단지입니다.
+              {en ? EN_BODY.overview.p1 : "청라 아크원 푸르지오는 인천광역시 서해구 청라동 86-1번지(청라국제도시 주상복합용지 M5BL)에 계획된 주거복합 단지입니다."}
             </p>
             <p>
-              지하 5층~지상 49층 6개동 규모로, 아파트 868세대(전용 84·103㎡)와 오피스텔 987실(전용 105·121·136㎡) 등 총
-              1,855세대·실와 지상 1~2층 상업시설로 구성됩니다.
+              {en ? EN_BODY.overview.p2 : "지하 5층~지상 49층 6개동 규모로, 아파트 868세대(전용 84·103㎡)와 오피스텔 987실(전용 105·121·136㎡) 등 총 1,855세대·실와 지상 1~2층 상업시설로 구성됩니다."}
             </p>
-            <p>시행은 ㈜청라스마트시티, 시공은 대우건설이며, 현재는 입주자모집공고 전 단계입니다.</p>
+            <p>{en ? EN_BODY.overview.p3 : "시행은 ㈜청라스마트시티, 시공은 대우건설이며, 현재는 입주자모집공고 전 단계입니다."}</p>
             <p>
-              청라 아크원 푸르지오는 10월 중 OPEN 예정이며, 분양가와 청약 일정은 공고에서 확정됩니다(현재 미정).
+              {en ? EN_BODY.overview.p4 : "청라 아크원 푸르지오는 10월 중 OPEN 예정이며, 분양가와 청약 일정은 공고에서 확정됩니다(현재 미정)."}
             </p>
-          </GuideAnswer><p>청라 아크원 푸르지오는 지하 5층~지상 49층, 총 6개동이며 아파트 868세대(전용 84·103㎡)와 오피스텔 987실(전용 105·121·136㎡), 합계 1,855세대·실입니다. 주차대수는 총 3,124대(아파트 1,389대 · 오피스텔 1,695대 · 상업시설 40대)입니다. 시행은 ㈜청라스마트시티, 시공은 대우건설(주)입니다. 푸르지오 브랜드타운 2,911세대·실은 청라 피크원 푸르지오를 포함한 합산 규모이며, 단일 단지가 아닙니다. 청라 아크원 푸르지오는 10월 중 OPEN 예정이며, 세부 일정은 대표번호 1833-3872로 문의할 수 있습니다.</p>
+          </GuideAnswer><p>{en ? EN_BODY.overview.summary : "청라 아크원 푸르지오는 지하 5층~지상 49층, 총 6개동이며 아파트 868세대(전용 84·103㎡)와 오피스텔 987실(전용 105·121·136㎡), 합계 1,855세대·실입니다. 주차대수는 총 3,124대(아파트 1,389대 · 오피스텔 1,695대 · 상업시설 40대)입니다. 시행은 ㈜청라스마트시티, 시공은 대우건설(주)입니다. 푸르지오 브랜드타운 2,911세대·실은 청라 피크원 푸르지오를 포함한 합산 규모이며, 단일 단지가 아닙니다. 청라 아크원 푸르지오는 10월 중 OPEN 예정이며, 세부 일정은 대표번호 1833-3872로 문의할 수 있습니다."}</p>
           <div className="overview_tab__content">
             <figure className="overview_image">
               <picture>
                 <source media="(max-width: 1024px)" srcSet="/resources/img/sub/overview_apt_img_m.v4.jpg" />
-                <img src="/resources/img/sub/overview_apt_img.v4.jpg" alt="청라 아크원 푸르지오 단지 연출 이미지" {...imgDims("/resources/img/sub/overview_apt_img.v4.jpg")} data-dims="" />
+                <img src="/resources/img/sub/overview_apt_img.v4.jpg" alt="고층 주거타워와 도로가 보이는 단지 투시도 CG" {...imgDims("/resources/img/sub/overview_apt_img.v4.jpg")} data-dims="" />
               </picture>
-              <span className="overview_image__caption">이미지컷</span>
+              <span className="overview_image__caption">{en ? "Image cut" : "이미지컷"}</span>
               <figcaption className="overview_image__text">
                 <p>
                   아파트 868세대
@@ -170,22 +171,22 @@ function OverviewPage() {
           <GuideDetail
             tableTitle="청라 아크원 푸르지오 사업 정보 요약"
             rows={[
-              { label: "단지명", value: "청라 아크원 푸르지오", status: "공개값" },
-              { label: "위치", value: "인천광역시 서해구 청라동 86-1번지 (청라국제도시 주상복합용지 M5BL)", status: "공개값" },
-              { label: "건축규모", value: "지하 5층 ~ 지상 49층, 총 6개동", status: "공개값" },
-              { label: "공급 구성", value: "총 1,855세대·실 = 아파트 868세대 + 오피스텔 987실, 상업시설 지상 1~2층", status: "공개값" },
-              { label: "아파트 전용면적", value: "84㎡, 103㎡ (타입별 세부 면적·평면도는 공고 시 공개)", status: "공개값 / 평면 미정" },
+              { label: en ? EN_OVERVIEW_TABLE.name : "단지명", value: en ? "Cheongna Ark-One Prugio" : "청라 아크원 푸르지오", status: en ? "published" : "공개값" },
+              { label: en ? EN_OVERVIEW_TABLE.loc : "위치", value: en ? "Cheongna-dong 86-1, Seohae-gu, Incheon (Cheongna International City mixed-use site M5BL)" : "인천광역시 서해구 청라동 86-1번지 (청라국제도시 주상복합용지 M5BL)", status: en ? "published" : "공개값" },
+              { label: en ? EN_OVERVIEW_TABLE.scale : "건축규모", value: en ? "B5 to 49F, total 6 buildings" : "지하 5층 ~ 지상 49층, 총 6개동", status: en ? "published" : "공개값" },
+              { label: en ? "Supply composition" : "공급 구성", value: en ? "Total 1,855 units·rooms = Apt 868 units + Officetel 987 rooms, commercial floors 1–2" : "총 1,855세대·실 = 아파트 868세대 + 오피스텔 987실, 상업시설 지상 1~2층", status: en ? "published" : "공개값" },
+              { label: en ? "Apt exclusive area" : "아파트 전용면적", value: en ? "84㎡, 103㎡ (detailed area·floor plans per type published at notice)" : "84㎡, 103㎡ (타입별 세부 면적·평면도는 공고 시 공개)", status: en ? "published / plans TBD" : "공개값 / 평면 미정" },
               { label: "아파트 타입별 세대수", value: "84A 248 · 84B 124 · 84C 124 · 84D 124 · 103A 124 · 103B 124 (총 868세대)", status: "분양 자료 기준" },
-              { label: "오피스텔 전용면적", value: "105㎡, 121㎡, 136㎡", status: "공개값" },
+              { label: en ? "Officetel exclusive area" : "오피스텔 전용면적", value: en ? "105㎡, 121㎡, 136㎡" : "105㎡, 121㎡, 136㎡", status: en ? "published" : "공개값" },
               { label: "대지면적 · 건축면적", value: "35,306.00㎡ · 12,278.4410㎡", status: "공개값" },
-              { label: "주차대수", value: "총 3,124대 (APT 1,389대 · OT 1,695대 · 상업시설 40대)", status: "공개값" },
+              { label: en ? "Parking" : "주차대수", value: en ? "Total 3,124 spaces (APT 1,389 · OT 1,695 · commercial 40)" : "총 3,124대 (APT 1,389대 · OT 1,695대 · 상업시설 40대)", status: en ? "published" : "공개값" },
               { label: "상업시설", value: "피크원 53·아크원 43, 총 96개 점포 · 지상 1~2층 (1층 47 · 2층 49)", status: "분양 자료 기준" },
-              { label: "시행 · 시공", value: "㈜청라스마트시티 · 대우건설", status: "공개값" },
+              { label: en ? "Developer · builder" : "시행 · 시공", value: en ? "Cheongna Smart City Co., Ltd. · Daewoo E&C" : "㈜청라스마트시티 · 대우건설", status: en ? "published" : "공개값" },
               { label: "분양가", value: "미공개 (사업주체 표기: 분양가 상한제 적용단지)", status: "미정" },
               { label: "APT 입주자모집공고", value: "10월 중 OPEN 예정", status: "예정" },
               { label: "입주 시기", value: "입주 시기는 입주자모집공고 게시 후 공고문으로 확인해야 합니다", status: "예정" },
             ]}
-            faq={FAQ}
+            faq={en ? EN_BODY.overview.faq : FAQ}
             links={[
               { to: "/pages/compare", label: "아파트·오피스텔 비교" },
               { to: "/pages/schedule", label: "분양 일정·청약 안내" },

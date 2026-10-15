@@ -17,7 +17,7 @@ export function SubVisual({ path }: { path: string }) {
         <div className="sub_visual__image">
           <picture>
             <source media="(max-width: 1024px)" srcSet="/resources/img/common/sub_visual_img_m.v4.webp" />
-            <img src="/resources/img/common/sub_visual_img.v4.webp" alt="" {...imgDims("/resources/img/common/sub_visual_img.v4.webp")} data-dims="" />
+            <img src="/resources/img/common/sub_visual_img.v4.webp" alt="서브 페이지 상단 배경" {...imgDims("/resources/img/common/sub_visual_img.v4.webp")} data-dims="" />
           </picture>
         </div>
         <div className="sub_visual__content">

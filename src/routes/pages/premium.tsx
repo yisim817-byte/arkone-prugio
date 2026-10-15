@@ -1,15 +1,17 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteShell } from "@/components/site-shell";
 import { SubNotice } from "@/components/notice";
-import { canonicalLinks } from "@/lib/seo-host";
+import { canonicalLinks } from "@/lib/seo-host"
+import { isEnHost } from "@/lib/seo-host"
+import { EN, EN_PREMIUM } from "@/lib/i18n/en";
 import { imgDims } from "@/components/img";
 
 export const Route = createFileRoute("/pages/premium")({
   component: PremiumPage,
   head: () => ({
     meta: [
-      { title: "청라 아크원 푸르지오 프리미엄 | 상품 특징 안내" },
-      { name: "description", content: "청라 아크원 푸르지오 프리미엄. 2,911세대·실 브랜드타운, 오션·시티뷰(일부 세대), 분양가 상한제 적용 등 사업주체 공개 상품 특징을 정리했습니다." },
+      { title: (() => { try { return isEnHost() ? EN.premium.title : "청라 아크원 푸르지오 프리미엄 | 상품 특징 안내"; } catch { return "청라 아크원 푸르지오 프리미엄 | 상품 특징 안내"; } })() },
+      { name: "description", content: (() => { try { return isEnHost() ? EN.premium.desc : "청라 아크원 푸르지오 프리미엄. 2,911세대·실 브랜드타운, 오션·시티뷰(일부 세대), 분양가 상한제 적용 등 사업주체 공개 상품 특징을 정리했습니다."; } catch { return "청라 아크원 푸르지오 프리미엄. 2,911세대·실 브랜드타운, 오션·시티뷰(일부 세대), 분양가 상한제 적용 등 사업주체 공개 상품 특징을 정리했습니다."; } })() },
     ],
     links: canonicalLinks("/pages/premium"),
   }),
@@ -36,12 +38,14 @@ function Pic({
 }
 
 function PremiumPage() {
+  const en = (() => { try { return isEnHost(); } catch { return false; } })();
+
   return (
     <SiteShell path="/pages/premium">
       <div className="page_content">
         <section className="page_container">
           {/* SEO_PUSH 2026-10-06 P1-1: 페이지 고유 H1 (title 앞부분) */}
-          <h1 className="page-h1">청라 아크원 푸르지오 프리미엄</h1>
+          <h1 className="page-h1">{en ? EN_PREMIUM.h1 : "청라 아크원 푸르지오 프리미엄"}</h1>
           <header className="premium_intro">
             <p>청라 아크원 푸르지오 상품 안내</p>
             <h2>주요 상품 특징</h2>
@@ -60,8 +64,8 @@ function PremiumPage() {
                 </p>
               </div>
               <div className="premium_feature__images premium_feature__images-pair">
-                <Pic src="/resources/img/sub/premium_01_img_1.v4.jpg" m="/resources/img/sub/premium_01_img_1_m.v4.jpg" alt="저녁 도시 전경" />
-                <Pic src="/resources/img/sub/premium_01_img_2.v4.jpg" m="/resources/img/sub/premium_01_img_2_m.v4.jpg" alt="고층 세대에서 바깥을 바라보는 모습" />
+                <Pic src="/resources/img/sub/premium_01_img_1.v4.jpg" m="/resources/img/sub/premium_01_img_1_m.v4.jpg" alt="고층 타워 사이 조경 광로가 보이는 단지 전경" />
+                <Pic src="/resources/img/sub/premium_01_img_2.v4.jpg" m="/resources/img/sub/premium_01_img_2_m.v4.jpg" alt="창 너머 강과 도시가 보이는 거실에서 바라보는 사람" />
               </div>
             </article>
 
@@ -78,7 +82,7 @@ function PremiumPage() {
                 </p>
               </div>
               <div className="premium_feature__images">
-                <Pic src="/resources/img/sub/premium_02_img_1.v4.jpg" m="/resources/img/sub/premium_02_img_1_m.v4.jpg" alt="도심을 오가는 사람들의 모습" />
+                <Pic src="/resources/img/sub/premium_02_img_1.v4.jpg" m="/resources/img/sub/premium_02_img_1_m.v4.jpg" alt="유리 건물 앞을 걷는 사람들과 서 있는 여성" />
               </div>
             </article>
 
@@ -91,7 +95,7 @@ function PremiumPage() {
                 </p>
               </div>
               <div className="premium_feature__images premium_feature__images-stack">
-                <Pic src="/resources/img/sub/premium_03_img_1.v4.jpg" m="/resources/img/sub/premium_03_img_1_m.v4.jpg" alt="바다 풍경이 보이는 모습" />
+                <Pic src="/resources/img/sub/premium_03_img_1.v4.jpg" m="/resources/img/sub/premium_03_img_1_m.v4.jpg" alt="창으로 바다가 보이는 소파와 커피 테이블" />
                 <Pic src="/resources/img/sub/premium_03_img_2.v4.jpg" m="/resources/img/sub/premium_03_img_2_m.v4.jpg" alt="노을지는 바다 풍경이 보이는 모습" />
               </div>
             </article>
@@ -108,7 +112,7 @@ function PremiumPage() {
                 </p>
               </div>
               <div className="premium_feature__images premium_feature__images-pair">
-                <Pic src="/resources/img/sub/premium_04_img_1.v4.jpg" m="/resources/img/sub/premium_04_img_1_m.v4.jpg" alt="고급스러운 실내 이미지" />
+                <Pic src="/resources/img/sub/premium_04_img_1.v4.jpg" m="/resources/img/sub/premium_04_img_1_m.v4.jpg" alt="햇살이 드는 베이지 석재 계단 연출" />
                 <Pic src="/resources/img/sub/premium_04_img_2.v4.jpg" m="/resources/img/sub/premium_04_img_2_m.v4.jpg" alt="프리미엄 실내 인테리어" />
               </div>
             </article>
@@ -124,8 +128,8 @@ function PremiumPage() {
                 </p>
               </div>
               <div className="premium_feature__images premium_feature__images-pair">
-                <Pic src="/resources/img/sub/premium_05_img_1.v4.jpg" m="/resources/img/sub/premium_05_img_1_m.v4.jpg" alt="멀티 발코니 공간 활용 이미지컷(CG)" />
-                <Pic src="/resources/img/sub/premium_05_img_2.v4.jpg" m="/resources/img/sub/premium_05_img_2_m.v4.jpg" alt="팬트리 수납 공간 이미지컷(CG)" />
+                <Pic src="/resources/img/sub/premium_05_img_1.v4.jpg" m="/resources/img/sub/premium_05_img_1_m.v4.jpg" alt="책장과 녹색 의자가 있는 독서 공간 연출" />
+                <Pic src="/resources/img/sub/premium_05_img_2.v4.jpg" m="/resources/img/sub/premium_05_img_2_m.v4.jpg" alt="유리병과 식재료 바구니가 놓인 팬트리 선반" />
               </div>
             </article>
           </div>

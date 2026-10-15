@@ -2,15 +2,17 @@ import { createFileRoute } from "@tanstack/react-router";
 import { SiteShell } from "@/components/site-shell";
 import { GuideDetail } from "@/components/seo-guide";
 import { SubNotice } from "@/components/notice";
-import { canonicalLinks } from "@/lib/seo-host";
+import { canonicalLinks } from "@/lib/seo-host"
+import { isEnHost } from "@/lib/seo-host"
+import { EN, EN_BRAND } from "@/lib/i18n/en";
 import { imgDims } from "@/components/img";
 
 export const Route = createFileRoute("/pages/brand")({
   component: BrandPage,
   head: () => ({
     meta: [
-      { title: "청라 아크원 푸르지오 히스토리 | 주변 개발 일정" },
-      { name: "description", content: "청라 아크원 푸르지오 히스토리. 청라 주변 개발 계획을 연도별로 정리했습니다. 일정은 예정·계획 기준이며 관계기관 사정에 따라 변경될 수 있습니다." },
+      { title: (() => { try { return isEnHost() ? EN.brand.title : "청라 아크원 푸르지오 히스토리 | 주변 개발 일정"; } catch { return "청라 아크원 푸르지오 히스토리 | 주변 개발 일정"; } })() },
+      { name: "description", content: (() => { try { return isEnHost() ? EN.brand.desc : "청라 아크원 푸르지오 히스토리. 청라 주변 개발 계획을 연도별로 정리했습니다. 일정은 예정·계획 기준이며 관계기관 사정에 따라 변경될 수 있습니다."; } catch { return "청라 아크원 푸르지오 히스토리. 청라 주변 개발 계획을 연도별로 정리했습니다. 일정은 예정·계획 기준이며 관계기관 사정에 따라 변경될 수 있습니다."; } })() },
     ],
     links: canonicalLinks("/pages/brand"),
   }),
@@ -54,17 +56,19 @@ const FAQ = [
 ];
 
 function BrandPage() {
+  const en = (() => { try { return isEnHost(); } catch { return false; } })();
+
   return (
     <SiteShell path="/pages/brand">
       <div className="page_content">
         <section className="page_container">
           {/* SEO_PUSH 2026-10-06 P1-1: 페이지 고유 H1 (title 앞부분) */}
-          <h1 className="page-h1">청라 아크원 푸르지오 히스토리·주변 개발 일정</h1><p>푸르지오 브랜드타운 2,911세대·실은 청라 피크원 푸르지오를 포함한 합산 규모이며, 단일 단지가 아닙니다.</p>
+          <h1 className="page-h1">{en ? EN_BRAND.h1 : "청라 아크원 푸르지오 히스토리·주변 개발 일정"}</h1><p>푸르지오 브랜드타운 2,911세대·실은 청라 피크원 푸르지오를 포함한 합산 규모이며, 단일 단지가 아닙니다.</p>
           <div className="brand_image__container">
             <figure className="brand_image__img">
               <picture>
                 <source media="(max-width: 1024px)" srcSet="/resources/img/sub/brand_content_img_m.v4.jpg" />
-                <img src="/resources/img/sub/brand_content_img.v4.webp" alt="청라를 잇는 교량과 도심 야경" {...imgDims("/resources/img/sub/brand_content_img.v4.webp")} data-dims="" />
+                <img src="/resources/img/sub/brand_content_img.v4.webp" alt="석양 구름 위로 떠 있는 고층 타워 CG" {...imgDims("/resources/img/sub/brand_content_img.v4.webp")} data-dims="" />
               </picture>
             </figure>
             <div className="brand_image__txt_wrap">
@@ -90,7 +94,7 @@ function BrandPage() {
               </p>
             </div>
             <picture className="brand_image__slogan">
-              <img src="/resources/img/sub/brand_slogan_img.svg" alt="" {...imgDims("/resources/img/sub/brand_slogan_img.svg")} data-dims="" />
+              <img src="/resources/img/sub/brand_slogan_img.svg" alt="브랜드 슬로건 그래픽" {...imgDims("/resources/img/sub/brand_slogan_img.svg")} data-dims="" />
             </picture>
           </div>
 
