@@ -198,10 +198,9 @@ export function RegisterForm() {
         <p className="prereg-confirm">{PHRASE.slice(0, 16)}<a href={SITE_TEL_HREF}>1833-3872</a>{PHRASE.slice(25)}</p>
         <p>STEP 1 홈페이지 사전고객등록 완료</p>
         {product === "apt" ? <>
-          <p>STEP 2 MGM 등록 확인 (담당자 안내)</p>
-          <p>STEP 3 공식 청약 진행 (입주자모집공고 기준)</p>
-          <p>STEP 4 청약 당첨 및 MGM 인정조건 확인</p>
-          <p>STEP 5 백화점 상품권 선택 및 지급 (대상 조건 충족 시)</p>
+          <p>STEP 2 공식 청약 진행 (입주자모집공고 기준)</p>
+          <p>STEP 3 청약 당첨 및 지급 조건 확인</p>
+          <p>STEP 4 백화점 상품권 선택 및 지급 (대상 조건 충족 시)</p>
         </> : <p>선택하신 오피스텔 상품으로 담당자가 안내드립니다.</p>}
         <p><a className="reg__submit" href={SITE_TEL_HREF}>등록 확인 전화하기 1833-3872</a></p>
         <p>일정이 변경되면 담당자가 등록하신 휴대전화로 연락드립니다.</p>
