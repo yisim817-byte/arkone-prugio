@@ -6,7 +6,7 @@ export const EN = {
   siteName: "Cheongna Ark-One Prugio",
   home: {
     title: "Cheongna Ark-One Prugio | Guide",
-    desc: "Cheongna Ark-One Prugio. Notice Oct 22 · GRAND OPEN Oct 30 (planned). Apt 868, officetel 987. Call 1833-3872.",
+    desc: "Notice Oct 22 · GRAND OPEN Oct 30 (planned). Apt 868, officetel 987. Call 1833-3872.",
     h1: "Cheongna Ark-One Prugio",
   },
   overview: {
