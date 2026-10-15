@@ -1,15 +1,17 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteShell } from "@/components/site-shell";
 import { SubNotice } from "@/components/notice";
-import { canonicalLinks } from "@/lib/seo-host";
+import { canonicalLinks } from "@/lib/seo-host"
+import { isEnHost } from "@/lib/seo-host"
+import { EN } from "@/lib/i18n/en";
 import { imgDims } from "@/components/img";
 
 export const Route = createFileRoute("/pages/premium")({
   component: PremiumPage,
   head: () => ({
     meta: [
-      { title: "청라 아크원 푸르지오 프리미엄 | 상품 특징 안내" },
-      { name: "description", content: "청라 아크원 푸르지오 프리미엄. 2,911세대·실 브랜드타운, 오션·시티뷰(일부 세대), 분양가 상한제 적용 등 사업주체 공개 상품 특징을 정리했습니다." },
+      { title: (() => { try { return isEnHost() ? EN.premium.title : "청라 아크원 푸르지오 프리미엄 | 상품 특징 안내"; } catch { return "청라 아크원 푸르지오 프리미엄 | 상품 특징 안내"; } })() },
+      { name: "description", content: (() => { try { return isEnHost() ? EN.premium.desc : "청라 아크원 푸르지오 프리미엄. 2,911세대·실 브랜드타운, 오션·시티뷰(일부 세대), 분양가 상한제 적용 등 사업주체 공개 상품 특징을 정리했습니다."; } catch { return "청라 아크원 푸르지오 프리미엄. 2,911세대·실 브랜드타운, 오션·시티뷰(일부 세대), 분양가 상한제 적용 등 사업주체 공개 상품 특징을 정리했습니다."; } })() },
     ],
     links: canonicalLinks("/pages/premium"),
   }),

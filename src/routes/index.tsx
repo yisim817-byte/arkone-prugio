@@ -5,27 +5,33 @@ import { Img } from "@/components/img";
 import { SiteShell } from "@/components/site-shell";
 import { YoutubeModal } from "@/components/youtube-modal";
 import { SITE_NAME, SITE_PHONE, SITE_TEL_HREF, YOUTUBE_ID } from "@/lib/site-data";
-import { canonicalLinks, isKrHost, KR_ORIGIN, LEGACY_ORIGIN } from "@/lib/seo-host";
+import { canonicalLinks, isKrHost, isEnHost, KR_ORIGIN, EN_ORIGIN, LEGACY_ORIGIN } from "@/lib/seo-host";
+import { EN } from "@/lib/i18n/en";
 
 export const Route = createFileRoute("/")({
   component: Home,
-  head: () => ({
-    meta: [
-      { title: "청라 아크원 푸르지오 | 분양 일정·비교·청약 안내" },
-      {
-        name: "description",
-        content:
-          "청라 아크원 푸르지오 분양 일정·청약 안내. 모집공고 10.22 · GRAND OPEN 10.30 예정, 아파트 868세대·오피스텔 987실.",
-      },
-    ],
-    links: canonicalLinks("/"),
-    scripts: [
-      {
-        type: "application/ld+json",
-        children: homeJsonLd(isKrHost() ? KR_ORIGIN : LEGACY_ORIGIN),
-      },
-    ],
-  }),
+  head: () => {
+    let en = false;
+    try { en = isEnHost(); } catch { en = false; }
+    return {
+      meta: [
+        { title: en ? EN.home.title : "청라 아크원 푸르지오 | 분양 일정·비교·청약 안내" },
+        {
+          name: "description",
+          content: en
+            ? EN.home.desc
+            : "청라 아크원 푸르지오 분양 일정·청약 안내. 모집공고 10.22 · GRAND OPEN 10.30 예정, 아파트 868세대·오피스텔 987실.",
+        },
+      ],
+      links: canonicalLinks("/"),
+      scripts: [
+        {
+          type: "application/ld+json",
+          children: homeJsonLd(en ? EN_ORIGIN : isKrHost() ? KR_ORIGIN : LEGACY_ORIGIN),
+        },
+      ],
+    };
+  },
 });
 
 function homeJsonLd(origin: string) {
@@ -38,7 +44,7 @@ function homeJsonLd(origin: string) {
         url: `${origin}/`,
         name: SITE_NAME,
         alternateName: ["아크원푸르지오.site"],
-        inLanguage: "ko-KR",
+        inLanguage: (() => { try { return isEnHost() ? "en-US" : "ko-KR"; } catch { return "ko-KR"; } })(),
         publisher: { "@id": "https://www.humanekorea.co.kr/#organization" },
       },
       {
@@ -46,7 +52,7 @@ function homeJsonLd(origin: string) {
         "@id": `${origin}/#webpage`,
         url: `${origin}/`,
         name: SITE_NAME,
-        inLanguage: "ko-KR",
+        inLanguage: (() => { try { return isEnHost() ? "en-US" : "ko-KR"; } catch { return "ko-KR"; } })(),
         isPartOf: { "@id": `${origin}/#website` },
       },
     ],
@@ -152,7 +158,7 @@ function Home() {
               <span className="hero__title_line">ARK-ONE</span>
               <br />
               <span className="hero__title_line">PRUGIO</span>
-              <span className="hero__title_ko">청라 아크원 푸르지오</span>
+              <span className="hero__title_ko">{(() => { try { return isEnHost() ? EN.home.h1 : "청라 아크원 푸르지오"; } catch { return "청라 아크원 푸르지오"; } })()}</span>
             </h1>
             <span className="hero__open">
               모집공고 <strong>10.22</strong> · GRAND OPEN <strong>10.30</strong> 예정
@@ -168,7 +174,7 @@ function Home() {
                 <b>청라 아크원</b> <br className="m-only" /> 홍보영상
               </span>
               <span className="hero__video_play">
-                <img src="/resources/img/pages/main/ico_yt.svg" alt="" {...imgDims("/resources/img/pages/main/ico_yt.svg")} data-dims="" />
+                <img src="/resources/img/pages/main/ico_yt.svg" alt="" role="presentation" {...imgDims("/resources/img/pages/main/ico_yt.svg")} data-dims="" />
               </span>
             </button>
             <div className="hero__quick">
@@ -184,7 +190,7 @@ function Home() {
               </a>
               <Link to="/register" className="hero__quick_item" aria-label="사전고객등록">
                 <HeroOrbit />
-                <img className="hero__quick_content" src="/resources/img/pages/main/hero_circle_register.svg" alt="사전고객등록" {...imgDims("/resources/img/pages/main/hero_circle_register.svg")} data-dims="" />
+                <img className="hero__quick_content" src="/resources/img/pages/main/hero_circle_register.svg" alt="사전고객등록 바로가기 아이콘" {...imgDims("/resources/img/pages/main/hero_circle_register.svg")} data-dims="" />
               </Link>
             </div>
           </div>
@@ -219,7 +225,7 @@ function Home() {
         <section className="hero-define">
           <Img className="hero-define__visual" src="/resources/img/pages/main/hero_brand_img.v4.webp" alt="청라 아크원 푸르지오 엠블럼" />
           <div className="hero-define__copy">
-            <Img src="/resources/img/pages/main/ico_star.svg" alt="" width={28} height={28} />
+            <Img src="/resources/img/pages/main/ico_star.svg" alt="" role="presentation" width={28} height={28} />
             <p className="hero-define__title">아크원(ARK-ONE)이란?</p>
             <strong className="hero-define__keyword">
               <b>A</b>BSOLUTE
@@ -239,7 +245,7 @@ function Home() {
         </section>
 
         <section id="overview" className="section-overview">
-          <Img className="bg" src="/resources/img/pages/main/overview_bg.v4.webp" alt="" />
+          <Img className="bg" src="/resources/img/pages/main/overview_bg.v4.webp" alt="" role="presentation" />
           <span className="dim" />
           <div className="section-overview__inner">
             <header>
@@ -415,7 +421,7 @@ function Home() {
         <section id="brand" className="section-brand">
           <picture>
             <source media="(max-width: 1024px)" srcSet="/resources/img/pages/main/brand_bg_m.v4.webp" />
-            <Img className="bg" src="/resources/img/pages/main/brand_bg.v4.webp" alt="" />
+            <Img className="bg" src="/resources/img/pages/main/brand_bg.v4.webp" alt="" role="presentation" />
           </picture>
           <div className="frame">
             <p className="section-brand__eyebrow">THE NATURAL NOBILITY</p>
@@ -424,12 +430,12 @@ function Home() {
               견고한 기본에 더해진 세련된 편안함,
               <br />내 삶의 본연을 집에서 찾다
             </p>
-            <Img className="section-brand__logo" src="/resources/img/pages/main/brand_logo.svg" alt="PRUGIO" />
+            <Img className="section-brand__logo" src="/resources/img/pages/main/brand_logo.svg" alt="PRUGIO 브랜드 로고" />
           </div>
         </section>
 
         <section id="contact" className="section-contact">
-          <Img className="bg" src="/resources/img/pages/main/contact_bg.v4.webp" alt="" />
+          <Img className="bg" src="/resources/img/pages/main/contact_bg.v4.webp" alt="" role="presentation" />
           <h2>CONTACT US</h2>
           <div className="contact-schedule">
             <p>모집공고 10.22 · GRAND OPEN 10.30 예정</p>
@@ -447,10 +453,10 @@ function Home() {
                 </div>
                 <div className="map-btns">
                   <a href="https://naver.me/xNpQLQ3L" target="_blank" rel="noreferrer">
-                    <Img src="/resources/img/common/ico_naver.svg" alt="네이버 지도" />
+                    <Img src="/resources/img/common/ico_naver.svg" alt="네이버 지도에서 위치 보기" />
                   </a>
                   <a href="https://kko.to/06V9ttVXOK" target="_blank" rel="noreferrer">
-                    <Img src="/resources/img/common/ico_kko_map.svg" alt="카카오 지도" />
+                    <Img src="/resources/img/common/ico_kko_map.svg" alt="카카오맵에서 위치 보기" />
                   </a>
                 </div>
               </div>
@@ -461,10 +467,10 @@ function Home() {
                 </div>
                 <div className="map-btns">
                   <a href="https://naver.me/xSBYFSR0" target="_blank" rel="noreferrer">
-                    <Img src="/resources/img/common/ico_naver.svg" alt="네이버 지도" />
+                    <Img src="/resources/img/common/ico_naver.svg" alt="네이버 지도에서 위치 보기" />
                   </a>
                   <a href="https://kko.to/27AvJsaNys" target="_blank" rel="noreferrer">
-                    <Img src="/resources/img/common/ico_kko_map.svg" alt="카카오 지도" />
+                    <Img src="/resources/img/common/ico_kko_map.svg" alt="카카오맵에서 위치 보기" />
                   </a>
                 </div>
               </div>
@@ -482,10 +488,10 @@ function Home() {
                 </div>
                 <div className="map-btns">
                   <a href="https://naver.me/xwmqyGWk" target="_blank" rel="noreferrer">
-                    <Img src="/resources/img/common/ico_naver.svg" alt="네이버 지도" />
+                    <Img src="/resources/img/common/ico_naver.svg" alt="네이버 지도에서 위치 보기" />
                   </a>
                   <a href="https://kko.to/hM9WpE-0fz" target="_blank" rel="noreferrer">
-                    <Img src="/resources/img/common/ico_kko_map.svg" alt="카카오 지도" />
+                    <Img src="/resources/img/common/ico_kko_map.svg" alt="카카오맵에서 위치 보기" />
                   </a>
                 </div>
               </div>

@@ -1,7 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteShell } from "@/components/site-shell";
 import { SubNotice } from "@/components/notice";
-import { canonicalLinks, faqJsonLd } from "@/lib/seo-host";
+import { canonicalLinks, faqJsonLd } from "@/lib/seo-host"
+import { isEnHost } from "@/lib/seo-host"
+import { EN } from "@/lib/i18n/en";
 import { GuideAnswer, GuideDetail, type GuideFaq } from "@/components/seo-guide";
 import { SRC_APPLYHOME } from "@/lib/arkone-facts";
 import { imgDims } from "@/components/img";
@@ -29,8 +31,8 @@ export const Route = createFileRoute("/pages/overview")({
   component: OverviewPage,
   head: () => ({
     meta: [
-      { title: "청라 아크원 푸르지오 사업개요 | 868세대·987실" },
-      { name: "description", content: "청라 아크원 푸르지오 사업개요. 청라동 86-1번지 M5BL, 지하 5층~지상 49층 6개동, 아파트 868세대·오피스텔 987실, 시행 ㈜청라스마트시티·시공 대우건설." },
+      { title: (() => { try { return isEnHost() ? EN.overview.title : "청라 아크원 푸르지오 사업개요 | 868세대·987실"; } catch { return "청라 아크원 푸르지오 사업개요 | 868세대·987실"; } })() },
+      { name: "description", content: (() => { try { return isEnHost() ? EN.overview.desc : "청라 아크원 푸르지오 사업개요. 청라동 86-1번지 M5BL, 지하 5층~지상 49층 6개동, 아파트 868세대·오피스텔 987실, 시행 ㈜청라스마트시티·시공 대우건설."; } catch { return "청라 아크원 푸르지오 사업개요. 청라동 86-1번지 M5BL, 지하 5층~지상 49층 6개동, 아파트 868세대·오피스텔 987실, 시행 ㈜청라스마트시티·시공 대우건설."; } })() },
     ],
     links: canonicalLinks("/pages/overview"),
     scripts: faqJsonLd(FAQ),
