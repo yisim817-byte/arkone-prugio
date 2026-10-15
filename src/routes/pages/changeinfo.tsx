@@ -1,7 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteShell } from "@/components/site-shell";
 import { ZoomButton } from "@/components/notice";
-import { canonicalLinks } from "@/lib/seo-host";
+import { canonicalLinks } from "@/lib/seo-host"
+import { isEnHost } from "@/lib/seo-host"
+import { EN, EN_CHANGE, EN_REMAIN } from "@/lib/i18n/en";
 import { GuideAnswer, GuideDetail } from "@/components/seo-guide";
 import { SRC_APPLYHOME } from "@/lib/arkone-facts";
 import { imgDims } from "@/components/img";
@@ -10,23 +12,23 @@ export const Route = createFileRoute("/pages/changeinfo")({
   component: ChangeInfoPage,
   head: () => ({
     meta: [
-      { title: "청라 아크원 푸르지오 청약제도 변경사항 | 청약안내" },
-      { name: "description", content: "청라 아크원 푸르지오 청약 전 확인할 청약제도 변경 내용. 공급 유형·자격·청약 일정은 입주자모집공고에서 확정됩니다." },
+      { title: (() => { try { return isEnHost() ? EN.changeinfo.title : "청라 아크원 푸르지오 청약제도 변경사항 | 청약안내"; } catch { return "청라 아크원 푸르지오 청약제도 변경사항 | 청약안내"; } })() },
+      { name: "description", content: (() => { try { return isEnHost() ? EN.changeinfo.desc : "청라 아크원 푸르지오 청약 전 확인할 청약제도 변경 내용. 공급 유형·자격·청약 일정은 입주자모집공고에서 확정됩니다."; } catch { return "청라 아크원 푸르지오 청약 전 확인할 청약제도 변경 내용. 공급 유형·자격·청약 일정은 입주자모집공고에서 확정됩니다."; } })() },
     ],
     links: canonicalLinks("/pages/changeinfo"),
   }),
 });
 
 function ChangeInfoPage() {
+  const en = (() => { try { return isEnHost(); } catch { return false; } })();
+
   const src = "/resources/img/sub/01_변경된_청약제도.v4.jpg";
   return (
     <SiteShell path="/pages/changeinfo">
       <div className="page_content">
         <section className="page_container">
-          <GuideAnswer title="청라 아크원 푸르지오 청약 전 확인할 청약제도 변경 사항">
-            <p>청라 아크원 푸르지오에 적용되는 공급 유형, 자격 요건, 청약 일정은 입주자모집공고에서 확정되며 현재는 미정입니다. 청라 아크원 푸르지오는 모집공고 10.22 · GRAND OPEN 10.30 예정입니다. 세부 일정은 대표번호 1833-3872로 문의해 주세요.</p>
-          </GuideAnswer>
-          <figure>
+          <GuideAnswer title={en ? EN_CHANGE.h1 : "청라 아크원 푸르지오 청약 전 확인할 청약제도 변경 사항"}>
+            <p>청라 아크원 푸르지오에 적용되는 공급 유형, 자격 요건, 청약 일정은 입주자모집공고에서 확정되며 현재는 미정입니다. 청라 아크원 푸르지오는 모집공고 10.22 · GRAND OPEN 10.30 예정입니다. 세부 일정은 대표번호 1833-3872로 문의해 주세요.</p>          </GuideAnswer>          <figure>
             <img src={src} alt="변경된 청약제도 안내" {...imgDims(src)} data-dims="" />
           </figure>
           <ZoomButton href={src} />

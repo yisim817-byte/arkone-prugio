@@ -9,8 +9,20 @@
  *   built from the hardcoded KR origin + allowlisted path, never from Host.
  */
 
+
+const EN_ORIGIN = "https://www.arkone-prugio.site";
+const EN_HOSTS = new Set(["www.arkone-prugio.site"]);
+const EN_ROBOTS = [
+  "User-agent: *",
+  "Allow: /",
+  "Disallow: /api/",
+  "Disallow: /auth/",
+  "",
+  `Sitemap: ${EN_ORIGIN}/sitemap.xml`,
+].join("\r\n") + "\r\n";
 const KR_ORIGIN = "https://www.xn--2w2b19sita0u67iz2mi7g.site";
 const KR_HOSTS = new Set(["www.xn--2w2b19sita0u67iz2mi7g.site", "www.아크원푸르지오.site"]);
+
 
 /** path -> lastmod (git commit date of the page's last content change). */
 const KR_SITEMAP: ReadonlyArray<readonly [string, string]> = [
@@ -79,7 +91,7 @@ const KR_PAGE_NAMES: Record<string, string> = {
 };
 
 /** KR host only: Organization + WebPage(dateModified) + BreadcrumbList JSON-LD. */
-function krPageJsonLd(path: string): string {
+function krPageJsonLd(path: string, en = false): string {
   const url = `${KR_ORIGIN}${path}`;
   const lastmod = KR_SITEMAP.find(([p]) => p === path)?.[1];
   const org = {
@@ -98,7 +110,7 @@ function krPageJsonLd(path: string): string {
         "@id": `${url}#webpage`,
         url,
         name: `${KR_PAGE_NAMES[path]} | 청라 아크원 푸르지오`,
-        inLanguage: "ko-KR",
+        inLanguage: en ? "en" : "ko-KR",
         isPartOf: { "@id": `${KR_ORIGIN}/#website` },
         publisher: { "@id": org["@id"] },
         breadcrumb: { "@id": `${url}#breadcrumb` },
@@ -169,6 +181,13 @@ function isKr(event: SeoEvent): boolean {
     event.req.headers.get("x-forwarded-host") ?? event.req.headers.get("host") ?? event.url.host;
   const host = String(raw ?? "").split(",")[0].trim().split(":")[0].toLowerCase();
   return KR_HOSTS.has(host);
+}
+
+function isEn(event: SeoEvent): boolean {
+  const raw =
+    event.req.headers.get("x-forwarded-host") ?? event.req.headers.get("host") ?? event.url.host;
+  const host = String(raw ?? "").split(",")[0].trim().split(":")[0].toLowerCase();
+  return EN_HOSTS.has(host);
 }
 
 const TEXT_HEADERS = {
@@ -247,7 +266,7 @@ export default async function seoHostMiddleware(
 
   if (path === "/robots.txt") {
     const kr = isKr(event);
-    return new Response(method === "HEAD" ? null : kr ? KR_ROBOTS : LEGACY_ROBOTS, {
+    return new Response(method === "HEAD" ? null : (isEn(event) ? EN_ROBOTS : kr ? KR_ROBOTS : LEGACY_ROBOTS), {
       headers: { "content-type": "text/plain; charset=utf-8", ...TEXT_HEADERS },
     });
   }
@@ -258,12 +277,12 @@ export default async function seoHostMiddleware(
   }
   if (path === "/sitemap.xml") {
     const kr = isKr(event);
-    return new Response(method === "HEAD" ? null : kr ? krSitemap() : LEGACY_SITEMAP, {
+    return new Response(method === "HEAD" ? null : (isEn(event) ? krSitemap().replaceAll(KR_ORIGIN, EN_ORIGIN) : kr ? krSitemap() : LEGACY_SITEMAP), {
       headers: { "content-type": "application/xml", ...TEXT_HEADERS },
     });
   }
 
-  if (method !== "GET" || !KR_PATHS.has(path) || !isKr(event)) return next();
+  if (method !== "GET" || !KR_PATHS.has(path) || !(isKr(event) || isEn(event))) return next();
 
   const result = await next();
   if (
@@ -273,10 +292,14 @@ export default async function seoHostMiddleware(
     String(result.headers.get("content-type") ?? "").includes("text/html") &&
     !result.headers.get("content-encoding")
   ) {
+    const origin = isEn(event) ? EN_ORIGIN : KR_ORIGIN;
+    const jsonld = krPageJsonLd(path, isEn(event)).replace(new RegExp(KR_ORIGIN.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "g"), origin);
+    // EN host: keep Naver verification meta as ordered
+    const naver = path === "/" ? NAVER_VERIFICATION_TAG : "";
     return injectOgUrl(
       result,
-      `${KR_ORIGIN}${path}`,
-      (path === "/" ? NAVER_VERIFICATION_TAG : "") + krPageJsonLd(path),
+      `${origin}${path}`,
+      naver + jsonld,
     );
   }
   return result;

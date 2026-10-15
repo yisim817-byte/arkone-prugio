@@ -1,7 +1,9 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteShell } from "@/components/site-shell";
 import { SubNotice } from "@/components/notice";
-import { canonicalLinks, faqJsonLd } from "@/lib/seo-host";
+import { canonicalLinks, faqJsonLd } from "@/lib/seo-host"
+import { isEnHost } from "@/lib/seo-host"
+import { EN, EN_BODY, EN_SCHED_FAQ , EN_SCHEDULE } from "@/lib/i18n/en";
 import { GuideAnswer, GuideDetail, type GuideFaq } from "@/components/seo-guide";
 import { SRC_APPLYHOME } from "@/lib/arkone-facts";
 
@@ -36,27 +38,26 @@ export const Route = createFileRoute("/pages/schedule")({
   component: SchedulePage,
   head: () => ({
     meta: [
-      { title: "청라 아크원 푸르지오 분양가·분양 일정·청약 안내" },
+      { title: (() => { try { return isEnHost() ? EN.schedule.title : "청라 아크원 푸르지오 분양가·분양 일정·청약 안내"; } catch { return "청라 아크원 푸르지오 분양가·분양 일정·청약 안내"; } })() },
       {
-        name: "description",
-        content:
-          "청라 아크원 푸르지오 분양 일정: 모집공고 10.22 · GRAND OPEN 10.30 예정(세부 일정 문의 1833-3872). 분양가는 공고 전 미정, 입주 시기는 입주자모집공고 게시 후 공고문으로 확인해야 합니다.",
-      },
+        name: "description", content: (() => { try { return isEnHost() ? EN.schedule.desc : "청라 아크원 푸르지오 분양 일정. 모집공고 10.22 · GRAND OPEN 10.30 예정. 세부 일정 1833-3872."; } catch { return "청라 아크원 푸르지오 분양 일정. 모집공고 10.22 · GRAND OPEN 10.30 예정. 세부 일정 1833-3872."; } })(),      },
     ],
     links: canonicalLinks("/pages/schedule"),
-    scripts: faqJsonLd(FAQ),
+    scripts: faqJsonLd((() => { try { return isEnHost() ? EN_SCHED_FAQ : FAQ; } catch { return FAQ; } })()),
   }),
 });
 
 function SchedulePage() {
+  const en = (() => { try { return isEnHost(); } catch { return false; } })();
+
   return (
     <SiteShell path="/pages/schedule">
       <div className="page_content">
         <section className="page_container">
-          <GuideAnswer title="청라 아크원 푸르지오 분양 일정·청약 안내">
+          <GuideAnswer title={en ? EN_SCHEDULE.h1 : "청라 아크원 푸르지오 분양 일정·청약 안내"}>
             <p>청라 아크원 푸르지오는 현재 입주자모집공고 전 단계입니다.</p>
-            <p>청라 아크원 푸르지오는 모집공고 10.22 · GRAND OPEN 10.30 예정입니다. 세부 일정은 대표번호 1833-3872로 문의해 주세요.</p>
-            <p>특별공급·1순위·2순위·당첨자 발표·계약 일정과 분양가는 아직 공개되지 않았으며(미정) 입주자모집공고에서 확정됩니다. 청라 아크원 푸르지오의 입주 시기는 입주자모집공고 게시 후 공고문으로 확인해야 합니다.</p>
+            <p>{en ? EN_BODY.schedule.p1 : "청라 아크원 푸르지오는 모집공고 10.22 · GRAND OPEN 10.30 예정입니다. 세부 일정은 대표번호 1833-3872로 문의해 주세요."}</p>
+            <p>{en ? EN_BODY.schedule.p2 : "특별공급·1순위·2순위·당첨자 발표·계약 일정과 분양가는 아직 공개되지 않았으며(미정) 입주자모집공고에서 확정됩니다. 청라 아크원 푸르지오의 입주 시기는 입주자모집공고 게시 후 공고문으로 확인해야 합니다."}</p>
             <p>일정은 사업주체 사정에 따라 변경될 수 있으므로 청약 전 청약홈에 게시되는 공고문을 반드시 확인하시기 바랍니다.</p>
           </GuideAnswer>
           <GuideDetail
@@ -65,14 +66,12 @@ function SchedulePage() {
             rows={[
               { label: "APT 입주자모집공고", value: "2026.10.22 (예정)", status: "예정" },
               { label: "GRAND OPEN", value: "2026.10.30 (예정)", status: "예정" },
-              { label: "특별공급·1순위·2순위 접수", value: "입주자모집공고 확정 후 안내", status: "미정" },
-              { label: "당첨자 발표·계약", value: "입주자모집공고 확정 후 안내", status: "미정" },
-              { label: "분양가", value: "미공개 (사업주체 표기: 분양가 상한제 적용단지)", status: "미정" },
-              { label: "중도금·대출 등 금융 조건", value: "미공개", status: "미정" },
-              { label: "오피스텔 공고 일정", value: "미안내", status: "미정" },
-              { label: "입주 시기", value: "입주 시기는 입주자모집공고 게시 후 공고문으로 확인해야 합니다", status: "예정" },
+              { label: "특별공급·1순위·2순위 접수", value: "입주자모집공고 확정 후 안내", status: "미정" },              { label: "당첨자 발표·계약", value: "입주자모집공고 확정 후 안내", status: "미정" },              { label: en ? "Sale price" : "분양가", value: en ? "Unpublished (developer mark: price-cap applicable complex)" : "미공개 (사업주체 표기: 분양가 상한제 적용단지)", status: en ? "TBD" : "미정" },
+              { label: en ? "Interim payment·loan conditions" : "중도금·대출 등 금융 조건", value: en ? "Unpublished" : "미공개", status: en ? "TBD" : "미정" },
+              { label: en ? "Officetel notice schedule" : "오피스텔 공고 일정", value: en ? "Not announced" : "미안내", status: en ? "TBD" : "미정" },
+              { label: en ? "Move-in timing" : "입주 시기", value: en ? "Move-in timing must be confirmed from the notice after it is posted" : "입주 시기는 입주자모집공고 게시 후 공고문으로 확인해야 합니다", status: en ? "expected" : "예정" },
             ]}
-            faq={FAQ}
+            faq={en ? EN_SCHED_FAQ : FAQ}
             links={[
               { to: "/pages/changeinfo", label: "변경된 청약제도" },
               { to: "/pages/docspecial", label: "특별공급 안내" },
