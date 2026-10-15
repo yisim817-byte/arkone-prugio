@@ -46,7 +46,6 @@ function ComparePage() {
   return (
     <SiteShell path="/pages/compare">
       <div className="page_content">
-        <h1 className="page-h1">{en ? "Apt vs Officetel" : "아파트·오피스텔 비교"}</h1>
         <section className="page_container">
           <GuideAnswer title={en ? EN_COMPARE.h1 : "청라 아크원 푸르지오 아파트·오피스텔 한눈에 비교"}>
             <p>{en ? EN_COMPARE.p1 : "청라 아크원 푸르지오는 한 단지 안에 아파트 868세대와 오피스텔 987실을 함께 공급하는 주거복합 단지입니다."}</p>

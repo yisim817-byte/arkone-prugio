@@ -26,7 +26,6 @@ function ChangeInfoPage() {
   return (
     <SiteShell path="/pages/changeinfo">
       <div className="page_content">
-        <h1 className="page-h1">{en ? "Application Rule Changes" : "청약제도 변경 안내"}</h1>
         <section className="page_container">
           <GuideAnswer title={en ? EN_CHANGE.h1 : "청라 아크원 푸르지오 청약 전 확인할 청약제도 변경 사항"}>
             <p>{en ? EN_REMAIN.changeinfoP : "청라 아크원 푸르지오에 적용되는 공급 유형, 자격 요건, 청약 일정은 입주자모집공고에서 확정되며 현재는 미정입니다. 청라 아크원 푸르지오는 10월 중 OPEN 예정입니다. 세부 일정은 대표번호 1833-3872로 문의해 주세요."}</p>
