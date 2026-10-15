@@ -6,7 +6,7 @@ import { SiteShell } from "@/components/site-shell";
 import { YoutubeModal } from "@/components/youtube-modal";
 import { SITE_NAME, SITE_PHONE, SITE_TEL_HREF, YOUTUBE_ID } from "@/lib/site-data";
 import { canonicalLinks, isKrHost, isEnHost, KR_ORIGIN, EN_ORIGIN, LEGACY_ORIGIN } from "@/lib/seo-host";
-import { EN } from "@/lib/i18n/en";
+import { EN, EN_HOME } from "@/lib/i18n/en";
 
 export const Route = createFileRoute("/")({
   component: Home,
@@ -76,6 +76,7 @@ function HeroOrbit() {
 }
 
 function Home() {
+  const en = (() => { try { return isEnHost(); } catch { return false; } })();
   const [intro, setIntro] = useState(true);
   const [video, setVideo] = useState(false);
   const [active, setActive] = useState("hero");
@@ -104,14 +105,14 @@ function Home() {
   return (
     <SiteShell home>
       {intro ? (
-        <section className="intro" aria-label="청라 아크원 푸르지오 인트로">
+        <section className="intro" aria-label={en ? EN_HOME.introLabel : "청라 아크원 푸르지오 인트로"}>
           <video autoPlay muted loop playsInline>
             <source src="/resources/img/pages/main/intro_video.mp4" type="video/mp4" />
           </video>
           <div className="intro__copy">
-            <p className="intro__phrase">청라국제업무단지 M5블록</p>
-            <p className="intro__title">아파트 868세대 · 오피스텔 987실</p>
-            <p className="intro__kicker">청라 아크원 푸르지오</p>
+            <p className="intro__phrase">{en ? EN_HOME.introPhrase : "청라국제업무단지 M5블록"}</p>
+            <p className="intro__title">{en ? EN_HOME.introTitle : "아파트 868세대 · 오피스텔 987실"}</p>
+            <p className="intro__kicker">{en ? EN.home.h1 : "청라 아크원 푸르지오"}</p>
             <p className="intro__brand">CHEONG NA ARK-ONE PRUGIO</p>
           </div>
           <button type="button" className="intro__skip" onClick={() => setIntro(false)}>
@@ -137,7 +138,7 @@ function Home() {
           <div className="hero__media">
             <picture>
               <source media="(max-width: 1024px)" srcSet="/resources/img/pages/main/hero_bg_m.v4.webp" />
-              <img src="/resources/img/pages/main/hero_bg.v4.webp" alt="청라 아크원 푸르지오 단지 투시도(CG)" {...imgDims("/resources/img/pages/main/hero_bg.v4.webp")} data-dims="" />
+              <img src="/resources/img/pages/main/hero_bg.v4.webp" alt="파란 하늘 아래 고층 타워와 강이 보이는 단지 투시도 CG" {...imgDims("/resources/img/pages/main/hero_bg.v4.webp")} data-dims="" />
             </picture>
             <video className="pc-only" autoPlay muted loop playsInline>
               <source src="/resources/img/pages/main/hero_video.mp4" type="video/mp4" />
@@ -161,7 +162,7 @@ function Home() {
               <span className="hero__title_ko">{(() => { try { return isEnHost() ? EN.home.h1 : "청라 아크원 푸르지오"; } catch { return "청라 아크원 푸르지오"; } })()}</span>
             </h1>
             <span className="hero__open">
-              <strong>10월 중</strong> OPEN 예정
+              <strong>{en ? EN_HOME.openStrong : "10월 중"}</strong>{en ? EN_HOME.openRest : " OPEN 예정"}
             </span>
           </div>
           <div className="hero__ui">
@@ -171,7 +172,7 @@ function Home() {
             </a>
             <button type="button" className="hero__video_trigger" onClick={() => setVideo(true)}>
               <span>
-                <b>청라 아크원</b> <br className="m-only" /> 홍보영상
+                <b>{en ? "Cheongna Ark-One" : "청라 아크원"}</b> <br className="m-only" /> {en ? "promo video" : "홍보영상"}
               </span>
               <span className="hero__video_play">
                 <img src="/resources/img/pages/main/ico_yt.svg" alt="" role="presentation" {...imgDims("/resources/img/pages/main/ico_yt.svg")} data-dims="" />
@@ -183,12 +184,12 @@ function Home() {
                 <img
                   className="hero__quick_content"
                   src="/resources/img/pages/main/hero_circle_01.svg"
-                  alt="분양가 상한제 적용단지"
+                  alt={en ? EN_HOME.priceCap : "분양가 상한제 적용단지"}
                   {...imgDims("/resources/img/pages/main/hero_circle_01.svg")}
                   data-dims=""
                 />
               </a>
-              <Link to="/register" className="hero__quick_item" aria-label="사전고객등록">
+              <Link to="/register" className="hero__quick_item" aria-label={en ? EN_HOME.registerAria : "사전고객등록"}>
                 <HeroOrbit />
                 <img className="hero__quick_content" src="/resources/img/pages/main/hero_circle_register.svg" alt="사전고객등록 바로가기 아이콘" {...imgDims("/resources/img/pages/main/hero_circle_register.svg")} data-dims="" />
               </Link>
@@ -198,15 +199,15 @@ function Home() {
 
         <section className="event-card" aria-labelledby="event-title">
           <div className="event-card__inner">
-            <p className="event-card__eyebrow">사전고객등록 고객 대상 이벤트</p>
+            <p className="event-card__eyebrow">{en ? EN_HOME.eventEyebrow : "사전고객등록 고객 대상 이벤트"}</p>
             <h2 id="event-title">백화점 상품권 30만원</h2>
             <p className="event-card__brands">상품권 종류: 롯데·현대·신세계 백화점 가운데 1종</p>
             <p className="event-card__basis">받으실 수 있는 분: 이 홈페이지에서 사전고객등록을 한 뒤 담당자 안내를 받아 MGM 등록(개인정보를 제3자에게 제공하는 데 대한 동의 절차 포함)까지 마치고, 청약에 당첨되어 MGM 인정조건을 충족한 고객입니다.</p>
             <p className="event-card__payout">상품권은 당첨과 MGM 인정조건 충족이 확인되면 계약하는 날 드립니다.</p>
             <ol className="event-card__steps"><li>STEP 1 사전고객등록(홈페이지)</li><li>STEP 2 담당자 안내로 MGM 등록</li><li>STEP 3 공고 후 청약 신청</li><li>STEP 4 당첨·MGM 인정 확인</li><li>STEP 5 계약일 상품권 수령</li></ol>
-            <div className="event-card__actions"><Link className="event-card__button" to="/register">사전고객등록하기</Link><a href="#event-terms">유의사항 자세히 보기</a></div>
-            <p className="event-card__schedule">일정: 10월 중 OPEN 예정 · 세부 일정은 대표번호 1833-3872로 문의</p>
-            <p className="event-card__notice">※ 청약 접수는 별도 절차이며, 사전고객등록만으로 청약이 되지는 않습니다.</p>
+            <div className="event-card__actions"><Link className="event-card__button" to="/register">{en ? EN_HOME.registerBtn : "사전고객등록하기"}</Link><a href="#event-terms">유의사항 자세히 보기</a></div>
+            <p className="event-card__schedule">{en ? EN_HOME.schedule : "일정: 10월 중 OPEN 예정 · 세부 일정은 대표번호 1833-3872로 문의"}</p>
+            <p className="event-card__notice">{en ? EN_HOME.notice : "※ 청약 접수는 별도 절차이며, 사전고객등록만으로 청약이 되지는 않습니다."}</p>
             <p>등록 여부는 <a href={SITE_TEL_HREF}>1833-3872</a>(대표번호)에서 확인하실 수 있습니다.</p>
             <details id="event-terms" className="event-card__terms"><summary>이벤트 유의사항 (청라 아크원 푸르지오 APT 사전고객등록)</summary>
               <ol>
@@ -255,7 +256,7 @@ function Home() {
                 <br />
                 <small>2017.7 한신더휴 이후 · 부동산R114 집계(아시아경제 2026.09.02 보도 기준)</small>
               </p>
-              <h2 className="section-overview__copy_title">청라 아크원 푸르지오 사업 규모</h2>
+              <h2 className="section-overview__copy_title">{en ? EN_HOME.overviewCopy : "청라 아크원 푸르지오 사업 규모"}</h2>
               <p className="section-overview__copy_brand">ARK-ONE</p>
             </header>
             <article className="overview-panel">

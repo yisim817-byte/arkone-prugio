@@ -4,7 +4,7 @@ import { GuideDetail } from "@/components/seo-guide";
 import { SubNotice } from "@/components/notice";
 import { canonicalLinks } from "@/lib/seo-host"
 import { isEnHost } from "@/lib/seo-host"
-import { EN } from "@/lib/i18n/en";
+import { EN, EN_BRAND } from "@/lib/i18n/en";
 import { imgDims } from "@/components/img";
 
 export const Route = createFileRoute("/pages/brand")({
@@ -56,12 +56,14 @@ const FAQ = [
 ];
 
 function BrandPage() {
+  const en = (() => { try { return isEnHost(); } catch { return false; } })();
+
   return (
     <SiteShell path="/pages/brand">
       <div className="page_content">
         <section className="page_container">
           {/* SEO_PUSH 2026-10-06 P1-1: 페이지 고유 H1 (title 앞부분) */}
-          <h1 className="page-h1">청라 아크원 푸르지오 히스토리·주변 개발 일정</h1><p>푸르지오 브랜드타운 2,911세대·실은 청라 피크원 푸르지오를 포함한 합산 규모이며, 단일 단지가 아닙니다.</p>
+          <h1 className="page-h1">{en ? EN_BRAND.h1 : "청라 아크원 푸르지오 히스토리·주변 개발 일정"}</h1><p>푸르지오 브랜드타운 2,911세대·실은 청라 피크원 푸르지오를 포함한 합산 규모이며, 단일 단지가 아닙니다.</p>
           <div className="brand_image__container">
             <figure className="brand_image__img">
               <picture>

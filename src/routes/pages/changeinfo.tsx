@@ -3,7 +3,7 @@ import { SiteShell } from "@/components/site-shell";
 import { ZoomButton } from "@/components/notice";
 import { canonicalLinks } from "@/lib/seo-host"
 import { isEnHost } from "@/lib/seo-host"
-import { EN } from "@/lib/i18n/en";
+import { EN, EN_CHANGE } from "@/lib/i18n/en";
 import { GuideAnswer, GuideDetail } from "@/components/seo-guide";
 import { SRC_APPLYHOME } from "@/lib/arkone-facts";
 import { imgDims } from "@/components/img";
@@ -20,12 +20,14 @@ export const Route = createFileRoute("/pages/changeinfo")({
 });
 
 function ChangeInfoPage() {
+  const en = (() => { try { return isEnHost(); } catch { return false; } })();
+
   const src = "/resources/img/sub/01_변경된_청약제도.v4.jpg";
   return (
     <SiteShell path="/pages/changeinfo">
       <div className="page_content">
         <section className="page_container">
-          <GuideAnswer title="청라 아크원 푸르지오 청약 전 확인할 청약제도 변경 사항">
+          <GuideAnswer title={en ? EN_CHANGE.h1 : "청라 아크원 푸르지오 청약 전 확인할 청약제도 변경 사항"}>
             <p>청라 아크원 푸르지오에 적용되는 공급 유형, 자격 요건, 청약 일정은 입주자모집공고에서 확정되며 현재는 미정입니다. 청라 아크원 푸르지오는 10월 중 OPEN 예정입니다. 세부 일정은 대표번호 1833-3872로 문의해 주세요.</p>
           </GuideAnswer>
           <figure>

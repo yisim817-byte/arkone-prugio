@@ -3,7 +3,7 @@ import { SiteShell } from "@/components/site-shell";
 import { SubNotice } from "@/components/notice";
 import { canonicalLinks } from "@/lib/seo-host"
 import { isEnHost } from "@/lib/seo-host"
-import { EN } from "@/lib/i18n/en";
+import { EN, EN_PREMIUM } from "@/lib/i18n/en";
 import { imgDims } from "@/components/img";
 
 export const Route = createFileRoute("/pages/premium")({
@@ -38,12 +38,14 @@ function Pic({
 }
 
 function PremiumPage() {
+  const en = (() => { try { return isEnHost(); } catch { return false; } })();
+
   return (
     <SiteShell path="/pages/premium">
       <div className="page_content">
         <section className="page_container">
           {/* SEO_PUSH 2026-10-06 P1-1: 페이지 고유 H1 (title 앞부분) */}
-          <h1 className="page-h1">청라 아크원 푸르지오 프리미엄</h1>
+          <h1 className="page-h1">{en ? EN_PREMIUM.h1 : "청라 아크원 푸르지오 프리미엄"}</h1>
           <header className="premium_intro">
             <p>청라 아크원 푸르지오 상품 안내</p>
             <h2>주요 상품 특징</h2>
