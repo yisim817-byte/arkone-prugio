@@ -1,7 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteShell } from "@/components/site-shell";
 import { SubNotice, ZoomButton } from "@/components/notice";
-import { canonicalLinks, faqJsonLd } from "@/lib/seo-host";
+import { canonicalLinks, faqJsonLd } from "@/lib/seo-host"
+import { isEnHost } from "@/lib/seo-host"
+import { EN } from "@/lib/i18n/en";
 import { GuideAnswer, GuideDetail, type GuideFaq } from "@/components/seo-guide";
 import { imgDims } from "@/components/img";
 
@@ -28,8 +30,8 @@ export const Route = createFileRoute("/pages/location")({
   component: LocationPage,
   head: () => ({
     meta: [
-      { title: "청라 아크원 푸르지오 입지 | 국제업무단지 M5BL" },
-      { name: "description", content: "청라 아크원 푸르지오 입지. 청라동 86-1번지 국제업무단지 M5BL, 청라하늘대교, 7호선 국제업무단지역(예정·개통 시기 미정) 등 교통·생활 환경과 근거 자료." },
+      { title: (() => { try { return isEnHost() ? EN.location.title : "청라 아크원 푸르지오 입지 | 국제업무단지 M5BL"; } catch { return "청라 아크원 푸르지오 입지 | 국제업무단지 M5BL"; } })() },
+      { name: "description", content: (() => { try { return isEnHost() ? EN.location.desc : "청라 아크원 푸르지오 입지. 청라동 86-1번지 국제업무단지 M5BL, 청라하늘대교, 7호선 국제업무단지역(예정·개통 시기 미정) 등 교통·생활 환경과 근거 자료."; } catch { return "청라 아크원 푸르지오 입지. 청라동 86-1번지 국제업무단지 M5BL, 청라하늘대교, 7호선 국제업무단지역(예정·개통 시기 미정) 등 교통·생활 환경과 근거 자료."; } })() },
     ],
     links: canonicalLinks("/pages/location"),
     scripts: faqJsonLd(FAQ),

@@ -1,7 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteShell } from "@/components/site-shell";
 import { ZoomButton } from "@/components/notice";
-import { canonicalLinks } from "@/lib/seo-host";
+import { canonicalLinks } from "@/lib/seo-host"
+import { isEnHost } from "@/lib/seo-host"
+import { EN } from "@/lib/i18n/en";
 import { GuideAnswer, GuideDetail } from "@/components/seo-guide";
 import { SRC_APPLYHOME } from "@/lib/arkone-facts";
 import { imgDims } from "@/components/img";
@@ -10,8 +12,8 @@ export const Route = createFileRoute("/pages/docspecial")({
   component: DocSpecialPage,
   head: () => ({
     meta: [
-      { title: "청라 아크원 푸르지오 특별공급 안내 | 청약 자격" },
-      { name: "description", content: "청라 아크원 푸르지오 특별공급 안내. 유형별 공급 물량·신청 자격·일정은 입주자모집공고에서 확정되며, 청약홈 공고문 기준으로 확인하세요." },
+      { title: (() => { try { return isEnHost() ? EN.docspecial.title : "청라 아크원 푸르지오 특별공급 안내 | 청약 자격"; } catch { return "청라 아크원 푸르지오 특별공급 안내 | 청약 자격"; } })() },
+      { name: "description", content: (() => { try { return isEnHost() ? EN.docspecial.desc : "청라 아크원 푸르지오 특별공급 안내. 유형별 공급 물량·신청 자격·일정은 입주자모집공고에서 확정되며, 청약홈 공고문 기준으로 확인하세요."; } catch { return "청라 아크원 푸르지오 특별공급 안내. 유형별 공급 물량·신청 자격·일정은 입주자모집공고에서 확정되며, 청약홈 공고문 기준으로 확인하세요."; } })() },
     ],
     links: canonicalLinks("/pages/docspecial"),
   }),

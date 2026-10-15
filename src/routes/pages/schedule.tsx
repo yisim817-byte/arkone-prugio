@@ -1,7 +1,9 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteShell } from "@/components/site-shell";
 import { SubNotice } from "@/components/notice";
-import { canonicalLinks, faqJsonLd } from "@/lib/seo-host";
+import { canonicalLinks, faqJsonLd } from "@/lib/seo-host"
+import { isEnHost } from "@/lib/seo-host"
+import { EN } from "@/lib/i18n/en";
 import { GuideAnswer, GuideDetail, type GuideFaq } from "@/components/seo-guide";
 import { SRC_APPLYHOME } from "@/lib/arkone-facts";
 
@@ -36,11 +38,9 @@ export const Route = createFileRoute("/pages/schedule")({
   component: SchedulePage,
   head: () => ({
     meta: [
-      { title: "청라 아크원 푸르지오 분양가·분양 일정·청약 안내" },
+      { title: (() => { try { return isEnHost() ? EN.schedule.title : "청라 아크원 푸르지오 분양가·분양 일정·청약 안내"; } catch { return "청라 아크원 푸르지오 분양가·분양 일정·청약 안내"; } })() },
       {
-        name: "description",
-        content:
-          "청라 아크원 푸르지오 분양 일정: 모집공고 10.22 · GRAND OPEN 10.30 예정(세부 일정 문의 1833-3872). 분양가는 공고 전 미정, 입주 시기는 입주자모집공고 게시 후 공고문으로 확인해야 합니다.",
+        name: "description", content: (() => { try { return isEnHost() ? EN.schedule.desc : "청라 아크원 푸르지오 분양 일정: 모집공고 10.22 · GRAND OPEN 10.30 예정(세부 일정 문의 1833-3872). 분양가는 공고 전 미정, 입주 시기는 입주자모집공고 게시 후 공고문으로 확인해야 합니다."; } catch { return "청라 아크원 푸르지오 분양 일정: 모집공고 10.22 · GRAND OPEN 10.30 예정(세부 일정 문의 1833-3872). 분양가는 공고 전 미정, 입주 시기는 입주자모집공고 게시 후 공고문으로 확인해야 합니다."; } })(),
       },
     ],
     links: canonicalLinks("/pages/schedule"),

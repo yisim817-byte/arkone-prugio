@@ -4,14 +4,16 @@ import { SiteShell } from "@/components/site-shell";
 import { GuideDetail } from "@/components/seo-guide";
 import { YoutubeModal } from "@/components/youtube-modal";
 import { YOUTUBE_ID } from "@/lib/site-data";
-import { canonicalLinks } from "@/lib/seo-host";
+import { canonicalLinks } from "@/lib/seo-host"
+import { isEnHost } from "@/lib/seo-host"
+import { EN } from "@/lib/i18n/en";
 
 export const Route = createFileRoute("/pages/video")({
   component: VideoPage,
   head: () => ({
     meta: [
-      { title: "청라 아크원 푸르지오 홍보영상 | 사업 소개" },
-      { name: "description", content: "청라 아크원 푸르지오 홍보영상 모음. 사업주체가 공개한 단지 소개 영상을 확인할 수 있습니다." },
+      { title: (() => { try { return isEnHost() ? EN.video.title : "청라 아크원 푸르지오 홍보영상 | 사업 소개"; } catch { return "청라 아크원 푸르지오 홍보영상 | 사업 소개"; } })() },
+      { name: "description", content: (() => { try { return isEnHost() ? EN.video.desc : "청라 아크원 푸르지오 홍보영상 모음. 사업주체가 공개한 단지 소개 영상을 확인할 수 있습니다."; } catch { return "청라 아크원 푸르지오 홍보영상 모음. 사업주체가 공개한 단지 소개 영상을 확인할 수 있습니다."; } })() },
     ],
     links: canonicalLinks("/pages/video"),
   }),
