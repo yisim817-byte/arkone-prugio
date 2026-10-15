@@ -240,3 +240,7 @@ export const EN_REMAIN = {
   videoP: "Cheongna Ark-One Prugio promotional video",
   compareReg: "Pre-registration",
 };
+
+export const EN_SCHEDULE = {
+  h1: "Schedule & Application",
+};
