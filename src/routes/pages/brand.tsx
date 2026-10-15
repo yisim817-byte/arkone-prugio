@@ -93,7 +93,7 @@ function BrandPage() {
               </p>
             </div>
             <picture className="brand_image__slogan">
-              <img src="/resources/img/sub/brand_slogan_img.svg" alt="" {...imgDims("/resources/img/sub/brand_slogan_img.svg")} data-dims="" />
+              <img src="/resources/img/sub/brand_slogan_img.svg" alt="브랜드 슬로건 그래픽" {...imgDims("/resources/img/sub/brand_slogan_img.svg")} data-dims="" />
             </picture>
           </div>
 
