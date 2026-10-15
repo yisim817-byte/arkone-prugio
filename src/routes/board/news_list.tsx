@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import { SiteShell } from "@/components/site-shell";
 import { NEWS, type NewsItem } from "@/lib/news";
-import { canonicalLinks } from "@/lib/seo-host"
+import { canonicalLinks, isEnHost } from "@/lib/seo-host"
 import { EN_NEWS } from "@/lib/i18n/en";
 
 export const Route = createFileRoute("/board/news_list")({

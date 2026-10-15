@@ -163,7 +163,7 @@ export const EN_CHANGE = { h1: "Cheongna Ark-One Prugio application rule changes
 export const EN_DOCSPEC = { h1: "Cheongna Ark-One Prugio special supply guide summary" };
 export const EN_DOCNORM = { h1: "Cheongna Ark-One Prugio general supply guide summary" };
 export const EN_VIDEO = { h1: "Cheongna Ark-One Prugio promo video" };
-export const EN_NEWS = { h1: "Cheongna Ark-One Prugio press" };
+export const EN_NEWS = { title: "News Coverage", desc: "News coverage of Cheongna Ark-One Prugio. Confirm from original articles.", h1: "News Coverage" };
 
 export const EN_EVENT = {
   basis: "Eligible: customers who complete pre-registration on this site, receive agent guidance, finish MGM registration (including consent to provide personal information to a third party), win the application, and meet MGM recognition conditions.",
