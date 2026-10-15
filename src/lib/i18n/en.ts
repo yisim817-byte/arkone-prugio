@@ -225,3 +225,8 @@ export const EN_CONTACT_FAQ = [
   { q: "Where can I get guidance before the model house opens?", a: "Guidance is available at the exhibition hall (Hongik Park 1F 108, 109, Jungbong-daero 586beon-gil 19, Seohae-gu, Incheon, next to Starbucks). Confirm operating hours via 1833-3872 before visiting." },
   { q: "What should I confirm before visiting?", a: "First confirm the address and operating status of the visit place (model house·exhibition hall), and confirm application eligibility and schedule from the applyhome notice after the recruitment notice is posted." },
 ];
+
+export const EN_DESC = {
+  video: "Cheongna Ark-One Prugio video. Confirm schedule and details via 1833-3872.",
+  news: "Cheongna Ark-One Prugio news list. Confirm official notices from applyhome and the developer.",
+};
