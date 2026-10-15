@@ -110,7 +110,7 @@ function krPageJsonLd(path: string): string {
         "@id": `${url}#webpage`,
         url,
         name: `${KR_PAGE_NAMES[path]} | 청라 아크원 푸르지오`,
-        inLanguage: "ko-KR",
+        inLanguage: isEn(event) ? "en" : "ko-KR",
         isPartOf: { "@id": `${KR_ORIGIN}/#website` },
         publisher: { "@id": org["@id"] },
         breadcrumb: { "@id": `${url}#breadcrumb` },
