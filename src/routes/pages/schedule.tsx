@@ -55,7 +55,7 @@ function SchedulePage() {
     <SiteShell path="/pages/schedule">
       <div className="page_content">
         <section className="page_container">
-          <GuideAnswer title="청라 아크원 푸르지오 분양 일정·청약 안내">
+          <GuideAnswer title={en ? EN_SCHEDULE.h1 : "청라 아크원 푸르지오 분양 일정·청약 안내"}>
             <p>청라 아크원 푸르지오는 현재 입주자모집공고 전 단계입니다.</p>
             <p>{en ? EN_BODY.schedule.p1 : "청라 아크원 푸르지오는 10월 중 OPEN 예정입니다. 세부 일정은 대표번호 1833-3872로 문의해 주세요."}</p>
             <p>{en ? EN_BODY.schedule.p2 : "특별공급·1순위·2순위·당첨자 발표·계약 일정과 분양가는 아직 공개되지 않았으며(미정) 입주자모집공고에서 확정됩니다. 청라 아크원 푸르지오의 입주 시기는 입주자모집공고 게시 후 공고문으로 확인해야 합니다."}</p>
