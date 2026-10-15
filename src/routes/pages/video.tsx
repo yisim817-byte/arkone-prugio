@@ -6,7 +6,7 @@ import { YoutubeModal } from "@/components/youtube-modal";
 import { YOUTUBE_ID } from "@/lib/site-data";
 import { canonicalLinks } from "@/lib/seo-host"
 import { isEnHost } from "@/lib/seo-host"
-import { EN, EN_VIDEO } from "@/lib/i18n/en";
+import { EN, EN_VIDEO, EN_REMAIN } from "@/lib/i18n/en";
 
 export const Route = createFileRoute("/pages/video")({
   component: VideoPage,

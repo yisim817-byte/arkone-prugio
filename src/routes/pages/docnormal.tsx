@@ -3,7 +3,7 @@ import { SiteShell } from "@/components/site-shell";
 import { ZoomButton } from "@/components/notice";
 import { canonicalLinks } from "@/lib/seo-host"
 import { isEnHost } from "@/lib/seo-host"
-import { EN, EN_DOCNORM } from "@/lib/i18n/en";
+import { EN, EN_DOCNORM, EN_REMAIN } from "@/lib/i18n/en";
 import { GuideAnswer, GuideDetail } from "@/components/seo-guide";
 import { SRC_APPLYHOME } from "@/lib/arkone-facts";
 import { imgDims } from "@/components/img";
