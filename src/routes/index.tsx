@@ -6,7 +6,7 @@ import { SiteShell } from "@/components/site-shell";
 import { YoutubeModal } from "@/components/youtube-modal";
 import { SITE_NAME, SITE_PHONE, SITE_TEL_HREF, YOUTUBE_ID } from "@/lib/site-data";
 import { canonicalLinks, isKrHost, isEnHost, KR_ORIGIN, EN_ORIGIN, LEGACY_ORIGIN } from "@/lib/seo-host";
-import { EN, EN_HOME } from "@/lib/i18n/en";
+import { EN, EN_HOME, EN_EVENT } from "@/lib/i18n/en";
 
 export const Route = createFileRoute("/")({
   component: Home,
@@ -191,7 +191,7 @@ function Home() {
               </a>
               <Link to="/register" className="hero__quick_item" aria-label={en ? EN_HOME.registerAria : "사전고객등록"}>
                 <HeroOrbit />
-                <img className="hero__quick_content" src="/resources/img/pages/main/hero_circle_register.svg" alt="사전고객등록 바로가기 아이콘" {...imgDims("/resources/img/pages/main/hero_circle_register.svg")} data-dims="" />
+                <img className="hero__quick_content" src="/resources/img/pages/main/hero_circle_register.svg" alt={en ? "Pre-registration shortcut icon" : "사전고객등록 바로가기 아이콘"} {...imgDims("/resources/img/pages/main/hero_circle_register.svg")} data-dims="" />
               </Link>
             </div>
           </div>
@@ -208,8 +208,7 @@ function Home() {
             <div className="event-card__actions"><Link className="event-card__button" to="/register">사전고객등록하기</Link><a href="#event-terms">유의사항 자세히 보기</a></div>
             <p className="event-card__schedule">일정: 모집공고 10.22 · GRAND OPEN 10.30 예정 · 세부 일정은 대표번호 1833-3872로 문의</p>
             <p className="event-card__notice">※ 청약 접수는 별도 절차이며, 사전고객등록만으로 청약이 되지는 않습니다.</p>            <p>등록 여부는 <a href={SITE_TEL_HREF}>1833-3872</a>(대표번호)에서 확인하실 수 있습니다.</p>
-            <details id="event-terms" className="event-card__terms"><summary>이벤트 유의사항 (청라 아크원 푸르지오 APT 사전고객등록)</summary>
-              <ol>
+            <details id="event-terms" className="event-card__terms"><summary>이벤트 유의사항 (청라 아크원 푸르지오 APT 사전고객등록)</summary>              <ol>
                 <li>지급 대상: 이 홈페이지에서 사전고객등록을 한 뒤, 청라 아크원 푸르지오 아파트 청약에 당첨되어 지급 조건을 충족한 고객</li>
                 <li>혜택 내용: 롯데·현대·신세계 백화점 상품권 가운데 1종, 30만원</li><li>지급일: 당첨과 지급 조건 충족을 확인한 뒤 계약 당일</li>
                 <li>한 사람에게 한 번만 지급하며, 같은 사람과 같은 휴대전화번호는 한 사람으로 봅니다.</li>
@@ -223,7 +222,7 @@ function Home() {
         </section>
 
         <section className="hero-define">
-          <Img className="hero-define__visual" src="/resources/img/pages/main/hero_brand_img.v4.webp" alt="청라 아크원 푸르지오 엠블럼" />
+          <Img className="hero-define__visual" src="/resources/img/pages/main/hero_brand_img.v4.webp" alt={en ? "Cheongna Ark-One Prugio emblem" : "청라 아크원 푸르지오 엠블럼"} />
           <div className="hero-define__copy">
             <Img src="/resources/img/pages/main/ico_star.svg" alt="" role="presentation" width={28} height={28} />
             <p className="hero-define__title">아크원(ARK-ONE)이란?</p>
@@ -250,7 +249,7 @@ function Home() {
           <div className="section-overview__inner">
             <header>
               <p className="section-overview__copy_text">
-                청라 약 10년 만의
+                {en ? "First in Cheongna in about 10 years" : "청라 약 10년 만의"}
                 <br />500가구 이상 아파트 공급
                 <br />
                 <small>2017.7 한신더휴 이후 · 부동산R114 집계(아시아경제 2026.09.02 보도 기준)</small>
@@ -262,7 +261,7 @@ function Home() {
               <h3>
                 총 2,911세대·실<small>(B1 & M5 블록)</small>
                 <br />
-                청라 피크원 푸르지오와 함께하는
+                {en ? "Together with Cheongna Peak-One Prugio" : "청라 피크원 푸르지오와 함께하는"}
                 <br />
                 푸르지오 대규모 브랜드타운
               </h3>
@@ -314,9 +313,9 @@ function Home() {
           <div className="section-location__info">
             <p className="section-location__eyebrow">CENTRAL LOCATION</p>
             <p className="section-location__desc">
-              청라국제업무단지 M5블록,
+              {en ? "Cheongna International Business District M5 block," : "청라국제업무단지 M5블록,"}
               <br />
-              인천 서해구 청라동 86-1번지 일원
+              {en ? "Cheongna-dong 86-1, Seohae-gu, Incheon area" : "인천 서해구 청라동 86-1번지 일원"}
             </p>
             <Link to="/pages/location" className="section-location__link">
               <span>view more</span>
@@ -325,9 +324,9 @@ function Home() {
             <figure className="section-location__map">
               <Img
                 src="/resources/img/pages/main/location_map.v4.png"
-                alt="청라 국제도시 내 청라 아크원 푸르지오 위치"
+                alt={en ? "Cheongna Ark-One Prugio location in Cheongna International City" : "청라 국제도시 내 청라 아크원 푸르지오 위치"}
               />
-              <Img className="section-location__bubble" src="/resources/img/pages/main/location_bubble.v4.png" alt="청라 아크원 푸르지오 위치 표시" />
+              <Img className="section-location__bubble" src="/resources/img/pages/main/location_bubble.v4.png" alt={en ? "Cheongna Ark-One Prugio location marker" : "청라 아크원 푸르지오 위치 표시"} />
             </figure>
           </div>
         </section>

@@ -63,7 +63,7 @@ function OverviewPage() {
                 <source media="(max-width: 1024px)" srcSet="/resources/img/sub/overview_apt_img_m.v4.jpg" />
                 <img src="/resources/img/sub/overview_apt_img.v4.jpg" alt="고층 주거타워와 도로가 보이는 단지 투시도 CG" {...imgDims("/resources/img/sub/overview_apt_img.v4.jpg")} data-dims="" />
               </picture>
-              <span className="overview_image__caption">이미지컷</span>
+              <span className="overview_image__caption">{en ? "Image cut" : "이미지컷"}</span>
               <figcaption className="overview_image__text">
                 <p>
                   아파트 868세대
