@@ -65,11 +65,11 @@ function SchedulePage() {
             tableTitle="분양 일정 및 주요 조건 상태"
             columns={["항목", "내용", "상태"]}
             rows={[
-              { label: "APT 입주자모집공고", value: "세부 일정 문의 1833-3872", status: "예정" },
+              { label: en ? "APT recruitment notice" : "APT 입주자모집공고", value: en ? "Details via 1833-3872" : "세부 일정 문의 1833-3872", status: en ? "expected" : "예정" },
               { label: "GRAND OPEN", value: "10월 중 · 사업주체 홈페이지 표기 '10월 OPEN 예정'", status: "예정" },
-              { label: "특별공급·1순위·2순위 접수", value: "입주자모집공고 확정 후 안내", status: "미정" },
+              { label: en ? "Special·1st·2nd rank application" : "특별공급·1순위·2순위 접수", value: en ? "Guided after recruitment notice" : "입주자모집공고 확정 후 안내", status: en ? "TBD" : "미정" },
               { label: "당첨자 발표·계약", value: "입주자모집공고 확정 후 안내", status: "미정" },
-              { label: "분양가", value: "미공개 (사업주체 표기: 분양가 상한제 적용단지)", status: "미정" },
+              { label: en ? "Sale price" : "분양가", value: en ? "Unpublished (developer mark: price-cap applicable complex)" : "미공개 (사업주체 표기: 분양가 상한제 적용단지)", status: en ? "TBD" : "미정" },
               { label: "중도금·대출 등 금융 조건", value: "미공개", status: "미정" },
               { label: "오피스텔 공고 일정", value: "미안내", status: "미정" },
               { label: "입주 시기", value: "입주 시기는 입주자모집공고 게시 후 공고문으로 확인해야 합니다", status: "예정" },

@@ -164,3 +164,18 @@ export const EN_DOCSPEC = { h1: "Cheongna Ark-One Prugio special supply guide su
 export const EN_DOCNORM = { h1: "Cheongna Ark-One Prugio general supply guide summary" };
 export const EN_VIDEO = { h1: "Cheongna Ark-One Prugio promo video" };
 export const EN_NEWS = { h1: "Cheongna Ark-One Prugio press" };
+
+export const EN_EVENT = {
+  basis: "Eligible: customers who complete pre-registration on this site, receive agent guidance, finish MGM registration (including consent to provide personal information to a third party), win the application, and meet MGM recognition conditions.",
+  steps: ["STEP 1 Pre-registration (site)", "STEP 2 MGM registration via agent guidance", "STEP 3 Application after notice", "STEP 4 Winner·MGM recognition check", "STEP 5 Gift certificate on contract day"],
+  termsSummary: "Event notes (Cheongna Ark-One Prugio APT pre-registration)",
+  terms: [
+    "Eligible: customers who complete pre-registration on this site, receive agent guidance, finish MGM registration (including consent to provide personal information to a third party), win the Cheongna Ark-One Prugio apartment application, and meet MGM recognition conditions",
+    "Benefit: one of Lotte·Hyundai·Shinsegae department store gift certificates, 300,000 KRW",
+    "Payment day: contract day after confirming win and MGM recognition conditions",
+    "Paid once per person; the same person and same mobile number count as one person.",
+    "Not paid if disqualified, if no contract is signed, or if the contract is cancelled. If such a reason arises after payment, the agent will separately inform the handling standard.",
+    "Pre-registration is not an application. Application eligibility and schedule follow the recruitment notice.",
+  ],
+  termsLink: "View notes",
+};
