@@ -40,7 +40,7 @@ export const Route = createFileRoute("/pages/schedule")({
     meta: [
       { title: (() => { try { return isEnHost() ? EN.schedule.title : "청라 아크원 푸르지오 분양가·분양 일정·청약 안내"; } catch { return "청라 아크원 푸르지오 분양가·분양 일정·청약 안내"; } })() },
       {
-        name: "description", content: (() => { try { return isEnHost() ? EN.schedule.desc : "청라 아크원 푸르지오 분양 일정: 10월 중 OPEN 예정(세부 일정 문의 1833-3872). 분양가는 공고 전 미정, 입주 시기는 입주자모집공고 게시 후 공고문으로 확인해야 합니다."; } catch { return "청라 아크원 푸르지오 분양 일정: 10월 중 OPEN 예정(세부 일정 문의 1833-3872). 분양가는 공고 전 미정, 입주 시기는 입주자모집공고 게시 후 공고문으로 확인해야 합니다."; } })(),
+        name: "description", content: (() => { try { return isEnHost() ? EN.schedule.desc : "청라 아크원 푸르지오 분양 일정. 10월 중 OPEN 예정. 세부 일정 1833-3872. 분양가·입주 시기는 공고문 확인."; } catch { return "청라 아크원 푸르지오 분양 일정. 10월 중 OPEN 예정. 세부 일정 1833-3872. 분양가·입주 시기는 공고문 확인."; } })(),
       },
     ],
     links: canonicalLinks("/pages/schedule"),
