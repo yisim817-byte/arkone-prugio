@@ -75,7 +75,7 @@ function ComparePage() {
               { to: "/pages/schedule", label: "분양 일정·청약 안내" },
               { to: "/pages/premium", label: "프리미엄" },
               { to: "/pages/contact", label: "견본주택·홍보관 오시는길" },
-              { to: "/register", label: "사전고객등록" },
+              { to: "/register", label: en ? EN_REMAIN.compareReg : "사전고객등록" },
             ]}
             sources={[SRC_APPLYHOME]}
           />
