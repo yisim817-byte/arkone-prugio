@@ -246,10 +246,15 @@ export const EN_SCHEDULE = {
 };
 
 export const EN_PRODUCT = {
+  brand: "Cheongna ARK ONE PRUGIO",
+  legend: "Select a product *",
+  validation: "Select Apartment, Officetel or Retail for pre-registration.",
+  registered: "Registered product",
   apt: "Apartment",
   officetel: "Officetel",
   commercial: "Retail",
   guide: "Our team will contact you about the Retail option you selected.",
+  officetelGuide: "Our team will contact you about the Officetel option you selected.",
   step: "STEP 1 Retail pre-registration complete · STEP 2 Our team will guide you on the Retail option",
   lead: "Apartment · Officetel · Retail pre-registration",
 };
