@@ -255,6 +255,7 @@ export const EN_PRODUCT = {
   commercial: "Retail",
   guide: "Our team will contact you about the Retail option you selected.",
   officetelGuide: "Our team will contact you about the Officetel option you selected.",
+  officetelEventGuide: "Officetel pre-registration is handled separately from the Apartment event.",
   step: "STEP 1 Retail pre-registration complete · STEP 2 Our team will guide you on the Retail option",
   lead: "Apartment · Officetel · Retail pre-registration",
 };
