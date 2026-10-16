@@ -244,3 +244,12 @@ export const EN_REMAIN = {
 export const EN_SCHEDULE = {
   h1: "Schedule & Application",
 };
+
+export const EN_PRODUCT = {
+  apt: "Apartment",
+  officetel: "Officetel",
+  commercial: "Retail",
+  guide: "Our team will contact you about the Retail option you selected.",
+  step: "STEP 1 Retail pre-registration complete · STEP 2 Our team will guide you on the Retail option",
+  lead: "Apartment · Officetel · Retail pre-registration",
+};
