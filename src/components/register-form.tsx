@@ -1,6 +1,8 @@
 import { useEffect, useState, type FormEvent } from "react";
 import { SITE_PHONE, SITE_TEL_HREF } from "@/lib/site-data";
 import { PreregShare } from "@/components/prereg-share";
+import { isEnHost } from "@/lib/seo-host";
+import { EN_PRODUCT } from "@/lib/i18n/en";
 
 const ENDPOINT = "https://jzmktahlrwtrtejjflrw.supabase.co/functions/v1/arkone-prereg-submit";
 const CONSENT_VERSION = "2026-09-26-v2";
@@ -38,6 +40,7 @@ function stored(key: string) {
 }
 
 export function RegisterForm() {
+  const en = (() => { try { return isEnHost(); } catch { return false; } })();
   const [step, setStep] = useState<1 | 2 | "done">(1);
   const [product, setProduct] = useState<Product>("");
   const [name, setName] = useState("");
@@ -131,7 +134,7 @@ export function RegisterForm() {
     event.preventDefault();
     const digits = phone.replace(/\D/g, "");
     const next: Record<string, string> = {};
-    if (!product) next.product = "아파트·오피스텔·상가 중 등록하실 상품을 선택해 주세요.";
+    if (!product) next.product = en ? EN_PRODUCT.validation : "아파트·오피스텔·상가 중 등록하실 상품을 선택해 주세요.";
     if (name.trim().length < 2 || name.trim().length > 20) next.name = "2~20자로 입력해 주세요.";
     if (!(digits.startsWith("010") && digits.length === 11)) next.phone = "010으로 시작하는 11자리를 입력해 주세요.";
     if (!birth) next.birth = "생년월일 6자리를 입력해 주세요.";
@@ -191,18 +194,18 @@ export function RegisterForm() {
       <div className="reg reg__done" tabIndex={-1}>
         <p>청라 아크원 푸르지오</p>
         <h3>사전등록 완료되었습니다.</h3>
-        <p>등록 상품 {product === "officetel" ? "오피스텔" : product === "commercial" ? "상가" : "아파트"}</p>
+        {en ? <p>{EN_PRODUCT.registered} {EN_PRODUCT[product || "apt"]}</p> : <p>등록 상품 {product === "officetel" ? "오피스텔" : product === "commercial" ? "상가" : "아파트"}</p>}
         {duplicate ? <p role="status">이미 사전등록된 번호입니다. 최초 접수번호 <b>{receipt}</b></p> : <p>접수번호 <b>{receipt}</b></p>}
         <p>접수시각 {formatKst(createdAt)}</p>
         <PreregShare receipt={receipt} at={formatKst(createdAt)} />
         <p>이 화면을 캡처해 두시면 등록 확인이 빠릅니다.</p>
         <p className="prereg-confirm">{PHRASE.slice(0, 16)}<a href={SITE_TEL_HREF}>1833-3872</a>{PHRASE.slice(25)}</p>
-        <p>STEP 1 홈페이지 사전고객등록 완료</p>
+        <p>{en && product === "commercial" ? EN_PRODUCT.step : "STEP 1 홈페이지 사전고객등록 완료"}</p>
         {product === "apt" ? <>
           <p>STEP 2 공식 청약 진행 (입주자모집공고 기준)</p>
           <p>STEP 3 청약 당첨 및 지급 조건 확인</p>
           <p>STEP 4 백화점 상품권 선택 및 지급 (대상 조건 충족 시)</p>
-        </> : product === "commercial" ? <p>선택하신 상가 상품으로 담당자가 안내드립니다.</p> : <p>선택하신 오피스텔 상품으로 담당자가 안내드립니다.</p>}
+        </> : product === "commercial" ? <p>{en ? EN_PRODUCT.guide : "선택하신 상가 상품으로 담당자가 안내드립니다."}</p> : <p>{en ? EN_PRODUCT.officetelGuide : "선택하신 오피스텔 상품으로 담당자가 안내드립니다."}</p>}
         <p><a className="reg__submit" href={SITE_TEL_HREF}>등록 확인 전화하기 1833-3872</a></p>
         <p>일정이 변경되면 담당자가 등록하신 휴대전화로 연락드립니다.</p>
         <p>※ 사전고객등록은 공식 청약 신청이 아닙니다.</p>
@@ -212,23 +215,23 @@ export function RegisterForm() {
 
   return (
     <div className="reg">
-      <p className="reg__lead"><b>청라 아크원 푸르지오</b> 아파트·오피스텔·상가 사전등록</p>
+      {en ? <p className="reg__lead"><b>{EN_PRODUCT.brand}</b> {EN_PRODUCT.lead}</p> : <p className="reg__lead"><b>청라 아크원 푸르지오</b> 아파트·오피스텔·상가 사전등록</p>}
       <form onSubmit={step === 1 ? onStep1 : onStep2} noValidate>
         <p className="prereg-step">[1/2] 기본 정보 · 필수</p>
         {step === 2 ? <div className="reg__receipt reg__receipt--done" role="status">
           <strong className="reg__done-title">사전등록 완료되었습니다.</strong>
           <span>{duplicate ? "이미 사전등록된 번호입니다. 최초 접수번호" : "접수번호"} {receipt} · 접수시각 {formatKst(createdAt)}</span>
-          <span>등록 상품 {product === "officetel" ? "오피스텔" : product === "commercial" ? "상가" : "아파트"} · 성명 {name} · 휴대전화 {phone} · 생년월일 {birth}</span>
+          {en ? <span>{EN_PRODUCT.registered} {EN_PRODUCT[product || "apt"]} · 성명 {name} · 휴대전화 {phone} · 생년월일 {birth}</span> : <span>등록 상품 {product === "officetel" ? "오피스텔" : product === "commercial" ? "상가" : "아파트"} · 성명 {name} · 휴대전화 {phone} · 생년월일 {birth}</span>}
           <PreregShare receipt={receipt} at={formatKst(createdAt)} />
         </div> : null}
         {alert ? <p className="reg__error" role="alert">{alert}</p> : null}
         <div hidden={step === 2}>
         <fieldset className={`reg__product${errors.product ? " is-err" : ""}`} disabled={step === 2}>
-          <legend>등록하실 상품을 선택해 주세요 *</legend>
+          <legend>{en ? EN_PRODUCT.legend : "등록하실 상품을 선택해 주세요 *"}</legend>
           <div className="reg__product-options">
-            <label><input type="radio" name="product" value="apt" checked={product === "apt"} onChange={() => { setProduct("apt"); setInterest(""); setSpecial(""); }} /><span>아파트 사전고객등록</span></label>
-            <label><input type="radio" name="product" value="officetel" checked={product === "officetel"} onChange={() => { setProduct("officetel"); setInterest("오피스텔"); setSpecial(""); }} /><span>오피스텔 사전등록</span></label>
-            <label><input type="radio" name="product" value="commercial" checked={product === "commercial"} onChange={() => { setProduct("commercial"); setInterest("상가"); setSpecial(""); }} /><span>상가 사전등록</span></label>
+            <label><input type="radio" name="product" value="apt" checked={product === "apt"} onChange={() => { setProduct("apt"); setInterest(""); setSpecial(""); }} /><span>{en ? EN_PRODUCT.apt : "아파트 사전고객등록"}</span></label>
+            <label><input type="radio" name="product" value="officetel" checked={product === "officetel"} onChange={() => { setProduct("officetel"); setInterest("오피스텔"); setSpecial(""); }} /><span>{en ? EN_PRODUCT.officetel : "오피스텔 사전등록"}</span></label>
+            <label><input type="radio" name="product" value="commercial" checked={product === "commercial"} onChange={() => { setProduct("commercial"); setInterest("상가"); setSpecial(""); }} /><span>{en ? EN_PRODUCT.commercial : "상가 사전등록"}</span></label>
           </div>
           {errors.product ? <p className="reg__msg">{errors.product}</p> : null}
         </fieldset>
@@ -282,7 +285,7 @@ export function RegisterForm() {
             <div className="reg__field"><label htmlFor="f-sigungu">시·군·구</label><input id="f-sigungu" value={sigungu} maxLength={20} onChange={(e) => setSigungu(e.target.value)} /></div>
             <div className="reg__field"><label htmlFor="f-dong">읍·면·동</label><input id="f-dong" value={dong} maxLength={20} onChange={(e) => setDong(e.target.value)} /></div>
             <p>관심타입</p>
-            <div className="prereg-chips">{(product === "apt" ? ["APT 84㎡","APT 103㎡","미정"] : product === "commercial" ? ["상가"] : ["오피스텔"]).map((item) => <label key={item}><input type="radio" name="interest_type" checked={interest === item} onChange={() => setInterest(item)} /><span>{item}</span></label>)}</div>
+            <div className="prereg-chips">{(product === "apt" ? ["APT 84㎡","APT 103㎡","미정"] : product === "commercial" ? ["상가"] : ["오피스텔"]).map((item) => <label key={item}><input type="radio" name="interest_type" checked={interest === item} onChange={() => setInterest(item)} /><span>{en && product === "commercial" ? EN_PRODUCT.commercial : en && product === "officetel" ? EN_PRODUCT.officetel : item}</span></label>)}</div>
             {product === "apt" ? <><p>특별공급 관심</p>
             <div className="prereg-chips">{["신혼부부","생애최초","신생아","다자녀","노부모","기관추천","해당없음","모름"].map((item) => <label key={item}><input type="radio" name="special_supply" checked={special === item} onChange={() => setSpecial(item)} /><span>{item}</span></label>)}</div></> : null}
             <button className="reg__submit" type="submit" disabled={busy}>{busy ? "접수 중…" : "추가 정보 저장"}</button>

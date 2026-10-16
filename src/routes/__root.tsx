@@ -3,7 +3,7 @@ import { AuthProvider } from "@/lib/auth/provider";
 import { PreviewHostBridge } from "@/components/preview-host-bridge";
 import appCss from "../styles.css?url";
 import { SITE_NAME } from "@/lib/site-data";
-import { isIndexablePath, isKrHost } from "@/lib/seo-host";
+import { isIndexablePath, isKrHost, isEnHost, KR_ORIGIN, EN_ORIGIN } from "@/lib/seo-host";
 
 export const Route = createRootRoute({
   head: ({ matches }) => ({
@@ -18,7 +18,7 @@ export const Route = createRootRoute({
       {
         name: "robots",
         content:
-          isKrHost() &&
+          (isKrHost() || isEnHost()) &&
           matches.length > 1 &&
           matches[matches.length - 1]?.routeId !== "__root__" &&
           !matches.some((m) => m.status === "notFound" || m.status === "error") &&
@@ -36,7 +36,11 @@ export const Route = createRootRoute({
         title: "청라 아크원 푸르지오 분양 일정·청약 RSS",
         href: "https://www.xn--2w2b19sita0u67iz2mi7g.site/rss.xml",
       },
-      { rel: "stylesheet", href: appCss },
+      
+      { rel: "alternate", hreflang: "ko", href: KR_ORIGIN + (matches[matches.length - 1]?.pathname ?? "/") },
+      { rel: "alternate", hreflang: "en", href: EN_ORIGIN + (matches[matches.length - 1]?.pathname ?? "/") },
+      { rel: "alternate", hreflang: "x-default", href: KR_ORIGIN + (matches[matches.length - 1]?.pathname ?? "/") },
+{ rel: "stylesheet", href: appCss },
       { rel: "manifest", href: "/__grok/manifest.webmanifest" },
       { rel: "apple-touch-icon", href: "/g-icon-180.png" },
       {
@@ -55,7 +59,7 @@ export const Route = createRootRoute({
     ],
   }),
   component: () => (
-    <html lang="ko" suppressHydrationWarning>
+    <html lang={isEnHost() ? "en" : "ko"} suppressHydrationWarning>
       <head>
         <HeadContent />
       </head>

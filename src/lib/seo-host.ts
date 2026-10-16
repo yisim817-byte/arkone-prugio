@@ -54,13 +54,28 @@ export function isKrHost(): boolean {
   }
 }
 
+export const EN_ORIGIN = "https://www.arkone-prugio.site";
+const EN_HOSTS = new Set(["www.arkone-prugio.site"]);
+
+export function isEnHostName(raw: string | null | undefined): boolean {
+  return EN_HOSTS.has(normalizeHost(raw));
+}
+
+export function isEnHost(): boolean {
+  try {
+    return isEnHostName(readHost());
+  } catch {
+    return false;
+  }
+}
+
 export function isIndexablePath(pathname: string): boolean {
   return INDEXABLE.has(pathname);
 }
 
 /** Canonical link for a route path. Legacy hosts keep the exact previous URL. */
 export function canonicalLinks(path: string) {
-  const origin = isKrHost() ? KR_ORIGIN : LEGACY_ORIGIN;
+  const origin = isEnHost() ? EN_ORIGIN : isKrHost() ? KR_ORIGIN : LEGACY_ORIGIN;
   return [{ rel: "canonical", href: `${origin}${path}` }];
 }
 
