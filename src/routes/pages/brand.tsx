@@ -31,7 +31,7 @@ const HISTORY = [
     badge: "청라 피크원 푸르지오(예정)",
   },
   {
-    year: "2030",
+    year: "개통 시기 미정",
     items: ["7호선 국제업무단지역 (예정)"],
     img: "/resources/img/sub/brand_history_img_5.png",
   },

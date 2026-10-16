@@ -32,6 +32,9 @@ export function SiteFooter({ onPrivacy }: Props) {
             ※ 본 홈페이지에 명시된 모든 개발계획은 관계기관 혹은 <br className="m-only" /> 지자체의
             사정에 의해 변경 또는 취소될 수 있습니다.
             <br />※ 본 홈페이지에 사용된 일부 이미지 및 영상은 AI로 제작되었습니다.
+            <br />
+            본 사이트는 분양 정보 안내를 위한 홍보 페이지이며, 시행사·시공사의 공식 홈페이지가 아닙니다. 공식
+            정보는 사업주체 공고를 확인하시기 바랍니다. 홈페이지운영 휴메인코리아
           </p>
           <p className="footer__copyright">SITE OPERATED BY HUMANE KOREA.</p>
         </div>
