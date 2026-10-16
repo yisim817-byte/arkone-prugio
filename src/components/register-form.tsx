@@ -38,6 +38,7 @@ function stored(key: string) {
 }
 
 export function RegisterForm() {
+  const en = (() => { try { return isEnHost(); } catch { return false; } })();
   const [step, setStep] = useState<1 | 2 | "done">(1);
   const [product, setProduct] = useState<Product>("");
   const [name, setName] = useState("");
@@ -226,9 +227,9 @@ export function RegisterForm() {
         <fieldset className={`reg__product${errors.product ? " is-err" : ""}`} disabled={step === 2}>
           <legend>등록하실 상품을 선택해 주세요 *</legend>
           <div className="reg__product-options">
-            <label><input type="radio" name="product" value="apt" checked={product === "apt"} onChange={() => { setProduct("apt"); setInterest(""); setSpecial(""); }} /><span>아파트 사전고객등록</span></label>
-            <label><input type="radio" name="product" value="officetel" checked={product === "officetel"} onChange={() => { setProduct("officetel"); setInterest("오피스텔"); setSpecial(""); }} /><span>오피스텔 사전등록</span></label>
-            <label><input type="radio" name="product" value="commercial" checked={product === "commercial"} onChange={() => { setProduct("commercial"); setInterest("상가"); setSpecial(""); }} /><span>상가 사전등록</span></label>
+            <label><input type="radio" name="product" value="apt" checked={product === "apt"} onChange={() => { setProduct("apt"); setInterest(""); setSpecial(""); }} /><span>{en ? EN_PRODUCT.apt : "아파트 사전고객등록"}</span></label>
+            <label><input type="radio" name="product" value="officetel" checked={product === "officetel"} onChange={() => { setProduct("officetel"); setInterest("오피스텔"); setSpecial(""); }} /><span>{en ? EN_PRODUCT.officetel : "오피스텔 사전등록"}</span></label>
+            <label><input type="radio" name="product" value="commercial" checked={product === "commercial"} onChange={() => { setProduct("commercial"); setInterest("상가"); setSpecial(""); }} /><span>{en ? EN_PRODUCT.commercial : "상가 사전등록"}</span></label>
           </div>
           {errors.product ? <p className="reg__msg">{errors.product}</p> : null}
         </fieldset>
