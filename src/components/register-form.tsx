@@ -200,8 +200,8 @@ export function RegisterForm() {
         <p>STEP 1 홈페이지 사전고객등록 완료</p>
         {product === "apt" ? <>
           <p>STEP 2 공식 청약 진행 (입주자모집공고 기준)</p>
-          <p>STEP 3 청약 당첨 및 지급 조건 확인</p>
-          <p>STEP 4 백화점 상품권 선택 및 지급 (대상 조건 충족 시)</p>
+          <p>STEP 3 청약 시 당첨 여부와 상관없이 코스트코 1년 회원권 (선착순 1,000명)</p>
+          <p>STEP 4 계약 시 백화점 상품권 30만원</p>
         </> : product === "commercial" ? <p>선택하신 상가 상품으로 담당자가 안내드립니다.</p> : <p>선택하신 오피스텔 상품으로 담당자가 안내드립니다.</p>}
         <p><a className="reg__submit" href={SITE_TEL_HREF}>등록 확인 전화하기 1833-3872</a></p>
         <p>일정이 변경되면 담당자가 등록하신 휴대전화로 연락드립니다.</p>
@@ -254,7 +254,7 @@ export function RegisterForm() {
           {birthWarn ? <p>생년월일 6자리만 입력해 주세요. 주민등록번호는 받지 않습니다.</p> : null}
           <p>주민등록번호는 받지 않습니다.</p>
         </div>
-        <p className="prereg-fine">※ 동일 현장의 다른 홈페이지·분양 채널에 중복으로 등록하신 경우, 상품권 지급이 제한될 수 있습니다.</p>
+        <p className="prereg-fine">※ 반드시 아크원푸르지오.site에서 등록해야 하며, 타 홈페이지 중복 등록 시 지급이 불가할 수 있습니다.</p>
         <div className="prereg-hidden-hp" aria-hidden="true"><label>회사<input name="hp" tabIndex={-1} autoComplete="off" /></label></div>
         <div className={`reg__agree${errors.collect ? " is-err" : ""}`}>
           <input id="consent-collect" type="checkbox" checked={collect} disabled={step === 2} onChange={(e) => setCollect(e.target.checked)} />

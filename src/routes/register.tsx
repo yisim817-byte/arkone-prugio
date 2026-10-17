@@ -20,8 +20,10 @@ function RegisterPage() {
       <div className="page_content">
         <section className="page_container register-layout">
           <aside className="register-layout__summary" aria-label="이벤트 및 일정 안내">
-            <p>APT 사전고객등록 후 청약 당첨 및 지급 조건 충족 시 백화점 상품권 30만원 (롯데·현대·신세계 중 선택)</p>
-            <p>오피스텔 사전등록은 APT 이벤트와 별도로 접수됩니다.</p>
+            <p>아크원푸르지오.site에서 사전고객등록한 고객은 계약 시 백화점 상품권 30만원 증정</p>
+            <p>사전고객등록 후 청약 시 당첨 여부와 상관없이 코스트코 1년 회원권 증정 (선착순 1,000명)</p>
+            <p>반드시 아크원푸르지오.site에서 등록해야 하며, 타 홈페이지 중복 등록 시 지급이 불가할 수 있습니다.</p>
+            <p>세부 조건은 상담 시 안내 · 이벤트 내용은 사정에 따라 변경될 수 있습니다.</p>
             <a href="/#event-terms">유의사항 보기</a>
             <div className="register-layout__schedule">
               <h2>모집 일정</h2>

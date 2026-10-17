@@ -93,7 +93,7 @@ export function PreregPopup() {
     if (!strip) return null;
     return (
       <div className="prereg-strip" role="region" aria-label="사전고객등록 이벤트 안내">
-        <span className="prereg-strip__txt">EVENT · 사전고객등록 백화점 상품권 30만원</span>
+        <span className="prereg-strip__txt">EVENT · 사전고객등록 백화점 상품권 30만원 + 코스트코 1년 회원권</span>
         <button type="button" className="prereg-strip__more" onClick={openFromStrip}>자세히</button>
         <button type="button" className="prereg-strip__x" aria-label="닫기" onClick={closeStrip}>✕</button>
       </div>
@@ -107,12 +107,12 @@ export function PreregPopup() {
         <p>모집공고 10.22 · GRAND OPEN 10.30 예정 · 일정 문의 1833-3872</p>
         <p>청라 아크원 푸르지오 APT 사전고객등록 이벤트</p>
         <h2 id="prereg-pop-title">백화점 상품권 30만원</h2>
-        <p>롯데 · 현대 · 신세계 중 선택</p>
-        <p>사전고객등록 후 청약 당첨 및 지급 조건을 충족한 고객 대상</p>
+        <p>+ 코스트코 1년 회원권 (선착순 1,000명)</p>
+        <p>아크원푸르지오.site에서 사전고객등록한 고객은 계약 시 백화점 상품권 30만원 증정 · 사전고객등록 후 청약 시 당첨 여부와 상관없이 코스트코 1년 회원권 증정 (선착순 1,000명)</p>
         <Link className="reg__submit" to="/register">사전고객등록하기</Link>
         <p className="prereg-confirm">사전고객등록 확인은 대표번호 <a href={SITE_TEL_HREF}>{SITE_PHONE}</a>로 문의해 주세요.</p>
-        <p className="prereg-fine">※ 사전고객등록은 공식 청약 신청이 아닙니다. 상품권은 지급조건을 모두 충족한 고객에 한해 지급됩니다. <a href="/#event-terms">유의사항 보기</a></p>
-        <p className="prereg-fine">※ 동일 현장의 다른 홈페이지·분양 채널에 중복으로 등록하신 경우, 상품권 지급이 제한될 수 있습니다.</p>
+        <p className="prereg-fine">※ 세부 조건은 상담 시 안내 · 이벤트 내용은 사정에 따라 변경될 수 있습니다. <a href="/#event-terms">유의사항 보기</a></p>
+        <p className="prereg-fine">※ 반드시 아크원푸르지오.site에서 등록해야 하며, 타 홈페이지 중복 등록 시 지급이 불가할 수 있습니다.</p>
         <div className="prereg-pop__actions">
           <button type="button" onClick={() => close(true)}>오늘 하루 보지 않기</button>
           <button type="button" onClick={() => close()}>닫기</button>

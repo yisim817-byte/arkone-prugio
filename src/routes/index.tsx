@@ -194,23 +194,20 @@ function Home() {
           <div className="event-card__inner">
             <p className="event-card__eyebrow">사전고객등록 고객 대상 이벤트</p>
             <h2 id="event-title">백화점 상품권 30만원</h2>
-            <p className="event-card__brands">상품권 종류: 롯데·현대·신세계 백화점 가운데 1종</p>
-            <p className="event-card__basis">받으실 수 있는 분: 이 홈페이지에서 사전고객등록을 한 뒤 청약에 당첨되어 지급 조건을 충족한 고객입니다.</p>
-            <p className="event-card__payout">상품권은 당첨과 지급 조건 충족이 확인되면 계약하는 날 드립니다.</p>
-            <ol className="event-card__steps"><li>STEP 1 사전고객등록(홈페이지)</li><li>STEP 2 공고 후 청약 신청</li><li>STEP 3 당첨·지급 조건 확인</li><li>STEP 4 계약일 상품권 수령</li></ol>
+            <p className="event-card__brands">+ 코스트코 1년 회원권 (선착순 1,000명)</p>
+            <p className="event-card__basis">아크원푸르지오.site에서 사전고객등록한 고객은 계약 시 백화점 상품권 30만원 증정</p>
+            <p className="event-card__payout">사전고객등록 후 청약 시 당첨 여부와 상관없이 코스트코 1년 회원권 증정 (선착순 1,000명)</p>
+            <ol className="event-card__steps"><li>STEP 1 사전고객등록(홈페이지)</li><li>STEP 2 공고 후 청약 신청</li><li>STEP 3 코스트코 1년 회원권 (당첨 여부 무관 · 선착순 1,000명)</li><li>STEP 4 계약 시 백화점 상품권 30만원</li></ol>
             <div className="event-card__actions"><Link className="event-card__button" to="/register">사전고객등록하기</Link><a href="#event-terms">유의사항 자세히 보기</a></div>
             <p className="event-card__schedule">일정: 모집공고 10.22 · GRAND OPEN 10.30 예정 · 세부 일정은 대표번호 1833-3872로 문의</p>
-            <p className="event-card__notice">※ 청약 접수는 별도 절차이며, 사전고객등록만으로 청약이 되지는 않습니다.</p>
+            <p className="event-card__notice">※ 반드시 아크원푸르지오.site에서 등록해야 하며, 타 홈페이지 중복 등록 시 지급이 불가할 수 있습니다.</p>
             <p>등록 여부는 <a href={SITE_TEL_HREF}>1833-3872</a>(대표번호)에서 확인하실 수 있습니다.</p>
             <details id="event-terms" className="event-card__terms"><summary>이벤트 유의사항 (청라 아크원 푸르지오 APT 사전고객등록)</summary>
               <ol>
-                <li>지급 대상: 이 홈페이지에서 사전고객등록을 한 뒤, 청라 아크원 푸르지오 아파트 청약에 당첨되어 지급 조건을 충족한 고객</li>
-                <li>혜택 내용: 롯데·현대·신세계 백화점 상품권 가운데 1종, 30만원</li><li>지급일: 당첨과 지급 조건 충족을 확인한 뒤 계약 당일</li>
-                <li>한 사람에게 한 번만 지급하며, 같은 사람과 같은 휴대전화번호는 한 사람으로 봅니다.</li>
-                <li>부적격 당첨이거나 계약을 체결하지 않은 경우, 계약이 취소·해제된 경우에는 지급하지 않습니다. 지급 뒤 이런 사유가 생기면 처리 기준을 담당자가 따로 알려 드립니다.</li>
-                <li>제세공과금은 기준이 정해지면 담당자가 따로 알려 드립니다.</li>
-                <li>이벤트 내용은 미리 알린 뒤 바뀌거나 일찍 끝날 수 있습니다.</li>
-                <li>사전고객등록은 청약 신청이 아닙니다. 청약 자격과 일정은 입주자모집공고 기준입니다.</li>
+                <li>아크원푸르지오.site에서 사전고객등록한 고객은 계약 시 백화점 상품권 30만원 증정</li>
+                <li>반드시 아크원푸르지오.site에서 등록해야 하며, 타 홈페이지 중복 등록 시 지급이 불가할 수 있습니다.</li>
+                <li>사전고객등록 후 청약 시 당첨 여부와 상관없이 코스트코 1년 회원권 증정 (선착순 1,000명)</li>
+                <li>세부 조건은 상담 시 안내 · 이벤트 내용은 사정에 따라 변경될 수 있습니다.</li>
               </ol><p>등록 확인·문의: 1833-3872</p>
             </details>
           </div>
