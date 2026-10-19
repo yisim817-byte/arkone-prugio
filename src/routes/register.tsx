@@ -25,7 +25,7 @@ function RegisterPage() {
             <a href="/#event-terms">유의사항 보기</a>
             <div className="register-layout__schedule">
               <h2>모집 일정</h2>
-              <p>모집공고 10.22 · GRAND OPEN 10.30 예정 · 세부 일정 문의 1833-3872</p>
+              <p>모집공고 10.22 · GRAND OPEN 10.30(금)~11.01(일) · 일정은 변경될 수 있습니다 · 세부 일정 문의 1833-3872</p>
               <p>특별공급·1순위·2순위·당첨자 발표·계약 일정은 입주자모집공고 확정 후 안내드립니다.</p>
             </div>
           </aside>

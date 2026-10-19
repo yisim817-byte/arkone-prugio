@@ -15,7 +15,7 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "청라 아크원 푸르지오 분양 일정·청약 안내. 모집공고 10.22 · GRAND OPEN 10.30 예정, 아파트 868세대·오피스텔 987실.",
+          "청라 아크원 푸르지오 분양 일정·청약 안내. 모집공고 10.22 · GRAND OPEN 10.30(금)~11.01(일)(일정 변경 가능), 아파트 868세대·오피스텔 987실.",
       },
     ],
     links: canonicalLinks("/"),
@@ -155,7 +155,7 @@ function Home() {
               <span className="hero__title_ko">청라 아크원 푸르지오</span>
             </h1>
             <span className="hero__open">
-              모집공고 <strong>10.22</strong> · GRAND OPEN <strong>10.30</strong> 예정
+              모집공고 <strong>10.22</strong> · GRAND OPEN <strong>10.30(금)~11.01(일)</strong> · 일정은 변경될 수 있습니다
             </span>
           </div>
           <div className="hero__ui">
@@ -199,7 +199,7 @@ function Home() {
             <p className="event-card__payout">상품권은 당첨과 지급 조건 충족이 확인되면 계약하는 날 드립니다.</p>
             <ol className="event-card__steps"><li>STEP 1 사전고객등록(홈페이지)</li><li>STEP 2 공고 후 청약 신청</li><li>STEP 3 당첨·지급 조건 확인</li><li>STEP 4 계약일 상품권 수령</li></ol>
             <div className="event-card__actions"><Link className="event-card__button" to="/register">사전고객등록하기</Link><a href="#event-terms">유의사항 자세히 보기</a></div>
-            <p className="event-card__schedule">일정: 모집공고 10.22 · GRAND OPEN 10.30 예정 · 세부 일정은 대표번호 1833-3872로 문의</p>
+            <p className="event-card__schedule">일정: 모집공고 10.22 · GRAND OPEN 10.30(금)~11.01(일) · 일정은 변경될 수 있습니다 · 세부 일정은 대표번호 1833-3872로 문의</p>
             <p className="event-card__notice">※ 청약 접수는 별도 절차이며, 사전고객등록만으로 청약이 되지는 않습니다.</p>
             <p>등록 여부는 <a href={SITE_TEL_HREF}>1833-3872</a>(대표번호)에서 확인하실 수 있습니다.</p>
             <details id="event-terms" className="event-card__terms"><summary>이벤트 유의사항 (청라 아크원 푸르지오 APT 사전고객등록)</summary>
@@ -432,7 +432,7 @@ function Home() {
           <Img className="bg" src="/resources/img/pages/main/contact_bg.v4.webp" alt="" />
           <h2>CONTACT US</h2>
           <div className="contact-schedule">
-            <p>모집공고 10.22 · GRAND OPEN 10.30 예정</p>
+            <p>모집공고 10.22 · GRAND OPEN 10.30(금)~11.01(일) · 일정은 변경될 수 있습니다</p>
             <p>세부 일정 문의: 대표번호 1833-3872</p>
             <p>특별공급·1순위·2순위·당첨자 발표·계약 일정은 입주자모집공고 확정 후 안내드립니다.</p>
             <small>일정은 사업주체 사정에 따라 변경될 수 있습니다.</small>
