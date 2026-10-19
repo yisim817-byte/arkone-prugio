@@ -6,6 +6,7 @@ import { PrivacyModal } from "@/components/privacy-modal";
 import { SubVisual } from "@/components/sub-visual";
 import { PreregPopup } from "@/components/prereg-popup";
 import { CostcoEventPopup } from "@/components/CostcoEventPopup";
+import { VisitReservationPopup } from "@/components/VisitReservationPopup";
 import { SITE_TEL_HREF } from "@/lib/site-data";
 
 type Props = {
@@ -26,6 +27,7 @@ export function SiteShell({ children, home, path }: Props) {
       {privacy ? <PrivacyModal onClose={() => setPrivacy(false)} /> : null}
       {path === "/register" ? null : <PreregPopup />}
       {path === "/register" ? null : <CostcoEventPopup />}
+      {path === "/register" ? null : <VisitReservationPopup />}
       {path !== "/register" ? (
         <div className="quick-mo">
           <a href={SITE_TEL_HREF}>전화상담 1833-3872</a>

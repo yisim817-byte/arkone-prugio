@@ -870,3 +870,12 @@ body.prereg-lock { overflow: hidden; }
   .prereg-strip__x { flex: none; width: 40px; height: 40px; border: 0; background: transparent; color: var(--white); font-size: 16px; }
   .home-wrap:has(.intro) .prereg-strip { opacity: 0; visibility: hidden; pointer-events: none; }
 }
+
+/* 작업지시서 9 (2026-10-19): 사전고객등록 1단계 「모델하우스 방문예약 (선택)」 블록 */
+.visit-block { margin: 16px 0 8px; padding: 14px; border: 1px solid var(--line-normal); border-radius: 8px; scroll-margin-top: 120px; }
+.visit-block__title { margin: 0 0 4px; font-weight: 700; color: var(--label-strong); }
+.visit-block .reg__agree { margin: 4px 0 12px; }
+.visit-block__slots { margin: 8px 0 0; padding: 0; border: 0; min-width: 0; }
+.visit-block__slots legend { margin-bottom: 0; padding: 0; font-weight: 700; color: var(--label-strong); }
+.visit-block__slots .prereg-chips { margin-bottom: 8px; }
+.visit-block__note { margin: 4px 0 0; font-size: 13px; color: var(--label-neutral); }
