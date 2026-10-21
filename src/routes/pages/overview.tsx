@@ -45,8 +45,8 @@ export const Route = createFileRoute("/pages/overview")({
   component: OverviewPage,
   head: () => ({
     meta: [
-      { title: "청라 아크원 푸르지오 사업개요 | 세대수 868·987" },
-      { name: "description", content: "청라 아크원 푸르지오 사업개요·세대수. 청라동 86-1 M5BL, 지하 5~지상 49층 6개동, 868세대·987실, 시행 청라스마트시티·시공 대우건설." },
+      { title: "청라 아크원 푸르지오 사업개요·세대수 | 868세대·987실" },
+      { name: "description", content: "청라 아크원 푸르지오 사업개요·세대수. 청라동 86-1 M5BL, 지하 5~지상 49층 6개동, 아파트 868세대·오피스텔 987실, 시행 청라스마트시티·시공 대우건설." },
     ],
     links: canonicalLinks("/pages/overview"),
     scripts: faqJsonLd(FAQ),
