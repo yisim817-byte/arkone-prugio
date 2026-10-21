@@ -45,8 +45,8 @@ export const Route = createFileRoute("/pages/overview")({
   component: OverviewPage,
   head: () => ({
     meta: [
-      { title: "청라 아크원 푸르지오 사업개요 | 868세대·987실" },
-      { name: "description", content: "청라 아크원 푸르지오 사업개요. 청라동 86-1번지 M5BL, 지하 5층~지상 49층 6개동, 아파트 868세대·오피스텔 987실, 시행 ㈜청라스마트시티·시공 대우건설." },
+      { title: "청라 아크원 푸르지오 사업개요·세대수 | 868세대·987실" },
+      { name: "description", content: "청라 아크원 푸르지오 사업개요·세대수. 청라동 86-1 M5BL, 지하 5~지상 49층 6개동, 아파트 868세대·오피스텔 987실, 시행 청라스마트시티·시공 대우건설." },
     ],
     links: canonicalLinks("/pages/overview"),
     scripts: faqJsonLd(FAQ),
@@ -60,7 +60,7 @@ function OverviewPage() {
         <section className="page_container">
           <GuideAnswer title="청라 아크원 푸르지오 분양 개요 한눈에 보기">
             <p>
-              청라 아크원 푸르지오는 인천광역시 서해구 청라동 86-1번지(청라국제도시 주상복합용지 M5BL)에 계획된 주거복합
+              청라 아크원 푸르지오(청라아크원푸르지오)는 인천광역시 서해구 청라동 86-1번지(청라국제도시 주상복합용지 M5BL)에 계획된 주거복합
               단지입니다.
             </p>
             <p>
