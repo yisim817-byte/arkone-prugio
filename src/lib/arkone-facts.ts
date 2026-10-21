@@ -1,5 +1,5 @@
 /** 공개 자료 기준 사실값 (ARKONE_FACT_LEDGER.csv 와 동일 값만 사용). */
-export const FACT_DATE = "2026-09-30";
+export const FACT_DATE = "2026-10-21";
 
 export const SRC_APPLYHOME = {
   label: "청약홈(한국부동산원) — 입주자모집공고 게시처",

@@ -18,7 +18,7 @@ export const Route = createFileRoute("/pages/docspecial")({
 });
 
 function DocSpecialPage() {
-  const src = "/resources/img/sub/03_특별공급.v4.jpg";
+  const src = "/resources/img/sub/docspecial-guide.v4.webp";
   return (
     <SiteShell path="/pages/docspecial">
       <div className="page_content">
@@ -27,7 +27,7 @@ function DocSpecialPage() {
             <p>청라 아크원 푸르지오의 특별공급 유형별 공급 물량과 일정은 입주자모집공고에서 확정되며 현재는 미정입니다. 신청 전 청약홈에 게시되는 공고문을 기준으로 확인하시기 바랍니다.</p>
           </GuideAnswer>
           <figure>
-            <img src={src} alt="특별공급 안내" {...imgDims(src)} data-dims="" />
+            <img src={src} alt="기관추천·다자녀·신혼·생애최초 자격표가 있는 특별공급 안내문" {...imgDims(src)} data-dims="" />
           </figure>
           <ZoomButton href={src} />
           <GuideDetail

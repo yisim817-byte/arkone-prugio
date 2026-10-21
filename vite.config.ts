@@ -155,6 +155,8 @@ export default defineConfig(({ command, isPreview }) => ({
     host: "127.0.0.1",
     port: 8081,
     strictPort: true,
+    // 점검기가 로컬 미리보기에 한글 호스트 Host 헤더를 넣는다. 운영 호스트 정책은 바꾸지 않는다.
+    allowedHosts: ["www.xn--2w2b19sita0u67iz2mi7g.site", "www.arkone-prugio.site", "localhost", "127.0.0.1"],
   },
   resolve: { tsconfigPaths: true },
   plugins: [

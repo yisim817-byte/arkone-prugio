@@ -50,6 +50,14 @@ const HISTORY = [
 
 const FAQ = [
   { q: "일정은 어떤 기준인가요?", a: "일정은 예정·계획 기준이며 관계기관 사정에 따라 변경될 수 있습니다." },
+  {
+    q: "청라 피크원 푸르지오와 같은 단지인가요?",
+    a: "아닙니다. 청라 아크원 푸르지오는 1,855세대·실입니다. 2,911세대·실은 청라 피크원 푸르지오를 포함한 합산 규모이며 단일 단지가 아닙니다.",
+  },
+  {
+    q: "이 페이지에서 무엇을 확인하나요?",
+    a: "청라 아크원 푸르지오의 히스토리와 주변 개발 일정을 연도별로 정리한 페이지입니다. 일정은 예정·계획이며 관계기관 사정에 따라 변경될 수 있습니다.",
+  },
 ];
 
 function BrandPage() {
@@ -58,7 +66,12 @@ function BrandPage() {
       <div className="page_content">
         <section className="page_container">
           {/* SEO_PUSH 2026-10-06 P1-1: 페이지 고유 H1 (title 앞부분) */}
-          <h1 className="page-h1">청라 아크원 푸르지오 히스토리·주변 개발 일정</h1><p>푸르지오 브랜드타운 2,911세대·실은 청라 피크원 푸르지오를 포함한 합산 규모이며, 단일 단지가 아닙니다.</p>
+          <h1 className="page-h1">청라 아크원 푸르지오 히스토리·주변 개발 일정</h1>
+          <p>
+            청라 아크원 푸르지오는 청라 피크원 푸르지오와 같은 단지가 아닙니다. 아크원 자체는
+            1,855세대·실이고, 2,911세대·실은 피크원을 포함한 합산 규모입니다.
+          </p>
+          <p>자료 기준일 2026-10-21 · 출처 사업주체 공개 사업개요</p>
           <div className="brand_image__container">
             <figure className="brand_image__img">
               <picture>
@@ -89,7 +102,7 @@ function BrandPage() {
               </p>
             </div>
             <picture className="brand_image__slogan">
-              <img src="/resources/img/sub/brand_slogan_img.svg" alt="" {...imgDims("/resources/img/sub/brand_slogan_img.svg")} data-dims="" />
+              <img src="/resources/img/sub/brand_slogan_img.svg" alt="Cheongna Arkone Prugio라고 적힌 손글씨 슬로건" {...imgDims("/resources/img/sub/brand_slogan_img.svg")} data-dims="" />
             </picture>
           </div>
 

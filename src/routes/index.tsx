@@ -184,7 +184,7 @@ function Home() {
               </a>
               <Link to="/register" className="hero__quick_item" aria-label="사전고객등록">
                 <HeroOrbit />
-                <img className="hero__quick_content" src="/resources/img/pages/main/hero_circle_register.svg" alt="사전고객등록" {...imgDims("/resources/img/pages/main/hero_circle_register.svg")} data-dims="" />
+                <img className="hero__quick_content" src="/resources/img/pages/main/hero_circle_register.svg" alt="사전고객등록 원형 바로가기" {...imgDims("/resources/img/pages/main/hero_circle_register.svg")} data-dims="" />
               </Link>
             </div>
           </div>
@@ -424,7 +424,7 @@ function Home() {
               견고한 기본에 더해진 세련된 편안함,
               <br />내 삶의 본연을 집에서 찾다
             </p>
-            <Img className="section-brand__logo" src="/resources/img/pages/main/brand_logo.svg" alt="PRUGIO" />
+            <Img className="section-brand__logo" src="/resources/img/pages/main/brand_logo.svg" alt="홈 브랜드 구역의 푸르지오 로고" />
           </div>
         </section>
 
@@ -447,10 +447,10 @@ function Home() {
                 </div>
                 <div className="map-btns">
                   <a href="https://naver.me/xNpQLQ3L" target="_blank" rel="noreferrer">
-                    <Img src="/resources/img/common/ico_naver.svg" alt="네이버 지도" />
+                    <Img src="/resources/img/common/ico_naver.svg" alt="견본주택 네이버 지도 바로가기" />
                   </a>
                   <a href="https://kko.to/06V9ttVXOK" target="_blank" rel="noreferrer">
-                    <Img src="/resources/img/common/ico_kko_map.svg" alt="카카오 지도" />
+                    <Img src="/resources/img/common/ico_kko_map.svg" alt="견본주택 카카오 지도 바로가기" />
                   </a>
                 </div>
               </div>
@@ -461,10 +461,10 @@ function Home() {
                 </div>
                 <div className="map-btns">
                   <a href="https://naver.me/xSBYFSR0" target="_blank" rel="noreferrer">
-                    <Img src="/resources/img/common/ico_naver.svg" alt="네이버 지도" />
+                    <Img src="/resources/img/common/ico_naver.svg" alt="현장 네이버 지도 바로가기" />
                   </a>
                   <a href="https://kko.to/27AvJsaNys" target="_blank" rel="noreferrer">
-                    <Img src="/resources/img/common/ico_kko_map.svg" alt="카카오 지도" />
+                    <Img src="/resources/img/common/ico_kko_map.svg" alt="현장 카카오 지도 바로가기" />
                   </a>
                 </div>
               </div>
@@ -482,10 +482,10 @@ function Home() {
                 </div>
                 <div className="map-btns">
                   <a href="https://naver.me/xwmqyGWk" target="_blank" rel="noreferrer">
-                    <Img src="/resources/img/common/ico_naver.svg" alt="네이버 지도" />
+                    <Img src="/resources/img/common/ico_naver.svg" alt="홍보관 네이버 지도 바로가기" />
                   </a>
                   <a href="https://kko.to/hM9WpE-0fz" target="_blank" rel="noreferrer">
-                    <Img src="/resources/img/common/ico_kko_map.svg" alt="카카오 지도" />
+                    <Img src="/resources/img/common/ico_kko_map.svg" alt="홍보관 카카오 지도 바로가기" />
                   </a>
                 </div>
               </div>
