@@ -9,7 +9,7 @@ export function SiteFooter({ onPrivacy }: Props) {
       <div className="footer__container">
         <div className="footer__brand">
           <div className="footer__logo">
-            <Img src="/resources/img/common/logotype.svg" alt="PRUGIO" />
+            <Img src="/resources/img/common/logotype.svg" alt="푸르지오 워드마크 로고" />
           </div>
           <button type="button" className="footer__privacy-btn" onClick={onPrivacy}>
             개인정보처리방침
@@ -43,7 +43,7 @@ export function SiteFooter({ onPrivacy }: Props) {
               <Img
                 src="/resources/img/common/logo_daewoo.svg"
                 className="footer__construction-logo"
-                alt="대우건설"
+                alt="대우건설 시공 로고"
               />
             </p>
           </div>

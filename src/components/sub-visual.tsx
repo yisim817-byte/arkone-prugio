@@ -2,6 +2,7 @@ import { Link, useRouterState } from "@tanstack/react-router";
 import { useState } from "react";
 import { NAV, PAGE_META } from "@/lib/site-data";
 import { imgDims } from "@/components/img";
+import { KR_ORIGIN, isKrHost } from "@/lib/seo-host";
 
 export function SubVisual({ path }: { path: string }) {
   const meta = PAGE_META[path];
@@ -14,10 +15,31 @@ export function SubVisual({ path }: { path: string }) {
   return (
     <>
       <section className="sub_visual">
+        {isKrHost() ? (
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "BreadcrumbList",
+                itemListElement: [
+                  { "@type": "ListItem", position: 1, name: "홈", item: `${KR_ORIGIN}/` },
+                  { "@type": "ListItem", position: 2, name: meta.parentKr, item: `${KR_ORIGIN}${parent.to}` },
+                  { "@type": "ListItem", position: 3, name: meta.kr, item: `${KR_ORIGIN}${path}` },
+                ],
+              }),
+            }}
+          />
+        ) : null}
         <div className="sub_visual__image">
           <picture>
             <source media="(max-width: 1024px)" srcSet="/resources/img/common/sub_visual_img_m.v4.webp" />
-            <img src="/resources/img/common/sub_visual_img.v4.webp" alt="" {...imgDims("/resources/img/common/sub_visual_img.v4.webp")} data-dims="" />
+            <img
+              src="/resources/img/common/sub_visual_img.v4.webp"
+              alt={`${meta.kr} 상단의 회색 곡선 배경`}
+              {...imgDims("/resources/img/common/sub_visual_img.v4.webp")}
+              data-dims=""
+            />
           </picture>
         </div>
         <div className="sub_visual__content">

@@ -28,7 +28,7 @@ function DocNormalPage() {
           </GuideAnswer>
             <p>특별공급은 1세대당 평생 1회로 제한됩니다. 이 단지의 청약 자격·공급 비율·일정은 입주자모집공고 게시 후 청약홈 공고문으로 확인해야 합니다.</p>
           <figure>
-            <img src={src} alt="일반공급 안내" {...imgDims(src)} data-dims="" />
+            <img src={src} alt="청약 전 확인사항과 예치금액 표를 담은 일반공급 안내문" {...imgDims(src)} data-dims="" />
           </figure>
           <ZoomButton href={src} />
           <GuideDetail

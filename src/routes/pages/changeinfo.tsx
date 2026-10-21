@@ -18,7 +18,7 @@ export const Route = createFileRoute("/pages/changeinfo")({
 });
 
 function ChangeInfoPage() {
-  const src = "/resources/img/sub/01_변경된_청약제도.v4.jpg";
+  const src = "/resources/img/sub/changeinfo-guide.v4.webp";
   return (
     <SiteShell path="/pages/changeinfo">
       <div className="page_content">
@@ -27,7 +27,7 @@ function ChangeInfoPage() {
             <p>청라 아크원 푸르지오에 적용되는 공급 유형, 자격 요건, 청약 일정은 입주자모집공고에서 확정되며 현재는 미정입니다. 청라 아크원 푸르지오는 모집공고 10.22 · GRAND OPEN 10.30 예정입니다. 세부 일정은 대표번호 1833-3872로 문의해 주세요.</p>
           </GuideAnswer>
           <figure>
-            <img src={src} alt="변경된 청약제도 안내" {...imgDims(src)} data-dims="" />
+            <img src={src} alt="신생아·신혼·생애최초 변경 전후를 적은 청약제도 안내문" {...imgDims(src)} data-dims="" />
           </figure>
           <ZoomButton href={src} />
           <GuideDetail
