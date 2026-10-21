@@ -28,8 +28,8 @@ export const Route = createFileRoute("/pages/contact")({
   component: ContactPage,
   head: () => ({
     meta: [
-      { title: "청라 아크원 푸르지오 모델하우스·홍보관 위치 | 오시는길" },
-      { name: "description", content: "청라 아크원 푸르지오 견본주택(청라동 87-1번지). 모집공고 10.22 · GRAND OPEN 10.30 예정. 대표번호 1833-3872." },
+      { title: "청라 아크원 푸르지오 모델하우스·방문 | 오시는길" },
+      { name: "description", content: "청라 아크원 푸르지오 모델하우스 방문. 견본주택 청라동 87-1. 모집공고 10.22 · GRAND OPEN 10.30 예정. 대표번호 1833-3872." },
     ],
     links: canonicalLinks("/pages/contact"),
     scripts: faqJsonLd(FAQ),
