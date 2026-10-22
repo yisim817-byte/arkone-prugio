@@ -11,7 +11,7 @@ export const Route = createFileRoute("/pages/docspecial")({
   head: () => ({
     meta: [
       { title: "청라 아크원 푸르지오 특별공급 안내 | 청약 자격" },
-      { name: "description", content: "청라 아크원 푸르지오 특별공급 안내. 유형별 공급 물량·신청 자격·일정은 입주자모집공고에서 확정되며, 청약홈 공고문 기준으로 확인하세요." },
+      { name: "description", content: "청라 아크원 푸르지오 특별공급 안내. 특별공급 11.02(월) 접수. 유형별 공급 물량·신청 자격은 2026.10.22(목) 게시된 입주자모집공고 기준이며, 청약홈 공고문으로 확인하세요." },
     ],
     links: canonicalLinks("/pages/docspecial"),
   }),
@@ -24,7 +24,7 @@ function DocSpecialPage() {
       <div className="page_content">
         <section className="page_container">
           <GuideAnswer title="청라 아크원 푸르지오 특별공급 안내 요약">
-            <p>청라 아크원 푸르지오의 특별공급 유형별 공급 물량과 일정은 입주자모집공고에서 확정되며 현재는 미정입니다. 신청 전 청약홈에 게시되는 공고문을 기준으로 확인하시기 바랍니다.</p>
+            <p>청라 아크원 푸르지오 특별공급은 11.02(월) 접수입니다. 유형별 공급 물량과 자격은 2026.10.22(목) 게시된 입주자모집공고 기준이며, 신청 전 청약홈 공고문을 확인하시기 바랍니다.</p>
           </GuideAnswer>
           <figure>
             <img src={src} alt="기관추천·다자녀·신혼·생애최초 자격표가 있는 특별공급 안내문" {...imgDims(src)} data-dims="" />

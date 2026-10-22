@@ -14,15 +14,15 @@ const KR_HOSTS = new Set(["www.xn--2w2b19sita0u67iz2mi7g.site", "www.아크원�
 
 /** path -> lastmod (git commit date of the page's last content change). */
 const KR_SITEMAP: ReadonlyArray<readonly [string, string]> = [
-  ["/", "2026-10-06"],
-  ["/pages/overview", "2026-10-04"],
-  ["/pages/compare", "2026-10-04"],
-  ["/pages/schedule", "2026-10-06"],
+  ["/", "2026-10-22"],
+  ["/pages/overview", "2026-10-22"],
+  ["/pages/compare", "2026-10-22"],
+  ["/pages/schedule", "2026-10-22"],
   ["/pages/location", "2026-10-09"],
-  ["/pages/contact", "2026-10-04"],
-  ["/pages/changeinfo", "2026-10-04"],
-  ["/pages/docspecial", "2026-10-04"],
-  ["/pages/docnormal", "2026-10-04"],
+  ["/pages/contact", "2026-10-22"],
+  ["/pages/changeinfo", "2026-10-22"],
+  ["/pages/docspecial", "2026-10-22"],
+  ["/pages/docnormal", "2026-10-22"],
   ["/pages/premium", "2026-10-06"],
   ["/pages/brand", "2026-10-09"],
   ["/board/news_list", "2026-10-08"],
