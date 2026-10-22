@@ -1,10 +1,10 @@
 import { useEffect, useState, type FormEvent } from "react";
 import { SITE_PHONE, SITE_TEL_HREF } from "@/lib/site-data";
 import { PreregShare } from "@/components/prereg-share";
-import { loadVisitConfig, VISIT_SLOT_LABEL, type VisitOption } from "@/lib/visit-config";
+import { Link } from "@tanstack/react-router";
 
 const ENDPOINT = "https://jzmktahlrwtrtejjflrw.supabase.co/functions/v1/arkone-prereg-submit";
-const CONSENT_VERSION = "2026-09-26-v2+visit1";
+const CONSENT_VERSION = "2026-09-26-v2+r13"; // 작업지시서 13: 방문 항목을 뺀 동의(+visit1 → +r13)
 const SIDO = ["서울특별시","부산광역시","대구광역시","인천광역시","광주광역시","대전광역시","울산광역시","세종특별자치시","경기도","강원특별자치도","충청북도","충청남도","전북특별자치도","전라남도","경상북도","경상남도","제주특별자치도"];
 const PHRASE = "사전고객등록 확인은 대표번호 1833-3872로 문의해 주세요.";
 type Product = "" | "apt" | "officetel" | "commercial";
@@ -59,32 +59,6 @@ export function RegisterForm() {
   const [receipt, setReceipt] = useState("");
   const [createdAt, setCreatedAt] = useState("");
   const [duplicate, setDuplicate] = useState(false);
-  // 모델하우스 방문예약(선택) — 작업지시서 9. 비워도 등록은 그대로 진행된다.
-  const [visitOn, setVisitOn] = useState(false);
-  const [visitDate, setVisitDate] = useState("");
-  const [visitSlot, setVisitSlot] = useState("");
-  const [visitDates, setVisitDates] = useState<VisitOption[] | null>(null);
-  const [visitCfg, setVisitCfg] = useState<"loading" | "ok" | "off">("loading");
-  const [visitDone, setVisitDone] = useState("");
-
-  useEffect(() => {
-    let live = true;
-    const fromPopup = new URLSearchParams(location.search).get("visit") === "1";
-    if (fromPopup) setVisitOn(true);
-    loadVisitConfig().then((cfg) => {
-      if (!live) return;
-      setVisitDates(cfg ? cfg.dates : null);
-      setVisitCfg(cfg ? "ok" : "off");
-      if (!fromPopup) return;
-      requestAnimationFrame(() => {
-        const block = document.getElementById("visit");
-        block?.scrollIntoView({ behavior: "smooth", block: "center" });
-        (block?.querySelector<HTMLElement>("select") ?? block?.querySelector<HTMLElement>("input"))?.focus({ preventScroll: true });
-      });
-    });
-    return () => { live = false; };
-  }, []);
-
   useEffect(() => {
     if (step !== 2) return;
     const frame = requestAnimationFrame(() => {
@@ -129,7 +103,7 @@ export function RegisterForm() {
         setAlert(`접수를 확인하지 못했습니다. 입력 내용은 유지됩니다. 잠시 후 다시 시도하시거나 ${SITE_PHONE}로 문의해 주세요.`);
         return null;
       }
-      return data as { receipt_no?: string; created_at?: string; duplicate?: boolean; visit_saved?: boolean };
+      return data as { receipt_no?: string; created_at?: string; duplicate?: boolean };
     } catch {
       setAlert(`접수를 확인하지 못했습니다. 입력 내용은 유지됩니다. 잠시 후 다시 시도하시거나 ${SITE_PHONE}로 문의해 주세요.`);
       return null;
@@ -176,17 +150,9 @@ export function RegisterForm() {
       birth6: birth,
       consent_collect: true,
       consent_marketing: marketing,
-      visit_request: visitOn,
-      ...(visitOn && visitDate ? { visit_date: visitDate, visit_slot: visitSlot || "ANY" } : {}),
       hp: "",
     });
     if (!data) return;
-    if (visitOn && visitDate) {
-      const label = visitDates?.find((item) => item.value === visitDate)?.label || visitDate;
-      setVisitDone(data.visit_saved === true
-        ? `방문 희망일 ${label} ${VISIT_SLOT_LABEL[visitSlot || "ANY"]} · 담당자가 확인 후 연락드립니다.`
-        : "방문 희망 일정은 담당자가 전화로 확인합니다.");
-    }
     setReceipt(data.receipt_no || "");
     setCreatedAt(data.created_at || "");
     setDuplicate(Boolean(data.duplicate));
@@ -224,7 +190,6 @@ export function RegisterForm() {
       <div className="reg reg__done" tabIndex={-1}>
         <p>청라 아크원 푸르지오</p>
         <h3>사전등록 완료되었습니다.</h3>
-        {visitDone ? <p>{visitDone}</p> : null}
         <p>등록 상품 {product === "officetel" ? "오피스텔" : product === "commercial" ? "상가" : "아파트"}</p>
         {duplicate ? <p role="status">이미 사전등록된 번호입니다. 최초 접수번호 <b>{receipt}</b></p> : <p>접수번호 <b>{receipt}</b></p>}
         <p>접수시각 {formatKst(createdAt)}</p>
@@ -238,6 +203,7 @@ export function RegisterForm() {
           <p>STEP 4 백화점 상품권 선택 및 지급 (대상 조건 충족 시)</p>
         </> : product === "commercial" ? <p>선택하신 상가 상품으로 담당자가 안내드립니다.</p> : <p>선택하신 오피스텔 상품으로 담당자가 안내드립니다.</p>}
         <p><a className="reg__submit" href={SITE_TEL_HREF}>등록 확인 전화하기 1833-3872</a></p>
+        <p><Link className="reg__skip" to="/visit">모델하우스 방문예약 하기</Link></p>
         <p>일정이 변경되면 담당자가 등록하신 휴대전화로 연락드립니다.</p>
         <p>※ 사전고객등록은 공식 청약 신청이 아닙니다.</p>
       </div>
@@ -251,7 +217,6 @@ export function RegisterForm() {
         <p className="prereg-step">[1/2] 기본 정보 · 필수</p>
         {step === 2 ? <div className="reg__receipt reg__receipt--done" role="status">
           <strong className="reg__done-title">사전등록 완료되었습니다.</strong>
-          {visitDone ? <span>{visitDone}</span> : null}
           <span>{duplicate ? "이미 사전등록된 번호입니다. 최초 접수번호" : "접수번호"} {receipt} · 접수시각 {formatKst(createdAt)}</span>
           <span>등록 상품 {product === "officetel" ? "오피스텔" : product === "commercial" ? "상가" : "아파트"} · 성명 {name} · 휴대전화 {phone} · 생년월일 {birth}</span>
           <PreregShare receipt={receipt} at={formatKst(createdAt)} />
@@ -289,31 +254,7 @@ export function RegisterForm() {
           {birthWarn ? <p>생년월일 6자리만 입력해 주세요. 주민등록번호는 받지 않습니다.</p> : null}
           <p>주민등록번호는 받지 않습니다.</p>
         </div>
-        <div id="visit" className="visit-block">
-          <p className="visit-block__title">모델하우스 방문예약 (선택)</p>
-          <div className="reg__agree">
-            <input id="visit-request" type="checkbox" checked={visitOn} disabled={step === 2} onChange={(e) => setVisitOn(e.target.checked)} />
-            <label htmlFor="visit-request">모델하우스 방문을 희망합니다</label>
-          </div>
-          {visitCfg === "ok" && visitOn ? <>
-            <div className="reg__field">
-              <label htmlFor="f-visit-date">방문 희망일</label>
-              <select id="f-visit-date" name="visit_date" value={visitDate} disabled={step === 2} onChange={(e) => {
-                setVisitDate(e.target.value);
-                if (e.target.value) { setVisitOn(true); if (!visitSlot) setVisitSlot("ANY"); }
-              }}>
-                <option value="">날짜 선택</option>
-                {(visitDates ?? []).map((item) => <option key={item.value} value={item.value}>{item.label}</option>)}
-              </select>
-            </div>
-            <fieldset className="visit-block__slots" disabled={step === 2}>
-              <legend>방문 희망 시간대</legend>
-              <div className="prereg-chips">{(["AM", "PM", "ANY"] as const).map((value) => <label key={value}><input type="radio" name="visit_slot" value={value} checked={visitSlot === value} onChange={() => setVisitSlot(value)} /><span>{VISIT_SLOT_LABEL[value]}</span></label>)}</div>
-            </fieldset>
-            <p className="visit-block__note">※ 방문 시간은 담당자가 전화로 확정 안내합니다.</p>
-          </> : null}
-          {visitCfg === "off" ? <p className="visit-block__note">방문 희망 일정은 담당자가 전화로 확인합니다.</p> : null}
-        </div>
+        <p className="visit-block visit-link-card">모델하우스 방문예약은 별도 페이지에서 신청합니다 → <Link to="/visit">방문예약 하기</Link></p>
         <p className="prereg-fine">※ 동일 현장의 다른 홈페이지·분양 채널에 중복으로 등록하신 경우, 상품권 지급이 제한될 수 있습니다.</p>
         <div className="prereg-hidden-hp" aria-hidden="true"><label>회사<input name="hp" tabIndex={-1} autoComplete="off" /></label></div>
         <div className={`reg__agree${errors.collect ? " is-err" : ""}`}>
@@ -321,7 +262,7 @@ export function RegisterForm() {
           <label htmlFor="consent-collect">[필수] 개인정보 수집·이용 동의</label>
           <button type="button" onClick={() => setOpen(open === "collect" ? "" : "collect")}>보기</button>
         </div>
-        {open === "collect" ? <div className="reg__consent"><p>수집 항목 : [필수] 성명, 휴대전화번호, 생년월일(앞 6자리)<br />[선택] 주민등록상 주소(시·도, 시·군·구, 읍·면·동), 관심타입, 특별공급 관심 여부, 방문 희망일·시간대(선택)<br />(자동 수집) 접속 사이트, 유입 경로, 접수 일시</p><p>이용 목적 : 청라 아크원 푸르지오 청약 일정·모집공고 안내, 청약 해당지역 안내, 사전고객 관리, 이벤트 시행 시 대상 확인</p><p>보유 기간 : 이벤트 종료 시 지체 없이 파기. 최장 수집일로부터 1년</p><p>보관 위치 : Supabase, Inc. 클라우드 데이터베이스 — 일본(도쿄 리전)</p><p>※ 주민등록번호는 수집하지 않습니다.</p><p>동의를 거부할 수 있으며, 거부 시 사전고객등록이 제한됩니다. 전화 문의(1833-3872)는 동의 없이 이용하실 수 있습니다.</p></div> : null}
+        {open === "collect" ? <div className="reg__consent"><p>수집 항목 : [필수] 성명, 휴대전화번호, 생년월일(앞 6자리)<br />[선택] 주민등록상 주소(시·도, 시·군·구, 읍·면·동), 관심타입, 특별공급 관심 여부<br />(자동 수집) 접속 사이트, 유입 경로, 접수 일시</p><p>이용 목적 : 청라 아크원 푸르지오 청약 일정·모집공고 안내, 청약 해당지역 안내, 사전고객 관리, 이벤트 시행 시 대상 확인</p><p>보유 기간 : 이벤트 종료 시 지체 없이 파기. 최장 수집일로부터 1년</p><p>보관 위치 : Supabase, Inc. 클라우드 데이터베이스 — 일본(도쿄 리전)</p><p>※ 주민등록번호는 수집하지 않습니다.</p><p>동의를 거부할 수 있으며, 거부 시 사전고객등록이 제한됩니다. 전화 문의(1833-3872)는 동의 없이 이용하실 수 있습니다.</p></div> : null}
         <div className="reg__agree">
           <input id="consent-mkt" type="checkbox" checked={marketing} disabled={step === 2} onChange={(e) => setMarketing(e.target.checked)} />
           <label htmlFor="consent-mkt">[선택] 광고성 정보 수신 동의</label>

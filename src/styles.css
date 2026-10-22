@@ -929,3 +929,12 @@ body.prereg-lock { overflow: hidden; }
   .notice-summary__plans { grid-template-columns: 1fr; }
 }
 .notice-summary__plan_note { grid-column: 1 / -1; margin-top: 0; }
+
+/* 작업지시서 13 · 방문예약 전용 페이지(/visit)·사전고객등록 안내 카드 */
+.visit-form__desc { margin: -16px 0 8px; text-align: center; font-size: 16px; line-height: 1.6; color: var(--label-strong); }
+.visit-form__loc { margin: 0 0 24px; text-align: center; font-size: 15px; font-weight: 700; color: var(--color-primary); }
+.visit-form .visit-block__note a, .visit-link-card a { color: var(--color-primary); font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
+.visit-link-card { font-size: 15px; color: var(--label-strong); }
+.privacy-page { max-width: 880px; line-height: 1.7; }
+.privacy-page h2 { margin: 0 0 16px; font-size: 26px; }
+.privacy-page h3 { margin: 28px 0 8px; font-size: 18px; }

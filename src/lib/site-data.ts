@@ -69,6 +69,12 @@ export const NAV: NavItem[] = [
     to: "/register",
     children: [{ krName: "사전고객등록", enName: "REGISTER", to: "/register" }],
   },
+  {
+    krName: "방문예약",
+    enName: "VISIT",
+    to: "/visit",
+    children: [{ krName: "모델하우스 방문예약", enName: "VISIT", to: "/visit" }],
+  },
 ];
 
 export const PAGE_META: Record<
@@ -108,6 +114,7 @@ export const PAGE_META: Record<
   "/board/news_list": { en: "NEWS", kr: "언론보도", parentKr: "홍보센터", parentEn: "MEDIA" },
   "/pages/video": { en: "MEDIA", kr: "홍보영상", parentKr: "홍보센터", parentEn: "MEDIA" },
   "/register": { en: "REGISTER", kr: "사전고객등록", parentKr: "사전고객등록", parentEn: "REGISTER" },
+  "/visit": { en: "VISIT", kr: "모델하우스 방문예약", parentKr: "방문예약", parentEn: "VISIT" },
 };
 
 export function navForPath(pathname: string) {

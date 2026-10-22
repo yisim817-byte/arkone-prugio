@@ -10,7 +10,9 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as RegisterRouteImport } from './routes/register'
+import { Route as VisitRouteImport } from './routes/visit'
 import { Route as BoardNews_listRouteImport } from './routes/board/news_list'
 import { Route as PagesBrandRouteImport } from './routes/pages/brand'
 import { Route as PagesChangeinfoRouteImport } from './routes/pages/changeinfo'
@@ -29,9 +31,19 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const RegisterRoute = RegisterRouteImport.update({
   id: '/register',
   path: '/register',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const VisitRoute = VisitRouteImport.update({
+  id: '/visit',
+  path: '/visit',
   getParentRoute: () => rootRouteImport,
 } as any)
 const BoardNews_listRoute = BoardNews_listRouteImport.update({
@@ -97,7 +109,9 @@ const PagesVideoRoute = PagesVideoRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/privacy': typeof PrivacyRoute
   '/register': typeof RegisterRoute
+  '/visit': typeof VisitRoute
   '/board/news_list': typeof BoardNews_listRoute
   '/pages/brand': typeof PagesBrandRoute
   '/pages/changeinfo': typeof PagesChangeinfoRoute
@@ -113,7 +127,9 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/privacy': typeof PrivacyRoute
   '/register': typeof RegisterRoute
+  '/visit': typeof VisitRoute
   '/board/news_list': typeof BoardNews_listRoute
   '/pages/brand': typeof PagesBrandRoute
   '/pages/changeinfo': typeof PagesChangeinfoRoute
@@ -130,7 +146,9 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/privacy': typeof PrivacyRoute
   '/register': typeof RegisterRoute
+  '/visit': typeof VisitRoute
   '/board/news_list': typeof BoardNews_listRoute
   '/pages/brand': typeof PagesBrandRoute
   '/pages/changeinfo': typeof PagesChangeinfoRoute
@@ -148,7 +166,9 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/privacy'
     | '/register'
+    | '/visit'
     | '/board/news_list'
     | '/pages/brand'
     | '/pages/changeinfo'
@@ -164,7 +184,9 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/privacy'
     | '/register'
+    | '/visit'
     | '/board/news_list'
     | '/pages/brand'
     | '/pages/changeinfo'
@@ -180,7 +202,9 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/privacy'
     | '/register'
+    | '/visit'
     | '/board/news_list'
     | '/pages/brand'
     | '/pages/changeinfo'
@@ -197,7 +221,9 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  PrivacyRoute: typeof PrivacyRoute
   RegisterRoute: typeof RegisterRoute
+  VisitRoute: typeof VisitRoute
   BoardNews_listRoute: typeof BoardNews_listRoute
   PagesBrandRoute: typeof PagesBrandRoute
   PagesChangeinfoRoute: typeof PagesChangeinfoRoute
@@ -221,11 +247,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/register': {
       id: '/register'
       path: '/register'
       fullPath: '/register'
       preLoaderRoute: typeof RegisterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/visit': {
+      id: '/visit'
+      path: '/visit'
+      fullPath: '/visit'
+      preLoaderRoute: typeof VisitRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/board/news_list': {
@@ -317,7 +357,9 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  PrivacyRoute: PrivacyRoute,
   RegisterRoute: RegisterRoute,
+  VisitRoute: VisitRoute,
   BoardNews_listRoute: BoardNews_listRoute,
   PagesBrandRoute: PagesBrandRoute,
   PagesChangeinfoRoute: PagesChangeinfoRoute,

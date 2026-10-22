@@ -18,6 +18,8 @@ type Props = {
 
 export function SiteShell({ children, home, path }: Props) {
   const [privacy, setPrivacy] = useState(false);
+  // 작업지시서 13: 신청 페이지(사전고객등록·방문예약)와 처리방침에서는 팝업을 띄우지 않는다.
+  const noPopup = path === "/register" || path === "/visit" || path === "/privacy";
 
   return (
     <div className={home ? "home-wrap main_wrap" : "sub-wrap"}>
@@ -27,9 +29,9 @@ export function SiteShell({ children, home, path }: Props) {
       {children}
       <SiteFooter onPrivacy={() => setPrivacy(true)} />
       {privacy ? <PrivacyModal onClose={() => setPrivacy(false)} /> : null}
-      {path === "/register" ? null : <PreregPopup />}
-      {path === "/register" ? null : <CostcoEventPopup />}
-      {path === "/register" ? null : <VisitReservationPopup />}
+      {noPopup ? null : <PreregPopup />}
+      {noPopup ? null : <CostcoEventPopup />}
+      {noPopup ? null : <VisitReservationPopup />}
       {path !== "/register" ? (
         <div className="quick-mo">
           <a href={SITE_TEL_HREF}>전화상담 1833-3872</a>
