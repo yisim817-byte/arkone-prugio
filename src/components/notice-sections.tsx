@@ -113,8 +113,11 @@ export function NoticeSpecial() {
 export const PLAN_NOTE = "분양 안내 자료의 평면을 다시 그린 안내용 이미지입니다. 실제와 다를 수 있으며 입주자모집공고문과 견본주택이 우선합니다.";
 
 /** 작업지시서 12 · 평면 안내도(재작도 v2). 누르면 원본 PNG 를 새 창으로 연다(휴대폰 확대용). */
-export function PlanFigure({ plan }: { plan: "84c" | "103a" }) {
+export function PlanFigure({ plan, withPrice = false }: { plan: "84c" | "103a"; withPrice?: boolean }) {
   const name = plan === "84c" ? "84㎡C" : "103㎡A";
+  // 작업지시서 12 후속(PM 지시): 평면 그림 밑에 그 타입 공급금액 한 줄(팩트 파일 값).
+  const p = facts.prices.rows.find((r) => r.type === (plan === "84c" ? "84C" : "103A"));
+  const priceLine = withPrice && p ? `${name} 공급금액 ${p.min} ~ ${p.max} (동·층·호별 상이)` : "";
   const file = `/plans/plan-${plan}-redraw-v2`;
   return (
     <figure className="plan-figure">
@@ -125,6 +128,7 @@ export function PlanFigure({ plan }: { plan: "84c" | "103a" }) {
         </picture>
       </a>
       <figcaption>{PLAN_NOTE}</figcaption>
+      {priceLine ? <p className="plan-figure__price">{priceLine}</p> : null}
     </figure>
   );
 }
