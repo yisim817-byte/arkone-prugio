@@ -31,7 +31,7 @@ const HISTORY = [
     year: "2029",
     items: ["서울아산청라병원 (예정)"],
     img: "/resources/img/sub/brand_history_img_4.webp",
-    badge: "청라 피크원 푸르지오(예정)",
+    badge: "청라 피크원 푸르지오",
   },
   {
     year: "개통 시기 미정",
@@ -42,7 +42,7 @@ const HISTORY = [
     year: "2031",
     items: ["영상문화복합단지 (계획)"],
     img: "/resources/img/sub/brand_history_img_6.png",
-    badge: "청라 아크원 푸르지오(예정)",
+    badge: "청라 아크원 푸르지오 (2026.10 분양)",
     primary: true,
   },
 ];
