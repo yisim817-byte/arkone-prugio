@@ -5,6 +5,7 @@ import { canonicalLinks, faqJsonLd } from "@/lib/seo-host";
 import { GuideAnswer, GuideDetail, type GuideFaq } from "@/components/seo-guide";
 import { SRC_APPLYHOME } from "@/lib/arkone-facts";
 import { imgDims } from "@/components/img";
+import { PRICE_FAQ_ANSWER } from "@/components/notice-sections";
 
 const FAQ: GuideFaq[] = [
   {
@@ -21,7 +22,7 @@ const FAQ: GuideFaq[] = [
   },
   {
     q: "분양가는 얼마인가요?",
-    a: "분양가(공급금액)는 입주자모집공고문(주택관리번호 2026000496) 공급금액표에 주택형·동·층·호별로 공개되어 있습니다. 조건별 금액은 대표번호 1833-3872로 상담해 주세요. 발코니 확장·유상옵션·취득세 등은 별도입니다.",
+    a: PRICE_FAQ_ANSWER,
   },
   {
     q: "청라 피크원 푸르지오와 같은 단지인가요?",

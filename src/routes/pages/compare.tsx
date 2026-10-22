@@ -4,7 +4,7 @@ import { SubNotice } from "@/components/notice";
 import { canonicalLinks, faqJsonLd } from "@/lib/seo-host";
 import { GuideAnswer, GuideDetail, type GuideFaq } from "@/components/seo-guide";
 import { SRC_APPLYHOME } from "@/lib/arkone-facts";
-import { NoticeTypes, UnitFigure } from "@/components/notice-sections";
+import { NoticeTypes, PlanFigure, UnitFigure } from "@/components/notice-sections";
 
 const FAQ: GuideFaq[] = [
   {
@@ -54,10 +54,16 @@ function ComparePage() {
           </GuideAnswer>
           <NoticeTypes
             after84c={<>
+              <PlanFigure plan="84c" />
               <UnitFigure file="unit-84c-living-ai.webp" alt="84㎡C 거실 인테리어 연출 이미지(AI 제작)" />
               <UnitFigure file="unit-84c-living-kitchen-ai.webp" alt="84㎡C 거실·주방 인테리어 연출 이미지(AI 제작)" />
             </>}
-            after103a={<UnitFigure file="unit-103a-alpha-study-ai.webp" alt="103㎡A 알파룸을 서재로 꾸민 인테리어 연출 이미지(AI 제작)" />}
+            after103a={
+              <>
+                <PlanFigure plan="103a" />
+                <UnitFigure file="unit-103a-alpha-study-ai.webp" alt="103㎡A 알파룸을 서재로 꾸민 인테리어 연출 이미지(AI 제작)" />
+              </>
+            }
             gallery={<div className="unit-gallery" aria-label="인테리어 연출">
               <h3 className="seo-guide__subtitle">인테리어 연출</h3>
               <UnitFigure file="interior-master-bedroom-ai.webp" alt="침실 인테리어 연출 이미지(AI 제작)" />

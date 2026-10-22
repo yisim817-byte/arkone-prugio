@@ -2,12 +2,14 @@ import { useEffect, useRef } from "react";
 
 // 작업지시서 10 · 단계 띠(site_phase). 헤더 바로 아래 본문 흐름 안에 둔다(고정 위치 아님).
 // public/phase-band.js(참조 구현 그대로)를 화면을 그린 뒤 불러와 mountInto 로 붙인다.
+export const NOTICE_URL = "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000496&pblancNo=2026000496";
+
 const PHASE_CFG = {
   fnUrl: "https://jzmktahlrwtrtejjflrw.supabase.co/functions/v1/arkone-site-phase",
   fnHeaders: {}, // arkone-visit-config 호출과 같은 방식(별도 헤더·anon 키 없음)
   registerPath: "/register",
   scheduleHref: "/pages/schedule",
-  noticeUrl: "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000496&pblancNo=2026000496",
+  noticeUrl: NOTICE_URL,
 };
 
 type PhaseWindow = Window & {

@@ -4,7 +4,7 @@ import { SubNotice } from "@/components/notice";
 import { canonicalLinks, faqJsonLd } from "@/lib/seo-host";
 import { GuideAnswer, GuideDetail, type GuideFaq } from "@/components/seo-guide";
 import { SRC_APPLYHOME } from "@/lib/arkone-facts";
-import { NoticePayment, NoticePrice } from "@/components/notice-sections";
+import { NoticePayment, NoticePrice, PRICE_FAQ_ANSWER } from "@/components/notice-sections";
 
 const FAQ: GuideFaq[] = [
   {
@@ -13,7 +13,7 @@ const FAQ: GuideFaq[] = [
   },
   {
     q: "분양가는 얼마인가요?",
-    a: "분양가(공급금액)는 입주자모집공고문(주택관리번호 2026000496) 공급금액표에 주택형·동·층·호별로 공개되어 있습니다. 조건별 금액은 대표번호 1833-3872로 상담해 주세요. 발코니 확장·유상옵션·취득세 등은 별도입니다.",
+    a: PRICE_FAQ_ANSWER,
   },
   {
     q: "청라 아크원 푸르지오 분양가는 언제 공개되고, 어디서 확인할 수 있나요?",
@@ -57,7 +57,7 @@ export const Route = createFileRoute("/pages/schedule")({
       {
         name: "description",
         content:
-          "청라 아크원 푸르지오(APT) 입주자모집공고 게시 2026.10.22(목) · 특별공급 11.02(월) · 1순위 11.03(화) · 2순위 11.04(수) · 당첨자 발표 11.10(화). 총 868세대(전용 84·103㎡).",
+          "청라 아크원 푸르지오(APT) 주택형별 공급금액 · 입주자모집공고 게시 2026.10.22(목) · 특별공급 11.02(월) · 1순위 11.03(화) · 2순위 11.04(수) · 당첨자 발표 11.10(화). 총 868세대(전용 84·103㎡).",
       },
     ],
     links: canonicalLinks("/pages/schedule"),
