@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
-import { deposit, specialSupply, supply, types } from "@/lib/notice-facts.v1.json";
+import { balcony, deposit, prices, specialSupply, supply, types } from "@/lib/notice-facts.v1.json";
 
-const facts = { deposit, specialSupply, supply, types }; // 쓰는 항목만 가져온다(source 링크 등은 번들에 넣지 않음)
+const facts = { balcony, deposit, prices, specialSupply, supply, types }; // 쓰는 항목만 가져온다(source 링크 등은 번들에 넣지 않음)
 
 // 작업지시서 10 (2026-10-22): 입주자모집공고(주택관리번호 2026000496) 확정 내용. 금액은 쓰지 않는다.
 // 표 숫자는 notice-facts.v1.json 에서만 그린다.
@@ -35,15 +35,24 @@ function Table({ columns, rows }: { columns: string[]; rows: (string | number)[]
   );
 }
 
-/** M3 · 분양가 안내 (금액 없음) */
+/** 작업지시서 12 · 공급금액 FAQ 답(주택형별 최저~최고). 숫자는 notice-facts.v1.json 에서만 가져온다. */
+export const PRICE_FAQ_ANSWER = `주택형별 공급금액은 ${facts.prices.rows.map((p) => `${p.type} ${p.min}~${p.max}`).join(", ")}이며 동·층·호별로 다릅니다. 발코니 확장비·유상옵션·취득세 등은 별도이며 입주자모집공고문이 우선합니다.`;
+
+/** M3 · 공급금액표 (작업지시서 12 — 공고문 6~20면 주택형별 최저~최고, 발코니 확장비) */
 export function NoticePrice() {
+  const rows = facts.prices.rows.map((p) => [p.type, p.units, `${p.min} ~ ${p.max}`]);
+  const balconyRow = ["발코니 확장비", ...facts.balcony.rows.map((b) => b.won)];
   return (
-    <Block label="분양가 안내" title="분양가 안내">
+    <Block label="공급금액" title="공급금액 (입주자모집공고문 6~20면)">
+      <Table columns={["주택형", "세대수", "공급금액 (최저 ~ 최고)"]} rows={rows} />
       <div className="seo-guide__answer">
-        <p>분양가(공급금액)는 입주자모집공고문(주택관리번호 2026000496)의 공급금액표에 주택형·동·층·호별로 공개되어 있습니다. 주택형과 층에 따라 금액이 다르므로 원하시는 조건은 대표번호 1833-3872로 상담해 주세요.</p>
-        <p>분양가상한제 적용 단지입니다.</p>
-        <p>※ 발코니 확장·유상옵션·취득세 등은 공급금액에 포함되어 있지 않습니다.</p>
+        <p>{facts.prices.lines84A}</p>
+        <p>※ 공급금액은 동·층·호별로 다르며, 입주자모집공고문 6~20면 공급금액표가 우선합니다.</p>
+        <p>※ 공급금액에는 발코니 확장비·유상옵션·취득세 등이 포함되어 있지 않습니다. 전용 85㎡ 이하는 부가가치세 대상이 아니며, 103㎡ 공급금액에는 건축비 부가가치세가 포함되어 있습니다.</p>
+        <p>※ 분양가상한제 적용 단지입니다. 원하시는 동·층·호의 금액은 대표번호 1833-3872로 상담해 주세요.</p>
       </div>
+      <h3 className="seo-guide__subtitle">{`발코니 확장비 (${facts.balcony.basis})`}</h3>
+      <Table columns={["구분", ...facts.balcony.rows.map((b) => b.type)]} rows={[balconyRow]} />
     </Block>
   );
 }
@@ -53,7 +62,7 @@ export function NoticePayment() {
   return (
     <Block label="납부 조건" title="납부 조건 (공급금액 기준 비율)">
       <div className="seo-guide__answer">
-        <p>계약금 5% — 2회 분할 납부</p>
+        <p>계약금 5% — 1차 1천만원(계약 시) + 2차 나머지(계약일부터 30일 이내)</p>
         <p>중도금 60% — 6회 분할, 이자후불제 (사업주체가 지정하는 금융기관을 통한 중도금 대출 알선 예정. 정부 정책·금융기관 사정으로 대출이 어려우면 계약자가 직접 납부)</p>
         <p>잔금 35% — 입주지정일</p>
         <p>※ 잔금대출은 DSR 등 대출 규제에 따라 개인별 한도가 줄거나 대출이 어려울 수 있습니다.</p>
@@ -98,6 +107,25 @@ export function NoticeSpecial() {
         <p>※ 소득·자산 기준 등 유형별 세부 자격은 입주자모집공고문 23~36면이 우선합니다.</p>
       </div>
     </Block>
+  );
+}
+
+export const PLAN_NOTE = "분양 안내 자료의 평면을 다시 그린 안내용 이미지입니다. 실제와 다를 수 있으며 입주자모집공고문과 견본주택이 우선합니다.";
+
+/** 작업지시서 12 · 평면 안내도(재작도 v2). 누르면 원본 PNG 를 새 창으로 연다(휴대폰 확대용). */
+export function PlanFigure({ plan }: { plan: "84c" | "103a" }) {
+  const name = plan === "84c" ? "84㎡C" : "103㎡A";
+  const file = `/plans/plan-${plan}-redraw-v2`;
+  return (
+    <figure className="plan-figure">
+      <a href={`${file}.png`} target="_blank" rel="noopener">
+        <picture>
+          <source type="image/webp" srcSet={`${file}.webp`} />
+          <img src={`${file}.png`} alt={`청라 아크원 푸르지오 ${name} 평면 안내도`} width={2000} height={1250} loading="lazy" decoding="async" />
+        </picture>
+      </a>
+      <figcaption>{PLAN_NOTE}</figcaption>
+    </figure>
   );
 }
 

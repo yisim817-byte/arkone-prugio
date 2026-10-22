@@ -3,6 +3,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useId, useState } from "react";
 import { Img } from "@/components/img";
 import { SiteShell } from "@/components/site-shell";
+import { NoticeSummary } from "@/components/notice-summary";
 import { YoutubeModal } from "@/components/youtube-modal";
 import { SITE_NAME, SITE_PHONE, SITE_TEL_HREF, YOUTUBE_ID } from "@/lib/site-data";
 import { canonicalLinks, isKrHost, KR_ORIGIN, LEGACY_ORIGIN } from "@/lib/seo-host";
@@ -215,6 +216,8 @@ function Home() {
             </details>
           </div>
         </section>
+
+        <NoticeSummary />
 
         <section className="hero-define">
           <Img className="hero-define__visual" src="/resources/img/pages/main/hero_brand_img.v4.webp" alt="청라 아크원 푸르지오 엠블럼" />
