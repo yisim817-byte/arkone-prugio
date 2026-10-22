@@ -101,6 +101,18 @@ export function NoticeSpecial() {
   );
 }
 
+const UNIT_NOTE = "AI로 제작한 인테리어 연출 이미지입니다. 실제 평면·마감재·가구·창밖 조망과 다릅니다.";
+
+/** 타입 연출 이미지(작업지시서 10 · 3-8). 이미지 바로 아래 글자로 연출 고지. */
+export function UnitFigure({ file, alt }: { file: string; alt: string }) {
+  return (
+    <figure className="unit-figure">
+      <img src={`/units/${file}`} alt={alt} width={1168} height={784} loading="lazy" decoding="async" />
+      <figcaption>{UNIT_NOTE}</figcaption>
+    </figure>
+  );
+}
+
 /** M7 · 주택형 안내 (면적 단위 ㎡). children 자리는 타입 연출 이미지(커밋 3)용. */
 export function NoticeTypes({ after84c, after103a, gallery }: { after84c?: ReactNode; after103a?: ReactNode; gallery?: ReactNode }) {
   const rows = facts.types.map((t) => [t.type, t.units, t.exclusive, t.residentialCommon, t.supply, t.otherCommon, t.contract]);
