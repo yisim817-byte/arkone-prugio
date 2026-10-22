@@ -1,5 +1,7 @@
 import type { ReactNode } from "react";
-import facts from "@/lib/notice-facts.v1.json";
+import { deposit, specialSupply, supply, types } from "@/lib/notice-facts.v1.json";
+
+const facts = { deposit, specialSupply, supply, types }; // 쓰는 항목만 가져온다(source 링크 등은 번들에 넣지 않음)
 
 // 작업지시서 10 (2026-10-22): 입주자모집공고(주택관리번호 2026000496) 확정 내용. 금액은 쓰지 않는다.
 // 표 숫자는 notice-facts.v1.json 에서만 그린다.
