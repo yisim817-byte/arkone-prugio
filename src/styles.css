@@ -938,3 +938,4 @@ body.prereg-lock { overflow: hidden; }
 .privacy-page { max-width: 880px; line-height: 1.7; }
 .privacy-page h2 { margin: 0 0 16px; font-size: 26px; }
 .privacy-page h3 { margin: 28px 0 8px; font-size: 18px; }
+.plan-figure__price { margin: 4px 0 0; font-size: 15px; font-weight: 700; color: var(--color-primary); }

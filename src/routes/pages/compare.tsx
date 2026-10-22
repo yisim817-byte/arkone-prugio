@@ -4,7 +4,7 @@ import { SubNotice } from "@/components/notice";
 import { canonicalLinks, faqJsonLd } from "@/lib/seo-host";
 import { GuideAnswer, GuideDetail, type GuideFaq } from "@/components/seo-guide";
 import { SRC_APPLYHOME } from "@/lib/arkone-facts";
-import { NoticeTypes, PlanFigure, UnitFigure } from "@/components/notice-sections";
+import { NoticePrice, NoticeTypes, PlanFigure, UnitFigure } from "@/components/notice-sections";
 
 const FAQ: GuideFaq[] = [
   {
@@ -54,13 +54,14 @@ function ComparePage() {
           </GuideAnswer>
           <NoticeTypes
             after84c={<>
-              <PlanFigure plan="84c" />
+              <PlanFigure plan="84c" withPrice />
               <UnitFigure file="unit-84c-living-ai.webp" alt="84㎡C 거실 인테리어 연출 이미지(AI 제작)" />
               <UnitFigure file="unit-84c-living-kitchen-ai.webp" alt="84㎡C 거실·주방 인테리어 연출 이미지(AI 제작)" />
             </>}
             after103a={
               <>
-                <PlanFigure plan="103a" />
+                <PlanFigure plan="103a" withPrice />
+                <NoticePrice />
                 <UnitFigure file="unit-103a-alpha-study-ai.webp" alt="103㎡A 알파룸을 서재로 꾸민 인테리어 연출 이미지(AI 제작)" />
               </>
             }
