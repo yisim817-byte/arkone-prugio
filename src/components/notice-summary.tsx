@@ -39,7 +39,7 @@ export function NoticeSummary() {
             <dt>평면</dt>
             <dd className="notice-summary__plans">
               {PLANS.map(({ plan, name }) => (
-                <Link key={plan} to="/pages/compare" className="notice-summary__plan">
+                <Link key={plan} to="/pages/plans" className="notice-summary__plan">
                   <picture>
                     <source type="image/webp" srcSet={`/plans/plan-${plan}-redraw-v2.webp`} />
                     <img src={`/plans/plan-${plan}-redraw-v2.png`} alt={`청라 아크원 푸르지오 ${name} 평면 안내도`} width={2000} height={1250} loading="lazy" decoding="async" />
@@ -52,7 +52,8 @@ export function NoticeSummary() {
           </div>
         </dl>
         <div className="notice-summary__actions">
-          <Link className="notice-summary__button" to="/pages/schedule">청약 일정·공급금액 보기</Link>
+          <Link className="notice-summary__button" to="/pages/plans">평면도·공급금액 보기</Link>
+          <Link className="notice-summary__button notice-summary__button--line" to="/pages/schedule">청약 일정·공급금액 보기</Link>
           <a className="notice-summary__button notice-summary__button--line" href={NOTICE_URL} target="_blank" rel="noopener">입주자모집공고 원문(청약홈)</a>
         </div>
       </div>

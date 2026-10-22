@@ -22,6 +22,7 @@ import { Route as PagesDocnormalRouteImport } from './routes/pages/docnormal'
 import { Route as PagesDocspecialRouteImport } from './routes/pages/docspecial'
 import { Route as PagesLocationRouteImport } from './routes/pages/location'
 import { Route as PagesOverviewRouteImport } from './routes/pages/overview'
+import { Route as PagesPlansRouteImport } from './routes/pages/plans'
 import { Route as PagesPremiumRouteImport } from './routes/pages/premium'
 import { Route as PagesScheduleRouteImport } from './routes/pages/schedule'
 import { Route as PagesVideoRouteImport } from './routes/pages/video'
@@ -91,6 +92,11 @@ const PagesOverviewRoute = PagesOverviewRouteImport.update({
   path: '/pages/overview',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PagesPlansRoute = PagesPlansRouteImport.update({
+  id: '/pages/plans',
+  path: '/pages/plans',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PagesPremiumRoute = PagesPremiumRouteImport.update({
   id: '/pages/premium',
   path: '/pages/premium',
@@ -121,6 +127,7 @@ export interface FileRoutesByFullPath {
   '/pages/docspecial': typeof PagesDocspecialRoute
   '/pages/location': typeof PagesLocationRoute
   '/pages/overview': typeof PagesOverviewRoute
+  '/pages/plans': typeof PagesPlansRoute
   '/pages/premium': typeof PagesPremiumRoute
   '/pages/schedule': typeof PagesScheduleRoute
   '/pages/video': typeof PagesVideoRoute
@@ -139,6 +146,7 @@ export interface FileRoutesByTo {
   '/pages/docspecial': typeof PagesDocspecialRoute
   '/pages/location': typeof PagesLocationRoute
   '/pages/overview': typeof PagesOverviewRoute
+  '/pages/plans': typeof PagesPlansRoute
   '/pages/premium': typeof PagesPremiumRoute
   '/pages/schedule': typeof PagesScheduleRoute
   '/pages/video': typeof PagesVideoRoute
@@ -158,6 +166,7 @@ export interface FileRoutesById {
   '/pages/docspecial': typeof PagesDocspecialRoute
   '/pages/location': typeof PagesLocationRoute
   '/pages/overview': typeof PagesOverviewRoute
+  '/pages/plans': typeof PagesPlansRoute
   '/pages/premium': typeof PagesPremiumRoute
   '/pages/schedule': typeof PagesScheduleRoute
   '/pages/video': typeof PagesVideoRoute
@@ -178,6 +187,7 @@ export interface FileRouteTypes {
     | '/pages/docspecial'
     | '/pages/location'
     | '/pages/overview'
+    | '/pages/plans'
     | '/pages/premium'
     | '/pages/schedule'
     | '/pages/video'
@@ -196,6 +206,7 @@ export interface FileRouteTypes {
     | '/pages/docspecial'
     | '/pages/location'
     | '/pages/overview'
+    | '/pages/plans'
     | '/pages/premium'
     | '/pages/schedule'
     | '/pages/video'
@@ -214,6 +225,7 @@ export interface FileRouteTypes {
     | '/pages/docspecial'
     | '/pages/location'
     | '/pages/overview'
+    | '/pages/plans'
     | '/pages/premium'
     | '/pages/schedule'
     | '/pages/video'
@@ -233,6 +245,7 @@ export interface RootRouteChildren {
   PagesDocspecialRoute: typeof PagesDocspecialRoute
   PagesLocationRoute: typeof PagesLocationRoute
   PagesOverviewRoute: typeof PagesOverviewRoute
+  PagesPlansRoute: typeof PagesPlansRoute
   PagesPremiumRoute: typeof PagesPremiumRoute
   PagesScheduleRoute: typeof PagesScheduleRoute
   PagesVideoRoute: typeof PagesVideoRoute
@@ -331,6 +344,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PagesOverviewRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/pages/plans': {
+      id: '/pages/plans'
+      path: '/pages/plans'
+      fullPath: '/pages/plans'
+      preLoaderRoute: typeof PagesPlansRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/pages/premium': {
       id: '/pages/premium'
       path: '/pages/premium'
@@ -369,6 +389,7 @@ const rootRouteChildren: RootRouteChildren = {
   PagesDocspecialRoute: PagesDocspecialRoute,
   PagesLocationRoute: PagesLocationRoute,
   PagesOverviewRoute: PagesOverviewRoute,
+  PagesPlansRoute: PagesPlansRoute,
   PagesPremiumRoute: PagesPremiumRoute,
   PagesScheduleRoute: PagesScheduleRoute,
   PagesVideoRoute: PagesVideoRoute,

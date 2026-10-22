@@ -92,6 +92,7 @@ function SchedulePage() {
               <p>※ 일정은 사업주체 사정에 따라 변경될 수 있으며, 입주자모집공고문이 우선합니다.</p>
             </div>
           </section>
+          <p className="plans-link"><Link to="/pages/plans">평면도·공급금액 한눈에 보기 →</Link></p>
           <NoticePrice />
           <NoticePayment />
           <GuideDetail

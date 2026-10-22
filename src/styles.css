@@ -939,3 +939,30 @@ body.prereg-lock { overflow: hidden; }
 .privacy-page h2 { margin: 0 0 16px; font-size: 26px; }
 .privacy-page h3 { margin: 28px 0 8px; font-size: 18px; }
 .plan-figure__price { margin: 4px 0 0; font-size: 15px; font-weight: 700; color: var(--color-primary); }
+
+/* PM 지시: 평면도·공급금액 전용 페이지(/pages/plans) */
+.plans-page { max-width: 1100px; }
+.plans-page__more { margin-top: 24px; font-size: 15px; }
+.plans-page__more a, .plans-link a { color: var(--color-primary); font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
+.plans-link { margin: 12px 0; font-size: 16px; }
+
+/* PM 지시: 홈 「평면도 · 공급금액」 배너 (히어로 바로 아래) */
+.plans-banner { padding: 64px var(--page-margin) 0; background: transparent; }
+.plans-banner__inner { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: 32px; align-items: center; max-width: var(--inner-size); margin: 0 auto; padding: 40px 48px; border-radius: 8px; background: #032B20; color: #F7F3EA; text-decoration: none; }
+.plans-banner h2 { margin: 0; font-size: 40px; line-height: 1.2; font-weight: 800; color: #F7F3EA; }
+.plans-banner__sub { margin: 12px 0 0; font-size: 18px; line-height: 1.5; }
+.plans-banner__price { margin: 16px 0 0; font-size: 20px; line-height: 1.5; font-weight: 700; color: #E2B565; word-break: keep-all; }
+.plans-banner__button { display: inline-flex; align-items: center; min-height: 52px; margin-top: 24px; padding: 0 28px; border-radius: 999px; background: #E2B565; color: #032B20; font-size: 17px; font-weight: 800; }
+.plans-banner__thumbs { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.plans-banner__thumbs img { display: block; width: 100%; height: auto; border-radius: 4px; background: #fff; }
+.plans-banner__note { grid-column: 1 / -1; margin: 0; font-size: 12px; line-height: 1.5; color: rgba(247, 243, 234, .75); }
+@media (max-width: 1024px) {
+  .plans-banner { padding: 40px 20px 0; }
+  .plans-banner__inner { grid-template-columns: 1fr; padding: 28px 20px; gap: 20px; }
+  .plans-banner h2 { font-size: 28px; }
+  .plans-banner__sub { font-size: 15px; }
+  .plans-banner__price { font-size: 16px; }
+  .plans-banner__button { min-height: 48px; font-size: 16px; }
+}
+.plans-banner__price span { display: block; }
+.plans-banner__cond { margin: 6px 0 0; font-size: 14px; color: rgba(247, 243, 234, .8); }
