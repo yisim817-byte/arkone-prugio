@@ -5,6 +5,7 @@ import { canonicalLinks } from "@/lib/seo-host";
 import { GuideAnswer, GuideDetail } from "@/components/seo-guide";
 import { SRC_APPLYHOME } from "@/lib/arkone-facts";
 import { imgDims } from "@/components/img";
+import { NoticeSpecial } from "@/components/notice-sections";
 
 export const Route = createFileRoute("/pages/docspecial")({
   component: DocSpecialPage,
@@ -26,6 +27,7 @@ function DocSpecialPage() {
           <GuideAnswer title="청라 아크원 푸르지오 특별공급 안내 요약">
             <p>청라 아크원 푸르지오 특별공급은 11.02(월) 접수입니다. 유형별 공급 물량과 자격은 2026.10.22(목) 게시된 입주자모집공고 기준이며, 신청 전 청약홈 공고문을 확인하시기 바랍니다.</p>
           </GuideAnswer>
+          <NoticeSpecial />
           <figure>
             <img src={src} alt="기관추천·다자녀·신혼·생애최초 자격표가 있는 특별공급 안내문" {...imgDims(src)} data-dims="" />
           </figure>

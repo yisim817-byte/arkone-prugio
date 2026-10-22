@@ -4,6 +4,7 @@ import { SubNotice } from "@/components/notice";
 import { canonicalLinks, faqJsonLd } from "@/lib/seo-host";
 import { GuideAnswer, GuideDetail, type GuideFaq } from "@/components/seo-guide";
 import { SRC_APPLYHOME } from "@/lib/arkone-facts";
+import { NoticeTypes } from "@/components/notice-sections";
 
 const FAQ: GuideFaq[] = [
   {
@@ -51,6 +52,7 @@ function ComparePage() {
             <p>주차대수는 총 3,124대 중 아파트 1,389대, 오피스텔 1,695대로 공개되어 있습니다.</p>
             <p>아파트 타입별 세대수는 84A 248세대, 84B·84C·84D·103A·103B 각 124세대로 총 868세대입니다(입주자모집공고 기준). 견본주택에는 84A·103A 유니트가 설치되어 있습니다. 주택형별 면적은 주택형 안내(입주자모집공고문 5면)에서 확인할 수 있습니다. 오피스텔 타입별 실수·평면도·분양가는 오피스텔 별도 공고로 안내될 예정입니다.</p>
           </GuideAnswer>
+          <NoticeTypes />
           <GuideDetail
             tableTitle="아파트(APT)와 오피스텔(OT) 비교"
             columns={["구분", "아파트(APT) · 오피스텔(OT)", "상태"]}

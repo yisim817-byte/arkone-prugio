@@ -4,6 +4,7 @@ import { SubNotice } from "@/components/notice";
 import { canonicalLinks, faqJsonLd } from "@/lib/seo-host";
 import { GuideAnswer, GuideDetail, type GuideFaq } from "@/components/seo-guide";
 import { SRC_APPLYHOME } from "@/lib/arkone-facts";
+import { NoticePayment, NoticePrice } from "@/components/notice-sections";
 
 const FAQ: GuideFaq[] = [
   {
@@ -37,6 +38,14 @@ const FAQ: GuideFaq[] = [
   {
     q: "청라 아크원 푸르지오 월세나 전세도 안내하나요?",
     a: "이 사이트는 월세·전세 시세를 안내하지 않습니다. 분양 조건은 입주자모집공고에서 확인합니다.",
+  },
+  {
+    q: "누가 청약할 수 있나요?",
+    a: "입주자모집공고일(2026.10.22) 현재 인천광역시·서울특별시·경기도에 거주하는 만 19세 이상이면 신청할 수 있습니다. 같은 순위에서 경쟁이 있으면 인천광역시 거주자 50%를 우선 공급하고 나머지 50%는 서울특별시·경기도 거주자에게 공급합니다. 1순위는 청약통장 가입 12개월 경과와 지역별·면적별 예치금 충족이 필요합니다.",
+  },
+  {
+    q: "전매제한·재당첨 제한·거주의무가 있나요?",
+    a: "전매제한 3년(소유권이전등기일까지, 3년을 넘으면 3년), 재당첨 제한 10년(이 단지 당첨 시)이 적용되며 거주의무는 없습니다. 기존 재당첨 제한 기간 중인 분도 이 단지에 청약할 수 있습니다.",
   },
 ];
 
@@ -83,6 +92,8 @@ function SchedulePage() {
               <p>※ 일정은 사업주체 사정에 따라 변경될 수 있으며, 입주자모집공고문이 우선합니다.</p>
             </div>
           </section>
+          <NoticePrice />
+          <NoticePayment />
           <GuideDetail
             tableTitle="분양 일정 및 주요 조건 상태"
             columns={["항목", "내용", "상태"]}

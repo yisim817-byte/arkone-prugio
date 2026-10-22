@@ -879,3 +879,12 @@ body.prereg-lock { overflow: hidden; }
 .visit-block__slots legend { margin-bottom: 0; padding: 0; font-weight: 700; color: var(--label-strong); }
 .visit-block__slots .prereg-chips { margin-bottom: 8px; }
 .visit-block__note { margin: 4px 0 0; font-size: 13px; color: var(--label-neutral); }
+
+/* 작업지시서 10 (2026-10-22): 단계 띠 자리 — 고정 헤더 바로 아래, 본문 흐름 안 */
+.ak-phase-band-slot:not(:empty) { position: relative; z-index: 1; margin-top: var(--header-height); }
+.ak-phase-band-slot:not(:empty) + .sub_visual { margin-top: 0; }
+/* 공고 반영 구간(일정·분양가·납부·자격·특별공급·주택형) */
+.notice-block { margin: 0 0 48px; }
+.notice-block .seo-guide__table th, .notice-block .seo-guide__table td { white-space: nowrap; }
+.notice-block .seo-guide__table td:last-child { width: auto; color: inherit; }
+.notice-block .seo-guide__table tbody th { width: auto; }

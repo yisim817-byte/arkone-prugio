@@ -7,6 +7,7 @@ import { SubVisual } from "@/components/sub-visual";
 import { PreregPopup } from "@/components/prereg-popup";
 import { CostcoEventPopup } from "@/components/CostcoEventPopup";
 import { VisitReservationPopup } from "@/components/VisitReservationPopup";
+import { PhaseBand } from "@/components/phase-band";
 import { SITE_TEL_HREF } from "@/lib/site-data";
 
 type Props = {
@@ -21,6 +22,7 @@ export function SiteShell({ children, home, path }: Props) {
   return (
     <div className={home ? "home-wrap main_wrap" : "sub-wrap"}>
       <SiteHeader home={home} />
+      <PhaseBand />
       {path ? <SubVisual path={path} /> : null}
       {children}
       <SiteFooter onPrivacy={() => setPrivacy(true)} />
