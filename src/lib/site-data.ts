@@ -44,6 +44,12 @@ export const NAV: NavItem[] = [
     children: [{ krName: "프리미엄", enName: "PREMIUM", to: "/pages/premium" }],
   },
   {
+    krName: "평면·분양가",
+    enName: "PLANS",
+    to: "/pages/plans",
+    children: [{ krName: "평면도·공급금액", enName: "PLANS", to: "/pages/plans" }],
+  },
+  {
     krName: "청약안내",
     enName: "INFORMATION",
     to: "/pages/changeinfo",
@@ -113,6 +119,7 @@ export const PAGE_META: Record<
   },
   "/board/news_list": { en: "NEWS", kr: "언론보도", parentKr: "홍보센터", parentEn: "MEDIA" },
   "/pages/video": { en: "MEDIA", kr: "홍보영상", parentKr: "홍보센터", parentEn: "MEDIA" },
+  "/pages/plans": { en: "PLANS", kr: "평면도·공급금액", parentKr: "평면·분양가", parentEn: "PLANS" },
   "/register": { en: "REGISTER", kr: "사전고객등록", parentKr: "사전고객등록", parentEn: "REGISTER" },
   "/visit": { en: "VISIT", kr: "모델하우스 방문예약", parentKr: "방문예약", parentEn: "VISIT" },
 };

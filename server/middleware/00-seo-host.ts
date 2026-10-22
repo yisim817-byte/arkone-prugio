@@ -27,6 +27,7 @@ const KR_SITEMAP: ReadonlyArray<readonly [string, string]> = [
   ["/pages/brand", "2026-10-09"],
   ["/board/news_list", "2026-10-08"],
   ["/pages/video", "2026-10-09"],
+  ["/pages/plans", "2026-10-22"],
   ["/visit", "2026-10-22"],
 ];
 const KR_PATHS = new Set(KR_SITEMAP.map(([p]) => p));
@@ -77,6 +78,7 @@ const KR_PAGE_NAMES: Record<string, string> = {
   "/pages/brand": "히스토리",
   "/board/news_list": "언론보도",
   "/pages/video": "홍보영상",
+  "/pages/plans": "평면도·공급금액",
   "/visit": "모델하우스 방문예약",
 };
 

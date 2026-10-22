@@ -4,6 +4,7 @@ import { useEffect, useId, useState } from "react";
 import { Img } from "@/components/img";
 import { SiteShell } from "@/components/site-shell";
 import { NoticeSummary } from "@/components/notice-summary";
+import { PlansBanner } from "@/components/plans-banner";
 import { YoutubeModal } from "@/components/youtube-modal";
 import { SITE_NAME, SITE_PHONE, SITE_TEL_HREF, YOUTUBE_ID } from "@/lib/site-data";
 import { canonicalLinks, isKrHost, KR_ORIGIN, LEGACY_ORIGIN } from "@/lib/seo-host";
@@ -190,6 +191,8 @@ function Home() {
             </div>
           </div>
         </section>
+
+        <PlansBanner />
 
         <section className="event-card" aria-labelledby="event-title">
           <div className="event-card__inner">
