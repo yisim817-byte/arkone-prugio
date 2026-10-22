@@ -888,3 +888,7 @@ body.prereg-lock { overflow: hidden; }
 .notice-block .seo-guide__table th, .notice-block .seo-guide__table td { white-space: nowrap; }
 .notice-block .seo-guide__table td:last-child { width: auto; color: inherit; }
 .notice-block .seo-guide__table tbody th { width: auto; }
+/* 작업지시서 10 · 타입 연출 이미지 — 가로 100%, 비율 유지, 잘라내지 않음, 고지는 글자로 */
+.unit-figure { margin: 12px 0 24px; }
+.unit-figure img { display: block; width: 100%; height: auto; }
+.unit-figure figcaption { margin-top: 6px; font-size: 13px; line-height: 1.5; color: var(--label-neutral, #555); }
