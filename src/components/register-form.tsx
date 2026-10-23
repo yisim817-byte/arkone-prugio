@@ -262,7 +262,7 @@ export function RegisterForm() {
           <label htmlFor="consent-collect">[필수] 개인정보 수집·이용 동의</label>
           <button type="button" onClick={() => setOpen(open === "collect" ? "" : "collect")}>보기</button>
         </div>
-        {open === "collect" ? <div className="reg__consent"><p>수집 항목 : [필수] 성명, 휴대전화번호, 생년월일(앞 6자리)<br />[선택] 주민등록상 주소(시·도, 시·군·구, 읍·면·동), 관심타입, 특별공급 관심 여부<br />(자동 수집) 접속 사이트, 유입 경로, 접수 일시</p><p>이용 목적 : 청라 아크원 푸르지오 청약 일정·모집공고 안내, 청약 해당지역 안내, 사전고객 관리, 이벤트 시행 시 대상 확인</p><p>보유 기간 : 이벤트 종료 시 지체 없이 파기. 최장 수집일로부터 1년</p><p>보관 위치 : Supabase, Inc. 클라우드 데이터베이스 — 일본(도쿄 리전)</p><p>※ 주민등록번호는 수집하지 않습니다.</p><p>동의를 거부할 수 있으며, 거부 시 사전고객등록이 제한됩니다. 전화 문의(1833-3872)는 동의 없이 이용하실 수 있습니다.</p></div> : null}
+        {open === "collect" ? <div className="reg__consent"><p>수집 항목 : [필수] 성명, 휴대전화번호, 생년월일(앞 6자리)<br />[선택] 주민등록상 주소(시·도, 시·군·구, 읍·면·동), 관심타입, 특별공급 관심 여부<br />(자동 수집) 접속 사이트, 유입 경로, 접수 일시, 서비스 이용 기록, 접속 로그, 쿠키, 접속 IP 정보, 불량이용 기록, 기기정보</p><p>이용 목적 : 청라 아크원 푸르지오 분양정보 제공 및 마케팅 활용(마케팅 활용은 광고성 정보 수신에 동의한 경우에 한함), 청약 일정·모집공고 안내, 청약 해당지역 안내, 사전고객 관리, 이벤트 시행 시 대상 확인</p><p>보유 기간 : 이벤트 종료 시 지체 없이 파기. 최장 수집일로부터 1년</p><p>보관 위치 : Supabase, Inc. 클라우드 데이터베이스 — 일본(도쿄 리전)</p><p>※ 주민등록번호는 수집하지 않습니다.</p><p>동의를 거부할 수 있으며, 거부 시 사전고객등록이 제한됩니다. 전화 문의(1833-3872)는 동의 없이 이용하실 수 있습니다.</p></div> : null}
         <div className="reg__agree">
           <input id="consent-mkt" type="checkbox" checked={marketing} disabled={step === 2} onChange={(e) => setMarketing(e.target.checked)} />
           <label htmlFor="consent-mkt">[선택] 광고성 정보 수신 동의</label>
