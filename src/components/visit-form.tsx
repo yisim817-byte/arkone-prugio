@@ -168,7 +168,7 @@ export function VisitForm() {
           <label htmlFor="v-consent">[필수] 개인정보 수집·이용 동의</label>
           <button type="button" onClick={() => setOpen(!open)}>보기</button>
         </div>
-        {open ? <div className="reg__consent"><p>수집 항목 : 이름, 휴대폰번호, 방문 희망일·시간대, 관심 상품</p><p>이용 목적 : 견본주택 방문 일정 안내</p><p>보유 기간 : 이벤트 종료 시 지체 없이 파기. 최장 수집일로부터 1년</p><p>동의를 거부할 수 있으며, 거부 시 방문예약 신청이 제한됩니다. 전화 예약({SITE_PHONE})은 동의 없이 이용하실 수 있습니다.</p></div> : null}
+        {open ? <div className="reg__consent"><p>수집 항목 : 이름, 휴대폰번호, 방문 희망일·시간대, 관심 상품 (자동 수집) 서비스 이용 기록, 접속 로그, 쿠키, 접속 IP 정보, 불량이용 기록, 기기정보</p><p>이용 목적 : 견본주택 방문 일정 안내, 청라 아크원 푸르지오 분양정보 제공 및 마케팅 활용(마케팅 활용은 광고성 정보 수신에 동의한 경우에 한함)</p><p>보유 기간 : 이벤트 종료 시 지체 없이 파기. 최장 수집일로부터 1년</p><p>동의를 거부할 수 있으며, 거부 시 방문예약 신청이 제한됩니다. 전화 예약({SITE_PHONE})은 동의 없이 이용하실 수 있습니다.</p></div> : null}
         {errors.consent ? <p className="reg__msg">{errors.consent}</p> : null}
         <button className="reg__submit" type="submit" disabled={busy}>{busy ? "접수 중…" : "방문예약 신청"}</button>
       </form>
