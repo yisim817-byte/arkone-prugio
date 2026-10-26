@@ -6,7 +6,7 @@ import { PrivacyModal } from "@/components/privacy-modal";
 import { SubVisual } from "@/components/sub-visual";
 import { PreregPopup } from "@/components/prereg-popup";
 import { CostcoEventPopup } from "@/components/CostcoEventPopup";
-import { VisitReservationPopup } from "@/components/VisitReservationPopup";
+import { OpenEventPopup } from "@/components/OpenEventPopup";
 import { PhaseBand } from "@/components/phase-band";
 import { SITE_TEL_HREF } from "@/lib/site-data";
 
@@ -18,8 +18,8 @@ type Props = {
 
 export function SiteShell({ children, home, path }: Props) {
   const [privacy, setPrivacy] = useState(false);
-  // 작업지시서 13: 신청 페이지(사전고객등록·방문예약)와 처리방침에서는 팝업을 띄우지 않는다.
-  const noPopup = path === "/register" || path === "/visit" || path === "/privacy";
+  // 작업지시서 14: 방문예약 팝업은 렌더하지 않는다(파일은 유지). 3번째 자리는 오픈 이벤트 팝업.
+  const noPopup = path === "/register" || path === "/visit" || path === "/event" || path === "/privacy";
 
   return (
     <div className={home ? "home-wrap main_wrap" : "sub-wrap"}>
@@ -31,7 +31,7 @@ export function SiteShell({ children, home, path }: Props) {
       {privacy ? <PrivacyModal onClose={() => setPrivacy(false)} /> : null}
       {noPopup ? null : <PreregPopup />}
       {noPopup ? null : <CostcoEventPopup />}
-      {noPopup ? null : <VisitReservationPopup />}
+      {noPopup ? null : <OpenEventPopup />}
       {path !== "/register" ? (
         <div className="quick-mo">
           <a href={SITE_TEL_HREF}>전화상담 1833-3872</a>

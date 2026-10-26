@@ -149,7 +149,7 @@ function rssFeed(): string {
 }
 
 function krSitemap(): string {
-  const urls = KR_SITEMAP.map(
+  const urls = [...KR_SITEMAP, ["/event", "2026-10-26"] as const].map(
     ([path, lastmod]) => `  <url>\n    <loc>${KR_ORIGIN}${path}</loc>\n    <lastmod>${lastmod}</lastmod>\n  </url>`,
   ).join("\n");
   return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>\n`;
