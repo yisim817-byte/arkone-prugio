@@ -76,6 +76,12 @@ export const NAV: NavItem[] = [
     children: [{ krName: "사전고객등록", enName: "REGISTER", to: "/register" }],
   },
   {
+    krName: "이벤트",
+    enName: "EVENT",
+    to: "/event",
+    children: [{ krName: "견본주택 오픈 이벤트", enName: "EVENT", to: "/event" }],
+  },
+  {
     krName: "방문예약",
     enName: "VISIT",
     to: "/visit",
