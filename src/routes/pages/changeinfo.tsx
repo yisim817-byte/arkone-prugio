@@ -1,11 +1,19 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteShell } from "@/components/site-shell";
 import { ZoomButton } from "@/components/notice";
-import { canonicalLinks, tx } from "@/lib/seo-host";
+import { canonicalLinks, faqJsonLd, isEnHost, tx } from "@/lib/seo-host";
 import { META } from "@/lib/i18n/en";
-import { GuideAnswer, GuideDetail } from "@/components/seo-guide";
+import { GuideAnswer, GuideDetail, type GuideFaq } from "@/components/seo-guide";
 import { SRC_APPLYHOME } from "@/lib/arkone-facts";
 import { imgDims } from "@/components/img";
+
+const FAQ_KO: GuideFaq[] = [
+  { q: "바뀐 청약 일정은 무엇을 기준으로 하나요?", a: "청라 아크원 푸르지오 청약 일정은 2026.10.22에 게시된 입주자모집공고 기준입니다. 특별공급은 11.02이고 1순위는 11.03이며 2순위는 11.04입니다." },
+  { q: "분양가 상한제 적용 단지인가요?", a: "청라 아크원 푸르지오 아파트는 분양가 상한제가 적용됩니다. 예상 가격이나 시세는 적지 않습니다." },
+  { q: "당첨 후 계약일은 언제인가요?", a: "계약은 11.22부터 11.24까지입니다. 당첨자 발표는 11.10입니다." },
+  { q: "견본주택은 언제 문을 열나요?", a: "견본주택 GRAND OPEN은 10.30(금)입니다. 장소는 청라동 87-1입니다." },
+  { q: "무순위 세대수나 경쟁률도 안내하나요?", a: "무순위 세대수와 경쟁률은 이 페이지에 없습니다. 입주자모집공고문과 청약홈에서 확인하세요." },
+];
 
 export const Route = createFileRoute("/pages/changeinfo")({
   component: ChangeInfoPage,
@@ -15,6 +23,7 @@ export const Route = createFileRoute("/pages/changeinfo")({
       { name: "description", content: tx("청라 아크원 푸르지오 청약 전 확인할 청약제도 변경 내용. 공급 유형·자격·청약 일정은 2026.10.22(목) 게시된 입주자모집공고 기준입니다.", META.changeinfo.desc) },
     ],
     links: canonicalLinks("/pages/changeinfo"),
+    scripts: isEnHost() ? [] : faqJsonLd(FAQ_KO),
   }),
 });
 
@@ -39,7 +48,8 @@ function ChangeInfoPage() {
               { to: "/pages/docnormal", label: "일반공급 안내" },
               { to: "/pages/overview", label: "분양 사업개요" },
             ].filter((l) => l.to !== "/pages/changeinfo")}
-            sources={[SRC_APPLYHOME]}
+            sources={[{ ...SRC_APPLYHOME, date: isEnHost() ? SRC_APPLYHOME.date : "2026-10-29" }]}
+            faq={isEnHost() ? undefined : FAQ_KO}
           />
         </section>
       </div>
