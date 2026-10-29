@@ -1,15 +1,16 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteShell } from "@/components/site-shell";
 import { SubNotice } from "@/components/notice";
-import { canonicalLinks } from "@/lib/seo-host";
+import { canonicalLinks, tx } from "@/lib/seo-host";
+import { META } from "@/lib/i18n/en";
 import { imgDims } from "@/components/img";
 
 export const Route = createFileRoute("/pages/premium")({
   component: PremiumPage,
   head: () => ({
     meta: [
-      { title: "청라 아크원 푸르지오 프리미엄 | 상품 특징 안내" },
-      { name: "description", content: "청라 아크원 푸르지오 프리미엄. 2,911세대·실 브랜드타운, 오션·시티뷰(일부 세대), 분양가 상한제 적용 등 사업주체 공개 상품 특징을 정리했습니다." },
+      { title: tx("청라 아크원 푸르지오 프리미엄 | 상품 특징 안내", META.premium.title) },
+      { name: "description", content: tx("청라 아크원 푸르지오 프리미엄. 2,911세대·실 브랜드타운, 오션·시티뷰(일부 세대), 분양가 상한제 적용 등 사업주체 공개 상품 특징을 정리했습니다.", META.premium.desc) },
     ],
     links: canonicalLinks("/pages/premium"),
   }),
@@ -41,22 +42,21 @@ function PremiumPage() {
       <div className="page_content">
         <section className="page_container">
           {/* SEO_PUSH 2026-10-06 P1-1: 페이지 고유 H1 (title 앞부분) */}
-          <h1 className="page-h1">청라 아크원 푸르지오 프리미엄</h1>
+          <h1 className="page-h1">{tx("청라 아크원 푸르지오 프리미엄", META.premium.h1)}</h1>
           <header className="premium_intro">
-            <p>청라 아크원 푸르지오 상품 안내</p>
-            <h2>주요 상품 특징</h2>
-            <strong>청라 아크원 푸르지오</strong>
+            <p>{tx("청라 아크원 푸르지오 상품 안내", "Cheongna Ark-One Prugio product guide")}</p>
+            <h2>{tx("주요 상품 특징", "Main product features")}</h2>
+            <strong>{tx("청라 아크원 푸르지오", "Cheongna Ark-One Prugio")}</strong>
           </header>
           <div className="premium_features">
             <article className="premium_feature premium_feature-01">
               <div className="premium_feature__content">
                 <span className="premium_feature__number">PREMIUM 01</span>
                 <h2>
-                  총 2,911세대·실 <br className="m-only" /> 푸르지오 브랜드타운
+                  {tx("총 2,911세대·실", "2911 units and rooms")} <br className="m-only" /> {tx("푸르지오 브랜드타운", "Prugio brand town")}
                 </h2>
                 <p>
-                  최고 49층 총 2,911세대·실<small>(청라 피크원 푸르지오 포함)</small>로 <br /> 청라국제업무단지 푸르지오
-                  대규모 브랜드타운
+                  {tx("최고 49층 총 2,911세대·실", "Up to 49 floors and 2911 units and rooms")}<small>{tx("(청라 피크원 푸르지오 포함)", "(including Cheongna Peakone Prugio)")}</small>{tx("로", "")} <br /> {tx("청라국제업무단지 푸르지오 대규모 브랜드타운", "a large Prugio brand town in the Cheongna International Business District")}
                 </p>
               </div>
               <div className="premium_feature__images premium_feature__images-pair">

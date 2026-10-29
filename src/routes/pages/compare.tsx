@@ -1,8 +1,9 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteShell } from "@/components/site-shell";
 import { SubNotice } from "@/components/notice";
-import { canonicalLinks, faqJsonLd } from "@/lib/seo-host";
+import { canonicalLinks, faqJsonLd, isEnHost, tx } from "@/lib/seo-host";
 import { GuideAnswer, GuideDetail, type GuideFaq } from "@/components/seo-guide";
+import { FAQ_COMPARE, META } from "@/lib/i18n/en";
 import { SRC_APPLYHOME } from "@/lib/arkone-facts";
 import { NoticePrice, NoticeTypes, PlanFigure, UnitFigure } from "@/components/notice-sections";
 
@@ -25,19 +26,25 @@ const FAQ: GuideFaq[] = [
   },
 ];
 
+function compareFaq(): GuideFaq[] {
+  return tx(FAQ, FAQ_COMPARE);
+}
+
 export const Route = createFileRoute("/pages/compare")({
   component: ComparePage,
   head: () => ({
     meta: [
-      { title: "청라 아크원 푸르지오 아파트·오피스텔 비교 | 전용면적·평면도 안내" },
+      { title: tx("청라 아크원 푸르지오 아파트·오피스텔 비교 | 전용면적·평면도 안내", META.compare.title) },
       {
         name: "description",
-        content:
+        content: tx(
           "청라 아크원 푸르지오 아파트 868세대(전용 84·103㎡)와 오피스텔 987실(전용 105·121·136㎡)의 면적·주차·공고 일정·평면도 공개 여부 비교.",
+          META.compare.desc,
+        ),
       },
     ],
     links: canonicalLinks("/pages/compare"),
-    scripts: faqJsonLd(FAQ),
+    scripts: faqJsonLd(compareFaq()),
   }),
 });
 
@@ -46,11 +53,22 @@ function ComparePage() {
     <SiteShell path="/pages/compare">
       <div className="page_content">
         <section className="page_container">
-          <GuideAnswer title="청라 아크원 푸르지오 아파트·오피스텔 한눈에 비교">
+          <GuideAnswer title={tx("청라 아크원 푸르지오 아파트·오피스텔 한눈에 비교", META.compare.h1)}>
+            {isEnHost() ? (
+              <>
+                <p>Cheongna Ark-One Prugio supplies Apt 868 units and officetel 987 rooms in one complex.</p>
+                <p>Apt exclusive areas are 84 and 103 sqm. Officetel exclusive areas are 105 121 and 136 sqm. A multi balcony is described for the officetel.</p>
+                <p>Of 3124 parking spaces 1389 are for the apartment and 1695 are for the officetel.</p>
+                <p>Apartment counts are 84A 248 units and 124 units each for 84B 84C 84D 103A and 103B for 868 units. The model house has 84A and 103A. Areas by type are on page 5 of the recruitment notice. Officetel room counts plans and prices are in a separate officetel notice.</p>
+              </>
+            ) : (
+              <>
             <p>청라 아크원 푸르지오는 한 단지 안에 아파트 868세대와 오피스텔 987실을 함께 공급하는 주거복합 단지입니다.</p>
             <p>아파트는 전용 84㎡·103㎡, 오피스텔은 전용 105㎡·121㎡·136㎡로 공개되어 있으며, 오피스텔에는 멀티 발코니가 안내되어 있습니다.</p>
             <p>주차대수는 총 3,124대 중 아파트 1,389대, 오피스텔 1,695대로 공개되어 있습니다.</p>
             <p>아파트 타입별 세대수는 84A 248세대, 84B·84C·84D·103A·103B 각 124세대로 총 868세대입니다(입주자모집공고 기준). 견본주택에는 84A·103A 유니트가 설치되어 있습니다. 주택형별 면적은 주택형 안내(입주자모집공고문 5면)에서 확인할 수 있습니다. 오피스텔 타입별 실수·평면도·분양가는 오피스텔 별도 공고로 안내합니다.</p>
+              </>
+            )}
           </GuideAnswer>
           <p className="plans-link"><Link to="/pages/plans">평면도·공급금액 한눈에 보기 →</Link></p>
           <NoticeTypes
@@ -88,7 +106,7 @@ function ComparePage() {
               { label: "공고 일정", value: "APT 입주자모집공고 게시 2026.10.22(목) · 견본주택 GRAND OPEN 10.30(금) · OT 별도 공고 · 세부 일정 문의 1833-3872", status: "확정 / OT 별도 공고" },
               { label: "입주 시기", value: "APT 입주예정 2031년 08월 · OT 별도 공고", status: "공고 기준" },
             ]}
-            faq={FAQ}
+            faq={compareFaq()}
             links={[
               { to: "/pages/overview", label: "분양 사업개요" },
               { to: "/pages/schedule", label: "분양 일정·청약 안내" },

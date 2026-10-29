@@ -1,9 +1,11 @@
 import { SITE_PHONE, SITE_TEL_HREF } from "@/lib/site-data";
 import { Img } from "@/components/img";
+import { isEnHost } from "@/lib/seo-host";
 
 type Props = { onPrivacy: () => void };
 
 export function SiteFooter({ onPrivacy }: Props) {
+  const en = isEnHost();
   return (
     <footer className="footer">
       <div className="footer__container">
@@ -12,34 +14,53 @@ export function SiteFooter({ onPrivacy }: Props) {
             <Img src="/resources/img/common/logotype.svg" alt="푸르지오 워드마크 로고" />
           </div>
           <button type="button" className="footer__privacy-btn" onClick={onPrivacy}>
-            개인정보처리방침
+            {en ? "Privacy" : "개인정보처리방침"}
           </button>
         </div>
         <div className="footer__info">
-          <p className="footer__info-text">
-            (주) 대우건설 : 서울특별시 중구 을지로 170 <br className="m-only" /> 사업자등록번호 :
-            104-81-58180
-            <br />
-            (주) 청라스마트시티 : 인천광역시 연수구 센트럴로 263,
-            <br className="m-only" /> 8층 9호(송도동, 송도국제업무단지 C8-2블럭 업무복합시설){" "}
-            <br className="m-only" /> 사업자등록번호 : 866-88-02497
-          </p>
-          <p className="footer__disclaimer">
-            ※ 본 홈페이지의 CG, 이미지컷은 소비자의 이해를 돕기 위해 <br className="m-only" /> 제작된
-            것으로 실제와 다소 차이가 있을 수 있습니다.
-            <br />
-            ※ 본 홈페이지에 명시된 모든 개발계획은 관계기관 혹은 <br className="m-only" /> 지자체의
-            사정에 의해 변경 또는 취소될 수 있습니다.
-            <br />
-            공식 정보는 사업주체 공고를 확인하시기 바랍니다.
-          </p>
+          {en ? (
+            <p className="footer__info-text">
+              Daewoo E&C : 170 Eulji-ro Jung-gu Seoul <br className="m-only" /> Business no. 104-81-58180
+              <br />
+              Cheongna Smart City : 263 Central-ro Yeonsu-gu Incheon
+              <br className="m-only" /> 8F unit 9 (Songdo-dong) <br className="m-only" /> Business no. 866-88-02497
+            </p>
+          ) : (
+            <p className="footer__info-text">
+              (주) 대우건설 : 서울특별시 중구 을지로 170 <br className="m-only" /> 사업자등록번호 :
+              104-81-58180
+              <br />
+              (주) 청라스마트시티 : 인천광역시 연수구 센트럴로 263,
+              <br className="m-only" /> 8층 9호(송도동, 송도국제업무단지 C8-2블럭 업무복합시설){" "}
+              <br className="m-only" /> 사업자등록번호 : 866-88-02497
+            </p>
+          )}
+          {en ? (
+            <p className="footer__disclaimer">
+              ※ CG and image cuts on this site were made to help you understand and may differ from the real complex.
+              <br />
+              ※ Development plans named on this site can change or be cancelled by the relevant agency or city.
+              <br />
+              Confirmed details are in the project entity's public notice.
+            </p>
+          ) : (
+            <p className="footer__disclaimer">
+              ※ 본 홈페이지의 CG, 이미지컷은 소비자의 이해를 돕기 위해 <br className="m-only" /> 제작된
+              것으로 실제와 다소 차이가 있을 수 있습니다.
+              <br />
+              ※ 본 홈페이지에 명시된 모든 개발계획은 관계기관 혹은 <br className="m-only" /> 지자체의
+              사정에 의해 변경 또는 취소될 수 있습니다.
+              <br />
+              공식 정보는 사업주체 공고를 확인하시기 바랍니다.
+            </p>
+          )}
           <p className="footer__copyright">© HUMANE KOREA</p>
         </div>
         <div className="footer__right">
           <div className="footer__construction">
-            <p>시행 | ㈜청라스마트시티</p>
+            <p>{en ? "Developer | Cheongna Smart City" : "시행 | ㈜청라스마트시티"}</p>
             <p>
-              시공 |{" "}
+              {en ? "Builder | " : "시공 | "}
               <Img
                 src="/resources/img/common/logo_daewoo.svg"
                 className="footer__construction-logo"
@@ -48,7 +69,7 @@ export function SiteFooter({ onPrivacy }: Props) {
             </p>
           </div>
           <div className="footer__contact">
-            <span className="footer__contact-label">문의</span>
+            <span className="footer__contact-label">{en ? "Phone" : "문의"}</span>
             <a href={SITE_TEL_HREF} className="footer__contact-phone">
               <span>{SITE_PHONE}</span>
             </a>

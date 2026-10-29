@@ -1,8 +1,9 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteShell } from "@/components/site-shell";
 import { SubNotice } from "@/components/notice";
-import { canonicalLinks, faqJsonLd } from "@/lib/seo-host";
+import { canonicalLinks, faqJsonLd, isEnHost, tx } from "@/lib/seo-host";
 import { GuideAnswer, GuideDetail, type GuideFaq } from "@/components/seo-guide";
+import { FAQ_SCHEDULE, META, withPrice } from "@/lib/i18n/en";
 import { SRC_APPLYHOME } from "@/lib/arkone-facts";
 import { NoticePayment, NoticePrice, PRICE_FAQ_ANSWER } from "@/components/notice-sections";
 
@@ -49,19 +50,25 @@ const FAQ: GuideFaq[] = [
   },
 ];
 
+function scheduleFaq(): GuideFaq[] {
+  return tx(FAQ, withPrice(FAQ_SCHEDULE));
+}
+
 export const Route = createFileRoute("/pages/schedule")({
   component: SchedulePage,
   head: () => ({
     meta: [
-      { title: "청라 아크원 푸르지오 분양가·분양 일정·청약 안내" },
+      { title: tx("청라 아크원 푸르지오 분양가·분양 일정·청약 안내", META.schedule.title) },
       {
         name: "description",
-        content:
-          "청라 아크원 푸르지오(APT) 주택형별 공급금액 · 입주자모집공고 게시 2026.10.22(목) · 특별공급 11.02(월) · 1순위 11.03(화) · 2순위 11.04(수) · 당첨자 발표 11.10(화). 총 868세대(전용 84·103㎡).",
+        content: tx(
+          "청라 아크원 푸르지오(APT) 청약 일정·공급금액. 공고 2026.10.22 게시 · 특별공급 11.02 · 1순위 11.03 · 계약 11.22~11.24.",
+          META.schedule.desc,
+        ),
       },
     ],
     links: canonicalLinks("/pages/schedule"),
-    scripts: faqJsonLd(FAQ),
+    scripts: faqJsonLd(scheduleFaq()),
   }),
 });
 
@@ -70,16 +77,43 @@ function SchedulePage() {
     <SiteShell path="/pages/schedule">
       <div className="page_content">
         <section className="page_container">
-          <GuideAnswer title="청라 아크원 푸르지오 분양 일정·청약 안내">
+          <GuideAnswer title={tx("청라 아크원 푸르지오 분양 일정·청약 안내", META.schedule.h1)}>
+            {isEnHost() ? (
+              <>
+                <p>The apartment recruitment notice for Cheongna Ark-One Prugio was posted on 22 Oct 2026.</p>
+                <p>Notice posted 22 Oct 2026. Model house grand opening is 30 Oct. Call 1833-3872 for the details.</p>
+                <p>Special supply is 2 Nov. First rank is 3 Nov. Second rank is 4 Nov. Winners are announced on 10 Nov. Document submission is 12-16 Nov. Contracts are 22-24 Nov. Supply amounts are in the recruitment notice (housing management number 2026000496) by type building floor and unit. Call 1833-3872 for a specific unit. Move-in is planned for August 2031 and can change with construction.</p>
+                <p>The schedule can change so read the notice on Applyhome before you apply.</p>
+                <p>Source date 22 Oct 2026. Source: recruitment notice 2026000496.</p>
+              </>
+            ) : (
+              <>
             <p>청라 아크원 푸르지오(APT) 입주자모집공고가 2026.10.22(목) 게시되었습니다.</p>
             <p>청라 아크원 푸르지오는 입주자모집공고 게시 2026.10.22(목) · 견본주택 GRAND OPEN 10.30(금)입니다. 세부 일정은 대표번호 1833-3872로 문의해 주세요.</p>
             <p>특별공급 11.02(월), 일반공급 1순위 11.03(화), 2순위 11.04(수), 당첨자 발표 11.10(화), 당첨자 서류접수 11.12(목)~11.16(월), 계약 11.22(일)~11.24(화)입니다. 분양가(공급금액)는 입주자모집공고문(주택관리번호 2026000496)의 공급금액표에 주택형·동·층·호별로 공개되어 있습니다. 주택형과 층에 따라 금액이 다르므로 원하시는 조건은 대표번호 1833-3872로 상담해 주세요. 입주는 2031년 08월 예정이며 공정에 따라 바뀔 수 있습니다.</p>
             <p>일정은 사업주체 사정에 따라 변경될 수 있으므로 청약 전 청약홈에 게시되는 공고문을 반드시 확인하시기 바랍니다.</p>
             <p>자료 기준일 2026-10-22 · 출처 입주자모집공고(주택관리번호 2026000496)</p>
+              </>
+            )}
           </GuideAnswer>
-          <section className="seo-guide notice-schedule" aria-label="청약 일정">
-            <h2 className="seo-guide__subtitle">청라 아크원 푸르지오(APT) 청약 일정 — 입주자모집공고 기준</h2>
+          <section className="seo-guide notice-schedule" aria-label={isEnHost() ? "Application schedule" : "청약 일정"}>
+            <h2 className="seo-guide__subtitle">{isEnHost() ? "Apartment application schedule from the recruitment notice" : "청라 아크원 푸르지오(APT) 청약 일정 — 입주자모집공고 기준"}</h2>
             <div className="seo-guide__answer">
+              {isEnHost() ? (
+                <>
+                  <p>Recruitment notice posted 22 Oct 2026</p>
+                  <p>Special supply 2 Nov</p>
+                  <p>General supply first rank 3 Nov</p>
+                  <p>General supply second rank 4 Nov</p>
+                  <p>Winners announced 10 Nov</p>
+                  <p>Winner documents 12-16 Nov</p>
+                  <p>Contracts 22-24 Nov</p>
+                  <p>Model house grand opening 30 Oct at 87-1 Cheongna-dong Seohae-gu Incheon</p>
+                  <p>Apply on the internet at Korea Real Estate Board Applyhome (www.applyhome.co.kr).</p>
+                  <p>The schedule can change and the recruitment notice prevails.</p>
+                </>
+              ) : (
+                <>
               <p>입주자모집공고 게시 2026.10.22(목)</p>
               <p>특별공급 11.02(월)</p>
               <p>일반공급 1순위 11.03(화)</p>
@@ -90,6 +124,8 @@ function SchedulePage() {
               <p>견본주택 GRAND OPEN 10.30(금) · 인천광역시 서해구 청라동 87-1</p>
               <p>청약은 한국부동산원 청약홈(www.applyhome.co.kr)에서 인터넷으로 신청합니다.</p>
               <p>※ 일정은 사업주체 사정에 따라 변경될 수 있으며, 입주자모집공고문이 우선합니다.</p>
+                </>
+              )}
             </div>
           </section>
           <p className="plans-link"><Link to="/pages/plans">평면도·공급금액 한눈에 보기 →</Link></p>
@@ -108,7 +144,7 @@ function SchedulePage() {
               { label: "오피스텔 공고 일정", value: "미안내", status: "미정" },
               { label: "입주 시기", value: "입주예정 2031년 08월", status: "공고 기준" },
             ]}
-            faq={FAQ}
+            faq={scheduleFaq()}
             links={[
               { to: "/pages/docnormal", label: "일반공급 청약 안내" },
               { to: "/pages/docspecial", label: "특별공급 청약 안내" },

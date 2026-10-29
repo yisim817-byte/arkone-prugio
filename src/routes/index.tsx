@@ -7,30 +7,35 @@ import { NoticeSummary } from "@/components/notice-summary";
 import { PlansBanner } from "@/components/plans-banner";
 import { YoutubeModal } from "@/components/youtube-modal";
 import { SITE_NAME, SITE_PHONE, SITE_TEL_HREF, YOUTUBE_ID } from "@/lib/site-data";
-import { canonicalLinks, isKrHost, KR_ORIGIN, LEGACY_ORIGIN } from "@/lib/seo-host";
+import { EN_ORIGIN, KR_ORIGIN, LEGACY_ORIGIN, canonicalLinks, isEnHost, isKrHost, tx } from "@/lib/seo-host";
+import { META } from "@/lib/i18n/en";
 
 export const Route = createFileRoute("/")({
   component: Home,
   head: () => ({
     meta: [
-      { title: "청라 아크원 푸르지오 | 분양 일정·비교·청약 안내" },
+      { title: tx("청라 아크원 푸르지오 | 분양 일정·비교·청약 안내", META.home.title) },
       {
         name: "description",
-        content:
-          "청라 아크원 푸르지오 분양 일정·청약 안내. 청라 아크원 푸르지오(APT) 입주자모집공고 게시 2026.10.22(목) · 특별공급 11.02(월) · 1순위 11.03(화) · 2순위 11.04(수) · 당첨자 발표 11.10(화). 총 868세대(전용 84·103㎡).",
+        content: tx(
+          "청라 아크원 푸르지오 분양 일정·청약 안내. 공고 2026.10.22 게시 · 특별공급 11.02 · 1순위 11.03 · 2순위 11.04 · 당첨자 발표 11.10.",
+          META.home.desc,
+        ),
       },
     ],
     links: canonicalLinks("/"),
     scripts: [
       {
         type: "application/ld+json",
-        children: homeJsonLd(isKrHost() ? KR_ORIGIN : LEGACY_ORIGIN),
+        children: homeJsonLd(isEnHost() ? EN_ORIGIN : isKrHost() ? KR_ORIGIN : LEGACY_ORIGIN, isEnHost()),
       },
     ],
   }),
 });
 
-function homeJsonLd(origin: string) {
+function homeJsonLd(origin: string, en: boolean) {
+  const name = en ? "Cheongna Ark-One Prugio" : SITE_NAME;
+  const lang = en ? "en-US" : "ko-KR";
   return JSON.stringify({
     "@context": "https://schema.org",
     "@graph": [
@@ -38,17 +43,17 @@ function homeJsonLd(origin: string) {
         "@type": "WebSite",
         "@id": `${origin}/#website`,
         url: `${origin}/`,
-        name: SITE_NAME,
-        alternateName: ["아크원푸르지오.site"],
-        inLanguage: "ko-KR",
+        name,
+        alternateName: [en ? "arkone-prugio.site" : "아크원푸르지오.site"],
+        inLanguage: lang,
         publisher: { "@id": "https://www.humanekorea.co.kr/#organization" },
       },
       {
         "@type": "WebPage",
         "@id": `${origin}/#webpage`,
         url: `${origin}/`,
-        name: SITE_NAME,
-        inLanguage: "ko-KR",
+        name,
+        inLanguage: lang,
         isPartOf: { "@id": `${origin}/#website` },
       },
     ],
@@ -154,10 +159,10 @@ function Home() {
               <span className="hero__title_line">ARK-ONE</span>
               <br />
               <span className="hero__title_line">PRUGIO</span>
-              <span className="hero__title_ko">청라 아크원 푸르지오</span>
+              <span className="hero__title_ko">{tx("청라 아크원 푸르지오", "Cheongna Ark-One Prugio")}</span>
             </h1>
             <span className="hero__open">
-              <span className="hero__open_phrase">입주자모집공고 게시 <strong>2026.10.22</strong>(목)</span> · <span className="hero__open_phrase">견본주택 GRAND OPEN <strong>10.30</strong>(금)</span>
+              <span className="hero__open_phrase">{tx("입주자모집공고 게시", "Recruitment notice posted")} <strong>2026.10.22</strong>{tx("(목)", " Thu")}</span> · <span className="hero__open_phrase">{tx("견본주택 GRAND OPEN", "Model house GRAND OPEN")} <strong>10.30</strong>{tx("(금)", " Fri")}</span>
             </span>
           </div>
           <div className="hero__ui">
@@ -167,14 +172,14 @@ function Home() {
             </a>
             <button type="button" className="hero__video_trigger" onClick={() => setVideo(true)}>
               <span>
-                <b>청라 아크원</b> <br className="m-only" /> 홍보영상
+                <b>{tx("청라 아크원", "Cheongna Ark-One")}</b> <br className="m-only" /> {tx("홍보영상", "promo video")}
               </span>
               <span className="hero__video_play">
                 <img src="/resources/img/pages/main/ico_yt.svg" alt="" {...imgDims("/resources/img/pages/main/ico_yt.svg")} data-dims="" />
               </span>
             </button>
             <div className="hero__quick">
-              <a className="hero__quick_item" href={SITE_TEL_HREF} aria-label={`${SITE_PHONE} 전화 연결`}>
+              <a className="hero__quick_item" href={SITE_TEL_HREF} aria-label={tx(`${SITE_PHONE} 전화 연결`, `Call ${SITE_PHONE}`)}>
                 <HeroOrbit />
                 <img
                   className="hero__quick_content"
@@ -184,7 +189,7 @@ function Home() {
                   data-dims=""
                 />
               </a>
-              <Link to="/register" className="hero__quick_item" aria-label="사전고객등록">
+              <Link to="/register" className="hero__quick_item" aria-label={tx("사전고객등록", "Pre-registration")}>
                 <HeroOrbit />
                 <img className="hero__quick_content" src="/resources/img/pages/main/hero_circle_register.svg" alt="사전고객등록 원형 바로가기" {...imgDims("/resources/img/pages/main/hero_circle_register.svg")} data-dims="" />
               </Link>
@@ -196,15 +201,15 @@ function Home() {
 
         <section className="event-card" aria-labelledby="event-title">
           <div className="event-card__inner">
-            <p className="event-card__eyebrow">사전고객등록 고객 대상 이벤트</p>
-            <h2 id="event-title">백화점 상품권 30만원</h2>
-            <p className="event-card__brands">상품권 종류: 롯데·현대·신세계 백화점 가운데 1종</p>
-            <p className="event-card__basis">받으실 수 있는 분: 이 홈페이지에서 사전고객등록을 한 뒤 청약에 당첨되어 지급 조건을 충족한 고객입니다.</p>
-            <p className="event-card__payout">상품권은 당첨과 지급 조건 충족이 확인되면 계약하는 날 드립니다.</p>
-            <ol className="event-card__steps"><li>STEP 1 사전고객등록(홈페이지)</li><li>STEP 2 청약 신청(특별공급 11.02 · 1순위 11.03 · 2순위 11.04)</li><li>STEP 3 당첨·지급 조건 확인</li><li>STEP 4 계약일 상품권 수령</li></ol>
-            <div className="event-card__actions"><Link className="event-card__button" to="/register">사전고객등록하기</Link><a href="#event-terms">유의사항 자세히 보기</a></div>
-            <p className="event-card__schedule">일정: 입주자모집공고 게시 2026.10.22(목) · 견본주택 GRAND OPEN 10.30(금) · 세부 일정은 대표번호 1833-3872로 문의</p>
-            <p className="event-card__notice">※ 청약 접수는 별도 절차이며, 사전고객등록만으로 청약이 되지는 않습니다.</p>
+            <p className="event-card__eyebrow">{tx("사전고객등록 고객 대상 이벤트", "Event for pre-registered customers")}</p>
+            <h2 id="event-title">{tx("백화점 상품권 30만원", "Department-store gift card 300000 won")}</h2>
+            <p className="event-card__brands">{tx("상품권 종류: 롯데·현대·신세계 백화점 가운데 1종", "One gift card from Lotte Hyundai or Shinsegae")}</p>
+            <p className="event-card__basis">{tx("받으실 수 있는 분: 이 홈페이지에서 사전고객등록을 한 뒤 청약에 당첨되어 지급 조건을 충족한 고객입니다.", "Who can receive it: a customer who pre-registers on this site then wins an application and meets the payout terms.")}</p>
+            <p className="event-card__payout">{tx("상품권은 당첨과 지급 조건 충족이 확인되면 계약하는 날 드립니다.", "The card is given on the contract day after the win and the payout terms are confirmed.")}</p>
+            <ol className="event-card__steps"><li>{tx("STEP 1 사전고객등록(홈페이지)", "STEP 1 Pre-register on this site")}</li><li>{tx("STEP 2 청약 신청(특별공급 11.02 · 1순위 11.03 · 2순위 11.04)", "STEP 2 Apply (special supply 2 Nov · first rank 3 Nov · second rank 4 Nov)")}</li><li>{tx("STEP 3 당첨·지급 조건 확인", "STEP 3 Win and payout terms confirmed")}</li><li>{tx("STEP 4 계약일 상품권 수령", "STEP 4 Receive the card on the contract day")}</li></ol>
+            <div className="event-card__actions"><Link className="event-card__button" to="/register">{tx("사전고객등록하기", "Pre-register")}</Link><a href="#event-terms">{tx("유의사항 자세히 보기", "Read the notes")}</a></div>
+            <p className="event-card__schedule">{tx("일정: 입주자모집공고 게시 2026.10.22(목) · 견본주택 GRAND OPEN 10.30(금) · 세부 일정은 대표번호 1833-3872로 문의", "Schedule: notice posted 22 Oct 2026 · model house grand opening 30 Oct · call 1833-3872")}</p>
+            <p className="event-card__notice">{tx("※ 청약 접수는 별도 절차이며, 사전고객등록만으로 청약이 되지는 않습니다.", "Applying is a separate step. Pre-registration alone is not an application.")}</p>
             <p>등록 여부는 <a href={SITE_TEL_HREF}>1833-3872</a>(대표번호)에서 확인하실 수 있습니다.</p>
             <details id="event-terms" className="event-card__terms"><summary>이벤트 유의사항 (청라 아크원 푸르지오 APT 사전고객등록)</summary>
               <ol>
@@ -255,23 +260,36 @@ function Home() {
                 <br />
                 <small>2017.7 한신더휴 이후 · 부동산R114 집계(아시아경제 2026.09.02 보도 기준)</small>
               </p>
-              <h2 className="section-overview__copy_title">청라 아크원 푸르지오 사업 규모</h2>
+              <h2 className="section-overview__copy_title">{tx("청라 아크원 푸르지오 사업 규모", "Cheongna Ark-One Prugio scale")}</h2>
               <p className="section-overview__copy_brand">ARK-ONE</p>
             </header>
             <article className="overview-panel">
               <h3>
-                총 2,911세대·실<small>(B1 & M5 블록)</small>
+                {tx("총 2,911세대·실", "2911 units and rooms")}
+                <small>{tx("(B1 & M5 블록)", "(blocks B1 and M5)")}</small>
                 <br />
+                {isEnHost() ? (
+                  "A Prugio brand town with Cheongna Peakone Prugio"
+                ) : (
+                  <>
                 청라 피크원 푸르지오와 함께하는
                 <br />
                 푸르지오 대규모 브랜드타운
+                  </>
+                )}
               </h3>
               <p>
+                {isEnHost() ? (
+                  "After Cheongna Peakone Prugio on block B1 (1056 rooms) this site supplies Apt 868 units and officetel 987 rooms on block M5. The two blocks together are 2911 units and rooms."
+                ) : (
+                  <>
                 국제업무단지 B1 블록 청라 피크원 푸르지오(1,056실)에 이어
                 <br />
                 M5 블록에 아파트 868세대·오피스텔 987실을 공급합니다.
                 <br />
                 두 블록 합계 2,911세대·실 규모입니다.
+                  </>
+                )}
               </p>
               <dl className="overview-metrics">
                 <div>

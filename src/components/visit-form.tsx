@@ -2,8 +2,7 @@ import { useEffect, useState, type FormEvent } from "react";
 import { Link } from "@tanstack/react-router";
 import { SITE_PHONE, SITE_TEL_HREF } from "@/lib/site-data";
 import { loadVisitConfig, VISIT_SLOT_LABEL, type VisitOption } from "@/lib/visit-config";
-
-// 작업지시서 13 · 4-2: 모델하우스 방문예약 전용 폼. 사전고객등록(arkone-prereg-submit)과 별도로 arkone-visit-submit 에 접수한다.
+import { tx } from "@/lib/seo-host";
 const ENDPOINT = "https://jzmktahlrwtrtejjflrw.supabase.co/functions/v1/arkone-visit-submit";
 const CONSENT_VERSION = "visit-2026-10-22-v1";
 const INTERESTS = ["아파트", "오피스텔", "상가"] as const;
@@ -122,18 +121,18 @@ export function VisitForm() {
 
   return (
     <div className="reg visit-form">
-      <p className="reg__lead"><b>청라 아크원 푸르지오</b> 모델하우스 방문예약</p>
-      <p className="visit-form__desc">방문 희망 날짜를 남겨 주시면, 담당자가 확인 후 방문 시간을 전화로 안내해 드립니다.</p>
+      <p className="reg__lead"><b>{tx("청라 아크원 푸르지오", "Cheongna Ark-One Prugio")}</b> {tx("모델하우스 방문예약", "model house visit")}</p>
+      <p className="visit-form__desc">{tx("방문 희망 날짜를 남겨 주시면, 담당자가 확인 후 방문 시간을 전화로 안내해 드립니다.", "Leave a preferred date. Staff will call to confirm the visit time.")}</p>
       <p className="visit-form__loc">견본주택 위치 · 인천광역시 서해구 청라동 87-1 · GRAND OPEN 10.30(금)</p>
       <form onSubmit={onSubmit} noValidate>
         {alert ? <p className="reg__error" role="alert">{alert}</p> : null}
         <div className={`reg__field${errors.name ? " is-err" : ""}`}>
-          <label htmlFor="v-name">이름 *</label>
-          <input id="v-name" name="name" type="text" placeholder="이름을 입력해 주세요" value={name} maxLength={20} autoComplete="name" onChange={(e) => setName(e.target.value)} />
+          <label htmlFor="v-name">{tx("이름 *", "Name *")}</label>
+          <input id="v-name" name="name" type="text" placeholder={tx("이름을 입력해 주세요", "Your name")} value={name} maxLength={20} autoComplete="name" onChange={(e) => setName(e.target.value)} />
           <p className="reg__msg">{errors.name}</p>
         </div>
         <div className={`reg__field${errors.phone ? " is-err" : ""}`}>
-          <label htmlFor="v-phone">휴대폰번호 *</label>
+          <label htmlFor="v-phone">{tx("휴대폰번호 *", "Mobile *")}</label>
           <input id="v-phone" name="phone" type="tel" inputMode="numeric" autoComplete="tel" placeholder="010-0000-0000" value={phone} onChange={(e) => setPhone(hyphen(e.target.value))} />
           <p className="reg__msg">{errors.phone}</p>
         </div>
@@ -145,7 +144,7 @@ export function VisitForm() {
         ) : (
           <>
             <div className={`reg__field${errors.date ? " is-err" : ""}`}>
-              <label htmlFor="v-date">방문 희망일 *</label>
+              <label htmlFor="v-date">{tx("방문 희망일 *", "Preferred date *")}</label>
               <select id="v-date" name="visit_date" value={visitDate} disabled={cfg !== "ok"} onChange={(e) => setVisitDate(e.target.value)}>
                 <option value="">{cfg === "loading" ? "날짜 불러오는 중" : "날짜 선택"}</option>
                 {(dates ?? []).map((item) => <option key={item.value} value={item.value}>{item.label}</option>)}
@@ -165,12 +164,12 @@ export function VisitForm() {
         <div className="prereg-hidden-hp" aria-hidden="true"><label>회사<input name="hp" tabIndex={-1} autoComplete="off" /></label></div>
         <div className={`reg__agree${errors.consent ? " is-err" : ""}`}>
           <input id="v-consent" type="checkbox" checked={consent} onChange={(e) => setConsent(e.target.checked)} />
-          <label htmlFor="v-consent">[필수] 개인정보 수집·이용 동의</label>
+          <label htmlFor="v-consent">{tx("[필수] 개인정보 수집·이용 동의", "[Required] Consent to collect and use personal data")}</label>
           <button type="button" onClick={() => setOpen(!open)}>보기</button>
         </div>
         {open ? <div className="reg__consent"><p>수집 항목 : 이름, 휴대폰번호, 방문 희망일·시간대, 관심 상품 (자동 수집) 서비스 이용 기록, 접속 로그, 쿠키, 접속 IP 정보, 불량이용 기록, 기기정보</p><p>이용 목적 : 견본주택 방문 일정 안내, 청라 아크원 푸르지오 분양정보 제공 및 마케팅 활용(마케팅 활용은 광고성 정보 수신에 동의한 경우에 한함)</p><p>보유 기간 : 이벤트 종료 시 지체 없이 파기. 최장 수집일로부터 1년</p><p>동의를 거부할 수 있으며, 거부 시 방문예약 신청이 제한됩니다. 전화 예약({SITE_PHONE})은 동의 없이 이용하실 수 있습니다.</p></div> : null}
         {errors.consent ? <p className="reg__msg">{errors.consent}</p> : null}
-        <button className="reg__submit" type="submit" disabled={busy}>{busy ? "접수 중…" : "방문예약 신청"}</button>
+        <button className="reg__submit" type="submit" disabled={busy}>{busy ? tx("접수 중…", "Sending…") : tx("방문예약 신청", "Request a visit")}</button>
       </form>
       <p className="visit-block__note">※ 방문 시간은 담당자가 전화로 확정 안내합니다.</p>
       <p className="visit-block__note">※ 방문예약은 청약 신청이 아니며, 청약 자격·순위와 관계없습니다.</p>

@@ -2,14 +2,15 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import { SiteShell } from "@/components/site-shell";
 import { NEWS, type NewsItem } from "@/lib/news";
-import { canonicalLinks } from "@/lib/seo-host";
+import { canonicalLinks, tx } from "@/lib/seo-host";
+import { META } from "@/lib/i18n/en";
 
 export const Route = createFileRoute("/board/news_list")({
   component: NewsListPage,
   head: () => ({
     meta: [
-      { title: "청라 아크원 푸르지오 언론보도 | 분양 관련 기사" },
-      { name: "description", content: "청라 아크원 푸르지오 관련 언론보도 목록. 공급 일정·청라국제업무단지 개발 관련 기사를 언론사 원문 기준으로 정리했습니다." },
+      { title: tx("청라 아크원 푸르지오 언론보도 | 분양 관련 기사", META.news.title) },
+      { name: "description", content: tx("청라 아크원 푸르지오 관련 언론보도 목록. 공급 일정·청라국제업무단지 개발 관련 기사를 언론사 원문 기준으로 정리했습니다.", META.news.desc) },
     ],
     links: canonicalLinks("/board/news_list"),
   }),
@@ -28,8 +29,8 @@ function NewsListPage() {
       <div className="page_content">
         <section className="page_container">
           {/* SEO_PUSH 2026-10-06 P1-1: 페이지 고유 H1 (title 앞부분) */}
-          <h1 className="page-h1">청라 아크원 푸르지오 언론보도</h1>
-          <p className="news-excerpt-note">기사 발췌는 각 언론사 원문 인용이며, 계획·예정 사업은 확정이 아닙니다(7호선 개통 시기 미정).</p>
+          <h1 className="page-h1">{tx("청라 아크원 푸르지오 언론보도", META.news.h1)}</h1>
+          <p className="news-excerpt-note">{tx("기사 발췌는 각 언론사 원문 인용이며, 계획·예정 사업은 확정이 아닙니다(7호선 개통 시기 미정).", "Excerpts quote the original articles. Planned projects are not fixed (Line 7 opening date is not set).")}</p>
           <div className="news_list_type">
             <ul>
               {items.map((item) => (

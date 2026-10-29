@@ -1,15 +1,16 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteShell } from "@/components/site-shell";
 import { NoticePrice, PlanFigure } from "@/components/notice-sections";
-import { canonicalLinks } from "@/lib/seo-host";
+import { canonicalLinks, tx } from "@/lib/seo-host";
+import { META } from "@/lib/i18n/en";
 
 // PM 지시(2026-10-22): 평면도·공급금액을 메뉴에서 바로 찾을 수 있게 전용 페이지로 모은다(내용은 /pages/compare·/pages/schedule 와 같은 컴포넌트).
 export const Route = createFileRoute("/pages/plans")({
   component: PlansPage,
   head: () => ({
     meta: [
-      { title: "청라 아크원 푸르지오 평면도·공급금액 | 84㎡C·103㎡A" },
-      { name: "description", content: "청라 아크원 푸르지오 84㎡C·103㎡A 평면도와 주택형별 공급금액(입주자모집공고문 기준)." },
+      { title: tx("청라 아크원 푸르지오 평면도·공급금액 | 84㎡C·103㎡A", META.plans.title) },
+      { name: "description", content: tx("청라 아크원 푸르지오 84㎡C·103㎡A 평면도와 주택형별 공급금액(입주자모집공고문 기준).", META.plans.desc) },
     ],
     links: canonicalLinks("/pages/plans"),
   }),
@@ -20,7 +21,7 @@ function PlansPage() {
     <SiteShell path="/pages/plans">
       <div className="page_content">
         <section className="page_container plans-page">
-          <h2 className="seo-guide__subtitle">평면도 (84㎡C · 103㎡A)</h2>
+          <h2 className="seo-guide__subtitle">{tx("평면도 (84㎡C · 103㎡A)", "Floor plans (84㎡C · 103㎡A)")}</h2>
           <PlanFigure plan="84c" withPrice />
           <PlanFigure plan="103a" withPrice />
           <NoticePrice />

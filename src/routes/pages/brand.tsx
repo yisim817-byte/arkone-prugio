@@ -2,15 +2,16 @@ import { createFileRoute } from "@tanstack/react-router";
 import { SiteShell } from "@/components/site-shell";
 import { GuideDetail } from "@/components/seo-guide";
 import { SubNotice } from "@/components/notice";
-import { canonicalLinks } from "@/lib/seo-host";
+import { canonicalLinks, tx } from "@/lib/seo-host";
+import { FAQ_BRAND, META } from "@/lib/i18n/en";
 import { imgDims } from "@/components/img";
 
 export const Route = createFileRoute("/pages/brand")({
   component: BrandPage,
   head: () => ({
     meta: [
-      { title: "청라 아크원 푸르지오 히스토리 | 주변 개발 일정" },
-      { name: "description", content: "청라 아크원 푸르지오 히스토리. 청라 주변 개발 계획을 연도별로 정리했습니다. 일정은 예정·계획 기준이며 관계기관 사정에 따라 변경될 수 있습니다." },
+      { title: tx("청라 아크원 푸르지오 히스토리 | 주변 개발 일정", META.brand.title) },
+      { name: "description", content: tx("청라 아크원 푸르지오 히스토리. 청라 주변 개발 계획을 연도별로 정리했습니다. 일정은 예정·계획 기준이며 관계기관 사정에 따라 변경될 수 있습니다.", META.brand.desc) },
     ],
     links: canonicalLinks("/pages/brand"),
   }),
@@ -61,15 +62,18 @@ const FAQ = [
 ];
 
 function BrandPage() {
+  const faq = tx(FAQ, FAQ_BRAND);
   return (
     <SiteShell path="/pages/brand">
       <div className="page_content">
         <section className="page_container">
           {/* SEO_PUSH 2026-10-06 P1-1: 페이지 고유 H1 (title 앞부분) */}
-          <h1 className="page-h1">청라 아크원 푸르지오 히스토리·주변 개발 일정</h1>
+          <h1 className="page-h1">{tx("청라 아크원 푸르지오 히스토리·주변 개발 일정", META.brand.h1)}</h1>
           <p>
-            청라 아크원 푸르지오는 청라 피크원 푸르지오와 같은 단지가 아닙니다. 아크원 자체는
-            1,855세대·실이고, 2,911세대·실은 피크원을 포함한 합산 규모입니다.
+            {tx(
+              "청라 아크원 푸르지오는 청라 피크원 푸르지오와 같은 단지가 아닙니다. 아크원 자체는 1,855세대·실이고, 2,911세대·실은 피크원을 포함한 합산 규모입니다.",
+              "Cheongna Ark-One Prugio is not the same complex as Cheongna Peakone Prugio. Ark-One itself is 1855 units and rooms. 2911 is the combined total including Peakone. Peakone B1 is 1056 rooms.",
+            )}
           </p>
           <p>자료 기준일 2026-10-21 · 출처 사업주체 공개 사업개요</p>
           <div className="brand_image__container">
@@ -142,11 +146,11 @@ function BrandPage() {
           />
         </section>
       </div>
-          <GuideDetail faq={FAQ} />
+          <GuideDetail faq={faq} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
         "@context": "https://schema.org",
         "@type": "FAQPage",
-        mainEntity: FAQ.map(({ q, a }) => ({ "@type": "Question", name: q, acceptedAnswer: { "@type": "Answer", text: a } })),
+        mainEntity: faq.map(({ q, a }) => ({ "@type": "Question", name: q, acceptedAnswer: { "@type": "Answer", text: a } })),
       }) }} />
 
     </SiteShell>

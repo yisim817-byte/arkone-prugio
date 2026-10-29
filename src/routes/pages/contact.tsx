@@ -1,8 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteShell } from "@/components/site-shell";
 import { SubNotice } from "@/components/notice";
-import { canonicalLinks, faqJsonLd } from "@/lib/seo-host";
+import { canonicalLinks, faqJsonLd, isEnHost, tx } from "@/lib/seo-host";
 import { GuideAnswer, GuideDetail, type GuideFaq } from "@/components/seo-guide";
+import { FAQ_CONTACT, META } from "@/lib/i18n/en";
 import { imgDims } from "@/components/img";
 
 const FAQ: GuideFaq[] = [
@@ -24,15 +25,19 @@ const FAQ: GuideFaq[] = [
   },
 ];
 
+function contactFaq(): GuideFaq[] {
+  return tx(FAQ, FAQ_CONTACT);
+}
+
 export const Route = createFileRoute("/pages/contact")({
   component: ContactPage,
   head: () => ({
     meta: [
-      { title: "청라 아크원 푸르지오 모델하우스·홍보관 방문 | 오시는길" },
-      { name: "description", content: "청라 아크원 푸르지오 모델하우스 방문. 견본주택 청라동 87-1. 입주자모집공고 게시 2026.10.22(목) · 견본주택 GRAND OPEN 10.30(금). 대표번호 1833-3872." },
+      { title: tx("청라 아크원 푸르지오 모델하우스·홍보관 방문 | 오시는길", META.contact.title) },
+      { name: "description", content: tx("청라 아크원 푸르지오 모델하우스·홍보관 방문. 견본주택 청라동 87-1 · GRAND OPEN 10.30(금) · 대표번호 1833-3872.", META.contact.desc) },
     ],
     links: canonicalLinks("/pages/contact"),
-    scripts: faqJsonLd(FAQ),
+    scripts: faqJsonLd(contactFaq()),
   }),
 });
 
@@ -54,11 +59,22 @@ function ContactPage() {
     <SiteShell path="/pages/contact">
       <div className="page_content">
         <section className="page_container">
-          <GuideAnswer title="청라 아크원 푸르지오 모델하우스·홍보관 안내">
+          <GuideAnswer title={tx("청라 아크원 푸르지오 모델하우스·홍보관 안내", META.contact.h1)}>
+            {isEnHost() ? (
+              <>
+                <p>The model house is at 87-1 Cheongna-dong Seohae-gu Incheon. Grand opening is 30 Oct. The recruitment notice was posted on 22 Oct 2026. Call 1833-3872 for the details.</p>
+                <p>The project site is 86-1 Cheongna-dong Seohae-gu Incheon. The showroom is Hongik Park 1F units 108 and 109 19 Jungbong-daero 586beon-gil next to Starbucks.</p>
+                <p>Hours can change. Call 1833-3872 before you visit.</p>
+                <p>Source date 21 Oct 2026. Source: site model house and showroom addresses.</p>
+              </>
+            ) : (
+              <>
             <p>청라 아크원 푸르지오 견본주택(모델하우스)은 인천광역시 서해구 청라동 87-1번지에 있으며, GRAND OPEN은 10.30(금)입니다(입주자모집공고 2026.10.22(목) 게시). 세부 일정은 대표번호 1833-3872로 문의해 주세요.</p>
             <p>사업 현장은 인천광역시 서해구 청라동 86-1번지이고, 홍보관은 중봉대로 586번길 19 홍익파크 1층 108, 109호(스타벅스 옆)입니다.</p>
             <p>일정과 운영 시간은 사업주체 사정에 따라 변경될 수 있으니 방문 전 대표번호 1833-3872로 확인해 주세요.</p>
             <p>자료 기준일 2026-10-21 · 출처 현장·견본주택·홍보관 주소 표기</p>
+              </>
+            )}
           </GuideAnswer>
           <div className="contact_map">
             <div className="contact_map__box">
@@ -68,17 +84,17 @@ function ContactPage() {
               <div className="contact_map__locations">
                 <article className="contact_location">
                   <div>
-                    <h2>청라 아크원 푸르지오 현장</h2>
+                    <h2>{tx("청라 아크원 푸르지오 현장", "Cheongna Ark-One Prugio site")}</h2>
                     <address>인천광역시 서해구 청라동 86-1번지</address>
                   </div>
-                  <MapLinks naver="https://naver.me/xSBYFSR0" kakao="https://kko.to/27AvJsaNys" label="현장" />
+                  <MapLinks naver="https://naver.me/xSBYFSR0" kakao="https://kko.to/27AvJsaNys" label={tx("현장", "Site")} />
                 </article>
                 <article className="contact_location">
                   <div>
-                    <h2>청라 아크원 푸르지오 견본주택</h2>
+                    <h2>{tx("청라 아크원 푸르지오 견본주택", "Cheongna Ark-One Prugio model house")}</h2>
                     <address>인천광역시 서해구 청라동 87-1번지</address>
                   </div>
-                  <MapLinks naver="https://naver.me/xNpQLQ3L" kakao="https://kko.to/06V9ttVXOK" label="견본주택" />
+                  <MapLinks naver="https://naver.me/xNpQLQ3L" kakao="https://kko.to/06V9ttVXOK" label={tx("견본주택", "Model house")} />
                 </article>
               </div>
             </div>
@@ -110,7 +126,7 @@ function ContactPage() {
               { label: "홍보관", value: "인천광역시 서해구 중봉대로 586번길 19 홍익파크 1층 108, 109호(스타벅스 옆)", status: "공개값" },
               { label: "운영 시간", value: "방문 전 대표번호 1833-3872로 확인", status: "미정" },
             ]}
-            faq={FAQ}
+            faq={contactFaq()}
             links={[
               { to: "/pages/schedule", label: "분양 일정·청약 안내" },
               { to: "/pages/overview", label: "분양 사업개요" },

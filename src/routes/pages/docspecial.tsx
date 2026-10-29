@@ -1,7 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteShell } from "@/components/site-shell";
 import { ZoomButton } from "@/components/notice";
-import { canonicalLinks } from "@/lib/seo-host";
+import { canonicalLinks, tx } from "@/lib/seo-host";
+import { META } from "@/lib/i18n/en";
 import { GuideAnswer, GuideDetail } from "@/components/seo-guide";
 import { SRC_APPLYHOME } from "@/lib/arkone-facts";
 import { imgDims } from "@/components/img";
@@ -11,8 +12,8 @@ export const Route = createFileRoute("/pages/docspecial")({
   component: DocSpecialPage,
   head: () => ({
     meta: [
-      { title: "청라 아크원 푸르지오 특별공급 안내 | 청약 자격" },
-      { name: "description", content: "청라 아크원 푸르지오 특별공급 안내. 특별공급 11.02(월) 접수. 유형별 공급 물량·신청 자격은 2026.10.22(목) 게시된 입주자모집공고 기준이며, 청약홈 공고문으로 확인하세요." },
+      { title: tx("청라 아크원 푸르지오 특별공급 안내 | 청약 자격", META.docspecial.title) },
+      { name: "description", content: tx("청라 아크원 푸르지오 특별공급 안내. 11.02(월) 접수. 자격·물량은 2026.10.22 게시 입주자모집공고와 청약홈에서 확인하세요.", META.docspecial.desc) },
     ],
     links: canonicalLinks("/pages/docspecial"),
   }),
@@ -24,8 +25,8 @@ function DocSpecialPage() {
     <SiteShell path="/pages/docspecial">
       <div className="page_content">
         <section className="page_container">
-          <GuideAnswer title="청라 아크원 푸르지오 특별공급 안내 요약">
-            <p>청라 아크원 푸르지오 특별공급은 11.02(월) 접수입니다. 유형별 공급 물량과 자격은 2026.10.22(목) 게시된 입주자모집공고 기준이며, 신청 전 청약홈 공고문을 확인하시기 바랍니다.</p>
+          <GuideAnswer title={tx("청라 아크원 푸르지오 특별공급 안내 요약", META.docspecial.h1)}>
+            <p>{tx("청라 아크원 푸르지오 특별공급은 11.02(월) 접수입니다. 유형별 공급 물량과 자격은 2026.10.22(목) 게시된 입주자모집공고 기준이며, 신청 전 청약홈 공고문을 확인하시기 바랍니다.", "Special supply for Cheongna Ark-One Prugio is accepted on 2 Nov. Volumes and eligibility follow the notice posted on 22 Oct 2026. Read the Applyhome notice before you apply.")}</p>
           </GuideAnswer>
           <NoticeSpecial />
           <figure>

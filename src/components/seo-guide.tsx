@@ -1,5 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import type { ReactNode } from "react";
+import { tx } from "@/lib/seo-host";
+import { EN_LEGEND } from "@/lib/i18n/en";
 
 export type GuideRow = { label: string; value: ReactNode; status?: string };
 export type GuideFaq = { q: string; a: string };
@@ -62,13 +64,13 @@ export function GuideDetail({
               </tbody>
             </table>
           </div>
-          <p className="seo-guide__legend">{STATUS_LEGEND}</p>
+          <p className="seo-guide__legend">{tx(STATUS_LEGEND, EN_LEGEND)}</p>
         </>
       ) : null}
       {children}
       {faq && faq.length > 0 ? (
         <>
-          <h2 className="seo-guide__subtitle">자주 묻는 질문</h2>
+          <h2 className="seo-guide__subtitle">{tx("자주 묻는 질문", "Questions")}</h2>
           <div className="seo-guide__faq">
             {faq.map((item) => (
               <div key={item.q}>
@@ -81,7 +83,7 @@ export function GuideDetail({
       ) : null}
       {links && links.length > 0 ? (
         <>
-          <h2 className="seo-guide__subtitle">함께 보면 좋은 안내</h2>
+          <h2 className="seo-guide__subtitle">{tx("함께 보면 좋은 안내", "Related pages")}</h2>
           <ul className="seo-guide__links">
             {links.map((l) => (
               <li key={l.to}>
@@ -93,7 +95,7 @@ export function GuideDetail({
       ) : null}
       {sources && sources.length > 0 ? (
         <div className="seo-guide__sources">
-          <strong>출처·기준일</strong>
+          <strong>{tx("출처·기준일", "Sources and date")}</strong>
           <ul>
             {sources.map((s) => (
               <li key={s.label}>
@@ -104,11 +106,11 @@ export function GuideDetail({
                 ) : (
                   s.label
                 )}{" "}
-                (기준일 {s.date})
+                ({tx("기준일", "as of")} {s.date})
               </li>
             ))}
           </ul>
-          <p>계약 전 입주자모집공고 등 사업주체 공고를 반드시 확인하시기 바랍니다.</p>
+          <p>{tx("계약 전 입주자모집공고 등 사업주체 공고를 반드시 확인하시기 바랍니다.", "Before you sign check the recruitment notice and other notices from the project entity.")}</p>
         </div>
       ) : null}
     </section>

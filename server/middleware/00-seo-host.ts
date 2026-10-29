@@ -10,7 +10,9 @@
  */
 
 const KR_ORIGIN = "https://www.xn--2w2b19sita0u67iz2mi7g.site";
+const EN_ORIGIN = "https://www.arkone-prugio.site";
 const KR_HOSTS = new Set(["www.xn--2w2b19sita0u67iz2mi7g.site", "www.아크원푸르지오.site"]);
+const EN_HOSTS = new Set(["www.arkone-prugio.site"]);
 
 /** path -> lastmod (git commit date of the page's last content change). */
 const KR_SITEMAP: ReadonlyArray<readonly [string, string]> = [
@@ -27,8 +29,7 @@ const KR_SITEMAP: ReadonlyArray<readonly [string, string]> = [
   ["/pages/brand", "2026-10-09"],
   ["/board/news_list", "2026-10-08"],
   ["/pages/video", "2026-10-09"],
-  ["/pages/plans", "2026-10-22"],
-  ["/visit", "2026-10-22"],
+  ["/event", "2026-10-26"],
 ];
 const KR_PATHS = new Set(KR_SITEMAP.map(([p]) => p));
 
@@ -63,6 +64,8 @@ const KR_ROBOTS = [
   "",
 ].join("\n");
 
+const EN_ROBOTS = KR_ROBOTS.replaceAll(KR_ORIGIN, EN_ORIGIN);
+
 /** AEO/GEO (2026-10-04): breadcrumb label per KR page (from each page's title). */
 const KR_PAGE_NAMES: Record<string, string> = {
   "/": "청라 아크원 푸르지오",
@@ -78,13 +81,33 @@ const KR_PAGE_NAMES: Record<string, string> = {
   "/pages/brand": "히스토리",
   "/board/news_list": "언론보도",
   "/pages/video": "홍보영상",
-  "/pages/plans": "평면도·공급금액",
-  "/visit": "모델하우스 방문예약",
+  "/event": "견본주택 오픈 이벤트",
+};
+
+const EN_PAGE_NAMES: Record<string, string> = {
+  "/": "Cheongna Ark-One Prugio",
+  "/pages/overview": "Overview",
+  "/pages/compare": "Apartment and officetel",
+  "/pages/schedule": "Sale schedule",
+  "/pages/location": "Location",
+  "/pages/contact": "Model house",
+  "/pages/changeinfo": "Application changes",
+  "/pages/docspecial": "Special supply",
+  "/pages/docnormal": "General supply",
+  "/pages/premium": "Premium",
+  "/pages/brand": "History",
+  "/board/news_list": "Press",
+  "/pages/video": "Promo video",
+  "/event": "Open event",
 };
 
 /** KR host only: Organization + WebPage(dateModified) + BreadcrumbList JSON-LD. */
-function krPageJsonLd(path: string): string {
-  const url = `${KR_ORIGIN}${path}`;
+function pageJsonLd(path: string, en = false): string {
+  const origin = en ? EN_ORIGIN : KR_ORIGIN;
+  const names = en ? EN_PAGE_NAMES : KR_PAGE_NAMES;
+  const brand = en ? "Cheongna Ark-One Prugio" : "청라 아크원 푸르지오";
+  const homeLabel = en ? "Home" : "홈";
+  const url = `${origin}${path}`;
   const lastmod = KR_SITEMAP.find(([p]) => p === path)?.[1];
   const org = {
     "@type": "Organization",
@@ -93,16 +116,16 @@ function krPageJsonLd(path: string): string {
   };
   const graph: Record<string, unknown>[] = [org];
   if (path === "/") {
-    graph.push({ "@type": "WebPage", "@id": `${KR_ORIGIN}/#webpage`, dateModified: lastmod, isPartOf: { "@id": `${KR_ORIGIN}/#website` } });
+    graph.push({ "@type": "WebPage", "@id": `${origin}/#webpage`, dateModified: lastmod, isPartOf: { "@id": `${origin}/#website` } });
   } else {
     graph.push(
       {
         "@type": "WebPage",
         "@id": `${url}#webpage`,
         url,
-        name: `${KR_PAGE_NAMES[path]} | 청라 아크원 푸르지오`,
-        inLanguage: "ko-KR",
-        isPartOf: { "@id": `${KR_ORIGIN}/#website` },
+        name: `${names[path]} | ${brand}`,
+        inLanguage: en ? "en-US" : "ko-KR",
+        isPartOf: { "@id": `${origin}/#website` },
         publisher: { "@id": org["@id"] },
         breadcrumb: { "@id": `${url}#breadcrumb` },
         dateModified: lastmod,
@@ -111,8 +134,8 @@ function krPageJsonLd(path: string): string {
         "@type": "BreadcrumbList",
         "@id": `${url}#breadcrumb`,
         itemListElement: [
-          { "@type": "ListItem", position: 1, name: "홈", item: `${KR_ORIGIN}/` },
-          { "@type": "ListItem", position: 2, name: KR_PAGE_NAMES[path], item: url },
+          { "@type": "ListItem", position: 1, name: homeLabel, item: `${origin}/` },
+          { "@type": "ListItem", position: 2, name: names[path], item: url },
         ],
       },
     );
@@ -136,23 +159,45 @@ const RSS_ITEMS: ReadonlyArray<readonly [string, string, string, string]> = [
   ["/board/news_list", "청라 아크원 푸르지오 언론보도 | 분양 관련 기사", "청라 아크원 푸르지오 관련 언론보도 목록.", "Tue, 06 Oct 2026 10:51:38 +0900"],
 ];
 
+const EN_RSS: ReadonlyArray<readonly [string, string, string, string]> = [
+  ["/", "Cheongna Ark-One Prugio | Guide", "Notice posted 22 Oct 2026. Model house opens 30 Oct. Apt 868 units and officetel 987 rooms.", "Tue, 06 Oct 2026 10:51:38 +0900"],
+  ["/pages/schedule", "Ark-One Price and Schedule", "Notice posted 22 Oct 2026. Contract 22-24 Nov. Supply amounts are on notice pages 6 to 20. Call 1833-3872.", "Tue, 06 Oct 2026 10:51:38 +0900"],
+  ["/pages/compare", "Ark-One Apt and Officetel", "Compare Apt 868 units and officetel 987 rooms by area parking and schedule.", "Sun, 04 Oct 2026 11:07:31 +0900"],
+  ["/pages/overview", "Ark-One Overview | 868 Units", "Cheongna-dong 86-1 M5. Apt 868 units and officetel 987 rooms. Developer Cheongna Smart City. Builder Daewoo E&C.", "Sun, 04 Oct 2026 11:07:31 +0900"],
+  ["/pages/changeinfo", "Ark-One Application Changes", "Application rule changes to check before applying. The notice was posted on 22 Oct 2026.", "Sun, 04 Oct 2026 11:07:31 +0900"],
+  ["/pages/docspecial", "Ark-One Special Supply", "Special supply opens 2 Nov. Volumes and eligibility are in the notice posted on 22 Oct 2026.", "Sun, 04 Oct 2026 11:07:31 +0900"],
+  ["/pages/docnormal", "Ark-One General Supply", "First rank 3 Nov. Second rank 4 Nov. Winners on 10 Nov. See the notice posted on 22 Oct 2026.", "Sun, 04 Oct 2026 11:07:31 +0900"],
+  ["/pages/contact", "Ark-One Model House | Visit", "Model house at Cheongna-dong 87-1. Grand open 30 Oct. Notice posted 22 Oct 2026.", "Sun, 04 Oct 2026 11:07:31 +0900"],
+  ["/pages/location", "Ark-One Location | M5 Block", "Cheongna-dong 86-1 in the International Business District. Transport and daily life with sources.", "Sun, 04 Oct 2026 10:51:35 +0900"],
+  ["/pages/video", "Ark-One Promo Video", "Complex introduction video released by the project entity.", "Tue, 06 Oct 2026 10:51:38 +0900"],
+  ["/board/news_list", "Ark-One Press Coverage", "Press list for Cheongna Ark-One Prugio.", "Tue, 06 Oct 2026 10:51:38 +0900"],
+];
+
 function xmlEsc(v: string): string {
   return v.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 }
 
-function rssFeed(): string {
-  const items = RSS_ITEMS.map(
+function rssFeed(en = false): string {
+  const origin = en ? EN_ORIGIN : KR_ORIGIN;
+  const items = (en ? EN_RSS : RSS_ITEMS).map(
     ([path, title, desc, date]) =>
-      `<item><title>${xmlEsc(title)}</title><link>${KR_ORIGIN}${path}</link><guid isPermaLink="true">${KR_ORIGIN}${path}</guid><description>${xmlEsc(desc)}</description><pubDate>${date}</pubDate></item>`,
+      `<item><title>${xmlEsc(title)}</title><link>${origin}${path}</link><guid isPermaLink="true">${origin}${path}</guid><description>${xmlEsc(desc)}</description><pubDate>${date}</pubDate></item>`,
   ).join("\n");
-  return `<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">\n<channel>\n<title>청라 아크원 푸르지오 분양 일정·청약 안내</title>\n<link>${KR_ORIGIN}/</link>\n<atom:link href="${KR_ORIGIN}/rss.xml" rel="self" type="application/rss+xml"/>\n<description>청라 아크원 푸르지오 분양 일정·비교·청약 안내 페이지 목록</description>\n<language>ko</language>\n<lastBuildDate>Tue, 06 Oct 2026 10:51:38 +0900</lastBuildDate>\n${items}\n</channel>\n</rss>\n`;
+  const title = en ? "Cheongna Ark-One Prugio sale schedule and application" : "청라 아크원 푸르지오 분양 일정·청약 안내";
+  const desc = en ? "Cheongna Ark-One Prugio pages for schedule comparison and application" : "청라 아크원 푸르지오 분양 일정·비교·청약 안내 페이지 목록";
+  const lang = en ? "en" : "ko";
+  return `<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">\n<channel>\n<title>${title}</title>\n<link>${origin}/</link>\n<atom:link href="${origin}/rss.xml" rel="self" type="application/rss+xml"/>\n<description>${desc}</description>\n<language>${lang}</language>\n<lastBuildDate>Tue, 06 Oct 2026 10:51:38 +0900</lastBuildDate>\n${items}\n</channel>\n</rss>\n`;
 }
 
 function krSitemap(): string {
-  const urls = [...KR_SITEMAP, ["/event", "2026-10-26"] as const].map(
+  const urls = KR_SITEMAP.map(
     ([path, lastmod]) => `  <url>\n    <loc>${KR_ORIGIN}${path}</loc>\n    <lastmod>${lastmod}</lastmod>\n  </url>`,
   ).join("\n");
   return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>\n`;
+}
+
+function enSitemap(): string {
+  return krSitemap().replaceAll(KR_ORIGIN, EN_ORIGIN);
 }
 
 interface SeoEvent {
@@ -172,6 +217,13 @@ function isKr(event: SeoEvent): boolean {
     event.req.headers.get("x-forwarded-host") ?? event.req.headers.get("host") ?? event.url.host;
   const host = String(raw ?? "").split(",")[0].trim().split(":")[0].toLowerCase();
   return KR_HOSTS.has(host);
+}
+
+function isEn(event: SeoEvent): boolean {
+  const raw =
+    event.req.headers.get("x-forwarded-host") ?? event.req.headers.get("host") ?? event.url.host;
+  const host = String(raw ?? "").split(",")[0].trim().split(":")[0].toLowerCase();
+  return EN_HOSTS.has(host);
 }
 
 const TEXT_HEADERS = {
@@ -249,24 +301,24 @@ export default async function seoHostMiddleware(
   }
 
   if (path === "/robots.txt") {
-    const kr = isKr(event);
-    return new Response(method === "HEAD" ? null : kr ? KR_ROBOTS : LEGACY_ROBOTS, {
+    const body = isEn(event) ? EN_ROBOTS : isKr(event) ? KR_ROBOTS : LEGACY_ROBOTS;
+    return new Response(method === "HEAD" ? null : body, {
       headers: { "content-type": "text/plain; charset=utf-8", ...TEXT_HEADERS },
     });
   }
   if (path === "/rss.xml") {
-    return new Response(method === "HEAD" ? null : rssFeed(), {
+    return new Response(method === "HEAD" ? null : rssFeed(isEn(event)), {
       headers: { "content-type": "application/rss+xml; charset=utf-8", ...TEXT_HEADERS },
     });
   }
   if (path === "/sitemap.xml") {
-    const kr = isKr(event);
-    return new Response(method === "HEAD" ? null : kr ? krSitemap() : LEGACY_SITEMAP, {
+    const body = isEn(event) ? enSitemap() : isKr(event) ? krSitemap() : LEGACY_SITEMAP;
+    return new Response(method === "HEAD" ? null : body, {
       headers: { "content-type": "application/xml", ...TEXT_HEADERS },
     });
   }
 
-  if (method !== "GET" || !KR_PATHS.has(path) || !isKr(event)) return next();
+  if (method !== "GET" || !KR_PATHS.has(path) || !(isKr(event) || isEn(event))) return next();
 
   const result = await next();
   if (
@@ -276,10 +328,11 @@ export default async function seoHostMiddleware(
     String(result.headers.get("content-type") ?? "").includes("text/html") &&
     !result.headers.get("content-encoding")
   ) {
+    const en = isEn(event);
     return injectOgUrl(
       result,
-      `${KR_ORIGIN}${path}`,
-      (path === "/" ? NAVER_VERIFICATION_TAG : "") + krPageJsonLd(path),
+      `${en ? EN_ORIGIN : KR_ORIGIN}${path}`,
+      (path === "/" ? NAVER_VERIFICATION_TAG : "") + pageJsonLd(path, en),
     );
   }
   return result;

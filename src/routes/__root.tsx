@@ -3,22 +3,31 @@ import { AuthProvider } from "@/lib/auth/provider";
 import { PreviewHostBridge } from "@/components/preview-host-bridge";
 import appCss from "../styles.css?url";
 import { SITE_NAME } from "@/lib/site-data";
-import { isIndexablePath, isKrHost } from "@/lib/seo-host";
+import { EN_ORIGIN, KR_ORIGIN, isEnHost, isIndexablePath, isKrHost } from "@/lib/seo-host";
 
 export const Route = createRootRoute({
-  head: ({ matches }) => ({
+  head: ({ matches }) => {
+    const path = matches[matches.length - 1]?.pathname || "/";
+    const hrefPath = path.startsWith("/") ? path : `/${path}`;
+    const en = isEnHost();
+    return {
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       // 구 네이버 토큰은 레거시 호스트에서만 유지. 한글 도메인은 홈에만 de62f799·msvalidate(미들웨어)를 둔다.
       ...(isKrHost() ? [] : [{ name: "naver-site-verification", content: "3c9a81c691a4cdec3415b6d3e7f832ea0015e2a9" }]),
-      { title: SITE_NAME },
-      { name: "description", content: "청라 아크원 푸르지오 분양 정보 안내" },
+      { title: en ? "Cheongna Ark-One Prugio | Guide" : SITE_NAME },
+      {
+        name: "description",
+        content: en
+          ? "Notice posted 22 Oct 2026. Model house opens 30 Oct. Contract 22-24 Nov. Apt 868 units."
+          : "청라 아크원 푸르지오 분양 정보 안내",
+      },
       { name: "theme-color", content: "#004B45" },
       {
         name: "robots",
         content:
-          isKrHost() &&
+          (isKrHost() || en) &&
           matches.length > 1 &&
           matches[matches.length - 1]?.routeId !== "__root__" &&
           !matches.some((m) => m.status === "notFound" || m.status === "error") &&
@@ -33,9 +42,12 @@ export const Route = createRootRoute({
       {
         rel: "alternate",
         type: "application/rss+xml",
-        title: "청라 아크원 푸르지오 분양 일정·청약 RSS",
-        href: "https://www.xn--2w2b19sita0u67iz2mi7g.site/rss.xml",
+        title: en ? "Cheongna Ark-One Prugio RSS" : "청라 아크원 푸르지오 분양 일정·청약 RSS",
+        href: `${en ? EN_ORIGIN : "https://www.xn--2w2b19sita0u67iz2mi7g.site"}/rss.xml`,
       },
+      { rel: "alternate", hreflang: "ko", href: `${KR_ORIGIN}${hrefPath}` },
+      { rel: "alternate", hreflang: "en", href: `${EN_ORIGIN}${hrefPath}` },
+      { rel: "alternate", hreflang: "x-default", href: `${KR_ORIGIN}${hrefPath}` },
       { rel: "stylesheet", href: appCss },
       { rel: "manifest", href: "/__grok/manifest.webmanifest" },
       { rel: "apple-touch-icon", href: "/g-icon-180.png" },
@@ -53,9 +65,10 @@ export const Route = createRootRoute({
         href: "https://fonts.googleapis.com/earlyaccess/nanummyeongjo.css",
       },
     ],
-  }),
+  };
+  },
   component: () => (
-    <html lang="ko" suppressHydrationWarning>
+    <html lang={isEnHost() ? "en" : "ko"} suppressHydrationWarning>
       <head>
         <HeadContent />
       </head>

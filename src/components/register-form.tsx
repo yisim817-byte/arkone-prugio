@@ -3,6 +3,8 @@ import { SITE_PHONE, SITE_TEL_HREF } from "@/lib/site-data";
 import { PreregShare } from "@/components/prereg-share";
 import { Link } from "@tanstack/react-router";
 
+import { tx } from "@/lib/seo-host";
+
 const ENDPOINT = "https://jzmktahlrwtrtejjflrw.supabase.co/functions/v1/arkone-prereg-submit";
 const CONSENT_VERSION = "2026-09-26-v2+r13"; // 작업지시서 13: 방문 항목을 뺀 동의(+visit1 → +r13)
 const SIDO = ["서울특별시","부산광역시","대구광역시","인천광역시","광주광역시","대전광역시","울산광역시","세종특별자치시","경기도","강원특별자치도","충청북도","충청남도","전북특별자치도","전라남도","경상북도","경상남도","제주특별자치도"];
@@ -224,26 +226,26 @@ export function RegisterForm() {
         {alert ? <p className="reg__error" role="alert">{alert}</p> : null}
         <div hidden={step === 2}>
         <fieldset className={`reg__product${errors.product ? " is-err" : ""}`} disabled={step === 2}>
-          <legend>등록하실 상품을 선택해 주세요 *</legend>
+          <legend>{tx("등록하실 상품을 선택해 주세요 *", "Choose a product *")}</legend>
           <div className="reg__product-options">
-            <label><input type="radio" name="product" value="apt" checked={product === "apt"} onChange={() => { setProduct("apt"); setInterest(""); setSpecial(""); }} /><span>아파트 사전고객등록</span></label>
-            <label><input type="radio" name="product" value="officetel" checked={product === "officetel"} onChange={() => { setProduct("officetel"); setInterest("오피스텔"); setSpecial(""); }} /><span>오피스텔 사전등록</span></label>
-            <label><input type="radio" name="product" value="commercial" checked={product === "commercial"} onChange={() => { setProduct("commercial"); setInterest("상가"); setSpecial(""); }} /><span>상가 사전등록</span></label>
+            <label><input type="radio" name="product" value="apt" checked={product === "apt"} onChange={() => { setProduct("apt"); setInterest(""); setSpecial(""); }} /><span>{tx("아파트 사전고객등록", "Apartment pre-registration")}</span></label>
+            <label><input type="radio" name="product" value="officetel" checked={product === "officetel"} onChange={() => { setProduct("officetel"); setInterest("오피스텔"); setSpecial(""); }} /><span>{tx("오피스텔 사전등록", "Officetel pre-registration")}</span></label>
+            <label><input type="radio" name="product" value="commercial" checked={product === "commercial"} onChange={() => { setProduct("commercial"); setInterest("상가"); setSpecial(""); }} /><span>{tx("상가 사전등록", "Shop pre-registration")}</span></label>
           </div>
           {errors.product ? <p className="reg__msg">{errors.product}</p> : null}
         </fieldset>
         <div className={`reg__field${errors.name ? " is-err" : ""}`}>
-          <label htmlFor="f-name">성명 *</label>
-          <input id="f-name" name="name" type="text" placeholder="이름을 입력해 주세요" value={name} maxLength={20} autoComplete="name" disabled={step === 2} onChange={(e) => setName(e.target.value)} />
+          <label htmlFor="f-name">{tx("성명 *", "Name *")}</label>
+          <input id="f-name" name="name" type="text" placeholder={tx("이름을 입력해 주세요", "Your name")} value={name} maxLength={20} autoComplete="name" disabled={step === 2} onChange={(e) => setName(e.target.value)} />
           <p className="reg__msg">{errors.name}</p>
         </div>
         <div className={`reg__field${errors.phone ? " is-err" : ""}`}>
-          <label htmlFor="f-phone">휴대전화 *</label>
+          <label htmlFor="f-phone">{tx("휴대전화 *", "Mobile *")}</label>
           <input id="f-phone" name="phone" type="tel" inputMode="numeric" autoComplete="tel" placeholder="010-0000-0000" value={phone} disabled={step === 2} onChange={(e) => setPhone(hyphen(e.target.value))} />
           <p className="reg__msg">{errors.phone}</p>
         </div>
         <div className={`reg__field${errors.birth ? " is-err" : ""}`}>
-          <label htmlFor="f-birth">생년월일 6자리 *</label>
+          <label htmlFor="f-birth">{tx("생년월일 6자리 *", "Birth date 6 digits *")}</label>
           <input id="f-birth" name="birth6" type="text" inputMode="numeric" placeholder="예: 780315" autoComplete="off" value={birth} disabled={step === 2} onChange={(e) => {
             const digits = e.target.value.replace(/\D/g, "");
             if (digits.length >= 13) { setBirth(""); setBirthWarn(true); return; }
@@ -259,7 +261,7 @@ export function RegisterForm() {
         <div className="prereg-hidden-hp" aria-hidden="true"><label>회사<input name="hp" tabIndex={-1} autoComplete="off" /></label></div>
         <div className={`reg__agree${errors.collect ? " is-err" : ""}`}>
           <input id="consent-collect" type="checkbox" checked={collect} disabled={step === 2} onChange={(e) => setCollect(e.target.checked)} />
-          <label htmlFor="consent-collect">[필수] 개인정보 수집·이용 동의</label>
+          <label htmlFor="consent-collect">{tx("[필수] 개인정보 수집·이용 동의", "[Required] Consent to collect and use personal data")}</label>
           <button type="button" onClick={() => setOpen(open === "collect" ? "" : "collect")}>보기</button>
         </div>
         {open === "collect" ? <div className="reg__consent"><p>수집 항목 : [필수] 성명, 휴대전화번호, 생년월일(앞 6자리)<br />[선택] 주민등록상 주소(시·도, 시·군·구, 읍·면·동), 관심타입, 특별공급 관심 여부<br />(자동 수집) 접속 사이트, 유입 경로, 접수 일시, 서비스 이용 기록, 접속 로그, 쿠키, 접속 IP 정보, 불량이용 기록, 기기정보</p><p>이용 목적 : 청라 아크원 푸르지오 분양정보 제공 및 마케팅 활용(마케팅 활용은 광고성 정보 수신에 동의한 경우에 한함), 청약 일정·모집공고 안내, 청약 해당지역 안내, 사전고객 관리, 이벤트 시행 시 대상 확인</p><p>보유 기간 : 이벤트 종료 시 지체 없이 파기. 최장 수집일로부터 1년</p><p>보관 위치 : Supabase, Inc. 클라우드 데이터베이스 — 일본(도쿄 리전)</p><p>※ 주민등록번호는 수집하지 않습니다.</p><p>동의를 거부할 수 있으며, 거부 시 사전고객등록이 제한됩니다. 전화 문의(1833-3872)는 동의 없이 이용하실 수 있습니다.</p></div> : null}
@@ -269,7 +271,7 @@ export function RegisterForm() {
           <button type="button" onClick={() => setOpen(open === "marketing" ? "" : "marketing")}>보기</button>
         </div>
         {open === "marketing" ? <div className="reg__consent"><p>선택 동의이며, 동의를 거부하셔도 사전고객등록을 진행하실 수 있습니다.</p></div> : null}
-        {step === 1 ? <button className="reg__submit" type="submit" disabled={busy}>{busy ? "접수 중…" : "사전고객등록하기"}</button> : null}
+        {step === 1 ? <button className="reg__submit" type="submit" disabled={busy}>{busy ? tx("접수 중…", "Sending…") : tx("사전고객등록하기", "Pre-register")}</button> : null}
         </div>
         <p className="prereg-confirm">사전고객등록 확인은 대표번호 <a href={SITE_TEL_HREF}>1833-3872</a>로 문의해 주세요.</p>
         {step === 2 ? (

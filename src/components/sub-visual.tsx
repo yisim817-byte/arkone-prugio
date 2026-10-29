@@ -2,7 +2,7 @@ import { Link, useRouterState } from "@tanstack/react-router";
 import { useState } from "react";
 import { NAV, PAGE_META } from "@/lib/site-data";
 import { imgDims } from "@/components/img";
-import { KR_ORIGIN, isKrHost } from "@/lib/seo-host";
+import { KR_ORIGIN, isEnHost, isKrHost } from "@/lib/seo-host";
 
 export function SubVisual({ path }: { path: string }) {
   const meta = PAGE_META[path];
@@ -10,6 +10,7 @@ export function SubVisual({ path }: { path: string }) {
   const [open, setOpen] = useState<"parent" | "child" | null>(null);
   const pathname = useRouterState({ select: (s) => s.location.pathname });
 
+  const en = isEnHost();
   if (!meta || !parent) return null;
 
   return (
@@ -36,7 +37,7 @@ export function SubVisual({ path }: { path: string }) {
             <source media="(max-width: 1024px)" srcSet="/resources/img/common/sub_visual_img_m.v4.webp" />
             <img
               src="/resources/img/common/sub_visual_img.v4.webp"
-              alt={`${meta.kr} 상단의 회색 곡선 배경`}
+              alt={en ? `Grey curve behind the ${meta.en} page` : `${meta.kr} 상단의 회색 곡선 배경`}
               {...imgDims("/resources/img/common/sub_visual_img.v4.webp")}
               data-dims=""
             />
@@ -44,12 +45,12 @@ export function SubVisual({ path }: { path: string }) {
         </div>
         <div className="sub_visual__content">
           <h2 className="sub_visual__title">{meta.en}</h2>
-          <p className="sub_visual__text">{meta.parentKr}</p>
+          <p className="sub_visual__text">{en ? meta.parentEn : meta.parentKr}</p>
         </div>
       </section>
       <div className="page_location">
-        <nav className="page_location__container" aria-label="현재 위치">
-          <Link to="/" className="page_location__home" aria-label="홈">
+        <nav className="page_location__container" aria-label={en ? "Current page" : "현재 위치"}>
+          <Link to="/" className="page_location__home" aria-label={en ? "Home" : "홈"}>
             <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" fill="none" aria-hidden="true">
               <path
                 fill="currentColor"
@@ -59,13 +60,13 @@ export function SubVisual({ path }: { path: string }) {
           </Link>
           <div className="page_location__crumb">
             <button type="button" className="page_location__toggle" onClick={() => setOpen(open === "parent" ? null : "parent")}>
-              {meta.parentKr}
+              {en ? meta.parentEn : meta.parentKr}
             </button>
             <ul className="page_location__menu" hidden={open !== "parent"}>
               {NAV.filter((n) => !n.disabled).map((n) => (
                 <li key={n.krName}>
                   <Link to={n.to} className={n.krName === meta.parentKr ? "is-current" : ""}>
-                    {n.krName}
+                    {en ? n.enName : n.krName}
                   </Link>
                 </li>
               ))}
@@ -77,7 +78,7 @@ export function SubVisual({ path }: { path: string }) {
               className="page_location__toggle is-current"
               onClick={() => setOpen(open === "child" ? null : "child")}
             >
-              {meta.kr}
+              {en ? meta.en : meta.kr}
             </button>
             <ul className="page_location__menu" hidden={open !== "child"}>
               {parent.children
@@ -85,7 +86,7 @@ export function SubVisual({ path }: { path: string }) {
                 .map((c) => (
                   <li key={c.krName}>
                     <Link to={c.to} className={c.to === pathname ? "is-current" : ""}>
-                      {c.krName}
+                      {en ? c.enName : c.krName}
                     </Link>
                   </li>
                 ))}

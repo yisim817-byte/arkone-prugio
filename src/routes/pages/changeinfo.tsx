@@ -1,7 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteShell } from "@/components/site-shell";
 import { ZoomButton } from "@/components/notice";
-import { canonicalLinks } from "@/lib/seo-host";
+import { canonicalLinks, tx } from "@/lib/seo-host";
+import { META } from "@/lib/i18n/en";
 import { GuideAnswer, GuideDetail } from "@/components/seo-guide";
 import { SRC_APPLYHOME } from "@/lib/arkone-facts";
 import { imgDims } from "@/components/img";
@@ -10,8 +11,8 @@ export const Route = createFileRoute("/pages/changeinfo")({
   component: ChangeInfoPage,
   head: () => ({
     meta: [
-      { title: "청라 아크원 푸르지오 청약제도 변경사항 | 청약안내" },
-      { name: "description", content: "청라 아크원 푸르지오 청약 전 확인할 청약제도 변경 내용. 공급 유형·자격·청약 일정은 2026.10.22(목) 게시된 입주자모집공고 기준입니다." },
+      { title: tx("청라 아크원 푸르지오 청약제도 변경사항 | 청약안내", META.changeinfo.title) },
+      { name: "description", content: tx("청라 아크원 푸르지오 청약 전 확인할 청약제도 변경 내용. 공급 유형·자격·청약 일정은 2026.10.22(목) 게시된 입주자모집공고 기준입니다.", META.changeinfo.desc) },
     ],
     links: canonicalLinks("/pages/changeinfo"),
   }),
@@ -23,8 +24,8 @@ function ChangeInfoPage() {
     <SiteShell path="/pages/changeinfo">
       <div className="page_content">
         <section className="page_container">
-          <GuideAnswer title="청라 아크원 푸르지오 청약 전 확인할 청약제도 변경 사항">
-            <p>청라 아크원 푸르지오에 적용되는 공급 유형·자격 요건·청약 일정은 2026.10.22(목) 게시된 입주자모집공고 기준으로 청약 일정·일반공급·특별공급 안내에 정리했습니다. 청라 아크원 푸르지오는 입주자모집공고 게시 2026.10.22(목) · 견본주택 GRAND OPEN 10.30(금)입니다. 세부 일정은 대표번호 1833-3872로 문의해 주세요.</p>
+          <GuideAnswer title={tx("청라 아크원 푸르지오 청약 전 확인할 청약제도 변경 사항", META.changeinfo.h1)}>
+            <p>{tx("청라 아크원 푸르지오에 적용되는 공급 유형·자격 요건·청약 일정은 2026.10.22(목) 게시된 입주자모집공고 기준으로 청약 일정·일반공급·특별공급 안내에 정리했습니다. 청라 아크원 푸르지오는 입주자모집공고 게시 2026.10.22(목) · 견본주택 GRAND OPEN 10.30(금)입니다. 세부 일정은 대표번호 1833-3872로 문의해 주세요.", "Supply type eligibility and the application schedule for Cheongna Ark-One Prugio follow the recruitment notice posted on 22 Oct 2026. The notice was posted on 22 Oct 2026 and the model house grand opening is 30 Oct. Call 1833-3872 for details.")}</p>
           </GuideAnswer>
           <figure>
             <img src={src} alt="신생아·신혼·생애최초 변경 전후를 적은 청약제도 안내문" {...imgDims(src)} data-dims="" />
