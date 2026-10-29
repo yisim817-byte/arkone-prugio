@@ -4,14 +4,15 @@ import { SiteShell } from "@/components/site-shell";
 import { GuideDetail } from "@/components/seo-guide";
 import { YoutubeModal } from "@/components/youtube-modal";
 import { YOUTUBE_ID } from "@/lib/site-data";
-import { canonicalLinks } from "@/lib/seo-host";
+import { canonicalLinks, tx } from "@/lib/seo-host";
+import { FAQ_VIDEO, META } from "@/lib/i18n/en";
 
 export const Route = createFileRoute("/pages/video")({
   component: VideoPage,
   head: () => ({
     meta: [
-      { title: "청라 아크원 푸르지오 홍보영상 | 사업 소개" },
-      { name: "description", content: "청라 아크원 푸르지오 홍보영상 모음. 사업주체가 공개한 단지 소개 영상을 확인할 수 있습니다." },
+      { title: tx("청라 아크원 푸르지오 홍보영상 | 사업 소개", META.video.title) },
+      { name: "description", content: tx("청라 아크원 푸르지오 홍보영상 모음. 사업주체가 공개한 단지 소개 영상을 확인할 수 있습니다.", META.video.desc) },
     ],
     links: canonicalLinks("/pages/video"),
   }),
@@ -25,25 +26,26 @@ const FAQ = [
 
 function VideoPage() {
   const [open, setOpen] = useState(false);
+  const faq = tx(FAQ, FAQ_VIDEO);
   return (
     <SiteShell path="/pages/video">
       <div className="page_content">
         <section className="page_container">
           {/* SEO_PUSH 2026-10-06 P1-1: 페이지 고유 H1 (title 앞부분) */}
-          <h1 className="page-h1">청라 아크원 푸르지오 홍보영상</h1>
+          <h1 className="page-h1">{tx("청라 아크원 푸르지오 홍보영상", META.video.h1)}</h1>
           <div className="video-grid">
             <button type="button" className="video-card" onClick={() => setOpen(true)}>
               <img src={`https://img.youtube.com/vi/${YOUTUBE_ID}/hqdefault.jpg`} alt="청라 아크원 푸르지오 홍보영상 썸네일" width={480} height={360} data-dims="" />
-              <p>청라 아크원 푸르지오 홍보영상</p>
+              <p>{tx("청라 아크원 푸르지오 홍보영상", "Cheongna Ark-One Prugio promo video")}</p>
             </button>
           </div>
         </section>
       </div>
-            <GuideDetail faq={FAQ} />
+            <GuideDetail faq={faq} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
         "@context": "https://schema.org",
         "@type": "FAQPage",
-        mainEntity: FAQ.map(({ q, a }) => ({ "@type": "Question", name: q, acceptedAnswer: { "@type": "Answer", text: a } })),
+        mainEntity: faq.map(({ q, a }) => ({ "@type": "Question", name: q, acceptedAnswer: { "@type": "Answer", text: a } })),
       }) }} />
 
       {open ? <YoutubeModal id={YOUTUBE_ID} title="청라 아크원 푸르지오 홍보영상" onClose={() => setOpen(false)} /> : null}

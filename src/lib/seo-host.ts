@@ -55,19 +55,39 @@ export function isKrHost(): boolean {
   }
 }
 
+export const EN_ORIGIN = "https://www.arkone-prugio.site";
+const EN_HOSTS = new Set(["www.arkone-prugio.site"]);
+
+export function isEnHostName(raw: string | null | undefined): boolean {
+  return EN_HOSTS.has(normalizeHost(raw));
+}
+
+export function isEnHost(): boolean {
+  try {
+    return isEnHostName(readHost());
+  } catch {
+    return false;
+  }
+}
+
+/** Korean string on the Korean host, English string on www.arkone-prugio.site. */
+export function tx<T>(ko: T, en: T): T {
+  return isEnHost() ? en : ko;
+}
+
 export function isIndexablePath(pathname: string): boolean {
   return INDEXABLE.has(pathname);
 }
 
 /** Canonical link for a route path. Legacy hosts keep the exact previous URL. */
 export function canonicalLinks(path: string) {
-  const origin = isKrHost() ? KR_ORIGIN : LEGACY_ORIGIN;
+  const origin = isEnHost() ? EN_ORIGIN : isKrHost() ? KR_ORIGIN : LEGACY_ORIGIN;
   return [{ rel: "canonical", href: `${origin}${path}` }];
 }
 
-/** FAQPage JSON-LD, emitted only on the Korean host and only for visible Q&A. */
+/** FAQPage JSON-LD for the Korean host and the English host, only for visible Q&A. */
 export function faqJsonLd(faq: { q: string; a: string }[]) {
-  if (!isKrHost() || faq.length === 0) return [];
+  if ((!isKrHost() && !isEnHost()) || faq.length === 0) return [];
   return [
     {
       type: "application/ld+json",

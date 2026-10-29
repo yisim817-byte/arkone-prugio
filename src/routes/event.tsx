@@ -1,7 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState, type KeyboardEvent } from "react";
 import { SiteShell } from "@/components/site-shell";
-import { canonicalLinks } from "@/lib/seo-host";
+import { canonicalLinks, tx } from "@/lib/seo-host";
+import { META } from "@/lib/i18n/en";
 import { DRAW_DAYS, EVENT_RANGE, VISIT_BASIC, VISIT_GIFTS, defaultDrawIndex } from "@/lib/open-event";
 import { SITE_PHONE, SITE_TEL_HREF } from "@/lib/site-data";
 
@@ -11,8 +12,8 @@ export const Route = createFileRoute("/event")({
   component: EventPage,
   head: () => ({
     meta: [
-      { title: "견본주택 오픈 이벤트 | 청라 아크원 푸르지오" },
-      { name: "description", content: DESC },
+      { title: tx("견본주택 오픈 이벤트 | 청라 아크원 푸르지오", META.event.title) },
+      { name: "description", content: tx(DESC, META.event.desc) },
     ],
     links: canonicalLinks("/event"),
   }),
@@ -35,16 +36,16 @@ function EventPage() {
       <article className="oe">
         <header className="oe-hero">
           <p className="oe-hero__eye">GRAND OPEN EVENT</p>
-          <h1>견본주택 오픈 3일 이벤트</h1>
-          <p className="oe-hero__sub">{EVENT_RANGE} · 인천광역시 서해구 청라동 87-1 견본주택</p>
+          <h1>{tx("견본주택 오픈 3일 이벤트", META.event.h1)}</h1>
+          <p className="oe-hero__sub">{EVENT_RANGE} · {tx("인천광역시 서해구 청라동 87-1 견본주택", "Model house at 87-1 Cheongna-dong Seohae-gu Incheon")}</p>
           <div className="oe-hero__actions">
-            <Link className="oe-btn oe-btn--gold" to="/visit">방문예약</Link>
-            <a className="oe-btn oe-btn--line" href={SITE_TEL_HREF}>전화 문의 {SITE_PHONE}</a>
+            <Link className="oe-btn oe-btn--gold" to="/visit">{tx("방문예약", "Book a visit")}</Link>
+            <a className="oe-btn oe-btn--line" href={SITE_TEL_HREF}>{tx("전화 문의", "Call")} {SITE_PHONE}</a>
           </div>
         </header>
 
         <section className="oe-sec" id="visit-gift" aria-labelledby="oe-visit-title">
-          <h2 id="oe-visit-title">방문 고객 사은품</h2>
+          <h2 id="oe-visit-title">{tx("방문 고객 사은품", "Gifts for visitors")}</h2>
           <i className="oe-rule" aria-hidden="true" />
           <div className="oe-table-wrap">
             <table className="oe-table">
@@ -84,7 +85,7 @@ function EventPage() {
         </section>
 
         <section className="oe-sec" id="consult-gift" aria-labelledby="oe-consult-title">
-          <h2 id="oe-consult-title">상담 고객 사은품</h2>
+          <h2 id="oe-consult-title">{tx("상담 고객 사은품", "Gifts for consultations")}</h2>
           <i className="oe-rule" aria-hidden="true" />
           <div className="oe-pair">
             <article className="oe-card">
@@ -101,7 +102,7 @@ function EventPage() {
         </section>
 
         <section className="oe-sec" id="draw" aria-labelledby="oe-draw-title">
-          <h2 id="oe-draw-title">매일 16시 경품 추첨</h2>
+          <h2 id="oe-draw-title">{tx("매일 16시 경품 추첨", "Prize draw every day at 4 p.m.")}</h2>
           <i className="oe-rule" aria-hidden="true" />
           <div className="oe-tabs" role="tablist" aria-label="일차별 경품">
             {DRAW_DAYS.map((day, index) => (
@@ -148,7 +149,7 @@ function EventPage() {
         </section>
 
         <section className="oe-sec" id="after" aria-labelledby="oe-after-title">
-          <h2 id="oe-after-title">청약·당첨 고객 이벤트</h2>
+          <h2 id="oe-after-title">{tx("청약·당첨 고객 이벤트", "Events for applicants and winners")}</h2>
           <i className="oe-rule" aria-hidden="true" />
           <div className="oe-pair">
             <article className="oe-card">
@@ -165,7 +166,7 @@ function EventPage() {
         </section>
 
         <section className="oe-sec" id="notice" aria-labelledby="oe-notice-title">
-          <h2 id="oe-notice-title">유의사항</h2>
+          <h2 id="oe-notice-title">{tx("유의사항", "Notes")}</h2>
           <i className="oe-rule" aria-hidden="true" />
           <ul className="oe-notice">
             <li>선착순 사은품은 일차별 수량 소진 시 종료됩니다.</li>

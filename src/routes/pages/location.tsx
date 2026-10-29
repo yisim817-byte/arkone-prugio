@@ -1,8 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteShell } from "@/components/site-shell";
 import { SubNotice, ZoomButton } from "@/components/notice";
-import { canonicalLinks, faqJsonLd } from "@/lib/seo-host";
+import { canonicalLinks, faqJsonLd, isEnHost, tx } from "@/lib/seo-host";
 import { GuideAnswer, GuideDetail, type GuideFaq } from "@/components/seo-guide";
+import { FAQ_LOCATION, META } from "@/lib/i18n/en";
 import { imgDims } from "@/components/img";
 
 const FAQ: GuideFaq[] = [
@@ -24,15 +25,19 @@ const FAQ: GuideFaq[] = [
   },
 ];
 
+function locationFaq(): GuideFaq[] {
+  return tx(FAQ, FAQ_LOCATION);
+}
+
 export const Route = createFileRoute("/pages/location")({
   component: LocationPage,
   head: () => ({
     meta: [
-      { title: "청라 아크원 푸르지오 입지 | 국제업무단지 M5BL" },
-      { name: "description", content: "청라 아크원 푸르지오 입지. 청라동 86-1번지 국제업무단지 M5BL, 청라하늘대교, 7호선 국제업무단지역(예정·개통 시기 미정) 등 교통·생활 환경과 근거 자료." },
+      { title: tx("청라 아크원 푸르지오 입지 | 국제업무단지 M5BL", META.location.title) },
+      { name: "description", content: tx("청라 아크원 푸르지오 입지. 청라동 86-1번지 국제업무단지 M5BL, 청라하늘대교, 7호선 국제업무단지역(예정·개통 시기 미정) 등 교통·생활 환경과 근거 자료.", META.location.desc) },
     ],
     links: canonicalLinks("/pages/location"),
-    scripts: faqJsonLd(FAQ),
+    scripts: faqJsonLd(locationFaq()),
   }),
 });
 
@@ -41,7 +46,20 @@ function LocationPage() {
     <SiteShell path="/pages/location">
       <div className="page_content">
         <section className="page_container">
-          <GuideAnswer title="청라 아크원 푸르지오 입지 요약">
+          <GuideAnswer title={tx("청라 아크원 푸르지오 입지 요약", META.location.h1)}>
+            {isEnHost() ? (
+              <>
+                <p>Cheongna Ark-One Prugio is on mixed-use site M5 in the Cheongna International Business District at 86-1 Cheongna-dong Seohae-gu Incheon.</p>
+                <p>The model house is 87-1 Cheongna-dong. The showroom is Hongik Park 1F units 108 and 109 on Jungbong-daero 586beon-gil. They are different places.</p>
+                <p>The model house address is 87-1 Cheongna-dong Seohae-gu Incheon. The showroom is a different place.</p>
+                <p>Work on the Seoul Line 7 Cheongna extension is being brought back on track after delays. The opening date has not been officially announced.</p>
+                <p>Starfield Cheongna is planned to open in 2028. Asan Medical Center Cheongna started construction in December 2025 and targets completion in 2029. Source date 9 Oct 2026. Sources: Incheon City releases.</p>
+                <p>Cheongna Sky Bridge opened in January 2026 and the second outer ring road is available. International Business District station on the Line 7 extension is planned and the opening date is not set.</p>
+                <p>Nearby plans include Starfield Cheongna (2028) and Asan Medical Center Cheongna (2029). Hana Dream Town group headquarters was completed on 21 May 2026. Dates can change.</p>
+                <p>Source date 21 Oct 2026. Sources: Incheon City releases and the site address.</p>
+              </>
+            ) : (
+              <>
             <p>청라 아크원 푸르지오는 청라국제도시 국제업무단지 내 주상복합용지 M5BL(인천광역시 서해구 청라동 86-1번지)에 위치합니다.</p>
             <p>견본주택은 청라동 87-1번지이고, 홍보관은 중봉대로 586번길 19 홍익파크 1층 108·109호입니다. 서로 다른 장소입니다.</p>
             <p>청라 아크원 푸르지오 견본주택은 인천광역시 서해구 청라동 87-1번지입니다. 홍보관은 인천광역시 서해구 중봉대로 586번길 19 홍익파크 1층 108·109호이며, 견본주택과 다른 장소입니다.</p>
@@ -50,7 +68,14 @@ function LocationPage() {
             <p>교통은 2026년 1월 개통한 청라하늘대교와 제2외곽순환도로를 이용할 수 있고, 서울 지하철 7호선 청라연장선 국제업무단지역은 예정 역으로 개통 시기는 미정입니다.</p>
             <p>주변에는 스타필드 청라(2028년 개장 예정), 서울아산청라병원(2029년 예정) 등 개발 계획이 있고 하나드림타운(그룹헤드쿼터 2026.5.21 준공)이 들어서 있으며, 각 일정은 관계 기관 사정에 따라 변경될 수 있습니다.</p>
             <p>자료 기준일 2026-10-21 · 출처 인천광역시 보도자료·현장 주소 표기</p>
-          </GuideAnswer><p>청라 아크원 푸르지오의 대지위치는 인천광역시 서해구(구 서구) 청라동 86-1번지(청라국제도시 주상복합용지 M5BL)입니다. 견본주택은 인천광역시 서해구(구 서구) 청라동 87-1에 있고, 홍보관은 인천광역시 서해구(구 서구) 중봉대로 586번길 19입니다. 홍보관은 견본주택과 다른 장소입니다. 청라하늘대교(구 제3연륙교)는 2026년 1월 5일 개통했습니다. 서울 7호선 청라국제도시 연장의 개통 시기는 공식 발표되지 않았습니다.</p>
+              </>
+            )}
+          </GuideAnswer>
+          {isEnHost() ? (
+            <p>The site is 86-1 Cheongna-dong Seohae-gu (formerly Seo-gu) Incheon on mixed-use site M5. The model house is 87-1 Cheongna-dong. The showroom is 19 Jungbong-daero 586beon-gil and is a different place. Cheongna Sky Bridge (the former 3rd land bridge) opened on 5 Jan 2026. The opening date of the Seoul Line 7 Cheongna extension has not been officially announced.</p>
+          ) : (
+            <p>청라 아크원 푸르지오의 대지위치는 인천광역시 서해구(구 서구) 청라동 86-1번지(청라국제도시 주상복합용지 M5BL)입니다. 견본주택은 인천광역시 서해구(구 서구) 청라동 87-1에 있고, 홍보관은 인천광역시 서해구(구 서구) 중봉대로 586번길 19입니다. 홍보관은 견본주택과 다른 장소입니다. 청라하늘대교(구 제3연륙교)는 2026년 1월 5일 개통했습니다. 서울 7호선 청라국제도시 연장의 개통 시기는 공식 발표되지 않았습니다.</p>
+          )}
           <header className="location_intro">
             <p>청라국제업무단지 M5블록</p>
             <h2>청라 아크원 푸르지오 입지환경</h2>
@@ -119,7 +144,7 @@ function LocationPage() {
               { label: "학교", value: "초등학교 신설(예정), 중학교 신설(계획) — 배정은 교육지원청 기준", status: "예정·계획" },
               { label: "행정구역", value: "2026년 7월 1일부 인천 서구 → 서해구(청라동 포함)", status: "확정" },
             ]}
-            faq={FAQ}
+            faq={locationFaq()}
             links={[
               { to: "/pages/overview", label: "분양 사업개요" },
               { to: "/pages/brand", label: "청라 개발 히스토리" },
