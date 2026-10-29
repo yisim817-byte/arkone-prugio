@@ -63,16 +63,18 @@ function ContactPage() {
             {isEnHost() ? (
               <>
                 <p>The model house is at 87-1 Cheongna-dong Seohae-gu Incheon. Grand opening is 30 Oct. The recruitment notice was posted on 22 Oct 2026. Call 1833-3872 for the details.</p>
+                <p>Cheongna Ark-One Prugio has Apt 868 units and officetel 987 rooms. Contracts run from 22 to 24 Nov 2026.</p>
+                <p>Source: <a href="https://www.applyhome.co.kr" target="_blank" rel="noopener noreferrer">Applyhome</a> recruitment notice (posted 22 Oct 2026) · checked 2026-10-29</p>
                 <p>The project site is 86-1 Cheongna-dong Seohae-gu Incheon. The showroom is Hongik Park 1F units 108 and 109 19 Jungbong-daero 586beon-gil next to Starbucks.</p>
                 <p>Hours can change. Call 1833-3872 before you visit.</p>
-                <p>Source date 21 Oct 2026. Source: site model house and showroom addresses.</p>
               </>
             ) : (
               <>
             <p>청라 아크원 푸르지오 견본주택(모델하우스)은 인천광역시 서해구 청라동 87-1번지에 있으며, GRAND OPEN은 10.30(금)입니다(입주자모집공고 2026.10.22(목) 게시). 세부 일정은 대표번호 1833-3872로 문의해 주세요.</p>
+            <p>단지는 아파트 868세대와 오피스텔 987실입니다. 계약은 2026년 11월 22일부터 24일까지입니다.</p>
+            <p>출처: <a href="https://www.applyhome.co.kr" target="_blank" rel="noopener noreferrer">청약홈</a> 입주자모집공고(2026.10.22 게시) · 확인 기준일 2026-10-29</p>
             <p>사업 현장은 인천광역시 서해구 청라동 86-1번지이고, 홍보관은 중봉대로 586번길 19 홍익파크 1층 108, 109호(스타벅스 옆)입니다.</p>
             <p>일정과 운영 시간은 사업주체 사정에 따라 변경될 수 있으니 방문 전 대표번호 1833-3872로 확인해 주세요.</p>
-            <p>자료 기준일 2026-10-21 · 출처 현장·견본주택·홍보관 주소 표기</p>
               </>
             )}
           </GuideAnswer>

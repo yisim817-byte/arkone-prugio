@@ -24,6 +24,10 @@ const FAQ: GuideFaq[] = [
     q: "분양가 상한제는 오피스텔에도 적용되나요?",
     a: "사업주체는 단지를 '분양가 상한제 적용단지'로, 프리미엄 안내에서 '분양가 상한제 공급 아파트'로 표기하고 있습니다. 오피스텔의 분양가와 적용 기준은 공개되지 않았으므로 공고에서 확인하시기 바랍니다.",
   },
+  {
+    q: "청라 아크원 푸르지오와 청라 피크원 푸르지오의 블록은 어떻게 다른가요?",
+    a: "청라 아크원 푸르지오는 M5블록이고 청라 피크원 푸르지오는 B1블록의 다른 단지입니다. 합산 규모는 한 단지가 아닙니다.",
+  },
 ];
 
 function compareFaq(): GuideFaq[] {
@@ -57,6 +61,8 @@ function ComparePage() {
             {isEnHost() ? (
               <>
                 <p>Cheongna Ark-One Prugio supplies Apt 868 units and officetel 987 rooms in one complex.</p>
+                <p>The site is 86-1 Cheongna-dong Seohae-gu Incheon. The recruitment notice was posted on 22 Oct 2026 and contracts run from 22 to 24 Nov 2026.</p>
+                <p>Source: <a href="https://www.applyhome.co.kr" target="_blank" rel="noopener noreferrer">Applyhome</a> recruitment notice (posted 22 Oct 2026) · checked 2026-10-29</p>
                 <p>Apt exclusive areas are 84 and 103 sqm. Officetel exclusive areas are 105 121 and 136 sqm. A multi balcony is described for the officetel.</p>
                 <p>Of 3124 parking spaces 1389 are for the apartment and 1695 are for the officetel.</p>
                 <p>Apartment counts are 84A 248 units and 124 units each for 84B 84C 84D 103A and 103B for 868 units. The model house has 84A and 103A. Areas by type are on page 5 of the recruitment notice. Officetel room counts plans and prices are in a separate officetel notice.</p>
@@ -64,6 +70,8 @@ function ComparePage() {
             ) : (
               <>
             <p>청라 아크원 푸르지오는 한 단지 안에 아파트 868세대와 오피스텔 987실을 함께 공급하는 주거복합 단지입니다.</p>
+            <p>위치는 인천광역시 서해구 청라동 86-1번지입니다. 입주자모집공고는 2026.10.22에 게시되었고 계약은 2026년 11월 22일부터 24일까지입니다.</p>
+            <p>출처: <a href="https://www.applyhome.co.kr" target="_blank" rel="noopener noreferrer">청약홈</a> 입주자모집공고(2026.10.22 게시) · 확인 기준일 2026-10-29</p>
             <p>아파트는 전용 84㎡·103㎡, 오피스텔은 전용 105㎡·121㎡·136㎡로 공개되어 있으며, 오피스텔에는 멀티 발코니가 안내되어 있습니다.</p>
             <p>주차대수는 총 3,124대 중 아파트 1,389대, 오피스텔 1,695대로 공개되어 있습니다.</p>
             <p>아파트 타입별 세대수는 84A 248세대, 84B·84C·84D·103A·103B 각 124세대로 총 868세대입니다(입주자모집공고 기준). 견본주택에는 84A·103A 유니트가 설치되어 있습니다. 주택형별 면적은 주택형 안내(입주자모집공고문 5면)에서 확인할 수 있습니다. 오피스텔 타입별 실수·평면도·분양가는 오피스텔 별도 공고로 안내합니다.</p>
@@ -114,7 +122,7 @@ function ComparePage() {
               { to: "/pages/contact", label: "견본주택·홍보관 오시는길" },
               { to: "/register", label: "사전고객등록" },
             ]}
-            sources={[SRC_APPLYHOME]}
+            sources={[{ ...SRC_APPLYHOME, date: "2026-10-29" }]}
           />
           <SubNotice
             items={[

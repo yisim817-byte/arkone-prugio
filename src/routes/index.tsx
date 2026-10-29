@@ -55,6 +55,7 @@ function homeJsonLd(origin: string, en: boolean) {
         name,
         inLanguage: lang,
         isPartOf: { "@id": `${origin}/#website` },
+        dateModified: "2026-10-29",
       },
     ],
   });
@@ -161,6 +162,22 @@ function Home() {
               <span className="hero__title_line">PRUGIO</span>
               <span className="hero__title_ko">{tx("청라 아크원 푸르지오", "Cheongna Ark-One Prugio")}</span>
             </h1>
+            <p className="hero__answer">
+              {isEnHost()
+                ? "Cheongna Ark-One Prugio is a mixed-use complex at 86-1 Cheongna-dong Seohae-gu Incheon on block M5. It has Apt 868 units and officetel 987 rooms. The recruitment notice was posted on 22 Oct 2026 and contracts run from 22 to 24 Nov 2026."
+                : "청라 아크원 푸르지오는 인천광역시 서해구 청라동 86-1번지 M5블록의 주거복합 단지입니다. 아파트 868세대와 오피스텔 987실입니다. 입주자모집공고는 2026.10.22에 게시되었고 계약은 2026년 11월 22일부터 24일까지입니다."}
+            </p>
+            <p className="hero__answer">
+              {isEnHost() ? (
+                <>
+                  Source: <a href="https://www.applyhome.co.kr" target="_blank" rel="noopener noreferrer">Applyhome</a> recruitment notice (posted 22 Oct 2026) · checked 2026-10-29
+                </>
+              ) : (
+                <>
+                  출처: <a href="https://www.applyhome.co.kr" target="_blank" rel="noopener noreferrer">청약홈</a> 입주자모집공고(2026.10.22 게시) · 확인 기준일 2026-10-29
+                </>
+              )}
+            </p>
             <span className="hero__open">
               <span className="hero__open_phrase">{tx("입주자모집공고 게시", "Recruitment notice posted")} <strong>2026.10.22</strong>{tx("(목)", " Thu")}</span> · <span className="hero__open_phrase">{tx("견본주택 GRAND OPEN", "Model house GRAND OPEN")} <strong>10.30</strong>{tx("(금)", " Fri")}</span>
             </span>

@@ -71,7 +71,7 @@ function OverviewPage() {
                 <p>It is six buildings from basement 5 to floor 49: Apt 868 units (exclusive 84 and 103 sqm) and officetel 987 rooms (exclusive 105 121 and 136 sqm) for 1855 units and rooms plus shops on floors 1 and 2.</p>
                 <p>The developer is Cheongna Smart City and the builder is Daewoo E&C. The apartment recruitment notice was posted on 22 Oct 2026.</p>
                 <p>Notice posted 22 Oct 2026. Model house grand opening is 30 Oct. Special supply is 2 Nov first rank 3 Nov and second rank 4 Nov. Supply amounts are in the recruitment notice (housing management number 2026000496) by type building floor and unit. Call 1833-3872 for a specific unit.</p>
-                <p>Source date 21 Oct 2026. Source: project entity overview.</p>
+                <p>Source: <a href="https://www.applyhome.co.kr" target="_blank" rel="noopener noreferrer">Applyhome</a> recruitment notice (posted 22 Oct 2026) · checked 2026-10-29</p>
               </>
             ) : (
               <>
@@ -87,7 +87,7 @@ function OverviewPage() {
             <p>
               청라 아크원 푸르지오는 입주자모집공고 게시 2026.10.22(목) · 견본주택 GRAND OPEN 10.30(금)이며, 청약 일정은 특별공급 11.02(월) · 1순위 11.03(화) · 2순위 11.04(수)입니다. 분양가(공급금액)는 입주자모집공고문(주택관리번호 2026000496)의 공급금액표에 주택형·동·층·호별로 공개되어 있습니다. 주택형과 층에 따라 금액이 다르므로 원하시는 조건은 대표번호 1833-3872로 상담해 주세요.
             </p>
-            <p>자료 기준일 2026-10-21 · 출처 사업주체 공개 사업개요</p>
+            <p>출처: <a href="https://www.applyhome.co.kr" target="_blank" rel="noopener noreferrer">청약홈</a> 입주자모집공고(2026.10.22 게시) · 확인 기준일 2026-10-29</p>
               </>
             )}
           </GuideAnswer>
@@ -255,7 +255,7 @@ function OverviewPage() {
               { to: "/pages/contact", label: "견본주택·홍보관 오시는길" },
               { to: "/register", label: "사전고객등록" },
             ]}
-            sources={[SRC_APPLYHOME]}
+            sources={[{ ...SRC_APPLYHOME, date: "2026-10-29" }]}
           />
           <SubNotice
             items={[
