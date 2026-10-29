@@ -1,12 +1,20 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteShell } from "@/components/site-shell";
 import { ZoomButton } from "@/components/notice";
-import { canonicalLinks, tx } from "@/lib/seo-host";
+import { canonicalLinks, faqJsonLd, isEnHost, tx } from "@/lib/seo-host";
 import { META } from "@/lib/i18n/en";
-import { GuideAnswer, GuideDetail } from "@/components/seo-guide";
+import { GuideAnswer, GuideDetail, type GuideFaq } from "@/components/seo-guide";
 import { SRC_APPLYHOME } from "@/lib/arkone-facts";
 import { imgDims } from "@/components/img";
 import { NoticeEligibility } from "@/components/notice-sections";
+
+const FAQ_KO: GuideFaq[] = [
+  { q: "일반공급 1순위와 2순위는 언제 받나요?", a: "1순위 접수는 11.03(화)이고 2순위 접수는 11.04(수)입니다. 당첨자 발표는 11.10(화)입니다." },
+  { q: "일반공급 계약 기간은 어떻게 되나요?", a: "계약은 11.22(일)부터 11.24(화)까지입니다. 서류 접수는 11.12(목)부터 11.16(월)까지입니다." },
+  { q: "입주 예정 시기는 언제인가요?", a: "입주 예정은 2031년 08월입니다. 공정에 따라 바뀔 수 있습니다." },
+  { q: "전매제한과 거주의무는 어떻게 되나요?", a: "전매제한은 3년이고 재당첨 제한은 10년입니다. 거주의무는 없습니다." },
+  { q: "청약통장 예치금 액수는 어디에 있나요?", a: "예치 기준액은 입주자모집공고에 있습니다. 이 안내에서 빠지거나 다른 숫자는 공고문과 청약홈에서 확인합니다." },
+];
 
 export const Route = createFileRoute("/pages/docnormal")({
   component: DocNormalPage,
@@ -16,6 +24,7 @@ export const Route = createFileRoute("/pages/docnormal")({
       { name: "description", content: tx("청라 아크원 푸르지오 일반공급 안내. 1순위 11.03(화) · 2순위 11.04(수) · 당첨자 발표 11.10(화). 2026.10.22 공고 기준.", META.docnormal.desc) },
     ],
     links: canonicalLinks("/pages/docnormal"),
+    scripts: isEnHost() ? [] : faqJsonLd(FAQ_KO),
   }),
 });
 
@@ -42,7 +51,8 @@ function DocNormalPage() {
               { to: "/pages/docnormal", label: "일반공급 안내" },
               { to: "/pages/overview", label: "분양 사업개요" },
             ].filter((l) => l.to !== "/pages/docnormal")}
-            sources={[SRC_APPLYHOME]}
+            sources={[{ ...SRC_APPLYHOME, date: isEnHost() ? SRC_APPLYHOME.date : "2026-10-29" }]}
+            faq={isEnHost() ? undefined : FAQ_KO}
           />
         </section>
       </div>
