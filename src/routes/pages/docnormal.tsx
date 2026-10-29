@@ -13,7 +13,7 @@ export const Route = createFileRoute("/pages/docnormal")({
   head: () => ({
     meta: [
       { title: tx("청라 아크원 푸르지오 일반공급 안내 | 순위·접수", META.docnormal.title) },
-      { name: "description", content: tx("1순위 11.03(화) · 2순위 11.04(수) · 당첨자 발표 11.10(화). 2026.10.22 게시된 입주자모집공고 기준입니다.", META.docnormal.desc) },
+      { name: "description", content: tx("청라 아크원 푸르지오 일반공급 안내. 1순위 11.03(화) · 2순위 11.04(수) · 당첨자 발표 11.10(화). 2026.10.22 공고 기준.", META.docnormal.desc) },
     ],
     links: canonicalLinks("/pages/docnormal"),
   }),

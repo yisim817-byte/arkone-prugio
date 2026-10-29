@@ -62,7 +62,7 @@ export const Route = createFileRoute("/pages/schedule")({
       {
         name: "description",
         content: tx(
-          "공급금액은 공고문에 있습니다. 공고 2026.10.22 게시 · 특별공급 11.02 · 1순위 11.03 · 계약 11.22~11.24.",
+          "청라 아크원 푸르지오(APT) 청약 일정·공급금액. 공고 2026.10.22 게시 · 특별공급 11.02 · 1순위 11.03 · 계약 11.22~11.24.",
           META.schedule.desc,
         ),
       },

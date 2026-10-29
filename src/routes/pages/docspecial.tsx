@@ -13,7 +13,7 @@ export const Route = createFileRoute("/pages/docspecial")({
   head: () => ({
     meta: [
       { title: tx("청라 아크원 푸르지오 특별공급 안내 | 청약 자격", META.docspecial.title) },
-      { name: "description", content: tx("특별공급은 11.02(월) 접수입니다. 자격과 물량은 2026.10.22 게시된 입주자모집공고와 청약홈에서 확인하세요.", META.docspecial.desc) },
+      { name: "description", content: tx("청라 아크원 푸르지오 특별공급 안내. 11.02(월) 접수. 자격·물량은 2026.10.22 게시 입주자모집공고와 청약홈에서 확인하세요.", META.docspecial.desc) },
     ],
     links: canonicalLinks("/pages/docspecial"),
   }),

@@ -34,7 +34,7 @@ export const Route = createFileRoute("/pages/contact")({
   head: () => ({
     meta: [
       { title: tx("청라 아크원 푸르지오 모델하우스·홍보관 방문 | 오시는길", META.contact.title) },
-      { name: "description", content: tx("견본주택은 청라동 87-1입니다. 공고 2026.10.22 게시 · GRAND OPEN 10.30. 문의 1833-3872.", META.contact.desc) },
+      { name: "description", content: tx("청라 아크원 푸르지오 모델하우스·홍보관 방문. 견본주택 청라동 87-1 · GRAND OPEN 10.30(금) · 대표번호 1833-3872.", META.contact.desc) },
     ],
     links: canonicalLinks("/pages/contact"),
     scripts: faqJsonLd(contactFaq()),
