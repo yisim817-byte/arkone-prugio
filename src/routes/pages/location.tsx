@@ -50,6 +50,8 @@ function LocationPage() {
             {isEnHost() ? (
               <>
                 <p>Cheongna Ark-One Prugio is on mixed-use site M5 in the Cheongna International Business District at 86-1 Cheongna-dong Seohae-gu Incheon.</p>
+                <p>The complex has Apt 868 units and officetel 987 rooms. The recruitment notice was posted on 22 Oct 2026 and contracts run from 22 to 24 Nov 2026.</p>
+                <p>Source: <a href="https://www.applyhome.co.kr" target="_blank" rel="noopener noreferrer">Applyhome</a> recruitment notice (posted 22 Oct 2026) · checked 2026-10-29</p>
                 <p>The model house is 87-1 Cheongna-dong. The showroom is Hongik Park 1F units 108 and 109 on Jungbong-daero 586beon-gil. They are different places.</p>
                 <p>The model house address is 87-1 Cheongna-dong Seohae-gu Incheon. The showroom is a different place.</p>
                 <p>Work on the Seoul Line 7 Cheongna extension is being brought back on track after delays. The opening date has not been officially announced.</p>
@@ -61,6 +63,8 @@ function LocationPage() {
             ) : (
               <>
             <p>청라 아크원 푸르지오는 청라국제도시 국제업무단지 내 주상복합용지 M5BL(인천광역시 서해구 청라동 86-1번지)에 위치합니다.</p>
+            <p>규모는 아파트 868세대와 오피스텔 987실입니다. 입주자모집공고는 2026.10.22에 게시되었고 계약은 2026년 11월 22일부터 24일까지입니다.</p>
+            <p>출처: <a href="https://www.applyhome.co.kr" target="_blank" rel="noopener noreferrer">청약홈</a> 입주자모집공고(2026.10.22 게시) · 확인 기준일 2026-10-29</p>
             <p>견본주택은 청라동 87-1번지이고, 홍보관은 중봉대로 586번길 19 홍익파크 1층 108·109호입니다. 서로 다른 장소입니다.</p>
             <p>청라 아크원 푸르지오 견본주택은 인천광역시 서해구 청라동 87-1번지입니다. 홍보관은 인천광역시 서해구 중봉대로 586번길 19 홍익파크 1층 108·109호이며, 견본주택과 다른 장소입니다.</p>
             <p>서울 7호선 청라국제도시 연장은 공정 지연에 따라 정상화를 추진 중이며, 개통 시기는 공식 발표되지 않았습니다.</p>

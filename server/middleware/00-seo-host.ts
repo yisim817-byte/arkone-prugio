@@ -16,12 +16,12 @@ const EN_HOSTS = new Set(["www.arkone-prugio.site"]);
 
 /** path -> lastmod (git commit date of the page's last content change). */
 const KR_SITEMAP: ReadonlyArray<readonly [string, string]> = [
-  ["/", "2026-10-22"],
-  ["/pages/overview", "2026-10-22"],
-  ["/pages/compare", "2026-10-22"],
+  ["/", "2026-10-29"],
+  ["/pages/overview", "2026-10-29"],
+  ["/pages/compare", "2026-10-29"],
   ["/pages/schedule", "2026-10-29"],
-  ["/pages/location", "2026-10-09"],
-  ["/pages/contact", "2026-10-22"],
+  ["/pages/location", "2026-10-29"],
+  ["/pages/contact", "2026-10-29"],
   ["/pages/changeinfo", "2026-10-29"],
   ["/pages/docspecial", "2026-10-29"],
   ["/pages/docnormal", "2026-10-29"],
@@ -138,6 +138,23 @@ function pageJsonLd(path: string, en = false): string {
           { "@type": "ListItem", position: 2, name: names[path], item: url },
         ],
       },
+    );
+  }
+  if (path === "/pages/overview") {
+    graph.push(
+      en
+        ? {
+            "@type": "ApartmentComplex",
+            name: "Cheongna Ark-One Prugio",
+            address: "86-1 Cheongna-dong Seohae-gu Incheon",
+            numberOfAccommodationUnits: 1855,
+          }
+        : {
+            "@type": "ApartmentComplex",
+            name: "청라 아크원 푸르지오",
+            address: "인천광역시 서해구 청라동 86-1번지",
+            numberOfAccommodationUnits: 1855,
+          },
     );
   }
   const json = JSON.stringify({ "@context": "https://schema.org", "@graph": graph }).replace(/</g, "\\u003c");

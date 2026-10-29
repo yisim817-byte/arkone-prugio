@@ -114,6 +114,7 @@ export const FAQ_SCHEDULE = [
   { q: "Do you publish rent or jeonse prices?", a: "This site does not publish monthly rent or jeonse prices. Sale terms are in the recruitment notice." },
   { q: "Who can apply?", a: "Applicants must be 19 or older and live in Incheon Seoul or Gyeonggi on the notice date 22 Oct 2026. If the same rank is oversubscribed 50 percent goes first to Incheon residents and 50 percent to Seoul and Gyeonggi residents. First rank needs 12 months in the subscription account and the required deposit." },
   { q: "Are there resale limits a re-win limit or a residency duty?", a: "Resale is limited for 3 years (until title registration if sooner than 3 years it is 3 years). A re-win limit of 10 years applies if you win here. There is no residency duty. A person already inside another re-win limit can still apply here." },
+  { q: "When is the Cheongna Ark-One Prugio contract period?", a: "The contract period for Cheongna Ark-One Prugio is 22 to 24 November 2026. That date is from the recruitment notice posted on 22 Oct 2026." },
 ];
 
 export const FAQ_COMPARE = [
@@ -121,6 +122,7 @@ export const FAQ_COMPARE = [
   { q: "Where can I see floor plans?", a: "The model house has 84A and 103A units. Areas by type are on this site and on page 5 of the recruitment notice." },
   { q: "Do the apartment and the officetel share one schedule?", a: "No. The officetel has a separate notice. The apartment recruitment notice does not apply to the officetel." },
   { q: "Does the price cap also cover the officetel?", a: "The project entity marks the complex as a price-cap complex and the premium page says price-cap apartments. Officetel price and rules are not published here. Check the notice." },
+  { q: "How is Cheongna Ark-One Prugio different from Cheongna Peakone Prugio?", a: "Cheongna Ark-One Prugio is block M5 and Cheongna Peakone Prugio is block B1. They are different complexes. The combined figure is not one complex." },
 ];
 
 export const FAQ_CONTACT = [
@@ -128,6 +130,7 @@ export const FAQ_CONTACT = [
   { q: "When does the model house open?", a: "The model house at 87-1 Cheongna-dong Seohae-gu Incheon has its grand opening on 30 Oct. Units 84A and 103A are installed. Call 1833-3872 before you visit." },
   { q: "Where can I get guidance before the model house opens?", a: "The showroom is at Hongik Park 1F units 108 and 109 19 Jungbong-daero 586beon-gil Seohae-gu Incheon next to Starbucks. Call 1833-3872 for hours before you visit." },
   { q: "What should I check before visiting?", a: "Check the address and whether the model house or showroom is open. Check eligibility and dates in the recruitment notice posted on 22 Oct 2026 on Applyhome." },
+  { q: "What phone number reaches the Cheongna Ark-One Prugio model house?", a: "Call 1833-3872 for the model house at 87-1 Cheongna-dong. Grand opening is 30 Oct." },
 ];
 
 export const FAQ_LOCATION = [

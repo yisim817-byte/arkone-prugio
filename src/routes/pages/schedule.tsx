@@ -48,6 +48,10 @@ const FAQ: GuideFaq[] = [
     q: "전매제한·재당첨 제한·거주의무가 있나요?",
     a: "전매제한 3년(소유권이전등기일까지, 3년을 넘으면 3년), 재당첨 제한 10년(이 단지 당첨 시)이 적용되며 거주의무는 없습니다. 기존 재당첨 제한 기간 중인 분도 이 단지에 청약할 수 있습니다.",
   },
+  {
+    q: "청라 아크원 푸르지오 계약 기간은 언제인가요?",
+    a: "청라 아크원 푸르지오의 계약 기간은 2026년 11월 22일부터 24일까지입니다. 기준은 2026.10.22에 게시된 입주자모집공고입니다.",
+  },
 ];
 
 function scheduleFaq(): GuideFaq[] {
@@ -84,7 +88,7 @@ function SchedulePage() {
                 <p>Notice posted 22 Oct 2026. Model house grand opening is 30 Oct. Call 1833-3872 for the details.</p>
                 <p>Special supply is 2 Nov. First rank is 3 Nov. Second rank is 4 Nov. Winners are announced on 10 Nov. Document submission is 12-16 Nov. Contracts are 22-24 Nov. Supply amounts are in the recruitment notice (housing management number 2026000496) by type building floor and unit. Call 1833-3872 for a specific unit. Move-in is planned for August 2031 and can change with construction.</p>
                 <p>The schedule can change so read the notice on Applyhome before you apply.</p>
-                <p>Source date 22 Oct 2026. Source: recruitment notice 2026000496.</p>
+                <p>Source: <a href="https://www.applyhome.co.kr" target="_blank" rel="noopener noreferrer">Applyhome</a> recruitment notice (posted 22 Oct 2026) · checked 2026-10-29</p>
               </>
             ) : (
               <>
@@ -92,7 +96,7 @@ function SchedulePage() {
             <p>청라 아크원 푸르지오는 입주자모집공고 게시 2026.10.22(목) · 견본주택 GRAND OPEN 10.30(금)입니다. 세부 일정은 대표번호 1833-3872로 문의해 주세요.</p>
             <p>특별공급 11.02(월), 일반공급 1순위 11.03(화), 2순위 11.04(수), 당첨자 발표 11.10(화), 당첨자 서류접수 11.12(목)~11.16(월), 계약 11.22(일)~11.24(화)입니다. 분양가(공급금액)는 입주자모집공고문(주택관리번호 2026000496)의 공급금액표에 주택형·동·층·호별로 공개되어 있습니다. 주택형과 층에 따라 금액이 다르므로 원하시는 조건은 대표번호 1833-3872로 상담해 주세요. 입주는 2031년 08월 예정이며 공정에 따라 바뀔 수 있습니다.</p>
             <p>일정은 사업주체 사정에 따라 변경될 수 있으므로 청약 전 청약홈에 게시되는 공고문을 반드시 확인하시기 바랍니다.</p>
-            <p>자료 기준일 2026-10-29 · 출처 입주자모집공고(주택관리번호 2026000496)</p>
+            <p>출처: <a href="https://www.applyhome.co.kr" target="_blank" rel="noopener noreferrer">청약홈</a> 입주자모집공고(2026.10.22 게시) · 확인 기준일 2026-10-29</p>
               </>
             )}
           </GuideAnswer>
@@ -154,7 +158,7 @@ function SchedulePage() {
               { to: "/pages/contact", label: "견본주택·홍보관 오시는길" },
               { to: "/pages/overview", label: "분양 사업개요" },
             ]}
-            sources={[SRC_APPLYHOME]}
+            sources={[{ ...SRC_APPLYHOME, date: "2026-10-29" }]}
           >
             <h3 className="seo-guide__subtitle">청약 준비 체크리스트</h3>
             <ul className="seo-guide__answer">
