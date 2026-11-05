@@ -1,0 +1,97 @@
+[
+  {
+    "out": "fonts/Aboreto-Regular.woff2",
+    "parts": [
+      "fonts__Aboreto-Regular.woff2.00"
+    ],
+    "sha256": "8755c709d7487eb939f907d404d1f752a17587c92d61aa6ebdcaa42387699a34",
+    "bytes": 15324
+  },
+  {
+    "out": "fonts/Eulyoo1945-Regular.woff2",
+    "parts": [
+      "fonts__Eulyoo1945-Regular.woff2.00",
+      "fonts__Eulyoo1945-Regular.woff2.01",
+      "fonts__Eulyoo1945-Regular.woff2.02",
+      "fonts__Eulyoo1945-Regular.woff2.03",
+      "fonts__Eulyoo1945-Regular.woff2.04",
+      "fonts__Eulyoo1945-Regular.woff2.05",
+      "fonts__Eulyoo1945-Regular.woff2.06",
+      "fonts__Eulyoo1945-Regular.woff2.07"
+    ],
+    "sha256": "54ad01d22e685e8d0cd7a2852e05302b23cb533b06f502b17bc4f2d1656d83f0",
+    "bytes": 1357528
+  },
+  {
+    "out": "fonts/Eulyoo1945-SemiBold.woff2",
+    "parts": [
+      "fonts__Eulyoo1945-SemiBold.woff2.00",
+      "fonts__Eulyoo1945-SemiBold.woff2.01",
+      "fonts__Eulyoo1945-SemiBold.woff2.02",
+      "fonts__Eulyoo1945-SemiBold.woff2.03",
+      "fonts__Eulyoo1945-SemiBold.woff2.04",
+      "fonts__Eulyoo1945-SemiBold.woff2.05",
+      "fonts__Eulyoo1945-SemiBold.woff2.06",
+      "fonts__Eulyoo1945-SemiBold.woff2.07",
+      "fonts__Eulyoo1945-SemiBold.woff2.08"
+    ],
+    "sha256": "06af4373eb816e2e4e58de57843bfe1f68ded749beaec6c40605ea3044295027",
+    "bytes": 1479176
+  },
+  {
+    "out": "register/register-poster.jpg",
+    "parts": [
+      "register__register-poster.jpg.00"
+    ],
+    "sha256": "15548e6f0f7b478701004ba11b9cfd9e8ab2c28eba60d8b4f3f9843bc173e0e0",
+    "bytes": 62714
+  },
+  {
+    "out": "soon/commercial_bg.png",
+    "parts": [
+      "soon__commercial_bg.png.00",
+      "soon__commercial_bg.png.01",
+      "soon__commercial_bg.png.02",
+      "soon__commercial_bg.png.03",
+      "soon__commercial_bg.png.04",
+      "soon__commercial_bg.png.05",
+      "soon__commercial_bg.png.06"
+    ],
+    "sha256": "6d6f584bc733cd34166d5bb6e66fae3368a642fbb051c757c952878f0fc6a77e",
+    "bytes": 1140477
+  },
+  {
+    "out": "soon/commercial_bg_m.png",
+    "parts": [
+      "soon__commercial_bg_m.png.00",
+      "soon__commercial_bg_m.png.01"
+    ],
+    "sha256": "3967a3d3fe01c9e54a50d49e55fff57856ff8d1463d48985a7cb1b454f80401a",
+    "bytes": 262193
+  },
+  {
+    "out": "soon/officetel_bg.png",
+    "parts": [
+      "soon__officetel_bg.png.00",
+      "soon__officetel_bg.png.01",
+      "soon__officetel_bg.png.02",
+      "soon__officetel_bg.png.03",
+      "soon__officetel_bg.png.04",
+      "soon__officetel_bg.png.05",
+      "soon__officetel_bg.png.06",
+      "soon__officetel_bg.png.07"
+    ],
+    "sha256": "e53dbde661f7adf1f74d5f9f2ec22b71f17b6dc767e9d9e4aa3a7c88be9b4dbe",
+    "bytes": 1305288
+  },
+  {
+    "out": "soon/officetel_bg_m.png",
+    "parts": [
+      "soon__officetel_bg_m.png.00",
+      "soon__officetel_bg_m.png.01",
+      "soon__officetel_bg_m.png.02"
+    ],
+    "sha256": "3a846162bb088608f44c01de057b61f86e5a2cad5c68dda395e79f0eddd0619a",
+    "bytes": 395216
+  }
+]
