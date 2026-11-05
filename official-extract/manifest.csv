@@ -1,0 +1,13 @@
+파일명,출처 주소,크기(byte),가로x세로,sha256,받은 시각
+register/register-poster.jpg,https://api.here.re.kr:6010/uploads/0806_8p_426a06cc5b.jpg,62714,590x842,15548e6f0f7b478701004ba11b9cfd9e8ab2c28eba60d8b4f3f9843bc173e0e0,2026-11-05T14:12:57+09:00
+register/reg-pc-first.png,screenshot https://here-customer.web.app/reserve_visit/jj1v8tk6lg PC 1440x900 first,407265,1440x900,b10aa0890f6862f87f4a2149973137878784bd747e331945cc45301cb61bfca5,2026-11-05T14:12:57+09:00
+register/reg-pc-form.png,screenshot after 관심고객 등록 PC,124051,1440x900,d2300f8d20be1eb57cc141ef0aca0574754f3154e20a2d8004c429ec5236f66d,2026-11-05T14:12:57+09:00
+register/reg-mo-first.png,screenshot mobile 390x844 first,178976,390x844,68a24c79f10f20c9764d20ebaef88d49f42dee37f16bfcc689f923787e02043c,2026-11-05T14:12:57+09:00
+register/reg-mo-form.png,screenshot after 관심고객 등록 mobile,71095,390x844,10dd96af5aa1092a3c758513c740bf980ce826724c288b801fb268a3ca7f61d7,2026-11-05T14:12:57+09:00
+official/home-pc-first.png,screenshot https://www.arkone-prugio.com PC first popup closed,697528,1440x900,3ae79483c93f73c54c2b04b68bd1859a05837290f77b9acaecf84fe8e6430b69,2026-11-05T14:12:57+09:00
+official/home-pc-officetel.png,screenshot PC officetel popup,1447846,1440x900,a36bd7a760132a9f88314ee0e94ba655783c519cdfd333788d87d74152fc07fb,2026-11-05T14:12:57+09:00
+official/home-pc-commercial.png,screenshot PC commercial popup,1653402,1440x900,6ff28902c4adb40dbe5b32f493b064e2057828548e42ec412663d7aadec33aa6,2026-11-05T14:12:57+09:00
+official/home-mo-first.png,screenshot mobile first popup closed,249522,390x844,75f6d98f285c23c0605db620ca394963bd7ecf72a76a8af826a1687cba6b35f0,2026-11-05T14:12:57+09:00
+official/home-mo-officetel.png,screenshot mobile officetel popup,372088,390x844,1f434c088477d4904ce44572133ec4f586f9813cfb41296a61ab6df5f34a6efb,2026-11-05T14:12:57+09:00
+official/home-mo-commercial.png,screenshot mobile commercial popup,347652,390x844,d122a8a0ff802905d59d3d84bec5f18888c4a90d29a54863b692444acbb4480a,2026-11-05T14:12:57+09:00
+official/home-mo-menu.png,screenshot mobile full menu,22813,390x844,c389b7e38b9b8b7c76fa1262123218570f5c8136b44b12e682e711cf380e16c3,2026-11-05T14:12:57+09:00
