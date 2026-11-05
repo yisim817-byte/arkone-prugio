@@ -3,8 +3,6 @@ import { SITE_PHONE, SITE_TEL_HREF } from "@/lib/site-data";
 import { PreregShare } from "@/components/prereg-share";
 import { Link } from "@tanstack/react-router";
 
-import { tx } from "@/lib/seo-host";
-
 const ENDPOINT = "https://jzmktahlrwtrtejjflrw.supabase.co/functions/v1/arkone-prereg-submit";
 const CONSENT_VERSION = "2026-09-26-v2+r13"; // 작업지시서 13: 방문 항목을 뺀 동의(+visit1 → +r13)
 const SIDO = ["서울특별시","부산광역시","대구광역시","인천광역시","광주광역시","대전광역시","울산광역시","세종특별자치시","경기도","강원특별자치도","충청북도","충청남도","전북특별자치도","전라남도","경상북도","경상남도","제주특별자치도"];
@@ -55,6 +53,8 @@ export function RegisterForm() {
   const [interest, setInterest] = useState("");
   const [special, setSpecial] = useState("");
   const [open, setOpen] = useState("");
+  const [dialog, setDialog] = useState(false);
+  const [age14, setAge14] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [alert, setAlert] = useState("");
   const [busy, setBusy] = useState(false);
@@ -80,6 +80,7 @@ export function RegisterForm() {
       const requestedProduct = params.get("product");
       if (requestedProduct === "apt" || requestedProduct === "officetel" || requestedProduct === "commercial") {
         setProduct(requestedProduct);
+        setDialog(true);
         if (requestedProduct === "officetel") setInterest("오피스텔");
         if (requestedProduct === "commercial") setInterest("상가");
       }
@@ -134,6 +135,7 @@ export function RegisterForm() {
     const digits = phone.replace(/\D/g, "");
     const next: Record<string, string> = {};
     if (!product) next.product = "아파트·오피스텔·상가 중 등록하실 상품을 선택해 주세요.";
+    if (!age14) next.age = "만 14세 이상만 등록할 수 있습니다.";
     if (name.trim().length < 2 || name.trim().length > 20) next.name = "2~20자로 입력해 주세요.";
     if (!(digits.startsWith("010") && digits.length === 11)) next.phone = "010으로 시작하는 11자리를 입력해 주세요.";
     if (!birth) next.birth = "생년월일 6자리를 입력해 주세요.";
@@ -213,87 +215,111 @@ export function RegisterForm() {
   }
 
   return (
-    <div className="reg">
-      <p className="reg__lead"><b>청라 아크원 푸르지오</b> 아파트·오피스텔·상가 사전등록</p>
-      <form onSubmit={step === 1 ? onStep1 : onStep2} noValidate>
-        <p className="prereg-step">[1/2] 기본 정보 · 필수</p>
-        {step === 2 ? <div className="reg__receipt reg__receipt--done" role="status">
-          <strong className="reg__done-title">사전등록 완료되었습니다.</strong>
-          <span>{duplicate ? "이미 사전등록된 번호입니다. 최초 접수번호" : "접수번호"} {receipt} · 접수시각 {formatKst(createdAt)}</span>
-          <span>등록 상품 {product === "officetel" ? "오피스텔" : product === "commercial" ? "상가" : "아파트"} · 성명 {name} · 휴대전화 {phone} · 생년월일 {birth}</span>
-          <PreregShare receipt={receipt} at={formatKst(createdAt)} />
-        </div> : null}
-        {alert ? <p className="reg__error" role="alert">{alert}</p> : null}
-        <div hidden={step === 2}>
-        <fieldset className={`reg__product${errors.product ? " is-err" : ""}`} disabled={step === 2}>
-          <legend>{tx("등록하실 상품을 선택해 주세요 *", "Choose a product *")}</legend>
-          <div className="reg__product-options">
-            <label><input type="radio" name="product" value="apt" checked={product === "apt"} onChange={() => { setProduct("apt"); setInterest(""); setSpecial(""); }} /><span>{tx("아파트 사전고객등록", "Apartment pre-registration")}</span></label>
-            <label><input type="radio" name="product" value="officetel" checked={product === "officetel"} onChange={() => { setProduct("officetel"); setInterest("오피스텔"); setSpecial(""); }} /><span>{tx("오피스텔 사전등록", "Officetel pre-registration")}</span></label>
-            <label><input type="radio" name="product" value="commercial" checked={product === "commercial"} onChange={() => { setProduct("commercial"); setInterest("상가"); setSpecial(""); }} /><span>{tx("상가 사전등록", "Shop pre-registration")}</span></label>
-          </div>
-          {errors.product ? <p className="reg__msg">{errors.product}</p> : null}
-        </fieldset>
-        <div className={`reg__field${errors.name ? " is-err" : ""}`}>
-          <label htmlFor="f-name">{tx("성명 *", "Name *")}</label>
-          <input id="f-name" name="name" type="text" placeholder={tx("이름을 입력해 주세요", "Your name")} value={name} maxLength={20} autoComplete="name" disabled={step === 2} onChange={(e) => setName(e.target.value)} />
-          <p className="reg__msg">{errors.name}</p>
-        </div>
-        <div className={`reg__field${errors.phone ? " is-err" : ""}`}>
-          <label htmlFor="f-phone">{tx("휴대전화 *", "Mobile *")}</label>
-          <input id="f-phone" name="phone" type="tel" inputMode="numeric" autoComplete="tel" placeholder="010-0000-0000" value={phone} disabled={step === 2} onChange={(e) => setPhone(hyphen(e.target.value))} />
-          <p className="reg__msg">{errors.phone}</p>
-        </div>
-        <div className={`reg__field${errors.birth ? " is-err" : ""}`}>
-          <label htmlFor="f-birth">{tx("생년월일 6자리 *", "Birth date 6 digits *")}</label>
-          <input id="f-birth" name="birth6" type="text" inputMode="numeric" placeholder="예: 780315" autoComplete="off" value={birth} disabled={step === 2} onChange={(e) => {
-            const digits = e.target.value.replace(/\D/g, "");
-            if (digits.length >= 13) { setBirth(""); setBirthWarn(true); return; }
-            setBirthWarn(false);
-            setBirth(digits.slice(0, 6));
-          }} />
-          <p className="reg__msg">{errors.birth}</p>
-          {birthWarn ? <p>생년월일 6자리만 입력해 주세요. 주민등록번호는 받지 않습니다.</p> : null}
-          <p>주민등록번호는 받지 않습니다.</p>
-        </div>
-        <p className="visit-block visit-link-card">모델하우스 방문예약은 별도 페이지에서 신청합니다 → <Link to="/visit">방문예약 하기</Link></p>
-        <p className="prereg-fine">※ 동일 현장의 다른 홈페이지·분양 채널에 중복으로 등록하신 경우, 상품권 지급이 제한될 수 있습니다.</p>
-        <div className="prereg-hidden-hp" aria-hidden="true"><label>회사<input name="hp" tabIndex={-1} autoComplete="off" /></label></div>
-        <div className={`reg__agree${errors.collect ? " is-err" : ""}`}>
-          <input id="consent-collect" type="checkbox" checked={collect} disabled={step === 2} onChange={(e) => setCollect(e.target.checked)} />
-          <label htmlFor="consent-collect">{tx("[필수] 개인정보 수집·이용 동의", "[Required] Consent to collect and use personal data")}</label>
-          <button type="button" onClick={() => setOpen(open === "collect" ? "" : "collect")}>보기</button>
-        </div>
-        {open === "collect" ? <div className="reg__consent"><p>수집 항목 : [필수] 성명, 휴대전화번호, 생년월일(앞 6자리)<br />[선택] 주민등록상 주소(시·도, 시·군·구, 읍·면·동), 관심타입, 특별공급 관심 여부<br />(자동 수집) 접속 사이트, 유입 경로, 접수 일시, 서비스 이용 기록, 접속 로그, 쿠키, 접속 IP 정보, 불량이용 기록, 기기정보</p><p>이용 목적 : 청라 아크원 푸르지오 분양정보 제공 및 마케팅 활용(마케팅 활용은 광고성 정보 수신에 동의한 경우에 한함), 청약 일정·모집공고 안내, 청약 해당지역 안내, 사전고객 관리, 이벤트 시행 시 대상 확인</p><p>보유 기간 : 이벤트 종료 시 지체 없이 파기. 최장 수집일로부터 1년</p><p>보관 위치 : Supabase, Inc. 클라우드 데이터베이스 — 일본(도쿄 리전)</p><p>※ 주민등록번호는 수집하지 않습니다.</p><p>동의를 거부할 수 있으며, 거부 시 사전고객등록이 제한됩니다. 전화 문의(1833-3872)는 동의 없이 이용하실 수 있습니다.</p></div> : null}
-        <div className="reg__agree">
-          <input id="consent-mkt" type="checkbox" checked={marketing} disabled={step === 2} onChange={(e) => setMarketing(e.target.checked)} />
-          <label htmlFor="consent-mkt">[선택] 광고성 정보 수신 동의</label>
-          <button type="button" onClick={() => setOpen(open === "marketing" ? "" : "marketing")}>보기</button>
-        </div>
-        {open === "marketing" ? <div className="reg__consent"><p>선택 동의이며, 동의를 거부하셔도 사전고객등록을 진행하실 수 있습니다.</p></div> : null}
-        {step === 1 ? <button className="reg__submit" type="submit" disabled={busy}>{busy ? tx("접수 중…", "Sending…") : tx("사전고객등록하기", "Pre-register")}</button> : null}
-        </div>
-        <p className="prereg-confirm">사전고객등록 확인은 대표번호 <a href={SITE_TEL_HREF}>1833-3872</a>로 문의해 주세요.</p>
-        {step === 2 ? (
-          <div>
-            <div id="additional-information" className="prereg-additional">
-            <p className="prereg-step">[2/2] 추가 정보 · 선택 (접수번호 {receipt})</p>
-            <p>입력하지 않으셔도 사전등록은 완료되었습니다.</p>
-            <p>접수번호 {receipt} · 접수시각 {formatKst(createdAt)}</p>
-            <p>주민등록상 주소 (선택)</p>
-            <div className="reg__field"><label htmlFor="f-sido">시·도</label><select id="f-sido" value={sido} onChange={(e) => setSido(e.target.value)}><option value="">선택</option>{SIDO.map((item) => <option key={item}>{item}</option>)}</select></div>
-            <div className="reg__field"><label htmlFor="f-sigungu">시·군·구</label><input id="f-sigungu" value={sigungu} maxLength={20} onChange={(e) => setSigungu(e.target.value)} /></div>
-            <div className="reg__field"><label htmlFor="f-dong">읍·면·동</label><input id="f-dong" value={dong} maxLength={20} onChange={(e) => setDong(e.target.value)} /></div>
-            <p>관심타입</p>
-            <div className="prereg-chips">{(product === "apt" ? ["APT 84㎡","APT 103㎡","미정"] : product === "commercial" ? ["상가"] : ["오피스텔"]).map((item) => <label key={item}><input type="radio" name="interest_type" checked={interest === item} onChange={() => setInterest(item)} /><span>{item}</span></label>)}</div>
-            {product === "apt" ? <><p>특별공급 관심</p>
-            <div className="prereg-chips">{["신혼부부","생애최초","신생아","다자녀","노부모","기관추천","해당없음","모름"].map((item) => <label key={item}><input type="radio" name="special_supply" checked={special === item} onChange={() => setSpecial(item)} /><span>{item}</span></label>)}</div></> : null}
-            <button className="reg__submit" type="submit" disabled={busy}>{busy ? "접수 중…" : "추가 정보 저장"}</button>
-            <button className="reg__skip" type="button" onClick={() => setStep("done")}>건너뛰고 완료</button>
+    <div className="reg-gate">
+      <img className="reg-gate__poster" src="/official/register/register-poster.jpg" width={590} height={842} alt="" />
+      <h2 className="reg-gate__title">청라 아크원 푸르지오 사전고객</h2>
+      <button type="button" className="reg-gate__open" onClick={() => setDialog(true)}>사전고객등록</button>
+      <div className="reg-dialog" hidden={!dialog} onClick={(e) => { if (e.target === e.currentTarget) setDialog(false); }}>
+          <div className="reg-dialog__sheet">
+          <button type="button" className="reg-dialog__x" aria-label="닫기" onClick={() => setDialog(false)}>✕</button>
+          <div className="reg-dialog__panel" role="dialog" aria-modal="true" aria-labelledby="reg-dialog-title">
+            <div className="reg-dialog__head">
+              <button type="button" className="reg-dialog__back" aria-label="뒤로" onClick={() => setDialog(false)}>‹</button>
+              <h2 id="reg-dialog-title">참여하기</h2>
             </div>
+            <form onSubmit={step === 1 ? onStep1 : onStep2} noValidate data-complete="사전등록 완료되었습니다">
+              {step === 2 ? <div className="reg__receipt reg__receipt--done" role="status">
+                <strong className="reg__done-title">사전등록 완료되었습니다.</strong>
+                <span>{duplicate ? "이미 사전등록된 번호입니다. 최초 접수번호" : "접수번호"} {receipt} · 접수시각 {formatKst(createdAt)}</span>
+                <span>등록 상품 {product === "officetel" ? "오피스텔" : product === "commercial" ? "상가" : "아파트"} · 성명 {name} · 휴대전화 {phone} · 생년월일 {birth}</span>
+                <PreregShare receipt={receipt} at={formatKst(createdAt)} />
+              </div> : null}
+              {alert ? <p className="reg__error" role="alert">{alert}</p> : null}
+              <div hidden={step === 2}>
+                <p className="reg-dialog__subject">청라 아크원 푸르지오 사전고객</p>
+                <fieldset className={`reg__product${errors.product ? " is-err" : ""}`}>
+                  <legend>등록 상품</legend>
+                  <div className="reg__product-options">
+                    <label><input type="radio" name="product" value="apt" checked={product === "apt"} onChange={() => { setProduct("apt"); setInterest(""); setSpecial(""); }} /><span>아파트</span></label>
+                    <label><input type="radio" name="product" value="officetel" checked={product === "officetel"} onChange={() => { setProduct("officetel"); setInterest("오피스텔"); setSpecial(""); }} /><span>오피스텔</span></label>
+                    <label><input type="radio" name="product" value="commercial" checked={product === "commercial"} onChange={() => { setProduct("commercial"); setInterest("상가"); setSpecial(""); }} /><span>상가</span></label>
+                  </div>
+                  {errors.product ? <p className="reg__msg">{errors.product}</p> : null}
+                </fieldset>
+                <label className="reg-dialog__all">
+                  <input type="checkbox" checked={age14 && collect && marketing} onChange={(e) => { const on = e.target.checked; setAge14(on); setCollect(on); setMarketing(on); }} />
+                  모두 확인하였으며 동의합니다.
+                </label>
+                <p className="reg-dialog__fine">전체 동의에는 필수 및 선택 정보에 대한 동의가 포함되어 있으며, 개별적으로 동의를 선택하실 수 있습니다. 선택 항목에 대한 동의를 거부하시는 경우에도 참여가 가능합니다.</p>
+                <div className={`reg-dialog__box${errors.collect || errors.age ? " is-err" : ""}`}>
+                  <label><input type="checkbox" checked={age14} onChange={(e) => setAge14(e.target.checked)} /> [필수] 만 14세 이상입니다</label>
+                  <div className="reg-dialog__row">
+                    <label><input type="checkbox" checked={collect} onChange={(e) => setCollect(e.target.checked)} /> [필수] 개인정보 수집·이용 동의</label>
+                    <button type="button" aria-label="개인정보 수집·이용 동의 펼치기" onClick={() => setOpen(open === "collect" ? "" : "collect")}>›</button>
+                  </div>
+                  {open === "collect" ? <div className="reg__consent"><p>수집 항목 : [필수] 성명, 휴대전화번호, 생년월일(앞 6자리)<br />[선택] 주민등록상 주소(시·도, 시·군·구, 읍·면·동), 관심타입, 특별공급 관심 여부<br />(자동 수집) 접속 사이트, 유입 경로, 접수 일시, 서비스 이용 기록, 접속 로그, 쿠키, 접속 IP 정보, 불량이용 기록, 기기정보</p><p>이용 목적 : 청라 아크원 푸르지오 분양정보 제공 및 마케팅 활용(마케팅 활용은 광고성 정보 수신에 동의한 경우에 한함), 청약 일정·모집공고 안내, 청약 해당지역 안내, 사전고객 관리, 이벤트 시행 시 대상 확인</p><p>보유 기간 : 이벤트 종료 시 지체 없이 파기. 최장 수집일로부터 1년</p><p>보관 위치 : Supabase, Inc. 클라우드 데이터베이스 — 일본(도쿄 리전)</p><p>※ 주민등록번호는 수집하지 않습니다.</p><p>동의를 거부할 수 있으며, 거부 시 사전고객등록이 제한됩니다. 전화 문의(1833-3872)는 동의 없이 이용하실 수 있습니다.</p></div> : null}
+                  <div className="reg-dialog__row">
+                    <label><input type="checkbox" checked={marketing} onChange={(e) => setMarketing(e.target.checked)} /> [선택] 광고성 정보 수신 동의</label>
+                    <button type="button" aria-label="광고성 정보 수신 동의 펼치기" onClick={() => setOpen(open === "marketing" ? "" : "marketing")}>›</button>
+                  </div>
+                  {open === "marketing" ? <div className="reg__consent"><p>선택 동의이며, 동의를 거부하셔도 사전고객등록을 진행하실 수 있습니다.</p></div> : null}
+                </div>
+                {errors.age ? <p className="reg__msg">{errors.age}</p> : null}
+                {errors.collect ? <p className="reg__msg">{errors.collect}</p> : null}
+                <p className="reg-dialog__guide"><button type="button" onClick={() => setOpen(open === "collect" ? "" : "collect")}>개인정보 수집 및 이용 안내를 확인해주세요.</button></p>
+                <p className="reg-dialog__ask">청라 아크원 푸르지오 사전고객을 위해 성명, 휴대폰번호, 생년월일을 입력해 주시기 바랍니다.</p>
+                <div className={`reg__field${errors.name ? " is-err" : ""}`}>
+                  <label className="blind" htmlFor="f-name">성명</label>
+                  <input id="f-name" name="name" type="text" placeholder="성명을 입력하세요." value={name} maxLength={20} autoComplete="name" onChange={(e) => setName(e.target.value)} />
+                  <p className="reg__msg">{errors.name}</p>
+                </div>
+                <div className={`reg__field reg__phone${errors.phone ? " is-err" : ""}`}>
+                  <label className="blind" htmlFor="f-phone">휴대전화</label>
+                  <select aria-label="휴대전화 앞자리" value="010" onChange={() => {}}>
+                    <option value="010">010</option>
+                  </select>
+                  <input id="f-phone" name="phone" type="tel" inputMode="numeric" autoComplete="tel" placeholder="숫자만 입력하세요" value={phone.replace(/\D/g, "").slice(3)} onChange={(e) => {
+                    const rest = e.target.value.replace(/\D/g, "").slice(0, 8);
+                    setPhone(rest ? hyphen(`010${rest}`) : "");
+                  }} />
+                  <p className="reg__msg">{errors.phone}</p>
+                </div>
+                <div className={`reg__field${errors.birth ? " is-err" : ""}`}>
+                  <label className="blind" htmlFor="f-birth">생년월일</label>
+                  <input id="f-birth" name="birth6" type="text" inputMode="numeric" placeholder="생년월일 6자리 (예: 780315)" autoComplete="off" value={birth} onChange={(e) => {
+                    const digits = e.target.value.replace(/\D/g, "");
+                    if (digits.length >= 13) { setBirth(""); setBirthWarn(true); return; }
+                    setBirthWarn(false);
+                    setBirth(digits.slice(0, 6));
+                  }} />
+                  <p className="reg__msg">{errors.birth}</p>
+                  {birthWarn ? <p>생년월일 6자리만 입력해 주세요. 주민등록번호는 받지 않습니다.</p> : null}
+                </div>
+                <div className="prereg-hidden-hp" aria-hidden="true"><label>회사<input name="hp" tabIndex={-1} autoComplete="off" /></label></div>
+                <button className="reg__submit" type="submit" disabled={busy || !(product && age14 && collect && name.trim().length >= 2 && phone.replace(/\D/g, "").length === 11 && validDate(birth))}>{busy ? "접수 중…" : "등록"}</button>
+              </div>
+              <p className="prereg-confirm">사전고객등록 확인은 대표번호 <a href={SITE_TEL_HREF}>1833-3872</a>로 문의해 주세요.</p>
+              {step === 2 ? (
+                <div id="additional-information" className="prereg-additional">
+                  <p className="prereg-step">[2/2] 추가 정보 · 선택 (접수번호 {receipt})</p>
+                  <p>입력하지 않으셔도 사전등록은 완료되었습니다.</p>
+                  <p>접수번호 {receipt} · 접수시각 {formatKst(createdAt)}</p>
+                  <p>주민등록상 주소 (선택)</p>
+                  <div className="reg__field"><label htmlFor="f-sido">시·도</label><select id="f-sido" value={sido} onChange={(e) => setSido(e.target.value)}><option value="">선택</option>{SIDO.map((item) => <option key={item}>{item}</option>)}</select></div>
+                  <div className="reg__field"><label htmlFor="f-sigungu">시·군·구</label><input id="f-sigungu" value={sigungu} maxLength={20} onChange={(e) => setSigungu(e.target.value)} /></div>
+                  <div className="reg__field"><label htmlFor="f-dong">읍·면·동</label><input id="f-dong" value={dong} maxLength={20} onChange={(e) => setDong(e.target.value)} /></div>
+                  <p>관심타입</p>
+                  <div className="prereg-chips">{(product === "apt" ? ["APT 84㎡","APT 103㎡","미정"] : product === "commercial" ? ["상가"] : ["오피스텔"]).map((item) => <label key={item}><input type="radio" name="interest_type" checked={interest === item} onChange={() => setInterest(item)} /><span>{item}</span></label>)}</div>
+                  {product === "apt" ? <><p>특별공급 관심</p>
+                  <div className="prereg-chips">{["신혼부부","생애최초","신생아","다자녀","노부모","기관추천","해당없음","모름"].map((item) => <label key={item}><input type="radio" name="special_supply" checked={special === item} onChange={() => setSpecial(item)} /><span>{item}</span></label>)}</div></> : null}
+                  <button className="reg__submit" type="submit" disabled={busy}>{busy ? "접수 중…" : "추가 정보 저장"}</button>
+                  <button className="reg__skip" type="button" onClick={() => setStep("done")}>건너뛰고 완료</button>
+                </div>
+              ) : null}
+            </form>
           </div>
-        ) : null}
-      </form>
+          </div>
+        </div>
     </div>
   );
 }

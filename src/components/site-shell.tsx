@@ -5,6 +5,7 @@ import { SiteFooter } from "@/components/site-footer";
 import { PrivacyModal } from "@/components/privacy-modal";
 import { SubVisual } from "@/components/sub-visual";
 import { PreregPopup } from "@/components/prereg-popup";
+import { SoonPopups } from "@/components/soon-popups";
 import { CostcoEventPopup } from "@/components/CostcoEventPopup";
 import { OpenEventPopup } from "@/components/OpenEventPopup";
 import { PhaseBand } from "@/components/phase-band";
@@ -25,10 +26,11 @@ export function SiteShell({ children, home, path }: Props) {
     <div className={home ? "home-wrap main_wrap" : "sub-wrap"}>
       <SiteHeader home={home} />
       <PhaseBand />
-      {path ? <SubVisual path={path} /> : null}
+      {path && path !== "/register" ? <SubVisual path={path} /> : null}
       {children}
       <SiteFooter onPrivacy={() => setPrivacy(true)} />
       {privacy ? <PrivacyModal onClose={() => setPrivacy(false)} /> : null}
+      <SoonPopups />
       {noPopup ? null : <PreregPopup />}
       {noPopup ? null : <CostcoEventPopup />}
       {noPopup ? null : <OpenEventPopup />}

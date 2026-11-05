@@ -1,12 +1,12 @@
 import { imgDims } from "@/components/img";
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useEffect, useId, useState } from "react";
+import { useEffect, useState } from "react";
 import { Img } from "@/components/img";
 import { SiteShell } from "@/components/site-shell";
 import { NoticeSummary } from "@/components/notice-summary";
 import { PlansBanner } from "@/components/plans-banner";
 import { YoutubeModal } from "@/components/youtube-modal";
-import { SITE_NAME, SITE_PHONE, SITE_TEL_HREF, YOUTUBE_ID } from "@/lib/site-data";
+import { SITE_NAME, SITE_TEL_HREF, YOUTUBE_ID } from "@/lib/site-data";
 import { EN_ORIGIN, KR_ORIGIN, LEGACY_ORIGIN, canonicalLinks, isEnHost, isKrHost, tx } from "@/lib/seo-host";
 import { META } from "@/lib/i18n/en";
 
@@ -62,20 +62,6 @@ function homeJsonLd(origin: string, en: boolean) {
 }
 
 const SECTIONS = ["hero", "overview", "location", "history", "premium", "brand", "contact"] as const;
-
-function HeroOrbit() {
-  const id = `orbit-${useId().replace(/:/g, "")}`;
-  return (
-    <svg className="hero__quick_orbit" viewBox="0 0 132 132" aria-hidden="true">
-      <defs>
-        <path id={id} d="M66 66 m-52 0 a52 52 0 1 1 104 0 a52 52 0 1 1 -104 0" fill="none" />
-      </defs>
-      <text fill="#fff" fontSize="9.5" fontFamily="SUIT, Pretendard, sans-serif" letterSpacing="0.12em">
-        <textPath href={`#${id}`}>{`${SITE_PHONE}   ·   ${SITE_PHONE}   ·  `}</textPath>
-      </text>
-    </svg>
-  );
-}
 
 function Home() {
   const [intro, setIntro] = useState(true);
@@ -195,22 +181,16 @@ function Home() {
                 <img src="/resources/img/pages/main/ico_yt.svg" alt="" {...imgDims("/resources/img/pages/main/ico_yt.svg")} data-dims="" />
               </span>
             </button>
-            <div className="hero__quick">
-              <a className="hero__quick_item" href={SITE_TEL_HREF} aria-label={tx(`${SITE_PHONE} 전화 연결`, `Call ${SITE_PHONE}`)}>
-                <HeroOrbit />
-                <img
-                  className="hero__quick_content"
-                  src="/resources/img/pages/main/hero_circle_01.svg"
-                  alt="분양가 상한제 적용단지"
-                  {...imgDims("/resources/img/pages/main/hero_circle_01.svg")}
-                  data-dims=""
-                />
-              </a>
-              <Link to="/register" className="hero__quick_item" aria-label={tx("사전고객등록", "Pre-registration")}>
-                <HeroOrbit />
-                <img className="hero__quick_content" src="/resources/img/pages/main/hero_circle_register.svg" alt="사전고객등록 원형 바로가기" {...imgDims("/resources/img/pages/main/hero_circle_register.svg")} data-dims="" />
-              </Link>
+          </div>
+          <div className="hero__quick">
+            <div className="hero__quick_item" aria-label="분양가 상한제 적용단지">
+              <img className="hero__quick_orbit" src="/official/badge/hero_circle_text.v100.svg" alt="" />
+              <img className="hero__quick_content" src="/official/badge/hero_circle_01.v100.svg" alt="" />
             </div>
+            <Link to="/register" className="hero__quick_item hero__quick_item--reg" aria-label="사전고객등록">
+              <img className="hero__quick_orbit" src="/official/badge/hero_circle_text.v100.svg" alt="" />
+              <img className="hero__quick_content" src="/official/badge/hero_circle_prereg.svg" alt="" />
+            </Link>
           </div>
         </section>
 

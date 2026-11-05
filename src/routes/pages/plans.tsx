@@ -24,7 +24,9 @@ function PlansPage() {
           <h2 className="seo-guide__subtitle">{tx("평면도 (84㎡C · 103㎡A)", "Floor plans (84㎡C · 103㎡A)")}</h2>
           <PlanFigure plan="84c" withPrice />
           <PlanFigure plan="103a" withPrice />
-          <NoticePrice />
+          <div id="supply">
+            <NoticePrice />
+          </div>
           <p className="plans-page__more">
             주택형별 면적은 <Link to="/pages/compare">아파트·오피스텔 비교</Link>, 청약 일정은 <Link to="/pages/schedule">분양 일정·청약 안내</Link>에서 볼 수 있습니다.
           </p>
