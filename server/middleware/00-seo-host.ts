@@ -12,7 +12,8 @@
 const KR_ORIGIN = "https://www.xn--2w2b19sita0u67iz2mi7g.site";
 const EN_ORIGIN = "https://www.arkone-prugio.site";
 const KR_HOSTS = new Set(["www.xn--2w2b19sita0u67iz2mi7g.site", "www.아크원푸르지오.site"]);
-const EN_HOSTS = new Set(["www.arkone-prugio.site"]);
+// 2026-11-10 PM 지시: 영문판을 끈다 (src/lib/seo-host.ts 와 같이 바꾼다).
+const EN_HOSTS = new Set<string>([]);
 
 /** path -> lastmod (git commit date of the page's last content change). */
 const KR_SITEMAP: ReadonlyArray<readonly [string, string]> = [
