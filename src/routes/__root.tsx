@@ -14,6 +14,8 @@ export const Route = createRootRoute({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
+      // 2026-11-10 PM 지시: 브라우저 자동번역이 화면 글자를 바꾸지 못하게 한다.
+      { name: "google", content: "notranslate" },
       // 구 네이버 토큰은 레거시 호스트에서만 유지. 한글 도메인은 홈에만 de62f799·msvalidate(미들웨어)를 둔다.
       ...(isKrHost() ? [] : [{ name: "naver-site-verification", content: "3c9a81c691a4cdec3415b6d3e7f832ea0015e2a9" }]),
       { title: en ? "Cheongna Ark-One Prugio | Guide" : SITE_NAME },
@@ -68,7 +70,7 @@ export const Route = createRootRoute({
   };
   },
   component: () => (
-    <html lang={isEnHost() ? "en" : "ko"} suppressHydrationWarning>
+    <html lang={isEnHost() ? "en" : "ko"} translate="no" className="notranslate" suppressHydrationWarning>
       <head>
         <HeadContent />
       </head>
