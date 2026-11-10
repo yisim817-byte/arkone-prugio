@@ -1649,7 +1649,7 @@ body.prereg-lock { overflow: hidden; }
 
 .otp-row .popup_soon { position: relative; inset: auto; z-index: auto; display: block; background: none; animation: none; --pf-unit: min(1px, calc((100vw - 56px) / 796), calc((100vh - 170px) / 800)); }
 @media screen and (max-width: 1024px) {
-  .otp { align-items: flex-start; }
+  .otp { align-items: flex-start; padding-top: 64px; } /* 모바일: 상단 공지 띠에 「팝업닫기」가 가리지 않게 */
   .otp-row { flex-direction: column; }
   .otp-row .popup_soon { --pf-unit: min(1px, calc((100vw - 40px) / 390)); }
 }
