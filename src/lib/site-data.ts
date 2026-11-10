@@ -76,13 +76,8 @@ export const NAV: NavItem[] = [
   {
     krName: "오피스텔",
     enName: "OT",
-    to: "/officetel",
-    children: [
-      { krName: "오피스텔 안내", enName: "Officetel", to: "/officetel" },
-      { krName: "아파트와 비교", enName: "Compare", to: "/#compare" },
-      { krName: "조망 · 배치", enName: "View", to: "/#view" },
-      { krName: "사전고객등록", enName: "Register", to: "/register?product=officetel" },
-    ],
+    to: "#popup_soon_officetel",
+    children: [],
   },
   {
     krName: "홍보센터",
