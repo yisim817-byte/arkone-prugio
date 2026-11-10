@@ -135,23 +135,8 @@ function Home() {
             </video>
           </div>
           <span className="hero__dim" />
-          <div className="hero__copy">
-            <p className="hero__eyebrow">
-              <span>THE PRESENT</span>
-              <span>OF</span>
-            </p>
-            <h1 className="hero__title">
-              <span className="hero__title_line">CHEONG NA</span>
-              <br />
-              <span className="hero__title_line">ARK-ONE</span>
-              <br />
-              <span className="hero__title_line">PRUGIO</span>
-              <span className="hero__title_ko">{tx("청라 아크원 푸르지오", "Cheongna Ark-One Prugio")}</span>
-            </h1>
-            <span className="hero__open">
-              <span className="hero__open_phrase">{tx("입주자모집공고 게시", "Recruitment notice posted")} <strong>2026.10.22</strong>{tx("(목)", " Thu")}</span> · <span className="hero__open_phrase">{tx("견본주택", "Model house")} <strong>{tx("별도 공지 시까지 운영", "Open until further notice")}</strong></span>
-            </span>
-          </div>
+          {/* 2026-11-10 PM 지시: 히어로 메인 카피(영문 타이틀·모집공고 문구) 삭제. 검색·낭독용 제목만 화면 밖에 둔다. */}
+          <h1 className="blind">청라 아크원 푸르지오</h1>
           <div className="hero__ui">
             <a className="hero__scroll" href="#overview">
               <span className="hero__scroll_line" />
