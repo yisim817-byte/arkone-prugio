@@ -2,6 +2,7 @@ import { useEffect, useState, type FormEvent } from "react";
 import { SITE_PHONE, SITE_TEL_HREF } from "@/lib/site-data";
 import { PreregShare } from "@/components/prereg-share";
 import { Link } from "@tanstack/react-router";
+import { isOtMainHost } from "@/lib/seo-host";
 
 const ENDPOINT = "https://jzmktahlrwtrtejjflrw.supabase.co/functions/v1/arkone-prereg-submit";
 const CONSENT_VERSION = "2026-09-26-v2+r13"; // 작업지시서 13: 방문 항목을 뺀 동의(+visit1 → +r13)
@@ -262,10 +263,10 @@ export function RegisterForm() {
                     <label><input type="checkbox" checked={marketing} onChange={(e) => setMarketing(e.target.checked)} /> [선택] 광고성 정보 수신 동의</label>
                     <button type="button" aria-label="광고성 정보 수신 동의 펼치기" onClick={() => setOpen(open === "marketing" ? "" : "marketing")}>›</button>
                   </div>
-                  <div className="reg-dialog__sub">
+                  {isOtMainHost() ? <div className="reg-dialog__sub">
                     <label><input type="checkbox" checked={mkPhone} onChange={(e) => setMkPhone(e.target.checked)} /> [선택] 전화 수신동의</label>
                     <label><input type="checkbox" checked={mkSms} onChange={(e) => setMkSms(e.target.checked)} /> [선택] SMS, SNS(카카오톡) 수신동의</label>
-                  </div>
+                  </div> : null}
                   {open === "marketing" ? <div className="reg__consent"><p><b>광고성 정보 수신 안내</b></p><p>청라 아크원 푸르지오 분양 상담팀은 고객님의 별도 동의에 따라 청라 아크원 푸르지오의 분양 관련 광고성 정보를 안내합니다.</p><p>1. 광고 전송자 : 청라 아크원 푸르지오 분양 상담팀(문의 1833-3872)</p><p>2. 광고 내용 : 청라 아크원 푸르지오 아파트·오피스텔·상업시설의 견본주택, 분양 일정, 청약·계약 일정·모집공고 및 분양 관련 이벤트 안내</p><p>3. 광고 수신 방법 : 동의하신 방법(전화 / 문자(SMS)·카카오톡)으로 광고성 정보를 전송합니다.</p><p>4. 광고성 정보 수신거부 및 동의 철회 : 고객님께서는 언제든지 무료로 광고성 정보 수신을 거부하거나 동의를 철회하실 수 있습니다(문의 1833-3872). 수신동의·거부·철회 의사표시일로부터 14일 이내에 처리 결과를 안내합니다. ※ 야간(21:00~다음 날 08:00)에는 광고성 정보를 발송하지 않습니다.</p><p>5. 동의 거부 권리 : 선택 동의이며, 동의하지 않으셔도 사전고객등록을 진행하실 수 있습니다.</p></div> : null}
                 </div>
                 {errors.age ? <p className="reg__msg">{errors.age}</p> : null}

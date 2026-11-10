@@ -8,7 +8,7 @@ import { NoticeSummary } from "@/components/notice-summary";
 import { PlansBanner } from "@/components/plans-banner";
 import { YoutubeModal } from "@/components/youtube-modal";
 import { SITE_NAME, SITE_TEL_HREF, YOUTUBE_ID } from "@/lib/site-data";
-import { EN_ORIGIN, KR_ORIGIN, LEGACY_ORIGIN, canonicalLinks, isEnHost, isKrHost, tx } from "@/lib/seo-host";
+import { EN_ORIGIN, KR_ORIGIN, LEGACY_ORIGIN, canonicalLinks, isEnHost, isKrHost, isOtMainHost, tx } from "@/lib/seo-host";
 import { META } from "@/lib/i18n/en";
 
 export const Route = createFileRoute("/")({
@@ -150,11 +150,11 @@ function Home() {
               <span className="hero__title_ko">{tx("청라 아크원 푸르지오", "Cheongna Ark-One Prugio")}</span>
             </h1>
             <span className="hero__open">
-              <span className="hero__open_phrase">{tx("오피스텔 · 상가", "Officetel and retail")} <strong>{tx("11월말 분양예정", "sales planned for late November")}</strong></span> · <span className="hero__open_phrase">{tx("견본주택", "Model house")} <strong>{tx("별도 공지 시까지 운영", "Open until further notice")}</strong></span>
+              {isOtMainHost() ? <span className="hero__open_phrase">{tx("오피스텔 · 상가", "Officetel and retail")} <strong>{tx("11월말 분양예정", "sales planned for late November")}</strong></span> : <span className="hero__open_phrase">{tx("입주자모집공고 게시", "Recruitment notice posted")} <strong>2026.10.22</strong>{tx("(목)", " Thu")}</span>} · <span className="hero__open_phrase">{tx("견본주택", "Model house")} <strong>{tx("별도 공지 시까지 운영", "Open until further notice")}</strong></span>
             </span>
           </div>
           <div className="hero__ui">
-            <a className="hero__scroll" href="#officetel">
+            <a className="hero__scroll" href={isOtMainHost() ? "#officetel" : "#overview"}>
               <span className="hero__scroll_line" />
               <span>SCROLL</span>
             </a>
@@ -179,7 +179,7 @@ function Home() {
           </div>
         </section>
 
-        <OtFeature />
+        {isOtMainHost() ? <OtFeature /> : null}
 
         <PlansBanner />
 

@@ -71,6 +71,17 @@ export function isEnHost(): boolean {
   }
 }
 
+// 2026-11-10 PM 지시: 오피스텔·상가 메인(v2)은 www.arkone-prugio.site 에서만 보인다. 한글 도메인 화면은 그대로 둔다.
+const OT_MAIN_HOSTS = new Set<string>(["www.arkone-prugio.site"]);
+
+export function isOtMainHost(): boolean {
+  try {
+    return OT_MAIN_HOSTS.has(normalizeHost(readHost()));
+  } catch {
+    return false;
+  }
+}
+
 /** Korean string on the Korean host, English string on www.arkone-prugio.site. */
 export function tx<T>(ko: T, en: T): T {
   return isEnHost() ? en : ko;
