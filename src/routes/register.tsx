@@ -22,15 +22,15 @@ function RegisterPage() {
   }, []);
   return (
     <SiteShell path="/register">
-      <div className="page_content">
+      <div className="page_content reg-page">
         <section className="page_container register-layout">
           <aside className="register-layout__summary" aria-label="이벤트 및 일정 안내">
-            <p>APT 사전고객등록 후 청약 당첨 및 지급 조건 충족 시 백화점 상품권 30만원 (롯데·현대·신세계 중 선택)</p>
-            <p>오피스텔 사전등록은 APT 이벤트와 별도로 접수됩니다.</p>
+            <p className="prereg-deadline" style={{ color: "#a8834a", fontWeight: 700, letterSpacing: "-0.01em" }}>상가·오피스텔 상시 접수</p>
+            <p>상가·오피스텔 사전등록 후 오피스텔·상가 계약 시 백화점 상품권 50만원 (롯데·현대·신세계 중 선택) · 11월 20일(금)까지</p>
             <a href="/#event-terms">유의사항 보기</a>
             <div className="register-layout__schedule">
               <h2>모집 일정</h2>
-              <p>입주자모집공고 게시 2026.10.22(목) · 견본주택 GRAND OPEN 10.30(금) · 세부 일정 문의 1833-3872</p>
+              <p>입주자모집공고 게시 2026.10.22(목) · 견본주택 별도 공지 시까지 운영 · 세부 일정 문의 1833-3872</p>
               <p>특별공급 11.02(월) · 1순위 11.03(화) · 2순위 11.04(수) · 당첨자 발표 11.10(화) · 계약 11.22(일)~11.24(화)</p>
             </div>
           </aside>

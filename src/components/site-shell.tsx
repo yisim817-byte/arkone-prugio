@@ -5,8 +5,7 @@ import { SiteFooter } from "@/components/site-footer";
 import { PrivacyModal } from "@/components/privacy-modal";
 import { SubVisual } from "@/components/sub-visual";
 import { PreregPopup } from "@/components/prereg-popup";
-import { CostcoEventPopup } from "@/components/CostcoEventPopup";
-import { OpenEventPopup } from "@/components/OpenEventPopup";
+import { SoonPopups } from "@/components/soon-popups";
 import { PhaseBand } from "@/components/phase-band";
 import { SITE_TEL_HREF } from "@/lib/site-data";
 
@@ -25,13 +24,12 @@ export function SiteShell({ children, home, path }: Props) {
     <div className={home ? "home-wrap main_wrap" : "sub-wrap"}>
       <SiteHeader home={home} />
       <PhaseBand />
-      {path ? <SubVisual path={path} /> : null}
+      {path && path !== "/register" ? <SubVisual path={path} /> : null}
       {children}
       <SiteFooter onPrivacy={() => setPrivacy(true)} />
       {privacy ? <PrivacyModal onClose={() => setPrivacy(false)} /> : null}
+      <SoonPopups />
       {noPopup ? null : <PreregPopup />}
-      {noPopup ? null : <CostcoEventPopup />}
-      {noPopup ? null : <OpenEventPopup />}
       {path !== "/register" ? (
         <div className="quick-mo">
           <a href={SITE_TEL_HREF}>전화상담 1833-3872</a>

@@ -123,7 +123,7 @@ export function VisitForm() {
     <div className="reg visit-form">
       <p className="reg__lead"><b>{tx("청라 아크원 푸르지오", "Cheongna Ark-One Prugio")}</b> {tx("모델하우스 방문예약", "model house visit")}</p>
       <p className="visit-form__desc">{tx("방문 희망 날짜를 남겨 주시면, 담당자가 확인 후 방문 시간을 전화로 안내해 드립니다.", "Leave a preferred date. Staff will call to confirm the visit time.")}</p>
-      <p className="visit-form__loc">견본주택 위치 · 인천광역시 서해구 청라동 87-1 · GRAND OPEN 10.30(금)</p>
+      <p className="visit-form__loc">견본주택 위치 · 인천광역시 서해구 청라동 87-1 · 별도 공지 시까지 운영</p>
       <form onSubmit={onSubmit} noValidate>
         {alert ? <p className="reg__error" role="alert">{alert}</p> : null}
         <div className={`reg__field${errors.name ? " is-err" : ""}`}>
@@ -167,7 +167,7 @@ export function VisitForm() {
           <label htmlFor="v-consent">{tx("[필수] 개인정보 수집·이용 동의", "[Required] Consent to collect and use personal data")}</label>
           <button type="button" onClick={() => setOpen(!open)}>보기</button>
         </div>
-        {open ? <div className="reg__consent"><p>수집 항목 : 이름, 휴대폰번호, 방문 희망일·시간대, 관심 상품 (자동 수집) 서비스 이용 기록, 접속 로그, 쿠키, 접속 IP 정보, 불량이용 기록, 기기정보</p><p>이용 목적 : 견본주택 방문 일정 안내, 청라 아크원 푸르지오 분양정보 제공 및 마케팅 활용(마케팅 활용은 광고성 정보 수신에 동의한 경우에 한함)</p><p>보유 기간 : 이벤트 종료 시 지체 없이 파기. 최장 수집일로부터 1년</p><p>동의를 거부할 수 있으며, 거부 시 방문예약 신청이 제한됩니다. 전화 예약({SITE_PHONE})은 동의 없이 이용하실 수 있습니다.</p></div> : null}
+        {open ? <div className="reg__consent"><p><b>개인정보 수집·이용 안내</b></p><p>청라 아크원 푸르지오 분양 상담팀은 견본주택 방문예약 접수 및 안내를 위하여 다음과 같이 개인정보를 수집·이용합니다.</p><p>1. 개인정보 수집·이용 주체 : 청라 아크원 푸르지오 분양 상담팀(문의 {SITE_PHONE})</p><p>2. 개인정보 수집·이용 항목 : 이름, 휴대폰번호, 방문 희망일·시간대, 관심 상품 / (자동 수집) 서비스 이용 기록, 접속 로그, 쿠키, 접속 IP 정보, 불량이용 기록, 기기정보</p><p>3. 개인정보 수집·이용 목적 : 견본주택 방문 일정 안내, 청라 아크원 푸르지오 분양정보 제공 및 마케팅 활용(마케팅 활용은 광고성 정보 수신에 동의한 경우에 한함)</p><p>4. 개인정보 보유·이용 기간 : 이벤트 종료 시 지체 없이 파기하며, 최장 수집일로부터 1년까지 보유합니다. 동의 철회 또는 이용 목적 달성 시에도 지체 없이 파기합니다.</p><p>5. 개인정보 처리 위탁 및 보관 : 접수 데이터는 Supabase, Inc. 클라우드 데이터베이스(일본 도쿄 리전)에 보관합니다. 자세한 사항은 개인정보처리방침에서 확인하실 수 있습니다.</p><p>6. 동의 거부 권리 : 고객님께서는 개인정보 수집·이용 동의를 거부하실 수 있으며, 거부하실 경우 방문예약 신청이 제한됩니다. 전화 예약({SITE_PHONE})은 동의 없이 이용하실 수 있습니다.</p></div> : null}
         {errors.consent ? <p className="reg__msg">{errors.consent}</p> : null}
         <button className="reg__submit" type="submit" disabled={busy}>{busy ? tx("접수 중…", "Sending…") : tx("방문예약 신청", "Request a visit")}</button>
       </form>

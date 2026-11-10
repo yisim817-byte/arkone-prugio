@@ -15,7 +15,7 @@ export function NoticeSummary() {
       <div className="notice-summary__inner">
         <h2 id="notice-summary-title">입주자모집공고 요약 · 2026.10.22 게시 (주택관리번호 2026000496)</h2>
         <dl className="notice-summary__list">
-          <div><dt>일정</dt><dd>특별공급 11.02(월) · 1순위 11.03(화) · 2순위 11.04(수) · 당첨자 발표 11.10(화) · 서류접수 11.12(목)~11.16(월) · 계약 11.22(일)~11.24(화) · 견본주택 GRAND OPEN 10.30(금)</dd></div>
+          <div><dt>일정</dt><dd>특별공급 11.02(월) · 1순위 11.03(화) · 2순위 11.04(수) · 당첨자 발표 11.10(화) · 서류접수 11.12(목)~11.16(월) · 계약 11.22(일)~11.24(화) · 견본주택 별도 공지 시까지 운영</dd></div>
           <div><dt>공급</dt><dd>{`총 ${supply.total}세대 (특별공급 ${supply.special} · 일반공급 ${supply.general}) · ${supply.buildings}개동 · ${supply.floors} · 입주예정 2031년 08월`}</dd></div>
           <div>
             <dt>금액</dt>

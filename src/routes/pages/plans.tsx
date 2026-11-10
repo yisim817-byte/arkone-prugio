@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteShell } from "@/components/site-shell";
-import { NoticePrice, PlanFigure } from "@/components/notice-sections";
+import { NoticePrice } from "@/components/notice-sections";
+import { AllTypePlans } from "@/components/all-type-plans";
 import { canonicalLinks, tx } from "@/lib/seo-host";
 import { META } from "@/lib/i18n/en";
 
@@ -21,10 +22,10 @@ function PlansPage() {
     <SiteShell path="/pages/plans">
       <div className="page_content">
         <section className="page_container plans-page">
-          <h2 className="seo-guide__subtitle">{tx("평면도 (84㎡C · 103㎡A)", "Floor plans (84㎡C · 103㎡A)")}</h2>
-          <PlanFigure plan="84c" withPrice />
-          <PlanFigure plan="103a" withPrice />
-          <NoticePrice />
+          <AllTypePlans />
+          <div id="supply">
+            <NoticePrice />
+          </div>
           <p className="plans-page__more">
             주택형별 면적은 <Link to="/pages/compare">아파트·오피스텔 비교</Link>, 청약 일정은 <Link to="/pages/schedule">분양 일정·청약 안내</Link>에서 볼 수 있습니다.
           </p>

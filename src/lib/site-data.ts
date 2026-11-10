@@ -9,6 +9,8 @@ export type NavChild = {
   enName: string;
   to: string;
   disabled?: boolean;
+  external?: boolean;
+  children?: NavChild[];
 };
 
 export type NavItem = {
@@ -19,6 +21,8 @@ export type NavItem = {
   children: NavChild[];
 };
 
+export const APPLYHOME_URL = "https://www.applyhome.co.kr";
+
 export const NAV: NavItem[] = [
   {
     krName: "사업안내",
@@ -26,66 +30,67 @@ export const NAV: NavItem[] = [
     to: "/pages/overview",
     children: [
       { krName: "사업개요", enName: "Overview", to: "/pages/overview" },
-      { krName: "히스토리", enName: "History", to: "/pages/brand" },
-      { krName: "오시는길", enName: "Contact", to: "/pages/contact" },
-      { krName: "아파트·오피스텔 비교", enName: "Compare", to: "/pages/compare" },
+      { krName: "입지환경", enName: "Location", to: "/pages/location" },
+      { krName: "프리미엄", enName: "Premium", to: "/pages/premium" },
     ],
-  },
-  {
-    krName: "입지안내",
-    enName: "LOCATION",
-    to: "/pages/location",
-    children: [{ krName: "입지환경", enName: "LOCATION", to: "/pages/location" }],
-  },
-  {
-    krName: "프리미엄",
-    enName: "PREMIUM",
-    to: "/pages/premium",
-    children: [{ krName: "프리미엄", enName: "PREMIUM", to: "/pages/premium" }],
-  },
-  {
-    krName: "평면·분양가",
-    enName: "PLANS",
-    to: "/pages/plans",
-    children: [{ krName: "평면도·공급금액", enName: "PLANS", to: "/pages/plans" }],
   },
   {
     krName: "청약안내",
     enName: "INFORMATION",
     to: "/pages/changeinfo",
     children: [
-      { krName: "변경된 청약제도", enName: "INFORMATION", to: "/pages/changeinfo" },
-      { krName: "특별공급 안내", enName: "INFORMATION", to: "/pages/docspecial" },
-      { krName: "일반공급 안내", enName: "INFORMATION", to: "/pages/docnormal" },
-      { krName: "분양 일정·청약 안내", enName: "INFORMATION", to: "/pages/schedule" },
+      { krName: "변경된 청약제도", enName: "Change", to: "/pages/changeinfo" },
+      { krName: "특별공급", enName: "Special", to: "/pages/docspecial" },
+      { krName: "일반공급", enName: "General", to: "/pages/docnormal" },
     ],
+  },
+  {
+    krName: "단지안내",
+    enName: "COMPLEX",
+    to: "/pages/overview",
+    children: [],
+  },
+  {
+    krName: "아파트",
+    enName: "APT",
+    to: "/pages/plans",
+    children: [
+      {
+        krName: "세대안내",
+        enName: "Units",
+        to: "/pages/plans",
+        children: [{ krName: "평면정보", enName: "Plans", to: "/pages/plans" }],
+      },
+      {
+        krName: "분양안내",
+        enName: "Sales",
+        to: "/pages/schedule",
+        children: [
+          { krName: "분양일정", enName: "Schedule", to: "/pages/schedule" },
+          { krName: "공급내역", enName: "Supply", to: "/pages/plans#supply" },
+          { krName: "모집공고", enName: "Notice", to: APPLYHOME_URL, external: true },
+        ],
+      },
+    ],
+  },
+  {
+    krName: "오피스텔",
+    enName: "OT",
+    to: "#popup_soon_officetel",
+    children: [],
   },
   {
     krName: "홍보센터",
     enName: "MEDIA",
-    to: "/board/news_list",
-    children: [
-      { krName: "언론보도", enName: "NEWS", to: "/board/news_list" },
-      { krName: "홍보영상", enName: "MEDIA", to: "/pages/video" },
-    ],
-  },
-  {
-    krName: "사전고객등록",
-    enName: "REGISTER",
     to: "/register",
-    children: [{ krName: "사전고객등록", enName: "REGISTER", to: "/register" }],
-  },
-  {
-    krName: "이벤트",
-    enName: "EVENT",
-    to: "/event",
-    children: [{ krName: "견본주택 오픈 이벤트", enName: "EVENT", to: "/event" }],
-  },
-  {
-    krName: "방문예약",
-    enName: "VISIT",
-    to: "/visit",
-    children: [{ krName: "모델하우스 방문예약", enName: "VISIT", to: "/visit" }],
+    children: [
+      { krName: "사전고객등록", enName: "Register", to: "/register" },
+      { krName: "방문예약", enName: "Visit", to: "/visit" },
+      { krName: "이벤트", enName: "Event", to: "/event" },
+      { krName: "오시는길", enName: "Contact", to: "/pages/contact" },
+      { krName: "언론보도", enName: "News", to: "/board/news_list" },
+      { krName: "홍보영상", enName: "Video", to: "/pages/video" },
+    ],
   },
 ];
 
@@ -95,16 +100,16 @@ export const PAGE_META: Record<
 > = {
   "/pages/overview": { en: "Overview", kr: "사업개요", parentKr: "사업안내", parentEn: "OVERVIEW" },
   "/pages/brand": { en: "History", kr: "히스토리", parentKr: "사업안내", parentEn: "OVERVIEW" },
-  "/pages/contact": { en: "Contact", kr: "오시는길", parentKr: "사업안내", parentEn: "OVERVIEW" },
+  "/pages/contact": { en: "Contact", kr: "오시는길", parentKr: "홍보센터", parentEn: "MEDIA" },
   "/pages/compare": { en: "Compare", kr: "아파트·오피스텔 비교", parentKr: "사업안내", parentEn: "OVERVIEW" },
   "/pages/schedule": {
     en: "INFORMATION",
-    kr: "분양 일정·청약 안내",
-    parentKr: "청약안내",
-    parentEn: "INFORMATION",
+    kr: "분양일정",
+    parentKr: "아파트",
+    parentEn: "APT",
   },
-  "/pages/location": { en: "LOCATION", kr: "입지환경", parentKr: "입지안내", parentEn: "LOCATION" },
-  "/pages/premium": { en: "PREMIUM", kr: "프리미엄", parentKr: "프리미엄", parentEn: "PREMIUM" },
+  "/pages/location": { en: "LOCATION", kr: "입지환경", parentKr: "사업안내", parentEn: "OVERVIEW" },
+  "/pages/premium": { en: "PREMIUM", kr: "프리미엄", parentKr: "사업안내", parentEn: "OVERVIEW" },
   "/pages/changeinfo": {
     en: "INFORMATION",
     kr: "변경된 청약제도",
@@ -125,11 +130,17 @@ export const PAGE_META: Record<
   },
   "/board/news_list": { en: "NEWS", kr: "언론보도", parentKr: "홍보센터", parentEn: "MEDIA" },
   "/pages/video": { en: "MEDIA", kr: "홍보영상", parentKr: "홍보센터", parentEn: "MEDIA" },
-  "/pages/plans": { en: "PLANS", kr: "평면도·공급금액", parentKr: "평면·분양가", parentEn: "PLANS" },
-  "/register": { en: "REGISTER", kr: "사전고객등록", parentKr: "사전고객등록", parentEn: "REGISTER" },
-  "/visit": { en: "VISIT", kr: "모델하우스 방문예약", parentKr: "방문예약", parentEn: "VISIT" },
+  "/pages/plans": { en: "PLANS", kr: "평면정보", parentKr: "아파트", parentEn: "APT" },
+  "/register": { en: "REGISTER", kr: "사전고객등록", parentKr: "홍보센터", parentEn: "MEDIA" },
+  "/visit": { en: "VISIT", kr: "방문예약", parentKr: "홍보센터", parentEn: "MEDIA" },
+  "/event": { en: "EVENT", kr: "이벤트", parentKr: "홍보센터", parentEn: "MEDIA" },
 };
 
+function matchesPath(item: { to: string; children?: NavChild[] }, pathname: string): boolean {
+  if (item.to === pathname) return true;
+  return (item.children || []).some((child) => matchesPath(child, pathname));
+}
+
 export function navForPath(pathname: string) {
-  return NAV.find((item) => item.to === pathname || item.children.some((c) => c.to === pathname));
+  return NAV.find((item) => matchesPath(item, pathname));
 }

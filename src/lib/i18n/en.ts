@@ -6,7 +6,7 @@ import { prices } from "@/lib/notice-facts.v1.json";
 export const META = {
   home: {
     title: "Cheongna Ark-One Prugio | Guide",
-    desc: "Notice posted 22 Oct 2026. Model house opens 30 Oct. Contract 22-24 Nov. Apt 868 units.",
+    desc: "Notice posted 22 Oct 2026. Model house open until further notice. Contract 22-24 Nov. Apt 868 units.",
   },
   overview: {
     title: "Ark-One Overview | 868 Units",
@@ -30,7 +30,7 @@ export const META = {
   },
   contact: {
     title: "Ark-One Model House | Visit",
-    desc: "Model house at Cheongna-dong 87-1. Grand open 30 Oct. Notice posted 22 Oct. Call 1833-3872.",
+    desc: "Model house at Cheongna-dong 87-1. Open until further notice. Notice posted 22 Oct. Call 1833-3872.",
     h1: "Cheongna Ark-One Prugio model house",
   },
   brand: {
@@ -80,7 +80,7 @@ export const META = {
   },
   visit: {
     title: "Book a Model House Visit",
-    desc: "Request a model house visit at Cheongna-dong 87-1. Grand open is 30 Oct. Call 1833-3872.",
+    desc: "Request a model house visit at Cheongna-dong 87-1. Open until further notice. Call 1833-3872.",
     h1: "Model house visit request",
   },
 } as const;
@@ -107,7 +107,6 @@ export const FAQ_SCHEDULE = [
   { q: "What is the Cheongna Ark-One Prugio sale schedule?", a: "The recruitment notice was posted on 22 Oct 2026. Special supply is 2 Nov. First rank is 3 Nov. Second rank is 4 Nov. Winners are announced on 10 Nov. Document submission is 12-16 Nov. Contracts are 22-24 Nov. If the schedule changes the notice prevails." },
   { q: "What is the sale price?", a: PRICE },
   { q: "When was the price published and where can I read it?", a: "Apt supply amounts were published on 22 Oct 2026 in the recruitment notice (housing management number 2026000496) pages 6 to 20 by type building floor and unit. Read the notice on applyhome.co.kr. The officetel has a separate notice. Call 1833-3872 for a specific unit." },
-  { q: "Does pre-registration submit an application?", a: "No. Pre-registration only asks for sale news. It is not an application. Eligibility and dates follow the recruitment notice and applications are made on Applyhome after the notice." },
   { q: "What should I prepare before applying?", a: "Read the recruitment notice posted on 22 Oct 2026 on Applyhome and check your savings account region and home ownership against that notice." },
   { q: "When is move-in?", a: "Move-in is planned for August 2031 and can change with construction. The project entity announces the exact date." },
   { q: "Do you publish an expected price or a market outlook?", a: "This site does not publish an expected price or a market outlook. The supply amount is the table in the recruitment notice. Call 1833-3872 for a specific condition." },
@@ -127,7 +126,7 @@ export const FAQ_COMPARE = [
 
 export const FAQ_CONTACT = [
   { q: "Where is the Cheongna Ark-One Prugio model house?", a: "The model house is at 87-1 Cheongna-dong Seohae-gu Incheon. The project site is 86-1 Cheongna-dong. Use the Naver and Kakao map buttons on this page." },
-  { q: "When does the model house open?", a: "The model house at 87-1 Cheongna-dong Seohae-gu Incheon has its grand opening on 30 Oct. Units 84A and 103A are installed. Call 1833-3872 before you visit." },
+  { q: "When does the model house open?", a: "The model house at 87-1 Cheongna-dong Seohae-gu Incheon is open until further notice. Units 84A and 103A are installed. Call 1833-3872 before you visit." },
   { q: "Where can I get guidance before the model house opens?", a: "The showroom is at Hongik Park 1F units 108 and 109 19 Jungbong-daero 586beon-gil Seohae-gu Incheon next to Starbucks. Call 1833-3872 for hours before you visit." },
   { q: "What should I check before visiting?", a: "Check the address and whether the model house or showroom is open. Check eligibility and dates in the recruitment notice posted on 22 Oct 2026 on Applyhome." },
   { q: "What phone number reaches the Cheongna Ark-One Prugio model house?", a: "Call 1833-3872 for the model house at 87-1 Cheongna-dong. Grand opening is 30 Oct." },

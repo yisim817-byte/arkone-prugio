@@ -70,7 +70,7 @@ function OverviewPage() {
                 <p>Cheongna Ark-One Prugio is a mixed-use complex planned at 86-1 Cheongna-dong Seohae-gu Incheon (mixed-use site M5 in the Cheongna International City).</p>
                 <p>It is six buildings from basement 5 to floor 49: Apt 868 units (exclusive 84 and 103 sqm) and officetel 987 rooms (exclusive 105 121 and 136 sqm) for 1855 units and rooms plus shops on floors 1 and 2.</p>
                 <p>The developer is Cheongna Smart City and the builder is Daewoo E&C. The apartment recruitment notice was posted on 22 Oct 2026.</p>
-                <p>Notice posted 22 Oct 2026. Model house grand opening is 30 Oct. Special supply is 2 Nov first rank 3 Nov and second rank 4 Nov. Supply amounts are in the recruitment notice (housing management number 2026000496) by type building floor and unit. Call 1833-3872 for a specific unit.</p>
+                <p>Notice posted 22 Oct 2026. The model house is open until further notice. Special supply is 2 Nov first rank 3 Nov and second rank 4 Nov. Supply amounts are in the recruitment notice (housing management number 2026000496) by type building floor and unit. Call 1833-3872 for a specific unit.</p>
                 <p>Source: <a href="https://www.applyhome.co.kr" target="_blank" rel="noopener noreferrer">Applyhome</a> recruitment notice (posted 22 Oct 2026) · checked 2026-10-29</p>
               </>
             ) : (
@@ -85,16 +85,16 @@ function OverviewPage() {
             </p>
             <p>시행은 ㈜청라스마트시티, 시공은 대우건설이며, 청라 아크원 푸르지오(APT) 입주자모집공고가 2026.10.22(목) 게시되었습니다.</p>
             <p>
-              청라 아크원 푸르지오는 입주자모집공고 게시 2026.10.22(목) · 견본주택 GRAND OPEN 10.30(금)이며, 청약 일정은 특별공급 11.02(월) · 1순위 11.03(화) · 2순위 11.04(수)입니다. 분양가(공급금액)는 입주자모집공고문(주택관리번호 2026000496)의 공급금액표에 주택형·동·층·호별로 공개되어 있습니다. 주택형과 층에 따라 금액이 다르므로 원하시는 조건은 대표번호 1833-3872로 상담해 주세요.
+              청라 아크원 푸르지오는 입주자모집공고 게시 2026.10.22(목) · 견본주택은 별도 공지 시까지 운영하며, 청약 일정은 특별공급 11.02(월) · 1순위 11.03(화) · 2순위 11.04(수)입니다. 분양가(공급금액)는 입주자모집공고문(주택관리번호 2026000496)의 공급금액표에 주택형·동·층·호별로 공개되어 있습니다. 주택형과 층에 따라 금액이 다르므로 원하시는 조건은 대표번호 1833-3872로 상담해 주세요.
             </p>
             <p>출처: <a href="https://www.applyhome.co.kr" target="_blank" rel="noopener noreferrer">청약홈</a> 입주자모집공고(2026.10.22 게시) · 확인 기준일 2026-10-29</p>
               </>
             )}
           </GuideAnswer>
           {isEnHost() ? (
-            <p>Cheongna Ark-One Prugio is six buildings from basement 5 to floor 49. Apt 868 units (exclusive 84 and 103 sqm) and officetel 987 rooms (exclusive 105 121 and 136 sqm) total 1855. Parking is 3124 spaces (Apt 1389 officetel 1695 shops 40). The developer is Cheongna Smart City and the builder is Daewoo E&C. The 2911 brand-town figure includes Cheongna Peakone Prugio and is not one complex. Notice posted 22 Oct 2026. Model house grand opening is 30 Oct. Call 1833-3872.</p>
+            <p>Cheongna Ark-One Prugio is six buildings from basement 5 to floor 49. Apt 868 units (exclusive 84 and 103 sqm) and officetel 987 rooms (exclusive 105 121 and 136 sqm) total 1855. Parking is 3124 spaces (Apt 1389 officetel 1695 shops 40). The developer is Cheongna Smart City and the builder is Daewoo E&C. The 2911 brand-town figure includes Cheongna Peakone Prugio and is not one complex. Notice posted 22 Oct 2026. The model house is open until further notice. Call 1833-3872.</p>
           ) : (
-            <p>청라 아크원 푸르지오는 지하 5층~지상 49층, 총 6개동이며 아파트 868세대(전용 84·103㎡)와 오피스텔 987실(전용 105·121·136㎡), 합계 1,855세대·실입니다. 주차대수는 총 3,124대(아파트 1,389대 · 오피스텔 1,695대 · 상업시설 40대)입니다. 시행은 ㈜청라스마트시티, 시공은 대우건설(주)입니다. 푸르지오 브랜드타운 2,911세대·실은 청라 피크원 푸르지오를 포함한 합산 규모이며, 단일 단지가 아닙니다. 청라 아크원 푸르지오는 입주자모집공고 게시 2026.10.22(목) · 견본주택 GRAND OPEN 10.30(금)이며, 세부 일정은 대표번호 1833-3872로 문의할 수 있습니다.</p>
+            <p>청라 아크원 푸르지오는 지하 5층~지상 49층, 총 6개동이며 아파트 868세대(전용 84·103㎡)와 오피스텔 987실(전용 105·121·136㎡), 합계 1,855세대·실입니다. 주차대수는 총 3,124대(아파트 1,389대 · 오피스텔 1,695대 · 상업시설 40대)입니다. 시행은 ㈜청라스마트시티, 시공은 대우건설(주)입니다. 푸르지오 브랜드타운 2,911세대·실은 청라 피크원 푸르지오를 포함한 합산 규모이며, 단일 단지가 아닙니다. 청라 아크원 푸르지오는 입주자모집공고 게시 2026.10.22(목) · 견본주택은 별도 공지 시까지 운영하며, 세부 일정은 대표번호 1833-3872로 문의할 수 있습니다.</p>
           )}
           <section className="seo-guide" aria-label={isEnHost() ? "Complex distinction" : "단지 구분"}>
             <h2 className="seo-guide__subtitle">{isEnHost() ? "Which complex is which" : "단지 구분"}</h2>
@@ -105,7 +105,7 @@ function OverviewPage() {
                   <li>2911 units and rooms is the combined total with Cheongna Peakone Prugio and is not one complex.</li>
                   <li>Cheongna Peakone Prugio is Peakone B1 with 1056 rooms and is a different complex from Ark-One.</li>
                   <li>Some articles call Ark-One Peakone phase 2. The complex name is Cheongna Ark-One Prugio.</li>
-                  <li>The recruitment notice was posted on 22 Oct 2026. The model house grand opening is 30 Oct.</li>
+                  <li>The recruitment notice was posted on 22 Oct 2026. The model house is open until further notice.</li>
                 </>
               ) : (
                 <>
@@ -113,7 +113,7 @@ function OverviewPage() {
               <li>2,911세대·실은 청라 피크원 푸르지오를 포함한 합산 규모이며 단일 단지가 아닙니다.</li>
               <li>청라 피크원 푸르지오는 B1블록 1,056실 규모로, 아크원과 다른 단지입니다.</li>
               <li>아크원을 「피크원 2차」로 부르는 글이 있습니다. 단지명은 청라 아크원 푸르지오입니다.</li>
-              <li>2026년 10월 22일 입주자모집공고가 게시되었습니다. 견본주택 GRAND OPEN은 10.30(금)입니다.</li>
+              <li>2026년 10월 22일 입주자모집공고가 게시되었습니다. 견본주택은 별도 공지 시까지 운영합니다.</li>
                 </>
               )}
             </ol>

@@ -24,7 +24,7 @@ function VisitPage() {
         <section className="page_container register-layout">
           <aside className="register-layout__summary" aria-label={tx("견본주택 안내", "Model house")}>
             <p>{tx("모델하우스 방문예약", "Model house visit request")}</p>
-            <p>{tx("견본주택 위치 · 인천광역시 서해구 청라동 87-1 · GRAND OPEN 10.30(금)", "Model house · 87-1 Cheongna-dong Seohae-gu Incheon · GRAND OPEN 30 Oct")}</p>
+            <p>{tx("견본주택 위치 · 인천광역시 서해구 청라동 87-1 · 별도 공지 시까지 운영", "Model house · 87-1 Cheongna-dong Seohae-gu Incheon · open until further notice")}</p>
             <p>{tx("전화 예약", "Call")} <a href={SITE_TEL_HREF}>{SITE_PHONE}</a></p>
             <div className="register-layout__schedule">
               <h2>{tx("청약 일정", "Application schedule")}</h2>

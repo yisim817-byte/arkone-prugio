@@ -1,12 +1,12 @@
 import { imgDims } from "@/components/img";
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useEffect, useId, useState } from "react";
+import { useEffect, useState } from "react";
 import { Img } from "@/components/img";
 import { SiteShell } from "@/components/site-shell";
 import { NoticeSummary } from "@/components/notice-summary";
 import { PlansBanner } from "@/components/plans-banner";
 import { YoutubeModal } from "@/components/youtube-modal";
-import { SITE_NAME, SITE_PHONE, SITE_TEL_HREF, YOUTUBE_ID } from "@/lib/site-data";
+import { SITE_NAME, SITE_TEL_HREF, YOUTUBE_ID } from "@/lib/site-data";
 import { EN_ORIGIN, KR_ORIGIN, LEGACY_ORIGIN, canonicalLinks, isEnHost, isKrHost, tx } from "@/lib/seo-host";
 import { META } from "@/lib/i18n/en";
 
@@ -62,20 +62,6 @@ function homeJsonLd(origin: string, en: boolean) {
 }
 
 const SECTIONS = ["hero", "overview", "location", "history", "premium", "brand", "contact"] as const;
-
-function HeroOrbit() {
-  const id = `orbit-${useId().replace(/:/g, "")}`;
-  return (
-    <svg className="hero__quick_orbit" viewBox="0 0 132 132" aria-hidden="true">
-      <defs>
-        <path id={id} d="M66 66 m-52 0 a52 52 0 1 1 104 0 a52 52 0 1 1 -104 0" fill="none" />
-      </defs>
-      <text fill="#fff" fontSize="9.5" fontFamily="SUIT, Pretendard, sans-serif" letterSpacing="0.12em">
-        <textPath href={`#${id}`}>{`${SITE_PHONE}   ·   ${SITE_PHONE}   ·  `}</textPath>
-      </text>
-    </svg>
-  );
-}
 
 function Home() {
   const [intro, setIntro] = useState(true);
@@ -162,24 +148,8 @@ function Home() {
               <span className="hero__title_line">PRUGIO</span>
               <span className="hero__title_ko">{tx("청라 아크원 푸르지오", "Cheongna Ark-One Prugio")}</span>
             </h1>
-            <p className="hero__answer">
-              {isEnHost()
-                ? "Cheongna Ark-One Prugio is a mixed-use complex at 86-1 Cheongna-dong Seohae-gu Incheon on block M5. It has Apt 868 units and officetel 987 rooms. The recruitment notice was posted on 22 Oct 2026 and contracts run from 22 to 24 Nov 2026."
-                : "청라 아크원 푸르지오는 인천광역시 서해구 청라동 86-1번지 M5블록의 주거복합 단지입니다. 아파트 868세대와 오피스텔 987실입니다. 입주자모집공고는 2026.10.22에 게시되었고 계약은 2026년 11월 22일부터 24일까지입니다."}
-            </p>
-            <p className="hero__answer">
-              {isEnHost() ? (
-                <>
-                  Source: <a href="https://www.applyhome.co.kr" target="_blank" rel="noopener noreferrer">Applyhome</a> recruitment notice (posted 22 Oct 2026) · checked 2026-10-29
-                </>
-              ) : (
-                <>
-                  출처: <a href="https://www.applyhome.co.kr" target="_blank" rel="noopener noreferrer">청약홈</a> 입주자모집공고(2026.10.22 게시) · 확인 기준일 2026-10-29
-                </>
-              )}
-            </p>
             <span className="hero__open">
-              <span className="hero__open_phrase">{tx("입주자모집공고 게시", "Recruitment notice posted")} <strong>2026.10.22</strong>{tx("(목)", " Thu")}</span> · <span className="hero__open_phrase">{tx("견본주택 GRAND OPEN", "Model house GRAND OPEN")} <strong>10.30</strong>{tx("(금)", " Fri")}</span>
+              <span className="hero__open_phrase">{tx("입주자모집공고 게시", "Recruitment notice posted")} <strong>2026.10.22</strong>{tx("(목)", " Thu")}</span> · <span className="hero__open_phrase">{tx("견본주택", "Model house")} <strong>{tx("별도 공지 시까지 운영", "Open until further notice")}</strong></span>
             </span>
           </div>
           <div className="hero__ui">
@@ -195,22 +165,16 @@ function Home() {
                 <img src="/resources/img/pages/main/ico_yt.svg" alt="" {...imgDims("/resources/img/pages/main/ico_yt.svg")} data-dims="" />
               </span>
             </button>
-            <div className="hero__quick">
-              <a className="hero__quick_item" href={SITE_TEL_HREF} aria-label={tx(`${SITE_PHONE} 전화 연결`, `Call ${SITE_PHONE}`)}>
-                <HeroOrbit />
-                <img
-                  className="hero__quick_content"
-                  src="/resources/img/pages/main/hero_circle_01.svg"
-                  alt="분양가 상한제 적용단지"
-                  {...imgDims("/resources/img/pages/main/hero_circle_01.svg")}
-                  data-dims=""
-                />
-              </a>
-              <Link to="/register" className="hero__quick_item" aria-label={tx("사전고객등록", "Pre-registration")}>
-                <HeroOrbit />
-                <img className="hero__quick_content" src="/resources/img/pages/main/hero_circle_register.svg" alt="사전고객등록 원형 바로가기" {...imgDims("/resources/img/pages/main/hero_circle_register.svg")} data-dims="" />
-              </Link>
+          </div>
+          <div className="hero__quick">
+            <div className="hero__quick_item" aria-label="분양가 상한제 적용단지">
+              <img className="hero__quick_orbit" src="/official/badge/hero_circle_text.v100.svg" alt="" />
+              <img className="hero__quick_content" src="/official/badge/hero_circle_01.v100.svg" alt="" />
             </div>
+            <Link to="/register" className="hero__quick_item hero__quick_item--reg" aria-label="사전고객등록">
+              <img className="hero__quick_orbit" src="/official/badge/hero_circle_text.v100.svg" alt="" />
+              <img className="hero__quick_content" src="/official/badge/hero_circle_prereg.svg" alt="" />
+            </Link>
           </div>
         </section>
 
@@ -218,25 +182,25 @@ function Home() {
 
         <section className="event-card" aria-labelledby="event-title">
           <div className="event-card__inner">
-            <p className="event-card__eyebrow">{tx("사전고객등록 고객 대상 이벤트", "Event for pre-registered customers")}</p>
-            <h2 id="event-title">{tx("백화점 상품권 30만원", "Department-store gift card 300000 won")}</h2>
+            <p className="event-card__eyebrow">{tx("상가·오피스텔 사전등록 이벤트", "Retail and officetel pre-registration event")}</p>
+            <h2 id="event-title">{tx("백화점 상품권 50만원", "Department-store gift card 500000 won")}</h2>
             <p className="event-card__brands">{tx("상품권 종류: 롯데·현대·신세계 백화점 가운데 1종", "One gift card from Lotte Hyundai or Shinsegae")}</p>
-            <p className="event-card__basis">{tx("받으실 수 있는 분: 이 홈페이지에서 사전고객등록을 한 뒤 청약에 당첨되어 지급 조건을 충족한 고객입니다.", "Who can receive it: a customer who pre-registers on this site then wins an application and meets the payout terms.")}</p>
-            <p className="event-card__payout">{tx("상품권은 당첨과 지급 조건 충족이 확인되면 계약하는 날 드립니다.", "The card is given on the contract day after the win and the payout terms are confirmed.")}</p>
-            <ol className="event-card__steps"><li>{tx("STEP 1 사전고객등록(홈페이지)", "STEP 1 Pre-register on this site")}</li><li>{tx("STEP 2 청약 신청(특별공급 11.02 · 1순위 11.03 · 2순위 11.04)", "STEP 2 Apply (special supply 2 Nov · first rank 3 Nov · second rank 4 Nov)")}</li><li>{tx("STEP 3 당첨·지급 조건 확인", "STEP 3 Win and payout terms confirmed")}</li><li>{tx("STEP 4 계약일 상품권 수령", "STEP 4 Receive the card on the contract day")}</li></ol>
-            <div className="event-card__actions"><Link className="event-card__button" to="/register">{tx("사전고객등록하기", "Pre-register")}</Link><a href="#event-terms">{tx("유의사항 자세히 보기", "Read the notes")}</a></div>
-            <p className="event-card__schedule">{tx("일정: 입주자모집공고 게시 2026.10.22(목) · 견본주택 GRAND OPEN 10.30(금) · 세부 일정은 대표번호 1833-3872로 문의", "Schedule: notice posted 22 Oct 2026 · model house grand opening 30 Oct · call 1833-3872")}</p>
-            <p className="event-card__notice">{tx("※ 청약 접수는 별도 절차이며, 사전고객등록만으로 청약이 되지는 않습니다.", "Applying is a separate step. Pre-registration alone is not an application.")}</p>
+            <p className="event-card__basis">{tx("받으실 수 있는 분: 이 홈페이지에서 상가·오피스텔 사전등록을 한 뒤 오피스텔 또는 상가를 계약한 고객입니다.", "Who can receive it: a customer who pre-registers for retail or officetel on this site and then signs a contract.")}</p>
+            <p className="event-card__payout">{tx("상품권은 오피스텔·상가 계약 시 드립니다. 이벤트 기간은 11월 20일(금)까지입니다.", "The card is given at the officetel or retail contract. The event runs until 20 Nov.")}</p>
+            <ol className="event-card__steps"><li>{tx("STEP 1 상가·오피스텔 사전등록(홈페이지)", "STEP 1 Pre-register on this site")}</li><li>{tx("STEP 2 오피스텔·상가 계약", "STEP 2 Sign the contract")}</li><li>{tx("STEP 3 계약 시 상품권 수령", "STEP 3 Receive the card at the contract")}</li></ol>
+            <div className="event-card__actions"><Link className="event-card__button" to="/register">{tx("사전등록하기", "Pre-register")}</Link><a href="#event-terms">{tx("유의사항 자세히 보기", "Read the notes")}</a></div>
+            <p className="event-card__schedule">{tx("일정: 입주자모집공고 게시 2026.10.22(목) · 견본주택 별도 공지 시까지 운영 · 세부 일정은 대표번호 1833-3872로 문의", "Schedule: notice posted 22 Oct 2026 · model house open until further notice · call 1833-3872")}</p>
             <p>등록 여부는 <a href={SITE_TEL_HREF}>1833-3872</a>(대표번호)에서 확인하실 수 있습니다.</p>
-            <details id="event-terms" className="event-card__terms"><summary>이벤트 유의사항 (청라 아크원 푸르지오 APT 사전고객등록)</summary>
+            <details id="event-terms" className="event-card__terms"><summary>이벤트 유의사항 (청라 아크원 푸르지오 상가·오피스텔 사전등록)</summary>
               <ol>
-                <li>지급 대상: 이 홈페이지에서 사전고객등록을 한 뒤, 청라 아크원 푸르지오 아파트 청약에 당첨되어 지급 조건을 충족한 고객</li>
-                <li>혜택 내용: 롯데·현대·신세계 백화점 상품권 가운데 1종, 30만원</li><li>지급일: 당첨과 지급 조건 충족을 확인한 뒤 계약 당일</li>
-                <li>한 사람에게 한 번만 지급하며, 같은 사람과 같은 휴대전화번호는 한 사람으로 봅니다.</li>
-                <li>부적격 당첨이거나 계약을 체결하지 않은 경우, 계약이 취소·해제된 경우에는 지급하지 않습니다. 지급 뒤 이런 사유가 생기면 처리 기준을 담당자가 따로 알려 드립니다.</li>
-                <li>제세공과금은 기준이 정해지면 담당자가 따로 알려 드립니다.</li>
-                <li>이벤트 내용은 미리 알린 뒤 바뀌거나 일찍 끝날 수 있습니다.</li>
-                <li>사전고객등록은 청약 신청이 아닙니다. 청약 자격과 일정은 입주자모집공고 기준입니다.</li>
+                <li>대상: 이 홈페이지에서 상가·오피스텔 사전등록을 한 뒤 청라 아크원 푸르지오 오피스텔 또는 상가를 계약한 고객</li>
+                <li>혜택: 백화점 상품권 50만원 (롯데·현대·신세계 중 1종 선택)</li>
+                <li>이벤트 기간: 2026년 11월 20일(금)까지</li>
+                <li>지급 시기: 오피스텔·상가 계약 시 지급합니다.</li>
+                <li>1인(동일인·동일 휴대전화번호) 1회 지급합니다.</li>
+                <li>계약 미체결·취소·해제 시 지급 대상에서 제외됩니다. 지급 후 해당 사유가 발생한 경우의 처리 기준은 담당자가 개별 안내합니다.</li>
+                <li>제세공과금 처리 기준은 확정 후 담당자가 개별 안내합니다.</li>
+                <li>이벤트 내용은 사전 공지 후 변경 또는 조기 종료될 수 있습니다.</li>
               </ol><p>등록 확인·문의: 1833-3872</p>
             </details>
           </div>
@@ -477,7 +441,7 @@ function Home() {
             <p>입주자모집공고 게시 2026.10.22(목)</p>
             <p>특별공급 11.02(월) · 일반공급 1순위 11.03(화) · 일반공급 2순위 11.04(수)</p>
             <p>당첨자 발표 11.10(화) · 당첨자 서류접수 11.12(목)~11.16(월) · 계약 11.22(일)~11.24(화)</p>
-            <p>견본주택 GRAND OPEN 10.30(금) · 인천광역시 서해구 청라동 87-1</p>
+            <p>견본주택 별도 공지 시까지 운영 · 인천광역시 서해구 청라동 87-1</p>
             <p>청약은 한국부동산원 청약홈(www.applyhome.co.kr)에서 인터넷으로 신청합니다.</p>
             <p>세부 일정 문의: 대표번호 1833-3872</p>
             <small>※ 일정은 사업주체 사정에 따라 변경될 수 있으며, 입주자모집공고문이 우선합니다.</small>

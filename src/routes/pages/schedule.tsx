@@ -21,10 +21,6 @@ const FAQ: GuideFaq[] = [
     a: "청라 아크원 푸르지오(APT) 분양가(공급금액)는 2026.10.22(목) 게시된 입주자모집공고문(주택관리번호 2026000496)의 공급금액표에 주택형·동·층·호별로 공개되어 있습니다. 공고문은 청약홈(applyhome.co.kr)에서 직접 확인하실 수 있습니다. 오피스텔은 별도 공고로 안내합니다. 조건별 금액은 대표번호 1833-3872로 상담해 주세요.",
   },
   {
-    q: "사전고객등록을 하면 청약이 접수되나요?",
-    a: "아닙니다. 사전고객등록은 분양 소식을 안내받기 위한 등록이며 공식 청약 신청이 아닙니다. 청약 자격과 일정은 입주자모집공고를 따르고, 청약은 공고 후 청약홈에서 진행됩니다.",
-  },
-  {
     q: "청약 전에 무엇을 준비해야 하나요?",
     a: "2026.10.22(목) 게시된 입주자모집공고문을 청약홈에서 확인하고, 본인의 청약통장 가입 내역, 거주지역, 주택 소유 여부 등 자격 요건을 공고 기준으로 점검하시기 바랍니다.",
   },
@@ -85,7 +81,7 @@ function SchedulePage() {
             {isEnHost() ? (
               <>
                 <p>The apartment recruitment notice for Cheongna Ark-One Prugio was posted on 22 Oct 2026.</p>
-                <p>Notice posted 22 Oct 2026. Model house grand opening is 30 Oct. Call 1833-3872 for the details.</p>
+                <p>Notice posted 22 Oct 2026. The model house is open until further notice. Call 1833-3872 for the details.</p>
                 <p>Special supply is 2 Nov. First rank is 3 Nov. Second rank is 4 Nov. Winners are announced on 10 Nov. Document submission is 12-16 Nov. Contracts are 22-24 Nov. Supply amounts are in the recruitment notice (housing management number 2026000496) by type building floor and unit. Call 1833-3872 for a specific unit. Move-in is planned for August 2031 and can change with construction.</p>
                 <p>The schedule can change so read the notice on Applyhome before you apply.</p>
                 <p>Source: <a href="https://www.applyhome.co.kr" target="_blank" rel="noopener noreferrer">Applyhome</a> recruitment notice (posted 22 Oct 2026) · checked 2026-10-29</p>
@@ -93,7 +89,7 @@ function SchedulePage() {
             ) : (
               <>
             <p>청라 아크원 푸르지오(APT) 입주자모집공고가 2026.10.22(목) 게시되었습니다.</p>
-            <p>청라 아크원 푸르지오는 입주자모집공고 게시 2026.10.22(목) · 견본주택 GRAND OPEN 10.30(금)입니다. 세부 일정은 대표번호 1833-3872로 문의해 주세요.</p>
+            <p>청라 아크원 푸르지오는 입주자모집공고 게시 2026.10.22(목) · 견본주택은 별도 공지 시까지 운영합니다. 세부 일정은 대표번호 1833-3872로 문의해 주세요.</p>
             <p>특별공급 11.02(월), 일반공급 1순위 11.03(화), 2순위 11.04(수), 당첨자 발표 11.10(화), 당첨자 서류접수 11.12(목)~11.16(월), 계약 11.22(일)~11.24(화)입니다. 분양가(공급금액)는 입주자모집공고문(주택관리번호 2026000496)의 공급금액표에 주택형·동·층·호별로 공개되어 있습니다. 주택형과 층에 따라 금액이 다르므로 원하시는 조건은 대표번호 1833-3872로 상담해 주세요. 입주는 2031년 08월 예정이며 공정에 따라 바뀔 수 있습니다.</p>
             <p>일정은 사업주체 사정에 따라 변경될 수 있으므로 청약 전 청약홈에 게시되는 공고문을 반드시 확인하시기 바랍니다.</p>
             <p>출처: <a href="https://www.applyhome.co.kr" target="_blank" rel="noopener noreferrer">청약홈</a> 입주자모집공고(2026.10.22 게시) · 확인 기준일 2026-10-29</p>
@@ -112,7 +108,7 @@ function SchedulePage() {
                   <p>Winners announced 10 Nov</p>
                   <p>Winner documents 12-16 Nov</p>
                   <p>Contracts 22-24 Nov</p>
-                  <p>Model house grand opening 30 Oct at 87-1 Cheongna-dong Seohae-gu Incheon</p>
+                  <p>Model house open until further notice at 87-1 Cheongna-dong Seohae-gu Incheon</p>
                   <p>Apply on the internet at Korea Real Estate Board Applyhome (www.applyhome.co.kr).</p>
                   <p>The schedule can change and the recruitment notice prevails.</p>
                 </>
@@ -125,7 +121,7 @@ function SchedulePage() {
               <p>당첨자 발표 11.10(화)</p>
               <p>당첨자 서류접수 11.12(목)~11.16(월)</p>
               <p>계약 11.22(일)~11.24(화)</p>
-              <p>견본주택 GRAND OPEN 10.30(금) · 인천광역시 서해구 청라동 87-1</p>
+              <p>견본주택 별도 공지 시까지 운영 · 인천광역시 서해구 청라동 87-1</p>
               <p>청약은 한국부동산원 청약홈(www.applyhome.co.kr)에서 인터넷으로 신청합니다.</p>
               <p>※ 일정은 사업주체 사정에 따라 변경될 수 있으며, 입주자모집공고문이 우선합니다.</p>
                 </>
@@ -140,7 +136,7 @@ function SchedulePage() {
             columns={["항목", "내용", "상태"]}
             rows={[
               { label: "APT 입주자모집공고", value: "2026.10.22(목) 게시", status: "확정" },
-              { label: "GRAND OPEN", value: "2026.10.30(금)", status: "확정" },
+              { label: "견본주택 운영", value: "별도 공지 시까지", status: "확정" },
               { label: "특별공급·1순위·2순위 접수", value: "특별공급 11.02(월) · 1순위 11.03(화) · 2순위 11.04(수)", status: "확정" },
               { label: "당첨자 발표·계약", value: "당첨자 발표 11.10(화) · 당첨자 서류접수 11.12(목)~11.16(월) · 계약 11.22(일)~11.24(화)", status: "확정" },
               { label: "분양가", value: "입주자모집공고문(주택관리번호 2026000496) 공급금액표에 주택형·동·층·호별 공개 · 상담 1833-3872 (분양가상한제 적용)", status: "확정" },
@@ -169,7 +165,6 @@ function SchedulePage() {
             </ul>
             <h3 className="seo-guide__subtitle">사전고객등록 안내</h3>
             <div className="seo-guide__answer">
-              <p>사전고객등록은 분양 일정과 소식을 안내받기 위한 등록이며 공식 청약 신청이 아닙니다.</p>
               <p>
                 등록은 <Link to="/register">사전고객등록 페이지</Link>에서 할 수 있고, 등록 확인은 대표번호 1833-3872로 문의해
                 주세요.
