@@ -78,7 +78,7 @@ export const Route = createRootRoute({
           <Outlet />
         </AuthProvider>
         <Scripts />
-        <script src="/plan-open-bar.js" data-href="/pages/plans" defer />
+        {/* 작업지시서 16: 상단 평면도 공지 띠는 렌더만 끈다(파일 public/plan-open-bar.js 유지). */}
       </body>
     </html>
   ),

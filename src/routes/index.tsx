@@ -3,6 +3,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { Img } from "@/components/img";
 import { SiteShell } from "@/components/site-shell";
+import { OtMain } from "@/components/ot-main";
 import { NoticeSummary } from "@/components/notice-summary";
 import { PlansBanner } from "@/components/plans-banner";
 import { YoutubeModal } from "@/components/youtube-modal";
@@ -61,7 +62,9 @@ function homeJsonLd(origin: string, en: boolean) {
   });
 }
 
-const SECTIONS = ["hero", "overview", "location", "history", "premium", "brand", "contact"] as const;
+// 작업지시서 16: 홈은 오피스텔·근린생활시설 중심. 아래 구역은 홈에서만 빼고 하위 페이지는 그대로 둔다.
+const LEGACY_HOME: boolean = false;
+const SECTIONS = ["hero", "compare", "officetel", "view", "commercial", "register", "contact"] as const;
 
 function Home() {
   const [intro, setIntro] = useState(true);
@@ -149,11 +152,11 @@ function Home() {
               <span className="hero__title_ko">{tx("청라 아크원 푸르지오", "Cheongna Ark-One Prugio")}</span>
             </h1>
             <span className="hero__open">
-              <span className="hero__open_phrase">{tx("입주자모집공고 게시", "Recruitment notice posted")} <strong>2026.10.22</strong>{tx("(목)", " Thu")}</span> · <span className="hero__open_phrase">{tx("견본주택", "Model house")} <strong>{tx("별도 공지 시까지 운영", "Open until further notice")}</strong></span>
+              <span className="hero__open_phrase">{tx("오피스텔 · 상가", "Officetel and retail")} <strong>{tx("11월말 분양예정", "sales planned for late November")}</strong></span>
             </span>
           </div>
           <div className="hero__ui">
-            <a className="hero__scroll" href="#overview">
+            <a className="hero__scroll" href="#compare">
               <span className="hero__scroll_line" />
               <span>SCROLL</span>
             </a>
@@ -178,6 +181,9 @@ function Home() {
           </div>
         </section>
 
+        <OtMain />
+
+        {LEGACY_HOME ? (<>
         <PlansBanner />
 
         <section className="event-card" aria-labelledby="event-title">
@@ -432,6 +438,8 @@ function Home() {
             <Img className="section-brand__logo" src="/resources/img/pages/main/brand_logo.svg" alt="홈 브랜드 구역의 푸르지오 로고" />
           </div>
         </section>
+
+        </>) : null}
 
         <section id="contact" className="section-contact">
           <Img className="bg" src="/resources/img/pages/main/contact_bg.v4.webp" alt="" />

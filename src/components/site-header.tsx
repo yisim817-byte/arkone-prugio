@@ -63,7 +63,7 @@ export function SiteHeader({ home = false }: { home?: boolean }) {
             <ul className="gnb__depth1">
               {NAV.map((item) => (
                 <li key={item.krName} className="gnb__depth1_item">
-                  <MenuAnchor to={item.to} className={`gnb__depth1_link${current?.krName === item.krName ? " is-current" : ""}`} popup={item.enName === "OT" ? "officetel" : undefined}>
+                  <MenuAnchor to={item.to} className={`gnb__depth1_link${current?.krName === item.krName ? " is-current" : ""}`}>
                     {item.krName}
                   </MenuAnchor>
                   {item.children.length > 0 ? (
@@ -93,7 +93,7 @@ export function SiteHeader({ home = false }: { home?: boolean }) {
             </ul>
           </nav>
           <div className="header__util_wrap">
-            <a href="#popup_soon_commercial" className="header__btn_commercial" data-popup-soon="commercial" aria-haspopup="dialog">
+            <a href="/commercial" className="header__btn_commercial">
               <span>근린생활시설</span>
             </a>
             <a href={SITE_TEL_HREF} className="header__tel">
@@ -123,7 +123,7 @@ export function SiteHeader({ home = false }: { home?: boolean }) {
           <ul className="allmenu__depth1_container">
             {NAV.map((item) => (
               <li key={item.enName}>
-                <MenuAnchor to={item.to} className="allmenu__depth1_item" popup={item.enName === "OT" ? "officetel" : undefined} onClick={item.enName === "OT" ? close : undefined}>
+                <MenuAnchor to={item.to} className="allmenu__depth1_item" onClick={close}>
                   <span className="allmenu__en">{item.enName}</span>
                   <span className="allmenu__kr">{item.krName}</span>
                 </MenuAnchor>
@@ -131,7 +131,7 @@ export function SiteHeader({ home = false }: { home?: boolean }) {
               </li>
             ))}
           </ul>
-          <a href="#popup_soon_commercial" className="allmenu__btn_commercial header__btn_commercial" data-popup-soon="commercial" aria-haspopup="dialog" onClick={close}>
+          <a href="/commercial" className="allmenu__btn_commercial header__btn_commercial" onClick={close}>
             <span>근린생활시설</span>
           </a>
         </nav>

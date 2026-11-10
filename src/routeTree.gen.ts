@@ -10,7 +10,9 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as CommercialRouteImport } from './routes/commercial'
 import { Route as EventRouteImport } from './routes/event'
+import { Route as OfficetelRouteImport } from './routes/officetel'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as RegisterRouteImport } from './routes/register'
 import { Route as VisitRouteImport } from './routes/visit'
@@ -33,9 +35,19 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CommercialRoute = CommercialRouteImport.update({
+  id: '/commercial',
+  path: '/commercial',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const EventRoute = EventRouteImport.update({
   id: '/event',
   path: '/event',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OfficetelRoute = OfficetelRouteImport.update({
+  id: '/officetel',
+  path: '/officetel',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PrivacyRoute = PrivacyRouteImport.update({
@@ -121,7 +133,9 @@ const PagesVideoRoute = PagesVideoRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/commercial': typeof CommercialRoute
   '/event': typeof EventRoute
+  '/officetel': typeof OfficetelRoute
   '/privacy': typeof PrivacyRoute
   '/register': typeof RegisterRoute
   '/visit': typeof VisitRoute
@@ -141,7 +155,9 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/commercial': typeof CommercialRoute
   '/event': typeof EventRoute
+  '/officetel': typeof OfficetelRoute
   '/privacy': typeof PrivacyRoute
   '/register': typeof RegisterRoute
   '/visit': typeof VisitRoute
@@ -162,7 +178,9 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/commercial': typeof CommercialRoute
   '/event': typeof EventRoute
+  '/officetel': typeof OfficetelRoute
   '/privacy': typeof PrivacyRoute
   '/register': typeof RegisterRoute
   '/visit': typeof VisitRoute
@@ -184,7 +202,9 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/commercial'
     | '/event'
+    | '/officetel'
     | '/privacy'
     | '/register'
     | '/visit'
@@ -204,7 +224,9 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/commercial'
     | '/event'
+    | '/officetel'
     | '/privacy'
     | '/register'
     | '/visit'
@@ -224,7 +246,9 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/commercial'
     | '/event'
+    | '/officetel'
     | '/privacy'
     | '/register'
     | '/visit'
@@ -245,7 +269,9 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  CommercialRoute: typeof CommercialRoute
   EventRoute: typeof EventRoute
+  OfficetelRoute: typeof OfficetelRoute
   PrivacyRoute: typeof PrivacyRoute
   RegisterRoute: typeof RegisterRoute
   VisitRoute: typeof VisitRoute
@@ -273,11 +299,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/commercial': {
+      id: '/commercial'
+      path: '/commercial'
+      fullPath: '/commercial'
+      preLoaderRoute: typeof CommercialRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/event': {
       id: '/event'
       path: '/event'
       fullPath: '/event'
       preLoaderRoute: typeof EventRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/officetel': {
+      id: '/officetel'
+      path: '/officetel'
+      fullPath: '/officetel'
+      preLoaderRoute: typeof OfficetelRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/privacy': {
@@ -397,7 +437,9 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  CommercialRoute: CommercialRoute,
   EventRoute: EventRoute,
+  OfficetelRoute: OfficetelRoute,
   PrivacyRoute: PrivacyRoute,
   RegisterRoute: RegisterRoute,
   VisitRoute: VisitRoute,
