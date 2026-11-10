@@ -46,7 +46,10 @@ export function RegisterForm() {
   const [birth, setBirth] = useState("");
   const [birthWarn, setBirthWarn] = useState(false);
   const [collect, setCollect] = useState(false);
-  const [marketing, setMarketing] = useState(false);
+  const [mkPhone, setMkPhone] = useState(false);
+  const [mkSms, setMkSms] = useState(false);
+  const marketing = mkPhone || mkSms;
+  const setMarketing = (on: boolean) => { setMkPhone(on); setMkSms(on); };
   const [sido, setSido] = useState("");
   const [sigungu, setSigungu] = useState("");
   const [dong, setDong] = useState("");
@@ -244,7 +247,7 @@ export function RegisterForm() {
                   {errors.product ? <p className="reg__msg">{errors.product}</p> : null}
                 </fieldset>
                 <label className="reg-dialog__all">
-                  <input type="checkbox" checked={age14 && collect && marketing} onChange={(e) => { const on = e.target.checked; setAge14(on); setCollect(on); setMarketing(on); }} />
+                  <input type="checkbox" checked={age14 && collect && mkPhone && mkSms} onChange={(e) => { const on = e.target.checked; setAge14(on); setCollect(on); setMarketing(on); }} />
                   모두 확인하였으며 동의합니다.
                 </label>
                 <p className="reg-dialog__fine">전체 동의에는 필수 및 선택 정보에 대한 동의가 포함되어 있으며, 개별적으로 동의를 선택하실 수 있습니다. 선택 항목에 대한 동의를 거부하시는 경우에도 참여가 가능합니다.</p>
@@ -259,7 +262,11 @@ export function RegisterForm() {
                     <label><input type="checkbox" checked={marketing} onChange={(e) => setMarketing(e.target.checked)} /> [선택] 광고성 정보 수신 동의</label>
                     <button type="button" aria-label="광고성 정보 수신 동의 펼치기" onClick={() => setOpen(open === "marketing" ? "" : "marketing")}>›</button>
                   </div>
-                  {open === "marketing" ? <div className="reg__consent"><p><b>광고성 정보 수신 안내</b></p><p>청라 아크원 푸르지오 분양 상담팀은 고객님의 별도 동의에 따라 청라 아크원 푸르지오의 분양 관련 광고성 정보를 안내합니다.</p><p>1. 광고 전송자 : 청라 아크원 푸르지오 분양 상담팀(문의 1833-3872)</p><p>2. 광고 내용 : 청라 아크원 푸르지오 아파트·오피스텔·상업시설의 견본주택, 분양 일정, 청약·계약 일정·모집공고 및 분양 관련 이벤트 안내</p><p>3. 광고 수신 방법 : 문자(SMS)·카카오톡으로 광고성 정보를 전송합니다.</p><p>4. 광고성 정보 수신거부 및 동의 철회 : 고객님께서는 언제든지 무료로 광고성 정보 수신을 거부하거나 동의를 철회하실 수 있습니다(문의 1833-3872). 수신동의·거부·철회 의사표시일로부터 14일 이내에 처리 결과를 안내합니다. ※ 야간(21:00~다음 날 08:00)에는 광고성 정보를 발송하지 않습니다.</p><p>5. 동의 거부 권리 : 선택 동의이며, 동의하지 않으셔도 사전고객등록을 진행하실 수 있습니다.</p></div> : null}
+                  <div className="reg-dialog__sub">
+                    <label><input type="checkbox" checked={mkPhone} onChange={(e) => setMkPhone(e.target.checked)} /> [선택] 전화 수신동의</label>
+                    <label><input type="checkbox" checked={mkSms} onChange={(e) => setMkSms(e.target.checked)} /> [선택] SMS, SNS(카카오톡) 수신동의</label>
+                  </div>
+                  {open === "marketing" ? <div className="reg__consent"><p><b>광고성 정보 수신 안내</b></p><p>청라 아크원 푸르지오 분양 상담팀은 고객님의 별도 동의에 따라 청라 아크원 푸르지오의 분양 관련 광고성 정보를 안내합니다.</p><p>1. 광고 전송자 : 청라 아크원 푸르지오 분양 상담팀(문의 1833-3872)</p><p>2. 광고 내용 : 청라 아크원 푸르지오 아파트·오피스텔·상업시설의 견본주택, 분양 일정, 청약·계약 일정·모집공고 및 분양 관련 이벤트 안내</p><p>3. 광고 수신 방법 : 동의하신 방법(전화 / 문자(SMS)·카카오톡)으로 광고성 정보를 전송합니다.</p><p>4. 광고성 정보 수신거부 및 동의 철회 : 고객님께서는 언제든지 무료로 광고성 정보 수신을 거부하거나 동의를 철회하실 수 있습니다(문의 1833-3872). 수신동의·거부·철회 의사표시일로부터 14일 이내에 처리 결과를 안내합니다. ※ 야간(21:00~다음 날 08:00)에는 광고성 정보를 발송하지 않습니다.</p><p>5. 동의 거부 권리 : 선택 동의이며, 동의하지 않으셔도 사전고객등록을 진행하실 수 있습니다.</p></div> : null}
                 </div>
                 {errors.age ? <p className="reg__msg">{errors.age}</p> : null}
                 {errors.collect ? <p className="reg__msg">{errors.collect}</p> : null}
