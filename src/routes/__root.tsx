@@ -18,13 +18,20 @@ export const Route = createRootRoute({
       { name: "google", content: "notranslate" },
       // 구 네이버 토큰은 레거시 호스트에서만 유지. 한글 도메인은 홈에만 de62f799·msvalidate(미들웨어)를 둔다.
       ...(isKrHost() ? [] : [{ name: "naver-site-verification", content: "3c9a81c691a4cdec3415b6d3e7f832ea0015e2a9" }]),
-      { title: en ? "Cheongna Ark-One Prugio | Guide" : SITE_NAME },
-      {
-        name: "description",
-        content: en
-          ? "Notice posted 22 Oct 2026. Model house opens 30 Oct. Contract 22-24 Nov. Apt 868 units."
-          : "청라 아크원 푸르지오 분양 정보 안내",
-      },
+      // The 14 public routes already supply their own title and description.
+      // Do not override them with a generic root tag; keep a fallback for
+      // utility, auth and error pages without an indexable leaf route.
+      ...(!(isIndexablePath(hrefPath) && matches.length > 1 && !matches.some((m) => m.status === "notFound" || m.status === "error"))
+        ? [
+            { title: en ? "Cheongna Ark-One Prugio | Guide" : SITE_NAME },
+            {
+              name: "description",
+              content: en
+                ? "Notice posted 22 Oct 2026. Model house opens 30 Oct. Contract 22-24 Nov. Apt 868 units."
+                : "청라 아크원 푸르지오 분양 정보 안내",
+            },
+          ]
+        : []),
       { name: "theme-color", content: "#004B45" },
       {
         name: "robots",
