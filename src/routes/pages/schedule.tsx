@@ -8,6 +8,10 @@ import { SRC_APPLYHOME } from "@/lib/arkone-facts";
 import { NoticePayment, NoticePrice, PRICE_FAQ_ANSWER } from "@/components/notice-sections";
 
 const FAQ: GuideFaq[] = [
+  { q: "청라 아크원 푸르지오 청약 결과는 어떻게 나왔나요?", a: "한국부동산원 청약홈 집계를 인용한 보도(스트레이트뉴스, 2026-11-04)에 따르면 1순위는 604가구 모집에 1,348건이 접수되어 평균 2.23대 1을 기록했습니다. 84㎡A는 1순위에서 마감되었고, 일부 주택형은 1순위에서 모집 가구 수를 채우지 못해 2순위로 이어졌습니다. 정확한 결과는 청약홈에서 확인할 수 있습니다." },
+  { q: "청라 아크원 푸르지오 당첨자 서류접수와 계약은 언제인가요?", a: "당첨자 서류접수 기간은 11.12(목)~11.16(월), 정당계약 기간은 11.22(일)~11.24(화)입니다. 세부 일정과 준비 서류는 입주자모집공고와 견본주택 안내를 따릅니다." },
+  { q: "청라 아크원 푸르지오 103㎡B 선착순은 언제인가요?", a: "103㎡B 타입은 2026년 11월 28일 선착순 분양이 진행될 예정이며, 사전에 의향서를 받을 예정입니다. 참여를 원하시면 담당자에게 연락해 의향서 접수 방법과 조건을 확인하시기 바랍니다." },
+  { q: "청라 아크원 푸르지오 오피스텔·상가 분양은 언제인가요?", a: "오피스텔과 상가(근린생활시설)는 11월 말 분양 예정입니다. 세부 일정은 견본주택으로 문의하시기 바랍니다." },
   {
     q: "청라 아크원 푸르지오 분양 일정은 어떻게 되나요?",
     a: "입주자모집공고는 2026.10.22(목) 게시되었습니다. 특별공급 11.02(월), 일반공급 1순위 11.03(화), 2순위 11.04(수), 당첨자 발표 11.10(화), 당첨자 서류접수 11.12(목)~11.16(월), 계약 11.22(일)~11.24(화)입니다. 일정이 바뀌면 입주자모집공고문이 우선합니다.",
@@ -82,7 +86,7 @@ function SchedulePage() {
               <>
                 <p>The apartment recruitment notice for Cheongna Ark-One Prugio was posted on 22 Oct 2026.</p>
                 <p>Notice posted 22 Oct 2026. The model house is open until further notice. Call 1833-3872 for the details.</p>
-                <p>Special supply is 2 Nov. First rank is 3 Nov. Second rank is 4 Nov. Winners are announced on 10 Nov. Document submission is 12-16 Nov. Contracts are 22-24 Nov. Supply amounts are in the recruitment notice (housing management number 2026000496) by type building floor and unit. Call 1833-3872 for a specific unit. Move-in is planned for August 2031 and can change with construction.</p>
+                <p>Special supply is 2 Nov. First rank is 3 Nov. Second rank is 4 Nov. Winners were announced on 10 Nov. Results can be checked on Applyhome. Document submission is 12-16 Nov. Contracts are 22-24 Nov. Supply amounts are in the recruitment notice (housing management number 2026000496) by type building floor and unit. Call 1833-3872 for a specific unit. Move-in is planned for August 2031 and can change with construction.</p>
                 <p>The schedule can change so read the notice on Applyhome before you apply.</p>
                 <p>Source: <a href="https://www.applyhome.co.kr" target="_blank" rel="noopener noreferrer">Applyhome</a> recruitment notice (posted 22 Oct 2026) · checked 2026-10-29</p>
               </>

@@ -104,7 +104,11 @@ export const FAQ_OVERVIEW = [
 ];
 
 export const FAQ_SCHEDULE = [
-  { q: "What is the Cheongna Ark-One Prugio sale schedule?", a: "The recruitment notice was posted on 22 Oct 2026. Special supply is 2 Nov. First rank is 3 Nov. Second rank is 4 Nov. Winners are announced on 10 Nov. Document submission is 12-16 Nov. Contracts are 22-24 Nov. If the schedule changes the notice prevails." },
+  { q: "How did the Cheongna Ark-One Prugio subscription turn out?", a: "A report citing Korea Real Estate Board's Applyhome data (Straight News, 4 Nov 2026) says first-rank applications totaled 1,348 for 604 units, an average of 2.23 to 1. The 84㎡A type closed in first rank, and some types continued to second rank because first-rank applications did not fill them. Check Applyhome for exact results." },
+  { q: "When are winner document submission and contracts?", a: "Winner documents are accepted from 12 to 16 Nov, and contracts are signed from 22 to 24 Nov. Follow the recruitment notice and the model house for details." },
+  { q: "When is the first-come sale for the 103㎡B type?", a: "A first-come sale for the 103㎡B type is planned for 28 Nov 2026, with letters of intent to be collected in advance. Contact the sales staff to confirm how to submit a letter of intent and the conditions." },
+  { q: "When do the officetel and retail units go on sale?", a: "The officetels and retail units (neighborhood facilities) are planned to go on sale at the end of November. Ask the model house for detailed dates." },
+  { q: "What is the Cheongna Ark-One Prugio sale schedule?", a: "The recruitment notice was posted on 22 Oct 2026. Special supply is 2 Nov. First rank is 3 Nov. Second rank is 4 Nov. Winners were announced on 10 Nov. Results can be checked on Applyhome. Document submission is 12-16 Nov. Contracts are 22-24 Nov. If the schedule changes the notice prevails." },
   { q: "What is the sale price?", a: PRICE },
   { q: "When was the price published and where can I read it?", a: "Apt supply amounts were published on 22 Oct 2026 in the recruitment notice (housing management number 2026000496) pages 6 to 20 by type building floor and unit. Read the notice on applyhome.co.kr. The officetel has a separate notice. Call 1833-3872 for a specific unit." },
   { q: "What should I prepare before applying?", a: "Read the recruitment notice posted on 22 Oct 2026 on Applyhome and check your savings account region and home ownership against that notice." },

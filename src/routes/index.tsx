@@ -56,7 +56,7 @@ function homeJsonLd(origin: string, en: boolean) {
         name,
         inLanguage: lang,
         isPartOf: { "@id": `${origin}/#website` },
-        dateModified: "2026-10-29",
+        dateModified: "2026-11-12",
       },
     ],
   });
@@ -349,7 +349,7 @@ function Home() {
               { y: "2028", img: "history_img_2028.v4.jpg", cap: ["돔구장&스타필드 청라 (개장 예정)"] },
               { y: "2029", img: "history_img_2029.v4.jpg", cap: ["서울아산청라병원 (예정)"] },
               { y: "개통 시기 미정", img: "history_img_2030.v4.webp", cap: ["7호선 국제업무단지역 (예정)"] },
-              { y: "시기 미정", img: "history_img_공고 후.v4.jpg", cap: ["영상문화복합단지 (계획)"] },
+              { y: "시기 미정", img: "history_img_2031.v4.jpg", cap: ["영상문화복합단지 (계획)"] },
               { y: "2031.08", img: "history_img_ark_one.v4.jpg", cap: ["청라 아크원 푸르지오 (2031년 08월 입주예정)"] },
             ].map((ev) => (
               <article className="history-card" key={ev.img}>
