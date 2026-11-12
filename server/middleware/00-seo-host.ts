@@ -17,15 +17,15 @@ const EN_HOSTS = new Set<string>([]);
 
 /** path -> lastmod (git commit date of the page's last content change). */
 const KR_SITEMAP: ReadonlyArray<readonly [string, string]> = [
-  ["/", "2026-10-29"],
+  ["/", "2026-11-12"],
   ["/pages/overview", "2026-10-29"],
   ["/pages/compare", "2026-10-29"],
-  ["/pages/schedule", "2026-10-29"],
+  ["/pages/schedule", "2026-11-12"],
   ["/pages/location", "2026-10-29"],
   ["/pages/contact", "2026-10-29"],
-  ["/pages/changeinfo", "2026-10-29"],
+  ["/pages/changeinfo", "2026-11-12"],
   ["/pages/docspecial", "2026-10-29"],
-  ["/pages/docnormal", "2026-10-29"],
+  ["/pages/docnormal", "2026-11-12"],
   ["/pages/premium", "2026-10-06"],
   ["/pages/brand", "2026-10-09"],
   ["/board/news_list", "2026-10-08"],

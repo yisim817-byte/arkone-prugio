@@ -9,7 +9,7 @@ import { imgDims } from "@/components/img";
 import { NoticeEligibility } from "@/components/notice-sections";
 
 const FAQ_KO: GuideFaq[] = [
-  { q: "일반공급 1순위와 2순위는 언제 받나요?", a: "1순위 접수는 11.03(화)이고 2순위 접수는 11.04(수)입니다. 당첨자 발표는 11.10(화)입니다." },
+  { q: "일반공급 1순위와 2순위는 언제 받나요?", a: "1순위 접수는 11.03(화)이고 2순위 접수는 11.04(수)입니다. 당첨자 발표는 11.10(화)에 있었습니다. 결과는 청약홈에서 확인할 수 있습니다." },
   { q: "일반공급 계약 기간은 어떻게 되나요?", a: "계약은 11.22(일)부터 11.24(화)까지입니다. 서류 접수는 11.12(목)부터 11.16(월)까지입니다." },
   { q: "입주 예정 시기는 언제인가요?", a: "입주 예정은 2031년 08월입니다. 공정에 따라 바뀔 수 있습니다." },
   { q: "전매제한과 거주의무는 어떻게 되나요?", a: "전매제한은 3년이고 재당첨 제한은 10년입니다. 거주의무는 없습니다." },
@@ -35,7 +35,7 @@ function DocNormalPage() {
       <div className="page_content">
         <section className="page_container">
           <GuideAnswer title={tx("청라 아크원 푸르지오 일반공급 안내 요약", META.docnormal.h1)}>
-            <p>{tx("청라 아크원 푸르지오 일반공급은 1순위 11.03(화), 2순위 11.04(수) 접수이며 당첨자 발표는 11.10(화)입니다. 2026.10.22(목) 게시된 입주자모집공고 기준이며, 신청 전 청약홈 공고문을 확인하시기 바랍니다.", "General supply for Cheongna Ark-One Prugio is first rank on 3 Nov and second rank on 4 Nov. Winners are announced on 10 Nov. This follows the notice posted on 22 Oct 2026. Read the Applyhome notice before you apply.")}</p>
+            <p>{tx("청라 아크원 푸르지오 일반공급은 1순위 11.03(화), 2순위 11.04(수) 접수이며 당첨자 발표는 11.10(화)에 있었습니다. 결과는 청약홈에서 확인할 수 있습니다. 2026.10.22(목) 게시된 입주자모집공고 기준이며, 신청 전 청약홈 공고문을 확인하시기 바랍니다.", "General supply for Cheongna Ark-One Prugio is first rank on 3 Nov and second rank on 4 Nov. Winners were announced on 10 Nov. Results can be checked on Applyhome. This follows the notice posted on 22 Oct 2026. Read the Applyhome notice before you apply.")}</p>
           </GuideAnswer>
           <NoticeEligibility />
             <p>특별공급은 1세대당 평생 1회로 제한됩니다. 이 단지의 청약 자격·공급 비율·일정은 2026.10.22(목) 게시된 입주자모집공고문(청약홈)으로 확인할 수 있습니다.</p>
