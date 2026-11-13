@@ -185,21 +185,21 @@ function Home() {
 
         <section className="event-card" aria-labelledby="event-title">
           <div className="event-card__inner">
-            <p className="event-card__eyebrow">{tx("상가·오피스텔 사전등록 이벤트", "Retail and officetel pre-registration event")}</p>
+            <p className="event-card__eyebrow">{tx("오피스텔 사전고객등록 이벤트", "Officetel pre-registration event")}</p>
             <h2 id="event-title">{tx("백화점 상품권 50만원", "Department-store gift card 500000 won")}</h2>
             <p className="event-card__brands">{tx("상품권 종류: 롯데·현대·신세계 백화점 가운데 1종", "One gift card from Lotte Hyundai or Shinsegae")}</p>
-            <p className="event-card__basis">{tx("받으실 수 있는 분: 이 홈페이지에서 상가·오피스텔 사전등록을 한 뒤 오피스텔 또는 상가를 계약한 고객입니다.", "Who can receive it: a customer who pre-registers for retail or officetel on this site and then signs a contract.")}</p>
-            <p className="event-card__payout">{tx("상품권은 오피스텔·상가 계약 시 드립니다. 이벤트 기간은 11월 20일(금)까지입니다.", "The card is given at the officetel or retail contract. The event runs until 20 Nov.")}</p>
-            <ol className="event-card__steps"><li>{tx("STEP 1 상가·오피스텔 사전등록(홈페이지)", "STEP 1 Pre-register on this site")}</li><li>{tx("STEP 2 오피스텔·상가 계약", "STEP 2 Sign the contract")}</li><li>{tx("STEP 3 계약 시 상품권 수령", "STEP 3 Receive the card at the contract")}</li></ol>
+            <p className="event-card__basis">{tx("받으실 수 있는 분: 이 홈페이지에서 오피스텔 사전고객등록을 한 뒤 오피스텔을 계약한 고객입니다.", "Who can receive it: a customer who pre-registers for officetel on this site and then signs a contract.")}</p>
+            <p className="event-card__payout">{tx("상품권은 오피스텔 계약 시 드립니다. 이벤트 기간은 11월 20일(금)까지입니다.", "The card is given at the officetel contract. The event runs until 20 Nov.")}</p>
+            <ol className="event-card__steps"><li>{tx("STEP 1 오피스텔 사전고객등록(홈페이지)", "STEP 1 Pre-register on this site")}</li><li>{tx("STEP 2 오피스텔 계약", "STEP 2 Sign the contract")}</li><li>{tx("STEP 3 계약 시 상품권 수령", "STEP 3 Receive the card at the contract")}</li></ol>
             <div className="event-card__actions"><Link className="event-card__button" to="/register">{tx("사전등록하기", "Pre-register")}</Link><a href="#event-terms">{tx("유의사항 자세히 보기", "Read the notes")}</a></div>
             <p className="event-card__schedule">{tx("일정: 입주자모집공고 게시 2026.10.22(목) · 견본주택 별도 공지 시까지 운영 · 세부 일정은 대표번호 1833-3872로 문의", "Schedule: notice posted 22 Oct 2026 · model house open until further notice · call 1833-3872")}</p>
             <p>등록 여부는 <a href={SITE_TEL_HREF}>1833-3872</a>(대표번호)에서 확인하실 수 있습니다.</p>
-            <details id="event-terms" className="event-card__terms"><summary>이벤트 유의사항 (청라 아크원 푸르지오 상가·오피스텔 사전등록)</summary>
+            <details id="event-terms" className="event-card__terms"><summary>이벤트 유의사항 (청라 아크원 푸르지오 오피스텔 사전고객등록)</summary>
               <ol>
-                <li>대상: 이 홈페이지에서 상가·오피스텔 사전등록을 한 뒤 청라 아크원 푸르지오 오피스텔 또는 상가를 계약한 고객</li>
+                <li>대상: 이 홈페이지에서 오피스텔 사전고객등록을 한 뒤 청라 아크원 푸르지오 오피스텔을 계약한 고객</li>
                 <li>혜택: 백화점 상품권 50만원 (롯데·현대·신세계 중 1종 선택)</li>
                 <li>이벤트 기간: 2026년 11월 20일(금)까지</li>
-                <li>지급 시기: 오피스텔·상가 계약 시 지급합니다.</li>
+                <li>지급 시기: 오피스텔 계약 시 지급합니다.</li>
                 <li>1인(동일인·동일 휴대전화번호) 1회 지급합니다.</li>
                 <li>지급조건을 모두 충족한 고객에 한해 지급합니다.</li>
                 <li>계약 미체결·취소·해제 시 지급 대상에서 제외됩니다. 지급 후 해당 사유가 발생한 경우의 처리 기준은 담당자가 개별 안내합니다.</li>
