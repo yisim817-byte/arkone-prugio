@@ -18,6 +18,8 @@ const GUIDE_H1_PATHS = new Set([
   "/pages/video",
   "/board/news_list",
   "/event",
+  // 작업지시서 17 (2026-11-13): 103㎡B 선착순 안내 페이지는 본문에 고유 H1이 있다
+  "/103b",
 ]);
 
 export function SiteHeader({ home = false }: { home?: boolean }) {

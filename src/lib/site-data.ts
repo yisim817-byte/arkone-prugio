@@ -42,6 +42,7 @@ export const NAV: NavItem[] = [
       { krName: "변경된 청약제도", enName: "Change", to: "/pages/changeinfo" },
       { krName: "특별공급", enName: "Special", to: "/pages/docspecial" },
       { krName: "일반공급", enName: "General", to: "/pages/docnormal" },
+      { krName: "103㎡B 선착순 안내", enName: "103B", to: "/103b" },
     ],
   },
   {
@@ -128,6 +129,7 @@ export const PAGE_META: Record<
     parentKr: "청약안내",
     parentEn: "INFORMATION",
   },
+  "/103b": { en: "INFORMATION", kr: "103㎡B 선착순 안내", parentKr: "청약안내", parentEn: "INFORMATION" },
   "/board/news_list": { en: "NEWS", kr: "언론보도", parentKr: "홍보센터", parentEn: "MEDIA" },
   "/pages/video": { en: "MEDIA", kr: "홍보영상", parentKr: "홍보센터", parentEn: "MEDIA" },
   "/pages/plans": { en: "PLANS", kr: "평면정보", parentKr: "아파트", parentEn: "APT" },

@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as R103bRouteImport } from './routes/103b'
 import { Route as EventRouteImport } from './routes/event'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as RegisterRouteImport } from './routes/register'
@@ -31,6 +32,11 @@ import { Route as PagesVideoRouteImport } from './routes/pages/video'
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const R103bRoute = R103bRouteImport.update({
+  id: '/103b',
+  path: '/103b',
   getParentRoute: () => rootRouteImport,
 } as any)
 const EventRoute = EventRouteImport.update({
@@ -121,6 +127,7 @@ const PagesVideoRoute = PagesVideoRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/103b': typeof R103bRoute
   '/event': typeof EventRoute
   '/privacy': typeof PrivacyRoute
   '/register': typeof RegisterRoute
@@ -141,6 +148,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/103b': typeof R103bRoute
   '/event': typeof EventRoute
   '/privacy': typeof PrivacyRoute
   '/register': typeof RegisterRoute
@@ -162,6 +170,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/103b': typeof R103bRoute
   '/event': typeof EventRoute
   '/privacy': typeof PrivacyRoute
   '/register': typeof RegisterRoute
@@ -184,6 +193,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/103b'
     | '/event'
     | '/privacy'
     | '/register'
@@ -204,6 +214,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/103b'
     | '/event'
     | '/privacy'
     | '/register'
@@ -224,6 +235,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/103b'
     | '/event'
     | '/privacy'
     | '/register'
@@ -245,6 +257,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  R103bRoute: typeof R103bRoute
   EventRoute: typeof EventRoute
   PrivacyRoute: typeof PrivacyRoute
   RegisterRoute: typeof RegisterRoute
@@ -271,6 +284,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/103b': {
+      id: '/103b'
+      path: '/103b'
+      fullPath: '/103b'
+      preLoaderRoute: typeof R103bRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/event': {
@@ -397,6 +417,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  R103bRoute: R103bRoute,
   EventRoute: EventRoute,
   PrivacyRoute: PrivacyRoute,
   RegisterRoute: RegisterRoute,

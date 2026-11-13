@@ -27,6 +27,7 @@ export const INDEXABLE_PATHS = [
   "/board/news_list",
   "/pages/video",
   "/event",
+  "/103b",
 ] as const;
 
 const INDEXABLE = new Set<string>(INDEXABLE_PATHS);
