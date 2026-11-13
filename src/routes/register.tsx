@@ -27,6 +27,7 @@ function RegisterPage() {
           <aside className="register-layout__summary" aria-label="이벤트 및 일정 안내">
             <p className="prereg-deadline" style={{ color: "#a8834a", fontWeight: 700, letterSpacing: "-0.01em" }}>상가·오피스텔 상시 접수</p>
             <p>상가·오피스텔 사전등록 후 오피스텔·상가 계약 시 백화점 상품권 50만원 (롯데·현대·신세계 중 선택) · 11월 20일(금)까지</p>
+            <p>지급조건을 모두 충족한 고객에 한해 지급합니다.</p>
             <a href="/#event-terms">유의사항 보기</a>
             <div className="register-layout__schedule">
               <h2>모집 일정</h2>

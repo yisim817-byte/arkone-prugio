@@ -173,7 +173,7 @@ export function VisitForm() {
       </form>
       <p className="visit-block__note">※ 방문 시간은 담당자가 전화로 확정 안내합니다.</p>
       <p className="visit-block__note">※ 방문예약은 청약 신청이 아니며, 청약 자격·순위와 관계없습니다.</p>
-      <p className="visit-block__note">※ 방문예약은 사전고객등록과 별개입니다. 백화점 상품권·코스트코 회원권 이벤트는 사전고객등록을 한 분이 대상입니다. <Link to="/register">사전고객등록 하기</Link></p>
+      <p className="visit-block__note">※ 방문예약은 사전고객등록과 별개입니다. 백화점 상품권·코스트코 회원권 이벤트는 사전고객등록을 한 분이 대상입니다. 지급조건을 모두 충족한 고객에 한해 지급합니다. <Link to="/register">사전고객등록 하기</Link></p>
     </div>
   );
 }
