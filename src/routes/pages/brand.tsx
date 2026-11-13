@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { SiteShell } from "@/components/site-shell";
 import { GuideDetail } from "@/components/seo-guide";
 import { SubNotice } from "@/components/notice";
-import { canonicalLinks, tx } from "@/lib/seo-host";
+import { canonicalLinks, isKrHost, KR_ORIGIN, tx } from "@/lib/seo-host";
 import { FAQ_BRAND, META } from "@/lib/i18n/en";
 import { imgDims } from "@/components/img";
 
@@ -106,7 +106,7 @@ function BrandPage() {
               </p>
             </div>
             <picture className="brand_image__slogan">
-              <img src="/resources/img/sub/brand_slogan_img.svg" alt="Cheongna Arkone Prugio라고 적힌 손글씨 슬로건" {...imgDims("/resources/img/sub/brand_slogan_img.svg")} data-dims="" />
+              <img src="/resources/img/sub/brand_slogan_img.svg" alt="청라 아크원 푸르지오 Cheongna Arkone Prugio라고 적힌 손글씨 슬로건" {...imgDims("/resources/img/sub/brand_slogan_img.svg")} data-dims="" />
             </picture>
           </div>
 
@@ -127,7 +127,7 @@ function BrandPage() {
                     ))}
                   </ul>
                   <figure className="brand_history__thumb">
-                    <img src={item.img} alt={`${item.year} ${item.items.join(", ")} 이미지`} {...imgDims(item.img)} data-dims="" />
+                    <img src={item.img} alt={`청라 아크원 푸르지오 ${item.year} ${item.items.join(", ")} 이미지`} {...imgDims(item.img)} data-dims="" />
                   </figure>
                   {item.badge ? (
                     <p className={`brand_history__badge${item.primary ? " brand_history__badge-primary" : ""}`}>
@@ -147,7 +147,13 @@ function BrandPage() {
         </section>
       </div>
           <GuideDetail faq={faq} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(isKrHost() ? {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "@id": `${KR_ORIGIN}/pages/brand#faq`,
+        isPartOf: { "@id": `${KR_ORIGIN}/pages/brand#webpage` },
+        mainEntity: faq.map(({ q, a }) => ({ "@type": "Question", name: q, acceptedAnswer: { "@type": "Answer", text: a } })),
+      } : {
         "@context": "https://schema.org",
         "@type": "FAQPage",
         mainEntity: faq.map(({ q, a }) => ({ "@type": "Question", name: q, acceptedAnswer: { "@type": "Answer", text: a } })),

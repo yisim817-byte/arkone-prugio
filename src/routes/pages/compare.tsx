@@ -48,7 +48,7 @@ export const Route = createFileRoute("/pages/compare")({
       },
     ],
     links: canonicalLinks("/pages/compare"),
-    scripts: faqJsonLd(compareFaq()),
+    scripts: faqJsonLd(compareFaq(), "/pages/compare"),
   }),
 });
 
@@ -82,20 +82,20 @@ function ComparePage() {
           <NoticeTypes
             after84c={<>
               <PlanFigure plan="84c" withPrice />
-              <UnitFigure file="unit-84c-living-ai.webp" alt="84㎡C 거실 인테리어 연출 이미지(AI 제작)" />
-              <UnitFigure file="unit-84c-living-kitchen-ai.webp" alt="84㎡C 거실·주방 인테리어 연출 이미지(AI 제작)" />
+              <UnitFigure file="unit-84c-living-ai.webp" alt="청라 아크원 푸르지오 84㎡C 거실 인테리어 연출 이미지(AI 제작)" />
+              <UnitFigure file="unit-84c-living-kitchen-ai.webp" alt="청라 아크원 푸르지오 84㎡C 거실·주방 인테리어 연출 이미지(AI 제작)" />
             </>}
             after103a={
               <>
                 <PlanFigure plan="103a" withPrice />
                 <NoticePrice />
-                <UnitFigure file="unit-103a-alpha-study-ai.webp" alt="103㎡A 알파룸을 서재로 꾸민 인테리어 연출 이미지(AI 제작)" />
+                <UnitFigure file="unit-103a-alpha-study-ai.webp" alt="청라 아크원 푸르지오 103㎡A 알파룸을 서재로 꾸민 인테리어 연출 이미지(AI 제작)" />
               </>
             }
             gallery={<div className="unit-gallery" aria-label="인테리어 연출">
               <h3 className="seo-guide__subtitle">인테리어 연출</h3>
-              <UnitFigure file="interior-master-bedroom-ai.webp" alt="침실 인테리어 연출 이미지(AI 제작)" />
-              <UnitFigure file="interior-bathroom-ai.webp" alt="욕실 인테리어 연출 이미지(AI 제작)" />
+              <UnitFigure file="interior-master-bedroom-ai.webp" alt="청라 아크원 푸르지오 침실 인테리어 연출 이미지(AI 제작)" />
+              <UnitFigure file="interior-bathroom-ai.webp" alt="청라 아크원 푸르지오 욕실 인테리어 연출 이미지(AI 제작)" />
             </div>}
           />
           <GuideDetail

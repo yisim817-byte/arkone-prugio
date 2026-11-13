@@ -22,7 +22,7 @@ function SoonCard({ kind, portrait, headingId }: { kind: Kind; portrait?: boolea
           )}
         </div>
         <div className="popup_soon__content">
-          <p className="popup_soon__logo"><img src="/official/soon/logo.svg" alt="PRUGIO" width={257} height={45} /></p>
+          <p className="popup_soon__logo"><img src="/official/soon/logo.svg" alt="청라 아크원 푸르지오 PRUGIO 로고" width={257} height={45} /></p>
           <div className="popup_soon__heading">
             <h2 id={headingId} className="popup_soon__title">
               <span className="popup_soon__brand">청라 아크원 푸르지오</span>
@@ -60,7 +60,7 @@ function B103Card() {
   return (
     <div className="popup_soon otp-b103">
       <div className="otp-b103__dialog">
-        <p className="otp-b103__logo"><img src="/official/soon/logo.svg" alt="PRUGIO" width={257} height={45} /></p>
+        <p className="otp-b103__logo"><img src="/official/soon/logo.svg" alt="청라 아크원 푸르지오 PRUGIO 로고" width={257} height={45} /></p>
         <h2 id="otp-b103-title" className="otp-b103__title">
           <span className="otp-b103__brand">청라 아크원 푸르지오</span>
           <span className="otp-b103__type">103㎡B</span>

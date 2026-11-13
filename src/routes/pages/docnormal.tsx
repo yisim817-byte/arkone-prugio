@@ -24,7 +24,7 @@ export const Route = createFileRoute("/pages/docnormal")({
       { name: "description", content: tx("청라 아크원 푸르지오 일반공급 안내. 1순위 11.03(화) · 2순위 11.04(수) · 당첨자 발표 11.10(화). 2026.10.22 공고 기준.", META.docnormal.desc) },
     ],
     links: canonicalLinks("/pages/docnormal"),
-    scripts: isEnHost() ? [] : faqJsonLd(FAQ_KO),
+    scripts: isEnHost() ? [] : faqJsonLd(FAQ_KO, "/pages/docnormal"),
   }),
 });
 
@@ -40,7 +40,7 @@ function DocNormalPage() {
           <NoticeEligibility />
             <p>특별공급은 1세대당 평생 1회로 제한됩니다. 이 단지의 청약 자격·공급 비율·일정은 2026.10.22(목) 게시된 입주자모집공고문(청약홈)으로 확인할 수 있습니다.</p>
           <figure>
-            <img src={src} alt="청약 전 확인사항과 예치금액 표를 담은 일반공급 안내문" {...imgDims(src)} data-dims="" />
+            <img src={src} alt="청라 아크원 푸르지오 청약 전 확인사항과 예치금액 표를 담은 일반공급 안내문" {...imgDims(src)} data-dims="" />
           </figure>
           <ZoomButton href={src} />
           <GuideDetail
