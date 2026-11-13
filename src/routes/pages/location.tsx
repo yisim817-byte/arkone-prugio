@@ -37,7 +37,7 @@ export const Route = createFileRoute("/pages/location")({
       { name: "description", content: tx("청라 아크원 푸르지오 입지. 청라동 86-1번지 국제업무단지 M5BL, 청라하늘대교, 7호선 국제업무단지역(예정·개통 시기 미정) 등 교통·생활 환경과 근거 자료.", META.location.desc) },
     ],
     links: canonicalLinks("/pages/location"),
-    scripts: faqJsonLd(locationFaq()),
+    scripts: faqJsonLd(locationFaq(), "/pages/location"),
   }),
 });
 

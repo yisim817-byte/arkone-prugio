@@ -56,7 +56,7 @@ function homeJsonLd(origin: string, en: boolean) {
         name,
         inLanguage: lang,
         isPartOf: { "@id": `${origin}/#website` },
-        dateModified: "2026-11-12",
+        dateModified: "2026-11-13",
       },
     ],
   });
@@ -142,11 +142,11 @@ function Home() {
               <span>OF</span>
             </p>
             <h1 className="hero__title">
-              <span className="hero__title_line">CHEONG NA</span>
+              <span className="hero__title_line">CHEONG NA</span>{" "}
               <br />
-              <span className="hero__title_line">ARK-ONE</span>
+              <span className="hero__title_line">ARK-ONE</span>{" "}
               <br />
-              <span className="hero__title_line">PRUGIO</span>
+              <span className="hero__title_line">PRUGIO</span>{" "}
               <span className="hero__title_ko">{tx("청라 아크원 푸르지오", "Cheongna Ark-One Prugio")}</span>
             </h1>
             <span className="hero__open">
@@ -201,6 +201,7 @@ function Home() {
                 <li>이벤트 기간: 2026년 11월 20일(금)까지</li>
                 <li>지급 시기: 오피스텔·상가 계약 시 지급합니다.</li>
                 <li>1인(동일인·동일 휴대전화번호) 1회 지급합니다.</li>
+                <li>지급조건을 모두 충족한 고객에 한해 지급합니다.</li>
                 <li>계약 미체결·취소·해제 시 지급 대상에서 제외됩니다. 지급 후 해당 사유가 발생한 경우의 처리 기준은 담당자가 개별 안내합니다.</li>
                 <li>제세공과금 처리 기준은 확정 후 담당자가 개별 안내합니다.</li>
                 <li>이벤트 내용은 사전 공지 후 변경 또는 조기 종료될 수 있습니다.</li>
@@ -310,7 +311,7 @@ function Home() {
         <section id="location" className="section-location">
           <div className="section-location__visual">
             <p className="section-location__tag">ABSOLUTE REMARKABLE</p>
-            <Img src="/resources/img/pages/main/location_img.v4.webp" alt="검은 배경에 크기가 다른 흑백 구체들이 세로로 배열된 추상 그래픽" />
+            <Img src="/resources/img/pages/main/location_img.v4.webp" alt="청라 아크원 푸르지오 검은 배경에 크기가 다른 흑백 구체들이 세로로 배열된 추상 그래픽" />
             <h2 className="section-location__title">ARK-ONE</h2>
           </div>
           <div className="section-location__info">
@@ -364,7 +365,7 @@ function Home() {
                   )}
                 </time>
                 <figure>
-                  <Img src={`/resources/img/pages/main/${ev.img}`} alt={`${ev.y} ${ev.cap.join(", ")} 이미지`} />
+                  <Img src={`/resources/img/pages/main/${ev.img}`} alt={`청라 아크원 푸르지오 ${ev.y} ${ev.cap.join(", ")} 이미지`} />
                   <figcaption>
                     {ev.cap.map((c) => (
                       <span key={c}>
@@ -382,10 +383,10 @@ function Home() {
         <section id="premium" className="section-premium">
           <div className="section-premium__intro">
             <div className="premium-mosaic">
-              <Img src="/resources/img/pages/main/premium_visual_img_01.v4.webp" alt="거실 인테리어 이미지컷(CG)" />
-              <Img src="/resources/img/pages/main/premium_visual_img_02.v4.webp" alt="주방·다이닝 인테리어 이미지컷(CG)" />
-              <Img src="/resources/img/pages/main/premium_visual_img_03.v4.webp" alt="침실 인테리어 이미지컷(CG)" />
-              <Img src="/resources/img/pages/main/premium_visual_img_04.v4.webp" alt="거실·발코니 인테리어 이미지컷(CG)" />
+              <Img src="/resources/img/pages/main/premium_visual_img_01.v4.webp" alt="청라 아크원 푸르지오 거실 인테리어 이미지컷(CG)" />
+              <Img src="/resources/img/pages/main/premium_visual_img_02.v4.webp" alt="청라 아크원 푸르지오 주방·다이닝 인테리어 이미지컷(CG)" />
+              <Img src="/resources/img/pages/main/premium_visual_img_03.v4.webp" alt="청라 아크원 푸르지오 침실 인테리어 이미지컷(CG)" />
+              <Img src="/resources/img/pages/main/premium_visual_img_04.v4.webp" alt="청라 아크원 푸르지오 거실·발코니 인테리어 이미지컷(CG)" />
             </div>
             <div className="section-premium__copy">
               <h3>
@@ -459,10 +460,10 @@ function Home() {
                 </div>
                 <div className="map-btns">
                   <a href="https://naver.me/xNpQLQ3L" target="_blank" rel="noreferrer">
-                    <Img src="/resources/img/common/ico_naver.svg" alt="견본주택 네이버 지도 바로가기" />
+                    <Img src="/resources/img/common/ico_naver.svg" alt="청라 아크원 푸르지오 견본주택 네이버 지도 바로가기" />
                   </a>
                   <a href="https://kko.to/06V9ttVXOK" target="_blank" rel="noreferrer">
-                    <Img src="/resources/img/common/ico_kko_map.svg" alt="견본주택 카카오 지도 바로가기" />
+                    <Img src="/resources/img/common/ico_kko_map.svg" alt="청라 아크원 푸르지오 견본주택 카카오 지도 바로가기" />
                   </a>
                 </div>
               </div>
@@ -473,10 +474,10 @@ function Home() {
                 </div>
                 <div className="map-btns">
                   <a href="https://naver.me/xSBYFSR0" target="_blank" rel="noreferrer">
-                    <Img src="/resources/img/common/ico_naver.svg" alt="현장 네이버 지도 바로가기" />
+                    <Img src="/resources/img/common/ico_naver.svg" alt="청라 아크원 푸르지오 현장 네이버 지도 바로가기" />
                   </a>
                   <a href="https://kko.to/27AvJsaNys" target="_blank" rel="noreferrer">
-                    <Img src="/resources/img/common/ico_kko_map.svg" alt="현장 카카오 지도 바로가기" />
+                    <Img src="/resources/img/common/ico_kko_map.svg" alt="청라 아크원 푸르지오 현장 카카오 지도 바로가기" />
                   </a>
                 </div>
               </div>
@@ -494,10 +495,10 @@ function Home() {
                 </div>
                 <div className="map-btns">
                   <a href="https://naver.me/xwmqyGWk" target="_blank" rel="noreferrer">
-                    <Img src="/resources/img/common/ico_naver.svg" alt="홍보관 네이버 지도 바로가기" />
+                    <Img src="/resources/img/common/ico_naver.svg" alt="청라 아크원 푸르지오 홍보관 네이버 지도 바로가기" />
                   </a>
                   <a href="https://kko.to/hM9WpE-0fz" target="_blank" rel="noreferrer">
-                    <Img src="/resources/img/common/ico_kko_map.svg" alt="홍보관 카카오 지도 바로가기" />
+                    <Img src="/resources/img/common/ico_kko_map.svg" alt="청라 아크원 푸르지오 홍보관 카카오 지도 바로가기" />
                   </a>
                 </div>
               </div>

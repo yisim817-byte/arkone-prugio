@@ -64,7 +64,7 @@ export function SiteFooter({ onPrivacy }: Props) {
               <Img
                 src="/resources/img/common/logo_daewoo.svg"
                 className="footer__construction-logo"
-                alt="대우건설 시공 로고"
+                alt="청라 아크원 푸르지오 대우건설 시공 로고"
               />
             </p>
           </div>

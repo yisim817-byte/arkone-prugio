@@ -24,7 +24,7 @@ export const Route = createFileRoute("/pages/docspecial")({
       { name: "description", content: tx("청라 아크원 푸르지오 특별공급 안내. 11.02(월) 접수. 자격·물량은 2026.10.22 게시 입주자모집공고와 청약홈에서 확인하세요.", META.docspecial.desc) },
     ],
     links: canonicalLinks("/pages/docspecial"),
-    scripts: isEnHost() ? [] : faqJsonLd(FAQ_KO),
+    scripts: isEnHost() ? [] : faqJsonLd(FAQ_KO, "/pages/docspecial"),
   }),
 });
 
@@ -39,7 +39,7 @@ function DocSpecialPage() {
           </GuideAnswer>
           <NoticeSpecial />
           <figure>
-            <img src={src} alt="기관추천·다자녀·신혼·생애최초 자격표가 있는 특별공급 안내문" {...imgDims(src)} data-dims="" />
+            <img src={src} alt="청라 아크원 푸르지오 기관추천·다자녀·신혼·생애최초 자격표가 있는 특별공급 안내문" {...imgDims(src)} data-dims="" />
           </figure>
           <ZoomButton href={src} />
           <GuideDetail

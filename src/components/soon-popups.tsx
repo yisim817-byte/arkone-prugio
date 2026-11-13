@@ -74,7 +74,7 @@ function Officetel({ open, close, closeRef }: { open: boolean; close: () => void
           </picture>
         </div>
         <div className="popup_soon__content">
-          <p className="popup_soon__logo"><img src="/official/soon/logo.svg" alt="PRUGIO" width={257} height={45} /></p>
+          <p className="popup_soon__logo"><img src="/official/soon/logo.svg" alt="청라 아크원 푸르지오 PRUGIO 로고" width={257} height={45} /></p>
           <div className="popup_soon__heading">
             <h2 id="popup_soon_officetel_title" className="popup_soon__title">
               <span className="popup_soon__brand">청라 아크원 푸르지오</span>
@@ -110,7 +110,7 @@ function Commercial({ open, close, closeRef }: { open: boolean; close: () => voi
           </picture>
         </div>
         <div className="popup_soon__content">
-          <p className="popup_soon__logo"><img src="/official/soon/logo.svg" alt="PRUGIO" width={257} height={45} /></p>
+          <p className="popup_soon__logo"><img src="/official/soon/logo.svg" alt="청라 아크원 푸르지오 PRUGIO 로고" width={257} height={45} /></p>
           <div className="popup_soon__heading">
             <h2 id="popup_soon_commercial_title" className="popup_soon__title">
               <span className="popup_soon__brand">청라 아크원 푸르지오</span>

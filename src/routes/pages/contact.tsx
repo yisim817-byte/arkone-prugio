@@ -37,7 +37,7 @@ export const Route = createFileRoute("/pages/contact")({
       { name: "description", content: tx("청라 아크원 푸르지오 모델하우스·홍보관 방문. 견본주택 청라동 87-1 · 별도 공지 시까지 운영 · 대표번호 1833-3872.", META.contact.desc) },
     ],
     links: canonicalLinks("/pages/contact"),
-    scripts: faqJsonLd(contactFaq()),
+    scripts: faqJsonLd(contactFaq(), "/pages/contact"),
   }),
 });
 

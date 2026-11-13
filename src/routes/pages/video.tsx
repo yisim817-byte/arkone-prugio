@@ -4,7 +4,7 @@ import { SiteShell } from "@/components/site-shell";
 import { GuideDetail } from "@/components/seo-guide";
 import { YoutubeModal } from "@/components/youtube-modal";
 import { YOUTUBE_ID } from "@/lib/site-data";
-import { canonicalLinks, tx } from "@/lib/seo-host";
+import { canonicalLinks, isKrHost, KR_ORIGIN, tx } from "@/lib/seo-host";
 import { FAQ_VIDEO, META } from "@/lib/i18n/en";
 
 export const Route = createFileRoute("/pages/video")({
@@ -12,7 +12,7 @@ export const Route = createFileRoute("/pages/video")({
   head: () => ({
     meta: [
       { title: tx("청라 아크원 푸르지오 홍보영상 | 사업 소개", META.video.title) },
-      { name: "description", content: tx("청라 아크원 푸르지오 홍보영상 모음. 사업주체가 공개한 단지 소개 영상을 확인할 수 있습니다.", META.video.desc) },
+      { name: "description", content: tx("청라 아크원 푸르지오 홍보영상 모음입니다. 사업주체가 공개한 단지 소개 영상을 확인할 수 있으며, 상담은 대표번호 1833-3872로 문의하세요.", META.video.desc) },
     ],
     links: canonicalLinks("/pages/video"),
   }),
@@ -42,7 +42,13 @@ function VideoPage() {
         </section>
       </div>
             <GuideDetail faq={faq} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(isKrHost() ? {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "@id": `${KR_ORIGIN}/pages/video#faq`,
+        isPartOf: { "@id": `${KR_ORIGIN}/pages/video#webpage` },
+        mainEntity: faq.map(({ q, a }) => ({ "@type": "Question", name: q, acceptedAnswer: { "@type": "Answer", text: a } })),
+      } : {
         "@context": "https://schema.org",
         "@type": "FAQPage",
         mainEntity: faq.map(({ q, a }) => ({ "@type": "Question", name: q, acceptedAnswer: { "@type": "Answer", text: a } })),

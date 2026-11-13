@@ -23,6 +23,8 @@ export function SubVisual({ path }: { path: string }) {
               __html: JSON.stringify({
                 "@context": "https://schema.org",
                 "@type": "BreadcrumbList",
+                "@id": `${KR_ORIGIN}${path}#breadcrumb`,
+                isPartOf: { "@id": `${KR_ORIGIN}${path}#webpage` },
                 itemListElement: [
                   { "@type": "ListItem", position: 1, name: "홈", item: `${KR_ORIGIN}/` },
                   { "@type": "ListItem", position: 2, name: meta.parentKr, item: `${KR_ORIGIN}${parent.to}` },
@@ -37,7 +39,7 @@ export function SubVisual({ path }: { path: string }) {
             <source media="(max-width: 1024px)" srcSet="/resources/img/common/sub_visual_img_m.v4.webp" />
             <img
               src="/resources/img/common/sub_visual_img.v4.webp"
-              alt={en ? `Grey curve behind the ${meta.en} page` : `${meta.kr} 상단의 회색 곡선 배경`}
+              alt={en ? `Grey curve behind the ${meta.en} page` : `청라 아크원 푸르지오 ${meta.kr} 상단의 회색 곡선 배경`}
               {...imgDims("/resources/img/common/sub_visual_img.v4.webp")}
               data-dims=""
             />

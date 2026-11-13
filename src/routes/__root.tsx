@@ -53,6 +53,12 @@ export const Route = createRootRoute({
       { rel: "stylesheet", href: appCss },
       { rel: "manifest", href: "/__grok/manifest.webmanifest" },
       { rel: "apple-touch-icon", href: "/g-icon-180.png" },
+      ...(isKrHost()
+        ? [
+            { rel: "apple-touch-icon", href: "/apple-touch-icon.png" },
+            { rel: "manifest", href: "/site.webmanifest" },
+          ]
+        : []),
       {
         rel: "stylesheet",
         href: "https://cdn.jsdelivr.net/gh/sun-typeface/SUIT@2.0.5/fonts/static/woff2/SUIT.css",

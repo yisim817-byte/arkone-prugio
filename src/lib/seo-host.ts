@@ -99,14 +99,18 @@ export function canonicalLinks(path: string) {
 }
 
 /** FAQPage JSON-LD for the Korean host and the English host, only for visible Q&A. */
-export function faqJsonLd(faq: { q: string; a: string }[]) {
+export function faqJsonLd(faq: { q: string; a: string }[], path: string) {
   if ((!isKrHost() && !isEnHost()) || faq.length === 0) return [];
+  const origin = isEnHost() ? EN_ORIGIN : KR_ORIGIN;
+  const canon = `${origin}${path}`;
   return [
     {
       type: "application/ld+json",
       children: JSON.stringify({
         "@context": "https://schema.org",
         "@type": "FAQPage",
+        "@id": `${canon}#faq`,
+        isPartOf: { "@id": `${canon}#webpage` },
         mainEntity: faq.map((item) => ({
           "@type": "Question",
           name: item.q,

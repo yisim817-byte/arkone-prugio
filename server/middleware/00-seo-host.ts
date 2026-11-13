@@ -17,21 +17,21 @@ const EN_HOSTS = new Set<string>([]);
 
 /** path -> lastmod (git commit date of the page's last content change). */
 const KR_SITEMAP: ReadonlyArray<readonly [string, string]> = [
-  ["/", "2026-11-12"],
-  ["/pages/overview", "2026-10-29"],
-  ["/pages/compare", "2026-10-29"],
+  ["/", "2026-11-13"],
+  ["/pages/overview", "2026-11-13"],
+  ["/pages/compare", "2026-11-13"],
   ["/pages/schedule", "2026-11-13"],
   ["/103b", "2026-11-13"],
-  ["/pages/location", "2026-10-29"],
-  ["/pages/contact", "2026-10-29"],
-  ["/pages/changeinfo", "2026-11-12"],
-  ["/pages/docspecial", "2026-10-29"],
-  ["/pages/docnormal", "2026-11-12"],
-  ["/pages/premium", "2026-10-06"],
-  ["/pages/brand", "2026-10-09"],
-  ["/board/news_list", "2026-10-08"],
-  ["/pages/video", "2026-10-09"],
-  ["/event", "2026-10-26"],
+  ["/pages/location", "2026-11-13"],
+  ["/pages/contact", "2026-11-13"],
+  ["/pages/changeinfo", "2026-11-13"],
+  ["/pages/docspecial", "2026-11-13"],
+  ["/pages/docnormal", "2026-11-13"],
+  ["/pages/premium", "2026-11-13"],
+  ["/pages/brand", "2026-11-13"],
+  ["/board/news_list", "2026-11-13"],
+  ["/pages/video", "2026-11-13"],
+  ["/event", "2026-11-13"],
 ];
 const KR_PATHS = new Set(KR_SITEMAP.map(([p]) => p));
 
@@ -55,6 +55,15 @@ const KR_ROBOTS = [
   "Disallow: /auth/",
   "",
   "User-agent: Yeti",
+  "Allow: /",
+  "Disallow: /api/",
+  "Disallow: /auth/",
+  "",
+  "User-agent: Claude-User",
+  "User-agent: Perplexity-User",
+  "User-agent: Googlebot",
+  "User-agent: Bingbot",
+  "User-agent: Daumoa",
   "Allow: /",
   "Disallow: /api/",
   "Disallow: /auth/",
@@ -84,6 +93,7 @@ const KR_PAGE_NAMES: Record<string, string> = {
   "/board/news_list": "언론보도",
   "/pages/video": "홍보영상",
   "/event": "견본주택 안내·이벤트",
+  "/103b": "청라 아크원 푸르지오 103㎡B 선착순 공급 참여의향서 접수 안내",
 };
 
 const EN_PAGE_NAMES: Record<string, string> = {
@@ -103,56 +113,105 @@ const EN_PAGE_NAMES: Record<string, string> = {
   "/event": "Open event",
 };
 
-/** KR host only: Organization + WebPage(dateModified) + BreadcrumbList JSON-LD. */
+/** KR host only: WebSite + Organization + WebPage(dateModified) + BreadcrumbList JSON-LD. */
+const FAQ_PATHS = new Set([
+  "/pages/overview",
+  "/pages/compare",
+  "/pages/schedule",
+  "/103b",
+  "/pages/location",
+  "/pages/contact",
+  "/pages/changeinfo",
+  "/pages/docspecial",
+  "/pages/docnormal",
+  "/pages/brand",
+  "/pages/video",
+]);
+const KR_PAGE_TITLES: Record<string, string> = {
+  "/103b": "청라 아크원 푸르지오 103㎡B 선착순 공급 참여의향서 접수",
+};
+
+function escapeAttr(v: string): string {
+  return v
+    .replace(/&/g, "\u0026amp;")
+    .replace(/"/g, "\u0026quot;")
+    .replace(/</g, "\u0026lt;")
+    .replace(/>/g, "\u0026gt;");
+}
+
+function upsertMeta(html: string, attr: "property" | "name", key: string, content: string): string {
+  const tag = `<meta ${attr}="${key}" content="${escapeAttr(content)}">`;
+  const re = new RegExp(`<meta\\b[^>]*\\b(?:property|name)\\s*=\\s*(["'])${key}\\1[^>]*>`, "i");
+  if (re.test(html)) return html.replace(re, tag);
+  return html + tag;
+}
+
 function pageJsonLd(path: string, en = false): string {
   const origin = en ? EN_ORIGIN : KR_ORIGIN;
   const names = en ? EN_PAGE_NAMES : KR_PAGE_NAMES;
   const brand = en ? "Cheongna Ark-One Prugio" : "청라 아크원 푸르지오";
   const homeLabel = en ? "Home" : "홈";
   const url = `${origin}${path}`;
+  const canon = path === "/" ? `${origin}/` : url;
   const lastmod = KR_SITEMAP.find(([p]) => p === path)?.[1];
   const org = {
     "@type": "Organization",
     "@id": "https://www.humanekorea.co.kr/#organization",
     name: "HUMANE KOREA",
   };
-  const graph: Record<string, unknown>[] = [org];
-  if (path === "/") {
-    graph.push({ "@type": "WebPage", "@id": `${origin}/#webpage`, dateModified: lastmod, isPartOf: { "@id": `${origin}/#website` } });
+  const website = {
+    "@type": "WebSite",
+    "@id": `${origin}/#website`,
+    name: brand,
+    url: `${origin}/`,
+    inLanguage: en ? "en-US" : "ko-KR",
+    publisher: { "@id": org["@id"] },
+  };
+  const graph: Record<string, unknown>[] = [website, org];
+  const webpage: Record<string, unknown> = {
+    "@type": "WebPage",
+    "@id": `${canon}#webpage`,
+    url: canon,
+    name: KR_PAGE_TITLES[path] || (path === "/" ? brand : `${names[path]} | ${brand}`),
+    inLanguage: en ? "en-US" : "ko-KR",
+    isPartOf: { "@id": `${origin}/#website` },
+    publisher: { "@id": org["@id"] },
+    dateModified: lastmod,
+  };
+  if (path !== "/") {
+    webpage.breadcrumb = { "@id": `${url}#breadcrumb` };
+    graph.push(webpage, {
+      "@type": "BreadcrumbList",
+      "@id": `${url}#breadcrumb`,
+      isPartOf: { "@id": `${canon}#webpage` },
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: homeLabel, item: `${origin}/` },
+        { "@type": "ListItem", position: 2, name: names[path], item: url },
+      ],
+    });
   } else {
-    graph.push(
-      {
-        "@type": "WebPage",
-        "@id": `${url}#webpage`,
-        url,
-        name: `${names[path]} | ${brand}`,
-        inLanguage: en ? "en-US" : "ko-KR",
-        isPartOf: { "@id": `${origin}/#website` },
-        publisher: { "@id": org["@id"] },
-        breadcrumb: { "@id": `${url}#breadcrumb` },
-        dateModified: lastmod,
-      },
-      {
-        "@type": "BreadcrumbList",
-        "@id": `${url}#breadcrumb`,
-        itemListElement: [
-          { "@type": "ListItem", position: 1, name: homeLabel, item: `${origin}/` },
-          { "@type": "ListItem", position: 2, name: names[path], item: url },
-        ],
-      },
-    );
+    graph.push(webpage);
+  }
+  if (FAQ_PATHS.has(path)) {
+    webpage.mainEntity = { "@id": `${canon}#faq` };
   }
   if (path === "/pages/overview") {
+    const complexId = `${url}#complex`;
+    webpage.about = { "@id": complexId };
     graph.push(
       en
         ? {
             "@type": "ApartmentComplex",
+            "@id": complexId,
+            isPartOf: { "@id": `${canon}#webpage` },
             name: "Cheongna Ark-One Prugio",
             address: "86-1 Cheongna-dong Seohae-gu Incheon",
             numberOfAccommodationUnits: 1855,
           }
         : {
             "@type": "ApartmentComplex",
+            "@id": complexId,
+            isPartOf: { "@id": `${canon}#webpage` },
             name: "청라 아크원 푸르지오",
             address: "인천광역시 서해구 청라동 86-1번지",
             numberOfAccommodationUnits: 1855,
@@ -257,8 +316,39 @@ const NAVER_VERIFICATION_TAG =
   '<meta name="naver-site-verification" content="3c9a81c691a4cdec3415b6d3e7f832ea0015e2a9" />' +
   '<meta name="msvalidate.01" content="1CA8C4AC579A0BA4C40BC37CD046AC48" />';
 
-function injectOgUrl(response: Response, ogUrl: string, extra = ""): Response {
-  const tag = new TextEncoder().encode(`<meta property="og:url" content="${ogUrl}">${extra}`);
+function decodeEntities(v: string): string {
+  return v
+    .replace(/\u0026lt;/g, "<")
+    .replace(/\u0026gt;/g, ">")
+    .replace(/\u0026quot;/g, '"')
+    .replace(/\u0026#39;/g, "'")
+    .replace(/\u0026amp;/g, "\u0026");
+}
+
+function decorateKrHead(head: string, path: string, ogUrl: string): string {
+  const title = decodeEntities((head.match(/<title[^>]*>([\s\S]*?)<\/title>/i) || [])[1] || "").trim();
+  const descTag = (head.match(/<meta\b[^>]*>/gi) || []).find((t) => /name\s*=\s*["']description["']/i.test(t));
+  const desc = descTag ? decodeEntities((descTag.match(/content\s*=\s*["']([^"']*)["']/i) || [])[1] || "") : "";
+  let next = head;
+  if (title) {
+    next = upsertMeta(next, "property", "og:title", title);
+    next = upsertMeta(next, "name", "twitter:title", title);
+  }
+  if (desc) {
+    next = upsertMeta(next, "property", "og:description", desc);
+    next = upsertMeta(next, "name", "twitter:description", desc);
+  }
+  next = upsertMeta(next, "property", "og:site_name", "청라 아크원 푸르지오");
+  next = upsertMeta(next, "property", "og:locale", "ko_KR");
+  next = upsertMeta(next, "property", "og:url", ogUrl);
+  if (path === "/") {
+    next += NAVER_VERIFICATION_TAG;
+  }
+  next += pageJsonLd(path, false);
+  return next;
+}
+
+function injectOgUrl(response: Response, ogUrl: string, path: string, kr: boolean): Response {
   const marker = "</head>";
   let done = false;
   let carry = "";
@@ -275,9 +365,9 @@ function injectOgUrl(response: Response, ogUrl: string, extra = ""): Response {
         const at = carry.indexOf(marker);
         if (at === -1) return;
         done = true;
-        controller.enqueue(encoder.encode(carry.slice(0, at)));
-        controller.enqueue(tag);
-        controller.enqueue(encoder.encode(carry.slice(at)));
+        const head = kr ? decorateKrHead(carry.slice(0, at), path, ogUrl) : carry.slice(0, at) + `<meta property="og:url" content="${ogUrl}">` + pageJsonLd(path, true);
+        controller.enqueue(encoder.encode(head));
+        controller.enqueue(encoder.encode(marker + carry.slice(at + marker.length)));
         carry = "";
       },
       flush(controller) {
@@ -348,11 +438,7 @@ export default async function seoHostMiddleware(
     !result.headers.get("content-encoding")
   ) {
     const en = isEn(event);
-    return injectOgUrl(
-      result,
-      `${en ? EN_ORIGIN : KR_ORIGIN}${path}`,
-      (path === "/" ? NAVER_VERIFICATION_TAG : "") + pageJsonLd(path, en),
-    );
+    return injectOgUrl(result, `${en ? EN_ORIGIN : KR_ORIGIN}${path}`, path, !en);
   }
   return result;
 }
