@@ -92,8 +92,8 @@ export function PreregPopup() {
   if (!open) {
     if (!strip) return null;
     return (
-      <div className="prereg-strip" role="region" aria-label="사전고객등록 이벤트 안내">
-        <span className="prereg-strip__txt">오피스텔 상품권 50만원 · 11.20까지</span>
+      <div className="prereg-strip" role="region" aria-label="예비당첨자 사전고객등록 안내">
+        <span className="prereg-strip__txt">예비당첨자 사전고객등록 접수 중</span>
         <button type="button" className="prereg-strip__more" onClick={openFromStrip}>자세히</button>
         <button type="button" className="prereg-strip__x" aria-label="닫기" onClick={closeStrip}>✕</button>
       </div>
@@ -104,15 +104,14 @@ export function PreregPopup() {
       <button type="button" className="prereg-pop__bg" aria-label="닫기" onClick={() => close()} />
       <div className="prereg-pop__panel">
         <button type="button" className="prereg-pop__x" aria-label="닫기" onClick={() => close()}>✕</button>
-        <h2 id="prereg-pop-title" style={{ fontSize: "clamp(22px, 6.4vw, 28px)", fontWeight: 800, lineHeight: 1.3, letterSpacing: "-0.02em", wordBreak: "keep-all" }}>오피스텔 사전고객등록</h2>
-        <p style={{ fontWeight: 700 }}>계약 시 백화점 상품권 50만원 지급</p>
-        <p className="prereg-deadline" style={{ color: "#a8834a", fontWeight: 700, letterSpacing: "-0.01em" }}>롯데·현대·신세계 중 선택, 11.20(금)까지</p>
-        <p>입주자모집공고 게시 2026.10.22(목) · 견본주택 별도 공지 시까지 운영 · 일정 문의 1833-3872</p>
-        <p style={{ fontSize: "13px" }}>오피스텔 상시 접수</p>
-        <Link className="reg__submit" to="/register">사전고객등록하기</Link>
+        <h2 id="prereg-pop-title" style={{ fontSize: "clamp(22px, 6.4vw, 28px)", fontWeight: 800, lineHeight: 1.3, letterSpacing: "-0.02em", wordBreak: "keep-all" }}>예비당첨자 사전고객등록</h2>
+        <p style={{ fontWeight: 700 }}>청라 아크원 푸르지오 아파트 예비당첨자 안내</p>
+        <p className="prereg-deadline" style={{ color: "#a8834a", fontWeight: 700, letterSpacing: "-0.01em" }}>당첨자 계약 11.22(일)~11.24(화) · 예비당첨자 계약은 입주자모집공고 기준</p>
+        <p>예비당첨자로 선정되신 고객께서 사전고객등록을 해 주시면 계약 일정·절차·준비 서류를 담당자가 개별 안내해 드립니다.</p>
+        <Link className="reg__submit" to="/register">예비당첨자 사전고객등록하기</Link>
         <p className="prereg-confirm">사전고객등록 확인은 대표번호 <a href={SITE_TEL_HREF}>{SITE_PHONE}</a>로 문의해 주세요.</p>
-        <p className="prereg-fine">※ 상품권은 지급조건을 모두 충족한 고객에 한해 지급됩니다. <a href="/#event-terms">유의사항 보기</a></p>
-        <p className="prereg-fine">※ 동일 현장의 다른 홈페이지·분양 채널에 중복으로 등록하신 경우, 상품권 지급이 제한될 수 있습니다.</p>
+        <p className="prereg-fine">※ 사전고객등록은 공식 청약·계약 신청이 아닙니다. 예비당첨자 선정 여부와 순번은 청약홈·입주자모집공고를 따릅니다.</p>
+        <p className="prereg-fine">※ 예비당첨자 계약은 당첨자 계약 종료 후 잔여 세대가 있는 경우 공고문 기준으로 진행됩니다.</p>
         <div className="prereg-pop__actions">
           <button type="button" onClick={() => close(true)}>오늘 하루 보지 않기</button>
           <button type="button" onClick={() => close()}>닫기</button>
