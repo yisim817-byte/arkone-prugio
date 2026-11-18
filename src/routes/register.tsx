@@ -25,6 +25,14 @@ function RegisterPage() {
       <div className="page_content reg-page">
         <section className="page_container register-layout">
           <aside className="register-layout__summary" aria-label="이벤트 및 일정 안내">
+            {/* PM 지시(2026-11-18): 고객등록란에 견본주택 방문 사전 예약제 안내 */}
+            <div id="visit-rule-note" role="note" aria-label="견본주택 방문예약 안내" style={{ margin: "0 0 20px", padding: "18px 20px", border: "1px solid #a8834a", borderRadius: 10, background: "#faf6ee", color: "#1d2a26", lineHeight: 1.6 }}>
+              <p style={{ margin: 0, fontSize: 12, fontWeight: 700, letterSpacing: "0.08em", color: "#a8834a" }}>견본주택 방문 안내</p>
+              <p style={{ margin: "4px 0 6px", fontSize: 20, fontWeight: 800, letterSpacing: "-0.02em" }}>오시기 전에, 예약 먼저.</p>
+              <p style={{ margin: 0, fontSize: 14 }}>청라 아크원 푸르지오 견본주택은 사전 예약제로 운영합니다. 사전고객등록만으로는 방문예약이 되지 않으니, 방문하실 분은 방문예약을 따로 신청해 주세요.</p>
+              <p style={{ margin: "6px 0 0", fontSize: 13, fontWeight: 700 }}>예약 없이 방문하시면 입장·상담이 제한될 수 있습니다.</p>
+              <p style={{ margin: "12px 0 0", fontSize: 14, fontWeight: 700 }}><a href="/visit" style={{ color: "#004b45", textDecoration: "underline" }}>방문예약 하기 ›</a> <span aria-hidden="true">·</span> <a href="tel:18333872" style={{ color: "#004b45", textDecoration: "underline" }}>전화 예약 1833-3872</a></p>
+            </div>
             <p className="prereg-deadline" style={{ color: "#a8834a", fontWeight: 700, letterSpacing: "-0.01em" }}>오피스텔 상시 접수</p>
             <p>오피스텔 사전고객등록 후 오피스텔 계약 시 백화점 상품권 50만원 (롯데·현대·신세계 중 선택) · 11월 20일(금)까지</p>
             <p>지급조건을 모두 충족한 고객에 한해 지급합니다.</p>
