@@ -1,13 +1,13 @@
-/** ARK1120 stage ① (through 21 Nov 2026). Visible paragraph is STAGE. Meta and WebPage description are DESC, a contiguous excerpt, because meta must stay within 50–95 characters. */
+/** ARK1120 stage ② (from 22 Nov 2026). Visible paragraph is STAGE. Meta and WebPage description are DESC, a contiguous excerpt, because meta must stay within 50–95 characters. */
 
 export const STAGE_KO =
-  "청라 아크원 푸르지오 아파트는 2026년 11월 10일(화) 당첨자 발표와 11월 12일(목)~16일(월) 당첨자 서류접수를 마쳤고, 계약은 11월 22일(일)부터 24일(화)까지입니다. 일정은 입주자모집공고(2026.10.22 게시, 주택관리번호 2026000496)가 우선합니다.";
+  "청라 아크원 푸르지오 아파트 당첨자 계약이 2026년 11월 22일(일)부터 24일(화)까지 진행 중입니다. 당첨자 발표(11.10)와 서류접수(11.12~16)는 끝났습니다. 일정은 입주자모집공고(2026.10.22 게시, 주택관리번호 2026000496)가 우선합니다.";
 
 export const DESC_HOME_KO =
-  "청라 아크원 푸르지오 분양 일정·비교 안내 — 서류접수는 끝났고 계약 11.22~11.24 창구입니다.";
+  "청라 아크원 푸르지오 분양 일정·비교 안내 — 서류접수는 끝났고 계약 진행 중(11.22~11.24) 창구입니다.";
 
 export const DESC_SCHEDULE_KO =
-  "청라 아크원 푸르지오 분양가·청약 일정 — 공급금액표와 계약 11.22~11.24를 공고 기준으로 안내합니다.";
+  "청라 아크원 푸르지오 분양가·청약 일정 — 공급금액표와 계약 진행 중(11.22~11.24)을 공고 기준으로 안내합니다.";
 
 export const DESC_HOME_EN =
   "Cheongna Ark-One Prugio sale guide. Document filing is finished. Contracts run 22-24 Nov.";
