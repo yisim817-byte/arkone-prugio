@@ -53,7 +53,7 @@ const FAQ_EN = [
   },
 ];
 
-const DESC_KO = "청라 아크원 푸르지오 103㎡B 관심 접수는 11.17(화)부터이며 계약 진행 중(11.22~11.24)와 별도입니다.";
+const DESC_KO = "청라 아크원 푸르지오 103㎡B 관심 접수는 11.17(화)부터이며 계약 진행 중(11.22~11.24)과 별도입니다.";
 const DESC_EN = "Cheongna Ark-One Prugio 103 sqm B interest form from 17 Nov. It is not the 22-24 Nov contract.";
 
 export const Route = createFileRoute("/103b")({

@@ -185,8 +185,8 @@ function pageJsonLd(path: string, en = false): string {
   };
   if (path === "/" || path === "/pages/schedule" || path === "/103b") {
     const homeKo = "청라 아크원 푸르지오 분양 일정·비교 안내 — 서류접수는 끝났고 계약 진행 중(11.22~11.24) 창구입니다.";
-    const scheduleKo = "청라 아크원 푸르지오 분양가·청약 일정 — 공급금액표와 계약 진행 중(11.22~11.24)를 공고 기준으로 안내합니다.";
-    const b103Ko = "청라 아크원 푸르지오 103㎡B 관심 접수는 11.17(화)부터이며 계약 진행 중(11.22~11.24)와 별도입니다.";
+    const scheduleKo = "청라 아크원 푸르지오 분양가·청약 일정 — 공급금액표와 계약 진행 중(11.22~11.24)을 공고 기준으로 안내합니다.";
+    const b103Ko = "청라 아크원 푸르지오 103㎡B 관심 접수는 11.17(화)부터이며 계약 진행 중(11.22~11.24)과 별도입니다.";
     const homeEn = "Cheongna Ark-One Prugio sale guide. Document filing is finished. Contracts run 22-24 Nov.";
     const scheduleEn = "Cheongna Ark-One Prugio prices and schedule. Contracts of 22-24 Nov follow the notice.";
     const b103En = "Cheongna Ark-One Prugio 103 sqm B interest form from 17 Nov. It is not the 22-24 Nov contract.";
