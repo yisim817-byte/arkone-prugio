@@ -5,7 +5,6 @@ import { canonicalLinks, faqJsonLd, isEnHost, tx } from "@/lib/seo-host";
 import { GuideAnswer, GuideDetail, type GuideFaq } from "@/components/seo-guide";
 import { FAQ_COMPARE, META } from "@/lib/i18n/en";
 import { SRC_APPLYHOME } from "@/lib/arkone-facts";
-import { NoticePrice, NoticeTypes, PlanFigure, UnitFigure } from "@/components/notice-sections";
 
 const FAQ: GuideFaq[] = [
   {
@@ -53,6 +52,7 @@ export const Route = createFileRoute("/pages/compare")({
 });
 
 function ComparePage() {
+  const en = isEnHost();
   return (
     <SiteShell path="/pages/compare">
       <div className="page_content">
@@ -69,39 +69,31 @@ function ComparePage() {
               </>
             ) : (
               <>
-            <p>청라 아크원 푸르지오는 한 단지 안에 아파트 868세대와 오피스텔 987실을 함께 공급하는 주거복합 단지입니다.</p>
-            <p>위치는 인천광역시 서해구 청라동 86-1번지입니다. 입주자모집공고는 2026.10.22에 게시되었고 계약은 2026년 11월 22일부터 24일까지입니다.</p>
-            <p>출처: <a href="https://www.applyhome.co.kr" target="_blank" rel="noopener noreferrer">청약홈</a> 입주자모집공고(2026.10.22 게시) · 확인 기준일 2026-10-29</p>
-            <p>아파트는 전용 84㎡·103㎡, 오피스텔은 전용 105㎡·121㎡·136㎡로 공개되어 있으며, 오피스텔에는 멀티 발코니가 안내되어 있습니다.</p>
-            <p>주차대수는 총 3,124대 중 아파트 1,389대, 오피스텔 1,695대로 공개되어 있습니다.</p>
-            <p>아파트 타입별 세대수는 84A 248세대, 84B·84C·84D·103A·103B 각 124세대로 총 868세대입니다(입주자모집공고 기준). 견본주택에는 84A·103A 유니트가 설치되어 있습니다. 주택형별 면적은 주택형 안내(입주자모집공고문 5면)에서 확인할 수 있습니다. 오피스텔 타입별 실수·평면도·분양가는 오피스텔 별도 공고로 안내합니다.</p>
+            <p>아파트 868세대와 오피스텔 987실이 한 주소에 있지만 공고는 나뉩니다. 주소는 서해구 청라동 86-1입니다. 아파트 공고는 2026년 10월 22일에 게시되었고 계약 창구는 11월 22일부터 24일입니다.</p>
+            <p>출처: <a href="https://www.applyhome.co.kr" target="_blank" rel="noopener noreferrer">청약홈</a> 입주자모집공고(2026.10.22 게시) · 확인 기준일 2026-11-20</p>
+            <p>아파트 전용은 84㎡와 103㎡, 오피스텔 전용은 105㎡·121㎡·136㎡입니다. 오피스텔 안내에는 멀티 발코니가 있습니다.</p>
+            <p>주차는 3,124대이고 그 가운데 아파트 1,389대, 오피스텔 1,695대입니다.</p>
+            <p>아파트 세대는 84A가 248이고 84B·84C·84D·103A·103B는 124씩이라 합계 868입니다. 견본주택에 만든 유니트는 84A와 103A입니다. 면적 자릿수는 공고문 5면입니다. 오피스텔 987실의 실수와 금액은 아파트 공고에 없고 오피스텔 공고를 따로 봅니다.</p>
               </>
             )}
           </GuideAnswer>
-          <p className="plans-link"><Link to="/pages/plans">평면도·공급금액 한눈에 보기 →</Link></p>
-          <NoticeTypes
-            after84c={<>
-              <PlanFigure plan="84c" withPrice />
-              <UnitFigure file="unit-84c-living-ai.webp" alt="청라 아크원 푸르지오 84㎡C 거실 인테리어 연출 이미지(AI 제작)" />
-              <UnitFigure file="unit-84c-living-kitchen-ai.webp" alt="청라 아크원 푸르지오 84㎡C 거실·주방 인테리어 연출 이미지(AI 제작)" />
-            </>}
-            after103a={
-              <>
-                <PlanFigure plan="103a" withPrice />
-                <NoticePrice />
-                <UnitFigure file="unit-103a-alpha-study-ai.webp" alt="청라 아크원 푸르지오 103㎡A 알파룸을 서재로 꾸민 인테리어 연출 이미지(AI 제작)" />
-              </>
-            }
-            gallery={<div className="unit-gallery" aria-label="인테리어 연출">
-              <h3 className="seo-guide__subtitle">인테리어 연출</h3>
-              <UnitFigure file="interior-master-bedroom-ai.webp" alt="청라 아크원 푸르지오 침실 인테리어 연출 이미지(AI 제작)" />
-              <UnitFigure file="interior-bathroom-ai.webp" alt="청라 아크원 푸르지오 욕실 인테리어 연출 이미지(AI 제작)" />
-            </div>}
-          />
+          <p className="plans-link"><Link to="/pages/plans">{en ? "See plans and supply amounts" : "평면도·공급금액 한눈에 보기 →"}</Link></p>
           <GuideDetail
-            tableTitle="아파트(APT)와 오피스텔(OT) 비교"
-            columns={["구분", "아파트(APT) · 오피스텔(OT)", "상태"]}
-            rows={[
+            tableTitle={en ? "Apartment and officetel" : "아파트(APT)와 오피스텔(OT) 비교"}
+            columns={en ? ["Item", "Apartment · officetel", "Status"] : ["구분", "아파트(APT) · 오피스텔(OT)", "상태"]}
+            rows={en ? [
+              { label: "Supply", value: "APT 868 units · OT 987 rooms (1,855 together)", status: "posted" },
+              { label: "Exclusive area", value: "APT 84㎡, 103㎡ · OT 105㎡, 121㎡, 136㎡", status: "posted" },
+              { label: "Gross floor area", value: "APT 173,952.7508㎡ · OT 245,645.4826㎡", status: "posted" },
+              { label: "Parking", value: "APT 1,389 · OT 1,695 (of 3,124, plus 40 for shops)", status: "posted" },
+              { label: "Space", value: "OT: multi balcony described in the project entity's premium note", status: "posted" },
+              { label: "APT units by type", value: "84A 248 · 84B 124 · 84C 124 · 84D 124 · 103A 124 · 103B 124 (868)", status: "sale material" },
+              { label: "Plans", value: "APT: notice posted (areas by type, model house 84A and 103A) / OT: separate notice", status: "posted / OT separate" },
+              { label: "Shops", value: "Peakone 53 and Ark-One 43, 96 shops on floors 1–2 (47 on floor 1, 49 on floor 2)", status: "sale material" },
+              { label: "Price", value: "APT: supply-amount table in the recruitment notice by type, building, floor, and unit · call 1833-3872 (price cap) / OT: separate notice", status: "posted / OT separate" },
+              { label: "Notice", value: "APT recruitment notice posted 22 Oct 2026 · model house open until further notice · OT separate notice · call 1833-3872", status: "posted / OT separate" },
+              { label: "Move-in", value: "APT planned August 2031 · OT separate notice", status: "notice" },
+            ] : [
               { label: "공급 규모", value: "APT 868세대 · OT 987실 (총 1,855세대·실)", status: "공개값" },
               { label: "전용면적", value: "APT 84㎡, 103㎡ · OT 105㎡, 121㎡, 136㎡", status: "공개값" },
               { label: "연면적", value: "APT 173,952.7508㎡ · OT 245,645.4826㎡", status: "공개값" },
@@ -115,7 +107,13 @@ function ComparePage() {
               { label: "입주 시기", value: "APT 입주예정 2031년 08월 · OT 별도 공고", status: "공고 기준" },
             ]}
             faq={compareFaq()}
-            links={[
+            links={en ? [
+              { to: "/pages/overview", label: "Overview" },
+              { to: "/pages/schedule", label: "Sale schedule" },
+              { to: "/pages/premium", label: "Premium" },
+              { to: "/pages/contact", label: "Model house" },
+              { to: "/register", label: "Register" },
+            ] : [
               { to: "/pages/overview", label: "분양 사업개요" },
               { to: "/pages/schedule", label: "분양 일정·청약 안내" },
               { to: "/pages/premium", label: "프리미엄" },
@@ -125,7 +123,10 @@ function ComparePage() {
             sources={[{ ...SRC_APPLYHOME, date: "2026-10-29" }]}
           />
           <SubNotice
-            items={[
+            items={en ? [
+              "Figures on this page follow the project entity's published overview and sale material and can change during permitting. Check the main terms before you sign.",
+              "Plans, officetel room counts by type, and prices that are not published here follow the recruitment notice.",
+            ] : [
               "본 페이지의 수치는 사업주체 공개 사업개요 및 분양 자료 기준이며 인·허가 과정상 변경될 수 있으니 계약 시 주요 내용을 반드시 확인하시기 바랍니다.",
               "평면도, 오피스텔 타입별 실수, 분양가 등 공개되지 않은 항목은 입주자모집공고를 기준으로 확인하시기 바랍니다.",
             ]}

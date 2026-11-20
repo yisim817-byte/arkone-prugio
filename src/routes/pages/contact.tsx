@@ -45,10 +45,10 @@ function MapLinks({ naver, kakao, label }: { naver: string; kakao: string; label
   return (
     <div className="contact_location__links map-btns" aria-label={`${label} 지도 바로가기`}>
       <a href={naver} target="_blank" rel="noopener noreferrer" aria-label={`네이버 지도에서 ${label} 보기`}>
-        <img src="/resources/img/common/ico_naver.svg" alt="" {...imgDims("/resources/img/common/ico_naver.svg")} data-dims="" />
+        <img src="/resources/img/common/ico_naver.svg" alt="" {...imgDims("/resources/img/common/ico_naver.svg")} data-dims=""  aria-hidden="true" />
       </a>
       <a href={kakao} target="_blank" rel="noopener noreferrer" aria-label={`카카오 지도에서 ${label} 보기`}>
-        <img src="/resources/img/common/ico_kko_map.svg" alt="" {...imgDims("/resources/img/common/ico_kko_map.svg")} data-dims="" />
+        <img src="/resources/img/common/ico_kko_map.svg" alt="" {...imgDims("/resources/img/common/ico_kko_map.svg")} data-dims=""  aria-hidden="true" />
       </a>
     </div>
   );
@@ -87,14 +87,14 @@ function ContactPage() {
                 <article className="contact_location">
                   <div>
                     <h2>{tx("청라 아크원 푸르지오 현장", "Cheongna Ark-One Prugio site")}</h2>
-                    <address>인천광역시 서해구 청라동 86-1번지</address>
+                    <address>{tx("인천광역시 서해구 청라동 86-1번지", "86-1 Cheongna-dong, Seohae-gu, Incheon")}</address>
                   </div>
                   <MapLinks naver="https://naver.me/xSBYFSR0" kakao="https://kko.to/27AvJsaNys" label={tx("현장", "Site")} />
                 </article>
                 <article className="contact_location">
                   <div>
                     <h2>{tx("청라 아크원 푸르지오 견본주택", "Cheongna Ark-One Prugio model house")}</h2>
-                    <address>인천광역시 서해구 청라동 87-1번지</address>
+                    <address>{tx("인천광역시 서해구 청라동 87-1번지", "87-1 Cheongna-dong, Seohae-gu, Incheon")}</address>
                   </div>
                   <MapLinks naver="https://naver.me/xNpQLQ3L" kakao="https://kko.to/06V9ttVXOK" label={tx("견본주택", "Model house")} />
                 </article>
@@ -107,39 +107,50 @@ function ContactPage() {
               <div className="contact_map__locations">
                 <article className="contact_location">
                   <div>
-                    <h2>청라 아크원 푸르지오 홍보관</h2>
+                    <h2>{tx("청라 아크원 푸르지오 홍보관", "Cheongna Ark-One Prugio showroom")}</h2>
                     <address>
-                      인천광역시 서해구 중봉대로 586번길 19
+                      {tx("인천광역시 서해구 중봉대로 586번길 19", "19 Jungbong-daero 586beon-gil, Seohae-gu, Incheon")}
                       <br />
-                      홍익파크 1층 108,109호(스타벅스 옆)
+                      {tx("홍익파크 1층 108,109호(스타벅스 옆)", "Hongik Park 1F units 108 and 109 (next to Starbucks)")}
                     </address>
                   </div>
-                  <MapLinks naver="https://naver.me/xwmqyGWk" kakao="https://kko.to/hM9WpE-0fz" label="홍보관" />
+                  <MapLinks naver="https://naver.me/xwmqyGWk" kakao="https://kko.to/hM9WpE-0fz" label={tx("홍보관", "Showroom")} />
                 </article>
               </div>
             </div>
           </div>
           <GuideDetail
-            tableTitle="방문 장소별 주소와 상태"
-            columns={["장소", "주소", "상태"]}
-            rows={[
+            tableTitle={tx("방문 장소별 주소와 상태", "Addresses")}
+            columns={tx(["장소", "주소", "상태"], ["Place", "Address", "Status"])}
+            rows={tx([
               { label: "견본주택(모델하우스)", value: "인천광역시 서해구 청라동 87-1번지 · 별도 공지 시까지 운영", status: "확정" },
               { label: "사업 현장", value: "인천광역시 서해구 청라동 86-1번지 (청라국제도시 주상복합용지 M5BL)", status: "공개값" },
               { label: "홍보관", value: "인천광역시 서해구 중봉대로 586번길 19 홍익파크 1층 108, 109호(스타벅스 옆)", status: "공개값" },
               { label: "운영 시간", value: "방문 전 대표번호 1833-3872로 확인", status: "미정" },
-            ]}
+            ], [
+              { label: "Model house", value: "87-1 Cheongna-dong, Seohae-gu, Incheon · open until further notice", status: "posted" },
+              { label: "Site", value: "86-1 Cheongna-dong, Seohae-gu, Incheon (mixed-use site M5)", status: "posted" },
+              { label: "Showroom", value: "Hongik Park 1F units 108 and 109, 19 Jungbong-daero 586beon-gil, next to Starbucks", status: "posted" },
+              { label: "Hours", value: "Call 1833-3872 before you visit", status: "not fixed on this page" },
+            ])}
             faq={contactFaq()}
-            links={[
+            links={tx([
               { to: "/pages/schedule", label: "분양 일정·청약 안내" },
               { to: "/pages/overview", label: "분양 사업개요" },
               { to: "/pages/location", label: "입지환경" },
               { to: "/register", label: "사전고객등록" },
-            ]}
+            ], [
+              { to: "/pages/schedule", label: "Sale schedule" },
+              { to: "/pages/overview", label: "Overview" },
+              { to: "/pages/location", label: "Location" },
+              { to: "/register", label: "Register" },
+            ])}
           />
           <SubNotice
-            items={[
-              "※ 현장, 견본주택 및 홍보관 위치는 반드시 주소를 확인하시고, 주변 도로 및 건물, 경로 등은 네이버, 카카오 지도를 통해 확인하시기 바랍니다.",
-            ]}
+            items={tx(
+              ["※ 현장, 견본주택 및 홍보관 위치는 반드시 주소를 확인하시고, 주변 도로 및 건물, 경로 등은 네이버, 카카오 지도를 통해 확인하시기 바랍니다."],
+              ["Check the site, model house, and showroom addresses. Check roads and the route on Naver or Kakao maps."],
+            )}
           />
         </section>
       </div>

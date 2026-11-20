@@ -42,6 +42,7 @@ export const Route = createFileRoute("/pages/location")({
 });
 
 function LocationPage() {
+  const en = isEnHost();
   return (
     <SiteShell path="/pages/location">
       <div className="page_content">
@@ -71,7 +72,7 @@ function LocationPage() {
             <p>스타필드 청라는 2028년 개장 예정입니다. 서울아산청라병원은 2025년 12월 착공했으며 2029년 준공이 목표입니다. 자료 기준 2026-10-09 · 출처 인천광역시 보도자료 2026-08-12 · 인천광역시 보도자료 2026-07-15(스타필드)·2025-12-30(아산병원)</p>
             <p>교통은 2026년 1월 개통한 청라하늘대교와 제2외곽순환도로를 이용할 수 있고, 서울 지하철 7호선 청라연장선 국제업무단지역은 예정 역으로 개통 시기는 미정입니다.</p>
             <p>주변에는 스타필드 청라(2028년 개장 예정), 서울아산청라병원(2029년 예정) 등 개발 계획이 있고 하나드림타운(그룹헤드쿼터 2026.5.21 준공)이 들어서 있으며, 각 일정은 관계 기관 사정에 따라 변경될 수 있습니다.</p>
-            <p>자료 기준일 2026-10-21 · 출처 인천광역시 보도자료·현장 주소 표기</p>
+            <p>자료 기준일 2026-10-21 · 재확인일 2026-11-20 · 출처 인천광역시 보도자료·현장 주소 표기</p>
               </>
             )}
           </GuideAnswer>
@@ -81,8 +82,8 @@ function LocationPage() {
             <p>청라 아크원 푸르지오의 대지위치는 인천광역시 서해구(구 서구) 청라동 86-1번지(청라국제도시 주상복합용지 M5BL)입니다. 견본주택은 인천광역시 서해구(구 서구) 청라동 87-1에 있고, 홍보관은 인천광역시 서해구(구 서구) 중봉대로 586번길 19입니다. 홍보관은 견본주택과 다른 장소입니다. 청라하늘대교(구 제3연륙교)는 2026년 1월 5일 개통했습니다. 서울 7호선 청라국제도시 연장의 개통 시기는 공식 발표되지 않았습니다.</p>
           )}
           <header className="location_intro">
-            <p>청라국제업무단지 M5블록</p>
-            <h2>청라 아크원 푸르지오 입지환경</h2>
+            <p>{en ? "Cheongna International Business District, block M5" : "청라국제업무단지 M5블록"}</p>
+            <h2>{en ? "Cheongna Ark-One Prugio location" : "청라 아크원 푸르지오 입지환경"}</h2>
           </header>
           <div className="location_map">
             <figure className="location_map__image">
@@ -99,44 +100,79 @@ function LocationPage() {
             <div className="location_benefits__grid">
               <article className="location_benefit location_benefit-traffic">
                 <span className="location_benefit__icon" />
-                <h3>서울-인천-경기를 잇는 쾌속교통망</h3>
+                <h3>{en ? "Transport between Seoul, Incheon, and Gyeonggi" : "서울-인천-경기를 잇는 쾌속교통망"}</h3>
                 <p>
+                  {en ? (
+                    <>International Business District station on the Seoul Line 7 Cheongna extension <small>(planned, opening date not set)</small>, GTX-D and GTX-E <small>(plan stage, not confirmed)</small>, Cheongna Sky Bridge (open), and the second outer ring road.</>
+                  ) : (
+                    <>
                   서울7호선 청라연장선 <br className="m-only" /> 국제업무단지역<small>(예정·개통 시기 미정)</small>, <br />{" "}
                   GTX-D·E<small>(계획 단계·확정 아님)</small>, <br className="m-only" /> 청라하늘대교 개통, 제2외곽순환도로 등
+                    </>
+                  )}
                 </p>
               </article>
               <article className="location_benefit location_benefit-vision">
                 <span className="location_benefit__icon" />
-                <h3>완성되고 있는 핵심 개발비전</h3>
+                <h3>{en ? "Development nearby" : "완성되고 있는 핵심 개발비전"}</h3>
                 <p>
+                  {en ? (
+                    <>Hana Dream Town <small>(completed 21 May 2026)</small>, video and culture complex <small>(planned 2031)</small>, Incheon Robot Land <small>(planned)</small>, Cheongna City Tower <small>(plan stage)</small>.</>
+                  ) : (
+                    <>
                   하나드림타운<small>('26.5.21 준공)</small>, <br className="m-only" /> 영상문화복합단지<small>('31년 계획)</small>,{" "}
                   <br />
                   인천로봇랜드<small>(예정)</small>, <br className="m-only" /> 청라시티타워<small>(계획)</small> 등
+                    </>
+                  )}
                 </p>
               </article>
               <article className="location_benefit location_benefit-living">
                 <span className="location_benefit__icon" />
-                <h3>눈앞에 다가온 트렌디한 생활특권</h3>
+                <h3>{en ? "Living facilities nearby" : "눈앞에 다가온 트렌디한 생활특권"}</h3>
                 <p>
+                  {en ? (
+                    <>Starfield Cheongna, a mall and a dome stadium <small>(planned to open in 2028)</small>, Asan Medical Center Cheongna <small>(planned 2029)</small>, and Costco Cheongna.</>
+                  ) : (
+                    <>
                   복합쇼핑몰+돔구장 형태의 <br className="m-only" /> 스타필드 청라<small>(`28년 개장 예정)</small>,
                   <br /> 서울아산청라병원<small>('29년 예정)</small>, <br className="m-only" /> 코스트코 청라점 등
+                    </>
+                  )}
                 </p>
               </article>
               <article className="location_benefit location_benefit-edu">
                 <span className="location_benefit__icon" />
-                <h3>단지 앞 안전한 통학길 안심 교육환경</h3>
+                <h3>{en ? "Schools nearby" : "단지 앞 안전한 통학길 안심 교육환경"}</h3>
                 <p>
+                  {en ? (
+                    <>A new elementary school <small>(planned)</small>, a new middle school <small>(plan stage)</small>, Gyeongyeon elementary and middle schools nearby, and Cheongna Dalton Foreign School.</>
+                  ) : (
+                    <>
                   초교 신설<small>(예정)</small>, 중교 신설<small>(계획)</small>, <br /> 인근 경연초·중교,{" "}
                   <br className="m-only" />
                   청라달튼외국인학교
+                    </>
+                  )}
                 </p>
               </article>
             </div>
           </section>
           <GuideDetail
-            tableTitle="청라 아크원 푸르지오 주변 입지 항목별 상태"
-            columns={["항목", "내용 · 근거", "상태"]}
-            rows={[
+            tableTitle={en ? "Nearby items and status" : "청라 아크원 푸르지오 주변 입지 항목별 상태"}
+            columns={en ? ["Item", "What is posted", "Status"] : ["항목", "내용 · 근거", "상태"]}
+            rows={en ? [
+              { label: "Site", value: "86-1 Cheongna-dong, Seohae-gu, Incheon, mixed-use site M5", status: "posted" },
+              { label: "Cheongna Sky Bridge (former 3rd land bridge)", value: "Opened 5 Jan 2026. Name reported as fixed on 14 Jan 2026 (Kyunghyang Shinmun).", status: "open" },
+              { label: "Line 7 Cheongna extension, International Business District station", value: "Metropolitan transport committee notice 2022-01", status: "planned, opening date not set" },
+              { label: "GTX-D and GTX-E", value: "Routes at plan stage", status: "plan stage, not confirmed" },
+              { label: "Starfield Cheongna (mall and dome)", value: "Incheon City release (13 Jan 2026)", status: "planned to open in 2028" },
+              { label: "Asan Medical Center Cheongna", value: "IFEZ release (2 Jan 2025)", status: "planned 2029" },
+              { label: "Hana Dream Town", value: "IFEZ release (26 May 2026)", status: "completed 21 May 2026" },
+              { label: "Video and culture complex", value: "IFEZ notice 2022-176", status: "planned 2031" },
+              { label: "Schools", value: "New elementary (planned), new middle (plan stage). Assignment is by the education office.", status: "planned" },
+              { label: "District", value: "From 1 Jul 2026, former Seo-gu including Cheongna-dong is Seohae-gu", status: "in effect" },
+            ] : [
               { label: "위치", value: "인천광역시 서해구 청라동 86-1번지, 청라국제도시 주상복합용지 M5BL", status: "공개값" },
               { label: "청라하늘대교(제3연륙교)", value: "2026년 1월 5일 개통, 1월 14일 명칭 확정 (경향신문 2026-01-14 보도)", status: "확정" },
               { label: "서울 7호선 청라연장선 국제업무단지역", value: "대도시권광역교통위원회 고시 제2022-01호", status: "예정 · 개통 시기 미정" },
@@ -149,20 +185,45 @@ function LocationPage() {
               { label: "행정구역", value: "2026년 7월 1일부 인천 서구 → 서해구(청라동 포함)", status: "확정" },
             ]}
             faq={locationFaq()}
-            links={[
+            links={en ? [
+              { to: "/pages/overview", label: "Overview" },
+              { to: "/pages/brand", label: "History" },
+              { to: "/pages/contact", label: "Model house" },
+              { to: "/pages/schedule", label: "Sale schedule" },
+              { to: "/register", label: "Register" },
+            ] : [
               { to: "/pages/overview", label: "분양 사업개요" },
               { to: "/pages/brand", label: "청라 개발 히스토리" },
               { to: "/pages/contact", label: "견본주택·홍보관 오시는길" },
               { to: "/pages/schedule", label: "분양 일정·청약 안내" },
               { to: "/register", label: "사전고객등록" },
             ]}
-            sources={[
+            sources={en ? [
+              { label: "Kyunghyang Shinmun, Cheongna Sky Bridge name fixed", href: "https://www.khan.co.kr/article/202601141710001", date: "2026-01-14" },
+              { label: "Incheon district change (Seohae-gu and Geomdan-gu)", href: "https://www.incheon.go.kr/IC01070101", date: "2026-07-01" },
+            ] : [
               { label: "경향신문 「이름 없던 인천 청라하늘대교(구 제3연륙교) 명칭 ‘청라하늘대교’로 최종 확정」", href: "https://www.khan.co.kr/article/202601141710001", date: "2026-01-14" },
               { label: "인천광역시 행정구역 개편(서해구·검단구) 안내", href: "https://www.incheon.go.kr/IC01070101", date: "2026-07-01" },
             ]}
           />
           <SubNotice
-            items={[
+            items={en ? [
+              "CG, illustrations, and images on this site were made to help you understand and may differ from the real complex.",
+              "Development plans and facilities marked as planned can change, be delayed, or be cancelled during permitting. That is separate from this website.",
+              "Content can change during permitting. Check the main terms before you sign.",
+              "Printed text can contain typos.",
+              "Transport, living, and school notes can differ from the site. Visit and check.",
+              "School assignment is decided by the local education office.",
+              "Seoul Line 7 Cheongna extension (planned): metropolitan transport committee notice 2022-01. The opening date is not set.",
+              "Line 9 direct link (plan stage, not confirmed): Incheon council release welcoming an AREX–Line 9 link (21 Nov 2023).",
+              "Incheon Robot Land (planned 2028): MOTIE notice 2024-199.",
+              "Asan Medical Center Cheongna (planned 2029): IFEZ building-permit release (2 Jan 2025).",
+              "Dome stadium and Starfield Cheongna (planned to open in 2028): Incheon City site check (13 Jan 2026).",
+              "Hana Dream Town (group HQ completed 21 May 2026): IFEZ and Hana Financial release (26 May 2026).",
+              "Cheongna City Tower (plan stage): report on planned height (26 Dec 2024).",
+              "Video and culture complex (planned 2031): IFEZ notice 2022-176.",
+              "I-CON City (plan stage): IFEZ memorandum release (21 Jan 2026).",
+            ] : [
               "본 홈페이지에 사용된 CG 및 일러스트, 이미지 등은 소비자의 이해를 돕기 위한 것으로 실제와 다를 수 있습니다.",
               "본 홈페이지에 표기된 개발계획 및 각종 시설(예정) 등은 추진 예정, 계획 중인 사항으로 인·허가 과정 및 관계 기관의 사업추진 중 변경, 지연, 취소될 수 있으며 당사와는 무관합니다.",
               "본 홈페이지의 내용은 인·허가 과정상 변경될 수 있으니 계약 시 주요 내용을 반드시 확인하시기 바랍니다.",

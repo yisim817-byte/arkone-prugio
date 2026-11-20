@@ -3,7 +3,8 @@ import { AuthProvider } from "@/lib/auth/provider";
 import { PreviewHostBridge } from "@/components/preview-host-bridge";
 import appCss from "../styles.css?url";
 import { SITE_NAME } from "@/lib/site-data";
-import { EN_ORIGIN, KR_ORIGIN, isEnHost, isIndexablePath, isKrHost } from "@/lib/seo-host";
+import { EN_ORIGIN, KR_ORIGIN, A4_INDEX_OPEN, isEnHost, isIndexablePath, isKrHost } from "@/lib/seo-host";
+import { DESC_HOME_EN } from "@/lib/stage-copy";
 
 export const Route = createRootRoute({
   head: ({ matches }) => {
@@ -22,14 +23,14 @@ export const Route = createRootRoute({
       {
         name: "description",
         content: en
-          ? "Notice posted 22 Oct 2026. Model house opens 30 Oct. Contract 22-24 Nov. Apt 868 units."
+          ? DESC_HOME_EN
           : "청라 아크원 푸르지오 분양 정보 안내",
       },
       { name: "theme-color", content: "#004B45" },
       {
         name: "robots",
         content:
-          (isKrHost() || en) &&
+          (isKrHost() || (en && A4_INDEX_OPEN)) &&
           matches.length > 1 &&
           matches[matches.length - 1]?.routeId !== "__root__" &&
           !matches.some((m) => m.status === "notFound" || m.status === "error") &&
