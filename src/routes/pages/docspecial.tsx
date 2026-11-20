@@ -61,6 +61,7 @@ function DocSpecialPage() {
             sources={[{ ...SRC_APPLYHOME, date: isEnHost() ? SRC_APPLYHOME.date : "2026-10-29" }]}
             faq={tx(FAQ_KO, FAQ_EN)}
           />
+          <p>{tx("출처: 2026.10.22 게시 입주자모집공고(청약홈) · 확인 기준일 2026-11-21", "Source: the 22 Oct 2026 recruitment notice on Applyhome. Checked 2026-11-21.")}</p>
         </section>
       </div>
     </SiteShell>

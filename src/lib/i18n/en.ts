@@ -119,6 +119,7 @@ export const FAQ_SCHEDULE = [
   { q: "Who can apply?", a: "Applicants must be 19 or older and live in Incheon Seoul or Gyeonggi on the notice date 22 Oct 2026. If the same rank is oversubscribed 50 percent goes first to Incheon residents and 50 percent to Seoul and Gyeonggi residents. First rank needs 12 months in the subscription account and the required deposit." },
   { q: "Are there resale limits a re-win limit or a residency duty?", a: "Resale is limited for 3 years (until title registration if sooner than 3 years it is 3 years). A re-win limit of 10 years applies if you win here. There is no residency duty. A person already inside another re-win limit can still apply here." },
   { q: "When is the Cheongna Ark-One Prugio contract period?", a: "The contract period for Cheongna Ark-One Prugio is 22 to 24 November 2026. That date is from the recruitment notice posted on 22 Oct 2026." },
+  { q: "Where do I check whether I won?", a: "Winners were announced on 10 Nov. Check your own result on Applyhome." },
 ];
 
 export const FAQ_COMPARE = [

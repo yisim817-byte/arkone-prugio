@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteShell } from "@/components/site-shell";
 import { SubNotice } from "@/components/notice";
 import { canonicalLinks, faqJsonLd, isEnHost, tx } from "@/lib/seo-host";
@@ -95,7 +95,7 @@ function OverviewPage() {
           {isEnHost() ? (
             <p>Cheongna Ark-One Prugio is six buildings from basement 5 to floor 49. Apt 868 units (exclusive 84 and 103 sqm) and officetel 987 rooms (exclusive 105 121 and 136 sqm) total 1855. Parking is 3124 spaces (Apt 1389 officetel 1695 shops 40). The developer is Cheongna Smart City and the builder is Daewoo E&C. The 2911 brand-town figure includes Cheongna Peakone Prugio and is not one complex. Notice posted 22 Oct 2026. The model house is open until further notice. Call 1833-3872.</p>
           ) : (
-            <p>청라 아크원 푸르지오는 지하 5층~지상 49층, 총 6개동이며 아파트 868세대(전용 84·103㎡)와 오피스텔 987실(전용 105·121·136㎡), 합계 1,855세대·실입니다. 주차대수는 총 3,124대(아파트 1,389대 · 오피스텔 1,695대 · 상업시설 40대)입니다. 시행은 ㈜청라스마트시티, 시공은 대우건설(주)입니다. 푸르지오 브랜드타운 2,911세대·실은 청라 피크원 푸르지오를 포함한 합산 규모이며, 단일 단지가 아닙니다. 청라 아크원 푸르지오는 입주자모집공고 게시 2026.10.22(목) · 견본주택은 별도 공지 시까지 운영하며, 세부 일정은 대표번호 1833-3872로 문의할 수 있습니다.</p>
+            <p>청라 아크원 푸르지오는 지하 5층~지상 49층, 총 6개동이며 아파트 868세대(전용 84·103㎡)와 오피스텔 987실(전용 105·121·136㎡), 합계 1,855세대·실입니다. 주차대수는 총 3,124대(아파트 1,389대 · 오피스텔 1,695대 · 상업시설 40대)입니다. 시행은 ㈜청라스마트시티, 시공은 대우건설(주)입니다. 푸르지오 브랜드타운 2,911세대·실은 청라 피크원 푸르지오를 포함한 합산 규모이며, 단일 단지가 아닙니다. <Link to="/">청라 아크원 푸르지오</Link>는 입주자모집공고 게시 2026.10.22(목) · <Link to="/event">견본주택</Link>은 별도 공지 시까지 운영하며, 세부 일정은 대표번호 1833-3872로 문의할 수 있습니다.</p>
           )}
           <section className="seo-guide" aria-label={isEnHost() ? "Complex distinction" : "단지 구분"}>
             <h2 className="seo-guide__subtitle">{isEnHost() ? "Which complex is which" : "단지 구분"}</h2>

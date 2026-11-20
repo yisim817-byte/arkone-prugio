@@ -95,6 +95,7 @@ function NewsListPage() {
               »
             </button>
           </div>
+          <p>{tx("출처: 각 언론사 원문 · 확인 기준일 2026-11-21", "Source: the original articles. Checked 2026-11-21.")}</p>
         </section>
       </div>
       {selected ? (
