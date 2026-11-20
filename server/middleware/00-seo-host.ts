@@ -12,9 +12,9 @@
 const KR_ORIGIN = "https://www.xn--2w2b19sita0u67iz2mi7g.site";
 const EN_ORIGIN = "https://www.arkone-prugio.site";
 const KR_HOSTS = new Set(["www.xn--2w2b19sita0u67iz2mi7g.site", "www.아크원푸르지오.site"]);
-// ARK1120 P5: English host is on. HOLD-A4 keeps robots noindex and an empty sitemap until this flag is true.
+// 2026-11-10 PM 지시: 영문판을 끈다 (src/lib/seo-host.ts 와 같이 바꾼다).
 const A4_INDEX_OPEN = false;
-const EN_HOSTS = new Set<string>(["www.arkone-prugio.site"]);
+const EN_HOSTS = new Set<string>([]);
 
 /** path -> lastmod (git commit date of the page's last content change). */
 const KR_SITEMAP: ReadonlyArray<readonly [string, string]> = [
