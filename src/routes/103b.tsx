@@ -53,7 +53,7 @@ const FAQ_EN = [
   },
 ];
 
-const DESC_KO = "청라 아크원 푸르지오 103㎡B 관심 접수는 11.17(화)부터이며 계약 진행 중(11.22~11.24)과 별도입니다.";
+const DESC_KO = "청라 아크원 푸르지오 103㎡B 관심 접수는 11.17(화)부터이며 계약 종료(11.24)과 별도입니다.";
 const DESC_EN = "Cheongna Ark-One Prugio 103 sqm B interest form from 17 Nov. It is not the 22-24 Nov contract.";
 
 export const Route = createFileRoute("/103b")({
@@ -115,7 +115,7 @@ function B103Page() {
           <p>
             {tx("문의", "Call")} <a href={SITE_TEL_HREF}>{SITE_PHONE}</a>
           </p>
-          <p>{tx("확인 기준일 2026-11-22. 사업주체 안내가 바뀌면 그 안내가 우선합니다.", "Checked 2026-11-22. If the project entity posts a change, that notice prevails.")}</p>
+          <p>{tx("확인 기준일 2026-11-25. 사업주체 안내가 바뀌면 그 안내가 우선합니다.", "Checked 2026-11-25. If the project entity posts a change, that notice prevails.")}</p>
         </section>
       </div>
     </SiteShell>

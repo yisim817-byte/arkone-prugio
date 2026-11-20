@@ -196,7 +196,7 @@ function Home() {
 
         <section className="phase-now" aria-label={tx("현재 단계", "Current stage")}>
           <p>{tx(STAGE_KO, STAGE_EN)}</p>
-          <p>{tx("확인 기준일 2026-11-22", "Checked 2026-11-22")}</p>
+          <p>{tx("확인 기준일 2026-11-25", "Checked 2026-11-25")}</p>
         </section>
 
         {isOtMainHost() ? <OtFeature /> : null}

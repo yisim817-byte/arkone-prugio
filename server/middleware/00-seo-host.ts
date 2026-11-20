@@ -18,20 +18,20 @@ const EN_HOSTS = new Set<string>([]);
 
 /** path -> lastmod (git commit date of the page's last content change). */
 const KR_SITEMAP: ReadonlyArray<readonly [string, string]> = [
-  ["/", "2026-11-22"],
+  ["/", "2026-11-25"],
   ["/pages/overview", "2026-11-13"],
-  ["/pages/compare", "2026-11-22"],
-  ["/pages/schedule", "2026-11-22"],
-  ["/103b", "2026-11-22"],
+  ["/pages/compare", "2026-11-25"],
+  ["/pages/schedule", "2026-11-25"],
+  ["/103b", "2026-11-25"],
   ["/pages/location", "2026-11-22"],
   ["/pages/contact", "2026-11-13"],
-  ["/pages/changeinfo", "2026-11-13"],
-  ["/pages/docspecial", "2026-11-13"],
-  ["/pages/docnormal", "2026-11-22"],
+  ["/pages/changeinfo", "2026-11-25"],
+  ["/pages/docspecial", "2026-11-25"],
+  ["/pages/docnormal", "2026-11-25"],
   ["/pages/premium", "2026-11-22"],
   ["/pages/brand", "2026-11-22"],
-  ["/board/news_list", "2026-11-22"],
-  ["/pages/video", "2026-11-22"],
+  ["/board/news_list", "2026-11-25"],
+  ["/pages/video", "2026-11-25"],
   ["/event", "2026-11-13"],
 ];
 const KR_PATHS = new Set(KR_SITEMAP.map(([p]) => p));
@@ -184,9 +184,9 @@ function pageJsonLd(path: string, en = false): string {
     dateModified: lastmod,
   };
   if (path === "/" || path === "/pages/schedule" || path === "/103b") {
-    const homeKo = "청라 아크원 푸르지오 분양 일정·비교 안내 — 서류접수는 끝났고 계약 진행 중(11.22~11.24) 창구입니다.";
-    const scheduleKo = "청라 아크원 푸르지오 분양가·청약 일정 — 공급금액표와 계약 진행 중(11.22~11.24)을 공고 기준으로 안내합니다.";
-    const b103Ko = "청라 아크원 푸르지오 103㎡B 관심 접수는 11.17(화)부터이며 계약 진행 중(11.22~11.24)과 별도입니다.";
+    const homeKo = "청라 아크원 푸르지오 분양 일정·비교 안내 — 서류접수는 끝났고 계약 종료(11.24)입니다.";
+    const scheduleKo = "청라 아크원 푸르지오 분양가·청약 일정 — 공급금액표와 계약 종료(11.24)을 공고 기준으로 안내합니다.";
+    const b103Ko = "청라 아크원 푸르지오 103㎡B 관심 접수는 11.17(화)부터이며 계약 종료(11.24)과 별도입니다.";
     const homeEn = "Cheongna Ark-One Prugio sale guide. Document filing is finished. Contracts run 22-24 Nov.";
     const scheduleEn = "Cheongna Ark-One Prugio prices and schedule. Contracts of 22-24 Nov follow the notice.";
     const b103En = "Cheongna Ark-One Prugio 103 sqm B interest form from 17 Nov. It is not the 22-24 Nov contract.";
