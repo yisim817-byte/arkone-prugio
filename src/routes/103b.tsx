@@ -53,8 +53,8 @@ const FAQ_EN = [
   },
 ];
 
-const DESC_KO = "103㎡B 참여의향서는 11월 17일(화)부터 견본주택에서 본인이 접수합니다. 선착순 일정은 미정이고 접수는 계약이 아닙니다.";
-const DESC_EN = "103 sqm B interest forms opened 17 Nov 2026 at the model house. Filing is not a contract.";
+const DESC_KO = "청라 아크원 푸르지오 103㎡B 관심 접수는 11.17(화)부터이며 계약 11.22~11.24와 별도입니다.";
+const DESC_EN = "Cheongna Ark-One Prugio 103 sqm B interest form from 17 Nov. It is not the 22-24 Nov contract.";
 
 export const Route = createFileRoute("/103b")({
   component: B103Page,

@@ -4,7 +4,7 @@ import { PreviewHostBridge } from "@/components/preview-host-bridge";
 import appCss from "../styles.css?url";
 import { SITE_NAME } from "@/lib/site-data";
 import { EN_ORIGIN, KR_ORIGIN, A4_INDEX_OPEN, isEnHost, isIndexablePath, isKrHost } from "@/lib/seo-host";
-import { DESC_EN } from "@/lib/stage-copy";
+import { DESC_HOME_EN } from "@/lib/stage-copy";
 
 export const Route = createRootRoute({
   head: ({ matches }) => {
@@ -23,7 +23,7 @@ export const Route = createRootRoute({
       {
         name: "description",
         content: en
-          ? DESC_EN
+          ? DESC_HOME_EN
           : "청라 아크원 푸르지오 분양 정보 안내",
       },
       { name: "theme-color", content: "#004B45" },

@@ -183,10 +183,15 @@ function pageJsonLd(path: string, en = false): string {
     publisher: { "@id": org["@id"] },
     dateModified: lastmod,
   };
-  if (path === "/" || path === "/pages/schedule") {
-    webpage.description = en
-      ? "finished the winner announcement on 10 Nov 2026 and document submission on 12-16 Nov."
-      : "2026년 11월 10일(화) 당첨자 발표와 11월 12일(목)~16일(월) 당첨자 서류접수를 마쳤고, 계약은 11월 22일(일)부터 24일(화)까지입니다.";
+  if (path === "/" || path === "/pages/schedule" || path === "/103b") {
+    const homeKo = "청라 아크원 푸르지오 분양 일정·비교 안내 — 서류접수는 끝났고 계약 11.22~11.24 창구입니다.";
+    const scheduleKo = "청라 아크원 푸르지오 분양가·청약 일정 — 공급금액표와 계약 11.22~11.24를 공고 기준으로 안내합니다.";
+    const b103Ko = "청라 아크원 푸르지오 103㎡B 관심 접수는 11.17(화)부터이며 계약 11.22~11.24와 별도입니다.";
+    const homeEn = "Cheongna Ark-One Prugio sale guide. Document filing is finished. Contracts run 22-24 Nov.";
+    const scheduleEn = "Cheongna Ark-One Prugio prices and schedule. Contracts of 22-24 Nov follow the notice.";
+    const b103En = "Cheongna Ark-One Prugio 103 sqm B interest form from 17 Nov. It is not the 22-24 Nov contract.";
+    webpage.description =
+      path === "/" ? (en ? homeEn : homeKo) : path === "/pages/schedule" ? (en ? scheduleEn : scheduleKo) : en ? b103En : b103Ko;
   }
   if (path !== "/") {
     webpage.breadcrumb = { "@id": `${url}#breadcrumb` };
