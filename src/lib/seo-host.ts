@@ -59,7 +59,7 @@ export function isKrHost(): boolean {
 export const EN_ORIGIN = "https://www.arkone-prugio.site";
 // ARK1120 P5: English copy is on for www.arkone-prugio.site only.
 // HOLD-A4: indexing stays closed until A4_INDEX_OPEN is true (branch seo/ark1120-a4-index, do not merge).
-export const A4_INDEX_OPEN = false;
+export const A4_INDEX_OPEN = true;
 const EN_HOSTS = new Set<string>(["www.arkone-prugio.site"]);
 
 export function isEnHostName(raw: string | null | undefined): boolean {
