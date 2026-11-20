@@ -35,7 +35,7 @@ function VideoPage() {
           <h1 className="page-h1">{tx("청라 아크원 푸르지오 홍보영상", META.video.h1)}</h1>
           <div className="video-grid">
             <button type="button" className="video-card" onClick={() => setOpen(true)}>
-              <img src={`https://img.youtube.com/vi/${YOUTUBE_ID}/hqdefault.jpg`} alt="청라 아크원 푸르지오 홍보영상 썸네일" width={480} height={360} data-dims="" />
+              <img src={`https://img.youtube.com/vi/${YOUTUBE_ID}/hqdefault.jpg`} alt={tx("청라 아크원 푸르지오 홍보영상 썸네일", "Cheongna Ark-One Prugio promo video thumbnail")} width={480} height={360} data-dims="" />
               <p>{tx("청라 아크원 푸르지오 홍보영상", "Cheongna Ark-One Prugio promo video")}</p>
             </button>
           </div>
@@ -54,7 +54,7 @@ function VideoPage() {
         mainEntity: faq.map(({ q, a }) => ({ "@type": "Question", name: q, acceptedAnswer: { "@type": "Answer", text: a } })),
       }) }} />
 
-      {open ? <YoutubeModal id={YOUTUBE_ID} title="청라 아크원 푸르지오 홍보영상" onClose={() => setOpen(false)} /> : null}
+      {open ? <YoutubeModal id={YOUTUBE_ID} title={tx("청라 아크원 푸르지오 홍보영상", "Cheongna Ark-One Prugio promo video")} onClose={() => setOpen(false)} /> : null}
     </SiteShell>
   );
 }

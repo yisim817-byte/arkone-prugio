@@ -5,7 +5,7 @@ import { canonicalLinks, faqJsonLd, isEnHost, tx } from "@/lib/seo-host";
 import { GuideAnswer, GuideDetail, type GuideFaq } from "@/components/seo-guide";
 import { FAQ_SCHEDULE, META, withPrice } from "@/lib/i18n/en";
 import { SRC_APPLYHOME } from "@/lib/arkone-facts";
-import { DESC_EN, DESC_KO, STAGE_EN, STAGE_KO } from "@/lib/stage-copy";
+import { DESC_SCHEDULE_EN, DESC_SCHEDULE_KO, STAGE_EN, STAGE_KO } from "@/lib/stage-copy";
 import { NoticePayment, NoticePrice, PRICE_FAQ_ANSWER } from "@/components/notice-sections";
 
 const FAQ: GuideFaq[] = [
@@ -66,7 +66,7 @@ export const Route = createFileRoute("/pages/schedule")({
       { title: tx("청라 아크원 푸르지오 분양가·분양 일정·청약 안내", META.schedule.title) },
       {
         name: "description",
-        content: tx(DESC_KO, DESC_EN),
+        content: tx(DESC_SCHEDULE_KO, DESC_SCHEDULE_EN),
       },
     ],
     links: canonicalLinks("/pages/schedule"),
