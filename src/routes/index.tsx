@@ -8,8 +8,24 @@ import { NoticeSummary } from "@/components/notice-summary";
 import { PlansBanner } from "@/components/plans-banner";
 import { YoutubeModal } from "@/components/youtube-modal";
 import { SITE_NAME, SITE_TEL_HREF, YOUTUBE_ID } from "@/lib/site-data";
-import { EN_ORIGIN, KR_ORIGIN, LEGACY_ORIGIN, canonicalLinks, isEnHost, isKrHost, isOtMainHost, tx } from "@/lib/seo-host";
+import { EN_ORIGIN, KR_ORIGIN, LEGACY_ORIGIN, canonicalLinks, faqJsonLd, isEnHost, isKrHost, isOtMainHost, tx } from "@/lib/seo-host";
+import { DESC_EN, DESC_KO, PEAK_A_EN, PEAK_A_KO, PEAK_Q_EN, PEAK_Q_KO, STAGE_EN, STAGE_KO } from "@/lib/stage-copy";
 import { META } from "@/lib/i18n/en";
+
+const HOME_FAQ_KO = [
+  { q: PEAK_Q_KO, a: PEAK_A_KO },
+  { q: "지금 아파트 청약은 어느 단계인가요?", a: STAGE_KO },
+  { q: "계약은 언제인가요?", a: "계약은 11월 22일(일)부터 24일(화)까지입니다." },
+  { q: "상담 전화는 무엇인가요?", a: "상담 전화는 1833-3872 하나입니다." },
+  { q: "견본주택은 어디에 있나요?", a: "견본주택은 인천광역시 서해구 청라동 87-1이고 별도 공지 시까지 운영합니다." },
+];
+const HOME_FAQ_EN = [
+  { q: PEAK_Q_EN, a: PEAK_A_EN },
+  { q: "Which stage is the apartment sale in now?", a: STAGE_EN },
+  { q: "When are the contracts?", a: "Contracts run from 22 Nov through 24 Nov 2026." },
+  { q: "What is the phone number?", a: "The only phone number is 1833-3872." },
+  { q: "Where is the model house?", a: "The model house is at 87-1 Cheongna-dong, Seohae-gu, Incheon, and stays open until a separate notice." },
+];
 
 export const Route = createFileRoute("/")({
   component: Home,
@@ -18,10 +34,7 @@ export const Route = createFileRoute("/")({
       { title: tx("청라 아크원 푸르지오 | 분양 일정·비교·청약 안내", META.home.title) },
       {
         name: "description",
-        content: tx(
-          "청라 아크원 푸르지오 분양 일정·청약 안내. 공고 2026.10.22 게시 · 특별공급 11.02 · 1순위 11.03 · 2순위 11.04 · 당첨자 발표 11.10.",
-          META.home.desc,
-        ),
+        content: tx(DESC_KO, DESC_EN),
       },
     ],
     links: canonicalLinks("/"),
@@ -30,6 +43,7 @@ export const Route = createFileRoute("/")({
         type: "application/ld+json",
         children: homeJsonLd(isEnHost() ? EN_ORIGIN : isKrHost() ? KR_ORIGIN : LEGACY_ORIGIN, isEnHost()),
       },
+      ...faqJsonLd(isEnHost() ? HOME_FAQ_EN : HOME_FAQ_KO, "/"),
     ],
   }),
 });
@@ -56,7 +70,8 @@ function homeJsonLd(origin: string, en: boolean) {
         name,
         inLanguage: lang,
         isPartOf: { "@id": `${origin}/#website` },
-        dateModified: "2026-11-13",
+        dateModified: "2026-11-20",
+        description: en ? DESC_EN : DESC_KO,
       },
     ],
   });
@@ -163,20 +178,25 @@ function Home() {
                 <b>{tx("청라 아크원", "Cheongna Ark-One")}</b> <br className="m-only" /> {tx("홍보영상", "promo video")}
               </span>
               <span className="hero__video_play">
-                <img src="/resources/img/pages/main/ico_yt.svg" alt="" {...imgDims("/resources/img/pages/main/ico_yt.svg")} data-dims="" />
+                <img src="/resources/img/pages/main/ico_yt.svg" alt="" {...imgDims("/resources/img/pages/main/ico_yt.svg")} data-dims=""  aria-hidden="true" />
               </span>
             </button>
           </div>
           <div className="hero__quick">
             <div className="hero__quick_item" aria-label="분양가 상한제 적용단지">
-              <img className="hero__quick_orbit" src="/official/badge/hero_circle_text.v100.svg" alt="" />
-              <img className="hero__quick_content" src="/official/badge/hero_circle_01.v100.svg" alt="" />
+              <img className="hero__quick_orbit" src="/official/badge/hero_circle_text.v100.svg" alt=""  aria-hidden="true" />
+              <img className="hero__quick_content" src="/official/badge/hero_circle_01.v100.svg" alt=""  aria-hidden="true" />
             </div>
             <Link to="/register" className="hero__quick_item hero__quick_item--reg" aria-label="사전고객등록">
-              <img className="hero__quick_orbit" src="/official/badge/hero_circle_text.v100.svg" alt="" />
-              <img className="hero__quick_content" src="/official/badge/hero_circle_prereg.svg" alt="" />
+              <img className="hero__quick_orbit" src="/official/badge/hero_circle_text.v100.svg" alt=""  aria-hidden="true" />
+              <img className="hero__quick_content" src="/official/badge/hero_circle_prereg.svg" alt=""  aria-hidden="true" />
             </Link>
           </div>
+        </section>
+
+        <section className="phase-now" aria-label={tx("현재 단계", "Current stage")}>
+          <p>{tx(STAGE_KO, STAGE_EN)}</p>
+          <p>{tx("확인 기준일 2026-11-20", "Checked 2026-11-20")}</p>
         </section>
 
         {isOtMainHost() ? <OtFeature /> : null}
@@ -185,14 +205,14 @@ function Home() {
 
         <section className="event-card" aria-labelledby="event-title">
           <div className="event-card__inner">
-            <p className="event-card__eyebrow">{tx("오피스텔 사전고객등록 이벤트", "Officetel pre-registration event")}</p>
-            <h2 id="event-title">{tx("백화점 상품권 50만원", "Department-store gift card 500000 won")}</h2>
-            <p className="event-card__brands">{tx("상품권 종류: 롯데·현대·신세계 백화점 가운데 1종", "One gift card from Lotte Hyundai or Shinsegae")}</p>
-            <p className="event-card__basis">{tx("받으실 수 있는 분: 이 홈페이지에서 오피스텔 사전고객등록을 한 뒤 오피스텔을 계약한 고객입니다.", "Who can receive it: a customer who pre-registers for officetel on this site and then signs a contract.")}</p>
-            <p className="event-card__payout">{tx("상품권은 오피스텔 계약 시 드립니다. 이벤트 기간은 11월 20일(금)까지입니다.", "The card is given at the officetel contract. The event runs until 20 Nov.")}</p>
-            <ol className="event-card__steps"><li>{tx("STEP 1 오피스텔 사전고객등록(홈페이지)", "STEP 1 Pre-register on this site")}</li><li>{tx("STEP 2 오피스텔 계약", "STEP 2 Sign the contract")}</li><li>{tx("STEP 3 계약 시 상품권 수령", "STEP 3 Receive the card at the contract")}</li></ol>
-            <div className="event-card__actions"><Link className="event-card__button" to="/register">{tx("사전등록하기", "Pre-register")}</Link><a href="#event-terms">{tx("유의사항 자세히 보기", "Read the notes")}</a></div>
-            <p className="event-card__schedule">{tx("일정: 입주자모집공고 게시 2026.10.22(목) · 견본주택 별도 공지 시까지 운영 · 세부 일정은 대표번호 1833-3872로 문의", "Schedule: notice posted 22 Oct 2026 · model house open until further notice · call 1833-3872")}</p>
+            <p className="event-card__eyebrow">오피스텔 사전고객등록 이벤트</p>
+            <h2 id="event-title">백화점 상품권 50만원</h2>
+            <p className="event-card__brands">상품권 종류: 롯데·현대·신세계 백화점 가운데 1종</p>
+            <p className="event-card__basis">받으실 수 있는 분: 이 홈페이지에서 오피스텔 사전고객등록을 한 뒤 오피스텔을 계약한 고객입니다.</p>
+            <p className="event-card__payout">상품권은 오피스텔 계약 시 드립니다. 이벤트 기간은 11월 20일(금)까지입니다.</p>
+            <ol className="event-card__steps"><li>STEP 1 오피스텔 사전고객등록(홈페이지)</li><li>STEP 2 오피스텔 계약</li><li>STEP 3 계약 시 상품권 수령</li></ol>
+            <div className="event-card__actions"><Link className="event-card__button" to="/register">사전등록하기</Link><a href="#event-terms">유의사항 자세히 보기</a></div>
+            <p className="event-card__schedule">일정: 입주자모집공고 게시 2026.10.22(목) · 견본주택 별도 공지 시까지 운영 · 세부 일정은 대표번호 1833-3872로 문의</p>
             <p>등록 여부는 <a href={SITE_TEL_HREF}>1833-3872</a>(대표번호)에서 확인하실 수 있습니다.</p>
             <details id="event-terms" className="event-card__terms"><summary>이벤트 유의사항 (청라 아크원 푸르지오 오피스텔 사전고객등록)</summary>
               <ol>
@@ -215,7 +235,7 @@ function Home() {
         <section className="hero-define">
           <Img className="hero-define__visual" src="/resources/img/pages/main/hero_brand_img.v4.webp" alt="청라 아크원 푸르지오 엠블럼" />
           <div className="hero-define__copy">
-            <Img src="/resources/img/pages/main/ico_star.svg" alt="" width={28} height={28} />
+            <Img src="/resources/img/pages/main/ico_star.svg" alt="" width={28} height={28}  aria-hidden="true" />
             <p className="hero-define__title">아크원(ARK-ONE)이란?</p>
             <strong className="hero-define__keyword">
               <b>A</b>BSOLUTE
@@ -235,7 +255,7 @@ function Home() {
         </section>
 
         <section id="overview" className="section-overview">
-          <Img className="bg" src="/resources/img/pages/main/overview_bg.v4.webp" alt="" />
+          <Img className="bg" src="/resources/img/pages/main/overview_bg.v4.webp" alt=""  aria-hidden="true" />
           <span className="dim" />
           <div className="section-overview__inner">
             <header>
@@ -424,7 +444,7 @@ function Home() {
         <section id="brand" className="section-brand">
           <picture>
             <source media="(max-width: 1024px)" srcSet="/resources/img/pages/main/brand_bg_m.v4.webp" />
-            <Img className="bg" src="/resources/img/pages/main/brand_bg.v4.webp" alt="" />
+            <Img className="bg" src="/resources/img/pages/main/brand_bg.v4.webp" alt=""  aria-hidden="true" />
           </picture>
           <div className="frame">
             <p className="section-brand__eyebrow">THE NATURAL NOBILITY</p>
@@ -438,7 +458,7 @@ function Home() {
         </section>
 
         <section id="contact" className="section-contact">
-          <Img className="bg" src="/resources/img/pages/main/contact_bg.v4.webp" alt="" />
+          <Img className="bg" src="/resources/img/pages/main/contact_bg.v4.webp" alt=""  aria-hidden="true" />
           <h2>CONTACT US</h2>
           <div className="contact-schedule">
             <p><b>청라 아크원 푸르지오(APT) 청약 일정 — 입주자모집공고 기준</b></p>
@@ -504,6 +524,14 @@ function Home() {
               </div>
             </article>
           </div>
+        </section>
+        <section className="seo-qa" aria-label={tx("자주 묻는 질문", "Questions")}>
+          {(isEnHost() ? HOME_FAQ_EN : HOME_FAQ_KO).map((item) => (
+            <article key={item.q}>
+              <h2>{item.q}</h2>
+              <p>{item.a}</p>
+            </article>
+          ))}
         </section>
       </main>
       {video ? <YoutubeModal id={YOUTUBE_ID} onClose={() => setVideo(false)} /> : null}

@@ -5,7 +5,6 @@ import { canonicalLinks, faqJsonLd, isEnHost, tx } from "@/lib/seo-host";
 import { GuideAnswer, GuideDetail, type GuideFaq } from "@/components/seo-guide";
 import { FAQ_COMPARE, META } from "@/lib/i18n/en";
 import { SRC_APPLYHOME } from "@/lib/arkone-facts";
-import { NoticePrice, NoticeTypes, PlanFigure, UnitFigure } from "@/components/notice-sections";
 
 const FAQ: GuideFaq[] = [
   {
@@ -69,35 +68,15 @@ function ComparePage() {
               </>
             ) : (
               <>
-            <p>청라 아크원 푸르지오는 한 단지 안에 아파트 868세대와 오피스텔 987실을 함께 공급하는 주거복합 단지입니다.</p>
-            <p>위치는 인천광역시 서해구 청라동 86-1번지입니다. 입주자모집공고는 2026.10.22에 게시되었고 계약은 2026년 11월 22일부터 24일까지입니다.</p>
-            <p>출처: <a href="https://www.applyhome.co.kr" target="_blank" rel="noopener noreferrer">청약홈</a> 입주자모집공고(2026.10.22 게시) · 확인 기준일 2026-10-29</p>
-            <p>아파트는 전용 84㎡·103㎡, 오피스텔은 전용 105㎡·121㎡·136㎡로 공개되어 있으며, 오피스텔에는 멀티 발코니가 안내되어 있습니다.</p>
-            <p>주차대수는 총 3,124대 중 아파트 1,389대, 오피스텔 1,695대로 공개되어 있습니다.</p>
-            <p>아파트 타입별 세대수는 84A 248세대, 84B·84C·84D·103A·103B 각 124세대로 총 868세대입니다(입주자모집공고 기준). 견본주택에는 84A·103A 유니트가 설치되어 있습니다. 주택형별 면적은 주택형 안내(입주자모집공고문 5면)에서 확인할 수 있습니다. 오피스텔 타입별 실수·평면도·분양가는 오피스텔 별도 공고로 안내합니다.</p>
+            <p>아파트 868세대와 오피스텔 987실이 한 주소에 있지만 공고는 나뉩니다. 주소는 서해구 청라동 86-1입니다. 아파트 공고는 2026년 10월 22일에 게시되었고 계약 창구는 11월 22일부터 24일입니다.</p>
+            <p>출처: <a href="https://www.applyhome.co.kr" target="_blank" rel="noopener noreferrer">청약홈</a> 입주자모집공고(2026.10.22 게시) · 확인 기준일 2026-11-20</p>
+            <p>아파트 전용은 84㎡와 103㎡, 오피스텔 전용은 105㎡·121㎡·136㎡입니다. 오피스텔 안내에는 멀티 발코니가 있습니다.</p>
+            <p>주차는 3,124대이고 그 가운데 아파트 1,389대, 오피스텔 1,695대입니다.</p>
+            <p>아파트 세대는 84A가 248이고 84B·84C·84D·103A·103B는 124씩이라 합계 868입니다. 견본주택에 만든 유니트는 84A와 103A입니다. 면적 자릿수는 공고문 5면입니다. 오피스텔 987실의 실수와 금액은 아파트 공고에 없고 오피스텔 공고를 따로 봅니다.</p>
               </>
             )}
           </GuideAnswer>
           <p className="plans-link"><Link to="/pages/plans">평면도·공급금액 한눈에 보기 →</Link></p>
-          <NoticeTypes
-            after84c={<>
-              <PlanFigure plan="84c" withPrice />
-              <UnitFigure file="unit-84c-living-ai.webp" alt="청라 아크원 푸르지오 84㎡C 거실 인테리어 연출 이미지(AI 제작)" />
-              <UnitFigure file="unit-84c-living-kitchen-ai.webp" alt="청라 아크원 푸르지오 84㎡C 거실·주방 인테리어 연출 이미지(AI 제작)" />
-            </>}
-            after103a={
-              <>
-                <PlanFigure plan="103a" withPrice />
-                <NoticePrice />
-                <UnitFigure file="unit-103a-alpha-study-ai.webp" alt="청라 아크원 푸르지오 103㎡A 알파룸을 서재로 꾸민 인테리어 연출 이미지(AI 제작)" />
-              </>
-            }
-            gallery={<div className="unit-gallery" aria-label="인테리어 연출">
-              <h3 className="seo-guide__subtitle">인테리어 연출</h3>
-              <UnitFigure file="interior-master-bedroom-ai.webp" alt="청라 아크원 푸르지오 침실 인테리어 연출 이미지(AI 제작)" />
-              <UnitFigure file="interior-bathroom-ai.webp" alt="청라 아크원 푸르지오 욕실 인테리어 연출 이미지(AI 제작)" />
-            </div>}
-          />
           <GuideDetail
             tableTitle="아파트(APT)와 오피스텔(OT) 비교"
             columns={["구분", "아파트(APT) · 오피스텔(OT)", "상태"]}

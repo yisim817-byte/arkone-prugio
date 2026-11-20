@@ -12,25 +12,26 @@
 const KR_ORIGIN = "https://www.xn--2w2b19sita0u67iz2mi7g.site";
 const EN_ORIGIN = "https://www.arkone-prugio.site";
 const KR_HOSTS = new Set(["www.xn--2w2b19sita0u67iz2mi7g.site", "www.아크원푸르지오.site"]);
-// 2026-11-10 PM 지시: 영문판을 끈다 (src/lib/seo-host.ts 와 같이 바꾼다).
-const EN_HOSTS = new Set<string>([]);
+// ARK1120 P5: English host is on. HOLD-A4 keeps robots noindex and an empty sitemap until this flag is true.
+const A4_INDEX_OPEN = false;
+const EN_HOSTS = new Set<string>(["www.arkone-prugio.site"]);
 
 /** path -> lastmod (git commit date of the page's last content change). */
 const KR_SITEMAP: ReadonlyArray<readonly [string, string]> = [
-  ["/", "2026-11-13"],
+  ["/", "2026-11-20"],
   ["/pages/overview", "2026-11-13"],
-  ["/pages/compare", "2026-11-13"],
-  ["/pages/schedule", "2026-11-13"],
-  ["/103b", "2026-11-13"],
-  ["/pages/location", "2026-11-13"],
+  ["/pages/compare", "2026-11-20"],
+  ["/pages/schedule", "2026-11-20"],
+  ["/103b", "2026-11-20"],
+  ["/pages/location", "2026-11-20"],
   ["/pages/contact", "2026-11-13"],
   ["/pages/changeinfo", "2026-11-13"],
   ["/pages/docspecial", "2026-11-13"],
-  ["/pages/docnormal", "2026-11-13"],
-  ["/pages/premium", "2026-11-13"],
-  ["/pages/brand", "2026-11-13"],
-  ["/board/news_list", "2026-11-13"],
-  ["/pages/video", "2026-11-13"],
+  ["/pages/docnormal", "2026-11-20"],
+  ["/pages/premium", "2026-11-20"],
+  ["/pages/brand", "2026-11-20"],
+  ["/board/news_list", "2026-11-20"],
+  ["/pages/video", "2026-11-20"],
   ["/event", "2026-11-13"],
 ];
 const KR_PATHS = new Set(KR_SITEMAP.map(([p]) => p));
@@ -111,10 +112,12 @@ const EN_PAGE_NAMES: Record<string, string> = {
   "/board/news_list": "Press",
   "/pages/video": "Promo video",
   "/event": "Open event",
+  "/103b": "103 sqm B interest form",
 };
 
 /** KR host only: WebSite + Organization + WebPage(dateModified) + BreadcrumbList JSON-LD. */
 const FAQ_PATHS = new Set([
+  "/",
   "/pages/overview",
   "/pages/compare",
   "/pages/schedule",
@@ -126,6 +129,8 @@ const FAQ_PATHS = new Set([
   "/pages/docnormal",
   "/pages/brand",
   "/pages/video",
+  "/pages/premium",
+  "/board/news_list",
 ]);
 const KR_PAGE_TITLES: Record<string, string> = {
   "/103b": "청라 아크원 푸르지오 103㎡B 선착순 공급 참여의향서 접수",
@@ -178,6 +183,11 @@ function pageJsonLd(path: string, en = false): string {
     publisher: { "@id": org["@id"] },
     dateModified: lastmod,
   };
+  if (path === "/" || path === "/pages/schedule") {
+    webpage.description = en
+      ? "finished the winner announcement on 10 Nov 2026 and document submission on 12-16 Nov."
+      : "2026년 11월 10일(화) 당첨자 발표와 11월 12일(목)~16일(월) 당첨자 서류접수를 마쳤고, 계약은 11월 22일(일)부터 24일(화)까지입니다.";
+  }
   if (path !== "/") {
     webpage.breadcrumb = { "@id": `${url}#breadcrumb` };
     graph.push(webpage, {
@@ -348,6 +358,26 @@ function decorateKrHead(head: string, path: string, ogUrl: string): string {
   return next;
 }
 
+function decorateEnHead(head: string, path: string, ogUrl: string): string {
+  const title = decodeEntities((head.match(/<title[^>]*>([\s\S]*?)<\/title>/i) || [])[1] || "").trim();
+  const descTag = (head.match(/<meta\b[^>]*>/gi) || []).find((t) => /name\s*=\s*["']description["']/i.test(t));
+  const desc = descTag ? decodeEntities((descTag.match(/content\s*=\s*["']([^"']*)["']/i) || [])[1] || "") : "";
+  let next = head;
+  if (title) {
+    next = upsertMeta(next, "property", "og:title", title);
+    next = upsertMeta(next, "name", "twitter:title", title);
+  }
+  if (desc) {
+    next = upsertMeta(next, "property", "og:description", desc);
+    next = upsertMeta(next, "name", "twitter:description", desc);
+  }
+  next = upsertMeta(next, "property", "og:site_name", "Cheongna Ark-One Prugio");
+  next = upsertMeta(next, "property", "og:locale", "en_US");
+  next = upsertMeta(next, "property", "og:url", ogUrl);
+  next += pageJsonLd(path, true);
+  return next;
+}
+
 function injectOgUrl(response: Response, ogUrl: string, path: string, kr: boolean): Response {
   const marker = "</head>";
   let done = false;
@@ -365,7 +395,7 @@ function injectOgUrl(response: Response, ogUrl: string, path: string, kr: boolea
         const at = carry.indexOf(marker);
         if (at === -1) return;
         done = true;
-        const head = kr ? decorateKrHead(carry.slice(0, at), path, ogUrl) : carry.slice(0, at) + `<meta property="og:url" content="${ogUrl}">` + pageJsonLd(path, true);
+        const head = kr ? decorateKrHead(carry.slice(0, at), path, ogUrl) : decorateEnHead(carry.slice(0, at), path, ogUrl);
         controller.enqueue(encoder.encode(head));
         controller.enqueue(encoder.encode(marker + carry.slice(at + marker.length)));
         carry = "";
@@ -410,7 +440,7 @@ export default async function seoHostMiddleware(
   }
 
   if (path === "/robots.txt") {
-    const body = isEn(event) ? EN_ROBOTS : isKr(event) ? KR_ROBOTS : LEGACY_ROBOTS;
+    const body = isEn(event) && A4_INDEX_OPEN ? EN_ROBOTS : isKr(event) ? KR_ROBOTS : LEGACY_ROBOTS;
     return new Response(method === "HEAD" ? null : body, {
       headers: { "content-type": "text/plain; charset=utf-8", ...TEXT_HEADERS },
     });
@@ -421,7 +451,7 @@ export default async function seoHostMiddleware(
     });
   }
   if (path === "/sitemap.xml") {
-    const body = isEn(event) ? enSitemap() : isKr(event) ? krSitemap() : LEGACY_SITEMAP;
+    const body = isEn(event) && A4_INDEX_OPEN ? enSitemap() : isKr(event) ? krSitemap() : LEGACY_SITEMAP;
     return new Response(method === "HEAD" ? null : body, {
       headers: { "content-type": "application/xml", ...TEXT_HEADERS },
     });

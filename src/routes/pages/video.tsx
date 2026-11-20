@@ -11,7 +11,7 @@ export const Route = createFileRoute("/pages/video")({
   component: VideoPage,
   head: () => ({
     meta: [
-      { title: tx("청라 아크원 푸르지오 홍보영상 | 사업 소개", META.video.title) },
+      { title: tx("청라 아크원 푸르지오 홍보영상 | 사업주체 공개 소개 안내", META.video.title) },
       { name: "description", content: tx("청라 아크원 푸르지오 홍보영상 모음입니다. 사업주체가 공개한 단지 소개 영상을 확인할 수 있으며, 상담은 대표번호 1833-3872로 문의하세요.", META.video.desc) },
     ],
     links: canonicalLinks("/pages/video"),
