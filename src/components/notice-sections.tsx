@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import { balcony, deposit, prices, specialSupply, supply, types } from "@/lib/notice-facts.v1.json";
+import { isEnHost } from "@/lib/seo-host";
 
 const facts = { balcony, deposit, prices, specialSupply, supply, types }; // 쓰는 항목만 가져온다(source 링크 등은 번들에 넣지 않음)
 
@@ -47,6 +48,21 @@ export const PRICE_FAQ_ANSWER = say(`주택형별 공급금액은 ${facts.prices
 export function NoticePrice() {
   const rows = facts.prices.rows.map((p) => [p.type, p.units, `${p.min} ~ ${p.max}`]);
   const balconyRow = ["발코니 확장비", ...facts.balcony.rows.map((b) => b.won)];
+  if (isEnHost()) {
+    return (
+      <Block label="Supply amount" title="Supply amount (recruitment notice pages 6–20)">
+        <Table columns={["Type", "Units", "Supply amount (low–high)"]} rows={rows} />
+        <div className="seo-guide__answer">
+          <p>84A line 3 is 8억 7,810만원 ~ 9억 2,070만원, and line 5 is 8억 3,780만원 ~ 8억 7,840만원.</p>
+          <p>Amounts differ by building, floor, and unit. The table on pages 6 to 20 of the notice prevails.</p>
+          <p>Balcony extension, paid options, and acquisition tax sit outside the supply amount. VAT is not added at or under exclusive 85㎡. The 103㎡ supply amount includes construction VAT.</p>
+          <p>The apartment is under the price cap. Call 1833-3872 for one building, floor, and unit.</p>
+        </div>
+        <h3 className="seo-guide__subtitle">Balcony extension (VAT included · deposit 10% · balance 90%)</h3>
+        <Table columns={["Item", ...facts.balcony.rows.map((b) => b.type)]} rows={[["Balcony extension", ...facts.balcony.rows.map((b) => b.won)]]} />
+      </Block>
+    );
+  }
   return (
     <Block label="공급금액" title="공급금액 (입주자모집공고문 6~20면)">
       <Table columns={["주택형", "세대수", "공급금액 (최저 ~ 최고)"]} rows={rows.map((r) => [r[0], r[1], say(String(r[2]))])} />
@@ -64,6 +80,19 @@ export function NoticePrice() {
 
 /** M4 · 납부 조건 (비율만) */
 export function NoticePayment() {
+  if (isEnHost()) {
+    return (
+      <Block label="Payment" title="Payment (shares of the supply amount)">
+        <div className="seo-guide__answer">
+          <p>The 5% contract deposit is split into a first 10 million won at signing and the rest within 30 days of the contract date.</p>
+          <p>The 60% interim is six payments with interest deferred. The project entity plans to introduce a lender. If policy or the lender makes that unavailable, the buyer pays directly.</p>
+          <p>The 35% balance is paid on the move-in designation date.</p>
+          <p>A balance loan can be smaller or unavailable for each person under rules such as DSR.</p>
+          <p>Deposit, interim, and balance are paid only to the account the project entity names. The account number is not on this site. Check the notice and the project entity.</p>
+        </div>
+      </Block>
+    );
+  }
   return (
     <Block label="납부 조건" title="납부 조건 (공급금액 기준 비율)">
       <div className="seo-guide__answer">
@@ -79,6 +108,31 @@ export function NoticePayment() {
 
 /** M5 · 청약 자격 */
 export function NoticeEligibility() {
+  if (isEnHost()) {
+    const columns = ["Item", "Seoul", "Incheon", "Gyeonggi"];
+    const rows = [
+      ["Exclusive 84㎡ (85㎡ or under)", ...facts.deposit.rows[0].slice(1)],
+      ["Exclusive 103㎡ (135㎡ or under)", ...facts.deposit.rows[1].slice(1)],
+    ];
+    return (
+      <Block label="Eligibility" title="Eligibility summary (recruitment notice)">
+        <div className="seo-guide__answer">
+          <p>Applicants must be 19 or older and live in Incheon, Seoul, or Gyeonggi on the notice date, 22 Oct 2026. A minor who is the head of household is included.</p>
+          <p>If the same rank is oversubscribed, Incheon residents take 50% first and the other 50% is Seoul and Gyeonggi.</p>
+          <p>First rank needs 12 months in the subscription account and at least the deposit for the region and area. You do not have to be the head of household, and owning a home does not block first rank.</p>
+          <p>Second rank is a subscription-account holder who is not first rank.</p>
+          <p>General supply selects exclusive 84㎡ as 40% points and 60% lottery, and exclusive 103㎡ as 100% lottery.</p>
+          <p>The lottery looks at people without a home first. 75% of the lottery volume goes first to household members without a home.</p>
+          <p>This complex is in a non-regulated area and under the price cap. The re-win limit is 10 years. Resale is limited for 3 years (until title registration, and not longer than 3 years). There is no residency duty.</p>
+          <p>A person already inside another re-win limit, and their household, can still apply here.</p>
+          <p>One application per person. You may file one special supply and one general supply together, but a special-supply win drops you from general-supply selection.</p>
+        </div>
+        <h3 className="seo-guide__subtitle">Subscription deposit (region on the resident register as of the notice date)</h3>
+        <Table columns={columns} rows={rows} />
+        <p className="seo-guide__legend">Detailed eligibility and exceptions follow the recruitment notice.</p>
+      </Block>
+    );
+  }
   return (
     <Block label="청약 자격 요약" title="청약 자격 요약 (입주자모집공고 기준)">
       <div className="seo-guide__answer">
@@ -102,6 +156,30 @@ export function NoticeEligibility() {
 /** M6 · 특별공급 */
 export function NoticeSpecial() {
   const rows = facts.specialSupply.rows.map((r) => r.map((v, i) => (i > 0 && v === 0 ? "-" : v)));
+  if (isEnHost()) {
+    const label: Record<string, string> = {
+      "기관추천": "Institution",
+      "경제자유구역": "FEZ",
+      "다자녀가구": "Multiple children",
+      "신혼부부": "Newlywed",
+      "노부모부양": "Parents",
+      "생애최초": "First home",
+      "신생아": "Newborn",
+      "합계": "Total",
+    };
+    const enRows = rows.map((r) => [label[String(r[0])] || r[0], ...r.slice(1)]);
+    return (
+      <Block label="Special supply" title="Special supply 514 units (by type)">
+        <Table columns={["Category", "84A", "84B", "84C", "84D", "103A", "103B", "Total"]} rows={enRows} />
+        <div className="seo-guide__answer">
+          <p>The subscription-account period differs by type. Institution, FEZ, multiple children, newlywed, and parents need 6 months plus the deposit. First-home and newborn are first rank, so they need 12 months. Some institution categories, including people with disabilities and national merit recipients, do not need an account.</p>
+          <p>Special supply is once per household without a home, one home. Only the parents type requires the head of a household without a home.</p>
+          <p>The FEZ volume is for full-time workers who have worked more than one year at a foreign-invested company that entered the Incheon FEZ. You file with the project entity first. The Incheon Free Economic Zone Authority names the recipients.</p>
+          <p>Income, assets, and other rules by type follow pages 23 to 36 of the notice.</p>
+        </div>
+      </Block>
+    );
+  }
   return (
     <Block label="특별공급 주택형별 배정" title="특별공급 514세대 (주택형별 배정)">
       <Table columns={facts.specialSupply.columns} rows={rows} />

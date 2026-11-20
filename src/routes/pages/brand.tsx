@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { SiteShell } from "@/components/site-shell";
 import { GuideDetail } from "@/components/seo-guide";
 import { SubNotice } from "@/components/notice";
-import { canonicalLinks, isKrHost, KR_ORIGIN, tx } from "@/lib/seo-host";
+import { canonicalLinks, isEnHost, isKrHost, KR_ORIGIN, tx } from "@/lib/seo-host";
 import { FAQ_BRAND, META } from "@/lib/i18n/en";
 import { imgDims } from "@/components/img";
 
@@ -17,33 +17,52 @@ export const Route = createFileRoute("/pages/brand")({
   }),
 });
 
-const HISTORY = [
+type Hist = {
+  year: string;
+  yearEn?: string;
+  items: string[];
+  itemsEn: string[];
+  img: string;
+  badge?: string;
+  badgeEn?: string;
+  primary?: boolean;
+};
+
+const HISTORY: Hist[] = [
   {
     year: "2026",
     items: ["청라하늘대교 (개통)", "하나드림타운 (그룹헤드쿼터 준공)"],
+    itemsEn: ["Cheongna Sky Bridge (open)", "Hana Dream Town (group HQ completed)"],
     img: "/resources/img/sub/brand_history_img_1.png",
   },
   {
     year: "2028",
     items: ["돔구장&스타필드 청라 (개장 예정)"],
+    itemsEn: ["Dome stadium and Starfield Cheongna (planned to open)"],
     img: "/resources/img/sub/brand_history_img_2.png",
   },
   {
     year: "2029",
     items: ["서울아산청라병원 (예정)"],
+    itemsEn: ["Asan Medical Center Cheongna (planned)"],
     img: "/resources/img/sub/brand_history_img_4.webp",
     badge: "청라 피크원 푸르지오",
+    badgeEn: "Cheongna Peakone Prugio",
   },
   {
     year: "개통 시기 미정",
+    yearEn: "Opening date not set",
     items: ["7호선 국제업무단지역 (예정)"],
+    itemsEn: ["Line 7 International Business District station (planned)"],
     img: "/resources/img/sub/brand_history_img_5.png",
   },
   {
     year: "2031",
     items: ["영상문화복합단지 (계획)"],
+    itemsEn: ["Video and culture complex (plan stage)"],
     img: "/resources/img/sub/brand_history_img_6.png",
     badge: "청라 아크원 푸르지오 (2026.10 분양)",
+    badgeEn: "Cheongna Ark-One Prugio (sale Oct 2026)",
     primary: true,
   },
 ];
@@ -63,6 +82,7 @@ const FAQ = [
 
 function BrandPage() {
   const faq = tx(FAQ, FAQ_BRAND);
+  const en = isEnHost();
   return (
     <SiteShell path="/pages/brand">
       <div className="page_content">
@@ -75,7 +95,7 @@ function BrandPage() {
               "Cheongna Ark-One Prugio is not the same complex as Cheongna Peakone Prugio. Ark-One itself is 1855 units and rooms. 2911 is the combined total including Peakone. Peakone B1 is 1056 rooms.",
             )}
           </p>
-          <p>자료 기준일 2026-10-21 · 재확인일 2026-11-20 · 출처 사업주체 공개 사업개요</p>
+          <p>{en ? "Source date 21 Oct 2026 · rechecked 20 Nov 2026 · project entity overview" : "자료 기준일 2026-10-21 · 재확인일 2026-11-20 · 출처 사업주체 공개 사업개요"}</p>
           <div className="brand_image__container">
             <figure className="brand_image__img">
               <picture>
@@ -85,13 +105,39 @@ function BrandPage() {
             </figure>
             <div className="brand_image__txt_wrap">
               <h2>
+                {en ? (
+                  <>
+                    2,911 units and rooms<small>(blocks B1 and M5)</small>
+                    <br />
+                    Prugio in the Cheongna International Business District
+                    <br />
+                    brand town
+                  </>
+                ) : (
+                  <>
                 총 2,911세대·실<small>(B1 & M5 블록)</small>
                 <br />
                 청라국제업무단지 푸르지오
                 <br />
                 대규모 브랜드타운
+                  </>
+                )}
               </h2>
               <p>
+                {en ? (
+                  <>
+                    After Cheongna Peakone Prugio
+                    <br />
+                    on block B1,
+                    <br />
+                    block M5 continues the Prugio brand town.
+                    <br />
+                    The two blocks together are
+                    <br />
+                    2,911 units and rooms.
+                  </>
+                ) : (
+                  <>
                 국제업무단지 B1 블록의
                 <br />
                 청라 피크원 푸르지오에 이어
@@ -103,6 +149,8 @@ function BrandPage() {
                 두 블록 합계
                 <br className="pc-only" />
                 2,911세대·실 규모입니다
+                  </>
+                )}
               </p>
             </div>
             <picture className="brand_image__slogan">
@@ -114,15 +162,15 @@ function BrandPage() {
             <header className="brand_history__intro">
               <p className="brand_history__eyebrow">MASTERPLAN PROGRESS</p>
               <h2>
-                청라 주변<strong>개발 일정</strong>
+                {en ? "Development around Cheongna" : <>청라 주변<strong>개발 일정</strong></>}
               </h2>
             </header>
             <div className="brand_history__timeline">
               {HISTORY.map((item) => (
                 <article className="brand_history__item" key={item.year + item.img}>
-                  <h3>{item.year}</h3>
+                  <h3>{en ? (item.yearEn || item.year) : item.year}</h3>
                   <ul>
-                    {item.items.map((li) => (
+                    {(en ? item.itemsEn : item.items).map((li) => (
                       <li key={li}>{li}</li>
                     ))}
                   </ul>
@@ -131,7 +179,7 @@ function BrandPage() {
                   </figure>
                   {item.badge ? (
                     <p className={`brand_history__badge${item.primary ? " brand_history__badge-primary" : ""}`}>
-                      {item.badge}
+                      {en ? (item.badgeEn || item.badge) : item.badge}
                     </p>
                   ) : null}
                 </article>
@@ -139,7 +187,10 @@ function BrandPage() {
             </div>
           </section>
           <SubNotice
-            items={[
+            items={en ? [
+              "Development plans can change, be delayed, or be cancelled by the project entity, a national agency, or the city. That is separate from this website.",
+              "The Line 7 status and development plans on this site follow public agency pages. The plan and the dates can change. The opening date of Line 7 is not set.",
+            ] : [
               "각종 개발계획, 예정사항 등은 사업주체, 국가기관, 지자체 등 관계 기관의 사업 추진 중 일부 변경, 지연, 취소될 수 있으며 당사와 무관합니다.",
               "본 홈페이지에 표기된 서울 지하철 7호선 현황 및 개발 계획은 관계기관의 홈페이지 등을 참조하여 작성된 것으로 사업계획 및 일정은 당사와는 무관하며, 추후 변경될 수 있습니다.",
             ]}
