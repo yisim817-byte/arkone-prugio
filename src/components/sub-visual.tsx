@@ -67,9 +67,15 @@ export function SubVisual({ path }: { path: string }) {
             <ul className="page_location__menu" hidden={open !== "parent"}>
               {NAV.filter((n) => !n.disabled).map((n) => (
                 <li key={n.krName}>
-                  <Link to={n.to} className={n.krName === meta.parentKr ? "is-current" : ""}>
-                    {en ? n.enName : n.krName}
-                  </Link>
+                  {n.to.startsWith("#") ? (
+                    <a href={n.to} className={n.krName === meta.parentKr ? "is-current" : ""}>
+                      {en ? n.enName : n.krName}
+                    </a>
+                  ) : (
+                    <Link to={n.to} className={n.krName === meta.parentKr ? "is-current" : ""}>
+                      {en ? n.enName : n.krName}
+                    </Link>
+                  )}
                 </li>
               ))}
             </ul>
@@ -87,9 +93,15 @@ export function SubVisual({ path }: { path: string }) {
                 .filter((c) => !c.disabled)
                 .map((c) => (
                   <li key={c.krName}>
-                    <Link to={c.to} className={c.to === pathname ? "is-current" : ""}>
-                      {en ? c.enName : c.krName}
-                    </Link>
+                    {c.to.startsWith("#") ? (
+                      <a href={c.to} className={c.to === pathname ? "is-current" : ""}>
+                        {en ? c.enName : c.krName}
+                      </a>
+                    ) : (
+                      <Link to={c.to} className={c.to === pathname ? "is-current" : ""}>
+                        {en ? c.enName : c.krName}
+                      </Link>
+                    )}
                   </li>
                 ))}
             </ul>
