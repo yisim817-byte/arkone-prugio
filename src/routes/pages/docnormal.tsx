@@ -16,6 +16,14 @@ const FAQ_KO: GuideFaq[] = [
   { q: "청약통장 예치금 액수는 어디에 있나요?", a: "예치 기준액은 입주자모집공고에 있습니다. 이 안내에서 빠지거나 다른 숫자는 공고문과 청약홈에서 확인합니다." },
 ];
 
+const FAQ_EN: GuideFaq[] = [
+  { q: "When were general-supply ranks accepted?", a: "First rank was 3 Nov and second rank was 4 Nov. Winners were announced on 10 Nov. Check Applyhome for the result." },
+  { q: "When is the general-supply contract?", a: "Contracts run from 22 Nov through 24 Nov. Documents were 12 Nov through 16 Nov." },
+  { q: "When is move-in planned?", a: "Move-in is planned for August 2031 and can change with construction." },
+  { q: "Is there a resale limit or an occupancy duty?", a: "Resale is limited for 3 years and re-winning is limited for 10 years. There is no occupancy duty." },
+  { q: "Where is the savings deposit amount?", a: "The deposit standard is in the recruitment notice. This page does not add a different number." },
+];
+
 export const Route = createFileRoute("/pages/docnormal")({
   component: DocNormalPage,
   head: () => ({
@@ -24,7 +32,7 @@ export const Route = createFileRoute("/pages/docnormal")({
       { name: "description", content: tx("청라 아크원 푸르지오 일반공급 안내. 1순위 11.03(화) · 2순위 11.04(수) · 당첨자 발표 11.10(화). 2026.10.22 공고 기준.", META.docnormal.desc) },
     ],
     links: canonicalLinks("/pages/docnormal"),
-    scripts: isEnHost() ? [] : faqJsonLd(FAQ_KO, "/pages/docnormal"),
+    scripts: faqJsonLd(tx(FAQ_KO, FAQ_EN), "/pages/docnormal"),
   }),
 });
 
@@ -35,10 +43,10 @@ function DocNormalPage() {
       <div className="page_content">
         <section className="page_container">
           <GuideAnswer title={tx("청라 아크원 푸르지오 일반공급 안내 요약", META.docnormal.h1)}>
-            <p>{tx("청라 아크원 푸르지오 일반공급은 1순위 11.03(화), 2순위 11.04(수) 접수이며 당첨자 발표는 11.10(화)에 있었습니다. 결과는 청약홈에서 확인할 수 있습니다. 2026.10.22(목) 게시된 입주자모집공고 기준이며, 신청 전 청약홈 공고문을 확인하시기 바랍니다.", "General supply for Cheongna Ark-One Prugio is first rank on 3 Nov and second rank on 4 Nov. Winners were announced on 10 Nov. Results can be checked on Applyhome. This follows the notice posted on 22 Oct 2026. Read the Applyhome notice before you apply.")}</p>
+            <p>{tx("일반공급 페이지는 순위 접수만 다룹니다. 1순위는 11월 3일, 2순위는 11월 4일에 받았고 당첨 발표는 11월 10일에 끝났습니다. 결과는 청약홈에서 봅니다. 원문은 2026년 10월 22일 목요일 공고입니다.", "This page is only the general-supply ranks. First rank was 3 Nov, second rank was 4 Nov, and winners were announced on 10 Nov. Read the notice posted on 22 Oct 2026.")}</p>
           </GuideAnswer>
           <NoticeEligibility />
-            <p>특별공급은 1세대당 평생 1회로 제한됩니다. 이 단지의 청약 자격·공급 비율·일정은 2026.10.22(목) 게시된 입주자모집공고문(청약홈)으로 확인할 수 있습니다.</p>
+            <p>일반공급 안내에서는 특별공급의 평생 1회 제한을 다시 풀지 않습니다. 자격과 공급 비율의 원문은 2026년 10월 22일 목요일에 청약홈에 올라간 공고입니다.</p>
           <figure>
             <img src={src} alt="청라 아크원 푸르지오 청약 전 확인사항과 예치금액 표를 담은 일반공급 안내문" {...imgDims(src)} data-dims="" />
           </figure>
@@ -52,7 +60,7 @@ function DocNormalPage() {
               { to: "/pages/overview", label: "분양 사업개요" },
             ].filter((l) => l.to !== "/pages/docnormal")}
             sources={[{ ...SRC_APPLYHOME, date: isEnHost() ? SRC_APPLYHOME.date : "2026-10-29" }]}
-            faq={isEnHost() ? undefined : FAQ_KO}
+            faq={tx(FAQ_KO, FAQ_EN)}
           />
         </section>
       </div>

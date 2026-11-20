@@ -5,31 +5,32 @@ import { prices } from "@/lib/notice-facts.v1.json";
 
 export const META = {
   home: {
-    title: "Cheongna Ark-One Prugio | Guide",
-    desc: "Notice posted 22 Oct 2026. Model house open until further notice. Contract 22-24 Nov. Apt 868 units.",
+    title: "Cheongna Ark-One Prugio | Sale stage and guide",
+    desc: "finished the winner announcement on 10 Nov 2026 and document submission on 12-16 Nov.",
+    h1: "Cheongna Ark-One Prugio",
   },
   overview: {
-    title: "Ark-One Overview | 868 Units",
+    title: "Cheongna Ark-One Prugio overview, 868 units",
     desc: "Cheongna-dong 86-1 M5. B5 to 49F six buildings. Apt 868 and officetel 987. Daewoo E&C.",
     h1: "Cheongna Ark-One Prugio project overview",
   },
   compare: {
-    title: "Ark-One Apt and Officetel",
+    title: "Cheongna Ark-One Prugio apartment vs officetel",
     desc: "Compare Apt 868 units (84 and 103 sqm) with officetel 987 rooms at 105 121 and 136 sqm.",
     h1: "Cheongna Ark-One Prugio apartment and officetel",
   },
   schedule: {
-    title: "Ark-One Price and Schedule",
-    desc: "Notice posted 22 Oct 2026. Special supply 2 Nov. Contract 22-24 Nov. Call 1833-3872.",
+    title: "Cheongna Ark-One Prugio price and schedule",
+    desc: "finished the winner announcement on 10 Nov 2026 and document submission on 12-16 Nov.",
     h1: "Cheongna Ark-One Prugio sale schedule",
   },
   location: {
-    title: "Ark-One Location | M5 Block",
+    title: "Cheongna Ark-One Prugio location, M5 block",
     desc: "Cheongna-dong 86-1 M5. Sky Bridge is open. Line 7 station is planned and not dated.",
     h1: "Cheongna Ark-One Prugio location",
   },
   contact: {
-    title: "Ark-One Model House | Visit",
+    title: "Cheongna Ark-One Prugio model house visit",
     desc: "Model house at Cheongna-dong 87-1. Open until further notice. Notice posted 22 Oct. Call 1833-3872.",
     h1: "Cheongna Ark-One Prugio model house",
   },
@@ -39,32 +40,32 @@ export const META = {
     h1: "Cheongna Ark-One Prugio history and nearby plans",
   },
   premium: {
-    title: "Ark-One Premium | Features",
+    title: "Cheongna Ark-One Prugio premium features",
     desc: "Brand town of 2911 units and rooms with Peakone. A price cap applies. Some units have views.",
     h1: "Cheongna Ark-One Prugio premium",
   },
   changeinfo: {
-    title: "Ark-One Application Changes",
+    title: "Cheongna Ark-One Prugio application changes",
     desc: "Application rule changes to check before applying. Use the notice posted on 22 Oct 2026.",
     h1: "Application rule changes to check first",
   },
   docspecial: {
-    title: "Ark-One Special Supply",
+    title: "Cheongna Ark-One Prugio special supply",
     desc: "Special supply applications open 2 Nov. Eligibility follows the notice posted 22 Oct 2026.",
     h1: "Cheongna Ark-One Prugio special supply",
   },
   docnormal: {
-    title: "Ark-One General Supply",
+    title: "Cheongna Ark-One Prugio general supply",
     desc: "First rank 3 Nov. Second rank 4 Nov. Winners on 10 Nov. Notice posted 22 Oct 2026.",
     h1: "Cheongna Ark-One Prugio general supply",
   },
   video: {
-    title: "Ark-One Promo Video",
+    title: "Cheongna Ark-One Prugio promo video",
     desc: "Promo videos for Cheongna Ark-One Prugio released by the project entity. Call 1833-3872.",
     h1: "Cheongna Ark-One Prugio promo video",
   },
   news: {
-    title: "Ark-One Press Coverage",
+    title: "Cheongna Ark-One Prugio press list",
     desc: "Press list for Cheongna Ark-One Prugio. Read the original articles for supply and area news.",
     h1: "Cheongna Ark-One Prugio press",
   },
@@ -74,12 +75,12 @@ export const META = {
     h1: "Model house opening three-day event",
   },
   plans: {
-    title: "Ark-One Plans and Prices",
+    title: "Cheongna Ark-One Prugio plans and prices",
     desc: "Floor plans for 84C and 103A plus supply prices from the posted recruitment notice.",
     h1: "Floor plans and supply prices",
   },
   visit: {
-    title: "Book a Model House Visit",
+    title: "Book a visit to the model house",
     desc: "Request a model house visit at Cheongna-dong 87-1. Open until further notice. Call 1833-3872.",
     h1: "Model house visit request",
   },

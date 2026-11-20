@@ -57,8 +57,10 @@ export function isKrHost(): boolean {
 }
 
 export const EN_ORIGIN = "https://www.arkone-prugio.site";
-// 2026-11-10 PM 지시: 영문판을 끈다. www.arkone-prugio.site 도 한국어 화면으로 나간다(영문 문구·파일은 그대로 둠).
-const EN_HOSTS = new Set<string>([]);
+// ARK1120 P5: English copy is on for www.arkone-prugio.site only.
+// HOLD-A4: indexing stays closed until A4_INDEX_OPEN is true (branch seo/ark1120-a4-index, do not merge).
+export const A4_INDEX_OPEN = false;
+const EN_HOSTS = new Set<string>(["www.arkone-prugio.site"]);
 
 export function isEnHostName(raw: string | null | undefined): boolean {
   return EN_HOSTS.has(normalizeHost(raw));

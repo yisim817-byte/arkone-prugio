@@ -45,10 +45,10 @@ function MapLinks({ naver, kakao, label }: { naver: string; kakao: string; label
   return (
     <div className="contact_location__links map-btns" aria-label={`${label} 지도 바로가기`}>
       <a href={naver} target="_blank" rel="noopener noreferrer" aria-label={`네이버 지도에서 ${label} 보기`}>
-        <img src="/resources/img/common/ico_naver.svg" alt="" {...imgDims("/resources/img/common/ico_naver.svg")} data-dims="" />
+        <img src="/resources/img/common/ico_naver.svg" alt="" {...imgDims("/resources/img/common/ico_naver.svg")} data-dims=""  aria-hidden="true" />
       </a>
       <a href={kakao} target="_blank" rel="noopener noreferrer" aria-label={`카카오 지도에서 ${label} 보기`}>
-        <img src="/resources/img/common/ico_kko_map.svg" alt="" {...imgDims("/resources/img/common/ico_kko_map.svg")} data-dims="" />
+        <img src="/resources/img/common/ico_kko_map.svg" alt="" {...imgDims("/resources/img/common/ico_kko_map.svg")} data-dims=""  aria-hidden="true" />
       </a>
     </div>
   );

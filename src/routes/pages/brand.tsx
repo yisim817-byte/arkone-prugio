@@ -75,7 +75,7 @@ function BrandPage() {
               "Cheongna Ark-One Prugio is not the same complex as Cheongna Peakone Prugio. Ark-One itself is 1855 units and rooms. 2911 is the combined total including Peakone. Peakone B1 is 1056 rooms.",
             )}
           </p>
-          <p>자료 기준일 2026-10-21 · 출처 사업주체 공개 사업개요</p>
+          <p>자료 기준일 2026-10-21 · 재확인일 2026-11-20 · 출처 사업주체 공개 사업개요</p>
           <div className="brand_image__container">
             <figure className="brand_image__img">
               <picture>

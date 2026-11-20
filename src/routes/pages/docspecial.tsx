@@ -35,7 +35,7 @@ function DocSpecialPage() {
       <div className="page_content">
         <section className="page_container">
           <GuideAnswer title={tx("청라 아크원 푸르지오 특별공급 안내 요약", META.docspecial.h1)}>
-            <p>{tx("청라 아크원 푸르지오 특별공급은 11.02(월) 접수입니다. 유형별 공급 물량과 자격은 2026.10.22(목) 게시된 입주자모집공고 기준이며, 신청 전 청약홈 공고문을 확인하시기 바랍니다.", "Special supply for Cheongna Ark-One Prugio is accepted on 2 Nov. Volumes and eligibility follow the notice posted on 22 Oct 2026. Read the Applyhome notice before you apply.")}</p>
+            <p>{tx("특별공급 접수는 11월 2일 월요일이었습니다. 유형별 물량과 자격의 원문은 2026년 10월 22일 목요일 공고이고, 신청 전에는 청약홈의 그 공고를 봅니다.", "Special supply was accepted on Monday 2 Nov. Volumes and eligibility are in the notice posted Thursday 22 Oct 2026. Read that Applyhome notice before you apply.")}</p>
           </GuideAnswer>
           <NoticeSpecial />
           <figure>
