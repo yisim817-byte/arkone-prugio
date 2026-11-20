@@ -8,6 +8,14 @@ import { SRC_APPLYHOME } from "@/lib/arkone-facts";
 import { imgDims } from "@/components/img";
 import { NoticeSpecial } from "@/components/notice-sections";
 
+const FAQ_EN: GuideFaq[] = [
+  { q: "When was special supply accepted?", a: "Special supply for Cheongna Ark-One Prugio was accepted on 2 Nov. Volumes and eligibility follow the recruitment notice posted on 22 Oct 2026." },
+  { q: "Does the price cap also apply to special supply?", a: "This apartment is under the price cap. Eligibility and allocation by type are on pages 23 to 36 of the recruitment notice." },
+  { q: "Where is the supply amount in the notice?", a: "The apartment supply-amount table is on pages 6 to 20 of the recruitment notice. Unit amounts that are not on this page are in that table." },
+  { q: "When is the contract after a special-supply win?", a: "Winner contracts run from Sunday 22 Nov to Tuesday 24 Nov. If the schedule changes, the recruitment notice prevails." },
+  { q: "Is the special-supply competition rate on this page?", a: "Competition rates are not listed. Check the recruitment notice and Applyhome." },
+];
+
 const FAQ_KO: GuideFaq[] = [
   { q: "특별공급 접수는 언제인가요?", a: "청라 아크원 푸르지오 특별공급 접수는 11.02(월)입니다. 물량과 자격은 2026.10.22에 게시된 입주자모집공고가 기준입니다." },
   { q: "특별공급에도 분양가 상한제가 적용되나요?", a: "이 아파트는 분양가 상한제 적용 단지입니다. 유형별 자격과 배정은 입주자모집공고 23면부터 36면에서 확인합니다." },
@@ -24,7 +32,7 @@ export const Route = createFileRoute("/pages/docspecial")({
       { name: "description", content: tx("청라 아크원 푸르지오 특별공급 안내. 11.02(월) 접수. 자격·물량은 2026.10.22 게시 입주자모집공고와 청약홈에서 확인하세요.", META.docspecial.desc) },
     ],
     links: canonicalLinks("/pages/docspecial"),
-    scripts: isEnHost() ? [] : faqJsonLd(FAQ_KO, "/pages/docspecial"),
+    scripts: faqJsonLd(tx(FAQ_KO, FAQ_EN), "/pages/docspecial"),
   }),
 });
 
@@ -44,14 +52,14 @@ function DocSpecialPage() {
           <ZoomButton href={src} />
           <GuideDetail
             links={[
-              { to: "/pages/schedule", label: "분양 일정·청약 안내" },
-              { to: "/pages/changeinfo", label: "변경된 청약제도" },
-              { to: "/pages/docspecial", label: "특별공급 안내" },
-              { to: "/pages/docnormal", label: "일반공급 안내" },
-              { to: "/pages/overview", label: "분양 사업개요" },
+              { to: "/pages/schedule", label: tx("분양 일정·청약 안내", "Sale schedule") },
+              { to: "/pages/changeinfo", label: tx("변경된 청약제도", "Application changes") },
+              { to: "/pages/docspecial", label: tx("특별공급 안내", "Special supply") },
+              { to: "/pages/docnormal", label: tx("일반공급 안내", "General supply") },
+              { to: "/pages/overview", label: tx("분양 사업개요", "Overview") },
             ].filter((l) => l.to !== "/pages/docspecial")}
             sources={[{ ...SRC_APPLYHOME, date: isEnHost() ? SRC_APPLYHOME.date : "2026-10-29" }]}
-            faq={isEnHost() ? undefined : FAQ_KO}
+            faq={tx(FAQ_KO, FAQ_EN)}
           />
         </section>
       </div>

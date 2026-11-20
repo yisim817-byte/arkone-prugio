@@ -87,12 +87,12 @@ function PremiumPage() {
               <div className="premium_feature__content">
                 <span className="premium_feature__number">PREMIUM 02</span>
                 <h2>
-                  국제업무단지의 <br className="m-only" /> 센트럴 라이프
+                  {tx("국제업무단지의", "In the international")}<br className="m-only" /> {tx("센트럴 라이프", "business district")}
                 </h2>
                 <p>
-                  청라의 중심으로 완성되는
+                  {tx("청라의 중심으로 완성되는", "In Cheongna")}
                   <br />
-                  국제업무단지의 특별한 주거 가치
+                  {tx("국제업무단지의 특별한 주거 가치", "a residential site in the international business district")}
                 </p>
               </div>
               <div className="premium_feature__images">
@@ -103,9 +103,9 @@ function PremiumPage() {
             <article className="premium_feature premium_feature-03">
               <div className="premium_feature__content">
                 <span className="premium_feature__number">PREMIUM 03</span>
-                <h2>오션 ∙ 시티뷰 조망 특화</h2>
+                <h2>{tx("오션 ∙ 시티뷰 조망 특화", "Ocean and city view")}</h2>
                 <p>
-                  오션 ∙ 시티뷰를 동시에 누리는 <br /> 2면 or 3면 개방구조<small>(일부세대)</small>
+                  {tx("오션 ∙ 시티뷰를 동시에 누리는", "Ocean and city view together")} <br /> {tx("2면 or 3면 개방구조", "open on 2 or 3 sides")}<small>{tx("(일부세대)", "(some units)")}</small>
                 </p>
               </div>
               <div className="premium_feature__images premium_feature__images-stack">
@@ -118,11 +118,11 @@ function PremiumPage() {
               <div className="premium_feature__content">
                 <span className="premium_feature__number">PREMIUM 04</span>
                 <h2>
-                  분양가 상한제 <br className="m-only" /> 적용 아파트
+                  {tx("분양가 상한제", "Price cap")} <br className="m-only" /> {tx("적용 아파트", "apartment")}
                 </h2>
                 <p>
-                  청라가 기다려온 신규공급 <br /> 2017년 이후 10년만의 분양가 상한제 공급 아파트 <br />{" "}
-                  <small>※ 500세대 이상 대단지 기준</small>
+                  {tx("청라가 기다려온 신규공급", "New supply in Cheongna")} <br /> {tx("2017년 이후 10년만의 분양가 상한제 공급 아파트", "Described here as the first price-cap supply in 10 years since 2017")} <br />{" "}
+                  <small>{tx("※ 500세대 이상 대단지 기준", "Note: large complex of 500 units or more")}</small>
                 </p>
               </div>
               <div className="premium_feature__images premium_feature__images-pair">
@@ -134,11 +134,11 @@ function PremiumPage() {
             <article className="premium_feature premium_feature-05">
               <div className="premium_feature__content">
                 <span className="premium_feature__number">PREMIUM 05</span>
-                <h2>멀티 라이프 플랫폼</h2>
+                <h2>{tx("멀티 라이프 플랫폼", "Multi-life platform")}</h2>
                 <p>
-                  팬트리 2개소 이상 제공
+                  {tx("팬트리 2개소 이상 제공", "Two or more pantries")}
                   <br />
-                  다양한 공간 활용의 멀티 발코니<small>(OT)</small>
+                  {tx("다양한 공간 활용의 멀티 발코니", "Multi balcony")}<small>(OT)</small>
                 </p>
               </div>
               <div className="premium_feature__images premium_feature__images-pair">
@@ -147,7 +147,7 @@ function PremiumPage() {
               </div>
             </article>
           </div>
-          <SubNotice items={["상기 이미지는 소비자의 이해를 돕기 위한 것으로 실제와 차이가 있을 수 있습니다."]} />
+          <SubNotice items={tx(["상기 이미지는 소비자의 이해를 돕기 위한 것으로 실제와 차이가 있을 수 있습니다."], ["These images were made to help you understand and may differ from the real complex."])} />
         </section>
       </div>
     </SiteShell>

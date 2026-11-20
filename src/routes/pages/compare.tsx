@@ -52,6 +52,7 @@ export const Route = createFileRoute("/pages/compare")({
 });
 
 function ComparePage() {
+  const en = isEnHost();
   return (
     <SiteShell path="/pages/compare">
       <div className="page_content">
@@ -76,11 +77,23 @@ function ComparePage() {
               </>
             )}
           </GuideAnswer>
-          <p className="plans-link"><Link to="/pages/plans">평면도·공급금액 한눈에 보기 →</Link></p>
+          <p className="plans-link"><Link to="/pages/plans">{en ? "See plans and supply amounts" : "평면도·공급금액 한눈에 보기 →"}</Link></p>
           <GuideDetail
-            tableTitle="아파트(APT)와 오피스텔(OT) 비교"
-            columns={["구분", "아파트(APT) · 오피스텔(OT)", "상태"]}
-            rows={[
+            tableTitle={en ? "Apartment and officetel" : "아파트(APT)와 오피스텔(OT) 비교"}
+            columns={en ? ["Item", "Apartment · officetel", "Status"] : ["구분", "아파트(APT) · 오피스텔(OT)", "상태"]}
+            rows={en ? [
+              { label: "Supply", value: "APT 868 units · OT 987 rooms (1,855 together)", status: "posted" },
+              { label: "Exclusive area", value: "APT 84㎡, 103㎡ · OT 105㎡, 121㎡, 136㎡", status: "posted" },
+              { label: "Gross floor area", value: "APT 173,952.7508㎡ · OT 245,645.4826㎡", status: "posted" },
+              { label: "Parking", value: "APT 1,389 · OT 1,695 (of 3,124, plus 40 for shops)", status: "posted" },
+              { label: "Space", value: "OT: multi balcony described in the project entity's premium note", status: "posted" },
+              { label: "APT units by type", value: "84A 248 · 84B 124 · 84C 124 · 84D 124 · 103A 124 · 103B 124 (868)", status: "sale material" },
+              { label: "Plans", value: "APT: notice posted (areas by type, model house 84A and 103A) / OT: separate notice", status: "posted / OT separate" },
+              { label: "Shops", value: "Peakone 53 and Ark-One 43, 96 shops on floors 1–2 (47 on floor 1, 49 on floor 2)", status: "sale material" },
+              { label: "Price", value: "APT: supply-amount table in the recruitment notice by type, building, floor, and unit · call 1833-3872 (price cap) / OT: separate notice", status: "posted / OT separate" },
+              { label: "Notice", value: "APT recruitment notice posted 22 Oct 2026 · model house open until further notice · OT separate notice · call 1833-3872", status: "posted / OT separate" },
+              { label: "Move-in", value: "APT planned August 2031 · OT separate notice", status: "notice" },
+            ] : [
               { label: "공급 규모", value: "APT 868세대 · OT 987실 (총 1,855세대·실)", status: "공개값" },
               { label: "전용면적", value: "APT 84㎡, 103㎡ · OT 105㎡, 121㎡, 136㎡", status: "공개값" },
               { label: "연면적", value: "APT 173,952.7508㎡ · OT 245,645.4826㎡", status: "공개값" },
@@ -94,7 +107,13 @@ function ComparePage() {
               { label: "입주 시기", value: "APT 입주예정 2031년 08월 · OT 별도 공고", status: "공고 기준" },
             ]}
             faq={compareFaq()}
-            links={[
+            links={en ? [
+              { to: "/pages/overview", label: "Overview" },
+              { to: "/pages/schedule", label: "Sale schedule" },
+              { to: "/pages/premium", label: "Premium" },
+              { to: "/pages/contact", label: "Model house" },
+              { to: "/register", label: "Register" },
+            ] : [
               { to: "/pages/overview", label: "분양 사업개요" },
               { to: "/pages/schedule", label: "분양 일정·청약 안내" },
               { to: "/pages/premium", label: "프리미엄" },
@@ -104,7 +123,10 @@ function ComparePage() {
             sources={[{ ...SRC_APPLYHOME, date: "2026-10-29" }]}
           />
           <SubNotice
-            items={[
+            items={en ? [
+              "Figures on this page follow the project entity's published overview and sale material and can change during permitting. Check the main terms before you sign.",
+              "Plans, officetel room counts by type, and prices that are not published here follow the recruitment notice.",
+            ] : [
               "본 페이지의 수치는 사업주체 공개 사업개요 및 분양 자료 기준이며 인·허가 과정상 변경될 수 있으니 계약 시 주요 내용을 반드시 확인하시기 바랍니다.",
               "평면도, 오피스텔 타입별 실수, 분양가 등 공개되지 않은 항목은 입주자모집공고를 기준으로 확인하시기 바랍니다.",
             ]}
