@@ -7,7 +7,7 @@ export const DESC_HOME_KO =
   "청라 아크원 푸르지오 분양 일정·비교 안내 — 서류접수는 끝났고 계약 진행 중(11.22~11.24) 창구입니다.";
 
 export const DESC_SCHEDULE_KO =
-  "청라 아크원 푸르지오 분양가·청약 일정 — 공급금액표와 계약 진행 중(11.22~11.24)를 공고 기준으로 안내합니다.";
+  "청라 아크원 푸르지오 분양가·청약 일정 — 공급금액표와 계약 진행 중(11.22~11.24)을 공고 기준으로 안내합니다.";
 
 export const DESC_HOME_EN =
   "Cheongna Ark-One Prugio sale guide. Document filing is finished. Contracts run 22-24 Nov.";
