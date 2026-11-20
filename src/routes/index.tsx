@@ -8,24 +8,8 @@ import { NoticeSummary } from "@/components/notice-summary";
 import { PlansBanner } from "@/components/plans-banner";
 import { YoutubeModal } from "@/components/youtube-modal";
 import { SITE_NAME, SITE_TEL_HREF, YOUTUBE_ID } from "@/lib/site-data";
-import { EN_ORIGIN, KR_ORIGIN, LEGACY_ORIGIN, canonicalLinks, faqJsonLd, isEnHost, isKrHost, isOtMainHost, tx } from "@/lib/seo-host";
-import { DESC_HOME_EN, DESC_HOME_KO, PEAK_A_EN, PEAK_A_KO, PEAK_Q_EN, PEAK_Q_KO, STAGE_EN, STAGE_KO } from "@/lib/stage-copy";
+import { EN_ORIGIN, KR_ORIGIN, LEGACY_ORIGIN, canonicalLinks, isEnHost, isKrHost, isOtMainHost, tx } from "@/lib/seo-host";
 import { META } from "@/lib/i18n/en";
-
-const HOME_FAQ_KO = [
-  { q: PEAK_Q_KO, a: PEAK_A_KO },
-  { q: "지금 아파트 청약은 어느 단계인가요?", a: STAGE_KO },
-  { q: "계약은 언제인가요?", a: "계약은 11월 22일(일)부터 24일(화)까지입니다." },
-  { q: "상담 전화는 무엇인가요?", a: "상담 전화는 1833-3872 하나입니다." },
-  { q: "견본주택은 어디에 있나요?", a: "견본주택은 인천광역시 서해구 청라동 87-1이고 별도 공지 시까지 운영합니다." },
-];
-const HOME_FAQ_EN = [
-  { q: PEAK_Q_EN, a: PEAK_A_EN },
-  { q: "Which stage is the apartment sale in now?", a: STAGE_EN },
-  { q: "When are the contracts?", a: "Contracts run from 22 Nov through 24 Nov 2026." },
-  { q: "What is the phone number?", a: "The only phone number is 1833-3872." },
-  { q: "Where is the model house?", a: "The model house is at 87-1 Cheongna-dong, Seohae-gu, Incheon, and stays open until a separate notice." },
-];
 
 export const Route = createFileRoute("/")({
   component: Home,
@@ -34,7 +18,10 @@ export const Route = createFileRoute("/")({
       { title: tx("청라 아크원 푸르지오 | 분양 일정·비교·청약 안내", META.home.title) },
       {
         name: "description",
-        content: tx(DESC_HOME_KO, DESC_HOME_EN),
+        content: tx(
+          "청라 아크원 푸르지오 분양 일정·청약 안내. 공고 2026.10.22 게시 · 특별공급 11.02 · 1순위 11.03 · 2순위 11.04 · 당첨자 발표 11.10.",
+          META.home.desc,
+        ),
       },
     ],
     links: canonicalLinks("/"),
@@ -43,7 +30,6 @@ export const Route = createFileRoute("/")({
         type: "application/ld+json",
         children: homeJsonLd(isEnHost() ? EN_ORIGIN : isKrHost() ? KR_ORIGIN : LEGACY_ORIGIN, isEnHost()),
       },
-      ...faqJsonLd(isEnHost() ? HOME_FAQ_EN : HOME_FAQ_KO, "/"),
     ],
   }),
 });
@@ -70,8 +56,7 @@ function homeJsonLd(origin: string, en: boolean) {
         name,
         inLanguage: lang,
         isPartOf: { "@id": `${origin}/#website` },
-        dateModified: "2026-11-20",
-        description: en ? DESC_HOME_EN : DESC_HOME_KO,
+        dateModified: "2026-11-13",
       },
     ],
   });
@@ -108,14 +93,14 @@ function Home() {
   return (
     <SiteShell home>
       {intro ? (
-        <section className="intro" aria-label={tx("청라 아크원 푸르지오 인트로", "Cheongna Ark-One Prugio intro")}>
+        <section className="intro" aria-label="청라 아크원 푸르지오 인트로">
           <video autoPlay muted loop playsInline>
             <source src="/resources/img/pages/main/intro_video.mp4" type="video/mp4" />
           </video>
           <div className="intro__copy">
-            <p className="intro__phrase">{tx("청라국제업무단지 M5블록", "Cheongna International Business District, block M5")}</p>
-            <p className="intro__title">{tx("아파트 868세대 · 오피스텔 987실", "868 apartments · 987 officetel rooms")}</p>
-            <p className="intro__kicker">{tx("청라 아크원 푸르지오", "Cheongna Ark-One Prugio")}</p>
+            <p className="intro__phrase">청라국제업무단지 M5블록</p>
+            <p className="intro__title">아파트 868세대 · 오피스텔 987실</p>
+            <p className="intro__kicker">청라 아크원 푸르지오</p>
             <p className="intro__brand">CHEONG NA ARK-ONE PRUGIO</p>
           </div>
           <button type="button" className="intro__skip" onClick={() => setIntro(false)}>
@@ -124,7 +109,7 @@ function Home() {
         </section>
       ) : null}
 
-      <nav className="indicator" aria-label={tx("메인 섹션 바로가기", "Section shortcuts")}>
+      <nav className="indicator" aria-label="메인 섹션 바로가기">
         {SECTIONS.map((id) => (
           <button
             key={id}
@@ -141,7 +126,7 @@ function Home() {
           <div className="hero__media">
             <picture>
               <source media="(max-width: 1024px)" srcSet="/resources/img/pages/main/hero_bg_m.v4.webp" />
-              <img src="/resources/img/pages/main/hero_bg.v4.webp" alt={tx("청라 아크원 푸르지오 단지 투시도(CG)", "Cheongna Ark-One Prugio complex rendering (CG)")} {...imgDims("/resources/img/pages/main/hero_bg.v4.webp")} data-dims="" />
+              <img src="/resources/img/pages/main/hero_bg.v4.webp" alt="청라 아크원 푸르지오 단지 투시도(CG)" {...imgDims("/resources/img/pages/main/hero_bg.v4.webp")} data-dims="" />
             </picture>
             <video className="pc-only" autoPlay muted loop playsInline>
               <source src="/resources/img/pages/main/hero_video.mp4" type="video/mp4" />
@@ -178,25 +163,20 @@ function Home() {
                 <b>{tx("청라 아크원", "Cheongna Ark-One")}</b> <br className="m-only" /> {tx("홍보영상", "promo video")}
               </span>
               <span className="hero__video_play">
-                <img src="/resources/img/pages/main/ico_yt.svg" alt="" {...imgDims("/resources/img/pages/main/ico_yt.svg")} data-dims=""  aria-hidden="true" />
+                <img src="/resources/img/pages/main/ico_yt.svg" alt="" {...imgDims("/resources/img/pages/main/ico_yt.svg")} data-dims="" />
               </span>
             </button>
           </div>
           <div className="hero__quick">
-            <div className="hero__quick_item" aria-label={tx("분양가 상한제 적용단지", "Price-cap complex")}>
-              <img className="hero__quick_orbit" src="/official/badge/hero_circle_text.v100.svg" alt=""  aria-hidden="true" />
-              <img className="hero__quick_content" src="/official/badge/hero_circle_01.v100.svg" alt=""  aria-hidden="true" />
+            <div className="hero__quick_item" aria-label="분양가 상한제 적용단지">
+              <img className="hero__quick_orbit" src="/official/badge/hero_circle_text.v100.svg" alt="" />
+              <img className="hero__quick_content" src="/official/badge/hero_circle_01.v100.svg" alt="" />
             </div>
-            <Link to="/register" className="hero__quick_item hero__quick_item--reg" aria-label={tx("사전고객등록", "Pre-registration")}>
-              <img className="hero__quick_orbit" src="/official/badge/hero_circle_text.v100.svg" alt=""  aria-hidden="true" />
-              <img className="hero__quick_content" src="/official/badge/hero_circle_prereg.svg" alt=""  aria-hidden="true" />
+            <Link to="/register" className="hero__quick_item hero__quick_item--reg" aria-label="사전고객등록">
+              <img className="hero__quick_orbit" src="/official/badge/hero_circle_text.v100.svg" alt="" />
+              <img className="hero__quick_content" src="/official/badge/hero_circle_prereg.svg" alt="" />
             </Link>
           </div>
-        </section>
-
-        <section className="phase-now" aria-label={tx("현재 단계", "Current stage")}>
-          <p>{tx(STAGE_KO, STAGE_EN)}</p>
-          <p>{tx("확인 기준일 2026-11-20", "Checked 2026-11-20")}</p>
         </section>
 
         {isOtMainHost() ? <OtFeature /> : null}
@@ -205,14 +185,14 @@ function Home() {
 
         <section className="event-card" aria-labelledby="event-title">
           <div className="event-card__inner">
-            <p className="event-card__eyebrow">오피스텔 사전고객등록 이벤트</p>
-            <h2 id="event-title">백화점 상품권 50만원</h2>
-            <p className="event-card__brands">상품권 종류: 롯데·현대·신세계 백화점 가운데 1종</p>
-            <p className="event-card__basis">받으실 수 있는 분: 이 홈페이지에서 오피스텔 사전고객등록을 한 뒤 오피스텔을 계약한 고객입니다.</p>
-            <p className="event-card__payout">상품권은 오피스텔 계약 시 드립니다. 이벤트 기간은 11월 20일(금)까지입니다.</p>
-            <ol className="event-card__steps"><li>STEP 1 오피스텔 사전고객등록(홈페이지)</li><li>STEP 2 오피스텔 계약</li><li>STEP 3 계약 시 상품권 수령</li></ol>
-            <div className="event-card__actions"><Link className="event-card__button" to="/register">사전등록하기</Link><a href="#event-terms">유의사항 자세히 보기</a></div>
-            <p className="event-card__schedule">일정: 입주자모집공고 게시 2026.10.22(목) · 견본주택 별도 공지 시까지 운영 · 세부 일정은 대표번호 1833-3872로 문의</p>
+            <p className="event-card__eyebrow">{tx("오피스텔 사전고객등록 이벤트", "Officetel pre-registration event")}</p>
+            <h2 id="event-title">{tx("백화점 상품권 50만원", "Department-store gift card 500000 won")}</h2>
+            <p className="event-card__brands">{tx("상품권 종류: 롯데·현대·신세계 백화점 가운데 1종", "One gift card from Lotte Hyundai or Shinsegae")}</p>
+            <p className="event-card__basis">{tx("받으실 수 있는 분: 이 홈페이지에서 오피스텔 사전고객등록을 한 뒤 오피스텔을 계약한 고객입니다.", "Who can receive it: a customer who pre-registers for officetel on this site and then signs a contract.")}</p>
+            <p className="event-card__payout">{tx("상품권은 오피스텔 계약 시 드립니다. 이벤트 기간은 11월 20일(금)까지입니다.", "The card is given at the officetel contract. The event runs until 20 Nov.")}</p>
+            <ol className="event-card__steps"><li>{tx("STEP 1 오피스텔 사전고객등록(홈페이지)", "STEP 1 Pre-register on this site")}</li><li>{tx("STEP 2 오피스텔 계약", "STEP 2 Sign the contract")}</li><li>{tx("STEP 3 계약 시 상품권 수령", "STEP 3 Receive the card at the contract")}</li></ol>
+            <div className="event-card__actions"><Link className="event-card__button" to="/register">{tx("사전등록하기", "Pre-register")}</Link><a href="#event-terms">{tx("유의사항 자세히 보기", "Read the notes")}</a></div>
+            <p className="event-card__schedule">{tx("일정: 입주자모집공고 게시 2026.10.22(목) · 견본주택 별도 공지 시까지 운영 · 세부 일정은 대표번호 1833-3872로 문의", "Schedule: notice posted 22 Oct 2026 · model house open until further notice · call 1833-3872")}</p>
             <p>등록 여부는 <a href={SITE_TEL_HREF}>1833-3872</a>(대표번호)에서 확인하실 수 있습니다.</p>
             <details id="event-terms" className="event-card__terms"><summary>이벤트 유의사항 (청라 아크원 푸르지오 오피스텔 사전고객등록)</summary>
               <ol>
@@ -233,10 +213,10 @@ function Home() {
         <NoticeSummary />
 
         <section className="hero-define">
-          <Img className="hero-define__visual" src="/resources/img/pages/main/hero_brand_img.v4.webp" alt={tx("청라 아크원 푸르지오 엠블럼", "Cheongna Ark-One Prugio emblem")} />
+          <Img className="hero-define__visual" src="/resources/img/pages/main/hero_brand_img.v4.webp" alt="청라 아크원 푸르지오 엠블럼" />
           <div className="hero-define__copy">
-            <Img src="/resources/img/pages/main/ico_star.svg" alt="" width={28} height={28}  aria-hidden="true" />
-            <p className="hero-define__title">{tx("아크원(ARK-ONE)이란?", "What does ARK-ONE mean?")}</p>
+            <Img src="/resources/img/pages/main/ico_star.svg" alt="" width={28} height={28} />
+            <p className="hero-define__title">아크원(ARK-ONE)이란?</p>
             <strong className="hero-define__keyword">
               <b>A</b>BSOLUTE
               <br />
@@ -247,43 +227,23 @@ function Home() {
               <b>ONE</b>
             </strong>
             <p className="hero-define__text">
-              {isEnHost() ? (
-                <>
-                  The name ARK-ONE is short for
-                  <br />
-                  ABSOLUTE REMARKABLE ONE
-                </>
-              ) : (
-                <>
               단지명 ARK-ONE은
               <br />
               ABSOLUTE REMARKABLE ONE의 약칭
-                </>
-              )}
             </p>
           </div>
         </section>
 
         <section id="overview" className="section-overview">
-          <Img className="bg" src="/resources/img/pages/main/overview_bg.v4.webp" alt=""  aria-hidden="true" />
+          <Img className="bg" src="/resources/img/pages/main/overview_bg.v4.webp" alt="" />
           <span className="dim" />
           <div className="section-overview__inner">
             <header>
               <p className="section-overview__copy_text">
-                {isEnHost() ? (
-                  <>
-                    The first Cheongna apartment supply of 500 households or more in about 10 years
-                    <br />
-                    <small>Since Hanshin The Hue in July 2017 · R114 tally (Asia Economy, 2 Sep 2026)</small>
-                  </>
-                ) : (
-                  <>
                 청라 약 10년 만의
                 <br />500가구 이상 아파트 공급
                 <br />
                 <small>2017.7 한신더휴 이후 · 부동산R114 집계(아시아경제 2026.09.02 보도 기준)</small>
-                  </>
-                )}
               </p>
               <h2 className="section-overview__copy_title">{tx("청라 아크원 푸르지오 사업 규모", "Cheongna Ark-One Prugio scale")}</h2>
               <p className="section-overview__copy_brand">ARK-ONE</p>
@@ -318,29 +278,29 @@ function Home() {
               </p>
               <dl className="overview-metrics">
                 <div>
-                  <dt>{isEnHost() ? "Building area" : "건축면적"}</dt>
+                  <dt>건축면적</dt>
                   <dd>
-                    <span className="overview-metrics__prefix">{isEnHost() ? "about" : "약"}</span>
+                    <span className="overview-metrics__prefix">약</span>
                     12,278<span>㎡</span>
                   </dd>
                 </div>
                 <div>
-                  <dt>{isEnHost() ? "Gross floor area" : "연면적"}</dt>
+                  <dt>연면적</dt>
                   <dd>
-                    <span className="overview-metrics__prefix">{isEnHost() ? "about" : "약"}</span>
+                    <span className="overview-metrics__prefix">약</span>
                     424,558<span>㎡</span>
                   </dd>
                 </div>
                 <div>
-                  <dt>{isEnHost() ? "Parking" : "주차대수"}</dt>
+                  <dt>주차대수</dt>
                   <dd>
-                    3,124<span>{isEnHost() ? "" : "대"}</span>
+                    3,124<span>대</span>
                   </dd>
                 </div>
                 <div>
-                  <dt>{isEnHost() ? "Supply" : "공급 규모"}</dt>
+                  <dt>공급 규모</dt>
                   <dd>
-                    1,855<span>{isEnHost() ? " units" : "세대·실"}</span>
+                    1,855<span>세대·실</span>
                   </dd>
                 </div>
               </dl>
@@ -351,25 +311,15 @@ function Home() {
         <section id="location" className="section-location">
           <div className="section-location__visual">
             <p className="section-location__tag">ABSOLUTE REMARKABLE</p>
-            <Img src="/resources/img/pages/main/location_img.v4.webp" alt={tx("청라 아크원 푸르지오 검은 배경에 크기가 다른 흑백 구체들이 세로로 배열된 추상 그래픽", "Abstract black-and-white spheres on a black background for Cheongna Ark-One Prugio")} />
+            <Img src="/resources/img/pages/main/location_img.v4.webp" alt="청라 아크원 푸르지오 검은 배경에 크기가 다른 흑백 구체들이 세로로 배열된 추상 그래픽" />
             <h2 className="section-location__title">ARK-ONE</h2>
           </div>
           <div className="section-location__info">
             <p className="section-location__eyebrow">CENTRAL LOCATION</p>
             <p className="section-location__desc">
-              {isEnHost() ? (
-                <>
-                  Cheongna International Business District, block M5,
-                  <br />
-                  86-1 Cheongna-dong, Seohae-gu, Incheon
-                </>
-              ) : (
-                <>
               청라국제업무단지 M5블록,
               <br />
               인천 서해구 청라동 86-1번지 일원
-                </>
-              )}
             </p>
             <Link to="/pages/location" className="section-location__link">
               <span>view more</span>
@@ -378,9 +328,9 @@ function Home() {
             <figure className="section-location__map">
               <Img
                 src="/resources/img/pages/main/location_map.v4.png"
-                alt={tx("청라 국제도시 내 청라 아크원 푸르지오 위치", "Cheongna Ark-One Prugio on the Cheongna map")}
+                alt="청라 국제도시 내 청라 아크원 푸르지오 위치"
               />
-              <Img className="section-location__bubble" src="/resources/img/pages/main/location_bubble.v4.png" alt={tx("청라 아크원 푸르지오 위치 표시", "Cheongna Ark-One Prugio location marker")} />
+              <Img className="section-location__bubble" src="/resources/img/pages/main/location_bubble.v4.png" alt="청라 아크원 푸르지오 위치 표시" />
             </figure>
           </div>
         </section>
@@ -389,29 +339,19 @@ function Home() {
           <div className="section-history__head">
             <p>MASTERPLAN PROGRESS — ARKONE</p>
             <h2>
-              {isEnHost() ? (
-                <>
-                  Development dates
-                  <br />
-                  around Cheongna Ark-One Prugio
-                </>
-              ) : (
-                <>
               청라 아크원 푸르지오
               <br />
               주변 개발 일정
-                </>
-              )}
             </h2>
           </div>
           <div className="history-track">
             {[
-              { y: "2026", yEn: "2026", img: "history_img_2026.v4.webp", cap: ["청라하늘대교 (개통)", "하나드림타운 (그룹헤드쿼터 준공)"], capEn: ["Cheongna Sky Bridge (open)", "Hana Dream Town (group headquarters finished)"] },
-              { y: "2028", yEn: "2028", img: "history_img_2028.v4.jpg", cap: ["돔구장&스타필드 청라 (개장 예정)"], capEn: ["Dome and Starfield Cheongna (opening planned)"] },
-              { y: "2029", yEn: "2029", img: "history_img_2029.v4.jpg", cap: ["서울아산청라병원 (예정)"], capEn: ["Asan Cheongna Hospital (planned)"] },
-              { y: "개통 시기 미정", yEn: "Opening date not set", img: "history_img_2030.v4.webp", cap: ["7호선 국제업무단지역 (예정)"], capEn: ["Line 7 International Business District station (planned)"] },
-              { y: "시기 미정", yEn: "Date not set", img: "history_img_2031.v4.jpg", cap: ["영상문화복합단지 (계획)"], capEn: ["Media and culture complex (planned)"] },
-              { y: "2031.08", yEn: "2031.08", img: "history_img_ark_one.v4.jpg", cap: ["청라 아크원 푸르지오 (2031년 08월 입주예정)"], capEn: ["Cheongna Ark-One Prugio (move-in planned August 2031)"] },
+              { y: "2026", img: "history_img_2026.v4.webp", cap: ["청라하늘대교 (개통)", "하나드림타운 (그룹헤드쿼터 준공)"] },
+              { y: "2028", img: "history_img_2028.v4.jpg", cap: ["돔구장&스타필드 청라 (개장 예정)"] },
+              { y: "2029", img: "history_img_2029.v4.jpg", cap: ["서울아산청라병원 (예정)"] },
+              { y: "개통 시기 미정", img: "history_img_2030.v4.webp", cap: ["7호선 국제업무단지역 (예정)"] },
+              { y: "시기 미정", img: "history_img_2031.v4.jpg", cap: ["영상문화복합단지 (계획)"] },
+              { y: "2031.08", img: "history_img_ark_one.v4.jpg", cap: ["청라 아크원 푸르지오 (2031년 08월 입주예정)"] },
             ].map((ev) => (
               <article className="history-card" key={ev.img}>
                 <time>
@@ -420,16 +360,14 @@ function Home() {
                       <span>20</span>
                       {ev.y.slice(2)}
                     </>
-                  ) : isEnHost() ? (
-                    ev.yEn ?? ev.y
                   ) : (
                     ev.y
                   )}
                 </time>
                 <figure>
-                  <Img src={`/resources/img/pages/main/${ev.img}`} alt={tx(`청라 아크원 푸르지오 ${ev.y} ${ev.cap.join(", ")} 이미지`, `Cheongna Ark-One Prugio ${ev.yEn ?? ev.y} image`)} />
+                  <Img src={`/resources/img/pages/main/${ev.img}`} alt={`청라 아크원 푸르지오 ${ev.y} ${ev.cap.join(", ")} 이미지`} />
                   <figcaption>
-                    {(isEnHost() ? ev.capEn : ev.cap).map((c) => (
+                    {ev.cap.map((c) => (
                       <span key={c}>
                         {c}
                         <br />
@@ -445,40 +383,18 @@ function Home() {
         <section id="premium" className="section-premium">
           <div className="section-premium__intro">
             <div className="premium-mosaic">
-              <Img src="/resources/img/pages/main/premium_visual_img_01.v4.webp" alt={tx("청라 아크원 푸르지오 거실 인테리어 이미지컷(CG)", "Cheongna Ark-One Prugio living room image (CG)")} />
-              <Img src="/resources/img/pages/main/premium_visual_img_02.v4.webp" alt={tx("청라 아크원 푸르지오 주방·다이닝 인테리어 이미지컷(CG)", "Cheongna Ark-One Prugio kitchen and dining image (CG)")} />
-              <Img src="/resources/img/pages/main/premium_visual_img_03.v4.webp" alt={tx("청라 아크원 푸르지오 침실 인테리어 이미지컷(CG)", "Cheongna Ark-One Prugio bedroom image (CG)")} />
-              <Img src="/resources/img/pages/main/premium_visual_img_04.v4.webp" alt={tx("청라 아크원 푸르지오 거실·발코니 인테리어 이미지컷(CG)", "Cheongna Ark-One Prugio living room and balcony image (CG)")} />
+              <Img src="/resources/img/pages/main/premium_visual_img_01.v4.webp" alt="청라 아크원 푸르지오 거실 인테리어 이미지컷(CG)" />
+              <Img src="/resources/img/pages/main/premium_visual_img_02.v4.webp" alt="청라 아크원 푸르지오 주방·다이닝 인테리어 이미지컷(CG)" />
+              <Img src="/resources/img/pages/main/premium_visual_img_03.v4.webp" alt="청라 아크원 푸르지오 침실 인테리어 이미지컷(CG)" />
+              <Img src="/resources/img/pages/main/premium_visual_img_04.v4.webp" alt="청라 아크원 푸르지오 거실·발코니 인테리어 이미지컷(CG)" />
             </div>
             <div className="section-premium__copy">
               <h3>
-                {isEnHost() ? (
-                  <>
-                    Interior
-                    <br />
-                    image cuts
-                  </>
-                ) : (
-                  <>
                 인테리어
                 <br />
                 이미지컷
-                  </>
-                )}
               </h3>
               <p>
-                {isEnHost() ? (
-                  <>
-                    Living room, kitchen, bedroom
-                    <br />
-                    and balcony images
-                    <br />
-                    may differ from
-                    <br />
-                    the actual design (CG)
-                  </>
-                ) : (
-                  <>
                 거실 · 주방 · 침실
                 <br />
                 발코니 연출 이미지
@@ -486,8 +402,6 @@ function Home() {
                 실제 설계와
                 <br />
                 다를 수 있습니다(CG)
-                  </>
-                )}
               </p>
               <Link to="/pages/premium" className="section-location__link">
                 view more ›
@@ -510,46 +424,23 @@ function Home() {
         <section id="brand" className="section-brand">
           <picture>
             <source media="(max-width: 1024px)" srcSet="/resources/img/pages/main/brand_bg_m.v4.webp" />
-            <Img className="bg" src="/resources/img/pages/main/brand_bg.v4.webp" alt=""  aria-hidden="true" />
+            <Img className="bg" src="/resources/img/pages/main/brand_bg.v4.webp" alt="" />
           </picture>
           <div className="frame">
             <p className="section-brand__eyebrow">THE NATURAL NOBILITY</p>
-            <h2>{tx("본연이 지니는 고귀함", "The nobility of what is essential")}</h2>
+            <h2>본연이 지니는 고귀함</h2>
             <p>
-              {isEnHost() ? (
-                <>
-                  Refined comfort on a solid base,
-                  <br />
-                  finding the essential life at home
-                </>
-              ) : (
-                <>
               견고한 기본에 더해진 세련된 편안함,
               <br />내 삶의 본연을 집에서 찾다
-                </>
-              )}
             </p>
-            <Img className="section-brand__logo" src="/resources/img/pages/main/brand_logo.svg" alt={tx("홈 브랜드 구역의 푸르지오 로고", "Prugio logo in the home brand section")} />
+            <Img className="section-brand__logo" src="/resources/img/pages/main/brand_logo.svg" alt="홈 브랜드 구역의 푸르지오 로고" />
           </div>
         </section>
 
         <section id="contact" className="section-contact">
-          <Img className="bg" src="/resources/img/pages/main/contact_bg.v4.webp" alt=""  aria-hidden="true" />
+          <Img className="bg" src="/resources/img/pages/main/contact_bg.v4.webp" alt="" />
           <h2>CONTACT US</h2>
           <div className="contact-schedule">
-            {isEnHost() ? (
-              <>
-                <p><b>Cheongna Ark-One Prugio (APT) schedule — recruitment notice</b></p>
-                <p>Recruitment notice posted 22 Oct 2026</p>
-                <p>Special supply 2 Nov · 1st priority 3 Nov · 2nd priority 4 Nov</p>
-                <p>Winner announcement 10 Nov · document filing 12-16 Nov · contracts 22-24 Nov</p>
-                <p>Model house open until a separate notice · 87-1 Cheongna-dong, Seohae-gu, Incheon</p>
-                <p>Apply on the Korea Real Estate Board Applyhome site (www.applyhome.co.kr).</p>
-                <p>Details: 1833-3872</p>
-                <small>The schedule can change. The recruitment notice prevails.</small>
-              </>
-            ) : (
-              <>
             <p><b>청라 아크원 푸르지오(APT) 청약 일정 — 입주자모집공고 기준</b></p>
             <p>입주자모집공고 게시 2026.10.22(목)</p>
             <p>특별공급 11.02(월) · 일반공급 1순위 11.03(화) · 일반공급 2순위 11.04(수)</p>
@@ -558,81 +449,61 @@ function Home() {
             <p>청약은 한국부동산원 청약홈(www.applyhome.co.kr)에서 인터넷으로 신청합니다.</p>
             <p>세부 일정 문의: 대표번호 1833-3872</p>
             <small>※ 일정은 사업주체 사정에 따라 변경될 수 있으며, 입주자모집공고문이 우선합니다.</small>
-              </>
-            )}
           </div>
           <div className="contact-home-grid">
             <article className="contact-home-card">
-              <Img src="/resources/img/pages/main/contact_map_01.v4.png" alt={tx("청라 아크원 푸르지오 현장과 견본주택 약도", "Map of the Cheongna Ark-One Prugio site and model house")} />
+              <Img src="/resources/img/pages/main/contact_map_01.v4.png" alt="청라 아크원 푸르지오 현장과 견본주택 약도" />
               <div className="contact-row">
                 <div>
-                  <h3>{tx("견본주택", "Model house")}</h3>
-                  <address>{tx("인천광역시 서해구 청라동 87-1번지", "87-1 Cheongna-dong, Seohae-gu, Incheon")}</address>
+                  <h3>견본주택</h3>
+                  <address>인천광역시 서해구 청라동 87-1번지</address>
                 </div>
                 <div className="map-btns">
                   <a href="https://naver.me/xNpQLQ3L" target="_blank" rel="noreferrer">
-                    <Img src="/resources/img/common/ico_naver.svg" alt={tx("청라 아크원 푸르지오 견본주택 네이버 지도 바로가기", "Naver map for the model house")} />
+                    <Img src="/resources/img/common/ico_naver.svg" alt="청라 아크원 푸르지오 견본주택 네이버 지도 바로가기" />
                   </a>
                   <a href="https://kko.to/06V9ttVXOK" target="_blank" rel="noreferrer">
-                    <Img src="/resources/img/common/ico_kko_map.svg" alt={tx("청라 아크원 푸르지오 견본주택 카카오 지도 바로가기", "Kakao map for the model house")} />
+                    <Img src="/resources/img/common/ico_kko_map.svg" alt="청라 아크원 푸르지오 견본주택 카카오 지도 바로가기" />
                   </a>
                 </div>
               </div>
               <div className="contact-row">
                 <div>
-                  <h3>{tx("현장", "Site")}</h3>
-                  <address>{tx("인천광역시 서해구 청라동 86-1번지", "86-1 Cheongna-dong, Seohae-gu, Incheon")}</address>
+                  <h3>현장</h3>
+                  <address>인천광역시 서해구 청라동 86-1번지</address>
                 </div>
                 <div className="map-btns">
                   <a href="https://naver.me/xSBYFSR0" target="_blank" rel="noreferrer">
-                    <Img src="/resources/img/common/ico_naver.svg" alt={tx("청라 아크원 푸르지오 현장 네이버 지도 바로가기", "Naver map for the site")} />
+                    <Img src="/resources/img/common/ico_naver.svg" alt="청라 아크원 푸르지오 현장 네이버 지도 바로가기" />
                   </a>
                   <a href="https://kko.to/27AvJsaNys" target="_blank" rel="noreferrer">
-                    <Img src="/resources/img/common/ico_kko_map.svg" alt={tx("청라 아크원 푸르지오 현장 카카오 지도 바로가기", "Kakao map for the site")} />
+                    <Img src="/resources/img/common/ico_kko_map.svg" alt="청라 아크원 푸르지오 현장 카카오 지도 바로가기" />
                   </a>
                 </div>
               </div>
             </article>
             <article className="contact-home-card">
-              <Img src="/resources/img/pages/main/contact_map_02.v4.webp" alt={tx("청라 아크원 푸르지오 홍보관 약도", "Map of the Cheongna Ark-One Prugio showroom")} />
+              <Img src="/resources/img/pages/main/contact_map_02.v4.webp" alt="청라 아크원 푸르지오 홍보관 약도" />
               <div className="contact-row">
                 <div>
-                  <h3>{tx("홍보관", "Showroom")}</h3>
+                  <h3>홍보관</h3>
                   <address>
-                    {isEnHost() ? (
-                      <>
-                        19 Jungbong-daero 586beon-gil, Seohae-gu, Incheon
-                        <br />
-                        Hongik Park 1F units 108-109 (next to Starbucks)
-                      </>
-                    ) : (
-                      <>
                     인천광역시 서해구 중봉대로 586번길 19
                     <br />
                     홍익파크 1층 108, 109호(스타벅스 옆)
-                      </>
-                    )}
                   </address>
                 </div>
                 <div className="map-btns">
                   <a href="https://naver.me/xwmqyGWk" target="_blank" rel="noreferrer">
-                    <Img src="/resources/img/common/ico_naver.svg" alt={tx("청라 아크원 푸르지오 홍보관 네이버 지도 바로가기", "Naver map for the showroom")} />
+                    <Img src="/resources/img/common/ico_naver.svg" alt="청라 아크원 푸르지오 홍보관 네이버 지도 바로가기" />
                   </a>
                   <a href="https://kko.to/hM9WpE-0fz" target="_blank" rel="noreferrer">
-                    <Img src="/resources/img/common/ico_kko_map.svg" alt={tx("청라 아크원 푸르지오 홍보관 카카오 지도 바로가기", "Kakao map for the showroom")} />
+                    <Img src="/resources/img/common/ico_kko_map.svg" alt="청라 아크원 푸르지오 홍보관 카카오 지도 바로가기" />
                   </a>
                 </div>
               </div>
             </article>
           </div>
-        </section>
-        <section className="seo-qa" aria-label={tx("자주 묻는 질문", "Questions")}>
-          {(isEnHost() ? HOME_FAQ_EN : HOME_FAQ_KO).map((item) => (
-            <article key={item.q}>
-              <h2>{item.q}</h2>
-              <p>{item.a}</p>
-            </article>
-          ))}
         </section>
       </main>
       {video ? <YoutubeModal id={YOUTUBE_ID} onClose={() => setVideo(false)} /> : null}

@@ -6,7 +6,7 @@ import { PrivacyModal } from "@/components/privacy-modal";
 import { SubVisual } from "@/components/sub-visual";
 import { OtPopups } from "@/components/ot-official";
 import { PreregPopup } from "@/components/prereg-popup";
-import { isEnHost, isOtMainHost } from "@/lib/seo-host";
+import { isOtMainHost } from "@/lib/seo-host";
 import { SoonPopups } from "@/components/soon-popups";
 import { PhaseBand } from "@/components/phase-band";
 import { SITE_TEL_HREF } from "@/lib/site-data";
@@ -35,8 +35,8 @@ export function SiteShell({ children, home, path }: Props) {
       {isOtMainHost() ? (home && !noPopup ? <OtPopups /> : null) : (noPopup ? null : <PreregPopup />)}
       {path !== "/register" ? (
         <div className="quick-mo">
-          <a href={SITE_TEL_HREF}>{isEnHost() ? "Call 1833-3872" : "전화상담 1833-3872"}</a>
-          <Link to="/register">{isEnHost() ? "Pre-registration" : "사전고객등록"}</Link>
+          <a href={SITE_TEL_HREF}>전화상담 1833-3872</a>
+          <Link to="/register">사전고객등록</Link>
         </div>
       ) : null}
     </div>

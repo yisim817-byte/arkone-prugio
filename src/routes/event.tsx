@@ -1,13 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteShell } from "@/components/site-shell";
-import { canonicalLinks } from "@/lib/seo-host";
+import { canonicalLinks, tx } from "@/lib/seo-host";
 import { META } from "@/lib/i18n/en";
 import { SITE_PHONE, SITE_TEL_HREF } from "@/lib/site-data";
-
-// ARK1120: event copy stays Korean on every host, including A4. Wording is frozen.
-function tx<T>(ko: T, _en: T): T {
-  return ko;
-}
 
 const DESC = "청라 아크원 푸르지오 견본주택(인천광역시 서해구 청라동 87-1)은 별도 공지 시까지 운영합니다. 청약·당첨 고객 이벤트와 방문예약은 1833-3872로 문의하세요.";
 

@@ -60,7 +60,6 @@ export const Route = createFileRoute("/pages/overview")({
 });
 
 function OverviewPage() {
-  const en = isEnHost();
   return (
     <SiteShell path="/pages/overview">
       <div className="page_content">
@@ -125,40 +124,40 @@ function OverviewPage() {
                 <source media="(max-width: 1024px)" srcSet="/resources/img/sub/overview_apt_img_m.v4.jpg" />
                 <img src="/resources/img/sub/overview_apt_img.v4.jpg" alt="청라 아크원 푸르지오 단지 연출 이미지" {...imgDims("/resources/img/sub/overview_apt_img.v4.jpg")} data-dims="" />
               </picture>
-              <span className="overview_image__caption">{en ? "Image cut" : "이미지컷"}</span>
+              <span className="overview_image__caption">이미지컷</span>
               <figcaption className="overview_image__text">
                 <p>
-                  {en ? "Apt 868 units" : "아파트 868세대"}
+                  아파트 868세대
                   <br />
-                  {en ? "Officetel 987 rooms" : "오피스텔 987실"}
+                  오피스텔 987실
                 </p>
                 <span className="overview_summary__line" />
                 <h2>
-                  {en ? <>Cheongna International Business District <br /> block M5 mixed-use</> : <>청라국제업무단지 <br /> M5블록 주상복합</>}
+                  청라국제업무단지 <br /> M5블록 주상복합
                 </h2>
               </figcaption>
             </figure>
             <dl className="overview_info">
               <div className="overview_info__row">
-                <dt>{en ? "Site" : "대지위치"}</dt>
+                <dt>대지위치</dt>
                 <dd>
-                  {en ? "86-1 Cheongna-dong, Seohae-gu, Incheon" : "인천광역시 서해구 청라동86-1번지"}
+                  인천광역시 서해구 청라동86-1번지
                   <br />
-                  <small>{en ? "(mixed-use site M5, Cheongna International City)" : "(청라국제도시 주상복합용지 M5BL)"}</small>
+                  <small>(청라국제도시 주상복합용지 M5BL)</small>
                 </dd>
               </div>
               <div className="overview_info__row">
-                <dt>{en ? "Site area" : "대지면적"}</dt>
+                <dt>대지면적</dt>
                 <dd>35,306.00㎡ / 10,680.07py</dd>
               </div>
               <div className="overview_info__row">
-                <dt>{en ? "Gross floor area" : "연면적"}</dt>
+                <dt>연면적</dt>
                 <dd className="pc-only">
                   APT : 173,952.7508㎡ / 52,620.7071py
                   <br />
                   OT : 245,645.4826㎡ / 74,307.7585py
                   <br />
-                  {en ? "Shops" : "상업시설"} : 4,959.8424㎡ / 1,500.3523py
+                  상업시설 : 4,959.8424㎡ / 1,500.3523py
                 </dd>
                 <dd className="m-only">
                   APT
@@ -171,83 +170,68 @@ function OverviewPage() {
                   <small>245,645.4826㎡(74,307.7585py)</small>
                   <br />
                   <br />
-                  {en ? "Shops" : "상업시설"}
+                  상업시설
                   <br />
                   <small>4,959.8424㎡(1,500.3523py)</small>
                 </dd>
               </div>
               <div className="overview_info__row">
-                <dt>{en ? "Building area" : "건축면적"}</dt>
+                <dt>건축면적</dt>
                 <dd>12,278.4410㎡</dd>
               </div>
               <div className="overview_info__row">
-                <dt>{en ? "Scale" : "건축규모"}</dt>
+                <dt>건축규모</dt>
                 <dd className="pc-only">
-                  {en ? "B5 to 49F, 6 buildings, 1,855 units and rooms" : "지하 5층~지상 49층 총 6개동 1,855세대·실"}
+                  지하 5층~지상 49층 총 6개동 1,855세대·실
                   <br />
-                  {en ? "APT 868 units, exclusive 84㎡ and 103㎡" : "APT 868세대 전용 84㎡, 103㎡"}
+                  APT 868세대 전용 84㎡, 103㎡
                   <br />
-                  {en ? "OT 987 rooms, exclusive 105㎡, 121㎡, 136㎡" : "OT 987실 전용 105㎡, 121㎡, 136㎡"}
+                  OT 987실 전용 105㎡, 121㎡, 136㎡
                   <br />
-                  {en ? "Shops on floors 1–2" : "상업시설 1~2층"}
+                  상업시설 1~2층
                 </dd>
                 <dd className="m-only">
-                  {en ? "B5 to 49F, 6 buildings" : "지하 5층~지상 49층 총 6개동"}
+                  지하 5층~지상 49층 총 6개동
                   <br />
                   <small>
-                    {en ? "APT 868 units, exclusive 84㎡ and 103㎡" : "APT 868세대 전용 84㎡, 103㎡"}
+                    APT 868세대 전용 84㎡, 103㎡
                     <br />
-                    {en ? "OT 987 rooms, exclusive 105㎡, 121㎡, 136㎡" : "OT 987실 전용 105㎡, 121㎡, 136㎡"}
+                    OT 987실 전용 105㎡, 121㎡, 136㎡
                     <br />
-                    {en ? "Shops on floors 1–2" : "상업시설 1~2층"}
+                    상업시설 1~2층
                   </small>
                 </dd>
               </div>
               <div className="overview_info__row">
-                <dt>{en ? "Parking" : "주차대수"}</dt>
+                <dt>주차대수</dt>
                 <dd className="pc-only">
-                  APT : {en ? "1,389 of 3,124" : "총 3,124대 중 1,389대"}
+                  APT : 총 3,124대 중 1,389대
                   <br />
-                  OT : {en ? "1,695 of 3,124" : "총 3,124대 중 1,695대"}
+                  OT : 총 3,124대 중 1,695대
                   <br />
-                  {en ? "Shops" : "상업시설"} : {en ? "40 of 3,124" : "총 3,124대 중 40대"}
+                  상업시설 : 총 3,124대 중 40대
                 </dd>
                 <dd className="m-only">
                   APT
                   <br />
-                  <small>{en ? "1,389 of 3,124" : "총 3,124대 중 1,389대"}</small>
+                  <small>총 3,124대 중 1,389대</small>
                   <br />
                   <br />
                   OT
                   <br />
-                  <small>{en ? "1,695 of 3,124" : "총 3,124대 중 1,695대"}</small>
+                  <small>총 3,124대 중 1,695대</small>
                   <br />
                   <br />
-                  {en ? "Shops" : "상업시설"}
+                  상업시설
                   <br />
-                  <small>{en ? "40 of 3,124" : "총 3,124대 중 40대"}</small>
+                  <small>총 3,124대 중 40대</small>
                 </dd>
               </div>
             </dl>
           </div>
           <GuideDetail
-            tableTitle={en ? "Cheongna Ark-One Prugio project summary" : "청라 아크원 푸르지오 사업 정보 요약"}
-            rows={en ? [
-              { label: "Name", value: "Cheongna Ark-One Prugio (청라 아크원 푸르지오)", status: "posted" },
-              { label: "Site", value: "86-1 Cheongna-dong, Seohae-gu, Incheon (mixed-use site M5)", status: "posted" },
-              { label: "Scale", value: "B5 to 49F, 6 buildings", status: "posted" },
-              { label: "Mix", value: "1,855 units and rooms = Apt 868 + officetel 987, shops on floors 1–2", status: "posted" },
-              { label: "Apt area", value: "84㎡ and 103㎡ (areas by type on notice page 5 · model house 84A and 103A)", status: "posted" },
-              { label: "Apt units", value: "84A 248 · 84B 124 · 84C 124 · 84D 124 · 103A 124 · 103B 124 (868)", status: "sale material" },
-              { label: "Officetel area", value: "105㎡, 121㎡, 136㎡", status: "posted" },
-              { label: "Site and building area", value: "35,306.00㎡ · 12,278.4410㎡", status: "posted" },
-              { label: "Parking", value: "3,124 (APT 1,389 · OT 1,695 · shops 40)", status: "posted" },
-              { label: "Shops", value: "Peakone 53 and Ark-One 43, 96 shops on floors 1–2 (47 on 1, 49 on 2)", status: "sale material" },
-              { label: "Developer and builder", value: "Cheongna Smart City · Daewoo E&C", status: "posted" },
-              { label: "Price", value: "Supply-amount table in recruitment notice 2026000496, by type, building, floor, and unit · 1833-3872 (price cap)", status: "in the notice" },
-              { label: "APT notice", value: "Posted 22 Oct 2026", status: "in the notice" },
-              { label: "Move-in", value: "Planned August 2031", status: "notice" },
-            ] : [
+            tableTitle="청라 아크원 푸르지오 사업 정보 요약"
+            rows={[
               { label: "단지명", value: "청라 아크원 푸르지오", status: "공개값" },
               { label: "위치", value: "인천광역시 서해구 청라동 86-1번지 (청라국제도시 주상복합용지 M5BL)", status: "공개값" },
               { label: "건축규모", value: "지하 5층 ~ 지상 49층, 총 6개동", status: "공개값" },
@@ -264,13 +248,7 @@ function OverviewPage() {
               { label: "입주 시기", value: "입주예정 2031년 08월", status: "공고 기준" },
             ]}
             faq={overviewFaq()}
-            links={en ? [
-              { to: "/pages/compare", label: "Apartment and officetel" },
-              { to: "/pages/schedule", label: "Sale schedule" },
-              { to: "/pages/location", label: "Location" },
-              { to: "/pages/contact", label: "Model house" },
-              { to: "/register", label: "Register" },
-            ] : [
+            links={[
               { to: "/pages/compare", label: "평면·타입 공개 여부" },
               { to: "/pages/schedule", label: "분양 일정·청약 안내" },
               { to: "/pages/location", label: "입지환경" },

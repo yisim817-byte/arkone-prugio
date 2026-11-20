@@ -1,21 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteShell } from "@/components/site-shell";
 import { SubNotice } from "@/components/notice";
-import { canonicalLinks, faqJsonLd, tx } from "@/lib/seo-host";
+import { canonicalLinks, tx } from "@/lib/seo-host";
 import { META } from "@/lib/i18n/en";
 import { imgDims } from "@/components/img";
-import { PEAK_A_EN, PEAK_A_KO, PEAK_Q_EN, PEAK_Q_KO } from "@/lib/stage-copy";
-
-const PREMIUM_FAQ_KO = [
-  { q: PEAK_Q_KO, a: PEAK_A_KO },
-  { q: "분양가 상한제는 어디에 적혀 있나요?", a: "분양가 상한제 적용 아파트로 적혀 있고, 2017년 이후 10년만의 분양가 상한제 공급 아파트라고 안내합니다." },
-  { q: "오션·시티뷰는 모든 세대인가요?", a: "오션·시티뷰는 일부 세대입니다." },
-];
-const PREMIUM_FAQ_EN = [
-  { q: PEAK_Q_EN, a: PEAK_A_EN },
-  { q: "Where is the price-cap wording?", a: "The page calls it an apartment supplied under the price cap, and says it is the first such supply in 10 years since 2017." },
-  { q: "Does every home have an ocean or city view?", a: "Ocean and city views are for some homes only." },
-];
 
 export const Route = createFileRoute("/pages/premium")({
   component: PremiumPage,
@@ -25,7 +13,6 @@ export const Route = createFileRoute("/pages/premium")({
       { name: "description", content: tx("청라 아크원 푸르지오 프리미엄. 2,911세대·실 브랜드타운, 오션·시티뷰(일부 세대), 분양가 상한제 적용 등 사업주체 공개 상품 특징을 정리했습니다.", META.premium.desc) },
     ],
     links: canonicalLinks("/pages/premium"),
-    scripts: faqJsonLd(tx(PREMIUM_FAQ_KO, PREMIUM_FAQ_EN), "/pages/premium"),
   }),
 });
 
@@ -56,11 +43,6 @@ function PremiumPage() {
         <section className="page_container">
           {/* SEO_PUSH 2026-10-06 P1-1: 페이지 고유 H1 (title 앞부분) */}
           <h1 className="page-h1">{tx("청라 아크원 푸르지오 프리미엄", META.premium.h1)}</h1>
-          <section aria-label={tx("자주 묻는 질문", "Questions")}>
-            {tx(PREMIUM_FAQ_KO, PREMIUM_FAQ_EN).map((item) => (
-              <article key={item.q}><h2>{item.q}</h2><p>{item.a}</p></article>
-            ))}
-          </section>
           <header className="premium_intro">
             <p>{tx("청라 아크원 푸르지오 상품 안내", "Cheongna Ark-One Prugio product guide")}</p>
             <h2>{tx("주요 상품 특징", "Main product features")}</h2>
@@ -87,12 +69,12 @@ function PremiumPage() {
               <div className="premium_feature__content">
                 <span className="premium_feature__number">PREMIUM 02</span>
                 <h2>
-                  {tx("국제업무단지의", "In the international")}<br className="m-only" /> {tx("센트럴 라이프", "business district")}
+                  국제업무단지의 <br className="m-only" /> 센트럴 라이프
                 </h2>
                 <p>
-                  {tx("청라의 중심으로 완성되는", "In Cheongna")}
+                  청라의 중심으로 완성되는
                   <br />
-                  {tx("국제업무단지의 특별한 주거 가치", "a residential site in the international business district")}
+                  국제업무단지의 특별한 주거 가치
                 </p>
               </div>
               <div className="premium_feature__images">
@@ -103,9 +85,9 @@ function PremiumPage() {
             <article className="premium_feature premium_feature-03">
               <div className="premium_feature__content">
                 <span className="premium_feature__number">PREMIUM 03</span>
-                <h2>{tx("오션 ∙ 시티뷰 조망 특화", "Ocean and city view")}</h2>
+                <h2>오션 ∙ 시티뷰 조망 특화</h2>
                 <p>
-                  {tx("오션 ∙ 시티뷰를 동시에 누리는", "Ocean and city view together")} <br /> {tx("2면 or 3면 개방구조", "open on 2 or 3 sides")}<small>{tx("(일부세대)", "(some units)")}</small>
+                  오션 ∙ 시티뷰를 동시에 누리는 <br /> 2면 or 3면 개방구조<small>(일부세대)</small>
                 </p>
               </div>
               <div className="premium_feature__images premium_feature__images-stack">
@@ -118,11 +100,11 @@ function PremiumPage() {
               <div className="premium_feature__content">
                 <span className="premium_feature__number">PREMIUM 04</span>
                 <h2>
-                  {tx("분양가 상한제", "Price cap")} <br className="m-only" /> {tx("적용 아파트", "apartment")}
+                  분양가 상한제 <br className="m-only" /> 적용 아파트
                 </h2>
                 <p>
-                  {tx("청라가 기다려온 신규공급", "New supply in Cheongna")} <br /> {tx("2017년 이후 10년만의 분양가 상한제 공급 아파트", "Described here as the first price-cap supply in 10 years since 2017")} <br />{" "}
-                  <small>{tx("※ 500세대 이상 대단지 기준", "Note: large complex of 500 units or more")}</small>
+                  청라가 기다려온 신규공급 <br /> 2017년 이후 10년만의 분양가 상한제 공급 아파트 <br />{" "}
+                  <small>※ 500세대 이상 대단지 기준</small>
                 </p>
               </div>
               <div className="premium_feature__images premium_feature__images-pair">
@@ -134,11 +116,11 @@ function PremiumPage() {
             <article className="premium_feature premium_feature-05">
               <div className="premium_feature__content">
                 <span className="premium_feature__number">PREMIUM 05</span>
-                <h2>{tx("멀티 라이프 플랫폼", "Multi-life platform")}</h2>
+                <h2>멀티 라이프 플랫폼</h2>
                 <p>
-                  {tx("팬트리 2개소 이상 제공", "Two or more pantries")}
+                  팬트리 2개소 이상 제공
                   <br />
-                  {tx("다양한 공간 활용의 멀티 발코니", "Multi balcony")}<small>(OT)</small>
+                  다양한 공간 활용의 멀티 발코니<small>(OT)</small>
                 </p>
               </div>
               <div className="premium_feature__images premium_feature__images-pair">
@@ -147,7 +129,7 @@ function PremiumPage() {
               </div>
             </article>
           </div>
-          <SubNotice items={tx(["상기 이미지는 소비자의 이해를 돕기 위한 것으로 실제와 차이가 있을 수 있습니다."], ["These images were made to help you understand and may differ from the real complex."])} />
+          <SubNotice items={["상기 이미지는 소비자의 이해를 돕기 위한 것으로 실제와 차이가 있을 수 있습니다."]} />
         </section>
       </div>
     </SiteShell>

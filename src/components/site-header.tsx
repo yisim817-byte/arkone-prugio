@@ -56,17 +56,17 @@ export function SiteHeader({ home = false }: { home?: boolean }) {
       <header className={`header${inverted ? " is-inverted" : ""}${menuOpen ? " is-menu-open" : ""}`}>
         <div className="header__container">
           <LogoTag className="header__logo_wrap">
-            <Link to="/" className="header__btn_home" aria-label={en ? "Cheongna Ark-One Prugio home" : "청라 아크원 푸르지오 홈으로 이동"}>
-              {inverted ? <img className="header__btn_mark" src="/official/header/header_logo.v1.svg" alt=""  aria-hidden="true" /> : null}
+            <Link to="/" className="header__btn_home" aria-label="청라 아크원 푸르지오 홈으로 이동">
+              {inverted ? <img className="header__btn_mark" src="/official/header/header_logo.v1.svg" alt="" /> : null}
               <span className={`header__btn_logo${inverted ? " is-home-top" : ""}`}>{en ? "Cheongna Ark-One Prugio" : SITE_NAME}</span>
             </Link>
           </LogoTag>
-          <nav className="gnb" aria-label={en ? "Main menu" : "주요 메뉴"}>
+          <nav className="gnb" aria-label="주요 메뉴">
             <ul className="gnb__depth1">
               {NAV.map((item) => (
                 <li key={item.krName} className="gnb__depth1_item">
                   <MenuAnchor to={item.to} className={`gnb__depth1_link${current?.krName === item.krName ? " is-current" : ""}`} popup={item.enName === "OT" ? "officetel" : undefined}>
-                    {en ? item.enName : item.krName}
+                    {item.krName}
                   </MenuAnchor>
                   {item.children.length > 0 ? (
                     <ul className="gnb__depth2">
@@ -74,17 +74,17 @@ export function SiteHeader({ home = false }: { home?: boolean }) {
                         <li key={child.krName}>
                           {child.children && child.children.length > 0 ? (
                             <>
-                              <span className="gnb__depth2_label">{en ? child.enName : child.krName}</span>
+                              <span className="gnb__depth2_label">{child.krName}</span>
                               <ul className="gnb__depth3">
                                 {child.children.map((leaf) => (
                                   <li key={leaf.krName}>
-                                    <MenuAnchor to={leaf.to} className="gnb__depth2_link" external={leaf.external}>{en ? leaf.enName : leaf.krName}</MenuAnchor>
+                                    <MenuAnchor to={leaf.to} className="gnb__depth2_link" external={leaf.external}>{leaf.krName}</MenuAnchor>
                                   </li>
                                 ))}
                               </ul>
                             </>
                           ) : (
-                            <MenuAnchor to={child.to} className="gnb__depth2_link" external={child.external}>{en ? child.enName : child.krName}</MenuAnchor>
+                            <MenuAnchor to={child.to} className="gnb__depth2_link" external={child.external}>{child.krName}</MenuAnchor>
                           )}
                         </li>
                       ))}
@@ -96,7 +96,7 @@ export function SiteHeader({ home = false }: { home?: boolean }) {
           </nav>
           <div className="header__util_wrap">
             <a href="#popup_soon_commercial" className="header__btn_commercial" data-popup-soon="commercial" aria-haspopup="dialog">
-              <span>{en ? "Neighborhood facilities" : "근린생활시설"}</span>
+              <span>근린생활시설</span>
             </a>
             <a href={SITE_TEL_HREF} className="header__tel">
               {SITE_PHONE}
@@ -115,7 +115,7 @@ export function SiteHeader({ home = false }: { home?: boolean }) {
         </div>
       </header>
 
-      <div className={`allmenu${menuOpen ? " is-open" : ""}`} hidden={!menuOpen} aria-label={en ? "Full menu" : "전체 메뉴"}>
+      <div className={`allmenu${menuOpen ? " is-open" : ""}`} hidden={!menuOpen} aria-label="전체 메뉴">
         <div className="allmenu__top_wrap">
           <Link to="/" className="allmenu__btn_logo" onClick={close}>
             {en ? "Cheongna Ark-One Prugio" : SITE_NAME}
@@ -127,14 +127,14 @@ export function SiteHeader({ home = false }: { home?: boolean }) {
               <li key={item.enName}>
                 <MenuAnchor to={item.to} className="allmenu__depth1_item" popup={item.enName === "OT" ? "officetel" : undefined} onClick={item.enName === "OT" ? close : undefined}>
                   <span className="allmenu__en">{item.enName}</span>
-                  {en ? null : <span className="allmenu__kr">{item.krName}</span>}
+                  <span className="allmenu__kr">{item.krName}</span>
                 </MenuAnchor>
-                <MenuGroup items={item.children} onNavigate={close} en={en} />
+                <MenuGroup items={item.children} onNavigate={close} />
               </li>
             ))}
           </ul>
           <a href="#popup_soon_commercial" className="allmenu__btn_commercial header__btn_commercial" data-popup-soon="commercial" aria-haspopup="dialog" onClick={close}>
-            <span>{en ? "Neighborhood facilities" : "근린생활시설"}</span>
+            <span>근린생활시설</span>
           </a>
         </nav>
       </div>
@@ -142,7 +142,7 @@ export function SiteHeader({ home = false }: { home?: boolean }) {
   );
 }
 
-function MenuGroup({ items, onNavigate, en }: { items: NavChild[]; onNavigate: () => void; en: boolean }) {
+function MenuGroup({ items, onNavigate }: { items: NavChild[]; onNavigate: () => void }) {
   if (!items.length) return null;
   return (
     <ul className="allmenu__depth2_container">
@@ -150,17 +150,17 @@ function MenuGroup({ items, onNavigate, en }: { items: NavChild[]; onNavigate: (
         <li key={child.krName}>
           {child.children && child.children.length > 0 ? (
             <>
-              <span className="allmenu__group">{en ? child.enName : child.krName}</span>
+              <span className="allmenu__group">{child.krName}</span>
               <ul>
                 {child.children.map((leaf) => (
                   <li key={leaf.krName}>
-                    <MenuAnchor to={leaf.to} external={leaf.external} onClick={onNavigate}>{en ? leaf.enName : leaf.krName}</MenuAnchor>
+                    <MenuAnchor to={leaf.to} external={leaf.external} onClick={onNavigate}>{leaf.krName}</MenuAnchor>
                   </li>
                 ))}
               </ul>
             </>
           ) : (
-            <MenuAnchor to={child.to} external={child.external} onClick={onNavigate}>{en ? child.enName : child.krName}</MenuAnchor>
+            <MenuAnchor to={child.to} external={child.external} onClick={onNavigate}>{child.krName}</MenuAnchor>
           )}
         </li>
       ))}

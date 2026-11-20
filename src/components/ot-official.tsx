@@ -13,11 +13,11 @@ function SoonCard({ kind, portrait, headingId }: { kind: Kind; portrait?: boolea
       <div className="popup_soon__dialog">
         <div className="popup_soon__bg">
           {portrait ? (
-            <img src={`/official/soon/${bg}_m.png`} alt=""  aria-hidden="true" />
+            <img src={`/official/soon/${bg}_m.png`} alt="" />
           ) : (
             <picture>
               <source media="(max-width: 1024px)" srcSet={`/official/soon/${bg}_m.png`} />
-              <img src={`/official/soon/${bg}.png`} alt="" loading="lazy"  aria-hidden="true" />
+              <img src={`/official/soon/${bg}.png`} alt="" loading="lazy" />
             </picture>
           )}
         </div>

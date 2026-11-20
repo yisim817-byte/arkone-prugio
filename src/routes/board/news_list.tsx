@@ -2,19 +2,8 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import { SiteShell } from "@/components/site-shell";
 import { NEWS, type NewsItem } from "@/lib/news";
-import { canonicalLinks, faqJsonLd, tx } from "@/lib/seo-host";
+import { canonicalLinks, tx } from "@/lib/seo-host";
 import { META } from "@/lib/i18n/en";
-
-const NEWS_FAQ_KO = [
-  { q: "기사 본문도 이 페이지에 있나요?", a: "아닙니다. 기사 발췌는 각 언론사 원문 인용입니다." },
-  { q: "계획 사업은 확정인가요?", a: "계획·예정 사업은 확정이 아닙니다(7호선 개통 시기 미정)." },
-  { q: "보도는 몇 건을 모았나요?", a: "이 목록은 언론사 원문 기준으로 정리한 기사 목록입니다. 건수는 화면에 올라온 카드가 기준입니다." },
-];
-const NEWS_FAQ_EN = [
-  { q: "Are full articles copied here?", a: "No. Excerpts quote the original publisher." },
-  { q: "Are planned projects fixed?", a: "Planned projects are not fixed (Line 7 opening date is not set)." },
-  { q: "How many items are listed?", a: "The list follows the original articles. The cards on the page are the count." },
-];
 
 export const Route = createFileRoute("/board/news_list")({
   component: NewsListPage,
@@ -24,7 +13,6 @@ export const Route = createFileRoute("/board/news_list")({
       { name: "description", content: tx("청라 아크원 푸르지오 관련 언론보도 목록. 공급 일정·청라국제업무단지 개발 관련 기사를 언론사 원문 기준으로 정리했습니다.", META.news.desc) },
     ],
     links: canonicalLinks("/board/news_list"),
-    scripts: faqJsonLd(tx(NEWS_FAQ_KO, NEWS_FAQ_EN), "/board/news_list"),
   }),
 });
 
@@ -42,11 +30,6 @@ function NewsListPage() {
         <section className="page_container">
           {/* SEO_PUSH 2026-10-06 P1-1: 페이지 고유 H1 (title 앞부분) */}
           <h1 className="page-h1">{tx("청라 아크원 푸르지오 언론보도", META.news.h1)}</h1>
-          <section aria-label={tx("자주 묻는 질문", "Questions")}>
-            {tx(NEWS_FAQ_KO, NEWS_FAQ_EN).map((item) => (
-              <article key={item.q}><h2>{item.q}</h2><p>{item.a}</p></article>
-            ))}
-          </section>
           <p className="news-excerpt-note">{tx("기사 발췌는 각 언론사 원문 인용이며, 계획·예정 사업은 확정이 아닙니다(7호선 개통 시기 미정).", "Excerpts quote the original articles. Planned projects are not fixed (Line 7 opening date is not set).")}</p>
           <div className="news_list_type">
             <ul>

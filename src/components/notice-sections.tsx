@@ -1,13 +1,7 @@
 import type { ReactNode } from "react";
 import { balcony, deposit, prices, specialSupply, supply, types } from "@/lib/notice-facts.v1.json";
-import { isEnHost } from "@/lib/seo-host";
 
 const facts = { balcony, deposit, prices, specialSupply, supply, types }; // 쓰는 항목만 가져온다(source 링크 등은 번들에 넣지 않음)
-
-/** Same posted won figures, different orthography so 8-grams are not copied from the source page. */
-function say(s: string): string {
-  return s.replace(/(\d+)억\s*([\d,]+)만원/g, "$1억에 $2만 원");
-}
 
 // 작업지시서 10 (2026-10-22): 입주자모집공고(주택관리번호 2026000496) 확정 내용. 금액은 쓰지 않는다.
 // 표 숫자는 notice-facts.v1.json 에서만 그린다.
@@ -42,35 +36,20 @@ function Table({ columns, rows }: { columns: string[]; rows: (string | number)[]
 }
 
 /** 작업지시서 12 · 공급금액 FAQ 답(주택형별 최저~최고). 숫자는 notice-facts.v1.json 에서만 가져온다. */
-export const PRICE_FAQ_ANSWER = say(`주택형별 공급금액은 ${facts.prices.rows.map((p) => `${p.type} ${p.min}~${p.max}`).join(", ")}이며 동과 층, 호마다 다릅니다. 발코니 확장비와 유상옵션, 취득세는 그 금액 밖이고 공고문이 우선합니다.`);
+export const PRICE_FAQ_ANSWER = `주택형별 공급금액은 ${facts.prices.rows.map((p) => `${p.type} ${p.min}~${p.max}`).join(", ")}이며 동·층·호별로 다릅니다. 발코니 확장비·유상옵션·취득세 등은 별도이며 입주자모집공고문이 우선합니다.`;
 
 /** M3 · 공급금액표 (작업지시서 12 — 공고문 6~20면 주택형별 최저~최고, 발코니 확장비) */
 export function NoticePrice() {
   const rows = facts.prices.rows.map((p) => [p.type, p.units, `${p.min} ~ ${p.max}`]);
   const balconyRow = ["발코니 확장비", ...facts.balcony.rows.map((b) => b.won)];
-  if (isEnHost()) {
-    return (
-      <Block label="Supply amount" title="Supply amount (recruitment notice pages 6–20)">
-        <Table columns={["Type", "Units", "Supply amount (low–high)"]} rows={rows} />
-        <div className="seo-guide__answer">
-          <p>84A line 3 is 8억 7,810만원 ~ 9억 2,070만원, and line 5 is 8억 3,780만원 ~ 8억 7,840만원.</p>
-          <p>Amounts differ by building, floor, and unit. The table on pages 6 to 20 of the notice prevails.</p>
-          <p>Balcony extension, paid options, and acquisition tax sit outside the supply amount. VAT is not added at or under exclusive 85㎡. The 103㎡ supply amount includes construction VAT.</p>
-          <p>The apartment is under the price cap. Call 1833-3872 for one building, floor, and unit.</p>
-        </div>
-        <h3 className="seo-guide__subtitle">Balcony extension (VAT included · deposit 10% · balance 90%)</h3>
-        <Table columns={["Item", ...facts.balcony.rows.map((b) => b.type)]} rows={[["Balcony extension", ...facts.balcony.rows.map((b) => b.won)]]} />
-      </Block>
-    );
-  }
   return (
     <Block label="공급금액" title="공급금액 (입주자모집공고문 6~20면)">
-      <Table columns={["주택형", "세대수", "공급금액 (최저 ~ 최고)"]} rows={rows.map((r) => [r[0], r[1], say(String(r[2]))])} />
+      <Table columns={["주택형", "세대수", "공급금액 (최저 ~ 최고)"]} rows={rows} />
       <div className="seo-guide__answer">
-        <p>{say(facts.prices.lines84A)}</p>
-        <p>동·층·호마다 금액이 다릅니다. 우선하는 표는 공고문 6면부터 20면입니다.</p>
-        <p>발코니 확장비, 유상옵션, 취득세는 공급금액 밖에 있습니다. 전용 85㎡ 이하에는 부가가치세를 붙이지 않고, 103㎡ 공급금액에는 건축비 부가가치세가 들어 있습니다.</p>
-        <p>분양가상한제 적용 단지입니다. 동·층·호를 짚어 물으려면 1833-3872로 전화합니다.</p>
+        <p>{facts.prices.lines84A}</p>
+        <p>※ 공급금액은 동·층·호별로 다르며, 입주자모집공고문 6~20면 공급금액표가 우선합니다.</p>
+        <p>※ 공급금액에는 발코니 확장비·유상옵션·취득세 등이 포함되어 있지 않습니다. 전용 85㎡ 이하는 부가가치세 대상이 아니며, 103㎡ 공급금액에는 건축비 부가가치세가 포함되어 있습니다.</p>
+        <p>※ 분양가상한제 적용 단지입니다. 원하시는 동·층·호의 금액은 대표번호 1833-3872로 상담해 주세요.</p>
       </div>
       <h3 className="seo-guide__subtitle">{`발코니 확장비 (${facts.balcony.basis})`}</h3>
       <Table columns={["구분", ...facts.balcony.rows.map((b) => b.type)]} rows={[balconyRow]} />
@@ -80,27 +59,14 @@ export function NoticePrice() {
 
 /** M4 · 납부 조건 (비율만) */
 export function NoticePayment() {
-  if (isEnHost()) {
-    return (
-      <Block label="Payment" title="Payment (shares of the supply amount)">
-        <div className="seo-guide__answer">
-          <p>The 5% contract deposit is split into a first 10 million won at signing and the rest within 30 days of the contract date.</p>
-          <p>The 60% interim is six payments with interest deferred. The project entity plans to introduce a lender. If policy or the lender makes that unavailable, the buyer pays directly.</p>
-          <p>The 35% balance is paid on the move-in designation date.</p>
-          <p>A balance loan can be smaller or unavailable for each person under rules such as DSR.</p>
-          <p>Deposit, interim, and balance are paid only to the account the project entity names. The account number is not on this site. Check the notice and the project entity.</p>
-        </div>
-      </Block>
-    );
-  }
   return (
     <Block label="납부 조건" title="납부 조건 (공급금액 기준 비율)">
       <div className="seo-guide__answer">
-        <p>계약금 5%는 1차 1천만원(계약할 때)과 2차 나머지(계약일부터 30일 이내)로 나뉩니다.</p>
-        <p>중도금 60%는 6회이고 이자후불제입니다. 금융기관 알선은 사업주체가 정한 곳을 예정하며, 정책이나 금융기관 사정으로 어려우면 계약자가 직접 냅니다.</p>
-        <p>잔금 35%는 입주지정일에 냅니다.</p>
-        <p>잔금대출은 DSR 등 규제에 따라 사람마다 한도가 줄거나 대출이 어려울 수 있습니다.</p>
-        <p>계약금·중도금·잔금은 사업주체가 안내한 지정계좌로만 냅니다. 계좌번호는 이 사이트에 없고 공고문과 사업주체 안내로 확인합니다.</p>
+        <p>계약금 5% — 1차 1천만원(계약 시) + 2차 나머지(계약일부터 30일 이내)</p>
+        <p>중도금 60% — 6회 분할, 이자후불제 (사업주체가 지정하는 금융기관을 통한 중도금 대출 알선 예정. 정부 정책·금융기관 사정으로 대출이 어려우면 계약자가 직접 납부)</p>
+        <p>잔금 35% — 입주지정일</p>
+        <p>※ 잔금대출은 DSR 등 대출 규제에 따라 개인별 한도가 줄거나 대출이 어려울 수 있습니다.</p>
+        <p>※ 계약금·중도금·잔금은 사업주체가 안내하는 지정계좌로만 납부합니다. 계좌는 입주자모집공고문과 사업주체 안내로 확인하시고, 이 사이트는 계좌번호를 안내하지 않습니다.</p>
       </div>
     </Block>
   );
@@ -108,43 +74,18 @@ export function NoticePayment() {
 
 /** M5 · 청약 자격 */
 export function NoticeEligibility() {
-  if (isEnHost()) {
-    const columns = ["Item", "Seoul", "Incheon", "Gyeonggi"];
-    const rows = [
-      ["Exclusive 84㎡ (85㎡ or under)", ...facts.deposit.rows[0].slice(1)],
-      ["Exclusive 103㎡ (135㎡ or under)", ...facts.deposit.rows[1].slice(1)],
-    ];
-    return (
-      <Block label="Eligibility" title="Eligibility summary (recruitment notice)">
-        <div className="seo-guide__answer">
-          <p>Applicants must be 19 or older and live in Incheon, Seoul, or Gyeonggi on the notice date, 22 Oct 2026. A minor who is the head of household is included.</p>
-          <p>If the same rank is oversubscribed, Incheon residents take 50% first and the other 50% is Seoul and Gyeonggi.</p>
-          <p>First rank needs 12 months in the subscription account and at least the deposit for the region and area. You do not have to be the head of household, and owning a home does not block first rank.</p>
-          <p>Second rank is a subscription-account holder who is not first rank.</p>
-          <p>General supply selects exclusive 84㎡ as 40% points and 60% lottery, and exclusive 103㎡ as 100% lottery.</p>
-          <p>The lottery looks at people without a home first. 75% of the lottery volume goes first to household members without a home.</p>
-          <p>This complex is in a non-regulated area and under the price cap. The re-win limit is 10 years. Resale is limited for 3 years (until title registration, and not longer than 3 years). There is no residency duty.</p>
-          <p>A person already inside another re-win limit, and their household, can still apply here.</p>
-          <p>One application per person. You may file one special supply and one general supply together, but a special-supply win drops you from general-supply selection.</p>
-        </div>
-        <h3 className="seo-guide__subtitle">Subscription deposit (region on the resident register as of the notice date)</h3>
-        <Table columns={columns} rows={rows} />
-        <p className="seo-guide__legend">Detailed eligibility and exceptions follow the recruitment notice.</p>
-      </Block>
-    );
-  }
   return (
     <Block label="청약 자격 요약" title="청약 자격 요약 (입주자모집공고 기준)">
       <div className="seo-guide__answer">
-        <p>신청할 수 있는 지역은 공고일 2026년 10월 22일 현재 인천, 서울, 경기에 사는 만 19세 이상입니다. 세대주인 미성년자도 포함됩니다.</p>
-        <p>같은 순위에서 경쟁하면 인천에 사는 사람 50%가 먼저이고, 남은 50%는 서울과 경기입니다.</p>
-        <p>1순위는 청약통장 가입 12개월이 지나고 지역·면적별 예치금 이상입니다. 세대주가 아니어도 되고, 주택을 가지고 있어도 1순위를 넣을 수 있습니다.</p>
-        <p>2순위는 청약통장 가입자 가운데 1순위가 아닌 사람입니다.</p>
-        <p>일반공급 선정은 전용 84㎡가 가점 40%와 추첨 60%, 전용 103㎡는 추첨 100%입니다.</p>
-        <p>추첨에서는 무주택자를 먼저 봅니다. 추첨 물량의 75%를 무주택세대구성원에게 먼저 줍니다.</p>
-        <p>이 단지는 비규제지역이고 분양가상한제가 적용됩니다. 재당첨 제한은 10년, 전매제한은 3년(소유권이전등기일, 그 전이라도 3년을 넘기지 않음)이며 거주의무는 없습니다.</p>
-        <p>이미 재당첨 제한 중인 사람과 그 세대원도 이 단지에는 넣을 수 있습니다.</p>
-        <p>청약은 1인 1건입니다. 특별공급과 일반공급을 각 1건씩 같이 넣을 수 있지만, 특별공급에 당첨되면 일반공급 선정에서는 빠집니다.</p>
+        <p>신청 지역: 입주자모집공고일(2026.10.22) 현재 인천광역시·서울특별시·경기도에 거주하는 만 19세 이상(세대주인 미성년자 포함)</p>
+        <p>지역 우선: 같은 순위에서 경쟁이 있으면 인천광역시 거주자 50% 우선 공급, 나머지 50%는 서울특별시·경기도 거주자에게 공급</p>
+        <p>1순위: 청약통장 가입 12개월 경과 + 지역별·면적별 예치금 이상 (세대주 요건 없음, 주택 소유 여부와 관계없이 1순위 신청 가능)</p>
+        <p>2순위: 청약통장 가입자 중 1순위에 해당하지 않는 분</p>
+        <p>일반공급 당첨자 선정: 전용 84㎡는 가점제 40% · 추첨제 60%, 전용 103㎡는 추첨제 100%</p>
+        <p>추첨제는 무주택자를 우선합니다: 추첨제 물량의 75%를 무주택세대구성원에게 먼저 공급</p>
+        <p>비규제지역 · 분양가상한제 적용 · 재당첨 제한 10년(이 단지 당첨 시) · 전매제한 3년(소유권이전등기일까지, 3년을 넘으면 3년) · 거주의무 없음</p>
+        <p>기존 재당첨 제한 기간 중인 분과 그 세대원도 이 단지에 청약할 수 있습니다.</p>
+        <p>청약은 1인 1건입니다. 특별공급과 일반공급은 각 1건씩 함께 신청할 수 있으나, 특별공급에 당첨되면 일반공급 당첨자 선정에서 제외됩니다.</p>
       </div>
       <h3 className="seo-guide__subtitle">청약 예치금 (입주자모집공고일 현재 주민등록표상 거주지역 기준)</h3>
       <Table columns={facts.deposit.columns} rows={facts.deposit.rows} />
@@ -156,44 +97,20 @@ export function NoticeEligibility() {
 /** M6 · 특별공급 */
 export function NoticeSpecial() {
   const rows = facts.specialSupply.rows.map((r) => r.map((v, i) => (i > 0 && v === 0 ? "-" : v)));
-  if (isEnHost()) {
-    const label: Record<string, string> = {
-      "기관추천": "Institution",
-      "경제자유구역": "FEZ",
-      "다자녀가구": "Multiple children",
-      "신혼부부": "Newlywed",
-      "노부모부양": "Parents",
-      "생애최초": "First home",
-      "신생아": "Newborn",
-      "합계": "Total",
-    };
-    const enRows = rows.map((r) => [label[String(r[0])] || r[0], ...r.slice(1)]);
-    return (
-      <Block label="Special supply" title="Special supply 514 units (by type)">
-        <Table columns={["Category", "84A", "84B", "84C", "84D", "103A", "103B", "Total"]} rows={enRows} />
-        <div className="seo-guide__answer">
-          <p>The subscription-account period differs by type. Institution, FEZ, multiple children, newlywed, and parents need 6 months plus the deposit. First-home and newborn are first rank, so they need 12 months. Some institution categories, including people with disabilities and national merit recipients, do not need an account.</p>
-          <p>Special supply is once per household without a home, one home. Only the parents type requires the head of a household without a home.</p>
-          <p>The FEZ volume is for full-time workers who have worked more than one year at a foreign-invested company that entered the Incheon FEZ. You file with the project entity first. The Incheon Free Economic Zone Authority names the recipients.</p>
-          <p>Income, assets, and other rules by type follow pages 23 to 36 of the notice.</p>
-        </div>
-      </Block>
-    );
-  }
   return (
     <Block label="특별공급 주택형별 배정" title="특별공급 514세대 (주택형별 배정)">
       <Table columns={facts.specialSupply.columns} rows={rows} />
       <div className="seo-guide__answer">
-        <p>청약통장 기간은 유형마다 다릅니다. 기관추천·경제자유구역·다자녀·신혼부부·노부모부양은 가입 6개월과 예치금이고, 생애최초·신생아는 1순위라 가입 12개월입니다. 기관추천 가운데 장애인과 국가유공자 등은 통장이 없어도 됩니다.</p>
-        <p>특별공급은 무주택세대구성원에게 1세대 1주택으로 한 번만 줍니다. 노부모부양만 무주택세대주가 대상입니다.</p>
-        <p>경제자유구역 물량은, 인천 경제자유구역에 들어온 외국인투자기업 등에서 1년 넘게 일한 상용근로자가 대상입니다. 먼저 사업주체에 내고, 대상자는 인천경제자유구역청이 정합니다.</p>
-        <p>소득과 자산 같은 유형별 세부 자격은 공고문 23면부터 36면이 우선합니다.</p>
+        <p>청약통장: 기관추천·경제자유구역·다자녀가구·신혼부부·노부모부양은 가입 6개월 경과와 예치금, 생애최초·신생아는 1순위(가입 12개월) 요건입니다. 기관추천 중 장애인·국가유공자 등은 통장이 필요 없습니다.</p>
+        <p>특별공급은 무주택세대구성원에게 1세대 1주택 기준으로 한 차례만 공급합니다(노부모부양은 무주택세대주).</p>
+        <p>경제자유구역 특별공급은 인천 경제자유구역에 입주한 외국인투자기업 등에서 1년 이상 일한 상용근로자 등이 대상이며, 먼저 사업주체에 신청하고 인천경제자유구역청이 대상자를 정합니다.</p>
+        <p>※ 소득·자산 기준 등 유형별 세부 자격은 입주자모집공고문 23~36면이 우선합니다.</p>
       </div>
     </Block>
   );
 }
 
-export const PLAN_NOTE = "이 그림은 안내 자료를 다시 그린 도면입니다. 치수는 공고문과 견본주택 유니트가 맞습니다.";
+export const PLAN_NOTE = "분양 안내 자료의 평면을 다시 그린 안내용 이미지입니다. 실제와 다를 수 있으며 입주자모집공고문과 견본주택이 우선합니다.";
 
 /** 작업지시서 12 · 평면 안내도(재작도 v2). 누르면 원본 PNG 를 새 창으로 연다(휴대폰 확대용). */
 export function PlanFigure({ plan, withPrice = false }: { plan: "84c" | "103a"; withPrice?: boolean }) {

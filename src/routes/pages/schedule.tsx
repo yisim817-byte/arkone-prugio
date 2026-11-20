@@ -5,17 +5,16 @@ import { canonicalLinks, faqJsonLd, isEnHost, tx } from "@/lib/seo-host";
 import { GuideAnswer, GuideDetail, type GuideFaq } from "@/components/seo-guide";
 import { FAQ_SCHEDULE, META, withPrice } from "@/lib/i18n/en";
 import { SRC_APPLYHOME } from "@/lib/arkone-facts";
-import { DESC_SCHEDULE_EN, DESC_SCHEDULE_KO, STAGE_EN, STAGE_KO } from "@/lib/stage-copy";
 import { NoticePayment, NoticePrice, PRICE_FAQ_ANSWER } from "@/components/notice-sections";
 
 const FAQ: GuideFaq[] = [
   { q: "청라 아크원 푸르지오 청약 결과는 어떻게 나왔나요?", a: "한국부동산원 청약홈 집계를 인용한 보도(스트레이트뉴스, 2026-11-04)에 따르면 1순위는 604가구 모집에 1,348건이 접수되어 평균 2.23대 1을 기록했습니다. 84㎡A는 1순위에서 마감되었고, 일부 주택형은 1순위에서 모집 가구 수를 채우지 못해 2순위로 이어졌습니다. 정확한 결과는 청약홈에서 확인할 수 있습니다." },
-  { q: "청라 아크원 푸르지오 당첨자 서류접수와 계약은 언제인가요?", a: "서류는 11월 12일 목요일부터 16일 월요일까지 받았고, 정당계약은 11월 22일 일요일부터 24일 화요일까지입니다. 준비 서류는 공고와 견본주택 안내를 따릅니다." },
-  { q: "청라 아크원 푸르지오 103㎡B 선착순은 언제인가요?", a: "103㎡B 선착순이 열리는 날과 방식은 아직 미정입니다. 참여의향서는 2026년 11월 17일 화요일부터 견본주택에서 본인이 신분증 원본으로 내고, 대리 접수는 없으며 1인 1건입니다. 그 접수는 공급계약이 아닙니다." },
+  { q: "청라 아크원 푸르지오 당첨자 서류접수와 계약은 언제인가요?", a: "당첨자 서류접수 기간은 11.12(목)~11.16(월), 정당계약 기간은 11.22(일)~11.24(화)입니다. 세부 일정과 준비 서류는 입주자모집공고와 견본주택 안내를 따릅니다." },
+  { q: "청라 아크원 푸르지오 103㎡B 선착순은 언제인가요?", a: "103㎡B 타입 선착순 공급 일정과 방식은 현재 미정이며, 확정되면 참여의향서를 접수한 고객에게 따로 안내합니다. 참여의향서는 2026년 11월 17일(화)부터 견본주택에서 신청자 본인이 신분증 원본을 가지고 접수합니다. 대리접수는 할 수 없고 1인 1건입니다. 참여의향서 접수는 공급계약 체결이 아닙니다." },
   { q: "청라 아크원 푸르지오 오피스텔·상가 분양은 언제인가요?", a: "오피스텔과 상가(근린생활시설)는 11월 말 분양 예정입니다. 세부 일정은 견본주택으로 문의하시기 바랍니다." },
   {
     q: "청라 아크원 푸르지오 분양 일정은 어떻게 되나요?",
-    a: "공고는 2026년 10월 22일 목요일에 게시되었습니다. 특별공급은 11월 2일, 1순위는 11월 3일, 2순위는 11월 4일, 발표는 11월 10일, 서류는 11월 12일부터 16일, 계약은 11월 22일부터 24일입니다. 바뀌면 공고문이 먼저입니다.",
+    a: "입주자모집공고는 2026.10.22(목) 게시되었습니다. 특별공급 11.02(월), 일반공급 1순위 11.03(화), 2순위 11.04(수), 당첨자 발표 11.10(화), 당첨자 서류접수 11.12(목)~11.16(월), 계약 11.22(일)~11.24(화)입니다. 일정이 바뀌면 입주자모집공고문이 우선합니다.",
   },
   {
     q: "분양가는 얼마인가요?",
@@ -43,11 +42,11 @@ const FAQ: GuideFaq[] = [
   },
   {
     q: "누가 청약할 수 있나요?",
-    a: "공고일 2026년 10월 22일 현재, 인천·서울·경기에 사는 만 19세 이상이 신청합니다. 같은 순위면 인천 거주자 50%가 먼저이고 나머지 50%는 서울·경기입니다. 1순위는 청약통장 가입 12개월과 지역·면적별 예치금이 필요합니다.",
+    a: "입주자모집공고일(2026.10.22) 현재 인천광역시·서울특별시·경기도에 거주하는 만 19세 이상이면 신청할 수 있습니다. 같은 순위에서 경쟁이 있으면 인천광역시 거주자 50%를 우선 공급하고 나머지 50%는 서울특별시·경기도 거주자에게 공급합니다. 1순위는 청약통장 가입 12개월 경과와 지역별·면적별 예치금 충족이 필요합니다.",
   },
   {
     q: "전매제한·재당첨 제한·거주의무가 있나요?",
-    a: "전매제한은 3년(소유권이전등기일, 그 전이라도 3년을 넘기지 않음)이고 재당첨 제한은 10년입니다. 거주의무는 없습니다. 이미 재당첨 제한 중인 사람도 이 단지 청약은 가능합니다.",
+    a: "전매제한 3년(소유권이전등기일까지, 3년을 넘으면 3년), 재당첨 제한 10년(이 단지 당첨 시)이 적용되며 거주의무는 없습니다. 기존 재당첨 제한 기간 중인 분도 이 단지에 청약할 수 있습니다.",
   },
   {
     q: "청라 아크원 푸르지오 계약 기간은 언제인가요?",
@@ -66,7 +65,10 @@ export const Route = createFileRoute("/pages/schedule")({
       { title: tx("청라 아크원 푸르지오 분양가·분양 일정·청약 안내", META.schedule.title) },
       {
         name: "description",
-        content: tx(DESC_SCHEDULE_KO, DESC_SCHEDULE_EN),
+        content: tx(
+          "청라 아크원 푸르지오(APT) 청약 일정·공급금액. 공고 2026.10.22 게시 · 특별공급 11.02 · 1순위 11.03 · 계약 11.22~11.24.",
+          META.schedule.desc,
+        ),
       },
     ],
     links: canonicalLinks("/pages/schedule"),
@@ -82,16 +84,19 @@ function SchedulePage() {
           <GuideAnswer title={tx("청라 아크원 푸르지오 분양 일정·청약 안내", META.schedule.h1)}>
             {isEnHost() ? (
               <>
-                <p>{STAGE_EN}</p>
-                <p>The model house stays open until a separate notice. Call 1833-3872 for the details. Move-in is planned for August 2031 and can change with construction.</p>
-                <p>Source: <a href="https://www.applyhome.co.kr" target="_blank" rel="noopener noreferrer">Applyhome</a> recruitment notice (posted 22 Oct 2026) · checked 2026-11-20</p>
+                <p>The apartment recruitment notice for Cheongna Ark-One Prugio was posted on 22 Oct 2026.</p>
+                <p>Notice posted 22 Oct 2026. The model house is open until further notice. Call 1833-3872 for the details.</p>
+                <p>Special supply is 2 Nov. First rank is 3 Nov. Second rank is 4 Nov. Winners were announced on 10 Nov. Results can be checked on Applyhome. Document submission is 12-16 Nov. Contracts are 22-24 Nov. Supply amounts are in the recruitment notice (housing management number 2026000496) by type building floor and unit. Call 1833-3872 for a specific unit. Move-in is planned for August 2031 and can change with construction.</p>
+                <p>The schedule can change so read the notice on Applyhome before you apply.</p>
+                <p>Source: <a href="https://www.applyhome.co.kr" target="_blank" rel="noopener noreferrer">Applyhome</a> recruitment notice (posted 22 Oct 2026) · checked 2026-10-29</p>
               </>
             ) : (
               <>
-            <p>{STAGE_KO}</p>
-            <p>견본주택은 별도 공지 시까지 운영합니다. 세부 일정은 대표번호 1833-3872로 문의해 주세요. 분양가(공급금액)는 입주자모집공고문(주택관리번호 2026000496)의 공급금액표에 주택형·동·층·호별로 공개되어 있습니다. 입주는 2031년 08월 예정이며 공정에 따라 바뀔 수 있습니다.</p>
-            <p>날짜 칸은 공고문을 그대로 적었습니다. 특별공급은 11월 2일, 1순위는 11월 3일, 2순위는 11월 4일, 발표는 11월 10일, 서류는 11월 12일부터 16일, 계약은 11월 22일부터 24일입니다.</p>
-            <p>출처: <a href="https://www.applyhome.co.kr" target="_blank" rel="noopener noreferrer">청약홈</a> 입주자모집공고(2026.10.22 게시) · 확인 기준일 2026-11-20</p>
+            <p>청라 아크원 푸르지오(APT) 입주자모집공고가 2026.10.22(목) 게시되었습니다.</p>
+            <p>청라 아크원 푸르지오는 입주자모집공고 게시 2026.10.22(목) · 견본주택은 별도 공지 시까지 운영합니다. 세부 일정은 대표번호 1833-3872로 문의해 주세요.</p>
+            <p>특별공급 11.02(월), 일반공급 1순위 11.03(화), 2순위 11.04(수), 당첨자 발표 11.10(화), 당첨자 서류접수 11.12(목)~11.16(월), 계약 11.22(일)~11.24(화)입니다. 분양가(공급금액)는 입주자모집공고문(주택관리번호 2026000496)의 공급금액표에 주택형·동·층·호별로 공개되어 있습니다. 주택형과 층에 따라 금액이 다르므로 원하시는 조건은 대표번호 1833-3872로 상담해 주세요. 입주는 2031년 08월 예정이며 공정에 따라 바뀔 수 있습니다.</p>
+            <p>일정은 사업주체 사정에 따라 변경될 수 있으므로 청약 전 청약홈에 게시되는 공고문을 반드시 확인하시기 바랍니다.</p>
+            <p>출처: <a href="https://www.applyhome.co.kr" target="_blank" rel="noopener noreferrer">청약홈</a> 입주자모집공고(2026.10.22 게시) · 확인 기준일 2026-10-29</p>
               </>
             )}
           </GuideAnswer>

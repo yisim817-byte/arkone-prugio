@@ -17,6 +17,5 @@ type Props = ImgHTMLAttributes<HTMLImageElement> & { src: string; alt: string };
 export function Img({ src, alt, ...rest }: Props) {
   // Explicit width/height from the caller keep their original meaning (rendered size); only json dims get data-dims.
   const auto = rest.width == null && rest.height == null ? { ...imgDims(src), "data-dims": "" } : {};
-  const hidden = alt === "" ? ({ "aria-hidden": "true" } as const) : {};
-  return <img src={src} alt={alt} loading="lazy" decoding="async" {...auto} {...hidden} {...rest} />;
+  return <img src={src} alt={alt} loading="lazy" decoding="async" {...auto} {...rest} />;
 }
