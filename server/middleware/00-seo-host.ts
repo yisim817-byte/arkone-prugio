@@ -270,8 +270,8 @@ function xmlEsc(v: string): string {
   return v.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 }
 
-function rssFeed(en = false): string {
-  const origin = en ? EN_ORIGIN : KR_ORIGIN;
+function rssFeed(en = false, legacy = false): string {
+  const origin = en || legacy ? EN_ORIGIN : KR_ORIGIN;
   const items = (en ? EN_RSS : RSS_ITEMS).map(
     ([path, title, desc, date]) =>
       `<item><title>${xmlEsc(title)}</title><link>${origin}${path}</link><guid isPermaLink="true">${origin}${path}</guid><description>${xmlEsc(desc)}</description><pubDate>${date}</pubDate></item>`,
@@ -469,6 +469,22 @@ export default async function seoHostMiddleware(
   if (method !== "GET" && method !== "HEAD") return next();
   const path = event.url.pathname;
 
+  // public/ would be served by Vercel before this function, so both hosts would 200.
+  // Own the verification file here: A4 only, same one-line body.
+  if (path === "/navercb4afd4b34b3cb9921b3753ba42928b5.html") {
+    if (!isA4(event)) {
+      return new Response(method === "HEAD" ? null : "Not Found", {
+        status: 404,
+        headers: { "content-type": "text/plain; charset=utf-8", ...TEXT_HEADERS },
+      });
+    }
+    const body = "naver-site-verification: navercb4afd4b34b3cb9921b3753ba42928b5.html\n";
+    return new Response(method === "HEAD" ? null : body, {
+      status: 200,
+      headers: { "content-type": "text/html; charset=utf-8", ...TEXT_HEADERS },
+    });
+  }
+
   // KR host: trailing-slash HTML paths 308 to the slashless URL. Query preserved.
   // Root, /api/, and static assets stay as-is (framework 307 must not win on pages).
   if (
@@ -496,7 +512,7 @@ export default async function seoHostMiddleware(
     });
   }
   if (path === "/rss.xml") {
-    return new Response(method === "HEAD" ? null : rssFeed(isEn(event)), {
+    return new Response(method === "HEAD" ? null : rssFeed(isEn(event), isA4(event)), {
       headers: { "content-type": "application/rss+xml; charset=utf-8", ...TEXT_HEADERS },
     });
   }

@@ -51,18 +51,20 @@ export const Route = createFileRoute("/")({
 function homeJsonLd(origin: string, en: boolean) {
   const name = en ? "Cheongna Ark-One Prugio" : SITE_NAME;
   const lang = en ? "en-US" : "ko-KR";
+  const website: Record<string, unknown> = {
+    "@type": "WebSite",
+    "@id": `${origin}/#website`,
+    url: `${origin}/`,
+    name,
+    inLanguage: lang,
+    publisher: { "@id": "https://www.humanekorea.co.kr/#organization" },
+  };
+  if (en) website.alternateName = ["arkone-prugio.site"];
+  else if (origin === KR_ORIGIN) website.alternateName = ["아크원푸르지오.site"];
   return JSON.stringify({
     "@context": "https://schema.org",
     "@graph": [
-      {
-        "@type": "WebSite",
-        "@id": `${origin}/#website`,
-        url: `${origin}/`,
-        name,
-        alternateName: [en ? "arkone-prugio.site" : "아크원푸르지오.site"],
-        inLanguage: lang,
-        publisher: { "@id": "https://www.humanekorea.co.kr/#organization" },
-      },
+      website,
       {
         "@type": "WebPage",
         "@id": `${origin}/#webpage`,
