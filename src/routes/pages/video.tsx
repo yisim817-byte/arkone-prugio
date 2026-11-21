@@ -39,7 +39,7 @@ function VideoPage() {
               <p>{tx("청라 아크원 푸르지오 홍보영상", "Cheongna Ark-One Prugio promo video")}</p>
             </button>
           </div>
-          <p>{tx("출처: 사업주체 공개 홍보영상 · 확인 기준일 2026-11-21", "Source: the promo video released by the project entity. Checked 2026-11-21.")}</p>
+          <p>{tx("출처: 사업주체 공개 홍보영상 · 확인 기준일 2026-11-25", "Source: the promo video released by the project entity. Checked 2026-11-25.")}</p>
         </section>
       </div>
             <GuideDetail faq={faq} />
