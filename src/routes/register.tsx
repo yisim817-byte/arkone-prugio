@@ -34,9 +34,6 @@ function RegisterPage() {
               <p style={{ margin: "12px 0 0", fontSize: 14, fontWeight: 700 }}><a href="/visit" style={{ color: "#004b45", textDecoration: "underline" }}>방문예약 하기 ›</a> <span aria-hidden="true">·</span> <a href="tel:18333872" style={{ color: "#004b45", textDecoration: "underline" }}>전화 예약 1833-3872</a></p>
             </div>
             <p className="prereg-deadline" style={{ color: "#a8834a", fontWeight: 700, letterSpacing: "-0.01em" }}>오피스텔 상시 접수</p>
-            <p>오피스텔 사전고객등록 후 오피스텔 계약 시 백화점 상품권 50만원 (롯데·현대·신세계 중 선택) · 11월 20일(금)까지</p>
-            <p>지급조건을 모두 충족한 고객에 한해 지급합니다.</p>
-            <a href="/#event-terms">유의사항 보기</a>
             <div className="register-layout__schedule">
               <h2>모집 일정</h2>
               <p>입주자모집공고 게시 2026.10.22(목) · 견본주택 별도 공지 시까지 운영 · 세부 일정 문의 1833-3872</p>
