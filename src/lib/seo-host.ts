@@ -77,7 +77,9 @@ const OT_MAIN_HOSTS = new Set<string>(["www.arkone-prugio.site", "www.xn--2w2b19
 
 export function isOtMainHost(): boolean {
   try {
-    return OT_MAIN_HOSTS.has(normalizeHost(readHost()));
+    const host = normalizeHost(readHost());
+    // 미리보기(*.vercel.app)는 운영 한글·arkone-prugio.site 와 같은 첫 화면(오피스텔 팝업)으로 본다.
+    return OT_MAIN_HOSTS.has(host) || host.endsWith(".vercel.app");
   } catch {
     return false;
   }
@@ -98,10 +100,10 @@ export function canonicalLinks(path: string) {
   return [{ rel: "canonical", href: `${origin}${path}` }];
 }
 
-/** FAQPage JSON-LD for the Korean host and the English host, only for visible Q&A. */
+/** FAQPage JSON-LD. 영문 호스트가 꺼져 있으므로 미리보기·arkone-prugio.site 에도 화면과 같은 한국어 FAQ를 넣는다. */
 export function faqJsonLd(faq: { q: string; a: string }[], path: string) {
-  if ((!isKrHost() && !isEnHost()) || faq.length === 0) return [];
-  const origin = isEnHost() ? EN_ORIGIN : KR_ORIGIN;
+  if (isEnHost() || faq.length === 0) return [];
+  const origin = isKrHost() ? KR_ORIGIN : LEGACY_ORIGIN;
   const canon = `${origin}${path}`;
   return [
     {

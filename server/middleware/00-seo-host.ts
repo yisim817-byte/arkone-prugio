@@ -148,6 +148,8 @@ function upsertMeta(html: string, attr: "property" | "name", key: string, conten
 }
 
 function pageJsonLd(path: string, en = false): string {
+  // /compare 는 라우트 head 에 WebPage+BreadcrumbList+FAQPage 를 넣는다. 여기서 한 번 더 넣지 않는다.
+  if (path === "/compare") return "";
   const origin = en ? EN_ORIGIN : KR_ORIGIN;
   const names = en ? EN_PAGE_NAMES : KR_PAGE_NAMES;
   const brand = en ? "Cheongna Ark-One Prugio" : "청라 아크원 푸르지오";

@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteShell } from "@/components/site-shell";
-import { canonicalLinks, faqJsonLd } from "@/lib/seo-host";
+import { canonicalLinks, isEnHost, isKrHost, KR_ORIGIN, LEGACY_ORIGIN, EN_ORIGIN } from "@/lib/seo-host";
 import { SITE_PHONE, SITE_TEL_HREF } from "@/lib/site-data";
 
 const TITLE = "청라 아크원 푸르지오 아파트 vs 오피스텔 비교 | 가격·면적·청약자격·전매·중도금";
@@ -53,14 +53,51 @@ const FAQ: ReadonlyArray<{ q: string; a: string }> = [
 
 export const Route = createFileRoute("/compare")({
   component: ComparePage,
-  head: () => ({
-    meta: [
-      { title: TITLE },
-      { name: "description", content: DESC },
-    ],
-    links: canonicalLinks("/compare"),
-    scripts: faqJsonLd([...FAQ], "/compare"),
-  }),
+  head: () => {
+    const origin = isEnHost() ? EN_ORIGIN : isKrHost() ? KR_ORIGIN : LEGACY_ORIGIN;
+    const url = `${origin}/compare`;
+    const graph = {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebPage",
+          "@id": `${url}#webpage`,
+          name: TITLE,
+          description: DESC,
+          url,
+          inLanguage: "ko-KR",
+          dateModified: "2026-11-25",
+          breadcrumb: { "@id": `${url}#breadcrumb` },
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": `${url}#breadcrumb`,
+          itemListElement: [
+            { "@type": "ListItem", position: 1, name: "홈", item: `${origin}/` },
+            { "@type": "ListItem", position: 2, name: "아파트 vs 오피스텔 비교", item: url },
+          ],
+        },
+        {
+          "@type": "FAQPage",
+          "@id": `${url}#faq`,
+          isPartOf: { "@id": `${url}#webpage` },
+          mainEntity: FAQ.map((item) => ({
+            "@type": "Question",
+            name: item.q,
+            acceptedAnswer: { "@type": "Answer", text: item.a },
+          })),
+        },
+      ],
+    };
+    return {
+      meta: [
+        { title: TITLE },
+        { name: "description", content: DESC },
+      ],
+      links: canonicalLinks("/compare"),
+      scripts: [{ type: "application/ld+json", children: JSON.stringify(graph) }],
+    };
+  },
 });
 
 function ComparePage() {
