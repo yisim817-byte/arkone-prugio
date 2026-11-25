@@ -106,7 +106,7 @@ export function PreregPopup() {
         <button type="button" className="prereg-pop__x" aria-label="닫기" onClick={() => close()}>✕</button>
         <h2 id="prereg-pop-title" style={{ fontSize: "clamp(22px, 6.4vw, 28px)", fontWeight: 800, lineHeight: 1.3, letterSpacing: "-0.02em", wordBreak: "keep-all" }}>예비당첨자 사전고객등록</h2>
         <p style={{ fontWeight: 700 }}>청라 아크원 푸르지오 아파트 예비당첨자 안내</p>
-        <p className="prereg-deadline" style={{ color: "#a8834a", fontWeight: 700, letterSpacing: "-0.01em" }}>당첨자 계약 11.22(일)~11.24(화) · 예비당첨자 계약은 입주자모집공고 기준</p>
+        <p className="prereg-deadline" style={{ color: "#a8834a", fontWeight: 700, letterSpacing: "-0.01em" }}>예비당첨자 추첨 11.28(토) 예정 · 세부 일정은 사업주체가 개별 안내</p>
         <p>예비당첨자로 선정되신 고객께서 사전고객등록을 해 주시면 계약 일정·절차·준비 서류를 담당자가 개별 안내해 드립니다.</p>
         <Link className="reg__submit" to="/register">예비당첨자 사전고객등록하기</Link>
         <p className="prereg-confirm">사전고객등록 확인은 대표번호 <a href={SITE_TEL_HREF}>{SITE_PHONE}</a>로 문의해 주세요.</p>

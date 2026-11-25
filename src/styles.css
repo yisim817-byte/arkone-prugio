@@ -1589,8 +1589,8 @@ body.prereg-lock { overflow: hidden; }
   .otf .popup_soon { --pf-unit: calc(100vw / 390); }
 }
 /* (2) 첫 화면 팝업: 공식 팝업(세로) 2장 */
-.otp { position: fixed; inset: 0; z-index: 110000; display: flex; padding: 20px; background: rgba(0,0,0,0.8); overflow-y: auto; animation: popup-soon-in 0.25s ease-out; }
-.otp__wrap { display: flex; flex-direction: column; align-items: center; gap: 14px; margin: auto; }
+.otp { position: fixed; inset: 0; z-index: 110000; display: flex; padding: 20px; background: rgba(0,0,0,0.8); overflow: hidden; max-width: 100%; animation: popup-soon-in 0.25s ease-out; }
+.otp__wrap { display: flex; flex-direction: column; align-items: center; gap: 14px; margin: auto; width: 100%; max-width: 100%; min-width: 0; box-sizing: border-box; }
 .otp__close { min-height: 44px; padding: 0 16px; border: 0; background: none; color: #fff; font-size: 15px; cursor: pointer; }
 .otp-row { display: flex; gap: 16px; }
 .otp__today { display: flex; align-items: center; gap: 10px; min-height: 44px; color: #fff; font-size: 15px; cursor: pointer; }
@@ -1658,8 +1658,8 @@ body.prereg-lock { overflow: hidden; }
 .otp-row br.m-only { display: initial; }
 
 /* 작업지시서 17-1 (2026-11-13): 첫 화면 팝업 크기를 줄이고 103㎡B 선착순 카드를 맨 앞에 둔다. 위 16-2 규칙을 뒤에서 덮어쓴다. */
-.otp-row { gap: 14px; }
-.otp-row .popup_soon { flex: 0 0 auto; --pf-unit: min(0.7px, calc((100vw - 88px) / 1602), calc((100vh - 190px) / 800)); } /* 2026-11-15: 예비당첨자 카드 추가로 4장 */
+.otp-row { gap: 14px; width: 100%; max-width: 100%; min-width: 0; overflow-x: auto; justify-content: safe center; }
+.otp-row .popup_soon { flex: 0 0 auto; --pf-unit: min(0.7px, calc((100vw - 88px) / 1602), calc((100vh - 190px) / 800)); } /* 2026-11-25: 방문 혜택 카드 포함 최대 5장. 0.7px 상한(273×560)은 유지하고 줄은 오버레이 안에서만 가로 스크롤 */
 .otp__wrap { gap: 8px; }
 .otp__hint { display: none; margin: 0; color: rgba(255,255,255,0.8); font-size: 13px; }
 .otp-b103__dialog { position: relative; display: flex; flex-direction: column; align-items: center; width: calc(390 * var(--pf-unit)); height: calc(800 * var(--pf-unit)); overflow: hidden; background: #004B45; color: #fff; text-align: center; font-family: "SUIT", "Pretendard", sans-serif; word-break: keep-all; }
@@ -1691,3 +1691,43 @@ body.prereg-lock { overflow: hidden; }
 .otp-visit .otp-b103__date { font-family: "Eulyoo1945", serif; font-size: calc(62 * var(--pf-unit)); line-height: 1.2; letter-spacing: -0.02em; white-space: nowrap; }
 .otp-visit .otp-b103__when { padding: 0 calc(30 * var(--pf-unit)); text-align: center; word-break: keep-all; }
 .otp-visit .otp-b103__cond { padding: 0 calc(30 * var(--pf-unit)); text-align: center; word-break: keep-all; }
+
+/* 작업지시서 25: 방문 혜택 카드. 쿠폰 문구가 카드 안에서 가장 크고 줄바꿈된다. */
+.otp-starbucks .otp-b103__dialog { background: #032B20; }
+.otp-starbucks .otp-b103__title { margin-top: calc(36 * var(--pf-unit)) !important; }
+.otp-starbucks .otp-b103__label { margin-top: calc(28 * var(--pf-unit)) !important; }
+.otp-starbucks__line { margin-top: calc(16 * var(--pf-unit)) !important; padding: 0 calc(28 * var(--pf-unit)); font-size: calc(18 * var(--pf-unit)); font-weight: 600; line-height: 1.4; }
+.otp-starbucks__coupon { margin-top: calc(10 * var(--pf-unit)) !important; padding: 0 calc(28 * var(--pf-unit)); font-family: "Eulyoo1945", serif; font-size: calc(44 * var(--pf-unit)); font-weight: 400; line-height: 1.25; letter-spacing: -0.03em; white-space: normal; word-break: keep-all; }
+.otp-starbucks__cup { width: calc(44 * var(--pf-unit)); height: calc(44 * var(--pf-unit)); margin-top: calc(10 * var(--pf-unit)); stroke: #fff; fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.otp-starbucks__body { margin-top: calc(10 * var(--pf-unit)) !important; padding: 0 calc(32 * var(--pf-unit)); font-size: calc(15 * var(--pf-unit)); line-height: 1.45; word-break: keep-all; }
+.otp-starbucks .otp-b103__cta { width: calc(268 * var(--pf-unit)); font-size: calc(16 * var(--pf-unit)); }
+.otp-starbucks .otp-b103__note { top: calc(698 * var(--pf-unit)); font-size: calc(11.5 * var(--pf-unit)); line-height: 1.4; }
+
+/* 작업지시서 25 · /compare */
+.cmp { max-width: 1080px; margin: 0 auto; padding: 8px 20px 80px; color: #032B20; overflow-x: clip; }
+.cmp h1 { margin: 0 0 16px; font-size: clamp(26px, 4vw, 36px); line-height: 1.35; font-weight: 700; word-break: keep-all; }
+.cmp-lead { margin: 0 0 8px; font-size: 16px; line-height: 1.7; word-break: keep-all; }
+.cmp h2 { margin: 36px 0 14px; font-size: 22px; line-height: 1.35; font-weight: 700; }
+.cmp-scroll { overflow-x: auto; max-width: 100%; -webkit-overflow-scrolling: touch; }
+.cmp-table { width: 100%; min-width: 720px; border-collapse: collapse; font-size: 14.5px; line-height: 1.55; }
+.cmp-table th, .cmp-table td { border-bottom: 1px solid rgba(3, 43, 32, .12); padding: 12px 14px; text-align: left; vertical-align: top; word-break: keep-all; }
+.cmp-table thead th { background: #032B20; color: #F7F3EA; font-weight: 700; }
+.cmp-table tbody th { width: 22%; background: #f4f7f6; font-weight: 700; }
+.cmp-ex { margin: 0; padding: 16px 18px; background: #F7F3EA; border-left: 3px solid #B5853A; }
+.cmp-ex p { margin: 0 0 8px; line-height: 1.65; word-break: keep-all; }
+.cmp-ex small { color: rgba(3, 43, 32, .7); }
+.cmp-check { margin: 0; padding-left: 1.15em; }
+.cmp-check li { margin: 0 0 10px; line-height: 1.65; word-break: keep-all; }
+.cmp-cta { display: flex; flex-wrap: wrap; gap: 10px; margin: 28px 0; }
+.cmp-btn { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 18px; border-radius: 10px; font-size: 16px; font-weight: 700; text-decoration: none; }
+.cmp-btn--solid { background: #032B20; color: #F7F3EA; }
+.cmp-btn--line { border: 1px solid #032B20; color: #032B20; background: transparent; }
+.cmp-fine { margin: 8px 0 0; font-size: 12.5px; line-height: 1.65; color: rgba(3, 43, 32, .72); word-break: keep-all; }
+.cmp-faq details { border-bottom: 1px solid rgba(3, 43, 32, .12); padding: 12px 0; }
+.cmp-faq summary { cursor: pointer; font-weight: 700; word-break: keep-all; }
+.cmp-faq p { margin: 8px 0 0; line-height: 1.65; word-break: keep-all; }
+@media (max-width: 767px) {
+  .cmp { padding: 4px 16px 64px; }
+  .cmp-table { min-width: 640px; font-size: 13.5px; }
+  .cmp-btn { width: 100%; }
+}

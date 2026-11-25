@@ -17,11 +17,11 @@ const EN_HOSTS = new Set<string>([]);
 
 /** path -> lastmod (git commit date of the page's last content change). */
 const KR_SITEMAP: ReadonlyArray<readonly [string, string]> = [
-  ["/", "2026-11-13"],
+  ["/", "2026-11-25"],
   ["/pages/overview", "2026-11-13"],
-  ["/pages/compare", "2026-11-13"],
+  ["/compare", "2026-11-25"],
   ["/pages/schedule", "2026-11-13"],
-  ["/103b", "2026-11-13"],
+  ["/103b", "2026-11-25"],
   ["/pages/location", "2026-11-13"],
   ["/pages/contact", "2026-11-13"],
   ["/pages/changeinfo", "2026-11-13"],
@@ -31,7 +31,7 @@ const KR_SITEMAP: ReadonlyArray<readonly [string, string]> = [
   ["/pages/brand", "2026-11-13"],
   ["/board/news_list", "2026-11-13"],
   ["/pages/video", "2026-11-13"],
-  ["/event", "2026-11-13"],
+  ["/event", "2026-11-25"],
 ];
 const KR_PATHS = new Set(KR_SITEMAP.map(([p]) => p));
 
@@ -81,6 +81,7 @@ const EN_ROBOTS = KR_ROBOTS.replaceAll(KR_ORIGIN, EN_ORIGIN);
 const KR_PAGE_NAMES: Record<string, string> = {
   "/": "청라 아크원 푸르지오",
   "/pages/overview": "사업개요",
+  "/compare": "아파트 vs 오피스텔 비교",
   "/pages/compare": "아파트·오피스텔 비교",
   "/pages/schedule": "분양 일정",
   "/pages/location": "입지",
@@ -92,7 +93,7 @@ const KR_PAGE_NAMES: Record<string, string> = {
   "/pages/brand": "히스토리",
   "/board/news_list": "언론보도",
   "/pages/video": "홍보영상",
-  "/event": "견본주택 안내·이벤트",
+  "/event": "견본주택 안내",
   "/103b": "청라 아크원 푸르지오 103㎡B 선착순 공급 참여의향서 접수 안내",
 };
 
@@ -110,7 +111,7 @@ const EN_PAGE_NAMES: Record<string, string> = {
   "/pages/brand": "History",
   "/board/news_list": "Press",
   "/pages/video": "Promo video",
-  "/event": "Open event",
+  "/event": "MODEL HOUSE",
 };
 
 /** KR host only: WebSite + Organization + WebPage(dateModified) + BreadcrumbList JSON-LD. */
@@ -226,7 +227,7 @@ function pageJsonLd(path: string, en = false): string {
 const RSS_ITEMS: ReadonlyArray<readonly [string, string, string, string]> = [
   ["/", "청라 아크원 푸르지오 | 분양 일정·비교·청약 안내", "입주자모집공고 게시 2026.10.22(목) · 견본주택 별도 공지 시까지 운영, 아파트 868세대·오피스텔 987실.", "Tue, 06 Oct 2026 10:51:38 +0900"],
   ["/pages/schedule", "청라 아크원 푸르지오 분양가·분양 일정·청약 안내", "입주자모집공고 게시 2026.10.22(목) · 견본주택 별도 공지 시까지 운영(세부 일정 문의 1833-3872). 분양가(공급금액)는 입주자모집공고문 공급금액표에 주택형·동·층·호별로 공개되어 있습니다. 입주예정 2031년 08월.", "Tue, 06 Oct 2026 10:51:38 +0900"],
-  ["/pages/compare", "청라 아크원 푸르지오 아파트·오피스텔 비교 | 전용면적·평면도 안내", "아파트 868세대와 오피스텔 987실의 면적·주차·공고 일정·평면도 공개 여부 비교.", "Sun, 04 Oct 2026 11:07:31 +0900"],
+  ["/compare", "청라 아크원 푸르지오 아파트 vs 오피스텔 비교 | 가격·면적·청약자격·전매·중도금", "청라 아크원 푸르지오 아파트 868세대와 오피스텔 987실을 공급금액·전용면적·전용률·주차·청약자격·전매·중도금 조건으로 비교했습니다. 입주자모집공고(2026.10.22)·오피스텔 분양광고(2026.11.20) 기준.", "Sun, 04 Oct 2026 11:07:31 +0900"],
   ["/pages/overview", "청라 아크원 푸르지오 사업개요 | 868세대·987실", "청라동 86-1번지 M5BL, 지하 5층~지상 49층 6개동, 시행 ㈜청라스마트시티·시공 대우건설.", "Sun, 04 Oct 2026 11:07:31 +0900"],
   ["/pages/changeinfo", "청라 아크원 푸르지오 청약제도 변경사항 | 청약안내", "청약 전 확인할 청약제도 변경 내용.", "Sun, 04 Oct 2026 11:07:31 +0900"],
   ["/pages/docspecial", "청라 아크원 푸르지오 특별공급 안내 | 청약 자격", "특별공급 유형별 물량·자격·일정은 입주자모집공고에서 확정됩니다.", "Sun, 04 Oct 2026 11:07:31 +0900"],
@@ -240,7 +241,7 @@ const RSS_ITEMS: ReadonlyArray<readonly [string, string, string, string]> = [
 const EN_RSS: ReadonlyArray<readonly [string, string, string, string]> = [
   ["/", "Cheongna Ark-One Prugio | Guide", "Notice posted 22 Oct 2026. Model house opens 30 Oct. Apt 868 units and officetel 987 rooms.", "Tue, 06 Oct 2026 10:51:38 +0900"],
   ["/pages/schedule", "Ark-One Price and Schedule", "Notice posted 22 Oct 2026. Contract 22-24 Nov. Supply amounts are on notice pages 6 to 20. Call 1833-3872.", "Tue, 06 Oct 2026 10:51:38 +0900"],
-  ["/pages/compare", "Ark-One Apt and Officetel", "Compare Apt 868 units and officetel 987 rooms by area parking and schedule.", "Sun, 04 Oct 2026 11:07:31 +0900"],
+  ["/compare", "Ark-One Apt and Officetel", "Compare Apt 868 units and officetel 987 rooms by area parking and schedule.", "Sun, 04 Oct 2026 11:07:31 +0900"],
   ["/pages/overview", "Ark-One Overview | 868 Units", "Cheongna-dong 86-1 M5. Apt 868 units and officetel 987 rooms. Developer Cheongna Smart City. Builder Daewoo E&C.", "Sun, 04 Oct 2026 11:07:31 +0900"],
   ["/pages/changeinfo", "Ark-One Application Changes", "Application rule changes to check before applying. The notice was posted on 22 Oct 2026.", "Sun, 04 Oct 2026 11:07:31 +0900"],
   ["/pages/docspecial", "Ark-One Special Supply", "Special supply opens 2 Nov. Volumes and eligibility are in the notice posted on 22 Oct 2026.", "Sun, 04 Oct 2026 11:07:31 +0900"],

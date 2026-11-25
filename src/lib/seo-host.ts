@@ -15,7 +15,7 @@ const KR_HOSTS = new Set(["www.xn--2w2b19sita0u67iz2mi7g.site", "www.아크원�
 export const INDEXABLE_PATHS = [
   "/",
   "/pages/overview",
-  "/pages/compare",
+  "/compare",
   "/pages/schedule",
   "/pages/brand",
   "/pages/contact",

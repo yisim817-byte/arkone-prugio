@@ -55,7 +55,7 @@ function SoonCard({ kind, portrait, headingId }: { kind: Kind; portrait?: boolea
   );
 }
 
-/** 작업지시서 17-1 (2026-11-13): 103㎡B 선착순 공급 참여의향서 접수 안내 카드. 공식 CG를 쓰지 않는 글자 카드(공식 녹색 바탕)다. 문구는 /103b 원장과 같다. */
+/** 작업지시서 25 (2026-11-25): 103㎡B 선착순은 11.28(토) 진행 예정. 글자 카드. */
 function B103Card() {
   return (
     <div className="popup_soon otp-b103">
@@ -66,12 +66,37 @@ function B103Card() {
           <span className="otp-b103__type">103㎡B</span>
           <span className="otp-b103__kind">선착순 공급</span>
         </h2>
-        <p className="otp-b103__label">참여의향서 접수</p>
-        <p className="otp-b103__date">11.17</p>
-        <p className="otp-b103__when">2026년 11월 17일(화)부터 · 견본주택</p>
-        <p className="otp-b103__cond">신청자 본인 방문 · 신분증 원본 · 1인 1건</p>
+        <p className="otp-b103__label">선착순 공급</p>
+        <p className="otp-b103__date">11.28</p>
+        <p className="otp-b103__when">2026년 11월 28일(토) 진행 예정</p>
+        <p className="otp-b103__cond">참여의향서는 11.17(화)부터 견본주택</p>
         <a className="otp-b103__cta" href="/103b"><strong>접수 안내</strong> 보기 ›</a>
-        <p className="otp-b103__note">※ 선착순 공급 일정·방식은 현재 미정이며, 확정 후 접수 고객에게 별도 안내합니다.</p>
+        <p className="otp-b103__note">※ 시간·장소 등 세부 사항은 참여의향서를 접수한 고객에게 문자·전화로 개별 안내합니다.</p>
+      </div>
+    </div>
+  );
+}
+
+/** 작업지시서 25: 방문 혜택 카드. 103㎡B 카드와 같은 틀. 로고·사진 없이 선 그림만. */
+function StarbucksCard() {
+  return (
+    <div className="popup_soon otp-b103 otp-starbucks">
+      <div className="otp-b103__dialog">
+        <p className="otp-b103__logo"><img src="/official/soon/logo.svg" alt="청라 아크원 푸르지오 PRUGIO 로고" width={257} height={45} /></p>
+        <h2 id="otp-starbucks-title" className="otp-b103__title">
+          <span className="otp-b103__brand">청라 아크원 푸르지오</span>
+        </h2>
+        <p className="otp-b103__label">방문 혜택</p>
+        <p className="otp-starbucks__line">방문예약 후 모델하우스 방문 시</p>
+        <p className="otp-starbucks__coupon">스타벅스 커피 쿠폰 2장</p>
+        <svg className="otp-starbucks__cup" viewBox="0 0 48 48" aria-hidden="true" focusable="false">
+          <path d="M16 18h14v11a7 7 0 0 1-14 0V18z" />
+          <path d="M30 21h3.5a3.5 3.5 0 0 1 0 7H30" />
+          <path d="M20 14c.3 1.4 1.4 1.8 1.4 3.2M26 14c.3 1.4 1.4 1.8 1.4 3.2" />
+        </svg>
+        <p className="otp-starbucks__body">방문고객등록(방문예약)을 하신 뒤 견본주택을 방문하시면 드립니다.</p>
+        <a className="otp-b103__cta" href="/visit">방문고객등록 하기</a>
+        <p className="otp-b103__note">※ 쿠폰 지급 기준·기간은 분양문의 1833-3872로 확인해 주세요. 사전 공지 후 변경·조기 종료될 수 있습니다.</p>
       </div>
     </div>
   );
@@ -111,8 +136,9 @@ export function OtFeature() {
   );
 }
 
-// 17-1: 카드 구성이 바뀌어 키를 새로 쓴다(전에 「오늘 하루 보지 않기」를 누른 방문자에게도 한 번 보인다).
-const KEY = "ot_pop4_hide_until_20261118";
+// 작업지시서 25: 카드 구성이 바뀌어 키를 새로 쓴다.
+const KEY = "popup_20261125";
+const B103_HIDE_AT = Date.UTC(2026, 10, 28, 15, 0, 0);
 
 /** 첫 화면 팝업: 103㎡B 선착순 안내 카드 + 공식 오피스텔·상업시설 팝업(세로) 2장. 17-1 에서 크기를 줄였다. */
 export function OtPopups() {
@@ -152,13 +178,16 @@ export function OtPopups() {
 
   if (!open) return null;
 
+  const showB103 = Date.now() < B103_HIDE_AT;
+
   return (
-    <div className="otp" role="dialog" aria-modal="true" aria-label="견본주택 방문예약 · 103㎡B 선착순 · 오피스텔 · 상업시설 안내" onClick={(e) => { if (e.target === e.currentTarget) close(); }}>
+    <div className="otp" role="dialog" aria-modal="true" aria-label="방문 혜택 · 견본주택 방문예약 · 103㎡B 선착순 · 오피스텔 · 상업시설 안내" onClick={(e) => { if (e.target === e.currentTarget) close(); }}>
       <div className="otp__wrap">
         <button type="button" className="otp__close" onClick={close}>팝업닫기 ✕</button>
         <div className="otp-row">
+          <StarbucksCard />
           <VisitCard />
-          <B103Card />
+          {showB103 ? <B103Card /> : null}
           <SoonCard kind="officetel" portrait headingId="otp-officetel-title" />
           <SoonCard kind="commercial" portrait headingId="otp-commercial-title" />
         </div>

@@ -86,7 +86,7 @@ export const Route = createRootRoute({
           <Outlet />
         </AuthProvider>
         <Scripts />
-        <script src="/plan-open-bar.js" data-href="/pages/plans" defer />
+        <script src="/plan-open-bar.js" data-mode="hq" data-phone="1833-3872" defer />
       </body>
     </html>
   ),

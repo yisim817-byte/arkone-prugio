@@ -48,8 +48,10 @@ export const NAV: NavItem[] = [
   {
     krName: "단지안내",
     enName: "COMPLEX",
-    to: "/pages/overview",
-    children: [],
+    to: "/compare",
+    children: [
+      { krName: "아파트 vs 오피스텔 비교", enName: "Compare", to: "/compare" },
+    ],
   },
   {
     krName: "아파트",
@@ -87,7 +89,7 @@ export const NAV: NavItem[] = [
     children: [
       { krName: "사전고객등록", enName: "Register", to: "/register" },
       { krName: "방문예약", enName: "Visit", to: "/visit" },
-      { krName: "이벤트", enName: "Event", to: "/event" },
+      { krName: "견본주택 안내", enName: "MODEL HOUSE", to: "/event" },
       { krName: "오시는길", enName: "Contact", to: "/pages/contact" },
       { krName: "언론보도", enName: "News", to: "/board/news_list" },
       { krName: "홍보영상", enName: "Video", to: "/pages/video" },
@@ -102,7 +104,7 @@ export const PAGE_META: Record<
   "/pages/overview": { en: "Overview", kr: "사업개요", parentKr: "사업안내", parentEn: "OVERVIEW" },
   "/pages/brand": { en: "History", kr: "히스토리", parentKr: "사업안내", parentEn: "OVERVIEW" },
   "/pages/contact": { en: "Contact", kr: "오시는길", parentKr: "홍보센터", parentEn: "MEDIA" },
-  "/pages/compare": { en: "Compare", kr: "아파트·오피스텔 비교", parentKr: "사업안내", parentEn: "OVERVIEW" },
+  "/compare": { en: "Compare", kr: "아파트 vs 오피스텔 비교", parentKr: "단지안내", parentEn: "COMPLEX" },
   "/pages/schedule": {
     en: "INFORMATION",
     kr: "분양일정",
@@ -135,7 +137,7 @@ export const PAGE_META: Record<
   "/pages/plans": { en: "PLANS", kr: "평면정보", parentKr: "아파트", parentEn: "APT" },
   "/register": { en: "REGISTER", kr: "사전고객등록", parentKr: "홍보센터", parentEn: "MEDIA" },
   "/visit": { en: "VISIT", kr: "방문예약", parentKr: "홍보센터", parentEn: "MEDIA" },
-  "/event": { en: "EVENT", kr: "이벤트", parentKr: "홍보센터", parentEn: "MEDIA" },
+  "/event": { en: "MODEL HOUSE", kr: "견본주택 안내", parentKr: "홍보센터", parentEn: "MEDIA" },
 };
 
 function matchesPath(item: { to: string; children?: NavChild[] }, pathname: string): boolean {

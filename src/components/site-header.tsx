@@ -5,7 +5,7 @@ import { isEnHost } from "@/lib/seo-host";
 
 const GUIDE_H1_PATHS = new Set([
   "/pages/overview",
-  "/pages/compare",
+  "/compare",
   "/pages/schedule",
   "/pages/location",
   "/pages/contact",

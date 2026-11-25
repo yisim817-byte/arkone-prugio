@@ -56,7 +56,7 @@ function homeJsonLd(origin: string, en: boolean) {
         name,
         inLanguage: lang,
         isPartOf: { "@id": `${origin}/#website` },
-        dateModified: "2026-11-13",
+        dateModified: "2026-11-25",
       },
     ],
   });

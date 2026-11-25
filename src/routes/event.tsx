@@ -4,13 +4,13 @@ import { canonicalLinks, tx } from "@/lib/seo-host";
 import { META } from "@/lib/i18n/en";
 import { SITE_PHONE, SITE_TEL_HREF } from "@/lib/site-data";
 
-const DESC = "청라 아크원 푸르지오 견본주택(인천광역시 서해구 청라동 87-1)은 별도 공지 시까지 운영합니다. 청약·당첨 고객 이벤트와 방문예약은 1833-3872로 문의하세요.";
+const DESC = "청라 아크원 푸르지오 견본주택(인천광역시 서해구 청라동 87-1)은 별도 공지 시까지 운영합니다. 방문예약은 1833-3872로 문의하세요.";
 
 export const Route = createFileRoute("/event")({
   component: EventPage,
   head: () => ({
     meta: [
-      { title: tx("견본주택 안내 · 이벤트 | 청라 아크원 푸르지오", META.event.title) },
+      { title: tx("견본주택 안내 | 청라 아크원 푸르지오", "MODEL HOUSE") },
       { name: "description", content: tx(DESC, META.event.desc) },
     ],
     links: canonicalLinks("/event"),
@@ -23,34 +23,13 @@ function EventPage() {
       <article className="oe">
         <header className="oe-hero">
           <p className="oe-hero__eye">MODEL HOUSE</p>
-          <h1>{tx("견본주택 안내", "Model house")}</h1>
+          <h1>{tx("견본주택 안내", "MODEL HOUSE")}</h1>
           <p className="oe-hero__sub">{tx("별도 공지 시까지 운영", "Open until further notice")} · {tx("인천광역시 서해구 청라동 87-1 견본주택", "Model house at 87-1 Cheongna-dong Seohae-gu Incheon")}</p>
           <div className="oe-hero__actions">
             <Link className="oe-btn oe-btn--gold" to="/visit">{tx("방문예약", "Book a visit")}</Link>
             <a className="oe-btn oe-btn--line" href={SITE_TEL_HREF}>{tx("전화 문의", "Call")} {SITE_PHONE}</a>
           </div>
         </header>
-
-        <section className="oe-sec" id="after" aria-labelledby="oe-after-title">
-          <h2 id="oe-after-title">{tx("청약·당첨 고객 이벤트", "Events for applicants and winners")}</h2>
-          <i className="oe-rule" aria-hidden="true" />
-          <div className="oe-pair">
-            <article className="oe-card">
-              <h3>청약 인증 고객</h3>
-              <p>코스트코 골드스타 연간 회원권</p>
-              <p className="oe-muted">수량 한정</p>
-            </article>
-          </div>
-          <p className="oe-note">※ 인증 기간: 당첨자 서류접수 기간 11.12(목)~11.16(월) · 인증 방법은 견본주택에서 안내합니다.</p>
-        </section>
-
-        <section className="oe-sec" id="notice" aria-labelledby="oe-notice-title">
-          <h2 id="oe-notice-title">{tx("유의사항", "Notes")}</h2>
-          <i className="oe-rule" aria-hidden="true" />
-          <ul className="oe-notice">
-            <li>이벤트 내용은 사업주체 사정에 따라 변경되거나 조기 종료될 수 있습니다.</li>
-          </ul>
-        </section>
 
         <div className="oe-cta">
           <Link className="oe-btn oe-btn--solid" to="/visit">방문예약</Link>

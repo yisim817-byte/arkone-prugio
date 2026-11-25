@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as R103bRouteImport } from './routes/103b'
+import { Route as CompareRouteImport } from './routes/compare'
 import { Route as EventRouteImport } from './routes/event'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as RegisterRouteImport } from './routes/register'
@@ -37,6 +38,11 @@ const IndexRoute = IndexRouteImport.update({
 const R103bRoute = R103bRouteImport.update({
   id: '/103b',
   path: '/103b',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CompareRoute = CompareRouteImport.update({
+  id: '/compare',
+  path: '/compare',
   getParentRoute: () => rootRouteImport,
 } as any)
 const EventRoute = EventRouteImport.update({
@@ -128,6 +134,7 @@ const PagesVideoRoute = PagesVideoRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/103b': typeof R103bRoute
+  '/compare': typeof CompareRoute
   '/event': typeof EventRoute
   '/privacy': typeof PrivacyRoute
   '/register': typeof RegisterRoute
@@ -149,6 +156,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/103b': typeof R103bRoute
+  '/compare': typeof CompareRoute
   '/event': typeof EventRoute
   '/privacy': typeof PrivacyRoute
   '/register': typeof RegisterRoute
@@ -171,6 +179,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/103b': typeof R103bRoute
+  '/compare': typeof CompareRoute
   '/event': typeof EventRoute
   '/privacy': typeof PrivacyRoute
   '/register': typeof RegisterRoute
@@ -194,6 +203,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/103b'
+    | '/compare'
     | '/event'
     | '/privacy'
     | '/register'
@@ -215,6 +225,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/103b'
+    | '/compare'
     | '/event'
     | '/privacy'
     | '/register'
@@ -236,6 +247,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/103b'
+    | '/compare'
     | '/event'
     | '/privacy'
     | '/register'
@@ -258,6 +270,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   R103bRoute: typeof R103bRoute
+  CompareRoute: typeof CompareRoute
   EventRoute: typeof EventRoute
   PrivacyRoute: typeof PrivacyRoute
   RegisterRoute: typeof RegisterRoute
@@ -291,6 +304,13 @@ declare module '@tanstack/react-router' {
       path: '/103b'
       fullPath: '/103b'
       preLoaderRoute: typeof R103bRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/compare': {
+      id: '/compare'
+      path: '/compare'
+      fullPath: '/compare'
+      preLoaderRoute: typeof CompareRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/event': {
@@ -418,6 +438,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   R103bRoute: R103bRoute,
+  CompareRoute: CompareRoute,
   EventRoute: EventRoute,
   PrivacyRoute: PrivacyRoute,
   RegisterRoute: RegisterRoute,

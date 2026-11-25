@@ -69,9 +69,9 @@ export const META = {
     h1: "Cheongna Ark-One Prugio press",
   },
   event: {
-    title: "Model House Open Event",
-    desc: "Three-day model house gifts and a 4 p.m. draw. Contract dates are 22-24 Nov 2026.",
-    h1: "Model house opening three-day event",
+    title: "MODEL HOUSE",
+    desc: "The Cheongna Ark-One Prugio model house at 87-1 Cheongna-dong, Seohae-gu, Incheon is open until further notice. Call 1833-3872 to book a visit.",
+    h1: "MODEL HOUSE",
   },
   plans: {
     title: "Ark-One Plans and Prices",
@@ -106,7 +106,7 @@ export const FAQ_OVERVIEW = [
 export const FAQ_SCHEDULE = [
   { q: "How did the Cheongna Ark-One Prugio subscription turn out?", a: "A report citing Korea Real Estate Board's Applyhome data (Straight News, 4 Nov 2026) says first-rank applications totaled 1,348 for 604 units, an average of 2.23 to 1. The 84㎡A type closed in first rank, and some types continued to second rank because first-rank applications did not fill them. Check Applyhome for exact results." },
   { q: "When are winner document submission and contracts?", a: "Winner documents are accepted from 12 to 16 Nov, and contracts are signed from 22 to 24 Nov. Follow the recruitment notice and the model house for details." },
-  { q: "When is the first-come sale for the 103㎡B type?", a: "The date and method of the first-come sale for the 103㎡B type are not yet decided and will be announced to applicants who filed a letter of intent. Letters of intent are accepted at the model house from 17 Nov 2026, in person by the applicant with original ID. One per person, no proxy filing." },
+  { q: "When is the first-come sale for the 103㎡B type?", a: "The first-come sale for the 103㎡B type is planned for 28 Nov 2026 (Sat). Time, place and other details are announced individually to customers who filed a letter of intent. A letter of intent is not a supply contract. Letters of intent are accepted at the model house from 17 Nov 2026, in person by the applicant with original ID. One per person, no proxy filing." },
   { q: "When do the officetel and retail units go on sale?", a: "The officetels and retail units (neighborhood facilities) are planned to go on sale at the end of November. Ask the model house for detailed dates." },
   { q: "What is the Cheongna Ark-One Prugio sale schedule?", a: "The recruitment notice was posted on 22 Oct 2026. Special supply is 2 Nov. First rank is 3 Nov. Second rank is 4 Nov. Winners were announced on 10 Nov. Results can be checked on Applyhome. Document submission is 12-16 Nov. Contracts are 22-24 Nov. If the schedule changes the notice prevails." },
   { q: "What is the sale price?", a: PRICE },
@@ -173,7 +173,7 @@ export const EN_PAGE_NAMES: Record<string, string> = {
   "/pages/brand": "History",
   "/board/news_list": "Press",
   "/pages/video": "Promo video",
-  "/event": "Open event",
+  "/event": "MODEL HOUSE",
 };
 
 export const EN_LEGEND =

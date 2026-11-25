@@ -249,7 +249,7 @@ function OverviewPage() {
             ]}
             faq={overviewFaq()}
             links={[
-              { to: "/pages/compare", label: "평면·타입 공개 여부" },
+              { to: "/compare", label: "평면·타입 공개 여부" },
               { to: "/pages/schedule", label: "분양 일정·청약 안내" },
               { to: "/pages/location", label: "입지환경" },
               { to: "/pages/contact", label: "견본주택·홍보관 오시는길" },

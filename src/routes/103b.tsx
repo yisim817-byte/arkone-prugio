@@ -13,7 +13,7 @@ export const Route = createFileRoute("/103b")({
       {
         name: "description",
         content:
-          "청라 아크원 푸르지오 103㎡B 선착순 공급 참여의향서는 11.17(화)부터 견본주택에서 신청자 본인이 접수합니다. 공급계약이 아니며 일정·방식은 미정입니다.",
+          "청라 아크원 푸르지오 103㎡B 선착순 공급은 11.28(토) 진행 예정입니다. 참여의향서는 11.17(화)부터 견본주택에서 신청자 본인이 접수합니다. 공급계약이 아닙니다.",
       },
     ],
     links: [...canonicalLinks("/103b"), { rel: "stylesheet", href: "/b103.css" }],

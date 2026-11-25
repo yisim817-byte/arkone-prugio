@@ -27,7 +27,7 @@ function PlansPage() {
             <NoticePrice />
           </div>
           <p className="plans-page__more">
-            주택형별 면적은 <Link to="/pages/compare">아파트·오피스텔 비교</Link>, 청약 일정은 <Link to="/pages/schedule">분양 일정·청약 안내</Link>에서 볼 수 있습니다.
+            주택형별 면적은 <Link to="/compare">아파트·오피스텔 비교</Link>, 청약 일정은 <Link to="/pages/schedule">분양 일정·청약 안내</Link>에서 볼 수 있습니다.
           </p>
           <p className="plans-page__more">
             103㎡B 선착순 공급 참여의향서 접수(2026.11.17부터 견본주택)는 <Link to="/103b">103㎡B 선착순 안내</Link>에서 볼 수 있습니다.

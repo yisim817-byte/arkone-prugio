@@ -25,7 +25,7 @@ const inOrder = (t, labels, win = 6000) => {
 const home = await load('/'); const reg = await load('/register');
 const TOP = ['사업안내', '청약안내', '단지안내', '아파트', '오피스텔', '홍보센터', '근린생활시설'];
 report(inOrder(home.all, TOP), 'H1 헤더 1단 메뉴 순서', TOP.join(' → '));
-report(inOrder(home.all, ['홍보센터', '사전고객등록', '방문예약', '이벤트', '오시는길'], 2500), 'H2 홍보센터 하위 순서', '홍보센터 → 사전고객등록 → 방문예약 → 이벤트 → 오시는길');
+report(inOrder(home.all, ['홍보센터', '사전고객등록', '방문예약', '견본주택 안내', '오시는길'], 2500), 'H2 홍보센터 하위 순서', '홍보센터 → 사전고객등록 → 방문예약 → 견본주택 안내 → 오시는길');
 report(/근린생활시설/.test(home.all) && /popup_soon_commercial/.test(home.all), 'H3 근린생활시설 버튼 → 상업시설 팝업 연결', /popup_soon_commercial/.test(home.all) ? '연결 있음' : '연결 없음');
 const P1 = ['popup_soon_officetel', '청라 아크원 푸르지오', '청라가 기다리던', '또하나의 찬란한 순간', '멀티 발코니 오피스텔', 'COMING', 'SOON', '바로가기', '/register?product=officetel', '소비자의 이해를 돕기 위한 것으로 실제와 다를 수 있습니다'];
 const p1m = P1.filter(s => !home.all.includes(s));
