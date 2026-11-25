@@ -150,7 +150,7 @@ function Home() {
               <span className="hero__title_ko">{tx("청라 아크원 푸르지오", "Cheongna Ark-One Prugio")}</span>
             </h1>
             <span className="hero__open">
-              {isOtMainHost() ? <span className="hero__open_phrase">{tx("오피스텔 · 상가", "Officetel and retail")} <strong>{tx("11월말 분양예정", "sales planned for late November")}</strong></span> : <span className="hero__open_phrase">{tx("입주자모집공고 게시", "Recruitment notice posted")} <strong>2026.10.22</strong>{tx("(목)", " Thu")}</span>} · <span className="hero__open_phrase">{tx("견본주택 방문", "Model house visits")} <strong>{tx("사전 예약제", "by reservation only")}</strong></span>
+              {isOtMainHost() ? <span className="hero__open_phrase"><strong>{tx("오피스텔 청약 12.7(월)", "Officetel subscription 12.7 (Mon)")}</strong> · {tx("상가 분양 예정", "retail sales planned")}</span> : <span className="hero__open_phrase">{tx("입주자모집공고 게시", "Recruitment notice posted")} <strong>2026.10.22</strong>{tx("(목)", " Thu")}</span>} · <span className="hero__open_phrase">{tx("견본주택 방문", "Model house visits")} <strong>{tx("사전 예약제", "by reservation only")}</strong></span>
             </span>
           </div>
           <div className="hero__ui">
