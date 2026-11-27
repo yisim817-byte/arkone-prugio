@@ -70,7 +70,7 @@ function Officetel({ open, close, closeRef }: { open: boolean; close: () => void
         <div className="popup_soon__bg">
           <picture>
             <source media="(max-width: 1024px)" srcSet="/official/soon/officetel_bg_m.png" />
-            <img src="/official/soon/officetel_bg.png" alt="" />
+            <img src="/official/soon/officetel_bg.png" alt="" aria-hidden="true" />
           </picture>
         </div>
         <div className="popup_soon__content">
@@ -106,7 +106,7 @@ function Commercial({ open, close, closeRef }: { open: boolean; close: () => voi
         <div className="popup_soon__bg">
           <picture>
             <source media="(max-width: 1024px)" srcSet="/official/soon/commercial_bg_m.png" />
-            <img src="/official/soon/commercial_bg.png" alt="" />
+            <img src="/official/soon/commercial_bg.png" alt="" aria-hidden="true" />
           </picture>
         </div>
         <div className="popup_soon__content">

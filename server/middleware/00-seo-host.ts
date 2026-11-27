@@ -17,20 +17,20 @@ const EN_HOSTS = new Set<string>([]);
 
 /** path -> lastmod (git commit date of the page's last content change). */
 const KR_SITEMAP: ReadonlyArray<readonly [string, string]> = [
-  ["/", "2026-11-25"],
+  ["/", "2026-11-27"],
   ["/pages/overview", "2026-11-13"],
-  ["/compare", "2026-11-25"],
-  ["/pages/schedule", "2026-11-13"],
-  ["/103b", "2026-11-25"],
-  ["/pages/location", "2026-11-13"],
-  ["/pages/contact", "2026-11-13"],
-  ["/pages/changeinfo", "2026-11-13"],
-  ["/pages/docspecial", "2026-11-13"],
-  ["/pages/docnormal", "2026-11-13"],
-  ["/pages/premium", "2026-11-13"],
+  ["/compare", "2026-11-27"],
+  ["/pages/schedule", "2026-11-27"],
+  ["/103b", "2026-11-27"],
+  ["/pages/location", "2026-11-27"],
+  ["/pages/contact", "2026-11-27"],
+  ["/pages/changeinfo", "2026-11-27"],
+  ["/pages/docspecial", "2026-11-27"],
+  ["/pages/docnormal", "2026-11-27"],
+  ["/pages/premium", "2026-11-27"],
   ["/pages/brand", "2026-11-13"],
-  ["/board/news_list", "2026-11-13"],
-  ["/pages/video", "2026-11-13"],
+  ["/board/news_list", "2026-11-27"],
+  ["/pages/video", "2026-11-27"],
   ["/event", "2026-11-25"],
 ];
 const KR_PATHS = new Set(KR_SITEMAP.map(([p]) => p));

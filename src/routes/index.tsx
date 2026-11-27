@@ -8,8 +8,17 @@ import { NoticeSummary } from "@/components/notice-summary";
 import { PlansBanner } from "@/components/plans-banner";
 import { YoutubeModal } from "@/components/youtube-modal";
 import { SITE_NAME, SITE_TEL_HREF, YOUTUBE_ID } from "@/lib/site-data";
-import { EN_ORIGIN, KR_ORIGIN, LEGACY_ORIGIN, canonicalLinks, isEnHost, isKrHost, isOtMainHost, tx } from "@/lib/seo-host";
+import { EN_ORIGIN, KR_ORIGIN, LEGACY_ORIGIN, canonicalLinks, faqJsonLd, isEnHost, isKrHost, isOtMainHost, tx } from "@/lib/seo-host";
 import { META } from "@/lib/i18n/en";
+
+const STAGE_S1 = "청라 아크원 푸르지오 아파트 당첨자 계약(2026년 11월 22일~24일)은 끝났습니다. 103㎡B 선착순 공급은 11월 28일(토) 진행 예정이며 세부 시간은 참여의향서 접수 고객에게 개별 안내합니다. 오피스텔 청약은 12월 7일(월)입니다.";
+const HOME_FAQ = [
+  { q: "청라 피크원 푸르지오와 같은 단지인가요?", a: "아닙니다. 2,911세대·실은 피크원(B1블록 1,056실)과 아크원을 합산한 브랜드타운이며 단일 단지가 아닙니다. 아크원 단지는 아파트 868세대와 오피스텔 987실입니다." },
+  { q: "아파트 당첨자 계약은 끝났나요?", a: "청라 아크원 푸르지오 아파트 당첨자 계약(2026년 11월 22일~24일)은 끝났습니다." },
+  { q: "103㎡B 선착순 공급은 언제인가요?", a: "103㎡B 선착순 공급은 11월 28일(토) 진행 예정이며 세부 시간은 참여의향서 접수 고객에게 개별 안내합니다." },
+  { q: "오피스텔 청약은 언제인가요?", a: "오피스텔 청약은 12월 7일(월)입니다. 세부 조건은 오피스텔 입주자모집공고 기준입니다." },
+  { q: "상담 전화는 무엇인가요?", a: "상담 전화는 1833-3872 하나입니다." },
+];
 
 export const Route = createFileRoute("/")({
   component: Home,
@@ -19,7 +28,7 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content: tx(
-          "청라 아크원 푸르지오 분양 일정·청약 안내. 공고 2026.10.22 게시 · 특별공급 11.02 · 1순위 11.03 · 2순위 11.04 · 당첨자 발표 11.10.",
+          "청라 아크원 푸르지오 아파트 계약은 11.24에 끝났습니다. 103㎡B 선착순은 11.28 예정, 오피스텔 청약은 12.7입니다.",
           META.home.desc,
         ),
       },
@@ -30,6 +39,7 @@ export const Route = createFileRoute("/")({
         type: "application/ld+json",
         children: homeJsonLd(isEnHost() ? EN_ORIGIN : isKrHost() ? KR_ORIGIN : LEGACY_ORIGIN, isEnHost()),
       },
+      ...faqJsonLd(HOME_FAQ, "/"),
     ],
   }),
 });
@@ -163,18 +173,18 @@ function Home() {
                 <b>{tx("청라 아크원", "Cheongna Ark-One")}</b> <br className="m-only" /> {tx("홍보영상", "promo video")}
               </span>
               <span className="hero__video_play">
-                <img src="/resources/img/pages/main/ico_yt.svg" alt="" {...imgDims("/resources/img/pages/main/ico_yt.svg")} data-dims="" />
+                <img src="/resources/img/pages/main/ico_yt.svg" alt="" aria-hidden="true" {...imgDims("/resources/img/pages/main/ico_yt.svg")} data-dims="" />
               </span>
             </button>
           </div>
           <div className="hero__quick">
             <div className="hero__quick_item" aria-label="분양가 상한제 적용단지">
-              <img className="hero__quick_orbit" src="/official/badge/hero_circle_text.v100.svg" alt="" />
-              <img className="hero__quick_content" src="/official/badge/hero_circle_01.v100.svg" alt="" />
+              <img className="hero__quick_orbit" src="/official/badge/hero_circle_text.v100.svg" alt="" aria-hidden="true" />
+              <img className="hero__quick_content" src="/official/badge/hero_circle_01.v100.svg" alt="" aria-hidden="true" />
             </div>
             <Link to="/register" className="hero__quick_item hero__quick_item--reg" aria-label="사전고객등록">
-              <img className="hero__quick_orbit" src="/official/badge/hero_circle_text.v100.svg" alt="" />
-              <img className="hero__quick_content" src="/official/badge/hero_circle_prereg.svg" alt="" />
+              <img className="hero__quick_orbit" src="/official/badge/hero_circle_text.v100.svg" alt="" aria-hidden="true" />
+              <img className="hero__quick_content" src="/official/badge/hero_circle_prereg.svg" alt="" aria-hidden="true" />
             </Link>
           </div>
         </section>
@@ -188,7 +198,7 @@ function Home() {
         <section className="hero-define">
           <Img className="hero-define__visual" src="/resources/img/pages/main/hero_brand_img.v4.webp" alt="청라 아크원 푸르지오 엠블럼" />
           <div className="hero-define__copy">
-            <Img src="/resources/img/pages/main/ico_star.svg" alt="" width={28} height={28} />
+            <Img src="/resources/img/pages/main/ico_star.svg" alt="" aria-hidden="true" width={28} height={28} />
             <p className="hero-define__title">아크원(ARK-ONE)이란?</p>
             <strong className="hero-define__keyword">
               <b>A</b>BSOLUTE
@@ -207,8 +217,21 @@ function Home() {
           </div>
         </section>
 
+        <section className="phase-now" aria-label="현재 단계">
+          <p>{STAGE_S1}</p>
+          <p>출처: 입주자모집공고(2026.10.22 게시, 주택관리번호 2026000496) · 확인 기준일 2026-11-27</p>
+          <div>
+            {HOME_FAQ.map((item) => (
+              <details key={item.q}>
+                <summary>{item.q}</summary>
+                <p>{item.a}</p>
+              </details>
+            ))}
+          </div>
+        </section>
+
         <section id="overview" className="section-overview">
-          <Img className="bg" src="/resources/img/pages/main/overview_bg.v4.webp" alt="" />
+          <Img className="bg" src="/resources/img/pages/main/overview_bg.v4.webp" alt="" aria-hidden="true" />
           <span className="dim" />
           <div className="section-overview__inner">
             <header>
@@ -232,7 +255,7 @@ function Home() {
                   <>
                 청라 피크원 푸르지오와 함께하는
                 <br />
-                푸르지오 대규모 브랜드타운
+                B1·M5 합산 브랜드타운
                   </>
                 )}
               </h3>
@@ -323,8 +346,8 @@ function Home() {
               { y: "2028", img: "history_img_2028.v4.jpg", cap: ["돔구장&스타필드 청라 (개장 예정)"] },
               { y: "2029", img: "history_img_2029.v4.jpg", cap: ["서울아산청라병원 (예정)"] },
               { y: "개통 시기 미정", img: "history_img_2030.v4.webp", cap: ["7호선 국제업무단지역 (예정)"] },
-              { y: "시기 미정", img: "history_img_2031.v4.jpg", cap: ["영상문화복합단지 (계획)"] },
-              { y: "2031.08", img: "history_img_ark_one.v4.jpg", cap: ["청라 아크원 푸르지오 (2031년 08월 입주예정)"] },
+              { y: "시기 미정", img: "history_img_2031.v4.jpg", cap: ["영상·문화 복합단지 (계획)"] },
+              { y: "2031.08", img: "history_img_ark_one.v4.jpg", cap: ["청라 아크원 푸르지오 · 입주 예정 2031년 8월"] },
             ].map((ev) => (
               <article className="history-card" key={ev.img}>
                 <time>
@@ -397,31 +420,31 @@ function Home() {
         <section id="brand" className="section-brand">
           <picture>
             <source media="(max-width: 1024px)" srcSet="/resources/img/pages/main/brand_bg_m.v4.webp" />
-            <Img className="bg" src="/resources/img/pages/main/brand_bg.v4.webp" alt="" />
+            <Img className="bg" src="/resources/img/pages/main/brand_bg.v4.webp" alt="" aria-hidden="true" />
           </picture>
           <div className="frame">
             <p className="section-brand__eyebrow">THE NATURAL NOBILITY</p>
-            <h2>본연이 지니는 고귀함</h2>
+            <h2>집에서 찾는 하루</h2>
             <p>
               견고한 기본에 더해진 세련된 편안함,
-              <br />내 삶의 본연을 집에서 찾다
+              <br />내 삶의 본연을 <Link to="/pages/brand">집에서 찾다</Link>
             </p>
             <Img className="section-brand__logo" src="/resources/img/pages/main/brand_logo.svg" alt="홈 브랜드 구역의 푸르지오 로고" />
           </div>
         </section>
 
         <section id="contact" className="section-contact">
-          <Img className="bg" src="/resources/img/pages/main/contact_bg.v4.webp" alt="" />
+          <Img className="bg" src="/resources/img/pages/main/contact_bg.v4.webp" alt="" aria-hidden="true" />
           <h2>CONTACT US</h2>
           <div className="contact-schedule">
-            <p><b>청라 아크원 푸르지오(APT) 청약 일정 — 입주자모집공고 기준</b></p>
-            <p>입주자모집공고 게시 2026.10.22(목)</p>
-            <p>특별공급 11.02(월) · 일반공급 1순위 11.03(화) · 일반공급 2순위 11.04(수)</p>
-            <p>당첨자 발표 11.10(화) · 당첨자 서류접수 11.12(목)~11.16(월) · 계약 11.22(일)~11.24(화)</p>
-            <p>견본주택 별도 공지 시까지 운영 · 인천광역시 서해구 청라동 87-1</p>
-            <p>청약은 한국부동산원 청약홈(www.applyhome.co.kr)에서 인터넷으로 신청합니다.</p>
+            <p><b>아파트 일정은 공고 날짜로 보면</b></p>
+            <p>공고는 2026년 10월 22일에 게시되었습니다.</p>
+            <p>특별공급 11월 2일 · 1순위 11월 3일 · 2순위 11월 4일</p>
+            <p>발표 11월 10일 · 서류 11월 12일~16일 · 계약은 11월 22일~24일에 진행되었습니다</p>
+            <p>견본주택 운영은 별도 공지 전까지입니다.</p>
+            <p>인터넷 접수는 청약홈입니다.</p>
             <p>세부 일정 문의: 대표번호 1833-3872</p>
-            <small>※ 일정은 사업주체 사정에 따라 변경될 수 있으며, 입주자모집공고문이 우선합니다.</small>
+            <small>날짜는 바뀔 수 있어 공고문이 우선합니다.</small>
           </div>
           <div className="contact-home-grid">
             <article className="contact-home-card">
@@ -429,7 +452,7 @@ function Home() {
               <div className="contact-row">
                 <div>
                   <h3>견본주택</h3>
-                  <address>인천광역시 서해구 청라동 87-1번지</address>
+                  <address>인천 서해구 청라동, 지번 87-1</address>
                 </div>
                 <div className="map-btns">
                   <a href="https://naver.me/xNpQLQ3L" target="_blank" rel="noreferrer">
@@ -443,7 +466,7 @@ function Home() {
               <div className="contact-row">
                 <div>
                   <h3>현장</h3>
-                  <address>인천광역시 서해구 청라동 86-1번지</address>
+                  <address>인천 서해구 청라동, 지번 86-1</address>
                 </div>
                 <div className="map-btns">
                   <a href="https://naver.me/xSBYFSR0" target="_blank" rel="noreferrer">
@@ -461,9 +484,9 @@ function Home() {
                 <div>
                   <h3>홍보관</h3>
                   <address>
-                    인천광역시 서해구 중봉대로 586번길 19
+                    인천 서해구 중봉대로 586번길 19
                     <br />
-                    홍익파크 1층 108, 109호(스타벅스 옆)
+                    홍익파크 1층 108·109호(스타벅스 옆)
                   </address>
                 </div>
                 <div className="map-btns">
