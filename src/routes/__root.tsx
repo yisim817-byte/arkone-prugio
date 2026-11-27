@@ -7,9 +7,8 @@ import { EN_ORIGIN, KR_ORIGIN, isEnHost, isIndexablePath, isKrHost } from "@/lib
 
 export const Route = createRootRoute({
   head: ({ matches }) => {
-    const path = matches[matches.length - 1]?.pathname || "/";
-    const hrefPath = path.startsWith("/") ? path : `/${path}`;
     const en = isEnHost();
+    const rssOrigin = isKrHost() ? KR_ORIGIN : EN_ORIGIN;
     return {
     meta: [
       { charSet: "utf-8" },
@@ -45,11 +44,8 @@ export const Route = createRootRoute({
         rel: "alternate",
         type: "application/rss+xml",
         title: en ? "Cheongna Ark-One Prugio RSS" : "청라 아크원 푸르지오 분양 일정·청약 RSS",
-        href: `${en ? EN_ORIGIN : "https://www.xn--2w2b19sita0u67iz2mi7g.site"}/rss.xml`,
+        href: `${rssOrigin}/rss.xml`,
       },
-      { rel: "alternate", hreflang: "ko", href: `${KR_ORIGIN}${hrefPath}` },
-      { rel: "alternate", hreflang: "en", href: `${EN_ORIGIN}${hrefPath}` },
-      { rel: "alternate", hreflang: "x-default", href: `${KR_ORIGIN}${hrefPath}` },
       { rel: "stylesheet", href: appCss },
       { rel: "manifest", href: "/__grok/manifest.webmanifest" },
       { rel: "apple-touch-icon", href: "/g-icon-180.png" },
