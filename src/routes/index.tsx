@@ -11,7 +11,7 @@ import { SITE_NAME, SITE_TEL_HREF, YOUTUBE_ID } from "@/lib/site-data";
 import { EN_ORIGIN, KR_ORIGIN, LEGACY_ORIGIN, canonicalLinks, faqJsonLd, isEnHost, isKrHost, isOtMainHost, tx } from "@/lib/seo-host";
 import { META } from "@/lib/i18n/en";
 
-const STAGE_S1 = "청라 아크원 푸르지오 아파트 당첨자 계약(2026년 11월 22일~24일)은 끝났습니다. 103㎡B 선착순 공급은 11월 28일(토) 진행 예정이며 세부 시간은 참여의향서 접수 고객에게 개별 안내합니다. 오피스텔 청약은 12월 7일(월)입니다.";
+const STAGE_S1 = "아파트 계약 종료 · 오피스텔 청약 12월 7일(월) · 상가 분양 예정";
 const HOME_FAQ = [
   { q: "청라 피크원 푸르지오와 같은 단지인가요?", a: "아닙니다. 2,911세대·실은 피크원(B1블록 1,056실)과 아크원을 합산한 브랜드타운이며 단일 단지가 아닙니다. 아크원 단지는 아파트 868세대와 오피스텔 987실입니다." },
   { q: "아파트 당첨자 계약은 끝났나요?", a: "청라 아크원 푸르지오 아파트 당첨자 계약(2026년 11월 22일~24일)은 끝났습니다." },
@@ -28,7 +28,7 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content: tx(
-          "청라 아크원 푸르지오 아파트 계약은 11.24에 끝났습니다. 103㎡B 선착순은 11.28 예정, 오피스텔 청약은 12.7입니다.",
+          "청라 아크원 푸르지오 아파트 계약은 끝났습니다. 오피스텔 청약은 12월 7일이고 상가 분양은 예정입니다.",
           META.home.desc,
         ),
       },
