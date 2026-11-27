@@ -1791,8 +1791,7 @@ body.prereg-lock { overflow: hidden; }
   .otp.otp--wo27 .otp-row--two { --wo27-card: min(212px, calc(100vw - 16px)); flex-direction: row; width: 100%; overflow-x: auto; overflow-y: hidden; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; scrollbar-width: none; gap: 0; justify-content: flex-start; }
   .otp.otp--wo27 .otp-row--two::-webkit-scrollbar { display: none; }
   .otp.otp--wo27 .otp-row--two .popup_soon { scroll-snap-align: center; --pf-unit: min(0.5436px, calc((100vw - 16px) / 390), calc((100vh - 230px) / 800)); }
-  .otp.otp--wo27 .otp-row--two .popup_soon:first-child { margin-left: calc((100% - var(--wo27-card)) / 2); }
-  .otp.otp--wo27 .otp-row--two .popup_soon:last-child { margin-right: calc((100% - var(--wo27-card)) / 2); }
+  .otp.otp--wo27 .otp-row--two .popup_soon { margin-left: calc((100% - var(--wo27-card)) / 2); margin-right: calc((100% - var(--wo27-card)) / 2); }
   .otp-dots { display: flex; }
 }
 
