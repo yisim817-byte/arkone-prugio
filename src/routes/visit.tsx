@@ -24,7 +24,7 @@ function VisitPage() {
         <section className="page_container register-layout">
           <aside className="register-layout__summary" aria-label={tx("견본주택 안내", "Model house")}>
             <p>{tx("모델하우스 방문예약", "Model house visit request")}</p>
-            <p>{tx("방문고객등록 후 모델하우스 방문 시 스타벅스 커피 쿠폰 2장 증정", "Two Starbucks coffee coupons when you visit the model house after visit registration")}</p>
+            <p>{tx("사전고객등록·방문예약 후 모델하우스 방문 시 스타벅스 커피 쿠폰 증정", "A Starbucks coffee coupon when you visit the model house after pre-registration and a visit booking")}</p>
             <p>{tx("견본주택 위치 · 인천광역시 서해구 청라동 87-1 · 별도 공지 시까지 운영", "Model house · 87-1 Cheongna-dong Seohae-gu Incheon · open until further notice")}</p>
             <p>{tx("전화 예약", "Call")} <a href={SITE_TEL_HREF}>{SITE_PHONE}</a></p>
             <div className="register-layout__schedule">

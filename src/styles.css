@@ -1755,3 +1755,44 @@ body.prereg-lock { overflow: hidden; }
   .otp-row--one { flex-direction: row; overflow: hidden !important; padding: 0 !important; width: auto; }
   .otp-row--one .popup_soon { --pf-unit: min(0.5436px, calc((100vw - 32px) / 390), calc((100vh - 220px) / 800)); }
 }
+
+/* 작업지시서 27: 쿠폰 띠 + 공식 세로 카드 2장. 홈(.otf) 카드는 건드리지 않는다. */
+.otp.otp--wo27 { align-items: center; justify-content: center; padding: 8px 10px; overflow: hidden; }
+.otp.otp--wo27 .otp__wrap { gap: 6px; max-height: 100%; overflow: hidden; justify-content: center; }
+.otp-band { width: min(100%, 560px); box-sizing: border-box; background: #032B20; color: #fff; text-align: center; padding: 8px 14px 10px; border-radius: 8px; }
+.otp-band__line { margin: 0; font-size: 14px; font-weight: 700; line-height: 1.35; word-break: keep-all; }
+.otp-band__lg { margin: 2px 0 0; font-size: 26px; font-weight: 800; line-height: 1.15; letter-spacing: -0.03em; word-break: keep-all; }
+.otp-foot { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 8px 14px; color: #fff; font-size: 14px; font-weight: 700; }
+.otp-foot a { color: #fff; text-decoration: underline; }
+.otp.otp--wo27 .otp__today { min-height: 36px; font-size: 14px; }
+.otp.otp--wo27 .otp__close { min-height: 36px; padding: 0 8px; font-size: 20px; line-height: 1; }
+.otp-fine { margin: 0; max-width: 720px; color: rgba(255,255,255,.88); font-size: 11px; line-height: 1.35; text-align: center; word-break: keep-all; }
+.otp-dots { display: none; gap: 8px; justify-content: center; }
+.otp-dots button { width: 8px; height: 8px; padding: 0; border: 0; border-radius: 50%; background: rgba(255,255,255,.4); cursor: pointer; }
+.otp-dots button.is-on { background: #fff; }
+.otp.otp--wo27 .otp-row--two { overflow: hidden; justify-content: center; width: auto; max-width: 100%; gap: 12px; scroll-snap-type: none; padding: 0; }
+.otp.otp--wo27 .otp-row--two .popup_soon { scroll-snap-align: none; --pf-unit: min(0.7px, calc((100vw - 40px) / 794), calc((100vh - 230px) / 800)); }
+.otp.otp--wo27 .popup_soon--prereg .popup_soon__sched { position: absolute; z-index: 2; top: calc(400 * var(--pf-unit)); left: 50%; transform: translateX(-50%); width: calc(330 * var(--pf-unit)); text-align: center; color: #fff; }
+.otp.otp--wo27 .popup_soon__sched-kicker { margin: 0; font-size: calc(22 * var(--pf-unit)); font-weight: 700; line-height: 1.3; }
+.otp.otp--wo27 .popup_soon__sched-main { margin: calc(8 * var(--pf-unit)) 0 0; font-family: "Eulyoo1945", serif; font-size: calc(34 * var(--pf-unit)); font-weight: 400; line-height: 1.25; letter-spacing: -0.03em; }
+.otp.otp--wo27 .popup_soon__sched-sub { margin: calc(6 * var(--pf-unit)) 0 0; font-size: calc(16 * var(--pf-unit)); font-weight: 600; line-height: 1.35; word-break: keep-all; }
+.otp.otp--wo27 .popup_soon--prereg .popup_soon__cta,
+.otp.otp--wo27 .popup_soon--prereg .popup_soon__cta:visited,
+.otp.otp--wo27 .popup_soon--prereg .popup_soon__cta:active,
+.otp.otp--wo27 .popup_soon--officetel.popup_soon--prereg .popup_soon__cta,
+.otp.otp--wo27 .popup_soon--officetel.popup_soon--prereg .popup_soon__cta:visited,
+.otp.otp--wo27 .popup_soon--officetel.popup_soon--prereg .popup_soon__cta:active { top: calc(628 * var(--pf-unit)); width: calc(320 * var(--pf-unit)); background: #fff; color: #032B20; font-size: calc(16 * var(--pf-unit)); font-weight: 700; }
+.otp.otp--wo27 .popup_soon--prereg .popup_soon__cta::before { border-color: rgba(3, 43, 32, 0.28); }
+@media screen and (max-width: 1024px) {
+  .otp.otp--wo27 { padding: 8px 0 8px; }
+  .otp-band { width: min(100% - 16px, 360px); }
+  .otp-band__line { font-size: 13px; }
+  .otp-band__lg { font-size: 20px; }
+  .otp.otp--wo27 .otp-row--two { --wo27-card: min(212px, calc(100vw - 16px)); flex-direction: row; width: 100%; overflow-x: auto; overflow-y: hidden; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; scrollbar-width: none; gap: 0; justify-content: flex-start; }
+  .otp.otp--wo27 .otp-row--two::-webkit-scrollbar { display: none; }
+  .otp.otp--wo27 .otp-row--two .popup_soon { scroll-snap-align: center; --pf-unit: min(0.5436px, calc((100vw - 16px) / 390), calc((100vh - 230px) / 800)); }
+  .otp.otp--wo27 .otp-row--two .popup_soon:first-child { margin-left: calc((100% - var(--wo27-card)) / 2); }
+  .otp.otp--wo27 .otp-row--two .popup_soon:last-child { margin-right: calc((100% - var(--wo27-card)) / 2); }
+  .otp-dots { display: flex; }
+}
+

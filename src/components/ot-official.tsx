@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 // 작업지시서 16-2: 오피스텔·상업시설 안내는 공식 팝업 디자인(soon-popups.tsx 와 같은 마크업·스타일)을 그대로 쓴다.
 // 새 디자인을 만들지 않는다. 바뀌는 것은 놓이는 자리뿐이다 (홈 구역 / 첫 화면 팝업).
@@ -88,8 +88,8 @@ function VisitCard() {
           <path d="M18 16c0-1.6 1.4-1.6 1.4-3.2M23 16c0-1.6 1.4-1.6 1.4-3.2M28 16c0-1.6 1.4-1.6 1.4-3.2" />
         </svg>
         <p className="otp-b103__label">방문 혜택</p>
-        <p className="otp-starbucks__line">방문고객등록 후 모델하우스 방문 시</p>
-        <p className="otp-starbucks__coupon">스타벅스 커피 쿠폰 2장 증정</p>
+        <p className="otp-starbucks__line">사전고객등록·방문예약 후 모델하우스 방문 시</p>
+        <p className="otp-starbucks__coupon">스타벅스 커피 쿠폰 증정</p>
         <p className="otp-starbucks__body">견본주택 방문은 사전 예약제입니다. 방문고객등록 후 방문해 주세요.</p>
         <a className="otp-b103__cta" href="/visit">방문고객등록 하기</a>
         <p className="otp-b103__note">
@@ -114,13 +114,54 @@ export function OtFeature() {
   );
 }
 
-// 작업지시서 25: 카드 구성이 바뀌어 키를 새로 쓴다.
-const KEY = "popup_20261127";
+/** 작업지시서 27: 공식 세로 카드. COMING SOON 자리에 사전고객등록 문구. */
+function PreregSoonCard({ kind }: { kind: Kind }) {
+  const ot = kind === "officetel";
+  const bg = ot ? "officetel_bg" : "commercial_bg";
+  return (
+    <div className={`popup_soon popup_soon--${kind} popup_soon--prereg`}>
+      <div className="popup_soon__dialog">
+        <div className="popup_soon__bg">
+          <img src={`/official/soon/${bg}_m.png`} alt="" />
+        </div>
+        <div className="popup_soon__content">
+          <p className="popup_soon__logo"><img src="/official/soon/logo.svg" alt="청라 아크원 푸르지오 PRUGIO 로고" width={257} height={45} /></p>
+          <div className="popup_soon__heading">
+            <h2 id={ot ? "otp-ot-title" : "otp-cm-title"} className="popup_soon__title">
+              <span className="popup_soon__brand">청라 아크원 푸르지오</span>
+              <span className="popup_soon__type">{ot ? "오피스텔" : "상업시설"}</span>
+            </h2>
+          </div>
+        </div>
+        <div className="popup_soon__sched">
+          <p className="popup_soon__sched-kicker">사전고객등록</p>
+          {ot ? (
+            <>
+              <p className="popup_soon__sched-main">12.7(월) 청약</p>
+              <p className="popup_soon__sched-sub">12.4(금) 견본주택 오픈 예정</p>
+            </>
+          ) : (
+            <p className="popup_soon__sched-main">분양 예정</p>
+          )}
+        </div>
+        <a className="popup_soon__cta" href={`/register?product=${kind}`}>
+          <span className="popup_soon__cta_text">{ot ? "오피스텔 사전고객등록 →" : "상가 사전고객등록 →"}</span>
+        </a>
+        <p className="popup_soon__note">※ 본 홈페이지에 사용된 CG 및 이미지는 실제와 다를 수 있습니다.</p>
+      </div>
+    </div>
+  );
+}
 
-/** 첫 화면 팝업: 103㎡B 선착순 안내 카드 + 공식 오피스텔·상업시설 팝업(세로) 2장. 17-1 에서 크기를 줄였다. */
+// 작업지시서 27: 카드 구성이 바뀌어 키를 새로 쓴다.
+const KEY = "popup_20261128";
+
+/** 첫 화면 팝업: 쿠폰 띠 + 오피스텔·상가 사전고객등록 카드. 예전 카드 함수는 두고 렌더만 끈다. */
 export function OtPopups() {
   const [open, setOpen] = useState(false);
   const [today, setToday] = useState(false);
+  const [dot, setDot] = useState(0);
+  const rowRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     let hide = false;
@@ -153,20 +194,49 @@ export function OtPopups() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [open, today]);
 
+  function syncDot() {
+    const el = rowRef.current;
+    if (!el) return;
+    const w = el.clientWidth || 1;
+    setDot(el.scrollLeft > w * 0.45 ? 1 : 0);
+  }
+
+  function goDot(i: number) {
+    const el = rowRef.current;
+    if (!el) return;
+    const card = el.children[i] as HTMLElement | undefined;
+    if (card) card.scrollIntoView({ inline: "center", block: "nearest", behavior: "smooth" });
+  }
+
   if (!open) return null;
 
   return (
-    <div className="otp" role="dialog" aria-modal="true" aria-label="방문 혜택" onClick={(e) => { if (e.target === e.currentTarget) close(); }}>
+    <div className="otp otp--wo27" role="dialog" aria-modal="true" aria-label="오피스텔·상가 사전고객등록" onClick={(e) => { if (e.target === e.currentTarget) close(); }}>
       <div className="otp__wrap">
-        <button type="button" className="otp__close" onClick={close}>팝업닫기 ✕</button>
-        <div className="otp-row otp-row--one">
-          <VisitCard />
+        <div className="otp-band">
+          <p className="otp-band__line">방문 혜택 · 사전고객등록·방문예약 후 모델하우스 방문 시</p>
+          <p className="otp-band__lg">스타벅스 커피 쿠폰 증정</p>
+        </div>
+        <div className="otp-row otp-row--two" ref={rowRef} onScroll={syncDot}>
+          <PreregSoonCard kind="officetel" />
+          <PreregSoonCard kind="commercial" />
+          {false ? <VisitCard /> : null}
           {false ? <B103Card /> : null}
         </div>
-        <label className="otp__today">
-          <input type="checkbox" checked={today} onChange={(e) => setToday(e.target.checked)} />
-          오늘 하루 보지 않기
-        </label>
+        <div className="otp-dots">
+          <button type="button" className={dot === 0 ? "is-on" : ""} aria-label="오피스텔 카드" onClick={() => goDot(0)} />
+          <button type="button" className={dot === 1 ? "is-on" : ""} aria-label="상가 카드" onClick={() => goDot(1)} />
+        </div>
+        <div className="otp-foot">
+          <a href="/visit">방문예약만 하실 분은 → 방문예약 하기</a>
+          <label className="otp__today">
+            <input type="checkbox" checked={today} onChange={(e) => setToday(e.target.checked)} />
+            오늘 하루 보지 않기
+          </label>
+          <button type="button" className="otp__close" onClick={close} aria-label="닫기">✕</button>
+        </div>
+        <p className="otp-fine">※ 쿠폰 지급 기준·기간은 분양문의 1833-3872로 확인해 주세요. 사전 공지 후 변경·조기 종료될 수 있습니다.</p>
+        <p className="otp-fine">※ 사전고객등록은 청약 신청이 아니며, 청약 자격·순위와 관계없습니다.</p>
       </div>
     </div>
   );
