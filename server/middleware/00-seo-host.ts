@@ -258,8 +258,8 @@ function xmlEsc(v: string): string {
   return v.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 }
 
-function rssFeed(en = false): string {
-  const origin = en ? EN_ORIGIN : KR_ORIGIN;
+function rssFeed(en = false, legacy = false): string {
+  const origin = en || legacy ? EN_ORIGIN : KR_ORIGIN;
   const items = (en ? EN_RSS : RSS_ITEMS).map(
     ([path, title, desc, date]) =>
       `<item><title>${xmlEsc(title)}</title><link>${origin}${path}</link><guid isPermaLink="true">${origin}${path}</guid><description>${xmlEsc(desc)}</description><pubDate>${date}</pubDate></item>`,
@@ -305,6 +305,53 @@ function isEn(event: SeoEvent): boolean {
     event.req.headers.get("x-forwarded-host") ?? event.req.headers.get("host") ?? event.url.host;
   const host = String(raw ?? "").split(",")[0].trim().split(":")[0].toLowerCase();
   return EN_HOSTS.has(host);
+}
+
+const A4_HOSTS = new Set(["www.arkone-prugio.site"]);
+const A4_NAVER_META =
+  '<meta name="naver-site-verification" content="29a3f7f67476a2262f1d585cda32ed4ef116415c" />';
+const NAVER_FILE = "/navercb4afd4b34b3cb9921b3753ba42928b5.html";
+const NAVER_FILE_BODY = "naver-site-verification: navercb4afd4b34b3cb9921b3753ba42928b5.html\n";
+
+function isA4(event: SeoEvent): boolean {
+  const raw =
+    event.req.headers.get("x-forwarded-host") ?? event.req.headers.get("host") ?? event.url.host;
+  const host = String(raw ?? "").split(",")[0].trim().split(":")[0].toLowerCase();
+  return A4_HOSTS.has(host);
+}
+
+function injectA4Naver(response: Response): Response {
+  const marker = "</head>";
+  let done = false;
+  let carry = "";
+  const decoder = new TextDecoder();
+  const encoder = new TextEncoder();
+  const body = response.body!.pipeThrough(
+    new TransformStream<Uint8Array, Uint8Array>({
+      transform(chunk, controller) {
+        if (done) {
+          controller.enqueue(chunk);
+          return;
+        }
+        carry += decoder.decode(chunk, { stream: true });
+        const at = carry.indexOf(marker);
+        if (at === -1) return;
+        done = true;
+        const head = carry.slice(0, at);
+        const extra = head.includes(A4_NAVER_META) ? "" : A4_NAVER_META;
+        controller.enqueue(encoder.encode(head + extra));
+        controller.enqueue(encoder.encode(marker + carry.slice(at + marker.length)));
+        carry = "";
+      },
+      flush(controller) {
+        const rest = carry + decoder.decode();
+        if (rest) controller.enqueue(encoder.encode(rest));
+      },
+    }),
+  );
+  const headers = new Headers(response.headers);
+  headers.delete("content-length");
+  return new Response(body, { status: response.status, statusText: response.statusText, headers });
 }
 
 const TEXT_HEADERS = {
@@ -412,6 +459,20 @@ export default async function seoHostMiddleware(
     });
   }
 
+  if (path === NAVER_FILE) {
+    // public/ 정적 파일은 Vercel filesystem이 미들웨어보다 먼저 200을 돌려 A3에도 열린다.
+    if (!isA4(event)) {
+      return new Response(method === "HEAD" ? null : "Not Found", {
+        status: 404,
+        headers: { "content-type": "text/plain; charset=utf-8", ...TEXT_HEADERS },
+      });
+    }
+    return new Response(method === "HEAD" ? null : NAVER_FILE_BODY, {
+      status: 200,
+      headers: { "content-type": "text/html; charset=utf-8", ...TEXT_HEADERS },
+    });
+  }
+
   if (path === "/robots.txt") {
     const body = isEn(event) ? EN_ROBOTS : isKr(event) ? KR_ROBOTS : LEGACY_ROBOTS;
     return new Response(method === "HEAD" ? null : body, {
@@ -419,7 +480,7 @@ export default async function seoHostMiddleware(
     });
   }
   if (path === "/rss.xml") {
-    return new Response(method === "HEAD" ? null : rssFeed(isEn(event)), {
+    return new Response(method === "HEAD" ? null : rssFeed(isEn(event), isA4(event)), {
       headers: { "content-type": "application/rss+xml; charset=utf-8", ...TEXT_HEADERS },
     });
   }
@@ -430,7 +491,20 @@ export default async function seoHostMiddleware(
     });
   }
 
-  if (method !== "GET" || !KR_PATHS.has(path) || !(isKr(event) || isEn(event))) return next();
+  if (method !== "GET" || !KR_PATHS.has(path) || !(isKr(event) || isEn(event))) {
+    if (!(method === "GET" && path === "/" && isA4(event))) return next();
+    const result = await next();
+    if (
+      result instanceof Response &&
+      result.status === 200 &&
+      result.body &&
+      String(result.headers.get("content-type") ?? "").includes("text/html") &&
+      !result.headers.get("content-encoding")
+    ) {
+      return injectA4Naver(result);
+    }
+    return result;
+  }
 
   const result = await next();
   if (
