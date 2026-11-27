@@ -2,8 +2,14 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import { SiteShell } from "@/components/site-shell";
 import { NEWS, type NewsItem } from "@/lib/news";
-import { canonicalLinks, tx } from "@/lib/seo-host";
+import { canonicalLinks, faqJsonLd, tx } from "@/lib/seo-host";
 import { META } from "@/lib/i18n/en";
+
+const NEWS_FAQ = [
+  { q: "언론보도 문장은 어디서 온 것인가요?", a: "기사 발췌는 각 언론사 원문 인용입니다." },
+  { q: "계획·예정 사업은 확정인가요?", a: "계획·예정 사업은 확정이 아닙니다." },
+  { q: "7호선 개통 시기는 정해졌나요?", a: "7호선은 개통 시기 미정입니다." },
+];
 
 export const Route = createFileRoute("/board/news_list")({
   component: NewsListPage,
@@ -13,6 +19,7 @@ export const Route = createFileRoute("/board/news_list")({
       { name: "description", content: tx("청라 아크원 푸르지오 관련 언론보도 목록. 공급 일정·청라국제업무단지 개발 관련 기사를 언론사 원문 기준으로 정리했습니다.", META.news.desc) },
     ],
     links: canonicalLinks("/board/news_list"),
+    scripts: faqJsonLd(NEWS_FAQ, "/board/news_list"),
   }),
 });
 
@@ -78,6 +85,16 @@ function NewsListPage() {
               »
             </button>
           </div>
+          <section aria-label="자주 묻는 질문">
+            <h2>자주 묻는 질문</h2>
+            {NEWS_FAQ.map((item) => (
+              <details key={item.q}>
+                <summary>{item.q}</summary>
+                <p>{item.a}</p>
+              </details>
+            ))}
+          </section>
+          <p>출처: 본 페이지 언론보도 목록 · 확인 기준일 2026-11-27</p>
         </section>
       </div>
       {selected ? (

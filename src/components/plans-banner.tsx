@@ -1,13 +1,13 @@
 import { Link } from "@tanstack/react-router";
 import { prices } from "@/lib/notice-facts.v1.json";
-import { PLAN_NOTE } from "@/components/notice-sections";
+import { PLAN_NOTE, manwon } from "@/components/notice-sections";
 
 // PM 지시(2026-10-22): 홈 히어로 바로 아래 「평면도 · 공급금액」 배너 → /pages/plans. 금액은 팩트 파일에서 면적대별 최저·최고만 고른다.
 function range(prefix: string) {
   const rows = prices.rows.filter((r) => r.type.startsWith(prefix));
   const lo = rows.reduce((a, b) => (b.minWon < a.minWon ? b : a));
   const hi = rows.reduce((a, b) => (b.maxWon > a.maxWon ? b : a));
-  return `${lo.min} ~ ${hi.max}`;
+  return `${manwon(lo.min)} ~ ${manwon(hi.max)}`;
 }
 
 export function PlansBanner() {

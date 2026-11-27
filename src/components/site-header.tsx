@@ -57,7 +57,7 @@ export function SiteHeader({ home = false }: { home?: boolean }) {
         <div className="header__container">
           <LogoTag className="header__logo_wrap">
             <Link to="/" className="header__btn_home" aria-label="청라 아크원 푸르지오 홈으로 이동">
-              {inverted ? <img className="header__btn_mark" src="/official/header/header_logo.v1.svg" alt="" /> : null}
+              {inverted ? <img className="header__btn_mark" src="/official/header/header_logo.v1.svg" alt="" aria-hidden="true" /> : null}
               <span className={`header__btn_logo${inverted ? " is-home-top" : ""}`}>{en ? "Cheongna Ark-One Prugio" : SITE_NAME}</span>
             </Link>
           </LogoTag>

@@ -1,8 +1,13 @@
 import { Link, useRouterState } from "@tanstack/react-router";
-import { useState } from "react";
+import { useState, type ReactNode } from "react";
 import { NAV, PAGE_META } from "@/lib/site-data";
 import { imgDims } from "@/components/img";
 import { KR_ORIGIN, isEnHost, isKrHost } from "@/lib/seo-host";
+
+function CrumbLink({ to, className, children }: { to: string; className?: string; children: ReactNode }) {
+  if (to.startsWith("#")) return <a href={to} className={className}>{children}</a>;
+  return <Link to={to} className={className}>{children}</Link>;
+}
 
 export function SubVisual({ path }: { path: string }) {
   const meta = PAGE_META[path];
@@ -67,9 +72,9 @@ export function SubVisual({ path }: { path: string }) {
             <ul className="page_location__menu" hidden={open !== "parent"}>
               {NAV.filter((n) => !n.disabled).map((n) => (
                 <li key={n.krName}>
-                  <Link to={n.to} className={n.krName === meta.parentKr ? "is-current" : ""}>
+                  <CrumbLink to={n.to} className={n.krName === meta.parentKr ? "is-current" : ""}>
                     {en ? n.enName : n.krName}
-                  </Link>
+                  </CrumbLink>
                 </li>
               ))}
             </ul>
@@ -87,9 +92,9 @@ export function SubVisual({ path }: { path: string }) {
                 .filter((c) => !c.disabled)
                 .map((c) => (
                   <li key={c.krName}>
-                    <Link to={c.to} className={c.to === pathname ? "is-current" : ""}>
+                    <CrumbLink to={c.to} className={c.to === pathname ? "is-current" : ""}>
                       {en ? c.enName : c.krName}
-                    </Link>
+                    </CrumbLink>
                   </li>
                 ))}
             </ul>

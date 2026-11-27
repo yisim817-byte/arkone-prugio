@@ -36,7 +36,7 @@ const HISTORY = [
   },
   {
     year: "개통 시기 미정",
-    items: ["7호선 국제업무단지역 (예정)"],
+    items: ["7호선 국제업무단지역 (예정·개통 시기 미정)"],
     img: "/resources/img/sub/brand_history_img_5.png",
   },
   {

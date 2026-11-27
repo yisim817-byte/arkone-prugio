@@ -217,7 +217,7 @@ export function RegisterForm() {
 
   return (
     <div className="reg-gate">
-      <img className="reg-gate__poster" src="/official/register/register-poster.jpg" width={590} height={842} alt="" />
+      <img className="reg-gate__poster" src="/official/register/register-poster.jpg" width={590} height={842} alt="청라 아크원 푸르지오 사전고객등록 안내 포스터" />
       <h2 className="reg-gate__title">청라 아크원 푸르지오 사전고객</h2>
       <button type="button" className="reg-gate__open" onClick={() => setDialog(true)}>사전고객등록</button>
       <div className="reg-dialog" hidden={!dialog} onClick={(e) => { if (e.target === e.currentTarget) setDialog(false); }}>

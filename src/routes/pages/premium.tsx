@@ -1,9 +1,15 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteShell } from "@/components/site-shell";
 import { SubNotice } from "@/components/notice";
-import { canonicalLinks, tx } from "@/lib/seo-host";
+import { canonicalLinks, faqJsonLd, tx } from "@/lib/seo-host";
 import { META } from "@/lib/i18n/en";
 import { imgDims } from "@/components/img";
+
+const PREMIUM_FAQ = [
+  { q: "2,911세대·실은 이 단지만의 규모인가요?", a: "아닙니다. 최고 49층 총 2,911세대·실은 청라 피크원 푸르지오를 포함한 브랜드타운이며 단일 단지가 아닙니다." },
+  { q: "오션·시티뷰는 모든 세대인가요?", a: "아닙니다. 오션·시티뷰를 동시에 누리는 2면 or 3면 개방구조는 일부 세대입니다." },
+  { q: "분양가 상한제는 어떤 기준으로 안내되나요?", a: "분양가 상한제 적용 아파트로 안내되어 있으며, 2017년 이후 10년만의 분양가 상한제 공급 아파트(500세대 이상 대단지 기준)입니다." },
+];
 
 export const Route = createFileRoute("/pages/premium")({
   component: PremiumPage,
@@ -13,6 +19,7 @@ export const Route = createFileRoute("/pages/premium")({
       { name: "description", content: tx("청라 아크원 푸르지오 프리미엄. 2,911세대·실 브랜드타운, 오션·시티뷰(일부 세대), 분양가 상한제 적용 등 사업주체 공개 상품 특징을 정리했습니다.", META.premium.desc) },
     ],
     links: canonicalLinks("/pages/premium"),
+    scripts: faqJsonLd(PREMIUM_FAQ, "/pages/premium"),
   }),
 });
 
@@ -130,6 +137,16 @@ function PremiumPage() {
             </article>
           </div>
           <SubNotice items={["상기 이미지는 소비자의 이해를 돕기 위한 것으로 실제와 차이가 있을 수 있습니다."]} />
+          <section aria-label="자주 묻는 질문">
+            <h2>자주 묻는 질문</h2>
+            {PREMIUM_FAQ.map((item) => (
+              <details key={item.q}>
+                <summary>{item.q}</summary>
+                <p>{item.a}</p>
+              </details>
+            ))}
+          </section>
+          <p>출처: 사업주체 공개 상품 특징 · 확인 기준일 2026-11-27</p>
         </section>
       </div>
     </SiteShell>

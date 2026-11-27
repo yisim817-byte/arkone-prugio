@@ -104,7 +104,7 @@ export function UserButton() {
       {user.profileImageUrl ? (
         <img
           src={user.profileImageUrl}
-          alt=""
+          alt="" aria-hidden="true"
           className="h-8 w-8 rounded-full object-cover"
         />
       ) : (

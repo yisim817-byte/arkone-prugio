@@ -45,10 +45,10 @@ function MapLinks({ naver, kakao, label }: { naver: string; kakao: string; label
   return (
     <div className="contact_location__links map-btns" aria-label={`${label} 지도 바로가기`}>
       <a href={naver} target="_blank" rel="noopener noreferrer" aria-label={`네이버 지도에서 ${label} 보기`}>
-        <img src="/resources/img/common/ico_naver.svg" alt="" {...imgDims("/resources/img/common/ico_naver.svg")} data-dims="" />
+        <img src="/resources/img/common/ico_naver.svg" alt="" aria-hidden="true" {...imgDims("/resources/img/common/ico_naver.svg")} data-dims="" />
       </a>
       <a href={kakao} target="_blank" rel="noopener noreferrer" aria-label={`카카오 지도에서 ${label} 보기`}>
-        <img src="/resources/img/common/ico_kko_map.svg" alt="" {...imgDims("/resources/img/common/ico_kko_map.svg")} data-dims="" />
+        <img src="/resources/img/common/ico_kko_map.svg" alt="" aria-hidden="true" {...imgDims("/resources/img/common/ico_kko_map.svg")} data-dims="" />
       </a>
     </div>
   );
@@ -71,8 +71,8 @@ function ContactPage() {
             ) : (
               <>
             <p>청라 아크원 푸르지오 견본주택(모델하우스)은 인천광역시 서해구 청라동 87-1번지에 있으며, 별도 공지 시까지 운영합니다(입주자모집공고 2026.10.22(목) 게시). 세부 일정은 대표번호 1833-3872로 문의해 주세요.</p>
-            <p>단지는 아파트 868세대와 오피스텔 987실입니다. 계약은 2026년 11월 22일부터 24일까지입니다.</p>
-            <p>출처: <a href="https://www.applyhome.co.kr" target="_blank" rel="noopener noreferrer">청약홈</a> 입주자모집공고(2026.10.22 게시) · 확인 기준일 2026-10-29</p>
+            <p>단지는 아파트 868세대와 오피스텔 987실입니다. 계약은 2026년 11월 22일부터 24일까지 진행되었습니다.</p>
+            <p>출처: <a href="https://www.applyhome.co.kr" target="_blank" rel="noopener noreferrer">청약홈</a> 입주자모집공고(2026.10.22 게시) · 확인 기준일 2026-11-27</p>
             <p>사업 현장은 인천광역시 서해구 청라동 86-1번지이고, 홍보관은 중봉대로 586번길 19 홍익파크 1층 108, 109호(스타벅스 옆)입니다.</p>
             <p>일정과 운영 시간은 사업주체 사정에 따라 변경될 수 있으니 방문 전 대표번호 1833-3872로 확인해 주세요.</p>
               </>

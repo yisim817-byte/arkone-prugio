@@ -11,7 +11,7 @@ export const Route = createFileRoute("/pages/video")({
   component: VideoPage,
   head: () => ({
     meta: [
-      { title: tx("청라 아크원 푸르지오 홍보영상 | 사업 소개", META.video.title) },
+      { title: tx("청라 아크원 푸르지오 홍보영상 | 사업주체 공개 소개", META.video.title) },
       { name: "description", content: tx("청라 아크원 푸르지오 홍보영상 모음입니다. 사업주체가 공개한 단지 소개 영상을 확인할 수 있으며, 상담은 대표번호 1833-3872로 문의하세요.", META.video.desc) },
     ],
     links: canonicalLinks("/pages/video"),
@@ -33,6 +33,7 @@ function VideoPage() {
         <section className="page_container">
           {/* SEO_PUSH 2026-10-06 P1-1: 페이지 고유 H1 (title 앞부분) */}
           <h1 className="page-h1">{tx("청라 아크원 푸르지오 홍보영상", META.video.h1)}</h1>
+          <p>출처: 사업주체 공개 단지 소개 영상 · 확인 기준일 2026-11-27</p>
           <div className="video-grid">
             <button type="button" className="video-card" onClick={() => setOpen(true)}>
               <img src={`https://img.youtube.com/vi/${YOUTUBE_ID}/hqdefault.jpg`} alt="청라 아크원 푸르지오 홍보영상 썸네일" width={480} height={360} data-dims="" />
