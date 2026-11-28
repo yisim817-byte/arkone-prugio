@@ -88,6 +88,8 @@ export function RegisterForm() {
         if (requestedProduct === "officetel") setInterest("오피스텔");
         if (requestedProduct === "commercial") setInterest("상가");
       }
+      const src = params.get("src");
+      if (src === "fcfs1226" && !sessionStorage.getItem("utm_content")) sessionStorage.setItem("utm_content", src);
       ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term"].forEach((key) => {
         const value = params.get(key);
         if (value && !sessionStorage.getItem(key)) sessionStorage.setItem(key, value);

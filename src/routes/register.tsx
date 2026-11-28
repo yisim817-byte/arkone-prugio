@@ -1,8 +1,14 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { SiteShell } from "@/components/site-shell";
 import { RegisterForm } from "@/components/register-form";
 import { canonicalLinks } from "@/lib/seo-host";
+
+const PRODUCT_TITLE: Record<string, string> = {
+  apt: "아파트 사전고객등록",
+  officetel: "오피스텔 사전고객등록",
+  commercial: "상가 사전고객등록",
+};
 
 export const Route = createFileRoute("/register")({
   component: RegisterPage,
@@ -16,9 +22,14 @@ export const Route = createFileRoute("/register")({
 });
 
 function RegisterPage() {
+  const [fcfs, setFcfs] = useState(false);
   // 작업지시서 13 · 4-1: 옛 방문예약 주소(/register?visit=1, #visit)는 방문예약 전용 페이지로 보낸다.
   useEffect(() => {
-    if (new URLSearchParams(location.search).get("visit") === "1" || location.hash === "#visit") location.replace("/visit");
+    const params = new URLSearchParams(location.search);
+    if (params.get("visit") === "1" || location.hash === "#visit") location.replace("/visit");
+    const title = PRODUCT_TITLE[params.get("product") || ""];
+    if (title) document.title = `${title} | 청라 아크원 푸르지오`;
+    setFcfs(params.get("src") === "fcfs1226");
   }, []);
   return (
     <SiteShell path="/register">
@@ -40,7 +51,10 @@ function RegisterPage() {
               <p>특별공급 11.02(월) · 1순위 11.03(화) · 2순위 11.04(수) · 당첨자 발표 11.10(화) · 계약 11.22(일)~11.24(화)</p>
             </div>
           </aside>
-          <RegisterForm />
+          <div>
+            {fcfs ? <p role="note" style={{ margin: "0 0 16px", padding: "12px 14px", borderLeft: "4px solid #C3395A", background: "#fdecef", color: "#1c2b28", fontWeight: 700, lineHeight: 1.5 }}>12.26(토) 아파트 선착순 계약 예정 · 선착순 고객등록은 아파트 사전고객등록으로 접수됩니다.</p> : null}
+            <RegisterForm />
+          </div>
         </section>
       </div>
     </SiteShell>

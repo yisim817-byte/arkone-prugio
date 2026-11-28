@@ -4,9 +4,6 @@ import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { PrivacyModal } from "@/components/privacy-modal";
 import { SubVisual } from "@/components/sub-visual";
-import { OtPopups } from "@/components/ot-official";
-import { PreregPopup } from "@/components/prereg-popup";
-import { isOtMainHost } from "@/lib/seo-host";
 import { SoonPopups } from "@/components/soon-popups";
 import { PhaseBand } from "@/components/phase-band";
 import { SITE_TEL_HREF } from "@/lib/site-data";
@@ -19,8 +16,6 @@ type Props = {
 
 export function SiteShell({ children, home, path }: Props) {
   const [privacy, setPrivacy] = useState(false);
-  // 작업지시서 14: 방문예약 팝업은 렌더하지 않는다(파일은 유지). 3번째 자리는 오픈 이벤트 팝업.
-  const noPopup = path === "/register" || path === "/visit" || path === "/event" || path === "/privacy";
 
   return (
     <div className={home ? "home-wrap main_wrap" : "sub-wrap"}>
@@ -31,8 +26,7 @@ export function SiteShell({ children, home, path }: Props) {
       <SiteFooter onPrivacy={() => setPrivacy(true)} />
       {privacy ? <PrivacyModal onClose={() => setPrivacy(false)} /> : null}
       <SoonPopups />
-      {/* 작업지시서 16-2: 첫 화면 팝업은 공식 오피스텔·상업시설 팝업 2장만. 기존 팝업(prereg-popup.tsx)은 파일을 두고 렌더만 끈다. */}
-      {isOtMainHost() ? (home && !noPopup ? <OtPopups /> : null) : (noPopup ? null : <PreregPopup />)}
+      {/* 작업지시서 30: 첫 화면 팝업은 /ark-popup-wo30.js. OtPopups·PreregPopup 은 파일을 두고 렌더만 끈다. */}
       {path !== "/register" ? (
         <div className="quick-mo">
           <a href={SITE_TEL_HREF}>전화상담 1833-3872</a>
