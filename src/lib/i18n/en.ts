@@ -30,7 +30,7 @@ export const META = {
   },
   contact: {
     title: "Ark-One Model House | Visit",
-    desc: "Model house at Cheongna-dong 87-1. Open until further notice. Notice posted 22 Oct. Call 1833-3872.",
+    desc: "Model house open until further notice. Notice posted 22 Oct. Call 1833-3872.",
     h1: "Cheongna Ark-One Prugio model house",
   },
   brand: {
@@ -129,11 +129,9 @@ export const FAQ_COMPARE = [
 ];
 
 export const FAQ_CONTACT = [
-  { q: "Where is the Cheongna Ark-One Prugio model house?", a: "The model house is at 87-1 Cheongna-dong Seohae-gu Incheon. The project site is 86-1 Cheongna-dong. Use the Naver and Kakao map buttons on this page." },
-  { q: "When does the model house open?", a: "The model house at 87-1 Cheongna-dong Seohae-gu Incheon is open until further notice. Units 84A and 103A are installed. Call 1833-3872 before you visit." },
-  { q: "Where can I get guidance before the model house opens?", a: "The showroom is at Hongik Park 1F units 108 and 109 19 Jungbong-daero 586beon-gil Seohae-gu Incheon next to Starbucks. Call 1833-3872 for hours before you visit." },
-  { q: "What should I check before visiting?", a: "Check the address and whether the model house or showroom is open. Check eligibility and dates in the recruitment notice posted on 22 Oct 2026 on Applyhome." },
-  { q: "What phone number reaches the Cheongna Ark-One Prugio model house?", a: "Call 1833-3872 for the model house at 87-1 Cheongna-dong. Grand opening is 30 Oct." },
+  { q: "Where is the Cheongna Ark-One Prugio model house?", a: "See the model house map on this page and call 1833-3872 before you visit." },
+  { q: "When does the model house open?", a: "The model house is open until further notice. Units 84A and 103A are installed. Call 1833-3872 before you visit." },
+  { q: "What should I check before visiting?", a: "Call 1833-3872 before you visit. Check eligibility and dates in the recruitment notice posted on 22 Oct 2026 on Applyhome." },
 ];
 
 export const FAQ_LOCATION = [

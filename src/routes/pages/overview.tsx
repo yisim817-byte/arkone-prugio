@@ -252,7 +252,7 @@ function OverviewPage() {
               { to: "/compare", label: "평면·타입 공개 여부" },
               { to: "/pages/schedule", label: "분양 일정·청약 안내" },
               { to: "/pages/location", label: "입지환경" },
-              { to: "/pages/contact", label: "견본주택·홍보관 오시는길" },
+              { to: "/pages/contact", label: "견본주택 오시는길" },
               { to: "/register", label: "사전고객등록" },
             ]}
             sources={[{ ...SRC_APPLYHOME, date: "2026-10-29" }]}

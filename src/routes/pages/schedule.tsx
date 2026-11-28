@@ -155,7 +155,6 @@ function SchedulePage() {
               { to: "/pages/changeinfo", label: "변경된 청약제도" },
               { to: "/pages/contact", label: "견본주택 오시는길" },
               { to: "/compare", label: "아파트·오피스텔 비교" },
-              { to: "/pages/contact", label: "견본주택·홍보관 오시는길" },
               { to: "/pages/overview", label: "분양 사업개요" },
             ]}
             sources={[{ ...SRC_APPLYHOME, date: "2026-10-29" }]}

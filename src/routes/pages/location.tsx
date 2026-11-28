@@ -52,8 +52,6 @@ function LocationPage() {
                 <p>Cheongna Ark-One Prugio is on mixed-use site M5 in the Cheongna International Business District at 86-1 Cheongna-dong Seohae-gu Incheon.</p>
                 <p>The complex has Apt 868 units and officetel 987 rooms. The recruitment notice was posted on 22 Oct 2026 and contracts run from 22 to 24 Nov 2026.</p>
                 <p>Source: <a href="https://www.applyhome.co.kr" target="_blank" rel="noopener noreferrer">Applyhome</a> recruitment notice (posted 22 Oct 2026) · checked 2026-10-29</p>
-                <p>The model house is 87-1 Cheongna-dong. The showroom is Hongik Park 1F units 108 and 109 on Jungbong-daero 586beon-gil. They are different places.</p>
-                <p>The model house address is 87-1 Cheongna-dong Seohae-gu Incheon. The showroom is a different place.</p>
                 <p>Work on the Seoul Line 7 Cheongna extension is being brought back on track after delays. The opening date has not been officially announced.</p>
                 <p>Starfield Cheongna is planned to open in 2028. Asan Medical Center Cheongna started construction in December 2025 and targets completion in 2029. Source date 9 Oct 2026. Sources: Incheon City releases.</p>
                 <p>Cheongna Sky Bridge opened in January 2026 and the second outer ring road is available. International Business District station on the Line 7 extension is planned and the opening date is not set.</p>
@@ -65,8 +63,6 @@ function LocationPage() {
             <p>청라 아크원 푸르지오는 청라국제도시 국제업무단지 내 주상복합용지 M5BL(인천광역시 서해구 청라동 86-1번지)에 위치합니다.</p>
             <p>규모는 아파트 868세대와 오피스텔 987실입니다. 입주자모집공고는 2026.10.22에 게시되었고 계약은 2026년 11월 22일부터 24일까지입니다.</p>
             <p>출처: <a href="https://www.applyhome.co.kr" target="_blank" rel="noopener noreferrer">청약홈</a> 입주자모집공고(2026.10.22 게시) · 확인 기준일 2026-10-29</p>
-            <p>견본주택은 청라동 87-1번지이고, 홍보관은 중봉대로 586번길 19 홍익파크 1층 108·109호입니다. 서로 다른 장소입니다.</p>
-            <p>청라 아크원 푸르지오 견본주택은 인천광역시 서해구 청라동 87-1번지입니다. 홍보관은 인천광역시 서해구 중봉대로 586번길 19 홍익파크 1층 108·109호이며, 견본주택과 다른 장소입니다.</p>
             <p>서울 7호선 청라국제도시 연장은 공정 지연에 따라 정상화를 추진 중이며, 개통 시기는 공식 발표되지 않았습니다.</p>
             <p>스타필드 청라는 2028년 개장 예정입니다. 서울아산청라병원은 2025년 12월 착공했으며 2029년 준공이 목표입니다. 자료 기준 2026-10-09 · 출처 인천광역시 보도자료 2026-08-12 · 인천광역시 보도자료 2026-07-15(스타필드)·2025-12-30(아산병원)</p>
             <p>교통은 2026년 1월 개통한 청라하늘대교와 제2외곽순환도로를 이용할 수 있고, 서울 지하철 7호선 청라연장선 국제업무단지역은 예정 역으로 개통 시기는 미정입니다.</p>
@@ -76,9 +72,9 @@ function LocationPage() {
             )}
           </GuideAnswer>
           {isEnHost() ? (
-            <p>The site is 86-1 Cheongna-dong Seohae-gu (formerly Seo-gu) Incheon on mixed-use site M5. The model house is 87-1 Cheongna-dong. The showroom is 19 Jungbong-daero 586beon-gil and is a different place. Cheongna Sky Bridge (the former 3rd land bridge) opened on 5 Jan 2026. The opening date of the Seoul Line 7 Cheongna extension has not been officially announced.</p>
+            <p>The site is 86-1 Cheongna-dong Seohae-gu (formerly Seo-gu) Incheon on mixed-use site M5. Cheongna Sky Bridge (the former 3rd land bridge) opened on 5 Jan 2026. The opening date of the Seoul Line 7 Cheongna extension has not been officially announced.</p>
           ) : (
-            <p>청라 아크원 푸르지오의 대지위치는 인천광역시 서해구(구 서구) 청라동 86-1번지(청라국제도시 주상복합용지 M5BL)입니다. 견본주택은 인천광역시 서해구(구 서구) 청라동 87-1에 있고, 홍보관은 인천광역시 서해구(구 서구) 중봉대로 586번길 19입니다. 홍보관은 견본주택과 다른 장소입니다. 청라하늘대교(구 제3연륙교)는 2026년 1월 5일 개통했습니다. 서울 7호선 청라국제도시 연장의 개통 시기는 공식 발표되지 않았습니다.</p>
+            <p>청라 아크원 푸르지오의 대지위치는 인천광역시 서해구(구 서구) 청라동 86-1번지(청라국제도시 주상복합용지 M5BL)입니다. 청라하늘대교(구 제3연륙교)는 2026년 1월 5일 개통했습니다. 서울 7호선 청라국제도시 연장의 개통 시기는 공식 발표되지 않았습니다.</p>
           )}
           <header className="location_intro">
             <p>청라국제업무단지 M5블록</p>
@@ -152,7 +148,7 @@ function LocationPage() {
             links={[
               { to: "/pages/overview", label: "분양 사업개요" },
               { to: "/pages/brand", label: "청라 개발 히스토리" },
-              { to: "/pages/contact", label: "견본주택·홍보관 오시는길" },
+              { to: "/pages/contact", label: "견본주택 오시는길" },
               { to: "/pages/schedule", label: "분양 일정·청약 안내" },
               { to: "/register", label: "사전고객등록" },
             ]}

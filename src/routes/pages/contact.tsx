@@ -9,19 +9,15 @@ import { imgDims } from "@/components/img";
 const FAQ: GuideFaq[] = [
   {
     q: "청라 아크원 푸르지오 모델하우스(견본주택)는 어디에 있나요?",
-    a: "견본주택 주소는 인천광역시 서해구 청라동 87-1번지입니다. 사업 현장 주소는 청라동 86-1번지이며, 이 페이지의 네이버·카카오 지도 버튼으로 경로를 확인할 수 있습니다.",
+    a: "위치는 페이지의 모델하우스 약도를 참고해 주시고, 방문 전 대표번호로 예약해 주세요.",
   },
   {
     q: "모델하우스는 언제 여나요?",
-    a: "견본주택은 인천광역시 서해구 청라동 87-1에 있으며 별도 공지 시까지 운영합니다. 견본주택에는 84A·103A 유니트가 설치되어 있습니다. 방문 전 대표번호 1833-3872로 확인해 주세요.",
-  },
-  {
-    q: "견본주택 오픈 전에 상담받을 수 있는 곳이 있나요?",
-    a: "홍보관(인천광역시 서해구 중봉대로 586번길 19 홍익파크 1층 108, 109호, 스타벅스 옆)에서 안내를 받을 수 있습니다. 운영 시간은 방문 전 대표번호 1833-3872로 확인해 주세요.",
+    a: "견본주택은 별도 공지 시까지 운영합니다. 견본주택에는 84A·103A 유니트가 설치되어 있습니다. 방문 전 대표번호 1833-3872로 확인해 주세요.",
   },
   {
     q: "방문 전에 무엇을 확인하면 좋을까요?",
-    a: "방문 장소(견본주택·홍보관)의 주소와 운영 여부를 먼저 확인하고, 청약 자격과 일정은 2026.10.22(목) 게시된 입주자모집공고문(청약홈)을 기준으로 확인하시기 바랍니다.",
+    a: "방문 전 대표번호로 예약해 주시고, 청약 자격과 일정은 2026.10.22(목) 게시된 입주자모집공고문(청약홈)을 기준으로 확인하시기 바랍니다.",
   },
 ];
 
@@ -33,47 +29,34 @@ export const Route = createFileRoute("/pages/contact")({
   component: ContactPage,
   head: () => ({
     meta: [
-      { title: tx("청라 아크원 푸르지오 모델하우스·홍보관 방문 | 오시는길", META.contact.title) },
-      { name: "description", content: tx("청라 아크원 푸르지오 모델하우스·홍보관 방문. 견본주택 청라동 87-1 · 별도 공지 시까지 운영 · 대표번호 1833-3872.", META.contact.desc) },
+      { title: tx("청라 아크원 푸르지오 모델하우스(견본주택) 방문 | 오시는길", META.contact.title) },
+      { name: "description", content: tx("청라 아크원 푸르지오 모델하우스(견본주택) 방문. 별도 공지 시까지 운영 · 대표번호 1833-3872.", META.contact.desc) },
     ],
     links: canonicalLinks("/pages/contact"),
     scripts: faqJsonLd(contactFaq(), "/pages/contact"),
   }),
 });
 
-function MapLinks({ naver, kakao, label }: { naver: string; kakao: string; label: string }) {
-  return (
-    <div className="contact_location__links map-btns" aria-label={`${label} 지도 바로가기`}>
-      <a href={naver} target="_blank" rel="noopener noreferrer" aria-label={`네이버 지도에서 ${label} 보기`}>
-        <img src="/resources/img/common/ico_naver.svg" alt="" {...imgDims("/resources/img/common/ico_naver.svg")} data-dims="" />
-      </a>
-      <a href={kakao} target="_blank" rel="noopener noreferrer" aria-label={`카카오 지도에서 ${label} 보기`}>
-        <img src="/resources/img/common/ico_kko_map.svg" alt="" {...imgDims("/resources/img/common/ico_kko_map.svg")} data-dims="" />
-      </a>
-    </div>
-  );
-}
-
 function ContactPage() {
   return (
     <SiteShell path="/pages/contact">
       <div className="page_content">
         <section className="page_container">
-          <GuideAnswer title={tx("청라 아크원 푸르지오 모델하우스·홍보관 안내", META.contact.h1)}>
+          <GuideAnswer title={tx("청라 아크원 푸르지오 모델하우스(견본주택) 안내", META.contact.h1)}>
             {isEnHost() ? (
               <>
-                <p>The model house is at 87-1 Cheongna-dong Seohae-gu Incheon. It is open until further notice. The recruitment notice was posted on 22 Oct 2026. Call 1833-3872 for the details.</p>
+                <p>The model house is open until further notice. The recruitment notice was posted on 22 Oct 2026. Call 1833-3872 for the details.</p>
                 <p>Cheongna Ark-One Prugio has Apt 868 units and officetel 987 rooms. Contracts run from 22 to 24 Nov 2026.</p>
                 <p>Source: <a href="https://www.applyhome.co.kr" target="_blank" rel="noopener noreferrer">Applyhome</a> recruitment notice (posted 22 Oct 2026) · checked 2026-10-29</p>
-                <p>The project site is 86-1 Cheongna-dong Seohae-gu Incheon. The showroom is Hongik Park 1F units 108 and 109 19 Jungbong-daero 586beon-gil next to Starbucks.</p>
+                <p>See the model house map on this page and call 1833-3872 before you visit.</p>
                 <p>Hours can change. Call 1833-3872 before you visit.</p>
               </>
             ) : (
               <>
-            <p>청라 아크원 푸르지오 견본주택(모델하우스)은 인천광역시 서해구 청라동 87-1번지에 있으며, 별도 공지 시까지 운영합니다(입주자모집공고 2026.10.22(목) 게시). 세부 일정은 대표번호 1833-3872로 문의해 주세요.</p>
+            <p>청라 아크원 푸르지오 견본주택(모델하우스)은 별도 공지 시까지 운영합니다(입주자모집공고 2026.10.22(목) 게시). 세부 일정은 대표번호 1833-3872로 문의해 주세요.</p>
             <p>단지는 아파트 868세대와 오피스텔 987실입니다. 계약은 2026년 11월 22일부터 24일까지입니다.</p>
             <p>출처: <a href="https://www.applyhome.co.kr" target="_blank" rel="noopener noreferrer">청약홈</a> 입주자모집공고(2026.10.22 게시) · 확인 기준일 2026-10-29</p>
-            <p>사업 현장은 인천광역시 서해구 청라동 86-1번지이고, 홍보관은 중봉대로 586번길 19 홍익파크 1층 108, 109호(스타벅스 옆)입니다.</p>
+            <p>위치는 페이지의 모델하우스 약도를 참고해 주시고, 방문 전 대표번호로 예약해 주세요.</p>
             <p>일정과 운영 시간은 사업주체 사정에 따라 변경될 수 있으니 방문 전 대표번호 1833-3872로 확인해 주세요.</p>
               </>
             )}
@@ -81,51 +64,22 @@ function ContactPage() {
           <div className="contact_map">
             <div className="contact_map__box">
               <figure className="contact_map__image">
-                <img src="/resources/img/sub/contact_map_img_1.v4.jpg" alt="청라 아크원 푸르지오 현장과 견본주택 약도" {...imgDims("/resources/img/sub/contact_map_img_1.v4.jpg")} data-dims="" />
+                <img src="/resources/img/sub/contact_map_img_1.v4.jpg" alt="청라 아크원 푸르지오 모델하우스 약도" {...imgDims("/resources/img/sub/contact_map_img_1.v4.jpg")} data-dims="" />
               </figure>
               <div className="contact_map__locations">
                 <article className="contact_location">
                   <div>
-                    <h2>{tx("청라 아크원 푸르지오 현장", "Cheongna Ark-One Prugio site")}</h2>
-                    <address>인천광역시 서해구 청라동 86-1번지</address>
+                    <h2>{tx("모델하우스(견본주택)", "Model house")}</h2>
+                    <p>방문 전 대표번호로 예약해 주세요</p>
                   </div>
-                  <MapLinks naver="https://naver.me/xSBYFSR0" kakao="https://kko.to/27AvJsaNys" label={tx("현장", "Site")} />
-                </article>
-                <article className="contact_location">
-                  <div>
-                    <h2>{tx("청라 아크원 푸르지오 견본주택", "Cheongna Ark-One Prugio model house")}</h2>
-                    <address>인천광역시 서해구 청라동 87-1번지</address>
-                  </div>
-                  <MapLinks naver="https://naver.me/xNpQLQ3L" kakao="https://kko.to/06V9ttVXOK" label={tx("견본주택", "Model house")} />
-                </article>
-              </div>
-            </div>
-            <div className="contact_map__box">
-              <figure className="contact_map__image">
-                <img src="/resources/img/sub/contact_map_img_2.v4.jpg" alt="청라 아크원 푸르지오 홍보관 약도" {...imgDims("/resources/img/sub/contact_map_img_2.v4.jpg")} data-dims="" />
-              </figure>
-              <div className="contact_map__locations">
-                <article className="contact_location">
-                  <div>
-                    <h2>청라 아크원 푸르지오 홍보관</h2>
-                    <address>
-                      인천광역시 서해구 중봉대로 586번길 19
-                      <br />
-                      홍익파크 1층 108,109호(스타벅스 옆)
-                    </address>
-                  </div>
-                  <MapLinks naver="https://naver.me/xwmqyGWk" kakao="https://kko.to/hM9WpE-0fz" label="홍보관" />
                 </article>
               </div>
             </div>
           </div>
           <GuideDetail
-            tableTitle="방문 장소별 주소와 상태"
-            columns={["장소", "주소", "상태"]}
+            tableTitle="방문 안내"
+            columns={["항목", "안내", "상태"]}
             rows={[
-              { label: "견본주택(모델하우스)", value: "인천광역시 서해구 청라동 87-1번지 · 별도 공지 시까지 운영", status: "확정" },
-              { label: "사업 현장", value: "인천광역시 서해구 청라동 86-1번지 (청라국제도시 주상복합용지 M5BL)", status: "공개값" },
-              { label: "홍보관", value: "인천광역시 서해구 중봉대로 586번길 19 홍익파크 1층 108, 109호(스타벅스 옆)", status: "공개값" },
               { label: "운영 시간", value: "방문 전 대표번호 1833-3872로 확인", status: "미정" },
             ]}
             faq={contactFaq()}
@@ -138,7 +92,7 @@ function ContactPage() {
           />
           <SubNotice
             items={[
-              "※ 현장, 견본주택 및 홍보관 위치는 반드시 주소를 확인하시고, 주변 도로 및 건물, 경로 등은 네이버, 카카오 지도를 통해 확인하시기 바랍니다.",
+              "※ 방문 전 대표번호로 예약해 주세요.",
             ]}
           />
         </section>

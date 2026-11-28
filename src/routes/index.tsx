@@ -418,63 +418,16 @@ function Home() {
             <p>입주자모집공고 게시 2026.10.22(목)</p>
             <p>특별공급 11.02(월) · 일반공급 1순위 11.03(화) · 일반공급 2순위 11.04(수)</p>
             <p>당첨자 발표 11.10(화) · 당첨자 서류접수 11.12(목)~11.16(월) · 계약 11.22(일)~11.24(화)</p>
-            <p>견본주택 별도 공지 시까지 운영 · 인천광역시 서해구 청라동 87-1</p>
+            <p>견본주택 별도 공지 시까지 운영</p>
             <p>청약은 한국부동산원 청약홈(www.applyhome.co.kr)에서 인터넷으로 신청합니다.</p>
             <p>세부 일정 문의: 대표번호 1833-3872</p>
             <small>※ 일정은 사업주체 사정에 따라 변경될 수 있으며, 입주자모집공고문이 우선합니다.</small>
           </div>
           <div className="contact-home-grid">
             <article className="contact-home-card">
-              <Img src="/resources/img/pages/main/contact_map_01.v4.png" alt="청라 아크원 푸르지오 현장과 견본주택 약도" />
-              <div className="contact-row">
-                <div>
-                  <h3>견본주택</h3>
-                  <address>인천광역시 서해구 청라동 87-1번지</address>
-                </div>
-                <div className="map-btns">
-                  <a href="https://naver.me/xNpQLQ3L" target="_blank" rel="noreferrer">
-                    <Img src="/resources/img/common/ico_naver.svg" alt="청라 아크원 푸르지오 견본주택 네이버 지도 바로가기" />
-                  </a>
-                  <a href="https://kko.to/06V9ttVXOK" target="_blank" rel="noreferrer">
-                    <Img src="/resources/img/common/ico_kko_map.svg" alt="청라 아크원 푸르지오 견본주택 카카오 지도 바로가기" />
-                  </a>
-                </div>
-              </div>
-              <div className="contact-row">
-                <div>
-                  <h3>현장</h3>
-                  <address>인천광역시 서해구 청라동 86-1번지</address>
-                </div>
-                <div className="map-btns">
-                  <a href="https://naver.me/xSBYFSR0" target="_blank" rel="noreferrer">
-                    <Img src="/resources/img/common/ico_naver.svg" alt="청라 아크원 푸르지오 현장 네이버 지도 바로가기" />
-                  </a>
-                  <a href="https://kko.to/27AvJsaNys" target="_blank" rel="noreferrer">
-                    <Img src="/resources/img/common/ico_kko_map.svg" alt="청라 아크원 푸르지오 현장 카카오 지도 바로가기" />
-                  </a>
-                </div>
-              </div>
-            </article>
-            <article className="contact-home-card">
-              <Img src="/resources/img/pages/main/contact_map_02.v4.webp" alt="청라 아크원 푸르지오 홍보관 약도" />
-              <div className="contact-row">
-                <div>
-                  <h3>홍보관</h3>
-                  <address>
-                    인천광역시 서해구 중봉대로 586번길 19
-                    <br />
-                    홍익파크 1층 108, 109호(스타벅스 옆)
-                  </address>
-                </div>
-                <div className="map-btns">
-                  <a href="https://naver.me/xwmqyGWk" target="_blank" rel="noreferrer">
-                    <Img src="/resources/img/common/ico_naver.svg" alt="청라 아크원 푸르지오 홍보관 네이버 지도 바로가기" />
-                  </a>
-                  <a href="https://kko.to/hM9WpE-0fz" target="_blank" rel="noreferrer">
-                    <Img src="/resources/img/common/ico_kko_map.svg" alt="청라 아크원 푸르지오 홍보관 카카오 지도 바로가기" />
-                  </a>
-                </div>
-              </div>
+              <h3>모델하우스(견본주택)</h3>
+              <Img src="/resources/img/pages/main/contact_map_01.v4.png" alt="청라 아크원 푸르지오 모델하우스 약도" />
+              <p>방문 전 대표번호로 예약해 주세요</p>
             </article>
           </div>
         </section>
